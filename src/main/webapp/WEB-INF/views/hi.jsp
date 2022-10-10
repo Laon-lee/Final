@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/h1"> 하이</a>
+	<a href="${pageContext.request.contextPath}/hi"> 하이</a>
 </body>
 </html>
