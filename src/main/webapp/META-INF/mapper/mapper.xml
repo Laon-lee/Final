@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goodee.dao.BBSDAO">
+	<select id="getList" resultType="bbsVO">
+			select * from bbs order by id desc
+	</select>
+		
+		<select id="checkUser" resultType ="int" parameterType="userVO">
+			select count(*) from user where userid = #{userid} and password = #{password}
+		</select>
+		
+		<select id="userinfo" resultType="userVO" parameterType ="userVO">
+			select * from user where userid = #{userid} and password = #{password}
+		</select>
+		
+		<select id="selectid" resultType="bbsVO" parameterType="int">
+			select * from bbs where id =#{id}
+		</select>
+		
+		
+		<select id="callId" resultType ="int" parameterType ="userVO">
+			select count(*) from user where userid = #{userid} and password = #{password}
+		</select>
+		
+		<insert id="userinsert" parameterType="bbsVO">
+			insert into bbs (category, owner, title, owner_id, content) values(#{category}, #{owner}, #{title}, #{ownerId},#{content})  
+		</insert>
+		
+		<update id ="updateuser" parameterType="bbsVO">
+			update bbs set category=#{category}, title=#{title}, content=#{content} 
+			where id=#{id}
+		</update>
+		
+		<delete id ="deleteuser" parameterType ="bbsVO">
+			delete from bbs where id =#{id}
+		</delete>
+		
+	</mapper>
+
+
+
