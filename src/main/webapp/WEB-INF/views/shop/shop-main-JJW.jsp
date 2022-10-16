@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-  <script src="./js/img-auto-slide.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/4b992414b9.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
   <style>
    #mainA1{
     font-family: 'Zilla Slab', serif;
@@ -589,7 +595,7 @@
         <div class="category-menu">
             <li><a href=""><img src="image/shop/Home.png" alt=""><br>Home</a></li>
             <li><a href=""><img src="image/shop/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href=""><img src="image/shopCarrier.png" alt=""><br>Carrier</a></li>
+            <li><a href=""><img src="image/shop/Carrier.png" alt=""><br>Carrier</a></li>
             <li><a href=""><img src="image/shop/Clothes.png" alt=""><br>Clothes</a></li>
             <li><a href=""><img src="image/shop/Dining.png" alt=""><br>Dining</a></li>
             <li><a href=""><img src="image/shop/Grooming.png" alt=""><br>Grooming</a></li>
