@@ -414,8 +414,7 @@
 </head>
 
 <body>
-    <!--<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>-->
+
   <div id="container">
     <header>
       <nav id="nav1">
@@ -588,23 +587,23 @@
     
     <main>
         <div class="category-menu">
-            <li><a href=""><img src="./home.png" alt=""><br>Home</a></li>
-            <li><a href=""><img src="./Walk.png" alt=""><br>Walk</a></li>
-            <li><a href=""><img src="./Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href=""><img src="./Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href=""><img src="./Dining.png" alt=""><br>Dining</a></li>
-            <li><a href=""><img src="./Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href=""><img src="./Toy.png" alt=""><br>Toy</a></li>
-            <li><a href=""><img src="./Big Dog.png" alt=""><br>Big Dog</a></li>
-            <li><a href=""><img src="./Food.png" alt=""><br>Food</a></li>
+            <li><a href=""><img src="image/Home.png" alt=""><br>Home</a></li>
+            <li><a href=""><img src="image/Walk.png" alt=""><br>Walk</a></li>
+            <li><a href=""><img src="image/Carrier.png" alt=""><br>Carrier</a></li>
+            <li><a href=""><img src="image/Clothes.png" alt=""><br>Clothes</a></li>
+            <li><a href=""><img src="image/Dining.png" alt=""><br>Dining</a></li>
+            <li><a href=""><img src="image/Grooming.png" alt=""><br>Grooming</a></li>
+            <li><a href=""><img src="image/Toy.png" alt=""><br>Toy</a></li>
+            <li><a href=""><img src="image/Big Dog.png" alt=""><br>Big Dog</a></li>
+            <li><a href=""><img src="image/Food.png" alt=""><br>Food</a></li>
         </div>
         
         <article class="sec1">
             <div class="img-header">
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./home.png" alt=""></a>
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./Big Dog.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./Food.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./home.png" alt=""></a>
+                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Home.png" alt=""></a>
+                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Big Dog.png" alt=""></a>
+                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Food.png" alt=""></a>
+                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Home.png" alt=""></a>
                 </div>
         </article>
     </main>
@@ -635,18 +634,18 @@
     <article class="art2">
       <div class="slide_wrapper">
         <ul class="slides">
-            <li><a href=""><img src="./home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="./home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="./home.png" alt=""></a></li>
-            <li><a href=""><img src="./home.png" alt=""></a></li>
-            <li><a href=""><img src="./home.png" alt=""></a></li>
-            <li><a href=""><img src="./home.png" alt=""></a></li>
-            <li><a href=""><img src="./home.png" alt=""></a></li>
-            <li><a href=""><img src="./home.png" alt=""></a></li>
-            <li><a href=""><img src="./img/product9.jpg" alt=""></a></li>
-            <li><a href=""><img src="./img/product10.jpg" alt=""></a></li>
-            <li><a href=""><img src="./img/product11.jpg" alt=""></a></li>
-            <li><a href=""><img src="./img/product12.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""><p>물품</p></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""><p>물품</p></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/product9.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/product10.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/product11.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/product12.jpg" alt=""></a></li>
         </ul>
     </div>
     <p class="controls">

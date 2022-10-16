@@ -204,20 +204,20 @@
     </nav>
     <main>
         <article class="art1">
-            <div><input type="text" placeholder="이름"></div>
-            <div><input type="text" placeholder="생년월일 ex) 1992/12/17"></div>
-            <div><input type="id" placeholder="아이디"> <button>중복확인</button></div>
-            <div><input type="password" placeholder="비밀번호"></div>
+            <div><input type="text" name="username" id="username" placeholder="이름"></div>
+            <div><input type="text" name="birth" id="birth" placeholder="생년월일 ex) 1992/12/17"></div>
+            <div><input type="text" name="userid" id="userid" placeholder="아이디"> <button>중복확인</button></div>
+            <div><input type="password" name="password" id="userid" placeholder="비밀번호"></div>
             <div><input type="password" placeholder="비밀번호 확인"></div>
         </article>
         <article class="art2">
             <div><input type="email" name="email" id="email" placeholder="이메일"><br></div>
-            <div><input type="text" placeholder="휴대폰"> <button>인증하기</button></div>
-            <div><input type="text" placeholder="기본 주소 (도로명 주소를 입력해 주세요)"></div>
+            <div><input type="text" name="phone" id="phone" placeholder="휴대폰"> <button>인증하기</button></div>
+            <div><input type="text" name="address" id="address" placeholder="기본 주소 (도로명 주소를 입력해 주세요)"></div>
             <div><input type="text" placeholder="상세 주소 (입력해 주세요)"></div>
         </article>
         <article class="art3">
-            <h3>개인정보 수집 및 이용 동의 <span>(필수)</span><input type="checkbox" name="agree" id="agree"></h3>
+            <h3>개인정보 수집 및 이용 동의 <span>(필수)</span><input type="checkbox" name="agree" id="agree" value="Y"></h3>
     
             <div class="art3-container">
 <p>1. 개인정보 수집 및 이용 목적

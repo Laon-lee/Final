@@ -607,12 +607,14 @@
       </section>
       <section id="sec3">
         <div>
-          <h1>Shop</h1>
-          <p>품격있는 쇼핑</p>
-          <p>우리집 막둥이를 위한 선물</p>
-          <p>싸다싸</p>
-          <p>사장이 미쳤어요</p>
-          <button>Go Shopping</button>
+          <form action="${pageContext.request.contextPath}/goshop">
+          	<h1>Shop</h1>
+          	<p>품격있는 쇼핑</p>
+          	<p>우리집 막둥이를 위한 선물</p>
+          	<p>싸다싸</p>
+          	<p>사장이 미쳤어요</p>
+          	<button>Go Shopping</button>
+          </form>
         </div>
       </section>
       <section id="sec4">

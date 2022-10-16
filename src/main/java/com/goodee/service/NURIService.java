@@ -2,6 +2,7 @@ package com.goodee.service;
 
 import org.springframework.stereotype.Service;
 import com.goodee.dao.NURIDAO;
+import com.goodee.vo.UserVO;
 
 
 @Service
@@ -12,4 +13,8 @@ public class NURIService {
 		super();
 		this.dao = dao;	
 	} 
+	
+	public void membership2(UserVO vo) {
+		dao.insertmembership(vo);
+	}
 }
