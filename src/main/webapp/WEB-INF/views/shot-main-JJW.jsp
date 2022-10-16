@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+  <script src="./js/img-auto-slide.js"></script>
   <style>
    #mainA1{
     font-family: 'Zilla Slab', serif;
@@ -296,72 +296,13 @@
       font-size: 40px;
       margin-bottom: 30px;
     }
-
-    #sec3 {
-      z-index: 3;
-      transform: translateX(101%);
-      position: absolute;
-      background: url("image/임시배경.png") no-repeat right;
-      background-size: contain;
-      background-color: #f5ebe0;
-      display: flex;
-      align-items: center;
-      background-position: 20%;
-    }
-    #sec3 div{
-      position: absolute;
-      left: 80%;
-      line-height: 34px;
-    }
-    #sec3 div h1{
-      font-size: 40px;
-      margin-bottom: 30px;
-    }
-    #sec3 button{
-      border:none;
-      background-color: lightgray;
-      font-size: 20px;
-      width:200px;
-      height:40px;
-      border-radius: 5%;
-      margin-top: 15px;
-    }
-    #sec4 {
-      width:100vw;
-      z-index: 4;
-      transform: translateX(101%);
-      position: absolute;
-      background: url("image/호텔섹션.png") no-repeat right;
-      background-size: contain;
-      background-color: #f5ebe0;
-      display: flex;
-      align-items: center;
-      background-position: 80%;
-    }
-    #sec4 div{
-      position: absolute;
-      left:4%;
-      line-height: 34px;
-    }
-    #sec4 div h1{
-      font-size: 40px;
-      margin-bottom: 30px;
-    }
-    #sec4 button{
-      border:none;
-      background-color: lightgray;
-      font-size: 20px;
-      width:200px;
-      height:40px;
-      border-radius: 5%;
-      margin-top: 15px;
-    }
     .category-menu{
         margin: 0 auto;
         width: 80%;
         border-top: 2px solid black;
         display: flex;
-        gap: 30px;
+        justify-content: center;
+        gap: 80px;
         text-align: center;
     }
     .category-menu img{
@@ -414,10 +355,11 @@
         }
         .prev:hover{
             color: antiquewhite;
-            
+            cursor: pointer;
         }
         .next:hover{
             color: antiquewhite;
+            cursor: pointer;
         }
 
       footer {
@@ -429,7 +371,7 @@
       background-color: lightgray;
       justify-content: space-around;
       align-items: center;
-      
+      padding-bottom: 20px;
     }
     footer p{
       font-size: 13px;
@@ -444,7 +386,7 @@
       grid-template-rows: 1fr 1fr;
       
     }
-    article{
+    article,.new-arr,.New-Arr{
       background-color: #f5ebe0;
     }
     #footer-1stul{
@@ -467,6 +409,7 @@
     .slides img p{
       text-align: center;
     }
+   
   </style>
 </head>
 
@@ -645,22 +588,22 @@
     
     <main>
         <div class="category-menu">
-            <li><a href=""><img src="image/Home.png" alt=""><br>Home</a></li>
-            <li><a href=""><img src="image/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href=""><img src="image/Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href=""><img src="image/Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href=""><img src="image/Dining.png" alt=""><br>Dining</a></li>
-            <li><a href=""><img src="image/Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href=""><img src="image/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href=""><img src="image/Big Dog.png" alt=""><br>Big Dog</a></li>
-            <li><a href=""><img src="image/Food.png" alt=""><br>Food</a></li>
+            <li><a href=""><img src="./home.png" alt=""><br>Home</a></li>
+            <li><a href=""><img src="./Walk.png" alt=""><br>Walk</a></li>
+            <li><a href=""><img src="./Carrier.png" alt=""><br>Carrier</a></li>
+            <li><a href=""><img src="./Clothes.png" alt=""><br>Clothes</a></li>
+            <li><a href=""><img src="./Dining.png" alt=""><br>Dining</a></li>
+            <li><a href=""><img src="./Grooming.png" alt=""><br>Grooming</a></li>
+            <li><a href=""><img src="./Toy.png" alt=""><br>Toy</a></li>
+            <li><a href=""><img src="./Big Dog.png" alt=""><br>Big Dog</a></li>
+            <li><a href=""><img src="./Food.png" alt=""><br>Food</a></li>
         </div>
         
         <article class="sec1">
             <div class="img-header">
                 <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./home.png" alt=""></a>
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./home.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./home.png" alt=""></a>
+                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./Big Dog.png" alt=""></a>
+                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./Food.png" alt=""></a>
                 <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="./home.png" alt=""></a>
                 </div>
         </article>
@@ -686,24 +629,24 @@
     setTimeout(slideShow, 4000);   //함수를 4초마다 호출
 }
     </script>
-     <div>
+     <div class="New-Arr">
       <h1 class="new-arr">New Arrivals</h1>
     </div>
     <article class="art2">
       <div class="slide_wrapper">
         <ul class="slides">
-            <li><a href=""><img src="image/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
+            <li><a href=""><img src="./home.png" alt=""><p>물품</p></a></li>
+            <li><a href=""><img src="./home.png" alt=""><p>물품</p></a></li>
+            <li><a href=""><img src="./home.png" alt=""></a></li>
+            <li><a href=""><img src="./home.png" alt=""></a></li>
+            <li><a href=""><img src="./home.png" alt=""></a></li>
+            <li><a href=""><img src="./home.png" alt=""></a></li>
+            <li><a href=""><img src="./home.png" alt=""></a></li>
+            <li><a href=""><img src="./home.png" alt=""></a></li>
+            <li><a href=""><img src="./img/product9.jpg" alt=""></a></li>
+            <li><a href=""><img src="./img/product10.jpg" alt=""></a></li>
+            <li><a href=""><img src="./img/product11.jpg" alt=""></a></li>
+            <li><a href=""><img src="./img/product12.jpg" alt=""></a></li>
         </ul>
     </div>
     <p class="controls">
