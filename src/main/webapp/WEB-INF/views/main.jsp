@@ -286,7 +286,7 @@
     }
 
     #sec2 {
-      z-index: 2;
+      z-index: 2; 
       transform: translateX(101%);
       position: absolute;
       background: url("image/메인섹션.png") no-repeat center right;
