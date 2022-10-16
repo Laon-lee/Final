@@ -1,5 +1,7 @@
 package com.goodee.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -17,15 +19,39 @@ public class MainController {
 	
 	@GetMapping("membership")
 	public String membership(){
-		return "membership";
+		return "main/membership";
 	}
 	@GetMapping("membership2")
-	public String membership2(UserVO vo) {
+	public String membership2(UserVO vo, HttpSession session) {
+		if(!service.ismember1(vo)) {
 		service.membership2(vo);
-		return "membershipsuccess";
+		session.setAttribute("user", vo);
+		return "main/main";
+		}else {
+			return "main/membershipfail";
+		}
+	}
+	@GetMapping("login")
+	public String login(UserVO vo, HttpSession session) {
+		if(service.ismember2(vo)) {
+			service.getmemberinfo(vo);
+			session.setAttribute("user",vo);
+			return "main/main";
+		}else {
+			return "main/main";
+		}
+	}
+	@GetMapping("logout")
+	public String loginout(HttpSession session) {
+		session.invalidate();
+		return "main/main";
+	}
+	@GetMapping("gomain")
+	public String gomain() {
+		return "main/main";
 	}
 	@GetMapping("goshop")
 	public String goshop() {
-		return "shot-main-JJW";
+		return "shop/shot-main-JJW";
 	}
 }

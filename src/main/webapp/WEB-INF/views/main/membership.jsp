@@ -200,9 +200,10 @@
         <img src="" alt="">
     </header>
     <nav>
-        <h2>회원가입</h2>
+        <h2><a href="${pageContext.request.contextPath}/gomain">회원가입</a></h2>
     </nav>
     <main>
+    <form action="${pageContext.request.contextPath}/membership2">
         <article class="art1">
             <div><input type="text" name="username" id="username" placeholder="이름"></div>
             <div><input type="text" name="birth" id="birth" placeholder="생년월일 ex) 1992/12/17"></div>
@@ -277,6 +278,7 @@
         <article class="art4">
             <button>회원 가입</button>
         </article>
+        </form>
     </main>
     <footer>
         

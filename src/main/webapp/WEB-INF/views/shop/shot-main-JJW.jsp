@@ -270,7 +270,7 @@
       z-index: 1;
       transform: translateX(0);
       position: absolute;
-      background: url("image/반고흐.png") no-repeat;
+      background: url("image/shop/반고흐.png") no-repeat;
       background-size: contain;
       background-position:right;
     }
@@ -279,7 +279,7 @@
       z-index: 2;
       transform: translateX(101%);
       position: absolute;
-      background: url("image/메인섹션.png") no-repeat center right;
+      background: url("image/shop/메인섹션.png") no-repeat center right;
       background-size: contain;
       background-color: #f5ebe0;
       display: flex;
@@ -587,23 +587,23 @@
     
     <main>
         <div class="category-menu">
-            <li><a href=""><img src="image/Home.png" alt=""><br>Home</a></li>
-            <li><a href=""><img src="image/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href=""><img src="image/Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href=""><img src="image/Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href=""><img src="image/Dining.png" alt=""><br>Dining</a></li>
-            <li><a href=""><img src="image/Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href=""><img src="image/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href=""><img src="image/Big Dog.png" alt=""><br>Big Dog</a></li>
-            <li><a href=""><img src="image/Food.png" alt=""><br>Food</a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""><br>Home</a></li>
+            <li><a href=""><img src="image/shop/Walk.png" alt=""><br>Walk</a></li>
+            <li><a href=""><img src="image/shopCarrier.png" alt=""><br>Carrier</a></li>
+            <li><a href=""><img src="image/shop/Clothes.png" alt=""><br>Clothes</a></li>
+            <li><a href=""><img src="image/shop/Dining.png" alt=""><br>Dining</a></li>
+            <li><a href=""><img src="image/shop/Grooming.png" alt=""><br>Grooming</a></li>
+            <li><a href=""><img src="image/shop/Toy.png" alt=""><br>Toy</a></li>
+            <li><a href=""><img src="image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
+            <li><a href=""><img src="image/shop/Food.png" alt=""><br>Food</a></li>
         </div>
         
         <article class="sec1">
             <div class="img-header">
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Home.png" alt=""></a>
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Big Dog.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Food.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/Home.png" alt=""></a>
+                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Home.png" alt=""></a>
+                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Big Dog.png" alt=""></a>
+                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Food.png" alt=""></a>
+                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Home.png" alt=""></a>
                 </div>
         </article>
     </main>
@@ -634,18 +634,18 @@
     <article class="art2">
       <div class="slide_wrapper">
         <ul class="slides">
-            <li><a href=""><img src="image/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/product9.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/product10.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/product11.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/product12.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""><p>물품</p></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""><p>물품</p></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
+            <li><a href=""><img src="image/shop/product9.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/shop/product10.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/shop/product11.jpg" alt=""></a></li>
+            <li><a href=""><img src="image/shop/product12.jpg" alt=""></a></li>
         </ul>
     </div>
     <p class="controls">

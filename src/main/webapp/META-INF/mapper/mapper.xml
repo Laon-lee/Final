@@ -7,7 +7,15 @@
 		insert into user (userid, username, password, address, email, gender, phone, agree) 
 				values (#{userid},#{username},#{password},#{address},#{email},#{gender},#{phone},#{agree});
 	</insert>
-		
+	<select id="ismember1" resultType="int">
+		select count(*) from user where userid=#{userid} 
+	</select>
+	<select id="ismember2" resultType="int">
+		select count(*) from user where userid=#{userid} and password=#{password}
+	</select>
+	<select id="getmemberinfo" resultType="userVO" parameterType="userVO">
+		select * from user where userid=#{userid}
+	</select>
 </mapper>
 
 

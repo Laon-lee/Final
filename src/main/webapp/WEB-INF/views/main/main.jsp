@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -280,7 +281,7 @@
       z-index: 1;
       transform: translateX(0);
       position: absolute;
-      background: url("image/반고흐.png") no-repeat;
+      background: url("image/main/반고흐.png") no-repeat;
       background-size: contain;
       background-position:right;
     }
@@ -289,7 +290,7 @@
       z-index: 2; 
       transform: translateX(101%);
       position: absolute;
-      background: url("image/메인섹션.png") no-repeat center right;
+      background: url("image/main/메인섹션.png") no-repeat center right;
       background-size: contain;
       background-color: #f5ebe0;
       display: flex;
@@ -311,7 +312,7 @@
       z-index: 3;
       transform: translateX(101%);
       position: absolute;
-      background: url("image/임시배경.png") no-repeat right;
+      background: url("image/main/임시배경.png") no-repeat right;
       background-size: contain;
       background-color: #f5ebe0;
       display: flex;
@@ -341,7 +342,7 @@
       z-index: 4;
       transform: translateX(101%);
       position: absolute;
-      background: url("image/호텔섹션.png") no-repeat right;
+      background: url("image/main/호텔섹션.png") no-repeat right;
       background-size: contain;
       background-color: #f5ebe0;
       display: flex;
@@ -478,6 +479,7 @@
             </div>
           </li>
           <li id="nav2-li-4thli">
+           <c:if test="${sessionScope.user == null}">
             <a href="#"><p style="font-size: 16px">Login</p></a>
             <div id="hover-layout4" class="hover-layout1">
                 
@@ -485,17 +487,24 @@
             <div id="nav2-li-4thdiv">
               <h4>로그인</h4>
               <br>
-              <form action="">
+              <form action="${pageContext.request.contextPath}/login">
                 <h6>아이디</h6>
-                <input type="text" name="" id="">
+                <input type="text" name="userid" id="userid">
                 <h6>비밀번호</h6>
-                <input type="password" name="" id=""><br>
+                <input type="password" name="password" id="password"><br>
                 <button>Login</button>
               </form>
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
-              <a href="#" style="font-size:13px">회원 가입</a>
+              <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
             </div>
-            <script>
+          	</c:if>
+          	<c:if test="${sessionScope.user != null}">
+          		<a href="${pageContext.request.contextPath}/logout"><p style="font-size: 16px">Logout</p></a>
+          	</c:if>
+          </li>
+        </ul>
+      </nav>
+      <script>
               const div1 = document.getElementById("nav2-li-1stdiv");
               const div2 = document.getElementById("nav2-li-2nddiv");
               const div3 = document.getElementById("nav2-li-3rddiv");
@@ -577,17 +586,6 @@
             //     document.querySelector("#hover-layout4").style.display="flex";
             //   });
             // </script>
-          </li>
-        </ul>
-      </nav>
-      <script>
-             
-          
-           
-          
-           
-        
-      </script>
     </header>
     <main>
 
