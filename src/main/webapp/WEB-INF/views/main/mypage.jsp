@@ -181,7 +181,6 @@
         }
 
         #nav2-li-2nddiv {
-
             margin: 20px 0 20px 0;
             padding: 50px;
             display: none;
