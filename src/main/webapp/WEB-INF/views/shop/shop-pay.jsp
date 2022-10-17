@@ -10,6 +10,7 @@
 
 <style>
 
+
 * {
     margin: 0 auto;
     padding: 0 auto;
@@ -271,9 +272,9 @@ header {
 
     #art1 {
         display: flex;
-        width: 75%;
+        width: 60%;
         height: 50px;
-        background-color: black;
+        background-color: #7F7F7F;
         justify-content: center;
         align-items: center;
         color: white;
@@ -281,21 +282,29 @@ header {
     }
 
     #art2 {
-        width: 75%;
+        width: 60%;
         height: 350px;
-        border: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+
+    #art2 > label {
+      margin: auto;
     }
     #art3 {
-        width: 75%;
-        height: 350px;
-        border: 1px solid black;
+        width: 60%;
+        height: 370px;
+
 
     }
 
     #info1, #info2 {
         width: 90%;
+        height: 35px;
         margin: 10px;
+        margin-left: 20px;
         color: black;
+        border-bottom: 1px solid #7F7F7F;
+
     }   
 
     select.box {
@@ -304,14 +313,13 @@ header {
   box-sizing: border-box;
   margin-top: 2px;
   margin-left: 2px;
-
-
   border-radius: 4px;
   border: 1px solid #d9d6d6;
   color: #383838;
   background-color: #ffffff;
-  font-family: 'Montserrat', 'Pretendard', sans-serif;
+  
 }
+
 
 option {
   font-size: 16px;
@@ -337,6 +345,12 @@ label {
     margin-left: 100px;
     margin-top: 5px;
 }
+
+#info-btn, #info-btn2 {
+  margin-top: 8px;
+  margin-left: 100px;
+}
+
 
 
     footer {
@@ -387,10 +401,12 @@ label {
     }
 
 
+
 </style>
 
 </head>
 <body>
+
 
     <div id="container">
 
@@ -491,7 +507,7 @@ label {
                 <h3>주문정보</h3>
             </div>
             <div id="info1-info">
-                <label for="">주문자 * <input type="text" style="width : 70%; margin-left : 10px;"></label><br>
+                <label for="">주문자 * <input type="text" style="width : 70%; margin-left : 10px; margin-top: 20px;"></label><br>
                 <label for="">이메일 * <input type="email" style="width : 26%; margin-left : 10px;"></label>@
                 <input class="box" id="domain-txt" type="text" style="width : 26%"/>
                 <select name="email-list" id="email-list" class="box">
@@ -506,7 +522,7 @@ label {
                 <p class="info-p">이메일로 주문 처리 과정을 보내드립니다.</p>
                 <p class="info-p">수신 가능한 이메일을 주소로 입력해주세요.</p>
                 <label for="">일반 전화
-                    <select name="local-num" id="local-num" clas="box">
+                    <select name="local-num" id="local-num" class="box">
                         <option value="02">02</option>
                         <option value="051">051</option>
                         <option value="053">053</option>
@@ -530,7 +546,7 @@ label {
                 
                 <br>
                 <label for="">휴대 전화
-                    <select name="phone-num" id="phone-num" clas="box">
+                    <select name="phone-num" id="phone-num" class="box">
                     <option value="010">010</option>
                     <option value="011">011</option>
                     <option value="017">017</option>
@@ -541,10 +557,11 @@ label {
                 </label>
                 
                 <br>
-                <label for="address">주소 * </label><input type="text" placeholder="우편번호" class="addr-addr" style="text-align: center; margin-right: 10px;"><button>주소 검색</button>
+                <label for="address">주소 * <input type="text" placeholder="우편번호" class="addr-addr" style="text-align: center; margin-right: 10px; margin-top: 7px;"><button>주소 검색</button></label>
                 <br><input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" class="addr-box">
                 <br><input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" class="addr-box">
             </div>
+            <button id="info-btn">배송지 입력</button>
         </div>
     </article>
     <article>
@@ -552,6 +569,17 @@ label {
             <div id="info2">
                 <h3>배송지</h3>
             </div>
+
+            <div id="send-select">
+                <label for="same-send"><input type="radio" name="same" id="same-send" style="margin-right: 6px;">주문자 정보와 동일</label>
+                <label for="same-send"><input type="radio" name="same" id="same-send"  style="margin-right: 6px;">새로운 배송지</label>
+            </div>
+            <label for="" style="font-size: 0.85rem;">받는 사람 * <input type="text" name="owner" style="margin-top : 6px;"></label><br>
+            <label for="address">주소 * <input type="text" placeholder="우편번호" class="addr-addr" style="text-align: center; margin-right: 10px; margin-top: 7px;"><button>주소 검색</button></label>
+                <br><input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" class="addr-box">
+                <br><input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" class="addr-box">
+                <br>
+                <button id="info-btn2">신규 배송지 입력</button>
         </div>
     </article>
 
