@@ -676,12 +676,13 @@
       console.log(((200 - (percent * 3))<0)?0:(200 - percent * 3));
       // progress-bar에 width 적용
       function fnscroll (a){
-        if(a<0){
+       /*  if(a<0){
           return a=0;
-        }else{
+        }else{ */
           return a;
-        }
+        /* }  */
       }
+      document.getElementById("sec1").style.transform = "translateX(" + fnscroll((0 - (percent * 3))) + "%)";
       document.getElementById("sec2").style.transform = "translateX(" + fnscroll((100 - (percent * 3))) + "%)";
       document.getElementById("sec3").style.transform = "translateX(" + fnscroll((200 - (percent * 3))) + "%)";
       document.getElementById("sec4").style.transform = "translateX(" + fnscroll((300 - (percent * 3))) + "%)";
