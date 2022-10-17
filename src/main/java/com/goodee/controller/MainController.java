@@ -46,6 +46,10 @@ public class MainController {
 		session.invalidate();
 		return "main/main";
 	}
+	@GetMapping("mypage")
+	public String mypage() {
+		return "main/mypage";
+	}
 	@GetMapping("gomain")
 	public String gomain() {
 		return "main/main";

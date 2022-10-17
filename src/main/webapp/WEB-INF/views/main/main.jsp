@@ -478,6 +478,13 @@
               <h2>니가 좋아하는거다!</h2>
             </div>
           </li>
+          <c:if test="${sessionScope.user != null}">
+          <li id="nav2-li-mypage">
+            <a href="${pageContext.request.contextPath}/mypage">
+              <p style="font-size: 16px;">MyPage</p>
+            </a>
+          </li>
+          </c:if>
           <li id="nav2-li-4thli">
            <c:if test="${sessionScope.user == null}">
             <a href="#"><p style="font-size: 16px">Login</p></a>
