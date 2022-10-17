@@ -37,7 +37,9 @@
       margin: 0;
       padding: 0;
     }
-
+    body{
+        background-color: #E3D5CA;
+    }
 
     nav div {
       width: 100%;
@@ -252,7 +254,7 @@
 
     header {
       z-index: 100;
-      background-color: #f5ebe0;
+      background-color: #E3D5CA;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -262,87 +264,11 @@
       
     }
     main {
+        margin-top: 20px;
       width: 100%;
-      background-color: #f5ebe0;
+      background-color: #E3D5CA;
 
     }
-
-    section {
-      width: 100vw;
-      height: 82vh;
-    }
-
-  
-    .category-menu{
-    	
-        padding: 15px 0 15px 0;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
-        margin-top: 10px;
-        margin: 0 auto;
-        width: 80%;
-        display: flex;
-        flex-direction: row;
-        justify-content: left;
-        gap: 30px;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .category-menu img{
-        margin-top: 10px;
-        width: 40px;
-        height: 40px;
-    }
-    .img-header{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-       }
-       .slide_wrapper{
-            position: relative;
-            width: 1120px;
-            margin: 0 auto;
-            height: 300px;
-            overflow: hidden;
-        }
-        li{
-            list-style-type: none;
-        }
-        .slides{
-            position: absolute;
-            left: 0; top: 0;
-            width: 2730px;
-            transition: left 0.5s ease-out;
-            
-        }
-        .slides li:not(:last-child){
-            float: left;
-            margin-right: 30px;
-        }
-        .slides img{
-            width: 200px;
-            height: 200px;
-            
-        }
-        .controls{
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .controls span{
-            background: #333;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 0 10px;
-        }
-        .prev:hover{
-            color: antiquewhite;
-            cursor: pointer;
-        }
-        .next:hover{
-            color: antiquewhite;
-            cursor: pointer;
-        }
 
       footer {
       display: flex;
@@ -368,9 +294,7 @@
       grid-template-rows: 1fr 1fr;
       
     }
-    article,.new-arr,.New-Arr{
-      background-color: #f5ebe0;
-    }
+    
     #footer-1stul{
       width:150px;
     }
@@ -385,13 +309,51 @@
     html {
       scroll-behavior: smooth;
     }
-    .new-arr{
-      text-align: center;
-    }
-    .slides img p{
-      text-align: center;
-    }
-   
+   .art1{
+    width: 80%;
+    margin: 0 auto;
+    border-top: 2px solid black;
+   }
+   .art2{
+    width: 60%;
+    margin: 0 auto;
+    height: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+   }
+   #art3{
+        width: 70%;
+        margin: 0 auto;
+
+   }
+   .art3-Q{
+    color: darkcyan;
+    font-size: 1.3rem;
+    margin-right: 5px;
+   }
+   #art3-question{
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
+    font-weight: 600;
+    color: rgb(70, 68, 68);
+   }
+   #art3-content{
+    padding-top: 15px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid black;
+    font-weight: 600;
+    color: rgb(70, 68, 68);
+    padding-left: 1.5rem;
+    display: none;
+   }
+   #mainA1{
+    margin-left: 9rem;
+   }
+   .display-block{
+    display: block !important;
+   }
   </style>
 </head>
 
@@ -400,11 +362,6 @@
   <div id="container">
     <header>
       <nav id="nav1">
-        <ul>
-          <li><a id="mainA2">About Us</a></li>
-          <li><a id="mainA3">Shop</a></li>
-          <li><a id="mainA4">Hotel</a></li>
-        </ul>
       </nav>
       <div>
         <h1><a id="mainA1">Déng Nuri</a></h1>
@@ -471,9 +428,9 @@
               <br>
               <form action="">
                 <h6>아이디</h6>
-                <input type="text" name="" id="">
+                <input type="text" name="id" id="id">
                 <h6>비밀번호</h6>
-                <input type="password" name="" id=""><br>
+                <input type="password" name="password" id="password"><br>
                 <button>Login</button>
               </form>
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
@@ -566,107 +523,31 @@
       </nav>
       
     </header>
-    
-    <main>
-    	
-        <div class="category-menu">
-            <li><a href=""><img src="image/shop/Home.png" alt=""><br>Home</a></li>
-            <li><a href=""><img src="image/shop/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href=""><img src="image/shop/Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href=""><img src="image/shop/Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href=""><img src="image/shop/Dining.png" alt=""><br>Dining</a></li>
-            <li><a href=""><img src="image/shop/Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href=""><img src="image/shop/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href=""><img src="image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
-            <li><a href=""><img src="image/shop/Food.png" alt=""><br>Food</a></li>
-        </div>
-    	
-        <article class="sec1">
-            <div class="img-header">
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Home.png" alt=""></a>
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Big Dog.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Food.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Home.png" alt=""></a>
-                </div>
-        </article>
-    </main>
-    <script>
-      
-    var index = 0;   //이미지에 접근하는 인덱스
-    window.onload = function(){
-        slideShow();
-    }
-    
-    function slideShow() {
-    var i;
-    var x = document.getElementsByClassName("slide1");  //slide1에 대한 dom 참조
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";   //처음에 전부 display를 none으로 한다.
-    }
-    index++;
-    if (index > x.length) {
-        index = 1;  //인덱스가 초과되면 1로 변경
-    }   
-    x[index-1].style.display = "block";  //해당 인덱스는 block으로
-    setTimeout(slideShow, 4000);   //함수를 4초마다 호출
-}
-    </script>
-     <div class="New-Arr">
-      <h1 class="new-arr">New Arrivals</h1>
-    </div>
-    <article class="art2">
-      <div class="slide_wrapper">
-        <ul class="slides">
-            <li><a href=""><img src="image/shop/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product9.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product10.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product11.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product12.jpg" alt=""></a></li>
-        </ul>
-    </div>
-   <div class="controls">
-        <span class="prev">prev</span>
-        <span class="next">next</span>
-    </div>
+   <main>
+    <article class="art1">
+        
     </article>
-    <script>
-      var slides = document.querySelector('.slides'),
-  slide = document.querySelectorAll('.slides li'),
-  currentIdx = 0,
-  slideCount = slide.length,
-  prevBtn = document.querySelector('.prev'),
-  slideWidth = 200,
-  slideMargin = 30,
-  nextBtn = document.querySelector('.next');
+    <article class="art2">
+        <h2>자주 찾는 문의</h2>
+    </article>
 
-  slides.style.width = (slideWidth + slideMargin)*slideCount - slideMargin + 'px';
+   <article id="art3">
+   <div id="art3-question">
+    <span class="art3-Q">Q</span> vo.question
+   </div>
 
-  function moveSlide(num){
-      slides.style.left = -num * 230 + 'px';
-      currentIdx = num;
-  }
-  nextBtn.addEventListener('click' , function(){
-      if(currentIdx < slideCount - 5){
-      moveSlide(currentIdx + 1);
-  } else{
-      moveSlide(0);
-  }
-  });
-  prevBtn.addEventListener('click' , function(){
-      if(currentIdx > 0){
-          moveSlide(currentIdx - 1);
-      }else{
-          moveSlide(slideCount -5);
-      }
-  })
+   <div id="art3-content">
+    vo.content
+   </div>
+    </article>
+    
+  <script>
+    document.getElementById("art3-question").addEventListener("click",function(){
+        document.getElementById("art3-content").classList.toggle("display-block");
+    });
   </script>
+
+   </main>
     <footer>
       <ul id="footer-1stul">
         <li><a href="#">Déng Nuri</a></li>
