@@ -52,6 +52,6 @@ public class MainController {
 	}
 	@GetMapping("goshop")
 	public String goshop() {
-		return "shop/shot-main-JJW";
+		return "shop/shop-main-JJW";
 	}
 }

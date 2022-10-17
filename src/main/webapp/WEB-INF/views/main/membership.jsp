@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4b992414b9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
+    <title>Document</title>
     <style>
         *{
             margin: 0;
@@ -55,17 +60,24 @@
         nav h2{
             padding-bottom: 10px;
         }
-        .art1,.art2,.art3,.art4{
+        .art1, .art2 {
+          display: flex;
+            margin: 0 auto;
+            width: 35%;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .art3,.art4{
             display: flex;
             margin: 0 auto;
             width: 50%;
             flex-direction: column;
-            
-           
+            justify-content: center;
         }
+        
         .art1 input, .art2 input{
             width: 55%;
-            margin-left: 20px;
             margin-bottom: 20px;
             padding-left: 10px;
             height: 30px;
@@ -186,13 +198,30 @@
     a:visited {
         color: black;
     }
+    #joomin-num, #joomin-box {
+      width: 20%;
+    }
 
+    #gender {
+      display: flex;
+    }
 
+  #man, #woman {
+    width: 20px;
+    margin-right: 10px;
+  }
+
+  #woman {
+    margin-left: 15px;
+  }
+
+  #art1 > p {
+    width: 20% ;
+  }
     </style>
-
 </head>
 <body>
-<header class="header-container">
+    <header class="header-container">
         <h1>Déng Nuri</h1>
         <img src="" alt="">
         <img src="" alt="">
@@ -200,22 +229,35 @@
         <img src="" alt="">
     </header>
     <nav>
-        <h2><a href="${pageContext.request.contextPath}/gomain">회원가입</a></h2>
+        <h2>회원가입</h2>
     </nav>
     <main>
-    <form action="${pageContext.request.contextPath}/membership2">
+    	<form action="${pageContext.request.contextPath}/membership2">
         <article class="art1">
-            <div><input type="text" name="username" id="username" placeholder="이름"></div>
-            <div><input type="text" name="birth" id="birth" placeholder="생년월일 ex) 1992/12/17"></div>
-            <div><input type="text" name="userid" id="userid" placeholder="아이디"> <button>중복확인</button></div>
-            <div><input type="password" name="password" id="userid" placeholder="비밀번호"></div>
-            <div><input type="password" placeholder="비밀번호 확인"></div>
+            <div><p>이름</p><br>
+              <input type="text"  name="username" id="username" placeholder="이름"></div>
+            <div><p>성별</p><br></div>
+              <div id="gender"><input type="checkbox" name="gender" id="man">남성 <input type="checkbox" name="gender" id="woman">여성</div>
+              <div><p>생년월일</p><br>
+                <input type="text" name="birth" id="birth"  placeholder="생년월일 ex) 1992/12/17"></div>
+            <div><p>주민등록번호</p><br>
+              <input type="text" placeholder="ex)921217" id="joomin-num"> - <input type="password" id="joomin-box"></div>
+            
+            <div><p>아이디</p><br>
+             <input type="id"  name="userid" id="userid"  placeholder="아이디"> <button>중복확인</button></div>
+            <div><p>비밀번호</p><br>
+              <input type="password" name="password" id="password"  placeholder="비밀번호"></div>
+            <div><p>비밀번호 확인</p><br>
+              <input type="password" placeholder="비밀번호 확인"></div>
         </article>
         <article class="art2">
-            <div><input type="email" name="email" id="email" placeholder="이메일"><br></div>
-            <div><input type="text" name="phone" id="phone" placeholder="휴대폰"> <button>인증하기</button></div>
-            <div><input type="text" name="address" id="address" placeholder="기본 주소 (도로명 주소를 입력해 주세요)"></div>
-            <div><input type="text" placeholder="상세 주소 (입력해 주세요)"></div>
+          <div><p>휴대폰</p><br><input type="text" name="phone" id="phone" id="email" placeholder="ex) 010 - 1234 - xxxx"><br></div>
+          <div><p>이메일</p><br>
+            <input type="text" name="email" id="email" placeholder="ex) inwooo1217@naver.com"><button>인증하기</button> </div>
+            <div><p>기본주소</p><br>
+              <input type="text" name="address" id="address" placeholder="ex) 서울특별시 강서구 공항대로 111"></div>
+            <div><p>상세주소</p><br>
+              <input type="text" placeholder="센터스퀘어 101동 232412호"></div>
         </article>
         <article class="art3">
             <h3>개인정보 수집 및 이용 동의 <span>(필수)</span><input type="checkbox" name="agree" id="agree" value="Y"></h3>

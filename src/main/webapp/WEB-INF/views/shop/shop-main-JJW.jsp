@@ -303,18 +303,22 @@
       margin-bottom: 30px;
     }
     .category-menu{
-        margin: 0 auto;
-        width: 80%;
+    	
+        padding: 15px 0 15px 0;
         border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin-top: 10px;
+        width: 100%;
         display: flex;
-        justify-content: center;
-        gap: 80px;
+        flex-direction: row;
+        justify-content: left;
+        gap: 30px;
         text-align: center;
     }
     .category-menu img{
         margin-top: 10px;
-        width: 80px;
-        height: 80px;
+        width: 40px;
+        height: 40px;
     }
     .img-header{
         display: flex;
@@ -592,6 +596,7 @@
     </header>
     
     <main>
+    	
         <div class="category-menu">
             <li><a href=""><img src="image/shop/Home.png" alt=""><br>Home</a></li>
             <li><a href=""><img src="image/shop/Walk.png" alt=""><br>Walk</a></li>
@@ -603,7 +608,7 @@
             <li><a href=""><img src="image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
             <li><a href=""><img src="image/shop/Food.png" alt=""><br>Food</a></li>
         </div>
-        
+    	
         <article class="sec1">
             <div class="img-header">
                 <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Home.png" alt=""></a>

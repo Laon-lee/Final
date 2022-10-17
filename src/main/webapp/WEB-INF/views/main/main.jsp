@@ -281,7 +281,7 @@
       z-index: 1;
       transform: translateX(0);
       position: absolute;
-      background: url("image/main/반고흐.png") no-repeat;
+      background: url("image/main/메인.jpg") no-repeat;
       background-size: contain;
       background-position:right;
     }
