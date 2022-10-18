@@ -539,12 +539,14 @@
       </section>
       <section id="sec4">
         <div>
+        <form action="${pageContext.request.contextPath}/gohotel">
           <h1>Hotel</h1>
           <p>품격있는 호텔</p>
           <p>우리집 막둥이를 위한 호텔</p>
           <p>싸다싸</p>
           <p>사장이 미쳤어요</p>
           <button>Go Hotel</button>
+            </form>
         </div>
         
       </section>

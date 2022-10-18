@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-    <script src="./js/jquery-ui-1.13.2.custom/jquery-3.6.1.min.js"></script>
+    <script src="hotel/jquery-3.6.1.min.js"></script>
     <title>Document</title>
     <style>
         #mainA1 {
@@ -786,8 +786,10 @@
                         <h1>36,000 KRW~</h1>
                     </div>
                     <div id="innerbtn" class="innerbtn">
-                        <button>RESERVE</button>
+                    
+                        <button id="btn1">RESERVE</button>
                     </div>
+                   
 
                 </div>
                 <div class="option_list">
@@ -809,7 +811,8 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td id="td2">예약하기</td>
+                            
+                            <td id="td2"><a href="${pageContext.request.contextPath}/hoteldetail">예약하기</a></td>
                         </tr>
                         <tr>
                             <td id="td1">
