@@ -49,7 +49,7 @@
       width: 100%;
       height: 100%;
       display: grid;
-      grid-template-rows: 70px 1fr 70px;
+      grid-template-rows: 7vh 86vh 7vh;
       grid-template-columns: 1fr;
     }
 
@@ -57,7 +57,7 @@
     main {
       width: 100%;
       background-color: #f5ebe0;
-
+		
     }
 
     section {
@@ -105,11 +105,11 @@
       background-color: #f5ebe0;
       display: flex;
       align-items: center;
-      background-position: 20%;
+      background-position: 80%;
     }
     #sec3 div{
       position: absolute;
-      left: 80%;
+      left:4%;
       line-height: 34px;
     }
     #sec3 div h1{

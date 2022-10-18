@@ -54,7 +54,7 @@
           </li>
           <li id="nav2-li-3rdli">
             <a href="#">
-              <p style="font-size: 16px;">Wish-List</p>
+              <p style="font-size: 16px">Wish</p>
             </a>
             <div id="hover-layout3" class="hover-layout1">
               

@@ -18,9 +18,10 @@
     font-family: 'Zilla Slab', serif;
     }
     #nav1 {
-      text-align: center;
-      width: 200px;
-      height: 30px;
+      padding-top: 35px;
+      
+      width: 20vw;
+      height: 70px;
     }
 
     #nav1 li {
@@ -33,14 +34,14 @@
 
     #nav2 {
       padding-top:35px;
-      width: 350px;
+      width: 20vw;
       height: 70px;
     }
     #nav2 p{
       width:100%;
     }
     #nav2 ul{
-      width: 350px;
+      width: 100%;
       margin-right:20px;
       
     }
