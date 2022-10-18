@@ -19,11 +19,12 @@
     }
     #nav1 {
       padding-top: 35px;
-      
-      width: 20vw;
+      width: 17vw;
       height: 70px;
     }
-
+	#nav1 ul{
+	  margin-left: 20px;
+	}
     #nav1 li {
       margin-left: 15px;
     }
@@ -34,7 +35,7 @@
 
     #nav2 {
       padding-top:35px;
-      width: 20vw;
+      width: 17vw;
       height: 70px;
     }
     #nav2 p{
@@ -46,22 +47,14 @@
       
     }
     #nav2 li {
-      box-sizing: border-box;
-      width:70px;
-      height:70px;
-      
-    }
-    #nav2 li:nth-child(3){
-      
+      height: 70px;
+      margin-left: 15px;
     }
 
     #nav2 a {
       font-size: 20px;
     }
-	
-	
-	
-	
+
     /* 검색 아이콘 호버 */
     
     #nav2-li-1stdiv {

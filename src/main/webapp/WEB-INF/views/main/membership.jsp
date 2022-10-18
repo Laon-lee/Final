@@ -332,12 +332,15 @@ input {
 	border: none;
 	border-radius: 5px;
 }
-
+#cont{
+	width:30%;
+	margin:0 auto;
+}
 .art3 {
-	width: 50%;
+	width: 100%;
 	margin: auto;
 	height: 28vh;
-	padding-left: 300px;
+	
 }
 
 label {
@@ -354,12 +357,12 @@ label {
 }
 
 .art4 {
-	width: 30%;
+	width: 100%;
 	margin: 0 auto;
 }
 
 .art5 {
-	width: 30%;
+	width: 100%;
 	height: 300px;
 	margin: 0 auto;
 	padding: 5px;
@@ -498,6 +501,7 @@ label {
     <article class="art2">
         <h2>회원 가입</h2>
     </article>
+    <div id="cont">
     <article class="art3">
       <div id="name"><label for="name">이름</label><input type="text" id="name" name="name"></div>
       <div id="id"><label for="id">아이디</label><input type="text" id="id" name="id"><button class="art3-btn">중복확인</button></div>
@@ -507,6 +511,7 @@ label {
       <div id="phone-num"><label for="phone-num">휴대폰 번호</label><input type="phone-num" id="phone-num" name="phone-num"></div>
       <div id="address"><label for="address">주소</label><input type="text" name="addr" id="addr"><button class="art3-btn">우편번호</button></div>
     </article>
+  
 <article class="art4">
   <input type="text" name="addr-2" placeholder="도로명주소 ex)공항대로 543"><br>
   <input type="text" name="addr-3"placeholder="상세주소 ex)203동 1823호"><br>
@@ -734,6 +739,7 @@ label {
 </article>
 <div class="art6">
   <button id="join-btn">가입하기</button>
+  </div>
 
 </div>
    </main>
