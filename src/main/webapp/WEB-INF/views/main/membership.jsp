@@ -339,7 +339,7 @@ input {
 .art3 {
 	width: 100%;
 	margin: auto;
-	height: 28vh;
+	height: 100%;
 	
 }
 
@@ -356,9 +356,8 @@ label {
 	width: 200px;;
 }
 
-.art4 {
-	width: 100%;
-	margin: 0 auto;
+.address{
+	width:80%;
 }
 
 .art5 {
@@ -384,10 +383,7 @@ label {
 	height: 30px;
 }
 
-.art4>input {
-	width: 80%;
-	padding-left: 10px;
-}
+
 
 #mainA1 {
 	margin-left: 9rem;
@@ -510,11 +506,9 @@ label {
       <div id="email"><label for="email">이메일</label><input type="email" id="email" name="email"><button class="art3-btn">인증하기</button></div>
       <div id="phone-num"><label for="phone-num">휴대폰 번호</label><input type="phone-num" id="phone-num" name="phone-num"></div>
       <div id="address"><label for="address">주소</label><input type="text" name="addr" id="addr"><button class="art3-btn">우편번호</button></div>
-    </article>
-  
-<article class="art4">
-  <input type="text" name="addr-2" placeholder="도로명주소 ex)공항대로 543"><br>
-  <input type="text" name="addr-3"placeholder="상세주소 ex)203동 1823호"><br>
+ 
+  <input type="text" name="addr-2" class="address" placeholder="도로명주소 ex)공항대로 543"><br>
+  <input type="text" name="addr-3" class="address" placeholder="상세주소 ex)203동 1823호"><br>
 </article>
 <article class="art5">
   <p>제1조(목적)
