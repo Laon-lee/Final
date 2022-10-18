@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,11 +41,25 @@
         height:100vh;
     }
 
+    /* 헤더 관련 css*/
+	 header {
+      z-index: 100;
+      background-color: #f5ebe0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100vw;
+      height: 100%;
+    }
+	
     nav div {
       width: 100%;
       height: 100%;
     }
-
+	#mainA1{
+    font-family: 'Zilla Slab', serif;
+    }
     #nav1 {
       text-align: center;
       width: 200px;
@@ -52,8 +67,6 @@
     }
 
     #nav1 li {
-      font-size:23px;
-      font-weight:900;
       margin-left: 15px;
     }
 
@@ -87,7 +100,10 @@
     #nav2 a {
       font-size: 20px;
     }
-
+	
+	
+	
+	
     /* 검색 아이콘 호버 */
     
     #nav2-li-1stdiv {
@@ -146,7 +162,6 @@
     #nav2-li-1stdiv button{
       height:84px;
       width:8vw;
-      
     }
     #btns{
       display: flex;
@@ -165,7 +180,6 @@
       cursor: pointer;
     }
     #nav2-li-2nddiv{
-    
       margin:20px 0 20px 0;
       padding:50px;
       display: none;
@@ -179,7 +193,6 @@
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
-      
     }
     #nav2-li-3rddiv{
       margin:20px 0 20px 0;
@@ -195,10 +208,7 @@
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
-      
     }
-
-
 
     #nav2-li-4thdiv{
       margin:20px 0 20px 0;
@@ -243,6 +253,7 @@
     a:visited {
       color: black;
     }
+	/* 헤더 css 끝 */  
 
     #container {
       position: relative;
@@ -254,17 +265,7 @@
       grid-template-areas: 'header''main''footer';
     }
 
-    header {
-      z-index: 100;
-      background-color: #f5ebe0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 100vw;
-      height: 100%;
-      grid-area:header;
-    }
+   
     main {
       width: 100%;
       background-color: #f5ebe0;
@@ -276,18 +277,7 @@
       
     }
 
-
-
-  
-      
-        li{
-            list-style-type: none;
-        }
-       
-     
-        
-
-      footer {
+    footer {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -424,9 +414,9 @@
     <header>
       <nav id="nav1">
         <ul>
-          
+          <li><a id="mainA2">About Us</a></li>
           <li><a id="mainA3">Shop</a></li>
-          
+          <li><a id="mainA4">Hotel</a></li>
         </ul>
       </nav>
       <div>
@@ -460,7 +450,6 @@
               </div>
               
             </div>
-       
           </li>
           <li id="nav2-li-2ndli">
             <a href="#">
@@ -475,7 +464,7 @@
           </li>
           <li id="nav2-li-3rdli">
             <a href="#">
-              <p style="font-size: 16px">Wish-List</p>
+              <p style="font-size: 16px;">Wish-List</p>
             </a>
             <div id="hover-layout3" class="hover-layout1">
               
@@ -484,7 +473,15 @@
               <h2>니가 좋아하는거다!</h2>
             </div>
           </li>
+          <c:if test="${sessionScope.user != null}">
+          <li id="nav2-li-mypage">
+            <a href="${pageContext.request.contextPath}/mypage">
+              <p style="font-size: 16px;">MyPage</p>
+            </a>
+          </li>
+          </c:if>
           <li id="nav2-li-4thli">
+           <c:if test="${sessionScope.user == null}">
             <a href="#"><p style="font-size: 16px">Login</p></a>
             <div id="hover-layout4" class="hover-layout1">
                 
@@ -492,21 +489,23 @@
             <div id="nav2-li-4thdiv">
               <h4>로그인</h4>
               <br>
-              <form action="">
+              <form action="${pageContext.request.contextPath}/login">
                 <h6>아이디</h6>
-                <input type="text" name="" id="">
+                <input type="text" name="userid" id="userid">
                 <h6>비밀번호</h6>
-                <input type="password" name="" id=""><br>
+                <input type="password" name="password" id="password"><br>
                 <button>Login</button>
               </form>
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
-              <a href="#" style="font-size:13px">회원 가입</a>
+              <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
             </div>
-            
+          	</c:if>
+          	<c:if test="${sessionScope.user != null}">
+          		<a href="${pageContext.request.contextPath}/logout"><p style="font-size: 16px">Logout</p></a>
+          	</c:if>
           </li>
         </ul>
       </nav>
-      
     </header>
     
     <main>

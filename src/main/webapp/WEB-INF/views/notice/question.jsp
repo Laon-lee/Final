@@ -13,9 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
   <style>
-   #mainA1{
-    font-family: 'Zilla Slab', serif;
-   }
+   
     html,
     body,
     header,
@@ -41,11 +39,34 @@
         background-color: #E3D5CA;
     }
 
+    
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 70px 1fr 70px;
+      grid-template-columns: 1fr;
+    }
+	/* 헤더 관련 css*/
+	 header {
+      z-index: 100;
+      background-color: #f5ebe0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100vw;
+      height: 100%;
+    }
+	
     nav div {
       width: 100%;
       height: 100%;
     }
-
+	#mainA1{
+    font-family: 'Zilla Slab', serif;
+    }
     #nav1 {
       text-align: center;
       width: 200px;
@@ -86,7 +107,10 @@
     #nav2 a {
       font-size: 20px;
     }
-
+	
+	
+	
+	
     /* 검색 아이콘 호버 */
     
     #nav2-li-1stdiv {
@@ -145,7 +169,6 @@
     #nav2-li-1stdiv button{
       height:84px;
       width:8vw;
-      
     }
     #btns{
       display: flex;
@@ -164,7 +187,6 @@
       cursor: pointer;
     }
     #nav2-li-2nddiv{
-    
       margin:20px 0 20px 0;
       padding:50px;
       display: none;
@@ -178,7 +200,6 @@
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
-      
     }
     #nav2-li-3rddiv{
       margin:20px 0 20px 0;
@@ -194,10 +215,7 @@
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
-      
     }
-
-
 
     #nav2-li-4thdiv{
       margin:20px 0 20px 0;
@@ -242,27 +260,7 @@
     a:visited {
       color: black;
     }
-
-    #container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-rows: 70px 1fr 70px;
-      grid-template-columns: 1fr;
-    }
-
-    header {
-      z-index: 100;
-      background-color: #E3D5CA;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 100vw;
-      height: 100%;
-      
-    }
+	/* 헤더 css 끝 */  
     main {
         margin-top: 20px;
       width: 100%;
@@ -270,7 +268,7 @@
 
     }
 
-      footer {
+    footer {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;

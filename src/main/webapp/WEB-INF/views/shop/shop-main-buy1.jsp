@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,11 +66,25 @@ nav {
         height:100vh;
     }
 
+    /* 헤더 관련 css*/
+	 header {
+      z-index: 100;
+      background-color: #f5ebe0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100vw;
+      height: 100%;
+    }
+	
     nav div {
       width: 100%;
       height: 100%;
     }
-
+	#mainA1{
+    font-family: 'Zilla Slab', serif;
+    }
     #nav1 {
       text-align: center;
       width: 200px;
@@ -77,21 +92,9 @@ nav {
     }
 
     #nav1 li {
-      font-size:23px;
-      font-weight:900;
       margin-left: 15px;
     }
-header {
-   z-index: 100;
-      background-color: ##f5ebe0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 100vw;
-      height: 100%;
-      grid-area:header;
-    }
+
     header a {
       cursor: pointer;
     }
@@ -107,24 +110,27 @@ header {
     #nav2 ul{
       width: 350px;
       margin-right:20px;
-     
+      
     }
     #nav2 li {
       box-sizing: border-box;
       width:70px;
       height:70px;
-     
+      
     }
     #nav2 li:nth-child(3){
-     
+      
     }
 
     #nav2 a {
       font-size: 20px;
     }
-
+	
+	
+	
+	
     /* 검색 아이콘 호버 */
-   
+    
     #nav2-li-1stdiv {
       margin:20px 0 20px 0;
       padding:50px;
@@ -181,7 +187,6 @@ header {
     #nav2-li-1stdiv button{
       height:84px;
       width:8vw;
-     
     }
     #btns{
       display: flex;
@@ -200,7 +205,6 @@ header {
       cursor: pointer;
     }
     #nav2-li-2nddiv{
-   
       margin:20px 0 20px 0;
       padding:50px;
       display: none;
@@ -214,7 +218,6 @@ header {
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
-     
     }
     #nav2-li-3rddiv{
       margin:20px 0 20px 0;
@@ -230,10 +233,7 @@ header {
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
-     
     }
-
-
 
     #nav2-li-4thdiv{
       margin:20px 0 20px 0;
@@ -249,13 +249,13 @@ header {
       justify-content: center;
       align-items: left;
       background-color: rgb(245, 235, 224);
-   
+    
     }
     #nav2-li-4thdiv input{
       width:300px;
       height:30px;
     }
-    #nav2-li-4thdiv button{
+    #nav2-li-4thdiv button{ 
       width: 308px;
       height: 40px;
       background-color: black;
@@ -278,7 +278,7 @@ header {
     a:visited {
       color: black;
     }
-
+	/* 헤더 끝*/
 
 
 
@@ -513,12 +513,12 @@ footer {
     </nav>
     -->
 
-    <header>
+   <header>
       <nav id="nav1">
         <ul>
-         
+          <li><a id="mainA2">About Us</a></li>
           <li><a id="mainA3">Shop</a></li>
-         
+          <li><a id="mainA4">Hotel</a></li>
         </ul>
       </nav>
       <div>
@@ -529,7 +529,7 @@ footer {
           <li id="nav2-li-1stli">
             <a href="#"><p style="font-size: 16px">Search</p></a>
             <div id="hover-layout1" class="hover-layout1">
-               
+                
             </div>
             <div id="nav2-li-1stdiv">
               <div id="nav2-searchdiv">
@@ -550,16 +550,15 @@ footer {
                 <button type="button">의류</button>
                 <button type="button">장난감</button>
               </div>
-             
+              
             </div>
-       
           </li>
           <li id="nav2-li-2ndli">
             <a href="#">
               <p style="font-size: 16px">Notice</p>
             </a>
             <div id="hover-layout2" class="hover-layout1">
-               
+                
             </div>
             <div id="nav2-li-2nddiv">
               <h2>알림받아라 인마</h2>
@@ -570,35 +569,45 @@ footer {
               <p style="font-size: 16px;">Wish-List</p>
             </a>
             <div id="hover-layout3" class="hover-layout1">
-             
+              
             </div>
             <div id="nav2-li-3rddiv">
               <h2>니가 좋아하는거다!</h2>
             </div>
           </li>
+          <c:if test="${sessionScope.user != null}">
+          <li id="nav2-li-mypage">
+            <a href="${pageContext.request.contextPath}/mypage">
+              <p style="font-size: 16px;">MyPage</p>
+            </a>
+          </li>
+          </c:if>
           <li id="nav2-li-4thli">
+           <c:if test="${sessionScope.user == null}">
             <a href="#"><p style="font-size: 16px">Login</p></a>
             <div id="hover-layout4" class="hover-layout1">
-               
+                
             </div>
             <div id="nav2-li-4thdiv">
               <h4>로그인</h4>
               <br>
-              <form action="">
+              <form action="${pageContext.request.contextPath}/login">
                 <h6>아이디</h6>
-                <input type="text" name="" id="">
+                <input type="text" name="userid" id="userid">
                 <h6>비밀번호</h6>
-                <input type="password" name="" id=""><br>
+                <input type="password" name="password" id="password"><br>
                 <button>Login</button>
               </form>
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
-              <a href="#" style="font-size:13px">회원 가입</a>
+              <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
             </div>
-           
+          	</c:if>
+          	<c:if test="${sessionScope.user != null}">
+          		<a href="${pageContext.request.contextPath}/logout"><p style="font-size: 16px">Logout</p></a>
+          	</c:if>
           </li>
         </ul>
       </nav>
-     
     </header>
 
 

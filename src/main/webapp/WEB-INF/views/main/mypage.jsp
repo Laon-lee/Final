@@ -12,9 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
     <style>
-        #mainA1 {
-            font-family: 'Zilla Slab', serif;
-        }
+       
 
         html,
         body,
@@ -41,12 +39,24 @@
         body {
             height: 100vh;
         }
-
+		header {
+            z-index: 100;
+            background-color: #f5ebe0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100vw;
+            height: 100%;
+            grid-area: header;
+        }
         nav div {
             width: 100%;
             height: 100%;
         }
-
+		#mainA1 {
+            font-family: 'Zilla Slab', serif;
+        }
         #nav1 {
             text-align: center;
             width: 200px;
@@ -274,17 +284,7 @@
             grid-template-areas: 'header' 'main' 'footer';
         }
 
-        header {
-            z-index: 100;
-            background-color: #f5ebe0;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            width: 100vw;
-            height: 100%;
-            grid-area: header;
-        }
+       
 
         main {
             width: 100%;
@@ -296,18 +296,7 @@
             width: 70vw;
 
         }
-
-
-
-
-
-        li {
-            list-style-type: none;
-        }
-
-
-
-
+    
         footer {
             display: flex;
             flex-direction: row;
@@ -359,28 +348,7 @@
             scroll-behavior: smooth;
         }
 
-        .category-menu {
-            padding: 15px 0 15px 0;
-            border-top: 2px solid black;
-            border-bottom: 2px solid black;
-            margin-top: 10px;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            gap: 30px;
-            text-align: center;
-        }
-
-        .category-menu a {
-            font-size: 13px;
-        }
-
-        .category-menu img {
-            margin-top: 10px;
-            width: 40px;
-            height: 40px;
-        }
+        
 
         .line {
 
@@ -401,13 +369,7 @@
             
             width:50vw;
         }
-        #sec1 {
-            display: flex;
-            flex-direction: column;
-
-            align-items: center;
-        }
-
+       
         #sec2 {
             margin: 40px;
             display: flex;
@@ -583,21 +545,7 @@
 
         <main>
             <div id="main-container">
-                <section id="sec1">
-
-                    <div class="category-menu">
-                        <li><a href=""><img src="./image/shop/Home.png" alt=""><br>Home</a></li>
-                        <li><a href=""><img src="./image/shop/Walk.png" alt=""><br>Walk</a></li>
-                        <li><a href=""><img src="./image/shop/Carrier.png" alt=""><br>Carrier</a></li>
-                        <li><a href=""><img src="./image/shop/Clothes.png" alt=""><br>Clothes</a></li>
-                        <li><a href=""><img src="./image/shop/Dining.png" alt=""><br>Dining</a></li>
-                        <li><a href=""><img src="./image/shop/Grooming.png" alt=""><br>Grooming</a></li>
-                        <li><a href=""><img src="./image/shop/Toy.png" alt=""><br>Toy</a></li>
-                        <li><a href=""><img src="./image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
-                        <li><a href=""><img src="./image/shop/Food.png" alt=""><br>Food</a></li>
-                    </div>
-
-                </section>
+                
                 <section id="sec2">
                     <nav>
                         <ul>
@@ -671,6 +619,7 @@
                         </div>
                     </article>
                 </section>
+                </div>
         </main>
 
 
