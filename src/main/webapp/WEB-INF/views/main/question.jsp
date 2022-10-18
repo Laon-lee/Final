@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
   <style>
-  
+   
     html,
     body,
     header,
@@ -39,7 +39,16 @@
         background-color: #E3D5CA;
     }
 
-    /* 헤더 관련 css*/
+    
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 70px 1fr 70px;
+      grid-template-columns: 1fr;
+    }
+	/* 헤더 관련 css*/
 	 header {
       z-index: 100;
       background-color: #f5ebe0;
@@ -252,16 +261,6 @@
       color: black;
     }
 	/* 헤더 css 끝 */  
-    #container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-rows: 70px 1fr 70px;
-      grid-template-columns: 1fr;
-    }
-
-    
     main {
         margin-top: 20px;
       width: 100%;
@@ -269,7 +268,7 @@
 
     }
 
-      footer {
+    footer {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -322,37 +321,41 @@
     text-align: center;
     margin-bottom: 2rem;
    }
-   #art3{
-        width: 70%;
-        margin: 0 auto;
-
+   .art3{
+    width: 58%;
+    margin: 0 auto;
    }
-   .art3-Q{
-    color: darkcyan;
-    font-size: 1.3rem;
-    margin-right: 5px;
+   .art3 label{
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 10px;
    }
-   #art3-question{
-    padding-bottom: 15px;
-    border-bottom: 2px solid black;
-    font-weight: 600;
-    color: rgb(70, 68, 68);
-   }
-   #art3-content{
-    padding-top: 15px;
-    padding-bottom: 18px;
-    border-bottom: 2px solid black;
-    font-weight: 600;
-    color: rgb(70, 68, 68);
-    padding-left: 1.5rem;
-    display: none;
+   .art3 input{
+    border: none;
+    height: 25px;
+    margin-left: 5px;
+    padding-top: 5px;
    }
    #mainA1{
     margin-left: 9rem;
    }
-   .display-block{
-    display: block !important;
-   }
+  #inquire{
+    width: 100%;
+    height: 300px;
+  }
+  .btn{
+    display: flex;
+    justify-content: center;
+  }
+  .btn button{
+    width: 75%;
+    height: 40px;
+    color: white;
+    background-color: #76706C;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+  }
   </style>
 </head>
 
@@ -408,6 +411,7 @@
             </div>
             <div id="nav2-li-2nddiv">
               <h2>알림받아라 인마</h2>
+			  <a href="${pageContext.request.contextPath}/notice">알림 페이지이동</a>
             </div>
           </li>
           <li id="nav2-li-3rdli">
@@ -460,25 +464,20 @@
         
     </article>
     <article class="art2">
-        <h2>자주 찾는 문의</h2>
+        <h2>문의 하기</h2>
     </article>
-
-   <article id="art3">
-   <div id="art3-question">
-    <span class="art3-Q">Q</span> vo.question
-   </div>
-
-   <div id="art3-content">
-    vo.content
-   </div>
-    </article>
-    
-  <script>
-    document.getElementById("art3-question").addEventListener("click",function(){
-        document.getElementById("art3-content").classList.toggle("display-block");
-    });
-  </script>
-
+   <article class="art3">
+    <form action="">
+    <label class="label" for="name"><h3>성함</h3></label>: <input type="text" name="name" id="name"><br>
+    <label class="label" for="email"><h3>E-mail</h3></label>: <input type="email" name="email" id="email"><br>
+    <label for="cellphone"><h3>연락처</h3></label>: <input type="number" name="cellphone" id="cellphone"><br>
+    <label for="inquire-type"><h3>문의유형</h3></label>: <input type="text" name="inquire-type" id="inquire-type"><br>
+    <label for="inquire"><h3>문의</h3></label>:<br>
+    <input type="text" name="inquire" id="inquire">
+    <div class="btn"><button><h3>문 의 하 기</h3></button></div>
+</form>
+</article>
+  
    </main>
     <footer>
       <ul id="footer-1stul">
@@ -503,6 +502,7 @@
         <li>
           <p>주소 : 서울특별시 구로구 구디동123-4</p>
         </li>
+        
       </ul>
       <ul id="social">
         <li><a href="#"><img src="https://i.ibb.co/LrVMXNR/social-fb.png" alt=""></a></li>

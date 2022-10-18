@@ -461,6 +461,7 @@
             </div>
             <div id="nav2-li-2nddiv">
               <h2>알림받아라 인마</h2>
+			  <a href="${pageContext.request.contextPath}/notice">알림 페이지이동</a>
             </div>
           </li>
           <li id="nav2-li-3rdli">
@@ -538,12 +539,14 @@
       </section>
       <section id="sec4">
         <div>
+        <form action="${pageContext.request.contextPath}/gohotel">
           <h1>Hotel</h1>
           <p>품격있는 호텔</p>
           <p>우리집 막둥이를 위한 호텔</p>
           <p>싸다싸</p>
           <p>사장이 미쳤어요</p>
           <button>Go Hotel</button>
+            </form>
         </div>
         
       </section>
@@ -571,6 +574,9 @@
         </li>
         <li>
           <p>주소 : 서울특별시 구로구 구디동123-4</p>
+        </li>
+        <li>
+          <p><a href="${pageContext.request.contextPath}/usequestion">문의하기</a> </p>
         </li>
       </ul>
       <ul id="social">

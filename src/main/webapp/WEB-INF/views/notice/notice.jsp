@@ -260,7 +260,7 @@
       width: 100%;
       height: 100%;
       display: grid;
-      grid-template-rows: 70px 1fr 70px;
+      grid-template-rows: 7vh 86vh 7vh;
       grid-template-columns: 1fr;
     }
 
@@ -280,7 +280,6 @@
       background-color: lightgray;
       justify-content: space-around;
       align-items: center;
-      padding-bottom: 20px;
     }
     footer p{
       font-size: 13px;
@@ -471,7 +470,7 @@
     <article class="art3">
         <a href="">
       <div class="art3-container">
-        <div class="art3-first"><span class="art3-container-span">공지</span> vo.title</div>
+        <div class="art3-first"><span class="art3-container-span">공지</span> <a href="${pageContext.request.contextPath}/noticedetail"> vo.title</a></div>
         <div class="art3-second">vo.content Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quia mollitia omnis magnam, natus corrupti adipisci, corporis labore ratione veritatis dolore saepe placeat maxime eligendi. Eos aliquid maxime nisi quaerat!</div>
         <div class="art3-third">vo.createdate</div>
       </div>
