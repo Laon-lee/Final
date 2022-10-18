@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
   <style>
-   
+  
     html,
     body,
     header,
@@ -39,16 +39,7 @@
         background-color: #E3D5CA;
     }
 
-    
-    #container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-rows: 70px 1fr 70px;
-      grid-template-columns: 1fr;
-    }
-	/* 헤더 관련 css*/
+    /* 헤더 관련 css*/
 	 header {
       z-index: 100;
       background-color: #f5ebe0;
@@ -261,6 +252,16 @@
       color: black;
     }
 	/* 헤더 css 끝 */  
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 70px 1fr 70px;
+      grid-template-columns: 1fr;
+    }
+
+    
     main {
         margin-top: 20px;
       width: 100%;
@@ -268,7 +269,7 @@
 
     }
 
-    footer {
+      footer {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -321,41 +322,37 @@
     text-align: center;
     margin-bottom: 2rem;
    }
-   .art3{
-    width: 58%;
-    margin: 0 auto;
+   #art3{
+        width: 70%;
+        margin: 0 auto;
+
    }
-   .art3 label{
-    display: inline-block;
-    width: 100px;
-    margin-bottom: 10px;
+   .art3-Q{
+    color: darkcyan;
+    font-size: 1.3rem;
+    margin-right: 5px;
    }
-   .art3 input{
-    border: none;
-    height: 25px;
-    margin-left: 5px;
-    padding-top: 5px;
+   #art3-question{
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
+    font-weight: 600;
+    color: rgb(70, 68, 68);
+   }
+   #art3-content{
+    padding-top: 15px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid black;
+    font-weight: 600;
+    color: rgb(70, 68, 68);
+    padding-left: 1.5rem;
+    display: none;
    }
    #mainA1{
     margin-left: 9rem;
    }
-  #inquire{
-    width: 100%;
-    height: 300px;
-  }
-  .btn{
-    display: flex;
-    justify-content: center;
-  }
-  .btn button{
-    width: 75%;
-    height: 40px;
-    color: white;
-    background-color: #76706C;
-    border: none;
-    margin-top: 20px;
-    cursor: pointer;
-  }
+   .display-block{
+    display: block !important;
+   }
   </style>
 </head>
 
@@ -364,6 +361,11 @@
   <div id="container">
     <header>
       <nav id="nav1">
+        <ul>
+          <li><a id="mainA2">About Us</a></li>
+          <li><a id="mainA3">Shop</a></li>
+          <li><a id="mainA4">Hotel</a></li>
+        </ul>
       </nav>
       <div>
         <h1><a id="mainA1">Déng Nuri</a></h1>
@@ -396,7 +398,6 @@
               </div>
               
             </div>
-       
           </li>
           <li id="nav2-li-2ndli">
             <a href="#">
@@ -420,7 +421,15 @@
               <h2>니가 좋아하는거다!</h2>
             </div>
           </li>
+          <c:if test="${sessionScope.user != null}">
+          <li id="nav2-li-mypage">
+            <a href="${pageContext.request.contextPath}/mypage">
+              <p style="font-size: 16px;">MyPage</p>
+            </a>
+          </li>
+          </c:if>
           <li id="nav2-li-4thli">
+           <c:if test="${sessionScope.user == null}">
             <a href="#"><p style="font-size: 16px">Login</p></a>
             <div id="hover-layout4" class="hover-layout1">
                 
@@ -428,122 +437,57 @@
             <div id="nav2-li-4thdiv">
               <h4>로그인</h4>
               <br>
-              <form action="">
+              <form action="${pageContext.request.contextPath}/login">
                 <h6>아이디</h6>
-                <input type="text" name="" id="">
+                <input type="text" name="userid" id="userid">
                 <h6>비밀번호</h6>
-                <input type="password" name="" id=""><br>
+                <input type="password" name="password" id="password"><br>
                 <button>Login</button>
               </form>
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
-              <a href="#" style="font-size:13px">회원 가입</a>
+              <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
             </div>
-            <script>
-              const div1 = document.getElementById("nav2-li-1stdiv");
-              const div2 = document.getElementById("nav2-li-2nddiv");
-              const div3 = document.getElementById("nav2-li-3rddiv");
-              const div4 = document.getElementById("nav2-li-4thdiv");
-              const back1 = document.querySelector("#hover-layout1");
-              const back2 = document.querySelector("#hover-layout2");
-              const back3 = document.querySelector("#hover-layout3");
-              const back4 = document.querySelector("#hover-layout4");
-              const li1 = document.getElementById("nav2-li-1stli");
-              const li2 = document.getElementById("nav2-li-2ndli");
-              const li3 = document.getElementById("nav2-li-3rdli");
-              const li4 = document.getElementById("nav2-li-4thli");
-              // div1.addEventListener("mouseleave",function(){
-              //   div1.style.display="none";
-              //   back1.style.display="none";
-              // })
-              // div2.addEventListener("mouseleave",function(){
-              //   div2.style.display="none";
-              //   back2.style.display="none";           
-              // })
-              // div3.addEventListener("mouseleave",function(){
-              //   div3.style.display="none";
-              //   back3.style.display="none";
-              // })
-              // div4.addEventListener("mouseleave",function(){
-              //   div4.style.display="none";
-              //   back4.style.display="none";
-              // })
-              // li1.addEventListener("mouseover",function(){
-              //   div1.style.display="flex";
-              //   back1.style.display="flex";
-              // })
-              // li2.addEventListener("mouseover",function(){
-              //   div2.style.display="flex";
-              //   back2.style.display="flex";
-              // })
-              // li3.addEventListener("mouseover",function(){
-              //   div3.style.display="flex";
-              //   back3.style.display="flex";
-              // })
-              // li4.addEventListener("mouseover",function(){
-              //   div4.style.display="flex";
-              //   back4.style.display="flex";
-              // })
-
-            //   document.querySelector("#hover-layout1").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-1stdiv").style.display="none";
-            //     document.querySelector("#hover-layout1").style.display="none";
-            //   });
-            //   document.querySelector("#hover-layout2").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-2nddiv").style.display="none";
-            //     document.querySelector("#hover-layout2").style.display="none";
-            //   });
-            //   document.querySelector("#hover-layout3").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-3rddiv").style.display="none";
-            //     document.querySelector("#hover-layout3").style.display="none";
-            //   });
-            //   document.querySelector("#hover-layout4").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-4thdiv").style.display="none";
-            //     document.querySelector("#hover-layout4").style.display="none";
-            //   });
-
-
-
-            //   document.getElementById("nav2-li-1stli").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-1stdiv").style.display="flex";
-            //     document.querySelector("#hover-layout1").style.display="flex";
-            //   });
-            //   document.getElementById("nav2-li-2ndli").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-2nddiv").style.display="flex";
-            //     document.querySelector("#hover-layout2").style.display="flex";
-            //   });
-            //   document.getElementById("nav2-li-3rdli").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-3rddiv").style.display="flex";
-            //     document.querySelector("#hover-layout3").style.display="flex";
-            //   });
-            //   document.getElementById("nav2-li-4thli").addEventListener("mouseover",function(){
-            //     document.getElementById("nav2-li-4thdiv").style.display="flex";
-            //     document.querySelector("#hover-layout4").style.display="flex";
-            //   });
-            // </script>
+          	</c:if>
+          	<c:if test="${sessionScope.user != null}">
+          		<a href="${pageContext.request.contextPath}/logout"><p style="font-size: 16px">Logout</p></a>
+          	</c:if>
           </li>
         </ul>
       </nav>
-      
     </header>
    <main>
     <article class="art1">
         
     </article>
     <article class="art2">
-        <h2>문의 하기</h2>
+        <h2>자주 찾는 문의</h2>
     </article>
-   <article class="art3">
-    <form action="">
-    <label class="label" for="name"><h3>성함</h3></label>: <input type="text" name="name" id="name"><br>
-    <label class="label" for="email"><h3>E-mail</h3></label>: <input type="email" name="email" id="email"><br>
-    <label for="cellphone"><h3>연락처</h3></label>: <input type="number" name="cellphone" id="cellphone"><br>
-    <label for="inquire-type"><h3>문의유형</h3></label>: <input type="text" name="inquire-type" id="inquire-type"><br>
-    <label for="inquire"><h3>문의</h3></label>:<br>
-    <input type="text" name="inquire" id="inquire">
-    <div class="btn"><button><h3>문 의 하 기</h3></button></div>
-</form>
-</article>
-  
+    
+    <%-- 글쓰기 버튼 --%>
+	<div><button id="btn1">1:1 문의하기</button></div>
+	<script type="text/javascript">
+		document.getElementById("btn1").addEventListener("click",function(){
+			location.href="${pageContext.request.contextPath}/question";
+		})
+	</script>
+	
+	
+   <article id="art3">
+   <div id="art3-question">
+    <span class="art3-Q">Q</span> vo.question
+   </div>
+
+   <div id="art3-content">
+    vo.content
+   </div>
+    </article>
+    
+  <script>
+    document.getElementById("art3-question").addEventListener("click",function(){
+        document.getElementById("art3-content").classList.toggle("display-block");
+    });
+  </script>
+
    </main>
     <footer>
       <ul id="footer-1stul">

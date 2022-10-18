@@ -471,7 +471,7 @@
     <article class="art3">
         <a href="">
       <div class="art3-container">
-        <div class="art3-first"><span class="art3-container-span">공지</span> vo.title</div>
+        <div class="art3-first"><span class="art3-container-span">공지</span> <a href="${pageContext.request.contextPath}/noticedetail"> vo.title</a></div>
         <div class="art3-second">vo.content Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quia mollitia omnis magnam, natus corrupti adipisci, corporis labore ratione veritatis dolore saepe placeat maxime eligendi. Eos aliquid maxime nisi quaerat!</div>
         <div class="art3-third">vo.createdate</div>
       </div>

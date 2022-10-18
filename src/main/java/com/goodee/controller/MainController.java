@@ -50,6 +50,14 @@ public class MainController {
 	public String mypage() {
 		return "main/mypage";
 	}
+	@GetMapping("usequestion")
+	public String usequestion() {
+		return "main/usequestion";
+	}
+	@GetMapping("question")
+	public String question() {
+		return "main/question";
+	}
 	@GetMapping("gomain")
 	public String gomain() {
 		return "main/main";

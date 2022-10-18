@@ -461,6 +461,7 @@
             </div>
             <div id="nav2-li-2nddiv">
               <h2>알림받아라 인마</h2>
+			  <a href="${pageContext.request.contextPath}/notice">알림 페이지이동</a>
             </div>
           </li>
           <li id="nav2-li-3rdli">
@@ -571,6 +572,9 @@
         </li>
         <li>
           <p>주소 : 서울특별시 구로구 구디동123-4</p>
+        </li>
+        <li>
+          <p><a href="${pageContext.request.contextPath}/usequestion">문의하기</a> </p>
         </li>
       </ul>
       <ul id="social">
