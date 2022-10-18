@@ -229,11 +229,11 @@
                 <section id="sec2">
                     <nav>
                         <ul>
-                            <li><a href="" style="text-decoration: underline;">주문내역조회</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
                             <li><a href="">회원정보</a></li>
                             <li><a href="">관심상품</a></li>
-                            <li><a href="">자주찾는질문</a></li>
-                            <li><a href="">문의하기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
+                            <li><a href="${pageContext.request.contextPath}/question" >문의하기</a></li>
                             <li><a href="">쿠폰</a></li>
                             
                         </ul>

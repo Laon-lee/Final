@@ -617,7 +617,7 @@
                 <section id="sec2">
                     <nav>
                         <ul>
-                            <li><a href="" class="li1">주문내역조회</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
                             <li><a href="">회원정보</a></li>
                             <li><a href="">관심상품</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
