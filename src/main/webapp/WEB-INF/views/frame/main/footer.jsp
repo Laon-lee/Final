@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<ul id="footer-1stul">
-        <li><a href="#">Déng Nuri</a></li>
+        <li><a href="${pageContext.request.contextPath}/gomain">Déng Nuri</a></li>
       </ul>
       <ul>
         <li>

@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav id="nav1">
         <ul>
-          <li><a id="mainA2">About Us</a></li>
-          <li><a id="mainA3">Shop</a></li>
-          <li><a id="mainA4">Hotel</a></li>
+          <li><h2>Shop</h2></li>
+          <li><a href="${pageContext.request.contextPath}/gohotel">Hotel</a></li>
+
         </ul>
       </nav>
       <div>

@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
     <style>
        
 
@@ -63,54 +64,10 @@
             width: 70vw;
 
         }
-    
-        footer {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 100%;
-            height: 100%;
-            background-color: lightgray;
-            justify-content: space-around;
-            align-items: center;
-            
-            grid-area: footer;
-        }
-
-        footer p {
-            font-size: 13px;
-        }
-
-        footer li {
-            margin: 0 15px 0 15px;
-            height: 15px;
-        }
-
-        footer ul {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-
-        }
 
         button {
             cursor: pointer;
         }
-
-        #footer-1stul {
-            width: 150px;
-        }
-
-        #footer-1stul li {
-            font-size: 22px;
-            font-weight: 900;
-            width: 150px;
-        }
-
-        #social li {
-            width: 15px;
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -220,7 +177,7 @@
 
     <div id="container">
         <header>
-           <%@ include file="../frame/main/header.jsp" %>
+           <%@ include file="../frame/mypage/header.jsp" %>
         </header>
 
         <main>
@@ -304,34 +261,7 @@
 
 
         <footer>
-            <ul id="footer-1stul">
-                <li><a href="#">Déng Nuri</a></li>
-            </ul>
-            <ul>
-                <li>
-                    <p>대표 : 김송이</p>
-                </li>
-                <li>
-                    <p>전화번호 : 010-1234-5678</p>
-                </li>
-                <li>
-                    <p>이메일 : abcde@abcdef.com</p>
-                </li>
-                <li>
-                    <p>팩스번호 : 02-1234-5678</p>
-                </li>
-                <li>
-                    <p>영업시간 : 00:00~23:59</p>
-                </li>
-                <li>
-                    <p>주소 : 서울특별시 구로구 구디동123-4</p>
-                </li>
-            </ul>
-            <ul id="social">
-                <li><a href="#"><img src="https://i.ibb.co/LrVMXNR/social-fb.png" alt=""></a></li>
-                <li><a href="#"><img src="https://i.ibb.co/vJvbLwm/social-twitter.png" alt=""></a></li>
-                <li><a href="#"><img src="https://i.ibb.co/b30HMhR/social-linkedin.png" alt=""></a></li>
-            </ul>
+            <%@ include file="../frame/main/footer.jsp" %>
         </footer>
     </div>
 </body>
