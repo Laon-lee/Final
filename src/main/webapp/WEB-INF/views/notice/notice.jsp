@@ -36,7 +36,7 @@
       padding: 0;
     }
     body{
-        background-color: #E3D5CA;
+        background-color: #f5ebe0;
     }
 	/* 헤더 관련 css*/
 	 header {
@@ -267,7 +267,7 @@
     main {
         margin-top: 20px;
       width: 100%;
-      background-color: #E3D5CA;
+      background-color: #f5ebe0;
 
     }
 

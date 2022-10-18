@@ -45,7 +45,7 @@
     /* 헤더 관련 css*/
 	 header {
       z-index: 100;
-      background-color: #f5ebe0;
+      background-color: #e3d5ca;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -121,7 +121,7 @@
       justify-content: center;
       align-items: center;
       gap:40px;
-      background-color: rgb(245, 235, 224);
+      background-color: #e3d5ca;
 
     }
     .hover-layout1{
@@ -177,7 +177,7 @@
       width:100px;
       height: 30px;
       border: 1px solid gray;
-      background-color: #f5ebe0;
+      background-color: #e3d5ca;
       cursor: pointer;
     }
     #nav2-li-2nddiv{
@@ -193,7 +193,7 @@
       z-index: 1;
       justify-content: center;
       align-items: center;
-      background-color: rgb(245, 235, 224);
+      background-color: #e3d5ca;
     }
     #nav2-li-3rddiv{
       margin:20px 0 20px 0;
@@ -208,7 +208,7 @@
       z-index: 1;
       justify-content: center;
       align-items: center;
-      background-color: rgb(245, 235, 224);
+      background-color: #e3d5ca;
     }
 
     #nav2-li-4thdiv{
@@ -224,7 +224,7 @@
       z-index: 10;
       justify-content: center;
       align-items: left;
-      background-color: rgb(245, 235, 224);
+     background-color: #e3d5ca;
     
     }
     #nav2-li-4thdiv input{
@@ -261,13 +261,13 @@
       width: 100%;
       height: 100%;
       display: grid;
-      grid-template-rows: 70px 1fr 70px;
+      grid-template-rows: 7vh 86vh 7vh;
       grid-template-columns: 1fr;
     }
 
     main {
       width: 100%;
-      background-color: #f5ebe0;
+      background-color: #e3d5ca;
 
     }
 
@@ -305,10 +305,11 @@
        .img-header img{
        width : 80%;
       margin-left : 10%;
+      margin-bottom : 50px;
        }
        .slide_wrapper{
             position: relative;
-            width: 1120px;
+            width: 1240px;
             margin: 0 auto;
             height: 300px;
             overflow: hidden;
@@ -319,14 +320,14 @@
         .slides{
             position: absolute;
             left: 0; top: 0;
-            width: 2730px;
+            width: 3060px;
             transition: left 0.5s ease-out;
            
             
         }
         .slides li:not(:last-child){
             float: left;
-            margin-right: 30px;
+            margin-right: 60px;
         }
         .slides img{
             width: 200px;
@@ -362,7 +363,7 @@
       background-color: lightgray;
       justify-content: space-around;
       align-items: center;
-      padding-bottom: 20px;
+      padding-bottom : 20px;
     }
     footer p{
       font-size: 13px;
@@ -378,7 +379,7 @@
       
     }
     article,.new-arr,.New-Arr{
-      background-color: #f5ebe0;
+      background-color: #e3d5ca;
     }
     #footer-1stul{
       width:150px;
@@ -585,13 +586,13 @@
   slideCount = slide.length,
   prevBtn = document.querySelector('.prev'),
   slideWidth = 200,
-  slideMargin = 30,
+  slideMargin = 60,
   nextBtn = document.querySelector('.next');
 
   slides.style.width = (slideWidth + slideMargin)*slideCount - slideMargin + 'px';
 
   function moveSlide(num){
-      slides.style.left = -num * 230 + 'px';
+      slides.style.left = -num * 260 + 'px';
       currentIdx = num;
   }
   nextBtn.addEventListener('click' , function(){

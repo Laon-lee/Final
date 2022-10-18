@@ -36,7 +36,7 @@
       padding: 0;
     }
     body{
-        background-color: #E3D5CA;
+        background-color: #f5ebe0;
     }
 
     /* 헤더 관련 css*/
@@ -267,7 +267,7 @@
     main {
         margin-top: 20px;
       width: 100%;
-      background-color: #E3D5CA;
+      background-color: #f5ebe0;
 
     }
 
@@ -352,7 +352,8 @@
         </ul>
       </nav>
       <div>
-        <h1><a id="mainA1">Déng Nuri</a></h1>
+      
+        <h1><a href ="${pageContext.request.contextPath}/gomain" id="mainA1">Déng Nuri</a></h1>
       </div>
       <nav id="nav2">
         <ul>
