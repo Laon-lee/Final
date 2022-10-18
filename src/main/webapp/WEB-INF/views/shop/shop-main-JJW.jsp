@@ -302,6 +302,10 @@
         align-items: center;
         justify-content: center;
        }
+       .img-header img{
+       width : 80%;
+      margin-left : 10%;
+       }
        .slide_wrapper{
             position: relative;
             width: 1120px;
@@ -317,6 +321,7 @@
             left: 0; top: 0;
             width: 2730px;
             transition: left 0.5s ease-out;
+           
             
         }
         .slides li:not(:last-child){
@@ -392,9 +397,13 @@
     .new-arr{
       text-align: center;
     }
-    .slides img p{
-      text-align: center;
-    }
+    .sh3{
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+   }
    
   </style>
 </head>
@@ -502,23 +511,24 @@
     <main>
     	
         <div class="category-menu">
-            <li><a href=""><img src="image/shop/Home.png" alt=""><br>Home</a></li>
-            <li><a href=""><img src="image/shop/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href=""><img src="image/shop/Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href=""><img src="image/shop/Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href=""><img src="image/shop/Dining.png" alt=""><br>Dining</a></li>
-            <li><a href=""><img src="image/shop/Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href=""><img src="image/shop/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href=""><img src="image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
-            <li><a href=""><img src="image/shop/Food.png" alt=""><br>Food</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Home.png" alt=""><br>Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Walk.png" alt=""><br>Walk</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Carrier.png" alt=""><br>Carrier</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Clothes.png" alt=""><br>Clothes</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Dining.png" alt=""><br>Dining</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Grooming.png" alt=""><br>Grooming</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Toy.png" alt=""><br>Toy</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/Food.png" alt=""><br>Food</a></li>
         </div>
     	
         <article class="sec1">
             <div class="img-header">
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Home.png" alt=""></a>
-                <a href="http://www.caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Big Dog.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Food.png" alt=""></a>
-                <a href="http://caffebene.co.kr/menu/new.html"><img class="slide1" id="imgSlide" src="image/shop/Home.png" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list"><img class="slide1" id="imgSlide" src="image/shop/EventImg1.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list"><img class="slide1" id="imgSlide" src="image/shop/EventImg2.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list"><img class="slide1" id="imgSlide" src="image/shop/EventImg3.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list"><img class="slide1" id="imgSlide" src="image/shop/EventImg4.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list"><img class="slide1" id="imgSlide" src="image/shop/EventImg5.jpg" alt=""></a>
                 </div>
         </article>
     </main>
@@ -549,18 +559,18 @@
     <article class="art2">
       <div class="slide_wrapper">
         <ul class="slides">
-            <li><a href=""><img src="image/shop/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""><p>물품</p></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/Home.png" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product9.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product10.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product11.jpg" alt=""></a></li>
-            <li><a href=""><img src="image/shop/product12.jpg" alt=""></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg2.jpg" alt=""><h3 class="sh3">올인원 레인코트 반려견 애견 비옷 소형견 애견의류</h3><h4>8,400</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg3.jpg" alt=""><h3 class="sh3">대형견 반사 패딩 하네스 겨울옷 강아지의류 3XL</h3><h4>21,390</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg4.jpg" alt=""><h3 class="sh3">막스플레이 벨로아 트레이닝 롬퍼 백 아이보리 면스판 조거 올인원 이탈리안 그레이 하운드 아이쥐옷</h3><h4>52,000</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg5.jpg" alt=""><h3 class="sh3">인터라켄 올인원 강아지 윈드브레이커 바람막이 우의</h3><h4>39,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg6.jpg" alt=""><h3 class="sh3">펫스츄리 강아지 앞섬방지 앞고리 이지워크 하네스 가슴줄 중형견 대형견</h3><h4>14,000</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg7.jpg" alt=""><h3 class="sh3">도담펫 강아지 LED 자동리드줄 플렉시리드줄 플렉시자동줄 애견 산책 줄</h3><h4>10,400</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg8.jpg" alt=""><h3 class="sh3">대형견 중형견 겨울 니트 모자 베이지</h3><h4>9,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg9.jpg" alt=""><h3 class="sh3">펫모드 스카이켄넬 250 강아지켄넬 애견캐리어</h3><h4>69,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg10.jpg" alt=""><h3 class="sh3">고급 강아지 이동식 캐리어 (블랙)(대)</h3><h4>19,800</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg11.jpg" alt=""><h3 class="sh3">강아지 신발 운동화 여름 사계절 산책 외출 방수 애견 반려견</h3><h4>31,000</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg12.jpg" alt=""><h3 class="sh3">강아지조끼 수면조끼 천연소재 알러지케어</h3><h4>15,900</h4></a></li>
         </ul>
     </div>
    <div class="controls">
