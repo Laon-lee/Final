@@ -302,6 +302,10 @@
         align-items: center;
         justify-content: center;
        }
+       .img-header img{
+       width : 80%;
+      margin-left : 10%;
+       }
        .slide_wrapper{
             position: relative;
             width: 1120px;
