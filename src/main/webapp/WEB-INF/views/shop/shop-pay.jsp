@@ -10,8 +10,6 @@
     <title>Document</title>
 
 <style>
-
-
 * {
     margin: 0 auto;
     padding: 0 auto;
@@ -21,7 +19,9 @@
 body{
     background-color:#e3d5ca;
 }
-
+ #mainA1{
+    font-family: 'Zilla Slab', serif;
+   }
     html,
     body,
     header,
@@ -47,25 +47,11 @@ body{
         height:100vh;
     }
 
-   /* 헤더 관련 css*/
-	 header {
-      z-index: 100;
-      background-color: #f5ebe0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 100vw;
-      height: 100%;
-    }
-	
     nav div {
       width: 100%;
       height: 100%;
     }
-	#mainA1{
-    font-family: 'Zilla Slab', serif;
-    }
+
     #nav1 {
       text-align: center;
       width: 200px;
@@ -73,9 +59,21 @@ body{
     }
 
     #nav1 li {
+      font-size:23px;
+      font-weight:900;
       margin-left: 15px;
     }
-
+header {
+   z-index: 100;
+      background-color: #e3d5ca;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100vw;
+      height: 100%;
+      grid-area:header;
+    }
     header a {
       cursor: pointer;
     }
@@ -91,27 +89,24 @@ body{
     #nav2 ul{
       width: 350px;
       margin-right:20px;
-      
+     
     }
     #nav2 li {
       box-sizing: border-box;
       width:70px;
       height:70px;
-      
+     
     }
     #nav2 li:nth-child(3){
-      
+     
     }
 
     #nav2 a {
       font-size: 20px;
     }
-	
-	
-	
-	
+
     /* 검색 아이콘 호버 */
-    
+   
     #nav2-li-1stdiv {
       margin:20px 0 20px 0;
       padding:50px;
@@ -168,6 +163,7 @@ body{
     #nav2-li-1stdiv button{
       height:84px;
       width:8vw;
+     
     }
     #btns{
       display: flex;
@@ -186,6 +182,7 @@ body{
       cursor: pointer;
     }
     #nav2-li-2nddiv{
+   
       margin:20px 0 20px 0;
       padding:50px;
       display: none;
@@ -199,6 +196,7 @@ body{
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
+     
     }
     #nav2-li-3rddiv{
       margin:20px 0 20px 0;
@@ -214,7 +212,10 @@ body{
       justify-content: center;
       align-items: center;
       background-color: rgb(245, 235, 224);
+     
     }
+
+
 
     #nav2-li-4thdiv{
       margin:20px 0 20px 0;
@@ -230,13 +231,13 @@ body{
       justify-content: center;
       align-items: left;
       background-color: rgb(245, 235, 224);
-    
+   
     }
     #nav2-li-4thdiv input{
       width:300px;
       height:30px;
     }
-    #nav2-li-4thdiv button{ 
+    #nav2-li-4thdiv button{
       width: 308px;
       height: 40px;
       background-color: black;
@@ -259,7 +260,6 @@ body{
     a:visited {
       color: black;
     }
-	/* 헤더 css 끝 */  
 
     /*메인*/
     main {
@@ -291,12 +291,55 @@ body{
     }
     #art3 {
         width: 60%;
-        height: 370px;
-
+        height: 250px;
+        border-bottom: 1px solid black;
 
     }
 
-    #info1, #info2 {
+    #art4 {
+        width: 60%;
+        height: 270px;
+        border-bottom: 1px solid black;
+    }
+
+    #art5 {
+        width: 60%;
+        height: 220px;
+        border-bottom: 1px solid black;
+    }
+
+    #art6 {
+        width: 60%;
+        height: 80px;
+        border-bottom: 1px solid black;
+    }
+
+    #art7 {
+        width: 60%;
+        height: 180px;
+        
+    }
+
+    #art4-img{
+      display: flex;
+    width: 20%;
+    float: left;
+    height: 140px;
+    margin: 15px 20px;
+    background: url("imgs/main_pic.png");
+    }
+    #art4-text{
+      width: 60%;
+      margin: 15px 30px;
+      display: inline;
+    }
+    #art4-text > p {
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+
+    #info2, #info3, #info4, #info5, #info6{
+        display: block;
         width: 90%;
         height: 35px;
         margin: 10px;
@@ -305,6 +348,61 @@ body{
         border-bottom: 1px solid #7F7F7F;
 
     }   
+
+    #info7 {
+        display: block;
+        width: 90%;
+        height: 110px;
+        margin: 10px;
+        margin-left: 20px;
+        color: black;
+    }   
+
+   
+
+    #info7 > h3 {
+        line-height: 35px;
+    }   
+
+    #art5-box {
+      display: flex;
+      height: 120px;
+    }
+
+    #art5-left {
+      display: flex;
+    }
+
+    #art5-right {
+      display: flex;
+
+    }
+    #left-ul {
+      width: 46%;
+      line-height: 2rem;
+    }
+    #right-ul {
+      float: right;
+      width: 50%;
+      line-height: 2rem;
+    }
+
+    #total-h4 {
+      display: inline-block;
+      padding-left: 130px;
+    }
+    #total-h5 {
+      float: right;
+      padding-right: 200px;
+    }
+
+    #pay-box {
+      width: 90%;
+    }
+    #cash, #kakao {
+      margin-left: 20px;
+    }
+
 
     select.box {
   width: 15%;
@@ -350,6 +448,22 @@ label {
   margin-left: 100px;
 }
 
+#last-btn {
+  display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: gray;
+    border: gray;
+}
+
+.last-check {
+  width: 20px;
+  height: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
 
     footer {
@@ -399,8 +513,11 @@ label {
         color: black;
     }
 
+    #last-btn:hover {
+      cursor : pointer;
+    }
 
-
+</style>
 </style>
 
 </head>
@@ -410,101 +527,91 @@ label {
     <div id="container">
 
         <header>
-      <nav id="nav1">
-        <ul>
-          <li><a id="mainA2">About Us</a></li>
-          <li><a id="mainA3">Shop</a></li>
-          <li><a id="mainA4">Hotel</a></li>
-        </ul>
-      </nav>
-      <div>
-        <h1><a id="mainA1">Déng Nuri</a></h1>
-      </div>
-      <nav id="nav2">
-        <ul>
-          <li id="nav2-li-1stli">
-            <a href="#"><p style="font-size: 16px">Search</p></a>
-            <div id="hover-layout1" class="hover-layout1">
-                
+            <nav id="nav1">
+          <ul>
+              
+              <li><a id="mainA3">Shop</a></li>
+              
+            </ul>
+        </nav>
+        <div>
+            <h1><a id="mainA1">Déng Nuri</a></h1>
+        </div>
+        <nav id="nav2">
+            <ul>
+                <li id="nav2-li-1stli">
+                    <a href="#"><p style="font-size: 16px">Search</p></a>
+              <div id="hover-layout1" class="hover-layout1">
+                  
             </div>
             <div id="nav2-li-1stdiv">
-              <div id="nav2-searchdiv">
-                <input type="text" placeholder="검색하실 물품을 적어주세요"><button>검색</button>
-              </div>
-              <h2>아래 품목도 검색해보세요.</h2>              
-              <div id="btns">
-                <button type="button">사료</button>
-                <button type="button">영양제</button>
-                <button type="button">산책줄</button>
-                <button type="button">집</button>
-                <button type="button">의류</button>
-                <button type="button">장난감</button>
-                <button type="button">사료</button>
-                <button type="button">영양제</button>
-                <button type="button">산책줄</button>
-                <button type="button">집</button>
-                <button type="button">의류</button>
-                <button type="button">장난감</button>
+                <div id="nav2-searchdiv">
+                    <input type="text" placeholder="검색하실 물품을 적어주세요"><button>검색</button>
+                </div>
+                <h2>아래 품목도 검색해보세요.</h2>              
+                <div id="btns">
+                    <button type="button">사료</button>
+                    <button type="button">영양제</button>
+                    <button type="button">산책줄</button>
+                    <button type="button">집</button>
+                    <button type="button">의류</button>
+                    <button type="button">장난감</button>
+                    <button type="button">사료</button>
+                    <button type="button">영양제</button>
+                    <button type="button">산책줄</button>
+                    <button type="button">집</button>
+                    <button type="button">의류</button>
+                    <button type="button">장난감</button>
+                </div>
+                
               </div>
               
+            </li>
+            <li id="nav2-li-2ndli">
+                <a href="#">
+                    <p style="font-size: 16px">Notice</p>
+                </a>
+                <div id="hover-layout2" class="hover-layout1">
+                    
+                </div>
+              <div id="nav2-li-2nddiv">
+                <h2>알림받아라 인마</h2>
             </div>
-          </li>
-          <li id="nav2-li-2ndli">
+        </li>
+        <li id="nav2-li-3rdli">
             <a href="#">
-              <p style="font-size: 16px">Notice</p>
-            </a>
-            <div id="hover-layout2" class="hover-layout1">
-                
-            </div>
-            <div id="nav2-li-2nddiv">
-              <h2>알림받아라 인마</h2>
-            </div>
-          </li>
-          <li id="nav2-li-3rdli">
-            <a href="#">
-              <p style="font-size: 16px;">Wish-List</p>
+                <p style="font-size: 16px;">Wish-List</p>
             </a>
             <div id="hover-layout3" class="hover-layout1">
-              
+                
             </div>
             <div id="nav2-li-3rddiv">
-              <h2>니가 좋아하는거다!</h2>
+                <h2>니가 좋아하는거다!</h2>
             </div>
-          </li>
-          <c:if test="${sessionScope.user != null}">
-          <li id="nav2-li-mypage">
-            <a href="${pageContext.request.contextPath}/mypage">
-              <p style="font-size: 16px;">MyPage</p>
-            </a>
-          </li>
-          </c:if>
-          <li id="nav2-li-4thli">
-           <c:if test="${sessionScope.user == null}">
+        </li>
+        <li id="nav2-li-4thli">
             <a href="#"><p style="font-size: 16px">Login</p></a>
             <div id="hover-layout4" class="hover-layout1">
                 
             </div>
             <div id="nav2-li-4thdiv">
-              <h4>로그인</h4>
-              <br>
-              <form action="${pageContext.request.contextPath}/login">
-                <h6>아이디</h6>
-                <input type="text" name="userid" id="userid">
-                <h6>비밀번호</h6>
-                <input type="password" name="password" id="password"><br>
-                <button>Login</button>
-              </form>
-              <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
-              <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
+                <h4>로그인</h4>
+                <br>
+                <form action="">
+                    <h6>아이디</h6>
+                    <input type="text" name="" id="">
+                    <h6>비밀번호</h6>
+                    <input type="password" name="" id=""><br>
+                    <button>Login</button>
+                </form>
+                <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
+                <a href="#" style="font-size:13px">회원 가입</a>
             </div>
-          	</c:if>
-          	<c:if test="${sessionScope.user != null}">
-          		<a href="${pageContext.request.contextPath}/logout"><p style="font-size: 16px">Logout</p></a>
-          	</c:if>
-          </li>
-        </ul>
-      </nav>
-    </header>
+            
+        </li>
+    </ul>
+</nav>
+</header>
 
     <article>
         <div id="art1"><h4>주문 / 결제</h4></div>
@@ -512,7 +619,7 @@ label {
 
     <article>
         <div id="art2">
-            <div id="info1">
+            <div id="info2">
                 <h3>주문정보</h3>
             </div>
             <div id="info1-info">
@@ -575,7 +682,7 @@ label {
     </article>
     <article>
         <div id="art3">
-            <div id="info2">
+            <div id="info3">
                 <h3>배송지</h3>
             </div>
 
@@ -591,8 +698,78 @@ label {
                 <button id="info-btn2">신규 배송지 입력</button>
         </div>
     </article>
+    <article id="art4">
+      <div id="info4">
+        <h3>주문상품</h3>
+    </div>
+    <div id="art4-mainbox">
+      <div id="art4-img">
+      </div>
+      <div id="art4-text">
+        <h3>무니쿤트 옷 후아</h3>
+        <p>옵션</p>
+        <p>수량</p>
+        <p>금액</p>
+      </div>
+    </div>
+    </article>
+    <article>
+      <div id="art5">
+        <div id="info5">
+          <h3>결제정보</h3>
+        </div>
+          
+        <div id="art5-box">
+          <div id="art5-left">
+          <ul id="left-ul">
+            <li>주문상품</li>
+            <li>할인/부가결제</li>
+            <li>배송비</li>
+          </ul>
+          </div>
+          <div id="art5-right">
+            <ul id="right-ul">
+              <li>72,000원</li>
+              <li>-0원</li>
+              <li>+0원</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4 id="total-h4">
+            결제금액
+          </h4>
+          <h5 id="total-h5">
+            2억 7천만원
+          </h5>
+        </div>
+      </div>
+      </div>
+    </article>
+    <article>
+      <div id="art6">
+        <div id="info6">
+          <h3>결제수단 선택</h3>
+        </div>
+        <div id="pay-box">
+          <input type="radio" name="card" id="card"> 카드 결제
+          <input type="radio" name="card" id="cash"> 무통장 입금
+          <input type="radio" name="card" id="kakao"> 카카오페이(간편결제)
+        </div>
+      </div>
+    </article>
+    <article>
+      <div id="art7">
+        <div id="info7">   
+          <h3><input type="checkbox" class="last-check">모든약관 동의</h3>
+          <h3><input type="checkbox" class="last-check">[필수] 쇼핑몰 이용약관 동의</h3>
+          <h3><input type="checkbox" class="last-check">[필수] 비회원 구매시 개인정보 처리방침 동의</h3>
+        </div>
+        <button id="last-btn">결제하기</button>
 
-
+      </div>
+      
+    </article>
 <footer>
     <ul id="footer-1stul">
         <li><a href="#">Déng Nuri</a></li>
