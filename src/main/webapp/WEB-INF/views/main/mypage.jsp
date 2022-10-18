@@ -306,7 +306,7 @@
             background-color: lightgray;
             justify-content: space-around;
             align-items: center;
-            padding-bottom: 20px;
+            
             grid-area: footer;
         }
 
@@ -358,6 +358,7 @@
         }
 
         #main-container {
+            height:100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -371,10 +372,11 @@
         }
        
         #sec2 {
+            width:85%;
             margin: 40px;
             display: flex;
             flex-direction: row;
-            flex: 1fr 4fr;
+            
         }
 
         #sec2 nav {
@@ -454,12 +456,12 @@
             <nav id="nav1">
                 <ul>
 
-                    <li><a id="mainA3">Shop</a></li>
+                    <li><a id="mainA3">MyPage</a></li>
 
                 </ul>
             </nav>
             <div>
-                <h1><a href="${pageContext.request.contextPath}/gomain">Déng Nuri</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/gomain"  id="mainA1">Déng Nuri</a></h1>
             </div>
             <nav id="nav2">
                 <ul>
@@ -549,13 +551,13 @@
                 <section id="sec2">
                     <nav>
                         <ul>
-                            <li><a href="">주문내역조회</a></li>
+                            <li><a href="" style="text-decoration: underline;">주문내역조회</a></li>
                             <li><a href="">회원정보</a></li>
                             <li><a href="">관심상품</a></li>
-                            <li><a href="">적립금</a></li>
+                            <li><a href="">자주찾는질문</a></li>
+                            <li><a href="">문의하기</a></li>
                             <li><a href="">쿠폰</a></li>
-                            <li><a href="">게시물 관리</a></li>
-                            <li><a href="">배송 주소록 관리</a></li>
+                            
                         </ul>
                     </nav>
                     <article id="art2">
