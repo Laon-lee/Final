@@ -66,4 +66,8 @@ public class MainController {
 	public String goshop() {
 		return "shop/shop-main-JJW";
 	}
+	@GetMapping("gohotel")
+	public String gohotel() {
+		return "hotel/hotelmain";
+	}
 }

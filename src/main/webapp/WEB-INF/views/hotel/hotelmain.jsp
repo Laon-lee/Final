@@ -727,6 +727,7 @@
                 </div>
                 <div id="hotel_img">
                     <div id="img1">
+                     <a href="${pageContext.request.contextPath}/hotellist">이동!</a>
                         <!-- <img src="./hotel/dog1.jpg" alt=""> -->
                     </div>
                     <div id="img2">
