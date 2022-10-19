@@ -130,6 +130,13 @@ label {
 	margin-left: 9rem;
 }
 
+#sample6_address {
+	width : 64%
+}
+#sample6_extraAddress {
+	margin-left : 1.6rem;
+}
+
 </style>
 </head>
 <body>
@@ -146,17 +153,19 @@ label {
         <h2>회원 가입</h2>
     </article>
     <div id="cont">
+
     <article class="art3">
       <div id="name"><label for="name">이름</label><input type="text" id="name" name="name"></div>
       <div id="id"><label for="id">아이디</label><input type="text" id="id" name="id"><button class="art3-btn">중복확인</button></div>
-      <div id="password"><label for="password">비밀번호</label><input type="password" id="pw" name="pw2"></div>
-      <div id="password2"><label for="password2">비밀번호 확인</label><input type="password"></div>
+      <div id="password"><label for="password">비밀번호</label><input type="password" id="pw1" name="pw1"></div>
+      <div id="password2"><label for="password2">비밀번호 확인</label><input type="password" id="pw2" name="pw2"></div>
       <div id="email"><label for="email">이메일</label><input type="email" id="email" name="email"><button class="art3-btn">인증하기</button></div>
-      <div id="phone-num"><label for="phone-num">휴대폰 번호</label><input type="phone-num" id="phone-num" name="phone-num"></div>
-      <div id="address"><label for="address">주소</label><input type="text" name="addr" id="addr"><button class="art3-btn">우편번호</button></div>
+      <div id="phone-num"><label for="phone-num">휴대폰 번호</label><input type="text" id="phone-num" name="phone-num"></div>
+      <div id="address"><label for="address">주소</label><input type="text" id="sample6_postcode" placeholder="우편번호"><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="margin-left : 7px; height:28px; border:0.5px solid;"><br></div>
  
-  <input type="text" name="addr-2" class="address" placeholder="도로명주소 ex)공항대로 543"><br>
-  <input type="text" name="addr-3" class="address" placeholder="상세주소 ex)203동 1823호"><br>
+  <input type="text" id="sample6_address" placeholder="주소" ><br>
+<input type="text" id="sample6_detailAddress" placeholder="상세주소">
+<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 </article>
 <article class="art5">
   <p>제1조(목적)
@@ -300,84 +309,7 @@ label {
     
     ④ 이용자가 재화등을 제공받을때 발송비를 부담한 경우에 “몰”은 청약철회시 그 비용을 누가 부담하는지를 이용자가 알기 쉽도록 명확하게 표시합니다.
     
-    제17조(개인정보보호)
-    ①“몰”은 이용자의 정보수집시 구매계약 이행에 필요한 최소한의 정보를 수집합니다. 다음 사항을 필수사항으로 하며 그 외 사항은 선택사항으로 합니다.
-    1. 성명
-    2. 주소
-    3. 전화번호
-    4. 희망ID(회원의 경우)
-    5. 비밀번호(회원의 경우)
-    6. 전자우편주소(또는 이동전화번호)
-    
-    ② “몰”이 이용자의 개인식별이 가능한 개인정보를 수집하는 때에는 반드시 당해 이용자의 동의를 받습니다.
-    
-    ③제공된 개인정보는 당해 이용자의 동의없이 목적외의 이용이나 제3자에게 제공할 수 없으며, 이에 대한 모든 책임은 　몰　이 집니다. 다만, 다음의 경우에는 예외로 합니다.
-    
-    1. 배송업무상 배송업체에게 배송에 필요한 최소한의 이용자의 정보(성명, 주소, 전화번호)를 알려주는 경우
-    2. 통계작성, 학술연구 또는 시장조사를 위하여 필요한 경우로서 특정 개인을 식별할 수 없는 형태로 제공하는 경우
-    3. 재화등의 거래에 따른 대금정산을 위하여 필요한 경우
-    4. 도용방지를 위하여 본인확인에 필요한 경우
-    5. 법률의 규정 또는 법률에 의하여 필요한 불가피한 사유가 있는 경우
-    
-    ④“몰”이 제2항과 제3항에 의해 이용자의 동의를 받아야 하는 경우에는 개인정보관리 책임자의 신원(소속, 성명 및 전화번호, 기타 연락처), 정보의 수집목적 및 이용목적, 제3자에 대한 정보제공 관련사항(제공받은자, 제공목적 및 제공할 정보의 내용) 등 정보통신망이용촉진등에관한법률 제22조제2항이 규정한 사항을 미리 명시하거나 고지해야 하며 이용자는 언제든지 이 동의를 철회할 수 있습니다.
-    
-    ⑤이용자는 언제든지 “몰”이 가지고 있는 자신의 개인정보에 대해 열람 및 오류정정을 요구할 수 있으며 “몰”은 이에 대해 지체없이 필요한 조치를 취할 의무를 집니다. 이용자가 오류의 정정을 요구한 경우에는 “몰”은 그 오류를 정정할 때까지 당해 개인정보를 이용하지 않습니다.
-    
-    ⑥ “몰”은 개인정보 보호를 위하여 관리자를 한정하여 그 수를 최소화하며 신용카드, 은행계좌 등을 포함한 이용자의 개인정보의 분실, 도난, 유출, 변조 등으로 인한 이용자의 손해에 대하여 모든 책임을 집니다.
-    
-    ⑦ “몰” 또는 그로부터 개인정보를 제공받은 제3자는 개인정보의 수집목적 또는 제공받은 목적을 달성한 때에는 당해 개인정보를 지체없이 파기합니다.
-    
-    제18조(“몰“의 의무)
-    ① “몰”은 법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며 이 약관이 정하는 바에 따라 지속적이고, 안정적으로 재화?용역을 제공하는데 최선을 다하여야 합니다.
-    
-    ② “몰”은 이용자가 안전하게 인터넷 서비스를 이용할 수 있도록 이용자의 개인정보(신용정보 포함)보호를 위한 보안 시스템을 갖추어야 합니다.
-    
-    ③ “몰”이 상품이나 용역에 대하여 「표시?광고의공정화에관한법률」 제3조 소정의 부당한 표시?광고행위를 함으로써 이용자가 손해를 입은 때에는 이를 배상할 책임을 집니다.
-    
-    ④ “몰”은 이용자가 원하지 않는 영리목적의 광고성 전자우편을 발송하지 않습니다.
-    
-    제19조(회원의 ID 및 비밀번호에 대한 의무)
-    ① 제17조의 경우를 제외한 ID와 비밀번호에 관한 관리책임은 회원에게 있습니다.
-    
-    ② 회원은 자신의 ID 및 비밀번호를 제3자에게 이용하게 해서는 안됩니다.
-    
-    ③ 회원이 자신의 ID 및 비밀번호를 도난당하거나 제3자가 사용하고 있음을 인지한 경우에는 바로 “몰”에 통보하고 “몰”의 안내가 있는 경우에는 그에 따라야 합니다.
-    
-    제20조(이용자의 의무)
-    이용자는 다음 행위를 하여서는 안됩니다.
-    1. 신청 또는 변경시 허위 내용의 등록
-    2. 타인의 정보 도용
-    3. “몰”에 게시된 정보의 변경
-    4. “몰”이 정한 정보 이외의 정보(컴퓨터 프로그램 등) 등의 송신 또는 게시
-    5. “몰” 기타 제3자의 저작권 등 지적재산권에 대한 침해
-    6. “몰” 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위
-    7. 외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 몰에 공개 또는 게시하는 행위
-    
-    제21조(연결“몰”과 피연결“몰” 간의 관계)
-    ① 상위 “몰”과 하위 “몰”이 하이퍼 링크(예: 하이퍼 링크의 대상에는 문자, 그림 및 동화상 등이 포함됨)방식 등으로 연결된 경우, 전자를 연결 “몰”(웹 사이트)이라고 하고 후자를 피연결 “몰”(웹사이트)이라고 합니다.
-    
-    ②연결“몰”은 피연결“몰”이 독자적으로 제공하는 재화등에 의하여 이용자와 행하는 거래에 대해서 보증책임을 지지 않는다는 뜻을 연결“몰”의 초기화면 또는 연결되는 시점의 팝업화면으로 명시한 경우에는 그 거래에 대한 보증책임을 지지 않습니다.
-    
-    제22조(저작권의 귀속 및 이용제한)
-    ① “몰“이 작성한 저작물에 대한 저작권 기타 지적재산권은 ”몰“에 귀속합니다.
-    
-    ② 이용자는 “몰”을 이용함으로써 얻은 정보 중 “몰”에게 지적재산권이 귀속된 정보를 “몰”의 사전 승낙없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하여서는 안됩니다.
-    
-    ③ “몰”은 약정에 따라 이용자에게 귀속된 저작권을 사용하는 경우 당해 이용자에게 통보하여야 합니다.
-    
-    제23조(분쟁해결)
-    ① “몰”은 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해를 보상처리하기 위하여 피해보상처리기구를 설치?운영합니다.
-    
-    ② “몰”은 이용자로부터 제출되는 불만사항 및 의견은 우선적으로 그 사항을 처리합니다. 다만, 신속한 처리가 곤란한 경우에는 이용자에게 그 사유와 처리일정을 즉시 통보해 드립니다.
-    
-    ③“몰”과 이용자간에 발생한 전자상거래 분쟁과 관련하여 이용자의 피해구제신청이 있는 경우에는 공정거래위원회 또는 시·도지사가 의뢰하는 분쟁조정기관의 조정에 따를 수 있습니다.
-    
-    제24조(재판권 및 준거법)
-    ①“몰”과 이용자간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
-    
-    ②“몰”과 이용자간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
-    부 칙(시행일) 이 약관은 2015년 10월 13일부터 시행합니다.</p>
-
+   
 </article>
 <div class="art6">
   <button id="join-btn">가입하기</button>
@@ -388,5 +320,58 @@ label {
     <footer>
       <%@ include file="../frame/main/footer.jsp" %>
     </footer>
-  </div></body>
+  </div>
+  
+ <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>`
+<script>
+ function sample6_execDaumPostcode() {
+ new daum.Postcode({
+     oncomplete: function(data) {
+         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+         // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+         // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+         var addr = ''; // 주소 변수
+         var extraAddr = ''; // 참고항목 변수
+
+         //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+         if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+             addr = data.roadAddress;
+         } else { // 사용자가 지번 주소를 선택했을 경우(J)
+             addr = data.jibunAddress;
+         }
+
+         // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+         if(data.userSelectedType === 'R'){
+             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+             if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                 extraAddr += data.bname;
+             }
+             // 건물명이 있고, 공동주택일 경우 추가한다.
+             if(data.buildingName !== '' && data.apartment === 'Y'){
+                 extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+             }
+             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+             if(extraAddr !== ''){
+                 extraAddr = ' (' + extraAddr + ')';
+             }
+             // 조합된 참고항목을 해당 필드에 넣는다.
+             document.getElementById("sample6_extraAddress").value = extraAddr;
+         
+         } else {
+             document.getElementById("sample6_extraAddress").value = '';
+         }
+
+         // 우편번호와 주소 정보를 해당 필드에 넣는다.
+         document.getElementById('sample6_postcode').value = data.zonecode;
+         document.getElementById("sample6_address").value = addr;
+         // 커서를 상세주소 필드로 이동한다.
+         document.getElementById("sample6_detailAddress").focus();
+     }
+ }).open();
+}
+</script>
+  
+  </body>
 </html>
