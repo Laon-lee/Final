@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fyiyg55rlb"></script>
   <title>Document</title>
   <style type="text/css">		 
 	    html,
@@ -181,6 +182,16 @@
           <p>내곁에 그대 있는 거</p>
           <p>그대와 함께 할 수 있는 모든것</p>
           <p>그댈 지키겠단 약속 꼭 지킬게요</p>
+          <div id="map" style="width:400px;height:400px;"></div>
+
+			<script>
+				var mapOptions = {
+   				 center: new naver.maps.LatLng(37.47940033594235, 126.88151662513047),
+    			zoom: 15
+				};
+
+				var map = new naver.maps.Map('map', mapOptions);
+			</script>
         </div>
       </section>
       <section id="sec3">
