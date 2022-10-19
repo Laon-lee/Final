@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
     <script src="./js/jquery-ui-1.13.2.custom/jquery-3.6.1.min.js"></script>
-    <title>Document</title>
+        <title>Document</title>
     <style>
         #mainA1 {
             font-family: 'Zilla Slab', serif;
@@ -44,7 +44,7 @@
 
         body {
             position: relative;
-            height: 3000px
+            height: 100%;
         }
 
         nav div {
@@ -269,7 +269,7 @@
         }
 
         #container {
-            position: fixed;
+            position: relative;
             width: 100%;
             height: 100%;
             display: grid;
@@ -279,7 +279,7 @@
 
         header {
             z-index: 100;
-            background-color: #f5ebe0;
+            background-color: #EDEDE9;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -290,13 +290,13 @@
 
         main {
             width: 100%;
-            background-color: #f5ebe0;
+            background-color: #EDEDE9;
 
         }
 
         section {
-            width: 100vw;
-            height: 82vh;
+            width: 100%;
+            height: 100%;
         }
 
         /* img */
@@ -381,11 +381,11 @@
 
         }
 
-        #innerbtn>button {
+        #reservebtn {
             background-color: rgb(24, 24, 24);
             color: whitesmoke;
             width: 100%;
-            height: 30%;
+            height: 5vh;
         }
 
         table {
@@ -422,115 +422,60 @@
             display: none;
         }
 
+        .content {
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            position: relative;
+        }
+
         .detail {
             width: 80%;
             margin: 5px auto;
             display: grid;
-            grid-template-columns: 4fr 1fr;
+            grid-template-columns: 4fr 1.3fr;
+
+
+        }
+
+        .c_p {
+            width: 100%;
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+        }
+
+        .p_cont {
+            padding: 10px 0px 20px 0px;
+        }
+
+        .price {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
-
+            border: 1px solid black;
+            height: fit-content;
+            padding: 4vh 3vw;
+            position: sticky;
+            left: 70%;
+            top: 5%;
         }
 
-        #sec1 {
-            z-index: 1;
-            transform: translateX(0);
-            position: absolute;
-            background: url("image/main/반고흐.png") no-repeat;
-            background-size: contain;
-            background-position: right;
-        }
-
-        #sec2 {
-            z-index: 2;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/메인섹션.png") no-repeat center right;
-            background-size: contain;
-            background-color: #f5ebe0;
+        .p_box,
+        .total {
             display: flex;
-            align-items: center;
-            background-position: 80%;
-
+            flex-direction: column;
+            gap: 5px;
         }
 
-        #sec2 div {
-            position: absolute;
-            left: 4%;
-            line-height: 34px;
+        .c_review {
+            padding-bottom: 5vh;
         }
 
-        #sec2 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
+        #c_img {
+            width: 100%;
 
-        #sec3 {
-            z-index: 3;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/임시배경.png") no-repeat right;
-            background-size: contain;
-            background-color: #f5ebe0;
-            display: flex;
-            align-items: center;
-            background-position: 20%;
         }
-
-        #sec3 div {
-            position: absolute;
-            left: 80%;
-            line-height: 34px;
-        }
-
-        #sec3 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec3 button {
-            border: none;
-            background-color: lightgray;
-            font-size: 20px;
-            width: 200px;
-            height: 40px;
-            border-radius: 5%;
-            margin-top: 15px;
-        }
-
-        #sec4 {
-            width: 100vw;
-            z-index: 4;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/호텔섹션.png") no-repeat right;
-            background-size: contain;
-            background-color: #f5ebe0;
-            display: flex;
-            align-items: center;
-            background-position: 80%;
-        }
-
-        #sec4 div {
-            position: absolute;
-            left: 4%;
-            line-height: 34px;
-        }
-
-        #sec4 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec4 button {
-            border: none;
-            background-color: lightgray;
-            font-size: 20px;
-            width: 200px;
-            height: 40px;
-            border-radius: 5%;
-            margin-top: 15px;
-        }
-
         footer {
             display: flex;
             flex-direction: row;
@@ -571,10 +516,6 @@
 
         #social li {
             width: 15px;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -783,25 +724,29 @@
                     <input type="text" id="datepicker1">
 
                 </div>
-               <div class="detail">
+                <div class="detail">
                     <div class="content">
                         <div class="c_title">
                             <h1>SMARTCHOICE</h1>
                             <P>DELUXE / 2DOGS / STANDARD VIEW</P>
                         </div>
                         <div class="c_option">
-                            <p>조식 제공, extra bed 제공</p>
+                            <p class="c_p">option</p>
+                            <p class="p_cont">조식 제공, extra bed 제공</p>
                         </div>
                         <div class="c_info">
-                            <p>강아지들 재방문률 95%
+                            <p class="c_p">information</p>
+                            <p class="p_cont">강아지들 재방문률 95%
 
                                 품격있는 애견 호텔 저희 비숑프라자를 방문 해주셔서 너무 감사합니다.
-                                
+
                                 항상 감사하는 마음으로 최고의 품질, 최고의 서비스를 제공하게습니다.
-                                
+
                                 애견들을 사람처럼, 사람들을 애견처럼 </p>
+                            <img src="https://www.mypetplus.co.kr/upload/201701261318010.jpg" alt="" id="c_img">
                         </div>
                         <div class="c_review">
+                            <p class="c_p">review</p>
                             <table>
                                 <tr>
                                     <th>견종</th>
@@ -842,11 +787,11 @@
                         <div class="total">
                             <p>+세금(10%)</p>
                             <h1>총 예약금액 39,600KRW</h1>
-                            <button>회원예약</button>
+                            <button id="reservebtn">회원예약</button>
                         </div>
                     </div>
-               </div>
-                
+                </div>
+
             </section>
         </main>
 
@@ -883,5 +828,4 @@
     </div>
 
 </body>
-
 </html>

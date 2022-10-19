@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-    <script src="hotel/jquery-3.6.1.min.js"></script>
+     <script src="./js/jquery-ui-1.13.2.custom/jquery-3.6.1.min.js"></script>
     <title>Document</title>
     <style>
         #mainA1 {
@@ -268,7 +268,7 @@
         }
 
         #container {
-            position: fixed;
+            position: relative;
             width: 100%;
             height: 100%;
             display: grid;
@@ -278,7 +278,7 @@
 
         header {
             z-index: 100;
-            background-color: #f5ebe0;
+            background-color: #EDEDE9;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -289,7 +289,7 @@
 
         main {
             width: 100%;
-            background-color: #f5ebe0;
+            background-color: #EDEDE9;
 
         }
 
@@ -356,8 +356,12 @@
             margin: 5px auto;
             display: flex;
             flex-direction: row;
-            display: hidden;
+            height: 25vh;
 
+        }
+
+        .option_list {
+            display: none;
         }
 
         #inner1 {
@@ -366,12 +370,18 @@
 
         }
 
+        #inner1>img {
+            width: 100%;
+    height: 100%;
+    object-fit: cover;
+        }
+
         #inner2 {
             width: 65%;
             padding-left: 20px;
         }
 
-        #innerbtn {
+        .innerbtn {
             display: flex;
             flex-direction: row;
             align-items: end;
@@ -380,11 +390,11 @@
 
         }
 
-        #innerbtn>button {
+        .innerbtn>button {
             background-color: rgb(24, 24, 24);
             color: whitesmoke;
             width: 100%;
-            height: 30%;
+            height: 23%;
         }
 
         table {
@@ -421,105 +431,6 @@
             display: none;
         }
 
-        #sec1 {
-            z-index: 1;
-            transform: translateX(0);
-            position: absolute;
-            background: url("image/main/반고흐.png") no-repeat;
-            background-size: contain;
-            background-position: right;
-        }
-
-        #sec2 {
-            z-index: 2;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/메인섹션.png") no-repeat center right;
-            background-size: contain;
-            background-color: #f5ebe0;
-            display: flex;
-            align-items: center;
-            background-position: 80%;
-
-        }
-
-        #sec2 div {
-            position: absolute;
-            left: 4%;
-            line-height: 34px;
-        }
-
-        #sec2 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec3 {
-            z-index: 3;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/임시배경.png") no-repeat right;
-            background-size: contain;
-            background-color: #f5ebe0;
-            display: flex;
-            align-items: center;
-            background-position: 20%;
-        }
-
-        #sec3 div {
-            position: absolute;
-            left: 80%;
-            line-height: 34px;
-        }
-
-        #sec3 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec3 button {
-            border: none;
-            background-color: lightgray;
-            font-size: 20px;
-            width: 200px;
-            height: 40px;
-            border-radius: 5%;
-            margin-top: 15px;
-        }
-
-        #sec4 {
-            width: 100vw;
-            z-index: 4;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/호텔섹션.png") no-repeat right;
-            background-size: contain;
-            background-color: #f5ebe0;
-            display: flex;
-            align-items: center;
-            background-position: 80%;
-        }
-
-        #sec4 div {
-            position: absolute;
-            left: 4%;
-            line-height: 34px;
-        }
-
-        #sec4 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec4 button {
-            border: none;
-            background-color: lightgray;
-            font-size: 20px;
-            width: 200px;
-            height: 40px;
-            border-radius: 5%;
-            margin-top: 15px;
-        }
 
         footer {
             display: flex;
@@ -759,9 +670,14 @@
         <script>
             $(document).ready(function () {
 
-                $(".innerbtn").click(function () {
+                $("#innerbtn1").click(function () {
 
-                    $(".option_list").slideToggle();
+                    $("#option_list1").slideToggle();
+
+                });
+                $("#innerbtn2").click(function () {
+
+                    $("#option_list2").slideToggle();
 
                 });
 
@@ -776,7 +692,7 @@
                 <div id="list">
 
                     <div id="inner1" class="inner">
-                        <img src="" alt="">
+                        <img src="./hotel/dog6.jpg" alt="">
                     </div>
                     <div id="inner2" class="inner">
                         <p>대형/중형/소형</p>
@@ -785,14 +701,12 @@
                         <p>2021.12.11~2023.08.31</p>
                         <h1>36,000 KRW~</h1>
                     </div>
-                    <div id="innerbtn" class="innerbtn">
-                    
-                        <button id="btn1">RESERVE</button>
+                    <div id="innerbtn1" class="innerbtn">
+                        <button>RESERVE</button>
                     </div>
-                   
 
                 </div>
-                <div class="option_list">
+                <div class="option_list" id="option_list1">
                     <table>
                         <tr>
                             <td id="td1">
@@ -811,8 +725,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            
-                            <td id="td2"><a href="${pageContext.request.contextPath}/hoteldetail">예약하기</a></td>
+                            <td id="td2">예약하기</td>
                         </tr>
                         <tr>
                             <td id="td1">
@@ -857,7 +770,7 @@
                 <div id="list">
 
                     <div id="inner1" class="inner">
-                        <img src="" alt="">
+                        <img src="./hotel/dog6.jpg" alt="">
                     </div>
                     <div id="inner2" class="inner">
                         <p>대형/중형/소형</p>
@@ -866,12 +779,12 @@
                         <p>2021.12.11~2023.08.31</p>
                         <h1>36,000 KRW~</h1>
                     </div>
-                    <div id="innerbtn" class="innerbtn">
+                    <div id="innerbtn2" class="innerbtn">
                         <button>RESERVE</button>
                     </div>
 
                 </div>
-                <div class="option_list">
+                <div class="option_list" id="option_list2">
                     <table>
                         <tr>
                             <td id="td1">
@@ -968,5 +881,4 @@
     </div>
 
 </body>
-
 </html>

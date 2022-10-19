@@ -9,17 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
-        integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-<title>Insert title here</title>
-<style>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <title>Insert title here</title>
+    <style>
         #mainA1 {
             font-family: 'Zilla Slab', serif;
         }
@@ -48,7 +43,7 @@
 
         body {
             position: relative;
-            height: 3000px
+            height: 100%;
         }
 
         nav div {
@@ -283,7 +278,7 @@
 
         header {
             z-index: 100;
-            background-color: #f5ebe0;
+            background-color: #EDEDE9;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -294,7 +289,7 @@
 
         main {
             width: 100%;
-            background-color: #f5ebe0;
+            background-color: #EDEDE9;
 
         }
 
@@ -348,111 +343,33 @@
             background-color: purple;
         }
 
+        #img1,
+        #img2,
+        #img3,
+        #img4,
+        #img5 {
+            width: 100%;
+            height: 100%;
+        }
+
+        #img1>img, #img2>img, #img3>img, #img4>img, #img5>img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
         .date {
             margin: 0 auto;
             display: flex;
-    align-items: center;
-    justify-content: center
-        }
-
-        #sec1 {
-            z-index: 1;
-            transform: translateX(0);
-            position: absolute;
-            background: url("image/main/반고흐.png") no-repeat;
-            background-size: contain;
-            background-position: right;
-        }
-
-        #sec2 {
-            z-index: 2;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/메인섹션.png") no-repeat center right;
-            background-size: contain;
-            background-color: #f5ebe0;
-            display: flex;
             align-items: center;
-            background-position: 80%;
-
+            justify-content: center
         }
 
-        #sec2 div {
-            position: absolute;
-            left: 4%;
-            line-height: 34px;
-        }
-
-        #sec2 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec3 {
-            z-index: 3;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/임시배경.png") no-repeat right;
-            background-size: contain;
-            background-color: #f5ebe0;
+        #isbx {
             display: flex;
-            align-items: center;
-            background-position: 20%;
-        }
-
-        #sec3 div {
-            position: absolute;
-            left: 80%;
-            line-height: 34px;
-        }
-
-        #sec3 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec3 button {
-            border: none;
-            background-color: lightgray;
-            font-size: 20px;
-            width: 200px;
-            height: 40px;
-            border-radius: 5%;
-            margin-top: 15px;
-        }
-
-        #sec4 {
-            width: 100vw;
-            z-index: 4;
-            transform: translateX(101%);
-            position: absolute;
-            background: url("image/main/호텔섹션.png") no-repeat right;
-            background-size: contain;
-            background-color: #f5ebe0;
-            display: flex;
-            align-items: center;
-            background-position: 80%;
-        }
-
-        #sec4 div {
-            position: absolute;
-            left: 4%;
-            line-height: 34px;
-        }
-
-        #sec4 div h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
-        }
-
-        #sec4 button {
-            border: none;
-            background-color: lightgray;
-            font-size: 20px;
-            width: 200px;
-            height: 40px;
-            border-radius: 5%;
-            margin-top: 15px;
+            flex-direction: row;
+            justify-content: space-around;
+            display: none;
         }
 
         footer {
@@ -499,6 +416,10 @@
 
         html {
             scroll-behavior: smooth;
+        }
+
+        .isbx-toggle {
+            display: block !important;
         }
     </style>
 </head>
@@ -690,63 +611,99 @@
             //   });
             // </script>
         </header>
-        <script>
-
-
-            $.datepicker.setDefaults({
-              dateFormat: 'yy-mm-dd',
-              prevText: '이전 달',
-              nextText: '다음 달',
-              monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-              monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-              dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-              dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-              dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-              showMonthAfterYear: true,
-              yearSuffix: '년'
-            });
-          
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-
-
-            $(function() {
-              $("#datepicker1").datepicker({
-                numberOfMonths : [1,2],
-                minDate : 0
-              });
-            });
-            
-            
-            
-          </script>
+        
         <main>
             <section>
                 <div class="date">
-                    <input type="text" id="datepicker1">
+                    <p id="selectp">지역을 선택해주세요</p>
                     
+                    <!-- <input type="text" placeholder="지역을" id="choicehotel"> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16" id="svg">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                    <input type="text" id="datepicker1" name="dates">
+                    
+
+
                 </div>
+
+                <script>
+                    $(document).ready(function(){
+                        var now = new Date();
+                        var tom = new Date();
+                        tom.setDate(tom.getDate()+1);
+                        console.log(now)
+                        $('input[name="dates"]').daterangepicker({
+                            "startDate": now,
+                            "endDate": tom,
+                            "minDate": now,
+                            "opens": "center",
+                            locale: {
+		                        format: "YYYY-MM-DD",
+		                        daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+		                        monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+	                        }
+                        }, function(start, end, label) {
+                            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+                            $('input[name="dates"]').val(start.format("YYYY-MM-DD") + " - " + end.format("YYYY-MM-DD"));
+                         });
+                    });
+                </script>
+
+                <div id="isbx" class="csbx">
+                    <p>지역구분</p>
+                    <form action="">
+                        <label for="1"><input type="checkbox" name="" id="1">서울전체</label>
+                        <label for="2"><input type="checkbox" name="" id="2">강남구</label>
+                        <label for="3"><input type="checkbox" name="" id="3">강북구</label>
+                        <label for="4"><input type="checkbox" name="" id="4">동작구</label>
+                        <label for="5"><input type="checkbox" name="" id="5">경기전체</label>
+                        <label for="6"><input type="checkbox" name="" id="6">고양시</label>
+                        <label for="7"><input type="checkbox" name="" id="7">김포시</label>
+                        <label for="8"><input type="checkbox" name="" id="8">남양주시</label>
+                        <label for="9"><input type="checkbox" name="" id="9">성남시</label>
+                        <label for="10"><input type="checkbox" name="" id="10">의정부시</label>
+                    </form>
+                </div>
+                <script>
+                    var ch = document.getElementById("choicehotel");
+                    var svg = document.getElementById("svg");
+                    var sbx = document.getElementById("isbx");
+                    var p =document.getElementById("selectp");
+                    var dp = document.getElementById("datepicker1");
+                    svg.addEventListener("click", function () {
+                        sbx.classList.toggle("isbx-toggle");
+                    });
+                    p.addEventListener("click", function(){
+                        sbx.classList.toggle("isbx-toggle");
+                    });
+                    dp.addEventListener("click", function(){
+                        sbx.style.display = 'none';
+                    })
+                </script>
                 <div id="hotel_img">
                     <div id="img1">
-                     <a href="${pageContext.request.contextPath}/hotellist">이동!</a>
-                        <!-- <img src="./hotel/dog1.jpg" alt=""> -->
+                        <img src="./hotel/dog1.jpg" alt="">
                     </div>
                     <div id="img2">
-                        <!-- <img src="./hotel/dog3.jpg" alt=""> -->
+                        <img src="./hotel/dog2.jpg" alt="">
                     </div>
                     <div id="img3">
-                        <!-- <img src="./hotel/dog2.jpg" alt=""> -->
+                        <img src="./hotel/dog4.jpg" alt="">
                     </div>
                     <div id="img4">
-                        <!-- <img src="./hotel/dog4.jpg" alt=""> -->
+                        <img src="./hotel/dog5.jpg" alt="">
                     </div>
                     <div id="img5">
-                        <!-- <img src="./hotel/dog5.jpg" alt=""> -->
+                        <img src="./hotel/dog3.jpg" alt="">
                     </div>
                 </div>
 
             </section>
         </main>
-       
+
         <footer>
             <ul id="footer-1stul">
                 <li><a href="#">Déng Nuri</a></li>
