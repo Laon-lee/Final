@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
     <style>
-       
+       *{
+          box-sizing: border-box;
+            }
 
         html,
         body,
