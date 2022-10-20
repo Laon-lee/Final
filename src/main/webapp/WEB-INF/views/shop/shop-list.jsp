@@ -1,310 +1,219 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/4b992414b9.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/shop/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+  <style>
+  
+    html,
+    body,
+    header,
+    main,
+    footer,
+    section,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    ul,
+    li,
+    nav {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    li, a{
+        list-style-type: none;
+        color: black;
+        text-decoration: none;
+    }
 
-<style>
-* {
-	margin: 0 auto;
-	padding: 0 auto;
-	box-sizing: border-box;
-}
+    nav div {
+      width: 100%;
+      height: 100%;
+    }
 
-body {
-	background-color: #e3d5ca;
-}
+    
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 7vh 100vh 7vh;
+      grid-template-columns: 1fr;
+    }
 
-header {
-	width: 90%;
-	border-bottom: 3px solid black;
-	background-color: #e3d5ca;
-}
+    main {
+      width: 100%;
+      background-color: #e3d5ca;
 
-#head-logo {
-	width: 20%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100px;
-	s
-}
+    }
 
-#head-icon {
-	display: flex;
-	position: relative;
-	width: 25%;
-	left: 400px;
-	bottom: 45px;
-}
+    section {
+      width: 100vw;
+      height: 82vh;
+    }
 
-nav {
-	width: 90%;
-	height: 100px;
-	padding: 10px 10px;
-	margin-top: 10px;
-	gap: 10px;
-	display: flex;
-	justify-content: space-between;
-	background-color: #e3d5ca;
-}
+  
+    .category-menu{
+    	
+        padding: 15px 0 15px 0;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin-top: 10px;
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        gap: 30px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .category-menu img{
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    .img-header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       }
+       .img-header img{
+       width : 80%;
+      margin-left : 10%;
+      margin-bottom : 50px;
+       }
+       .slide_wrapper{
+            position: relative;
+            width: 1240px;
+            margin: 0 auto;
+            height: 300px;
+            overflow: hidden;
+        }
+        li{
+            list-style-type: none;
+        }
+        .slides{
+            position: absolute;
+            left: 0; top: 0;
+            width: 3060px;
+            transition: left 0.5s ease-out;
+           
+            
+        }
+        .slides li:not(:last-child){
+            float: left;
+            margin-right: 60px;
+        }
+        .slides img{
+            width: 200px;
+            height: 200px;
+            
+        }
+        .controls{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .controls span{
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+        .prev:hover{
+            color: antiquewhite;
+            cursor: pointer;
+        }
+        .next:hover{
+            color: antiquewhite;
+            cursor: pointer;
+        }
 
-#art1 {
-	width: 90%;
-	height: 200px;
-	display: flex;
-	justify-content: center;
-}
-
-#art2 {
-	width: 90%;
-	height: 150px;
-	display: flex;
-	justify-content: center;
-	margin-top: 5px;
-}
-
-#item-box1 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#item-box2 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#item-box3 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#item-box4 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#item-box5 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#item-box6 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#item-box7 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#item-box8 {
-	width: 24%;
-	background: url("imgs/main_pic.png") no-repeat;
-	background-size: 100%;
-}
-
-#text-box1, #text-box2, #text-box3, #text-box4, #text-box5, #text-box6,
-	#text-box7, #text-box8 {
-	width: 24%;
-	padding: 10px 10px;
-	left: 10px;
-}
-
-div>p {
-	font-size: 0.7rem;
-	line-height: 1.3rem;
-}
-
-footer {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	width: 100%;
-	height: 100px;
-	background-color: lightgray;
-	justify-content: space-around;
-	align-items: center;
-}
-
-footer p {
-	font-size: 13px;
-}
-
-footer li {
-	margin: 0 15px 0 15px;
-	height: 15px;
-}
-
-footer ul {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-}
-
-#footer-1stul {
-	width: 150px;
-}
-
-#footer-1stul li {
-	font-size: 22px;
-	font-weight: 900;
-	width: 150px;
-}
-
-li {
-	display: inline-block;
-	list-style-type: none;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-a:visited {
-	color: black;
-}
-</style>
-
-
+     
+    article,.new-arr,.New-Arr{
+      background-color: #e3d5ca;
+    }
+    
+    .new-arr{
+      text-align: center;
+    }
+    .sh3{
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+   }
+   .flex-container{
+    display: grid;
+    width: 100%;
+    height: 86vh;
+    
+    justify-content: center;
+    grid-template-columns: 15% 15% 15% 15%;
+    grid-template-rows: 250px 250px 250px;
+    
+    margin-top: 5%;
+    gap : 3%;
+    z-index: -1;
+    
+   }
+  .flex-container div{
+  width : 75%;
+  }
+  .flex-container img{
+  width : 100%;
+  height: 200px;
+  }
+  </style>
 </head>
+
 <body>
 
-	<header>
-		<div id="head-logo">
-			<h1>
-				<a href="#">Déng Nuri</a>
-			</h1>
-		</div>
-		<div id="head-icon">
-			<img src="" alt="">ㅇㅇ <img src="" alt="">ㅅㅅ <img src=""
-				alt="">ㄹㄹ <img src="" alt="">ㅁㅁ
-		</div>
-	</header>
-
-	<nav>
-		<a href="#" id="nav-1">홈</a> <a href="#" id="nav-2">줄</a> <a href="#"
-			id="nav-3">캐리어</a> <a href="#" id="nav-4">옷</a> <a href="#"
-			id="nav-5">밥</a> <a href="#" id="nav-6">목욕</a> <a href="#" id="nav-7">장난감</a>
-		<a href="#" id="nav-8">큰개</a> <a href="#" id="nav-9">밥</a>
-
-	</nav>
-
-
-	<article id="art1">
-		<div id="item-box1">
-			<a href="#"></a>
-		</div>
-
-
-		<div id="item-box2"></div>
-		<div id="item-box3"></div>
-		<div id="item-box4"></div>
-	</article>
-	<article id="art2">
-		<div id="text-box1">
-			<a href="#"><h4>제품1</h4></a> <br>
-			<p>제품1이지롱</p>
-			<p>2천 만원</p>
-		</div>
-
-		<div id="text-box2">
-			<a href="#"><h4>제품2</h4></a> <br>
-			<p>제품2이지롱</p>
-			<p>1억 2천 만원</p>
-		</div>
-
-		<div id="text-box3">
-			<a href="#"><h4>제품3</h4></a> <br>
-			<p>제품3이지롱</p>
-			<p>2천 8백 만원</p>
-
-		</div>
-
-		<div id="text-box4">
-			<a href="#"><h4>제품4</h4></a> <br>
-			<p>제품4이지롱</p>
-			<p>3억 2천만원</p>
-		</div>
-	</article>
-	<article id="art1">
-		<div id="item-box5"></div>
-		<div id="item-box6"></div>
-		<div id="item-box7"></div>
-		<div id="item-box8"></div>
-	</article>
-	<article id="art2">
-		<div id="text-box5">
-			<a href="#"><h4>제품1</h4></a> <br>
-			<p>제품1이지롱</p>
-			<p>2천 만원</p>
-		</div>
-
-		<div id="text-box6">
-			<a href="#"><h4>제품2</h4></a> <br>
-			<p>제품2이지롱</p>
-			<p>1억 2천 만원</p>
-		</div>
-
-		<div id="text-box7">
-			<a href="#"><h4>제품3</h4></a> <br>
-			<p>제품3이지롱</p>
-			<p>2천 8백 만원</p>
-
-		</div>
-
-		<div id="text-box8">
-			<a href="#"><h4>제품4</h4></a> <br>
-			<p>제품4이지롱</p>
-			<p>3억 2천만원</p>
-		</div>
-	</article>
-
-
-	<footer>
-		<ul id="footer-1stul">
-			<li><a href="#">Déng Nuri</a></li>
-		</ul>
-		<ul>
-			<li>
-				<p>대표 : 김송이</p>
-			</li>
-			<li>
-				<p>전화번호 : 010-1234-5678</p>
-			</li>
-			<li>
-				<p>이메일 : abcde@abcdef.com</p>
-			</li>
-			<li>
-				<p>팩스번호 : 02-1234-5678</p>
-			</li>
-			<li>
-				<p>영업시간 : 00:00~23:59</p>
-			</li>
-			<li>
-				<p>주소 : 서울특별시 구로구 구디동123-4</p>
-			</li>
-		</ul>
-		<ul id="social">
-			<li><a href="#"><img
-					src="https://i.ibb.co/LrVMXNR/social-fb.png" alt=""></a></li>
-			<li><a href="#"><img
-					src="https://i.ibb.co/vJvbLwm/social-twitter.png" alt=""></a></li>
-			<li><a href="#"><img
-					src="https://i.ibb.co/b30HMhR/social-linkedin.png" alt=""></a></li>
-		</ul>
-	</footer>
-
+  <div id="container">
+    <header>
+      <%@ include file="../frame/shop/header.jsp" %>
+    </header>
+    	
+    <main>
+        <div class="flex-container">
+    	<div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+    </div>
+    </main>
+   
+   
+    <footer>
+      <%@ include file="../frame/main/footer.jsp" %>
+    </footer>
+  </div>
 </body>
 </html>

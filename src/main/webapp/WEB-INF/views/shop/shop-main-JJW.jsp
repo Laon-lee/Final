@@ -221,6 +221,7 @@
       <div class="slide_wrapper">
         <ul class="slides">
             <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
             <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg2.jpg" alt=""><h3 class="sh3">올인원 레인코트 반려견 애견 비옷 소형견 애견의류</h3><h4>8,400</h4></a></li>
             <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg3.jpg" alt=""><h3 class="sh3">대형견 반사 패딩 하네스 겨울옷 강아지의류 3XL</h3><h4>21,390</h4></a></li>
             <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg4.jpg" alt=""><h3 class="sh3">막스플레이 벨로아 트레이닝 롬퍼 백 아이보리 면스판 조거 올인원 이탈리안 그레이 하운드 아이쥐옷</h3><h4>52,000</h4></a></li>
@@ -239,6 +240,7 @@
         <span class="next">next</span>
     </div>
     </article>
+    
     <script>
       var slides = document.querySelector('.slides'),
   slide = document.querySelectorAll('.slides li'),

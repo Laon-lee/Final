@@ -1,5 +1,7 @@
 package com.goodee.config;
 
+import java.util.Properties;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -96,5 +99,23 @@ public class ServletAppContext implements WebMvcConfigurer{
 		
 		return sqlSessionFactoryBean.getObject();
 	}
-
+	   @Bean
+	   public JavaMailSenderImpl javaMailService(){
+	      JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+	      javaMailSender.setHost("smtp.naver.com");
+	      javaMailSender.setPort(587);
+	      javaMailSender.setProtocol("smtp");
+	      javaMailSender.setUsername("dkfcks0404@naver.com");
+	      javaMailSender.setPassword("dlfkdhs1!");
+	      Properties mailProperties = new Properties();
+	      mailProperties.put("mail.debug", "true");
+	      mailProperties.put("mail.smtp.auth", "true");
+	      mailProperties.put("mail.smtp.starttls.enable", "true");
+	      mailProperties.put("mail.smtp.debug", "true");
+	      mailProperties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+	      mailProperties.put("mail.transport.protocol", "smtp");
+	      
+	      javaMailSender.setJavaMailProperties(mailProperties);
+	      return javaMailSender;
+	   }
 }
