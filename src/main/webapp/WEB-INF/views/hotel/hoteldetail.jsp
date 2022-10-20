@@ -13,7 +13,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-    <script src="./js/jquery-ui-1.13.2.custom/jquery-3.6.1.min.js"></script>
+   <script type="text/javascript"
+	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
         <title>Document</title>
@@ -279,9 +286,92 @@
         <main>
             <section>
                 <div class="date">
-                    <input type="text" id="datepicker1">
+					<div class="indate">
+						<p id="selectp">지역을 선택해주세요</p>
 
-                </div>
+						<!-- <input type="text" placeholder="지역을" id="choicehotel"> -->
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
+							id="svg">
+                            <path
+								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+					</div>
+					<input type="text" id="datepicker1" name="dates">
+					<!-- <button class="selecbtn">검색</button> -->
+					<a href="#" class="selecbtn">검색</a>
+				</div>
+
+				<script>
+					/* document.getElementById("selecbtn").addEventListener("click",function(){
+						location.href = "${pageContext.request.contextPath}/golist";
+					}); */
+				
+                    $(document).ready(function () {
+                        var now = new Date();
+                        var tom = new Date();
+                        tom.setDate(tom.getDate() + 1);
+                        console.log(now)
+                        $('input[name="dates"]').daterangepicker({
+                            "startDate": now,
+                            "endDate": tom,
+                            "minDate": now,
+                            "opens": "center",
+                            locale: {
+                                format: "YYYY-MM-DD",
+                                daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+                                monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+                            }
+                        }, function (start, end, label) {
+                            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+                            $('input[name="dates"]').val(start.format("YYYY-MM-DD") + " - " + end.format("YYYY-MM-DD"));
+                        });
+                       
+                        $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+                            console.log(picker.startDate.format('YYYY-MM-DD'));
+                            console.log(picker.endDate.format('YYYY-MM-DD'));
+                            var end = picker.endDate.format('YYYY-MM-DD');
+                            var start = picker.startDate.format('YYYY-MM-DD');
+                            console.log("여기스타트"+start);
+                            console.log("여기엔드"+end);
+                    		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end)
+                        });
+                        
+                                                
+                    });
+	
+					
+                    console.log(document.getElementsByName("dates").values);
+                </script>
+				<div class="coutbox" id="ioutbox">
+					<div id="isbx" class="csbx">
+						<p>지역구분</p>
+						<form action="" id="bxform">
+							<label for="1"><input type="checkbox" name="" id="1">서울전체</label>
+							<label for="2"><input type="checkbox" name="" id="2">강남구</label>
+							<label for="3"><input type="checkbox" name="" id="3">강북구</label>
+							<label for="4"><input type="checkbox" name="" id="4">동작구</label>
+							<label for="5"><input type="checkbox" name="" id="5">경기전체</label>
+							<label for="6"><input type="checkbox" name="" id="6">고양시</label>
+							<label for="7"><input type="checkbox" name="" id="7">김포시</label>
+							<label for="8"><input type="checkbox" name="" id="8">남양주시</label>
+							<label for="9"><input type="checkbox" name="" id="9">성남시</label>
+							<label for="10"><input type="checkbox" name="" id="10">의정부시</label>
+						</form>
+					</div>
+				</div>
+				<script>
+                    var p = document.getElementById("selectp");
+                    var svg = document.getElementById("svg");
+                    var iob = document.getElementById("ioutbox");
+
+                    
+
+                    p.addEventListener("click", function () {
+                        iob.classList.toggle("coutbox");
+                    })
+
+                </script>
                 <div class="detail">
                     <div class="content">
                         <div class="c_title">
@@ -352,7 +442,6 @@
 
             </section>
         </main>
-
         <footer>
             <%@ include file="../frame/main/footer.jsp" %>
         </footer>
