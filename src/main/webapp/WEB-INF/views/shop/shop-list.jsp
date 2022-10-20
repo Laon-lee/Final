@@ -54,7 +54,7 @@
       width: 100%;
       height: 100%;
       display: grid;
-      grid-template-rows: 7vh 86vh 7vh;
+      grid-template-rows: 7vh 100vh 7vh;
       grid-template-columns: 1fr;
     }
 
@@ -165,21 +165,24 @@
    .flex-container{
     display: grid;
     width: 100%;
-    height: 150%;
-    align-items: center;
+    height: 86vh;
+    
     justify-content: center;
-    grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
-    grid-template-rows: 300px 300px 300px;
-    margin-left: 2%;
-    gap: 2%;
+    grid-template-columns: 15% 15% 15% 15%;
+    grid-template-rows: 250px 250px 250px;
+    
+    margin-top: 5%;
+    gap : 3%;
+    z-index: -1;
+    
    }
-   img{
-    margin: 0 auto;
-   
-    width: 75%;
-    height: 75%;
-   }
-  
+  .flex-container div{
+  width : 75%;
+  }
+  .flex-container img{
+  width : 100%;
+  height: 200px;
+  }
   </style>
 </head>
 
@@ -192,18 +195,18 @@
     	
     <main>
         <div class="flex-container">
-    	<a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
-        <a href="#"><div><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></div></a>
+    	<div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+        <div><a href="#"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
     </div>
     </main>
    
