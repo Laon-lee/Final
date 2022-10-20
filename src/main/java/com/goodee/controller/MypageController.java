@@ -44,7 +44,9 @@ public class MypageController {
 	            // 이메일 제목 (인코딩을 해야 한글이 깨지지 않음)
 	            msg.setSubject(vo.getTitle(), "utf-8");
 	            // 이메일 본문 (인코딩을 해야 한글이 깨지지 않음)
-	            msg.setText(vo.getContent(), "utf-8");
+	            msg.setContent("주문번호 : "+vo.getOrdernumber()+"<br>"            		 
+	            			+"문의분류 : "+vo.getQacategory()+"<br>"
+	            		    +"문의내용 : "+ vo.getContent(), "text/html; charset=utf-8");
 
 	 
 	            // 이메일 보내기

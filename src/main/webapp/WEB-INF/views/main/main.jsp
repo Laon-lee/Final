@@ -186,11 +186,16 @@
 
 			<script>
 				var mapOptions = {
-   				 center: new naver.maps.LatLng(37.47940033594235, 126.88151662513047),
-    			zoom: 15
+   				 center: new naver.maps.LatLng(37.478909798053834, 126.88135430793452),
+    			zoom: 18
 				};
-
+				
 				var map = new naver.maps.Map('map', mapOptions);
+				
+				var marker = new naver.maps.Marker({
+				    position: new naver.maps.LatLng(37.478909798053834, 126.88135430793452),
+				    map: map
+				});
 			</script>
         </div>
       </section>

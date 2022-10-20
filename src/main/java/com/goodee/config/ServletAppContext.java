@@ -15,9 +15,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.goodee.interceptor.MainInterceptor1;
 
 // Spring MVC프로젝트에 관련된 설정을 하는 클래스
 @Configuration
@@ -118,4 +122,23 @@ public class ServletAppContext implements WebMvcConfigurer{
 	      javaMailSender.setJavaMailProperties(mailProperties);
 	      return javaMailSender;
 	   }
+	   @Override
+		public void addInterceptors(InterceptorRegistry registry) {
+			
+			// 없어도 동작하긴 하는데 가급적이면 현업에서는 넣어서 사용한다고 하심!
+			WebMvcConfigurer.super.addInterceptors(registry);
+			
+			// 인터셉터가 등록되는 로직이 실행
+			MainInterceptor1 inter1 = new MainInterceptor1();
+			
+			// 이 순서로 실행됨
+			InterceptorRegistration reg1 = registry.addInterceptor(inter1);
+			// 인터셉터를 어디에 걸지 타겟을 지정 - InterceptorRegistration.addPathPatterns("경로")
+			// 인터셉터를 경로를 통해 지정할 수 있으며 다른 옵션은 선택할 수 없다.
+			// addPathPatterns에 들어가는 경로는 사용자가 요청하는 요청 경로이다.
+			reg1.addPathPatterns("/gomain");
+			// 인터셉터에 동일 경로를 바라보게 하고 다수의 인터셉터를 걸 경우 맨 위에 등록된 intercepter의 prehandle부터
+			// 실행된다.
+			// postHandle 과 afterCompletion은 등록했던 순서의 반대로 실행된다.
+		}
 }

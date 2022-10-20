@@ -137,6 +137,7 @@
             margin: 40px;
             display: flex;
             flex-direction: row;
+            gap:10%;
             
         }
 
@@ -166,16 +167,16 @@
             background-color: black;
             color:white;
         }
-        #art2 {
+        #art3 {
             
             flex:5;
-            width:70vw;
+            width:50vw;
             display: flex;
             flex-direction: column;
             margin-left: 20px;
             gap: 4px;
         }
-        #art2 div{
+        #art3 div{
             width:85%;
         }
         #sec2-div2{
@@ -263,7 +264,7 @@
                         </ul>
                     </nav>
                     
-                    <article id="art2">
+                    <article id="art3">
                        <div>
                         <p>문의 사항이 있으신 경우 <br> 
                          
@@ -275,14 +276,14 @@
                        <h2>이메일 문의</h2><br>
                        <p style="margin-bottom: 5px;">문의 내용</p>
                        <form action="${pageContext.request.contextPath}/mailing">
-                       <select name="sel" id="sel">
-                        <option value="product">제품 문의</option>
-                        <option value="recell">제품 환불 문의</option>
-                        <option value="send">택배 문의</option>
-                        <option value="another">그 외</option>
+                       <select name="qacategory" id="qacategory">
+                        <option value="제품 문의">제품 문의</option>
+                        <option value="제품 환불 문의">제품 환불 문의</option>
+                        <option value="택배 문의">택배 문의</option>
+                        <option value="기타 문의">그 외</option>
                        </select>
                        
-                       <input type="text" placeholder="* 주문 번호를 입력하세요">
+                       <input type="text" name="ordernumber" id="ordernumber" placeholder="* 주문 번호를 입력하세요">
                        <input type="text" name="senderName" id="senderName" placeholder="* 이름">
                        <input type="email" name="senderMail" id="senderMail" placeholder="* 이메일 주소">
                        <input type="text" name="title" id="title" placeholder="* 문의 제목"><br>
@@ -303,8 +304,8 @@
                         ※ 귀하는 상기와 같은 개인정보의 수집 및 이용에 대해 동의를 거부할 권리가 있습니다. <br>
                          다만, 동의를 거부하는 경우 온라인 상담 등의 이메일 문의 서비스를 제공받으실 수 없습니다.</p><br>
                         <input type="checkbox" name="accept" id="accept" value="Y"> <label for="accept">* 개인정보 수집 및 이용에 동의합니다</label><br>
-                        
-                        <button id="sendbtn">확인</button>
+           				
+                        <button id="sendbtn">전송</button>
                         </form>
                        
                         

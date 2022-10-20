@@ -1,20 +1,42 @@
 package com.goodee.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.goodee.service.ShopService;
+import com.goodee.vo.ShopVO;
 
 @Controller
 public class ShopController {
-	@GetMapping("/shop/list")
-	public String ShopList() {
+	private ShopService spservice;
+	
+	
+	public ShopController(ShopService spservice) {
+		super();
+		this.spservice = spservice;
+	}
+	@GetMapping("/shop/list/{category}")
+	public String ShopList(@PathVariable("category") String category,Model model) {
+		System.out.println("1");
+		spservice.getList(category,model);
+		System.out.println("2");
+		
 		return "/shop/shop-list";
 	}
-	@GetMapping("/shop/main-buy1")
-	public String ShopBuy() {
-		return "shop/shop-main-buy";
+	//물품 상세 페이지 데이터 담을것
+	@GetMapping("/shop/main/buy/{id}")
+	public String ShopBuy(@PathVariable("id") int id) {
+		
+		return "shop/shop-main-buy1";
 	}
 	@GetMapping("/shop/pay")
 	public String ShopPay() {
 		return "shop/shop-pay";	
+	}
+	@GetMapping("/shop/orderinfo")
+	public String ShopOrderinfo() {
+		return "shop/shop-orderinfo";
 	}
 }
