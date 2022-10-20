@@ -220,19 +220,20 @@
     <article class="art2">
       <div class="slide_wrapper">
         <ul class="slides">
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg2.jpg" alt=""><h3 class="sh3">올인원 레인코트 반려견 애견 비옷 소형견 애견의류</h3><h4>8,400</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg3.jpg" alt=""><h3 class="sh3">대형견 반사 패딩 하네스 겨울옷 강아지의류 3XL</h3><h4>21,390</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg4.jpg" alt=""><h3 class="sh3">막스플레이 벨로아 트레이닝 롬퍼 백 아이보리 면스판 조거 올인원 이탈리안 그레이 하운드 아이쥐옷</h3><h4>52,000</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg5.jpg" alt=""><h3 class="sh3">인터라켄 올인원 강아지 윈드브레이커 바람막이 우의</h3><h4>39,900</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg6.jpg" alt=""><h3 class="sh3">펫스츄리 강아지 앞섬방지 앞고리 이지워크 하네스 가슴줄 중형견 대형견</h3><h4>14,000</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg7.jpg" alt=""><h3 class="sh3">도담펫 강아지 LED 자동리드줄 플렉시리드줄 플렉시자동줄 애견 산책 줄</h3><h4>10,400</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg8.jpg" alt=""><h3 class="sh3">대형견 중형견 겨울 니트 모자 베이지</h3><h4>9,900</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg9.jpg" alt=""><h3 class="sh3">펫모드 스카이켄넬 250 강아지켄넬 애견캐리어</h3><h4>69,900</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg10.jpg" alt=""><h3 class="sh3">고급 강아지 이동식 캐리어 (블랙)(대)</h3><h4>19,800</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg11.jpg" alt=""><h3 class="sh3">강아지 신발 운동화 여름 사계절 산책 외출 방수 애견 반려견</h3><h4>31,000</h4></a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="image/shop/NewImg12.jpg" alt=""><h3 class="sh3">강아지조끼 수면조끼 천연소재 알러지케어</h3><h4>15,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg1.jpg" alt=""><h3 class="sh3">모즈펫 강아지 패딩 하네스 일체형</h3><h4>16,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg2.jpg" alt=""><h3 class="sh3">올인원 레인코트 반려견 애견 비옷 소형견 애견의류</h3><h4>8,400</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg3.jpg" alt=""><h3 class="sh3">대형견 반사 패딩 하네스 겨울옷 강아지의류 3XL</h3><h4>21,390</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg4.jpg" alt=""><h3 class="sh3">막스플레이 벨로아 트레이닝 롬퍼 백 아이보리 면스판 조거 올인원 이탈리안 그레이 하운드 아이쥐옷</h3><h4>52,000</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg5.jpg" alt=""><h3 class="sh3">인터라켄 올인원 강아지 윈드브레이커 바람막이 우의</h3><h4>39,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg6.jpg" alt=""><h3 class="sh3">펫스츄리 강아지 앞섬방지 앞고리 이지워크 하네스 가슴줄 중형견 대형견</h3><h4>14,000</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg7.jpg" alt=""><h3 class="sh3">도담펫 강아지 LED 자동리드줄 플렉시리드줄 플렉시자동줄 애견 산책 줄</h3><h4>10,400</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg8.jpg" alt=""><h3 class="sh3">대형견 중형견 겨울 니트 모자 베이지</h3><h4>9,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg9.jpg" alt=""><h3 class="sh3">펫모드 스카이켄넬 250 강아지켄넬 애견캐리어</h3><h4>69,900</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg10.jpg" alt=""><h3 class="sh3">고급 강아지 이동식 캐리어 (블랙)(대)</h3><h4>19,800</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg11.jpg" alt=""><h3 class="sh3">강아지 신발 운동화 여름 사계절 산책 외출 방수 애견 반려견</h3><h4>31,000</h4></a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/main/buy"><img src="image/shop/NewImg12.jpg" alt=""><h3 class="sh3">강아지조끼 수면조끼 천연소재 알러지케어</h3><h4>15,900</h4></a></li>
         </ul>
     </div>
    <div class="controls">

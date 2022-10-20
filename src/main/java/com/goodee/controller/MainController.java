@@ -58,6 +58,10 @@ public class MainController {
 	public String question() {
 		return "main/question";
 	}
+	@GetMapping("basket")
+	public String basket() {
+		return "shop/shop-basket";
+	}
 	@GetMapping("gomain")
 	public String gomain() {
 		return "main/main";

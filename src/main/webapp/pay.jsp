@@ -13,7 +13,7 @@
 <body>
  <a href=""><div class="border"><img src="image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</div></a>
  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-	<button onclick="requestPay()">결제하기</button>
+	
   <button onclick="requestPay()">결제하기</button>
 ------------------------------------------------
 <script>

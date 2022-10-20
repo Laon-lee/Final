@@ -1,5 +1,7 @@
 package com.goodee.config;
 
+import java.util.Properties;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -11,10 +13,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.goodee.interceptor.TestInterceptor1;
 
 // Spring MVC프로젝트에 관련된 설정을 하는 클래스
 @Configuration
@@ -96,5 +103,42 @@ public class ServletAppContext implements WebMvcConfigurer{
 		
 		return sqlSessionFactoryBean.getObject();
 	}
-
+	   @Bean
+	   public JavaMailSenderImpl javaMailService(){
+	      JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+	      javaMailSender.setHost("smtp.naver.com");
+	      javaMailSender.setPort(587);
+	      javaMailSender.setProtocol("smtp");
+	      javaMailSender.setUsername("dkfcks0404@naver.com");
+	      javaMailSender.setPassword("dlfkdhs1!");
+	      Properties mailProperties = new Properties();
+	      mailProperties.put("mail.debug", "true");
+	      mailProperties.put("mail.smtp.auth", "true");
+	      mailProperties.put("mail.smtp.starttls.enable", "true");
+	      mailProperties.put("mail.smtp.debug", "true");
+	      mailProperties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+	      mailProperties.put("mail.transport.protocol", "smtp");
+	      
+	      javaMailSender.setJavaMailProperties(mailProperties);
+	      return javaMailSender;
+	   }
+	   @Override
+		public void addInterceptors(InterceptorRegistry registry) {
+			
+			// 없어도 동작하긴 하는데 가급적이면 현업에서는 넣어서 사용한다고 하심!
+			WebMvcConfigurer.super.addInterceptors(registry);
+			
+			// 인터셉터가 등록되는 로직이 실행
+			TestInterceptor1 inter1 = new TestInterceptor1();
+			
+			// 이 순서로 실행됨
+			InterceptorRegistration reg1 = registry.addInterceptor(inter1);
+			// 인터셉터를 어디에 걸지 타겟을 지정 - InterceptorRegistration.addPathPatterns("경로")
+			// 인터셉터를 경로를 통해 지정할 수 있으며 다른 옵션은 선택할 수 없다.
+			// addPathPatterns에 들어가는 경로는 사용자가 요청하는 요청 경로이다.
+			reg1.addPathPatterns("gomain");
+			// 인터셉터에 동일 경로를 바라보게 하고 다수의 인터셉터를 걸 경우 맨 위에 등록된 intercepter의 prehandle부터
+			// 실행된다.
+			// postHandle 과 afterCompletion은 등록했던 순서의 반대로 실행된다.
+		}
 }

@@ -259,8 +259,12 @@ option {
           <h4>Total</h4>
           <p>(진돗) 개</p>
           <br>
-          <button id="btn2">BUY NOW</button><button id="btn3">ADD TO CART</button><br>
-          <button id="btn4">다른 구매 방법</button>
+          <form action="${pageContext.request.contextPath}/shop/pay">
+          <button id="btn2">BUY NOW</button>
+        </form>
+        <form action="${pageContext.request.contextPath}/shop/orderinfo">
+          <button id="btn3">ADD TO CART</button>
+        </form><br>
         </div>
       </div>
       
