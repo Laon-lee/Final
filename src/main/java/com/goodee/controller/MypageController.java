@@ -55,4 +55,6 @@ public class MypageController {
 	      }
 	      return "main/question";
 	   }
+	   
+	   
 }
