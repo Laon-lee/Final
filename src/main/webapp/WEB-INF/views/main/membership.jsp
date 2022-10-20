@@ -53,7 +53,7 @@ main {
 	border-top: 2px solid black;
 }
 
-.art2 {
+/* .art2 {
 	width: 70%;
 	margin: 0 auto;
 	height: 50px;
@@ -62,80 +62,101 @@ main {
 	text-align: center;
 	margin-bottom: 2rem;
 }
-
-#name, #id, #password, #password2, #email, #phone-num, #address {
+ */
+ 
+ .art2 {
 	display: flex;
+	justify-content: center;
 }
 
-input {
-	margin-bottom: 12px;
-	height: 1.5rem;
-	border: none;
-	border-radius: 5px;
+.art2>h2 {
+	display: flex;
+	background-color: black;
+	width: 70%;
+	justify-content: center;
+	color: white;
 }
+ 
+
 #cont{
 	width:30%;
 	margin:0 auto;
 }
 .art3 {
-	width: 100%;
-	margin: auto;
-	height: 100%;
-	
+	justify-content: center;
+    width: 70%;
+    display: flex;
+    margin: 0 auto;
 }
 
-label {
-	font-size: 1.2rem;
+#id_div, #pw_div, #pw2_div, #name_div, #birth_div, #email_div, 
+#phone_div, #gender_div, #addr_check1, #addr_check2{
+    display: flex;
+    margin-top : 20px;
 }
 
-.art3-btn {
-	height: 30px;
-	margin-left: 7px;
+
+#addr_check1 {
+	margin-bottom : 20px;
 }
 
-.art3>div>label {
-	width: 200px;;
+#mem_address {
+	margin-right : 5px;
 }
 
-.address{
-	width:80%;
+
+.art3 > label {
+	width : 20px;
 }
 
 .art5 {
-	width: 100%;
+	width: 60%;
 	height: 300px;
-	margin: 0 auto;
-	padding: 5px;
+	padding: 5px 10px;
 	overflow: scroll;
 	overflow-x: hidden;
 	background-color: white;
+	margin-top : 30px;
 	margin-bottom: 30px;
 }
 
-.art6 {
-	width: 30%;
-	margin: 0 auto;
-	text-align: center;
+#art6 {
+	padding-left : 3rem;
 	margin-bottom: 2rem;
 }
-
-#join-btn {
-	width: 80%;
-	height: 30px;
-}
-
-
 
 #mainA1 {
 	margin-left: 9rem;
 }
 
-#sample6_address {
-	width : 64%
+#usercheck {
+	width : 70%;
+	padding-left  :350px;
 }
-#sample6_extraAddress {
-	margin-left : 1.6rem;
-}
+
+button {
+ 	height : 30px;
+ }
+ 
+ input {
+ width : 25%;
+ height : 30px;
+ border-radius : 5px;
+ border : none;
+ }
+ 
+ .c_box {
+ 	margin-right : 10px;
+ 	width : 15px;
+	padding-bottom : 5px;
+ }
+ 
+ #join_button {
+ 	width : 40%;
+ 	border : none;
+ }
+ 
+
 
 </style>
 </head>
@@ -152,226 +173,483 @@ label {
     <article class="art2">
         <h2>회원 가입</h2>
     </article>
-    <div id="cont">
-
+    
     <article class="art3">
-      <div id="name"><label for="name">이름</label><input type="text" id="name" name="name"></div>
-      <div id="id"><label for="id">아이디</label><input type="text" id="id" name="id"><button class="art3-btn">중복확인</button></div>
-      <div id="password"><label for="password">비밀번호</label><input type="password" id="pw1" name="pw1"></div>
-      <div id="password2"><label for="password2">비밀번호 확인</label><input type="password" id="pw2" name="pw2"></div>
-      <div id="email"><label for="email">이메일</label><input type="email" id="email" name="email"><button class="art3-btn">인증하기</button></div>
-      <div id="phone-num"><label for="phone-num">휴대폰 번호</label><input type="text" id="phone-num" name="phone-num"></div>
-      <div id="address"><label for="address">주소</label><input type="text" id="sample6_postcode" placeholder="우편번호"><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="margin-left : 7px; height:28px; border:0.5px solid;"><br></div>
- 
-  <input type="text" id="sample6_address" placeholder="주소" ><br>
-<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-</article>
-<article class="art5">
-  <p>제1조(목적)
-    이 약관은 주식회사 트리니언이 운영하는 말론샵(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리?의무 및 책임사항을 규정함을 목적으로 합니다.
-    
-    ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다」
-    
-    제2조(정의)
-    ①“몰” 이란 주식회사 트리니언이 재화 또는 용역(이하 “재화등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터등 정보통신설비를 이용하여 재화등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
-    
-    ②“이용자”란 “몰”에 접속하여 이 약관에 따라 “몰”이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.
-    
-    ③ ‘회원’이라 함은 “몰”에 개인정보를 제공하여 회원등록을 한 자로서, “몰”의 정보를 지속적으로 제공받으며, “몰”이 제공하는 서비스를 계속적으로 이용할 수 있는 자를 말합니다.
-    
-    ④ ‘비회원’이라 함은 회원에 가입하지 않고 “몰”이 제공하는 서비스를 이용하는 자를 말합니다.
-    
-    제3조 (약관등의 명시와 설명 및 개정)
-    ① “몰”은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호?모사전송번호?전자우편주소, 사업자등록번호, 통신판매업신고번호, 개인정보관리책임자등을 이용자가 쉽게 알 수 있도록 말론샵 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.
-    
-    ② “몰은 이용자가 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회?배송책임?환불조건 등과 같은 중요한 내용을 이용자가 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공하여 이용자의 확인을 구하여야 합니다.
-    
-    ③ “몰”은 전자상거래등에서의소비자보호에관한법률, 약관의규제에관한법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진등에관한법률, 방문판매등에관한법률, 소비자보호법 등 관련법을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.
-    
-    ④ “몰”이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 몰의 초기화면에 그 적용일자 7일이전부터 적용일자 전일까지 공지합니다.
-    다만, 이용자에게 불리하게 약관내용을 변경하는 경우에는 최소한 30일 이상의 사전 유예기간을 두고 공지합니다. 이 경우 "몰“은 개정전 내용과 개정후 내용을 명확하게 비교하여 이용자가 알기 쉽도록 표시합니다.
-    
-    ⑤ “몰”이 약관을 개정할 경우에는 그 개정약관은 그 적용일자 이후에 체결되는 계약에만 적용되고 그 이전에 이미 체결된 계약에 대해서는 개정전의 약관조항이 그대로 적용됩니다. 다만 이미 계약을 체결한 이용자가 개정약관 조항의 적용을 받기를 원하는 뜻을 제3항에 의한 개정약관의 공지기간내에 ‘몰“에 송신하여 ”몰“의 동의를 받은 경우에는 개정약관 조항이 적용됩니다.
-    
-    ⑥ 이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 전자상거래등에서의소비자보호에관한법률, 약관의규제등에관한법률, 공정거래위원회가 정하는 전자상거래등에서의소비자보호지침 및 관계법령 또는 상관례에 따릅니다.
-    
-    제4조(서비스의 제공 및 변경)
-    ① “몰”은 다음과 같은 업무를 수행합니다.
-    1. 재화 또는 용역에 대한 정보 제공 및 구매계약의 체결
-    2. 구매계약이 체결된 재화 또는 용역의 배송
-    3. 기타 “몰”이 정하는 업무
-    
-    ②“몰”은 재화 또는 용역의 품절 또는 기술적 사양의 변경 등의 경우에는 장차 체결되는 계약에 의해 제공할 재화 또는 용역의 내용을 변경할 수 있습니다. 이 경우에는 변경된 재화 또는 용역의 내용 및 제공일자를 명시하여 현재의 재화 또는 용역의 내용을 게시한 곳에 즉시 공지합니다.
-    
-    ③“몰”이 제공하기로 이용자와 계약을 체결한 서비스의 내용을 재화등의 품절 또는 기술적 사양의 변경 등의 사유로 변경할 경우에는 그 사유를 이용자에게 통지 가능한 주소로 즉시 통지합니다.
-    
-    ④전항의 경우 “몰”은 이로 인하여 이용자가 입은 손해를 배상합니다. 다만, “몰”이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.
-    
-    제5조(서비스의 중단)
-    ① “몰”은 컴퓨터 등 정보통신설비의 보수점검?교체 및 고장, 통신의 두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다.
-    
-    ②“몰”은 제1항의 사유로 서비스의 제공이 일시적으로 중단됨으로 인하여 이용자 또는 제3자가 입은 손해에 대하여 배상합니다. 단, “몰”이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.
-    
-    ③사업종목의 전환, 사업의 포기, 업체간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 “몰”은 제8조에 정한 방법으로 이용자에게 통지하고 당초 “몰”에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, “몰”이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 적립금 등을 “몰”에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.
-    
-    제6조(회원가입)
-    ① 이용자는 “몰”이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 회원가입을 신청합니다.
-    
-    ② “몰”은 제1항과 같이 회원으로 가입할 것을 신청한 이용자 중 다음 각호에 해당하지 않는 한 회원으로 등록합니다.
-    1. 가입신청자가 이 약관 제7조제3항에 의하여 이전에 회원자격을 상실한 적이 있는 경우, 다만 제7조제3항에 의한 회원자격 상실후 3년이 경과한 자로서 “몰”의 회원재가입 승낙을 얻은 경우에는 예외로 한다.
-    2. 등록 내용에 허위, 기재누락, 오기가 있는 경우
-    3. 기타 회원으로 등록하는 것이 “몰”의 기술상 현저히 지장이 있다고 판단되는 경우
-    
-    ③ 회원가입계약의 성립시기는 “몰”의 승낙이 회원에게 도달한 시점으로 합니다.
-    
-    ④ 회원은 제15조제1항에 의한 등록사항에 변경이 있는 경우, 즉시 전자우편 기타 방법으로 “몰”에 대하여 그 변경사항을 알려야 합니다.
-    
-    제7조(회원 탈퇴 및 자격 상실 등)
-    ① 회원은 “몰”에 언제든지 탈퇴를 요청할 수 있으며 “몰”은 즉시 회원탈퇴를 처리합니다.
-    
-    ② 회원이 다음 각호의 사유에 해당하는 경우, “몰”은 회원자격을 제한 및 정지시킬 수 있습니다.
-    1. 가입 신청시에 허위 내용을 등록한 경우
-    2. “몰”을 이용하여 구입한 재화등의 대금, 기타 “몰”이용에 관련하여 회원이 부담하는 채무를 기일에 지급하지 않는 경우
-    3. 다른 사람의 “몰” 이용을 방해하거나 그 정보를 도용하는 등 전자상거래 질서를 위협하는 경우
-    4. “몰”을 이용하여 법령 또는 이 약관이 금지하거나 공서양속에 반하는 행위를 하는 경우
-    
-    ③ “몰”이 회원 자격을 제한?정지 시킨후, 동일한 행위가 2회이상 반복되거나 30일이내에 그 사유가 시정되지 아니하는 경우 “몰”은 회원자격을 상실시킬 수 있습니다.
-    
-    ④ “몰”이 회원자격을 상실시키는 경우에는 회원등록을 말소합니다. 이 경우 회원에게 이를 통지하고, 회원등록 말소전에 최소한 30일 이상의 기간을 정하여 소명할 기회를 부여합니다.
-    
-    제8조(회원에 대한 통지)
-    ① “몰”이 회원에 대한 통지를 하는 경우, 회원이 “몰”과 미리 약정하여 지정한 전자우편 주소로 할 수 있습니다.
-    
-    ② “몰”은 불특정다수 회원에 대한 통지의 경우 1주일이상 “몰” 게시판에 게시함으로서 개별 통지에 갈음할 수 있습니다. 다만, 회원 본인의 거래와 관련하여 중대한 영향을 미치는 사항에 대하여는 개별통지를 합니다.
-    
-    제9조(구매신청)
-    “몰”이용자는 “몰”상에서 다음 또는 이와 유사한 방법에 의하여 구매를 신청하며, “몰”은 이용자가 구매신청을 함에 있어서 다음의 각 내용을 알기 쉽게 제공하여야 합니다. 단, 회원인 경우 제2호 내지 제4호의 적용을 제외할 수 있습니다.
-    1. 재화등의 검색 및 선택
-    2. 성명, 주소, 전화번호, 전자우편주소(또는 이동전화번호) 등의 입력
-    3. 약관내용, 청약철회권이 제한되는 서비스, 배송료?설치비 등의 비용부담과 관련한 내용에 대한 확인
-    4. 이 약관에 동의하고 위 3.호의 사항을 확인하거나 거부하는 표시(예, 마우스 클릭)
-    5. 재화등의 구매신청 및 이에 관한 확인 또는 “몰”의 확인에 대한 동의
-    6. 결제방법의 선택
-    
-    제10조 (계약의 성립)
-    ① “몰”은 제9조와 같은 구매신청에 대하여 다음 각호에 해당하면 승낙하지 않을 수 있습니다. 다만, 미성년자와 계약을 체결하는 경우에는 법정대리인의 동의를 얻지 못하면 미성년자 본인 또는 법정대리인이 계약을 취소할 수 있다는 내용을 고지하여야 합니다.
-    1. 신청 내용에 허위, 기재누락, 오기가 있는 경우
-    2. 미성년자가 담배, 주류등 청소년보호법에서 금지하는 재화 및 용역을 구매하는 경우
-    3. 기타 구매신청에 승낙하는 것이 “몰” 기술상 현저히 지장이 있다고 판단하는 경우
-    
-    ② “몰”의 승낙이 제12조제1항의 수신확인통지형태로 이용자에게 도달한 시점에 계약이 성립한 것으로 봅니다.
-    
-    ③ “몰”의 승낙의 의사표시에는 이용자의 구매 신청에 대한 확인 및 판매가능 여부, 구매신청의 정정 취소등에 관한 정보등을 포함하여야 합니다.
-    
-    제11조(지급방법)
-    “몰”에서 구매한 재화 또는 용역에 대한 대금지급방법은 다음 각호의 방법중 가용한 방법으로 할 수 있습니다. 단, “몰”은 이용자의 지급방법에 대하여 재화 등의 대금에 어떠한 명목의 수수료도 추가하여 징수할 수 없습니다.
-    1. 폰뱅킹, 인터넷뱅킹, 메일 뱅킹 등의 각종 계좌이체
-    2. 선불카드, 직불카드, 신용카드 등의 각종 카드 결제
-    3. 온라인무통장입금
-    4. 전자화폐에 의한 결제
-    5. 수령시 대금지급
-    6. 마일리지 등 “몰”이 지급한 포인트에 의한 결제
-    7. “몰”과 계약을 맺었거나 “몰”이 인정한 상품권에 의한 결제
-    8. 기타 전자적 지급 방법에 의한 대금 지급 등
-    
-    제12조(수신확인통지?구매신청 변경 및 취소)
-    ① “몰”은 이용자의 구매신청이 있는 경우 이용자에게 수신확인통지를 합니다.
-    
-    ② 수신확인통지를 받은 이용자는 의사표시의 불일치등이 있는 경우에는 수신확인통지를 받은 후 즉시 구매신청 변경 및 취소를 요청할 수 있고 “몰”은 배송전에 이용자의 요청이 있는 경우에는 지체없이 그 요청에 따라 처리하여야 합니다. 다만 이미 대금을 지불한 경우에는 제15조의 청약철회 등에 관한 규정에 따릅니다.
-    
-    제13조(재화등의 공급)
-    ① “몰”은 이용자와 재화등의 공급시기에 관하여 별도의 약정이 없는 이상, 이용자가 청약을 한 날부터 7일 이내에 재화 등을 배송할 수 있도록 주문제작, 포장 등 기타의 필요한 조치를 취합니다. 다만, “몰”이 이미 재화 등의 대금의 전부 또는 일부를 받은 경우에는 대금의 전부 또는 일부를 받은 날부터 2영업일 이내에 조치를 취합니다. 이때 “몰”은 이용자가 재화등의 공급 절차 및 진행 사항을 확인할 수 있도록 적절한 조치를 합니다.
-    
-    ②“몰”은 이용자가 구매한 재화에 대해 배송수단, 수단별 배송비용 부담자, 수단별 배송기간 등을 명시합니다. 만약 “몰”이 약정 배송기간을 초과한 경우에는 그로 인한 이용자의 손해를 배상하여야 합니다. 다만 “몰”이 고의?과실이 없음을 입증한 경우에는 그러하지 아니합니다.
-    제14조(환급)
-    “몰”은 이용자가 구매신청한 재화등이 품절 등의 사유로 인도 또는 제공을 할 수 없을 때에는 지체없이 그 사유를 이용자에게 통지하고 사전에 재화 등의 대금을 받은 경우에는 대금을 받은 날부터 2영업일 이내에 환급하거나 환급에 필요한 조치를 취합니다.
-    
-    제15조(청약철회 등)
-    ①“몰”과 재화등의 구매에 관한 계약을 체결한 이용자는 수신확인의 통지를 받은 날부터 7일 이내에는 청약의 철회를 할 수 있습니다.
-    
-    ② 이용자는 재화등을 배송받은 경우 다음 각호의 1에 해당하는 경우에는 반품 및 교환을 할 수 없습니다.
-    1. 이용자에게 책임 있는 사유로 재화 등이 멸실 또는 훼손된 경우(다만, 재화 등의 내용을 확인하기 위하여 포장 등을 훼손한 경우에는 청약철회를 할 수 있습니다)
-    2. 이용자의 사용 또는 일부 소비에 의하여 재화 등의 가치가 현저히 감소한 경우
-    3. 시간의 경과에 의하여 재판매가 곤란할 정도로 재화등의 가치가 현저히 감소한 경우
-    4. 같은 성능을 지닌 재화등으로 복제가 가능한 경우 그 원본인 재화 등의 포장을 훼손한 경우
-    
-    ③ 제2항제2호 내지 제4호의 경우에 “몰”이 사전에 청약철회 등이 제한되는 사실을 소비자가 쉽게 알 수 있는 곳에 명기하거나 시용상품을 제공하는 등의 조치를 하지 않았다면 이용자의 청약철회등이 제한되지 않습니다.
-    
-    ④ 이용자는 제1항 및 제2항의 규정에 불구하고 재화등의 내용이 표시·광고 내용과 다르거나 계약내용과 다르게 이행된 때에는 당해 재화등을 공급받은 날부터 3월이내, 그 사실을 안 날 또는 알 수 있었던 날부터 30일 이내에 청약철회 등을 할 수 있습니다.
-    
-    제16조(청약철회 등의 효과)
-    ① “몰”은 이용자로부터 재화 등을 반환받은 경우 3영업일 이내에 이미 지급받은 재화등의 대금을 환급합니다. 이 경우 “몰”이 이용자에게 재화등의 환급을 지연한 때에는 그 지연기간에 대하여 공정거래위원회가 정하여 고시하는 지연이자율을 곱하여 산정한 지연이자를 지급합니다.
-    
-    ② “몰”은 위 대금을 환급함에 있어서 이용자가 신용카드 또는 전자화폐 등의 결제수단으로 재화등의 대금을 지급한 때에는 지체없이 당해 결제수단을 제공한 사업자로 하여금 재화등의 대금의 청구를 정지 또는 취소하도록 요청합니다.
-    
-    ③ 청약철회등의 경우 공급받은 재화등의 반환에 필요한 비용은 이용자가 부담합니다. “몰”은 이용자에게 청약철회등을 이유로 위약금 또는 손해배상을 청구하지 않습니다. 다만 재화등의 내용이 표시·광고 내용과 다르거나 계약내용과 다르게 이행되어 청약철회등을 하는 경우 재화등의 반환에 필요한 비용은 “몰”이 부담합니다.
-    
-    ④ 이용자가 재화등을 제공받을때 발송비를 부담한 경우에 “몰”은 청약철회시 그 비용을 누가 부담하는지를 이용자가 알기 쉽도록 명확하게 표시합니다.
-    
-   
-</article>
-<div class="art6">
-  <button id="join-btn">가입하기</button>
-  </div>
+					<form action="memberjoinpro.do" method="post" id="usercheck" name="member">
+							
+							<div class="form-group">
+								<div id="id_div">
+									<label for="id" style="width : 110px;">아이디</label> <input type="text" class="form-control" id="mem_id" name="mem_id" placeholder=" ID">
+									<div class="eheck_font" id="id_check"></div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="eheck_font" id="pw_div">
+									<label for="pw" style="width : 110px;">비밀번호</label> <input type="password" class="form-control" id="mem_pw" name="mem_pw" placeholder=" PASSWORD">
+									<div class="eheck_font" id="pw_check"></div>
+								</div>
+							</div>
+						
+							<div class="form-group">
+								<dIv CLASS="EHECK_FONT" ID="pw2_div">
+									<label for="pw2" style="width : 110px;">비밀번호 확인</label> <input type="password" class="form-control" id="mem_pw2" name="mem_pw2" placeholder=" Confirm Password">
+									<div class="eheck_font" id="pw2_check"></div>
+								</div>
+							</div>
+						
+							<div class="form-group">
+								<div class="eheck_font" id="name_div">
+									<label for="mem_name" style="width : 110px;">이름</label> <input type="text"
+									class="form-control" id="mem_name" name="mem_name"
+									placeholder=" Name">
+									<div class="eheck_font" id="name_check"></div>
+							</div>
+							</div>
 
-</div>
-   </main>
+							<div class="eheck_font" id="birth_div">
+							<label for="mem_birth" style="width : 110px;">생년월일</label> <input type="tel"
+								class="form-control" id="mem_birth" name="mem_birth"
+								placeholder=" ex) 19990101"> 
+								 <div class="eheck_font" id="birth_check"></div>
+							</div>
+						
+
+							<div class="form-group">
+								<div class="eheck_font" id="email_div">
+									<label for="mem_email" style="width : 110px;">이메일 주소</label> <input type="email"
+									class="form-control" id="mem_email" name="mem_email"
+									placeholder=" E-mail">
+									 <div class="eheck_font" id="email_check"></div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+							<div class="eheck_font" id="phone_div">
+							<label for="mem_phone" style="width : 110px;">휴대폰 번호</label> <input
+								type="tel" class="form-control" id="mem_phone" name="mem_phone"
+								placeholder=" '-' 없이 입력하세요">
+								<div class="eheck_font" id="phone_check"></div>
+							</div>
+							</div>
+
+							<div class="form-group">
+							<div id="gender_div">
+							<label for="mem_gender" style="width : 110px;">성별 </label> <input type="checkbox"
+								id="mem_gender" name="mem_gender" value="남" class="c_box">남 <input
+								type="checkbox" id="mem_gender" name="mem_gender" value="여" class="c_box">여
+							</div>
+							</div>
+
+							<div id ="addr_check1">
+							<input class="form-control"
+								placeholder="우편번호" name="mem_oaddress" id="mem_address"
+								type="text" readonly="readonly">
+							<button type="button" class="btn btn-default"
+								onclick="execPostCode();">
+								<i class="fa fa-search"></i> 우편번호 찾기
+							</button>
+							</div>
+
+							
+							<input class="form-control"
+								placeholder="도로명 주소" name="mem_address" id="mem_address"
+								type="text" readonly="readonly" />
+							
+
+						
+							<input class="form-control" placeholder="상세주소"
+								name="mem_detailaddress" id="mem_detailaddress" type="text" />
+								
+									<div class="art5">
+					<p>
+						제1조(목적) 이 약관은 주식회사 트리니언이 운영하는 말론샵(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
+						서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리?의무 및 책임사항을 규정함을 목적으로
+						합니다. <br /> <br /> ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한
+						이 약관을 준용합니다」<br /> <br /> 제2조(정의)<br /> ①“몰” 이란 주식회사 트리니언이 재화
+						또는 용역(이하 “재화등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터등 정보통신설비를 이용하여 재화등을 거래할 수
+						있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.<br /> <br />
+						②“이용자”란 “몰”에 접속하여 이 약관에 따라 “몰”이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.<br />
+						<br /> ③ ‘회원’이라 함은 “몰”에 개인정보를 제공하여 회원등록을 한 자로서, “몰”의 정보를 지속적으로
+						제공받으며, “몰”이 제공하는 서비스를 계속적으로 이용할 수 있는 자를 말합니다.<br /> <br />
+						④‘비회원’이라 함은 회원에 가입하지 않고 “몰”이 제공하는 서비스를 이용하는 자를 말합니다.<br /> <br />
+						제3조 (약관등의 명시와 설명 및 개정)<br /> ① “몰”은 이 약관의 내용과 상호 및 대표자 성명, 영업소
+						소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호?모사전송번호?전자우편주소, 사업자등록번호,
+						통신판매업신고번호, 개인정보관리책임자등을 이용자가 쉽게 알 수 있도록 말론샵 초기 서비스화면(전면)에 게시합니다.
+						다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.<br /> <br /> ② “몰은
+						이용자가 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회?배송책임?환불조건 등과 같은 중요한 내용을
+						이용자가 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공하여 이용자의 확인을 구하여야 합니다.<br />
+						<br /> ③ “몰”은 전자상거래등에서의소비자보호에관한법률, 약관의규제에관한법률, 전자거래기본법, 전자서명법,
+						정보통신망이용촉진등에관한법률, 방문판매등에관한법률, 소비자보호법 등 관련법을 위배하지 않는 범위에서 이 약관을 개정할
+						수 있습니다.<br /> <br /> ④ “몰”이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과
+						함께 몰의 초기화면에 그 적용일자 7일이전부터 적용일자 전일까지 공지합니다.<br /> 다만, 이용자에게 불리하게
+						약관내용을 변경하는 경우에는 최소한 30일 이상의 사전 유예기간을 두고 공지합니다. 이 경우 "몰“은 개정전 내용과
+						개정후 내용을 명확하게 비교하여 이용자가 알기 쉽도록 표시합니다.<br /> <br /> ⑤ “몰”이 약관을 개정할
+						경우에는 그 개정약관은 그 적용일자 이후에 체결되는 계약에만 적용되고 그 이전에 이미 체결된 계약에 대해서는 개정전의
+						약관조항이 그대로 적용됩니다. 다만 이미 계약을 체결한 이용자가 개정약관 조항의 적용을 받기를 원하는 뜻을 제3항에
+						의한 개정약관의 공지기간내에 ‘몰“에 송신하여 ”몰“의 동의를 받은 경우에는 개정약관 조항이 적용됩니다.<br />
+						<br /> ⑥ 이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 전자상거래등에서의소비자보호에관한법률,
+						약관의규제등에관한법률, 공정거래위원회가 정하는 전자상거래등에서의소비자보호지침 및 관계법령 또는 상관례에 따릅니다.<br />
+						</p>
+				</div>
+								
+							
+							<article id="art6">
+								<button type="submit" class="btn btn-primary" id="join_button">회원가입</button>
+					
+							</article>
+							
+						
+							
+							</form>
+						</article>
+    
+    
+    
+       </main>
     <footer>
       <%@ include file="../frame/main/footer.jsp" %>
     </footer>
   </div>
   
- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>`
-<script>
- function sample6_execDaumPostcode() {
- new daum.Postcode({
-     oncomplete: function(data) {
-         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-         // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-         // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-         var addr = ''; // 주소 변수
-         var extraAddr = ''; // 참고항목 변수
 
-         //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-         if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-             addr = data.roadAddress;
-         } else { // 사용자가 지번 주소를 선택했을 경우(J)
-             addr = data.jibunAddress;
-         }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">
 
-         // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-         if(data.userSelectedType === 'R'){
-             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-             if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                 extraAddr += data.bname;
-             }
-             // 건물명이 있고, 공동주택일 경우 추가한다.
-             if(data.buildingName !== '' && data.apartment === 'Y'){
-                 extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-             }
-             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-             if(extraAddr !== ''){
-                 extraAddr = ' (' + extraAddr + ')';
-             }
-             // 조합된 참고항목을 해당 필드에 넣는다.
-             document.getElementById("sample6_extraAddress").value = extraAddr;
-         
+//모든 공백 체크 정규식
+var empJ = /\s/g;
+//아이디 정규식
+var idJ = /^[a-z0-9][a-z0-9_\-]{4,19}$/;
+// 비밀번호 정규식
+var pwJ = /^[A-Za-z0-9]{4,12}$/;
+// 이름 정규식
+var nameJ = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+// 이메일 검사 정규식
+var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+// 휴대폰 번호 정규식
+var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+
+/^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/
+
+
+var birthJ = false;
+
+
+
+$(document).ready(function() {
+   var address = $('#mem_detailaddress');
+
+   //아이디 중복확인
+      $("#mem_id").blur(function() {
+    	  console.log($('#mem_id').val())
+          if($('#mem_id').val()==''){
+             $('#id_check').text('아이디를 입력하세요.');
+             
+             $('#id_check').css('color', 'red');                     
+      		
+      		console.log("문제1")
+      		
+             } else if(idJ.test($('#mem_id').val())!=true){
+            	 //정규표현식 패턴 문자열과 일치여부
+                $('#id_check').text('4~12자의 영문, 숫자만 사용 가능합니다.');
+                $('#id_check').css('color', 'red');
+             } else if($('#mem_id').val()!=''){
+                
+               var mem_id=$('#mem_id').val();
+                 $.ajax({
+                     async : true,
+                        type : 'POST',
+                      data : mem_id,//mem_id라는 이름으로 mem_id라는 데이터를 @WebServlet("/idsearch.do")에 보내겠다
+                      url : 'idcheck.do',
+                        dateType: 'json',
+                        contentType: "application/json; charset=UTF-8",
+                        success : function(data) {
+
+             				if(data.cnt > 0){
+                				$('#id_check').text('중복된 아이디 입니다.');
+                      			$('#id_check').css('color', 'red');
+                      			$("#usercheck").attr("disabled", true);
+             				}else{
+                				if(idJ.test(mem_id)){
+                   					$('#id_check').text('사용가능한 아이디 입니다.');
+                   					$('#id_check').css('color', 'blue');
+                   					$("#usercheck").attr("disabled", false);
+                				}else if(mem_id==''){
+                					$('#id_check').text('아이디를 입력해주세요.');
+                      				$('#id_check').css('color', 'red');
+                      				$("#usercheck").attr("disabled", true);
+               					}else{
+                   					$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다.");
+                   					$('#id_check').css('color', 'red');
+                   					$("#usercheck").attr("disabled", true);
+                				}
+             				}
+						}
+					});//ajax/// 
+             }//else if
+    });//blur
+    $('#mem_pw').blur(function() {
+        if (pwJ.test($('#mem_pw').val())) {
+           console.log('true');
+           $('#pw_check').text('');
+        } else {
+           console.log('false');
+           $('#pw_check').text('4~12자의 숫자 , 문자로만 사용 가능합니다.');
+           $('#pw_check').css('color', 'red');
+        }
+     });
+     $('form').on('submit',function(){
+         var inval_Arr = new Array(8).fill(false);
+         if (idJ.test($('#mem_id').val())) {
+            inval_Arr[0] = true;   
          } else {
-             document.getElementById("sample6_extraAddress").value = '';
+            inval_Arr[0] = false;
+            alert('아이디를  확인하세요.');
+            return false;
          }
+         // 비밀번호가 같은 경우 && 비밀번호 정규식
+         if (($('#mem_pw').val() == ($('#mem_pw2').val()))
+               && pwJ.test($('#mem_pw').val())) {
+            inval_Arr[1] = true;
+         } else {
+            inval_Arr[1] = false;
+            alert('비밀번호를 확인하세요.');
+            return false;
+         }
+         // 이름 정규식
+         if (nameJ.test($('#mem_name').val())) {
+            inval_Arr[2] = true;   
+         } else {
+            inval_Arr[2] = false;
+            alert('이름을 확인하세요.');
+            return false;
+         }
+         // 생년월일 정규식
+          if (birthJ) {
+            console.log(birthJ);
+            inval_Arr[3] = true; 
+         } else {
+            inval_Arr[3] = false;
+            alert('생년월일을 확인하세요.');
+            return false;
+         } 
+         // 이메일 정규식
+         if (mailJ.test($('#mem_email').val())){
+            console.log(phoneJ.test($('#mem_email').val()));
+            inval_Arr[4] = true;
+         } else {
+            inval_Arr[4] = false;
+            alert('이메일을 확인하세요.');
+            return false;
+         }
+         // 휴대폰번호 정규식
+         if (phoneJ.test($('#mem_phone').val())) {
+            console.log(phoneJ.test($('#mem_phone').val()));
+            inval_Arr[5] = true;
+         } else {
+            inval_Arr[5] = false;
+            alert('휴대폰 번호를 확인하세요.');
+            return false;
+         }
+         //성별 확인
+          if(member.mem_gender[0].checked==false&&member.mem_gender[1].checked==false){
+                 inval_Arr[6] = false;
+               alert('성별을 확인하세요.');
+               return false;
+             
+         } else{
+            inval_Arr[6] = true;
+         } 
+   
+         //주소확인
+         if(address.val() == ''){
+            inval_Arr[7] = false;
+            alert('주소를 확인하세요.');
+            return false;
+         }else
+            inval_Arr[7] = true;
+      
+         //전체 유효성 검사
+         var validAll = true;
+         for(var i = 0; i < inval_Arr.length; i++){
+            if(inval_Arr[i] == false){
+               validAll = false;
+            }
+         }
+         if(validAll == true){ // 유효성 모두 통과
+            alert('NANALAND 가족이 되어주셔 감사합니다.');      
+         } else{
+            alert('정보를 다시 확인하세요.')
+         }
+       });
 
-         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-         document.getElementById('sample6_postcode').value = data.zonecode;
-         document.getElementById("sample6_address").value = addr;
-         // 커서를 상세주소 필드로 이동한다.
-         document.getElementById("sample6_detailAddress").focus();
-     }
- }).open();
-}
-</script>
+
+  /*  $('#mem_id').blur(function() {
+      if (idJ.test($('#mem_id').val())) {
+         console.log('true');
+         $('#id_check').text('');
+      } else {
+        // console.log('false');
+         $('#id_check').text('5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.');
+         $('#id_check').css('color', 'red');
+      }
+   }); */
+   
+
+   //1~2 패스워드 일치 확인
+   $('#mem_pw2').blur(function() {
+      if ($('#mem_pw').val() != $(this).val()) {
+         $('#pw2_check').text('비밀번호가 일치하지 않습니다.');
+         $('#pw2_check').css('color', 'red');
+      } else {
+         $('#pw2_check').text('');
+      }
+   });
+
+   //이름에 특수문자 들어가지 않도록 설정
+   $("#mem_name").blur(function() {
+      if (nameJ.test($(this).val())) {
+         console.log(nameJ.test($(this).val()));
+         $("#name_check").text('');
+      } else {
+         $('#name_check').text('한글 2~4자 이내로 입력하세요. (특수기호, 공백 사용 불가)');
+         $('#name_check').css('color', 'red');
+      }
+   });
+   $("#mem_email").blur(function() {
+      if (mailJ.test($(this).val())) {
+         $("#email_check").text('');
+      } else {
+         $('#email_check').text('이메일 양식을 확인해주세요.');
+         $('#email_check').css('color', 'red');
+      }
+   });
+   
+
+         // 생일 유효성 검사
+           var birthJ = false;
+           
+           // 생년월일   birthJ 유효성 검사
+           $('#mem_birth').blur(function(){
+              var dateStr = $(this).val();      
+               var year = Number(dateStr.substr(0,4)); // 입력한 값의 0~4자리까지 (연)
+               var month = Number(dateStr.substr(4,2)); // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
+               var day = Number(dateStr.substr(6,2)); // 입력한 값 6번째 자리부터 2자리 숫자 (일)
+               var today = new Date(); // 날짜 변수 선언
+               var yearNow = today.getFullYear(); // 올해 연도 가져옴
+              
+               if (dateStr.length <=8) {
+                 // 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
+                  if (year > yearNow || year < 1900 ){
+                     
+                     $('#birth_check').text('생년월일을 확인해주세요');
+                    $('#birth_check').css('color', 'red');
+                  }  
+                  else if (month < 1 || month > 12) {
+                        
+                     $('#birth_check').text('생년월일을 확인해주세요 ');
+                    $('#birth_check').css('color', 'red'); 
+                  
+                  }else if (day < 1 || day > 31) {
+                     
+                     $('#birth_check').text('생년월일을 확인해주세요 ');
+                    $('#birth_check').css('color', 'red'); 
+                     
+                  }else if ((month==4 || month==6 || month==9 || month==11) && day==31) { 
+                     $('#birth_check').text('생년월일을 확인해주세요 ');
+                    $('#birth_check').css('color', 'red'); 
+                  }else if (month == 2) {
+                        var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+                        
+                      if (day>29 || (day==29 && !isleap)) {
+                         
+                         $('#birth_check').text('생년월일을 확인해주세요 ');
+                       $('#birth_check').css('color', 'red'); 
+                     
+                    }else{
+                       $('#birth_check').text('');
+                       birthJ = true;
+                    }
+                  }else{
+                     $('#birth_check').text(''); 
+                    birthJ = true;
+                 }//end of if
+                 }else{
+                    //1.입력된 생년월일이 8자 초과할때 :  auth:false
+                    $('#birth_check').text('생년월일을 확인해주세요 ');
+                    $('#birth_check').css('color', 'red');  
+                 }
+              }); //End of method /*
+ 
+              // 휴대전화
+              $('#mem_phone').blur(function(){
+                 if(phoneJ.test($(this).val())){
+                    console.log(nameJ.test($(this).val()));
+                    $("#phone_check").text('');
+                 } else {
+                    $('#phone_check').text('휴대폰번호를 확인해주세요 ');
+                    $('#phone_check').css('color', 'red');
+                 }
+              });
+});
+
+//우편번호 찾기 버튼 클릭시 발생 이벤트
+function execPostCode() {
+     new daum.Postcode({
+         oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+            var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                extraRoadAddr += data.bname;
+            }
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if(data.buildingName !== '' && data.apartment === 'Y'){
+               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if(extraRoadAddr !== ''){
+                extraRoadAddr = ' (' + extraRoadAddr + ')';
+            }
+            // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+            if(fullRoadAddr !== ''){
+                fullRoadAddr += extraRoadAddr;
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            console.log(data.zonecode);
+            console.log(fullRoadAddr);
+         /*      var a = console.log(data.zonecode);
+            var b = console.log(fullRoadAddr);
+            
+            if(a == null || b = null){
+               alert("주소를 확인하세요.");
+               return false;
+            }   */
+            
+            
+            $("[name=mem_oaddress]").val(data.zonecode);
+            $("[name=mem_address]").val(fullRoadAddr);
+            
+            document.getElementById('mem_oaddress').value = data.zonecode; //5자리 새우편번호 사용
+            document.getElementById('mem_address').value = fullRoadAddr;
+
+            //document.getElementById('mem_detailaddress').value = data.jibunAddress; 
+        }
+     }).open();
+ }
+
+</script> 
+
   
   </body>
 </html>

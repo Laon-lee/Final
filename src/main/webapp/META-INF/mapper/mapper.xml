@@ -16,6 +16,25 @@
 	<select id="getmemberinfo" resultType="userVO" parameterType="userVO">
 		select * from user where userid=#{userid}
 	</select>
+	
+		<insert id="member_join" parameterType="memberVO">
+		insert into member
+		values(
+		#{mem_id},
+		#{mem_pw},
+		#{mem_name},
+		#{mem_birth},
+		#{mem_email},
+		#{mem_phone},
+		#{mem_gender},
+		null,
+		#{mem_oaddress},
+		#{mem_address},
+		#{mem_detailaddress},
+		
+		)
+	</insert>
+	
 </mapper>
 
 
