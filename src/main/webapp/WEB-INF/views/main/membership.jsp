@@ -341,7 +341,10 @@ var birthJ = false;
 
 $(document).ready(function() {
    var address = $('#mem_detailaddress');
-
+  
+	  
+	         
+	     
    //아이디 중복확인
       $("#mem_id").blur(function() {
     	  console.log($('#mem_id').val())
@@ -357,7 +360,7 @@ $(document).ready(function() {
                 $('#id_check').text('4~12자의 영문, 숫자만 사용 가능합니다.');
                 $('#id_check').css('color', 'red');
              } else if($('#mem_id').val()!=''){
-                
+            	 $('#id_check').text('');
                var mem_id=$('#mem_id').val();
                  $.ajax({
                      async : true,
@@ -487,16 +490,7 @@ $(document).ready(function() {
        });
 
 
-  /*  $('#mem_id').blur(function() {
-      if (idJ.test($('#mem_id').val())) {
-         console.log('true');
-         $('#id_check').text('');
-      } else {
-        // console.log('false');
-         $('#id_check').text('5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.');
-         $('#id_check').css('color', 'red');
-      }
-   }); */
+ 
    
 
    //1~2 패스워드 일치 확인

@@ -57,6 +57,9 @@ public class MypageController {
 	      }
 	      return "main/question";
 	   }
-	   
+	   @GetMapping("coupon")
+	   public String counpon() {
+		   return "main/coupon";
+	   }
 	   
 }
