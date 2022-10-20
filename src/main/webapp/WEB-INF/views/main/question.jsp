@@ -274,16 +274,19 @@
                        <br>
                        <h2>이메일 문의</h2><br>
                        <p style="margin-bottom: 5px;">문의 내용</p>
-                       <form action="">
+                       <form action="${pageContext.request.contextPath}/mailing">
                        <select name="sel" id="sel">
                         <option value="product">제품 문의</option>
                         <option value="recell">제품 환불 문의</option>
                         <option value="send">택배 문의</option>
                         <option value="another">그 외</option>
                        </select>
+                       
                        <input type="text" placeholder="* 주문 번호를 입력하세요">
-                       <input type="text" name="name" id="name" placeholder="* 이름">
-                       <input type="email" name="email" id="email" placeholder="* 이메일 주소">
+                       <input type="text" name="senderName" id="senderName" placeholder="* 이름">
+                       <input type="email" name="senderMail" id="senderMail" placeholder="* 이메일 주소">
+                       <input type="text" name="title" id="title" placeholder="* 문의 제목"><br>
+                       <textarea rows="15" cols="101" name="content" id="content"></textarea>
                        <p>※ 개인정보보호를 위해 내용 입력란에 개인정보가 포함되지 않도록 주의해주세요.</p>
                        <p>개인정보 수집 및 이용에 대한 동의 (필수)
                         회사는 본 웹사이트를 통한 상담 서비스 제공을 위하여 아래와 같은 개인정보를 수집하고 있습니다. <br><br>
@@ -299,9 +302,13 @@
                         
                         ※ 귀하는 상기와 같은 개인정보의 수집 및 이용에 대해 동의를 거부할 권리가 있습니다. <br>
                          다만, 동의를 거부하는 경우 온라인 상담 등의 이메일 문의 서비스를 제공받으실 수 없습니다.</p><br>
-                        <input type="checkbox" name="accept" id="accept"> <label for="accept">* 개인정보 수집 및 이용에 동의합니다</label><br>
-                        <button>확인</button>
-                      </form>
+                        <input type="checkbox" name="accept" id="accept" value="Y"> <label for="accept">* 개인정보 수집 및 이용에 동의합니다</label><br>
+                        
+                        <button id="sendbtn">확인</button>
+                        </form>
+                       
+                        
+                      
                     </article>
                 </section>
                 </div>

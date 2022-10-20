@@ -61,6 +61,9 @@
             </div>
             <div id="nav2-li-3rddiv">
               <h2>니가 좋아하는거다!</h2>
+              <a href="${pageContext.request.contextPath}/basket">
+              장바구니 바로가기
+              </a>
             </div>
           </li>
           <c:if test="${sessionScope.user != null}">
