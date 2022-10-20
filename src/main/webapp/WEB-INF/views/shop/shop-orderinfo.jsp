@@ -59,7 +59,7 @@
  
     main {
       width: 100%;
-      background-color: #f5ebe0;
+      background-color: #e3d5ca;
       grid-area:main;
     }
 
@@ -168,15 +168,15 @@
         <section id="sec1">
             
             <div class="category-menu">
-                <li><a href=""><img src="./image/shop/Home.png" alt=""><br>Home</a></li>
-                <li><a href=""><img src="./image/shop/Walk.png" alt=""><br>Walk</a></li>
-                <li><a href=""><img src="./image/shop/Carrier.png" alt=""><br>Carrier</a></li>
-                <li><a href=""><img src="./image/shop/Clothes.png" alt=""><br>Clothes</a></li>
-                <li><a href=""><img src="./image/shop/Dining.png" alt=""><br>Dining</a></li>
-                <li><a href=""><img src="./image/shop/Grooming.png" alt=""><br>Grooming</a></li>
-                <li><a href=""><img src="./image/shop/Toy.png" alt=""><br>Toy</a></li>
-                <li><a href=""><img src="./image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
-                <li><a href=""><img src="./image/shop/Food.png" alt=""><br>Food</a></li>
+                 <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Home.png" alt=""><br>Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Walk.png" alt=""><br>Walk</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Carrier.png" alt=""><br>Carrier</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Clothes.png" alt=""><br>Clothes</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Dining.png" alt=""><br>Dining</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Grooming.png" alt=""><br>Grooming</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Food.png" alt=""><br>Food</a></li>
             </div>
 
         </section>
@@ -217,7 +217,7 @@
                         <td>기본배송</td>
                         <td class="delivery"><span>3000</span>원</td>
                         <td class="price"><span>59000</span>원</td>
-                        <td><button>주문하기</button><br><button>관심상품등록</button><br><button>삭제</button></td>
+                        <td><form action="${pageContext.request.contextPath}/shop/pay"><button>주문하기</button></form><br><button>관심상품등록</button><br><button>삭제</button></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
@@ -229,7 +229,7 @@
                         <td>기본배송</td>
                         <td class="delivery"><span>3000</span>원</td>
                         <td class="price"><span>59000</span>원</td>
-                        <td><button>주문하기</button><br><button>관심상품등록</button><br><button>삭제</button></td>
+                        <td><form action="${pageContext.request.contextPath}/shop/pay"><button>주문하기</button></form><br><button>관심상품등록</button><br><button>삭제</button></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
@@ -241,7 +241,7 @@
                         <td>기본배송</td>
                         <td class="delivery"><span>3000</span>원</td>
                         <td class="price"><span>59000</span>원</td>
-                        <td><button>주문하기</button><br><button>관심상품등록</button><br><button>삭제</button></td>
+                        <td><form action="${pageContext.request.contextPath}/shop/pay"><button>주문하기</button></form><br><button>관심상품등록</button><br><button>삭제</button></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
@@ -253,7 +253,7 @@
                         <td>기본배송</td>
                         <td class="delivery"><span>3000</span>원</td>
                         <td class="price"><span>59000</span>원</td>
-                        <td><button>주문하기</button><br><button>관심상품등록</button><br><button>삭제</button></td>
+                        <td><form action="${pageContext.request.contextPath}/shop/pay"><button>주문하기</button></form><br><button>관심상품등록</button><br><button>삭제</button></td>
                     </tr>
                     
                     <tr>
