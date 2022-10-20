@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goodee.dao.ShopDAO">
+	<select id="selectCount">
+		select count(*) from shop;
+	</select>
+	<select id="getList" resultType="ShopVO" parameterType="String">
+		select category, name, content, price from shop where category = #{category}
+		limit 0, 12;
+	</select>
+</mapper>
+
+
+
