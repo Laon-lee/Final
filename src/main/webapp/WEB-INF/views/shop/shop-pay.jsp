@@ -414,28 +414,13 @@ label {
     </article>
     <article>
       <div id="art6">
-        <div id="info6">
-          <h3>결제수단 선택</h3>
-        </div>
-        <div id="pay-box">
-          <input type="radio" name="card" id="card"> 카드 결제
-          <input type="radio" name="card" id="cash"> 무통장 입금
-          <input type="radio" name="card" id="kakao"> 카카오페이(간편결제)
-        </div>
+        
+       
       </div>
     </article>
     <article>
       <div id="art7">
-        <div id="info7">   
-          <h3><input type="checkbox" class="last-check">모든약관 동의</h3>
-          <h3><input type="checkbox" class="last-check">[필수] 쇼핑몰 이용약관 동의</h3>
-          <h3><input type="checkbox" class="last-check">[필수] 비회원 구매시 개인정보 처리방침 동의</h3>
-        </div>
        <button id="last-btn" onclick="requestPay()">결제하기</button>
-	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-	
-  
-------------------------------------------------
 
       </div>
       
