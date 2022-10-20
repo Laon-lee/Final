@@ -9,6 +9,14 @@ public class ShopVO {
 	private String name;
 	private String content;
 	private int price;
+	private String img;
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getId() {
 		return id;
 	}

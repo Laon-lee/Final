@@ -7,8 +7,12 @@
 		select count(*) from shop;
 	</select>
 	<select id="getList" resultType="ShopVO" parameterType="String">
-		select category, name, content, price from shop where category = #{category}
+		select * from shop where category = #{category}
 		limit 0, 12;
+	</select>
+	
+	<select id="getContent" resultType="ShopVO" parameterType="int">
+		select * from shop where id = #{id}
 	</select>
 </mapper>
 

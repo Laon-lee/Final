@@ -9,4 +9,5 @@ import com.goodee.vo.ShopVO;
 @Mapper
 public interface ShopDAO {
 	public List<ShopVO> getList(String category);
+	public List<ShopVO> getContent(int id);
 }
