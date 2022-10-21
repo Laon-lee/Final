@@ -361,7 +361,7 @@ $(document).ready(function() {
 		var user_id = $('#mem_id').val();
 		$.ajax({
 			url : '${pageContext.request.contextPath}/user/idCheck?mem_id='+ mem_id,
-			type : 'post',
+			type : 'get',
 			success : function(data) {
 				console.log("1 = 중복o / 0 = 중복x : "+ data);							
 				
