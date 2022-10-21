@@ -149,6 +149,7 @@
         #coupon-container{
         	margin-top:15px;
         	padding-top:15px;
+        	padding-left: 25px;
         	border-top: 1px solid black;
         	display:grid;
         	grid-template-columns: 1fr 1fr 1fr 1fr;
