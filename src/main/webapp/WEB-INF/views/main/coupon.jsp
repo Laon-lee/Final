@@ -46,7 +46,7 @@
         #container {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             display: grid;
             grid-template-rows: 70px 1fr 70px;
             grid-template-columns: 1fr;
@@ -155,10 +155,32 @@
         	grid-template-rows: 1fr 1fr 1fr;
         	gap:10px;
         }
+        
+        
         .coupon{
         	background:url("${pageContext.request.contextPath}/image/main/쿠폰.png") no-repeat ;
         	background-size:contain;
-        	
+        	width : 220px;
+        	height : 130px;
+        }
+        
+        
+        <!-- 쿠폰 내부 글자 간격 수정 -->
+        .div1 {
+        	display : flex;
+        }
+        
+        
+        .coupon-1 {
+                display: flex;
+    flex-direction: column;
+    padding-left: 36px;
+    padding-top: 30px;
+        }
+        
+        
+        .coupon-p {
+        	padding-left : 45px;
         }
     </style>
 </head>
@@ -198,53 +220,53 @@
                       	<div id="coupon-container">
                       		<div class="div1">
                       			<div class="coupon">
-                     	 			<div> 
+                     	 			<div class="coupon-1"> 
                       					<h5>신규 가입 쿠폰</h5>
                       					<h1>10000원</h1>
                       					<p>5만원 이상 구매시</p>
                       				</div>
                       			</div>
-                      			<p>기간 : 제한 없음</p>
+                      			<p class="coupon-p">기간 : 제한 없음</p>
                       		</div>
                       		<div class="div1">
                       			<div class="coupon">
-                      				<div> 
+                      				<div class="coupon-1"> 
                       					<h5>신규 가입 쿠폰</h5>
                       					<h3>10000원</h3>
                       					<p>5만원 이상 구매시</p>
                       				</div>
                       			</div>
-                      			<p>기간 : 제한 없음</p>
+                      			<p class="coupon-p">기간 : 제한 없음</p>
                   	    	</div>
                    		   	<div class="div1">
                    		   		<div class="coupon">
-                  	    			<div> 
+                  	    			<div class="coupon-1"> 
                    		   				<h5>신규 가입 쿠폰</h5>
                    	   					<h3>10000원</h3>
                    	   					<p>5만원 이상 구매시</p>
                       				</div>
                       			</div>
-                     	 		<p>기간 : 제한 없음</p>
+                     	 		<p class="coupon-p">기간 : 제한 없음</p>
                       		</div>
                   	    	<div class="div1">
                    		   		<div class="coupon">
-                   	   				<div> 
+                   	   				<div class="coupon-1"> 
                       					<h5>신규 가입 쿠폰</h5>
                       					<h3>10000원</h3>
                       					<p>5만원 이상 구매시</p>
                       				</div>
                       			</div>
-              	        		<p>기간 : 제한 없음</p>
+              	        		<p class="coupon-p">기간 : 제한 없음</p>
                		       	</div>
                		       	<div class="div1">
                	    	   		<div class="coupon">
-                      				<div> 
+                      				<div class="coupon-1"> 
                       					<h5>신규 가입 쿠폰</h5>
                       					<h3>10000원</h3>
                       					<p>5만원 이상 구매시</p>
                       				</div>
                       			</div>
-                      			<p>기간 : 제한 없음</p>
+                      			<p class="coupon-p">기간 : 제한 없음</p>
                       		</div>
                       	</div>
                       
