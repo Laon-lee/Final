@@ -11,7 +11,7 @@
 		limit 0, 12;
 	</select>
 	
-	<select id="getContent" resultType="ShopVO" parameterType="int">
+	<select id="getContent" resultType="ShopVO">
 		select * from shop where id = #{id}
 	</select>
 </mapper>

@@ -87,7 +87,7 @@ nav {
 #main-pic {
     width: 49%;
     height: 450px;
-    background: url("${pageContext.request.contextPath}/image/shop/NewImg12.jpg") no-repeat center;
+    background: url("${content.img}") no-repeat center;
     background-size:contain;
 }
 
@@ -118,12 +118,13 @@ nav {
     margin-left: 20px;
 }
 #btn2, #btn3 {
-    width : 45%;
+    width : 70%;
     height: 30px;
-    margin-left: 10px;
+    margin-left: 20px;
     background-color: rgb(28, 25, 25);
     color : white;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 #btn4 {
@@ -158,7 +159,7 @@ option {
 #sub-pic1, #sub-pic2, #sub-pic3, #sub-pic4 {
   width: 50%;
   height: 450px;
-  background: url("imgs/main_pic.png");
+  background: url("${content.img}") no-repeat center;
   margin-top: 40px;
 }
 
@@ -225,11 +226,21 @@ option {
   margin-top: 10px;
   width: 24%;
 }
+.h3{
+  margin-top: 55px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+#btn2{
+  margin-top: 45px;
+  margin-bottom: 2px;
+}
 </style>
 
 
 </head>
 <body>
+
   <div id="container">
  
    <header>
@@ -244,11 +255,10 @@ option {
         </div>
 
         <div id="main-text">
-          <h4>뮤니쿤트 Easy Fit All In One</h4>
-          <p id="sub-text">이 제품은 1955년 영국에서 시작되어서 어쩌고 저쩌고</p>
-          <br>
-          <p>이 제품은 사실 중국산이다 멍청이들아</p>
-          <p>MADE IN KOREA</p>
+        <h3>${content.title}</h3>
+        <h4>${content.name}</h4>
+          <hr />
+          
           <br>
           <select id="shop-option">
             <option value="small">small-size</option>
@@ -257,10 +267,11 @@ option {
           </select>
           <button id="btn1">선택</button>
           <br>
-          <h4>Total</h4>
-          <p>(진돗) 개</p>
+          <h3 class="h3">Price</h3>
+          <p>${content.price}원</p>
+          <p>${content.id}</p>
           <br>
-          <form action="${pageContext.request.contextPath}/shop/pay">
+          <form action="${pageContext.request.contextPath}/shop/pay/${content.id}">
           <button id="btn2">BUY NOW</button>
         </form>
         <form action="${pageContext.request.contextPath}/shop/orderinfo">
@@ -272,17 +283,12 @@ option {
       <div id="sub-box">
         <div id="sub-pic1"></div>
         <div id="sub-text1">
-          <h4>프리미엄 구스 다운 베스트, 비스트, 야수</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti nemo accusantium recusandae omnis doloribus asperiores. Provident, perspiciatis qui. Ipsum provident vitae sed quaerat deserunt voluptas libero amet quia omnis placeat!</p>
+          <h4>${content.content}</h4>
         </div>
-        <div id="sub-pic2"></div>
-        <div id="sub-text2">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti nemo accusantium recusandae omnis doloribus asperiores. Provident, perspiciatis qui. Ipsum provident vitae sed quaerat deserunt voluptas libero amet quia omnis placeat!</p>
+       
+       
         </div>
-        <div id="sub-pic3"></div>
-        
-        <div id="sub-pic4"></div>
-      </div>
+      
         
       <div id="review">
         <h3>Re:Views</h3>

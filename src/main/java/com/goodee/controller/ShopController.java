@@ -19,20 +19,19 @@ public class ShopController {
 	}
 	@GetMapping("/shop/list/{category}")
 	public String ShopList(@PathVariable("category") String category,Model model) {
-		System.out.println("1");
 		spservice.getList(category,model);
-		System.out.println("2");
 		
 		return "/shop/shop-list";
 	}
 	//물품 상세 페이지 데이터 담을것
 	@GetMapping("/shop/main/buy/{id}")
-	public String ShopBuy(@PathVariable("id") int id) {
-		
-		return "shop/shop-main-buy1";
+	public String ShopBuy(@PathVariable("id") String id,Model model) {
+		spservice.getContent(id, model);
+		return "shop/shop-main-buy";
 	}
-	@GetMapping("/shop/pay")
-	public String ShopPay() {
+	@GetMapping("/shop/pay/{id}")
+	public String ShopPay(@PathVariable("id") String id,Model model) {
+		spservice.getContent(id, model);
 		return "shop/shop-pay";	
 	}
 	@GetMapping("/shop/orderinfo")

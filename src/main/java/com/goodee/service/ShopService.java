@@ -26,7 +26,7 @@ public class ShopService {
 		model.addAttribute("list", dao.getList(category)); 
 		
 	}
-	public void getContent(int id, Model model) {
+	public void getContent(String id, Model model) {
 		model.addAttribute("content", dao.getContent(id));
 	}
 }

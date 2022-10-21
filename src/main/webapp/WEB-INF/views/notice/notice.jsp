@@ -268,9 +268,11 @@
         margin-top: 20px;
       width: 100%;
       background-color: #f5ebe0;
-
+	overflow : scroll;
     }
-
+ ::-webkit-scrollbar {
+display: none;
+}
       footer {
       display: flex;
       flex-direction: row;
@@ -323,6 +325,7 @@
     text-align: center;
     
    }
+  
    .art3-container{
     width: 59.9%;
     margin: 0 auto;
@@ -330,6 +333,7 @@
     border: 1px solid black;
     height: 100px;
     align-items: center;
+    overflow: hidden;
    }
   .art3-container-span{
     display: inline-block;
@@ -469,12 +473,14 @@
     </article>
     <article class="art3">
         <a href="">
+        <c:forEach var="item" items="${list}">
       <div class="art3-container">
-        <div class="art3-first"><span class="art3-container-span">공지</span> <a href="${pageContext.request.contextPath}/noticedetail"> vo.title</a></div>
-        <div class="art3-second">vo.content Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quia mollitia omnis magnam, natus corrupti adipisci, corporis labore ratione veritatis dolore saepe placeat maxime eligendi. Eos aliquid maxime nisi quaerat!</div>
-        <div class="art3-third">vo.createdate</div>
+        <div class="art3-first"><span class="art3-container-span">공지</span> <a href="${pageContext.request.contextPath}/noticedetail/${item.id}"> ${item.title}</a></div>
+        <div class="art3-second">${item.content}</div>
+        <div class="art3-third">${item.createdate}</div>
       </div>
     </a>
+    </c:forEach>
     </article>
    </main>
     <footer>

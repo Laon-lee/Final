@@ -447,15 +447,14 @@
     <article class="art2">
         <h2>공지사항</h2>
     </article>
+    
     <article class="art3">
-        <h2>택배 지연 안내(vo.title을 이용한다.)</h2>
+        <h2>${contents.title}</h2>
     </article>
     <article class="art4">
-        <p>공지사항 id의 vo.content를 이용한다.</p>
-        <p>택배회사의 파업으로 인해 상품 배송이 늦어 지고 있습니다. 이점 죄송하게 생각하며
-            항상 최선을 다하는 Déng Nuri가 되겠습니다!!
-        </p>
+        <p>${contents.content}</p>
     </article>
+  
    </main>
     <footer>
       <ul id="footer-1stul">

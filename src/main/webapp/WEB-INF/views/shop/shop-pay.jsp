@@ -406,7 +406,7 @@ label {
             결제금액
           </h4>
           <h5 id="total-h5">
-            2억 7천만원
+            ${content.price}
           </h5>
         </div>
       </div>
@@ -459,8 +459,8 @@ function requestPay() {
     pg: "inicis",
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '결제테스트',
-    amount : 14000,
+    name : '${content.name}',
+    amount : ${content.price},
     buyer_email : 'iamport@siot.do',
     buyer_name : '구매자',
     buyer_tel : '010-1234-5678',

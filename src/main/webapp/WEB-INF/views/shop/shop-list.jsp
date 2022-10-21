@@ -141,6 +141,39 @@
       display: none;
     }
   }
+  
+  @media(max-width : 1024px){
+    .flex-container{
+    display: grid;
+    width: 100%;
+    height: 86vh;
+    
+    justify-content: center;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    margin-left: 5%;
+    margin-top: 5%;
+    gap : 3%;
+    z-index: -1;
+    
+   }
+  }
+  @media(max-width : 540px){
+    .flex-container{
+    display: grid;
+    width: 100%;
+    height: 86vh;
+    
+    justify-content: center;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    
+    margin-top: 5%;
+    gap : 3%;
+    z-index: -1;
+    
+   }
+  }
   </style>
 </head>
 
@@ -165,7 +198,7 @@
         </div>
         <div class="flex-container">
        <c:forEach var="item" items="${list}"> 
-    	<div><a href="${pageContext.request.contextPath}/shop/main/buy/${item.id}"><img src="${item.img}" alt=""><br>${item.name}<br><h3>${item.price}</h3></a></div>
+    	<div><a href="${pageContext.request.contextPath}/shop/main/buy/${item.id}"><img src="${item.img}" alt=""><br>${item.title}<br><h3>${item.price}</h3></a></div>
     	</c:forEach>
     	
     </div>
