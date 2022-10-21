@@ -364,15 +364,40 @@ $(document).ready(function() {
 			body : JSON.stringify(simple_data)
 	   	}).then(response => response.json())
 	   		.then(data=> {
-	   			if(data==1){
-	   				$("#idresult").text("중복된 아이디입니다.")
-	   				$("#idresult").css('color', 'red');
+	   			/* if(data==1){
+	   				$("#id_check").text("중복된 아이디입니다.")
+	   				$("#id_check").css('color', 'red');
 	   			}else{
-	   				$("#idresult").text("사용 가능 아이디입니다.")
-	   				$("#idresult").css('color', 'green');
+	   				$("#id_check").text("사용 가능 아이디입니다.")
+	   				$("#id_check").css('color', 'green');
 	   			
-	   			}
+	   			} */
 	   			
+	   			if(idJ.test(user_id)){
+	   				// 0 : 아이디 길이 / 문자열 검사
+	   				/* $("#id_check").text("");
+	   				$("#usercheck").attr("disabled", false); */
+	   				if(data==1){
+		   				$("#id_check").text("중복된 아이디입니다.")
+		   				$("#id_check").css('color', 'red');
+		   			}else{
+		   				$("#id_check").text("사용 가능 아이디입니다.")
+		   				$("#id_check").css('color', 'green');
+		   			
+		   			}
+
+	   			} else if(user_id == ""){
+	   				
+	   				$('#id_check').text('아이디를 입력해주세요 :)');
+	   				$('#id_check').css('color', 'red');
+	   				$("#usercheck").attr("disabled", true);				
+	   				
+	   			} else {
+	   				
+	   				$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :)");
+	   				$('#id_check').css('color', 'red');
+	   				$("#usercheck").attr("disabled", true);
+	   			} 
 	   		}).catch(error => {
 	   			console.log("error");
 	   		});
@@ -415,7 +440,7 @@ $(document).ready(function() {
 			
 		} else {
 			
-			$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+			$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :)");
 			$('#id_check').css('color', 'red');
 			$("#usercheck").attr("disabled", true);
 		}
