@@ -153,29 +153,21 @@
     	
     <main>
      <div class="category-menu">
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Home.png" alt=""><br>Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Dining.png" alt=""><br>Dining</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list"><img src="${pageContext.request.contextPath}/image/shop/Food.png" alt=""><br>Food</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/home"><img src="${pageContext.request.contextPath}/image/shop/Home.png" alt=""><br>Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/Walk"><img src="${pageContext.request.contextPath}/image/shop/Walk.png" alt=""><br>Walk</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/Carrier"><img src="${pageContext.request.contextPath}/image/shop/Carrier.png" alt=""><br>Carrier</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/Clothes"><img src="${pageContext.request.contextPath}/image/shop/Clothes.png" alt=""><br>Clothes</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/Dining"><img src="${pageContext.request.contextPath}/image/shop/Dining.png" alt=""><br>Dining</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/Grooming"><img src="${pageContext.request.contextPath}/image/shop/Grooming.png" alt=""><br>Grooming</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/toy"><img src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/Big dog"><img src="${pageContext.request.contextPath}/image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/Food"><img src="${pageContext.request.contextPath}/image/shop/Food.png" alt=""><br>Food</a></li>
         </div>
         <div class="flex-container">
-    	<div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-    	<div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
-        <div><a href="${pageContext.request.contextPath}/shop/orderinfo"><img src="${pageContext.request.contextPath}/image/shop/NewImg12.jpg" alt=""><br>상품명<br><h3>가격</h3></a></div>
+       <c:forEach var="item" items="${list}"> 
+    	<div><a href="${pageContext.request.contextPath}/shop/main/buy/${item.id}"><img src="${item.img}" alt=""><br>${item.name}<br><h3>${item.price}</h3></a></div>
+    	</c:forEach>
+    	
     </div>
     </main>
    

@@ -137,6 +137,7 @@
             margin: 40px;
             display: flex;
             flex-direction: row;
+            gap:10%;
             
         }
 
@@ -166,16 +167,16 @@
             background-color: black;
             color:white;
         }
-        #art2 {
+        #art3 {
             
             flex:5;
-            width:70vw;
+            width:50vw;
             display: flex;
             flex-direction: column;
             margin-left: 20px;
             gap: 4px;
         }
-        #art2 div{
+        #art3 div{
             width:85%;
         }
         #sec2-div2{
@@ -263,7 +264,7 @@
                         </ul>
                     </nav>
                     
-                    <article id="art2">
+                    <article id="art3">
                        <div>
                         <p>문의 사항이 있으신 경우 <br> 
                          
@@ -304,7 +305,7 @@
                          다만, 동의를 거부하는 경우 온라인 상담 등의 이메일 문의 서비스를 제공받으실 수 없습니다.</p><br>
                         <input type="checkbox" name="accept" id="accept" value="Y"> <label for="accept">* 개인정보 수집 및 이용에 동의합니다</label><br>
            				
-                        <button id="sendbtn">확인</button>
+                        <button id="sendbtn">전송</button>
                         </form>
                        
                         

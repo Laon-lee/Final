@@ -27,7 +27,7 @@ public class MainController {
 		if(!service.ismember1(vo)) {
 		service.membership2(vo);
 		session.setAttribute("user", vo);
-		return "main/main";
+		return "redirect:gomain";
 		}else {
 			return "main/membershipfail";
 		}
@@ -37,19 +37,23 @@ public class MainController {
 		if(service.ismember2(vo)) {
 			service.getmemberinfo(vo);
 			session.setAttribute("user",vo);
-			return "main/main";
+			return "redirect:gomain";
 		}else {
-			return "main/main";
+			return "redirect:gomain";
 		}
 	}
 	@GetMapping("logout")
 	public String loginout(HttpSession session) {
 		session.invalidate();
-		return "main/main";
+		return "redirect:gomain";
 	}
 	@GetMapping("mypage")
 	public String mypage() {
 		return "main/mypage";
+	}
+	@GetMapping("userinfo")
+	public String userinfo() {
+		return "main/userinfo";
 	}
 	@GetMapping("usequestion")
 	public String usequestion() {
@@ -65,6 +69,10 @@ public class MainController {
 	}
 	@GetMapping("gomain")
 	public String gomain() {
+		return "main/main";
+	}
+	@GetMapping("gomain2")
+	public String gomain2() {
 		return "main/main";
 	}
 	@GetMapping("goshop")

@@ -73,6 +73,7 @@
       background: url("image/main/메인.jpg") no-repeat;
       background-size: contain;
       background-position:right;
+      
     }
 
     #sec2 {
@@ -85,7 +86,11 @@
       display: flex;
       align-items: center;
       background-position: 80%;
+      border-left: 2px dashed gray;
       
+    }
+    #map{
+    	margin-left:-4%;
     }
     #sec2 div{
       position: absolute;
@@ -107,6 +112,7 @@
       display: flex;
       align-items: center;
       background-position: 80%;
+      border-left: 2px dashed black;
     }
     #sec3 div{
       position: absolute;
@@ -137,6 +143,7 @@
       display: flex;
       align-items: center;
       background-position: 80%;
+      border-left: 2px dashed black;
     }
     #sec4 div{
       position: absolute;
@@ -176,26 +183,31 @@
         </div>
       </section>
       <section id="sec2">
-        <div>
+        <div id="sec2-div1">
           <h1>About Us</h1>
           <p>소중한 것을 더 소중하게 여길게요</p>
           <p>내곁에 그대 있는 거</p>
           <p>그대와 함께 할 수 있는 모든것</p>
-          <p>그댈 지키겠단 약속 꼭 지킬게요</p>
+          <p>그댈 지키겠단 약속 꼭 지킬게요</p><br>
           <div id="map" style="width:400px;height:400px;"></div>
 
 			<script>
 				var mapOptions = {
-   				 center: new naver.maps.LatLng(37.47940033594235, 126.88151662513047),
-    			zoom: 15
+   				 center: new naver.maps.LatLng(37.478909798053834, 126.88135430793452),
+    			zoom: 18
 				};
-
+				
 				var map = new naver.maps.Map('map', mapOptions);
+				
+				var marker = new naver.maps.Marker({
+				    position: new naver.maps.LatLng(37.478909798053834, 126.88135430793452),
+				    map: map
+				});
 			</script>
         </div>
       </section>
       <section id="sec3">
-        <div>
+        <div id="sec3-div1">
           <form action="${pageContext.request.contextPath}/goshop">
           	<h1>Shop</h1>
           	<p>품격있는 쇼핑</p>
@@ -207,7 +219,7 @@
         </div>
       </section>
       <section id="sec4">
-        <div>
+        <div id="sec4-div1">
         <form action="${pageContext.request.contextPath}/gohotel">
           <h1>Hotel</h1>
           <p>품격있는 호텔</p>

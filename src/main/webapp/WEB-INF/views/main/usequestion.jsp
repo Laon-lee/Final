@@ -103,64 +103,10 @@
    .display-block{
     display: block !important;
    }
-        footer {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 100%;
-            height: 100%;
-            background-color: lightgray;
-            justify-content: space-around;
-            align-items: center;
-            
-            grid-area: footer;
-        }
 
-        footer p {
-            font-size: 13px;
-        }
-
-        footer li {
-            margin: 0 15px 0 15px;
-            height: 15px;
-        }
-
-        footer ul {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-
-        }
 
         button {
             cursor: pointer;
-        }
-
-        #footer-1stul {
-            width: 150px;
-        }
-
-        #footer-1stul li {
-            font-size: 22px;
-            font-weight: 900;
-            width: 150px;
-        }
-
-        #social li {
-            width: 15px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        
-
-        .line {
-
-            height: 1vh;
-            width: 80%;
-
         }
 
         #main-container {
@@ -281,7 +227,7 @@
                             <li><a href="">관심상품</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion" style="text-decoration: underline">자주찾는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question" >문의하기</a></li>
-                            <li><a href="">쿠폰</a></li>
+                            <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>
                             
                         </ul>
                     </nav>

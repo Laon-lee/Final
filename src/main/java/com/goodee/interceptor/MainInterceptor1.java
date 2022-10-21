@@ -8,7 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 
 // 주의 : 스프링에서 제공하는 Model 및 여러 어노테이션 기능들을 사용할 수 없다.
-public class TestInterceptor1 implements HandlerInterceptor {
+public class MainInterceptor1 implements HandlerInterceptor {
 	
 	// Controller 의 메서드가 호출되기 전에 호출되는 메서드
 	// false를 반환하면 요청 처리에 대한 진행이 중단된다.
@@ -21,9 +21,9 @@ public class TestInterceptor1 implements HandlerInterceptor {
 			System.out.println("여기는 인터셉터");
 			return true;
 		}else {
-			System.out.println("여기는 인터셉터1");
+			System.out.println("여기는 세션없는 인터셉터");
 			session.invalidate();
-			response.sendRedirect(request.getContextPath()+"/gomain");
+			response.sendRedirect(request.getContextPath()+"/gomain2");
 			return false;
 		}
 	}

@@ -87,7 +87,8 @@ nav {
 #main-pic {
     width: 49%;
     height: 450px;
-    background: url("imgs/제목\ 없음.png");
+    background: url("${pageContext.request.contextPath}/image/shop/NewImg12.jpg") no-repeat center;
+    background-size:contain;
 }
 
 #main-text {

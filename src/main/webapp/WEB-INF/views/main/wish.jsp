@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
     <style>
-       
+       *{
+       		box-sizing: border-box;
+        }
 
         html,
         body,
@@ -196,64 +198,7 @@
                         </ul>
                     </nav>
                     <article id="art2">
-                        <div id="artcontainer">
-                            <div id="sec2-div1">
-                                <ul>
-                                    <li class="selected">주문내역조회(0)</li>
-                                    <li>취소/반품/교환 내역(0)</li>
-                                </ul>
-                            </div>
-                            <div id="sec2-div2">
-                                <form action="">
-                                    <div id="sec2-div2-sel">
-                                        <select name="orderstatus" id="orderstatus">
-                                            <option value="">전체 주문처리상태</option>
-                                            <option value="">입금전</option>
-                                            <option value="">배송준비중</option>
-                                            <option value="">배송중</option>
-                                            <option value="">배송완료</option>
-                                            <option value="">취소</option>
-                                            <option value="">교환</option>
-                                            <option value="">반품</option>
-
-                                        </select>
-                                    </div>
-                                    <ul>
-                                        <li>- 기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.</li>
-                                        <li>- 주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</li>
-                                    </ul>
-                                </form>
-
-                            </div>
-                            <div id="sec2-div3">
-                                주문 상품 정보
-                                <table id="sec2-div3-table1">
-                                    <tr>
-                                        <td>주문일자<br>[주문번호]</td>
-                                        <td>이미지</td>
-                                        <td>상품정보</td>
-                                        <td>수량</td>
-                                        <td>상품구매금액</td>
-                                        <td>주문처리상태</td>
-                                        <td>취소/교환/반품</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="7">주문 내역이 없습니다.</td>
-                                    </tr>
-                                </table>
-                                <table id="sec2-div3-table2">
-                                    <tr>
-                                        <td>
-                                            <<</td>
-                                        <td>
-                                            <</td>
-                                        <td>1</td>
-                                        <td>></td>
-                                        <td>>></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                        
                     </article>
                 </section>
                 </div>
