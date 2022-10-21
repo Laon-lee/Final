@@ -5,7 +5,8 @@ import org.apache.ibatis.type.Alias;
 @Alias("memberVO")
 public class MemberVO {
 	private String mem_id;
-	   private String mem_pw;
+	
+	private String mem_pw;
 	   private String mem_name;
 	   private String mem_birth;
 	   private String mem_email;
@@ -15,6 +16,9 @@ public class MemberVO {
 	   private String mem_oaddress;
 	   private String mem_address;
 	   private String mem_detailaddress;
+
+		
+
 	public String getMem_id() {
 		return mem_id;
 	}

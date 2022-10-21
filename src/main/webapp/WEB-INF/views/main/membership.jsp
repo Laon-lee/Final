@@ -184,8 +184,8 @@ button {
 							<div class="form-group">
 								<div id="id_div">
 									<label for="id" style="width : 110px;">아이디</label> <input type="text" class="form-control" id="mem_id" name="mem_id" placeholder=" ID">
-									<button id="idCheck" type ="button" class="btn btn-primary btn-sm">중복체크</button>
-									<span id="idresult">아이디 중복체크 결과</span>
+									<button id="id_Checkbtn" type ="button" class="btn btn-primary btn-sm">중복체크</button>
+									<span id="idresult"></span>
 									<div class="eheck_font" id="id_check"></div>
 								</div>
 							</div>
@@ -351,56 +351,77 @@ var birthJ = false;
 
 $(document).ready(function() {
    var address = $('#mem_detailaddress');
-  
-	  
+   
+   $("#id_Checkbtn").click(function(){	
+	   console.log("hi")
+	   var user_id = $('#mem_id').val();
+	   
+	   let simple_data = { mem_id : user_id };
+	   console.log(simple_data);
+	   fetch("${pageContext.request.contextPath}/idcheck",{
+		   	method : "POST",
+			headers : {"Content-Type" : "application/json"},
+			body : JSON.stringify(simple_data)
+	   	}).then(response => response.json())
+	   		.then(data=> {
+	   			if(data==1){
+	   				$("#idresult").text("중복된 아이디입니다.")
+	   				$("#idresult").css('color', 'red');
+	   			}else{
+	   				$("#idresult").text("사용 가능 아이디입니다.")
+	   				$("#idresult").css('color', 'green');
+	   			
+	   			}
+	   			
+	   		}).catch(error => {
+	   			console.log("error");
+	   		});
+   });
+	   	  /*  	$.ajax({
+   			url : '${pageContext.request.contextPath}/idCheck?memId='+user_id,
+   			type : 'POST',
+   			success : function(data) {
+   				console.log("1 = 중복o / 0 = 중복x : "+ data);							
+   				
+   				if (data == 1) {
+   						// 1 : 아이디가 중복되는 문구
+   						$("#id_check").text("사용중인 아이디입니다 :p");
+   						$("#id_check").css("color", "red");
+   						$("#usercheck").attr("disabled", true);
+   				} else {
+   						
+   						
+   						
+   				}
+   			}, error : function() {
+   					console.log("실패");
+   			} */ 
 	         
-	     
-   //아이디 중복확인
+	   
+   //아이디 유효성
    $("#mem_id").blur(function() {
 		// id = "id_reg" / name = "userId"
 		var user_id = $('#mem_id').val();
-		$.ajax({
-			url : '${pageContext.request.contextPath}/user/idCheck?mem_id='+ mem_id,
-			type : 'get',
-			success : function(data) {
-				console.log("1 = 중복o / 0 = 중복x : "+ data);							
-				
-				if (data == 1) {
-						// 1 : 아이디가 중복되는 문구
-						$("#id_check").text("사용중인 아이디입니다 :p");
-						$("#id_check").css("color", "red");
-						$("#usercheck").attr("disabled", true);
-					} else {
-						
-						if(idJ.test(user_id)){
-							// 0 : 아이디 길이 / 문자열 검사
-							$("#id_check").text("");
-							$("#usercheck").attr("disabled", false);
-				
-						} else if(user_id == ""){
-							
-							$('#id_check').text('아이디를 입력해주세요 :)');
-							$('#id_check').css('color', 'red');
-							$("#usercheck").attr("disabled", true);				
-							
-						} else {
-							
-							$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-							$('#id_check').css('color', 'red');
-							$("#usercheck").attr("disabled", true);
-						}
-						
-					}
-				}, error : function() {
-						console.log("실패");
-				}
-			});
-		});
+		if(idJ.test(user_id)){
+			// 0 : 아이디 길이 / 문자열 검사
+			$("#id_check").text("");
+			$("#usercheck").attr("disabled", false);
 
+		} else if(user_id == ""){
+			
+			$('#id_check').text('아이디를 입력해주세요 :)');
+			$('#id_check').css('color', 'red');
+			$("#usercheck").attr("disabled", true);				
+			
+		} else {
+			
+			$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+			$('#id_check').css('color', 'red');
+			$("#usercheck").attr("disabled", true);
+		}
+	
+	});
 
- 
-   
-   
     $('#mem_pw').blur(function() {
         if (pwJ.test($('#mem_pw').val())) {
            console.log('true');
