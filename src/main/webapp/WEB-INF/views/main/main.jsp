@@ -85,7 +85,7 @@
       background-color: #f5ebe0;
       display: flex;
       align-items: center;
-      background-position: 80%;
+      background-position: 90%;
       border-left: 2px dashed gray;
       
     }
