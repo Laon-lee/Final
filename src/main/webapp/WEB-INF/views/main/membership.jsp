@@ -109,6 +109,10 @@ main {
 	width : 20px;
 }
 
+.art5_1 {
+margin-top : 20px;
+}
+
 .art5 {
 	width: 60%;
 	height: 300px;
@@ -180,6 +184,7 @@ button {
 							<div class="form-group">
 								<div id="id_div">
 									<label for="id" style="width : 110px;">아이디</label> <input type="text" class="form-control" id="mem_id" name="mem_id" placeholder=" ID">
+								
 									<div class="eheck_font" id="id_check"></div>
 								</div>
 							</div>
@@ -236,9 +241,9 @@ button {
 
 							<div class="form-group">
 							<div id="gender_div">
-							<label for="mem_gender" style="width : 110px;">성별 </label> <input type="checkbox"
+							<label for="mem_gender" style="width : 110px;">성별 </label> <input type="radio"
 								id="mem_gender" name="mem_gender" value="남" class="c_box">남 <input
-								type="checkbox" id="mem_gender" name="mem_gender" value="여" class="c_box">여
+								type="radio" id="mem_gender" name="mem_gender" value="여" class="c_box">여
 							</div>
 							</div>
 
@@ -262,7 +267,11 @@ button {
 							<input class="form-control" placeholder="상세주소"
 								name="mem_detailaddress" id="mem_detailaddress" type="text" />
 								
-									<div class="art5">
+									<div class="art5_1">
+									<h3>[필수] 이용약관 동의 <input type="checkbox" style="width : 15px; height :12px; "/></h3>
+									
+									</div>
+					<div class="art5">			
 					<p>
 						제1조(목적) 이 약관은 주식회사 트리니언이 운영하는 말론샵(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
 						서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리?의무 및 책임사항을 규정함을 목적으로
@@ -318,6 +327,9 @@ button {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
+
+
+
 
 //모든 공백 체크 정규식
 var empJ = /\s/g;
@@ -480,7 +492,7 @@ $(document).ready(function() {
             }
          }
          if(validAll == true){ // 유효성 모두 통과
-            alert('NANALAND 가족이 되어주셔 감사합니다.');      
+            alert('Welcome Déng Nuri');      
          } else{
             alert('정보를 다시 확인하세요.')
          }
