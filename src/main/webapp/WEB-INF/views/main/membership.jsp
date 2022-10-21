@@ -184,7 +184,8 @@ button {
 							<div class="form-group">
 								<div id="id_div">
 									<label for="id" style="width : 110px;">아이디</label> <input type="text" class="form-control" id="mem_id" name="mem_id" placeholder=" ID">
-								
+									<button id="idCheck" type ="button" class="btn btn-primary btn-sm">중복체크</button>
+									<span id="idresult">아이디 중복체크 결과</span>
 									<div class="eheck_font" id="id_check"></div>
 								</div>
 							</div>
@@ -328,9 +329,6 @@ button {
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 
-
-
-
 //모든 공백 체크 정규식
 var empJ = /\s/g;
 //아이디 정규식
@@ -358,54 +356,51 @@ $(document).ready(function() {
 	         
 	     
    //아이디 중복확인
-      $("#mem_id").blur(function() {
-    	  console.log($('#mem_id').val())
-          if($('#mem_id').val()==''){
-             $('#id_check').text('아이디를 입력하세요.');
-             
-             $('#id_check').css('color', 'red');                     
-      		
-      		console.log("문제1")
-      		
-             } else if(idJ.test($('#mem_id').val())!=true){
-            	 //정규표현식 패턴 문자열과 일치여부
-                $('#id_check').text('4~12자의 영문, 숫자만 사용 가능합니다.');
-                $('#id_check').css('color', 'red');
-             } else if($('#mem_id').val()!=''){
-            	 $('#id_check').text('');
-               var mem_id=$('#mem_id').val();
-                 $.ajax({
-                     async : true,
-                        type : 'POST',
-                      data : mem_id,//mem_id라는 이름으로 mem_id라는 데이터를 @WebServlet("/idsearch.do")에 보내겠다
-                      url : 'idcheck.do',
-                        dateType: 'json',
-                        contentType: "application/json; charset=UTF-8",
-                        success : function(data) {
-
-             				if(data.cnt > 0){
-                				$('#id_check').text('중복된 아이디 입니다.');
-                      			$('#id_check').css('color', 'red');
-                      			$("#usercheck").attr("disabled", true);
-             				}else{
-                				if(idJ.test(mem_id)){
-                   					$('#id_check').text('사용가능한 아이디 입니다.');
-                   					$('#id_check').css('color', 'blue');
-                   					$("#usercheck").attr("disabled", false);
-                				}else if(mem_id==''){
-                					$('#id_check').text('아이디를 입력해주세요.');
-                      				$('#id_check').css('color', 'red');
-                      				$("#usercheck").attr("disabled", true);
-               					}else{
-                   					$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다.");
-                   					$('#id_check').css('color', 'red');
-                   					$("#usercheck").attr("disabled", true);
-                				}
-             				}
+   $("#mem_id").blur(function() {
+		// id = "id_reg" / name = "userId"
+		var user_id = $('#mem_id').val();
+		$.ajax({
+			url : '${pageContext.request.contextPath}/user/idCheck?mem_id='+ mem_id,
+			type : 'post',
+			success : function(data) {
+				console.log("1 = 중복o / 0 = 중복x : "+ data);							
+				
+				if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_check").text("사용중인 아이디입니다 :p");
+						$("#id_check").css("color", "red");
+						$("#usercheck").attr("disabled", true);
+					} else {
+						
+						if(idJ.test(user_id)){
+							// 0 : 아이디 길이 / 문자열 검사
+							$("#id_check").text("");
+							$("#usercheck").attr("disabled", false);
+				
+						} else if(user_id == ""){
+							
+							$('#id_check').text('아이디를 입력해주세요 :)');
+							$('#id_check').css('color', 'red');
+							$("#usercheck").attr("disabled", true);				
+							
+						} else {
+							
+							$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+							$('#id_check').css('color', 'red');
+							$("#usercheck").attr("disabled", true);
 						}
-					});//ajax/// 
-             }//else if
-    });//blur
+						
+					}
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
+
+
+ 
+   
+   
     $('#mem_pw').blur(function() {
         if (pwJ.test($('#mem_pw').val())) {
            console.log('true');
@@ -653,6 +648,7 @@ function execPostCode() {
         }
      }).open();
  }
+
 
 </script> 
 
