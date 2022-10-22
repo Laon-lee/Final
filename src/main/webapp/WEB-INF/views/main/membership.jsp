@@ -23,12 +23,9 @@ html, body, header, main, footer, section, h1, h2, h3, h4, h5, h6, p, a,
 	margin: 0;
 	padding: 0;
 }
-
 body {
 	background-color: #f5ebe0;
 }
-
-
 #container {
 	position: relative;
 	width: 100%;
@@ -37,22 +34,17 @@ body {
 	grid-template-rows: 70px 1fr 70px;
 	grid-template-columns: 1fr;
 }
-
 main {
 	margin-top: 20px;
 	width: 100%;
 	background-color: #f5ebe0;
 }
-
 /*본문 내용*/
-
-
 .art1 {
 	width: 80%;
 	margin: 0 auto;
 	border-top: 2px solid black;
 }
-
 /* .art2 {
 	width: 70%;
 	margin: 0 auto;
@@ -68,7 +60,6 @@ main {
 	display: flex;
 	justify-content: center;
 }
-
 .art2>h2 {
 	display: flex;
 	background-color: black;
@@ -77,7 +68,6 @@ main {
 	color: white;
 }
  
-
 #cont{
 	width:30%;
 	margin:0 auto;
@@ -88,31 +78,23 @@ main {
     display: flex;
     margin: 0 auto;
 }
-
 #id_div, #pw_div, #pw2_div, #name_div, #birth_div, #email_div, 
 #phone_div, #gender_div, #addr_check1, #addr_check2{
     display: flex;
     margin-top : 20px;
 }
-
-
 #addr_check1 {
 	margin-bottom : 20px;
 }
-
 #mem_address {
 	margin-right : 5px;
 }
-
-
 .art3 > label {
 	width : 20px;
 }
-
 .art5_1 {
 margin-top : 20px;
 }
-
 .art5 {
 	width: 60%;
 	height: 300px;
@@ -123,21 +105,17 @@ margin-top : 20px;
 	margin-top : 30px;
 	margin-bottom: 30px;
 }
-
 #art6 {
 	padding-left : 3rem;
 	margin-bottom: 2rem;
 }
-
 #mainA1 {
 	margin-left: 9rem;
 }
-
 #usercheck {
 	width : 70%;
 	padding-left  :350px;
 }
-
 button {
  	height : 30px;
  }
@@ -160,8 +138,6 @@ button {
  	border : none;
  }
  
-
-
 </style>
 </head>
 <body>
@@ -179,11 +155,11 @@ button {
     </article>
     
     <article class="art3">
-					<form action="memberjoinpro.do" method="post" id="usercheck" name="member">
+					<form action="${pageContext.request.contextPath}/membership2" method="post" id="usercheck" name="member">
 							
 							<div class="form-group">
 								<div id="id_div">
-									<label for="id" style="width : 110px;">아이디</label> <input type="text" class="form-control" id="mem_id" name="mem_id" placeholder=" ID">
+									<label for="id" style="width : 110px;">아이디</label> <input type="text" id="mem_id" name="mem_id" placeholder=" ID">
 									<button id="id_Checkbtn" type ="button" class="btn btn-primary btn-sm">중복체크</button>
 									<span id="idresult"></span>
 									<div class="eheck_font" id="id_check"></div>
@@ -192,14 +168,14 @@ button {
 							
 							<div class="form-group">
 								<div class="eheck_font" id="pw_div">
-									<label for="pw" style="width : 110px;">비밀번호</label> <input type="password" class="form-control" id="mem_pw" name="mem_pw" placeholder=" PASSWORD">
+									<label for="pw" style="width : 110px;">비밀번호</label> <input type="password" id="mem_pw" name="mem_pw" placeholder=" PASSWORD">
 									<div class="eheck_font" id="pw_check"></div>
 								</div>
 							</div>
 						
 							<div class="form-group">
 								<dIv CLASS="EHECK_FONT" ID="pw2_div">
-									<label for="pw2" style="width : 110px;">비밀번호 확인</label> <input type="password" class="form-control" id="mem_pw2" name="mem_pw2" placeholder=" Confirm Password">
+									<label for="pw2" style="width : 110px;">비밀번호 확인</label> <input type="password" id="mem_pw2" name="mem_pw2" placeholder=" Confirm Password">
 									<div class="eheck_font" id="pw2_check"></div>
 								</div>
 							</div>
@@ -207,7 +183,7 @@ button {
 							<div class="form-group">
 								<div class="eheck_font" id="name_div">
 									<label for="mem_name" style="width : 110px;">이름</label> <input type="text"
-									class="form-control" id="mem_name" name="mem_name"
+									 id="mem_name" name="mem_name"
 									placeholder=" Name">
 									<div class="eheck_font" id="name_check"></div>
 							</div>
@@ -215,7 +191,7 @@ button {
 
 							<div class="eheck_font" id="birth_div">
 							<label for="mem_birth" style="width : 110px;">생년월일</label> <input type="tel"
-								class="form-control" id="mem_birth" name="mem_birth"
+								id="mem_birth" name="mem_birth"
 								placeholder=" ex) 19990101"> 
 								 <div class="eheck_font" id="birth_check"></div>
 							</div>
@@ -224,7 +200,7 @@ button {
 							<div class="form-group">
 								<div class="eheck_font" id="email_div">
 									<label for="mem_email" style="width : 110px;">이메일 주소</label> <input type="email"
-									class="form-control" id="mem_email" name="mem_email"
+									 id="mem_email" name="mem_email"
 									placeholder=" E-mail">
 									 <div class="eheck_font" id="email_check"></div>
 								</div>
@@ -234,7 +210,7 @@ button {
 							<div class="form-group">
 							<div class="eheck_font" id="phone_div">
 							<label for="mem_phone" style="width : 110px;">휴대폰 번호</label> <input
-								type="tel" class="form-control" id="mem_phone" name="mem_phone"
+								type="tel"  id="mem_phone" name="mem_phone"
 								placeholder=" '-' 없이 입력하세요">
 								<div class="eheck_font" id="phone_check"></div>
 							</div>
@@ -243,14 +219,14 @@ button {
 							<div class="form-group">
 							<div id="gender_div">
 							<label for="mem_gender" style="width : 110px;">성별 </label> <input type="radio"
-								id="mem_gender" name="mem_gender" value="남" class="c_box">남 <input
-								type="radio" id="mem_gender" name="mem_gender" value="여" class="c_box">여
+								id="male" name="mem_gender" value="남" class="c_box">남 <input
+								type="radio" id="female" name="mem_gender" value="여" class="c_box">여
 							</div>
 							</div>
 
 							<div id ="addr_check1">
-							<input class="form-control"
-								placeholder="우편번호" name="mem_oaddress" id="mem_address"
+							<input 
+								placeholder="우편번호" name="mem_oaddress" id="mem_address1"
 								type="text" readonly="readonly">
 							<button type="button" class="btn btn-default"
 								onclick="execPostCode();">
@@ -259,17 +235,17 @@ button {
 							</div>
 
 							
-							<input class="form-control"
-								placeholder="도로명 주소" name="mem_address" id="mem_address"
+							<input 
+								placeholder="도로명 주소" name="mem_address" id="mem_address2"
 								type="text" readonly="readonly" />
 							
 
 						
-							<input class="form-control" placeholder="상세주소"
+							<input placeholder="상세주소"
 								name="mem_detailaddress" id="mem_detailaddress" type="text" />
 								
 									<div class="art5_1">
-									<h3>[필수] 이용약관 동의 <input type="checkbox" style="width : 15px; height :12px; "/></h3>
+									<h3>[필수] 이용약관 동의 <input type="checkbox" style="width : 15px; height :12px; " name="agree" value="Y"/></h3>
 									
 									</div>
 					<div class="art5">			
@@ -328,7 +304,6 @@ button {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
-
 //모든 공백 체크 정규식
 var empJ = /\s/g;
 //아이디 정규식
@@ -341,14 +316,8 @@ var nameJ = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
 var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 // 휴대폰 번호 정규식
 var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
-
 /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/
-
-
 var birthJ = false;
-
-
-
 $(document).ready(function() {
    var address = $('#mem_detailaddress');
    
@@ -385,7 +354,6 @@ $(document).ready(function() {
 		   				$("#id_check").css('color', 'green');
 		   			
 		   			}
-
 	   			} else if(user_id == ""){
 	   				
 	   				$('#id_check').text('아이디를 입력해주세요 :)');
@@ -431,7 +399,6 @@ $(document).ready(function() {
 			// 0 : 아이디 길이 / 문자열 검사
 			$("#id_check").text("");
 			$("#usercheck").attr("disabled", false);
-
 		} else if(user_id == ""){
 			
 			$('#id_check').text('아이디를 입력해주세요 :)');
@@ -446,7 +413,6 @@ $(document).ready(function() {
 		}
 	
 	});
-
     $('#mem_pw').blur(function() {
         if (pwJ.test($('#mem_pw').val())) {
            console.log('true');
@@ -541,11 +507,8 @@ $(document).ready(function() {
             alert('정보를 다시 확인하세요.')
          }
        });
-
-
  
    
-
    //1~2 패스워드 일치 확인
    $('#mem_pw2').blur(function() {
       if ($('#mem_pw').val() != $(this).val()) {
@@ -555,7 +518,6 @@ $(document).ready(function() {
          $('#pw2_check').text('');
       }
    });
-
    //이름에 특수문자 들어가지 않도록 설정
    $("#mem_name").blur(function() {
       if (nameJ.test($(this).val())) {
@@ -575,7 +537,6 @@ $(document).ready(function() {
       }
    });
    
-
          // 생일 유효성 검사
            var birthJ = false;
            
@@ -642,18 +603,15 @@ $(document).ready(function() {
                  }
               });
 });
-
 //우편번호 찾기 버튼 클릭시 발생 이벤트
 function execPostCode() {
      new daum.Postcode({
          oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
             var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
             if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -671,7 +629,6 @@ function execPostCode() {
             if(fullRoadAddr !== ''){
                 fullRoadAddr += extraRoadAddr;
             }
-
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             console.log(data.zonecode);
             console.log(fullRoadAddr);
@@ -689,13 +646,10 @@ function execPostCode() {
             
             document.getElementById('mem_oaddress').value = data.zonecode; //5자리 새우편번호 사용
             document.getElementById('mem_address').value = fullRoadAddr;
-
             //document.getElementById('mem_detailaddress').value = data.jibunAddress; 
         }
      }).open();
  }
-
-
 </script> 
 
   

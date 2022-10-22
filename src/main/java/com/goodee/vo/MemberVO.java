@@ -5,20 +5,25 @@ import org.apache.ibatis.type.Alias;
 @Alias("memberVO")
 public class MemberVO {
 	private String mem_id;
-	
 	private String mem_pw;
-	   private String mem_name;
-	   private String mem_birth;
-	   private String mem_email;
-	   private String mem_phone;
-	   private String mem_gender;
-	   private String mem_hobby;
-	   private String mem_oaddress;
-	   private String mem_address;
-	   private String mem_detailaddress;
-
+	private String mem_name;
+	private String mem_birth;
+	private String mem_email;
+	private String mem_phone;
+	private String mem_gender;
+	private String mem_hobby;
+	private String mem_oaddress;
+	private String mem_address;
+	private String mem_detailaddress;
+	private String agree;
 		
 
+	public String getAgree() {
+		return agree;
+	}
+	public void setAgree(String agree) {
+		this.agree = agree;
+	}
 	public String getMem_id() {
 		return mem_id;
 	}

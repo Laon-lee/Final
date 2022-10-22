@@ -3,32 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.MemberDAO">
-<!-- 	<insert id="insertmembership" parameterType="userVO">
-		insert into user (userid, username, password, address, email, gender, phone, agree) 
-				values (#{userid},#{username},#{password},#{address},#{email},#{gender},#{phone},#{agree});
-	</insert> -->
-<!-- 	
-	<insert id="member_join" parameterType="memberVO">
-		insert into member
-		values(
-		#{mem_id},
-		#{mem_pw},
-		#{mem_name},
-		#{mem_birth},
-		#{mem_email},
-		#{mem_phone},
-		#{mem_gender},
-		#{mem_oaddress},
-		#{mem_address},
-		#{mem_detailaddress},
-		#{agree}
-		
-		)
-	</insert> -->
 	<select id="idCheck" parameterType="memberVO" resultType="int">
 		select count(*) from member where mem_id=#{mem_id};
 	</select>
 	
+	<insert id="insertmembership" parameterType="memberVO">
+		insert into member (mem_id, mem_name, mem_pw, mem_birth,mem_oaddress, mem_address, mem_detailaddress, mem_email, mem_gender, mem_phone, agree) 
+				values (#{mem_id},#{mem_name},#{mem_pw},#{mem_birth},#{mem_oaddress}, #{mem_address},#{mem_detailaddress},#{mem_email},#{mem_gender},#{mem_phone},#{agree});
+	</insert>
+
+	<select id="ismember2" resultType="int">
+		select count(*) from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
+	</select>
+	<select id="getmemberinfo" resultType="memberVO" parameterType="memberVO">
+		select * from member where mem_id=#{mem_id}
+	</select>
 </mapper>
 
 

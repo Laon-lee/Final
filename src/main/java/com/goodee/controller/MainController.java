@@ -24,32 +24,6 @@ public class MainController {
 	public String membership(){
 		return "main/membership";
 	}
-	@GetMapping("membership2")
-	public String membership2(UserVO vo, HttpSession session) {
-		if(!service.ismember1(vo)) {
-		service.membership2(vo);
-		session.setAttribute("user", vo);
-		return "redirect:gomain";
-		}else {
-			return "main/membershipfail";
-		}
-	}
-	@GetMapping("login")
-	public String login(UserVO vo, HttpSession session) {
-		if(service.ismember2(vo)) {
-			service.getmemberinfo(vo);
-			session.setAttribute("user",vo);
-			return "redirect:gomain";
-		}else {
-			return "redirect:gomain";
-		}
-	}
-	
-	@GetMapping("logout")
-	public String loginout(HttpSession session) {
-		session.invalidate();
-		return "redirect:gomain";
-	}
 	
 	
 	@GetMapping("mypage")

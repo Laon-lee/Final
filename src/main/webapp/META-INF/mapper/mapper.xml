@@ -3,37 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.NURIDAO">
-	<insert id="insertmembership" parameterType="userVO">
-		insert into user (userid, username, password, address, email, gender, phone, agree) 
-				values (#{userid},#{username},#{password},#{address},#{email},#{gender},#{phone},#{agree});
-	</insert>
-	<select id="ismember1" resultType="int">
-		select count(*) from user where userid=#{userid} 
-	</select>
-	<select id="ismember2" resultType="int">
-		select count(*) from user where userid=#{userid} and password=#{password}
-	</select>
-	<select id="getmemberinfo" resultType="userVO" parameterType="userVO">
-		select * from user where userid=#{userid}
-	</select>
 	
-	<insert id="member_join" parameterType="memberVO">
-		insert into member
-		values(
-		#{mem_id},
-		#{mem_pw},
-		#{mem_name},
-		#{mem_birth},
-		#{mem_email},
-		#{mem_phone},
-		#{mem_gender},
-		#{mem_oaddress},
-		#{mem_address},
-		#{mem_detailaddress},
-		#{agree}
-		
-		)
-	</insert>
+	
 	
 </mapper>
 

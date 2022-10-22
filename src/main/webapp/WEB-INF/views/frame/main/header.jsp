@@ -84,9 +84,9 @@
               <br>
               <form action="${pageContext.request.contextPath}/login">
                 <h6>아이디</h6>
-                <input type="text" name="userid" id="userid">
+                <input type="text" name="mem_id1" id="mem_id1">
                 <h6>비밀번호</h6>
-                <input type="password" name="password" id="password"><br>
+                <input type="password" name="mem_pw1" id="mem_pw1"><br>
                 <button>Login</button>
               </form>
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
