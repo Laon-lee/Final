@@ -209,7 +209,7 @@
             display: none;
         }
 
-	  .date {
+	 .date {
             width: 90%;
             margin: 0 auto;
             display: flex;
@@ -219,28 +219,22 @@
             padding: 1vh 0;
         }
 
-        #isbx {
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            width: 70%;
-            gap: 4vw;
-            margin: 0 auto;
-
-        }
+        
 
         .indate {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            width: 15vw;
+            width: fit-content;
             align-items: center;
+            gap: 15px;
         }
 
         #datepicker1 {
-            width: 15vw;
+            width: fit-content;
             border: 0;
             background-color: #edede9;
+            font-size: 17px;
         }
 
         /* #selecbtn {
@@ -264,13 +258,13 @@
 .isbx-toggle {
 	display: block !important;
 }
- #ioutbox {
+/*  #ioutbox {
            display: none;
             width: 90%;
             margin: 0 auto;
             padding-bottom: 1vh;
         }
-
+ */
         .outbox {
             display: block !important;
             width: 90%;
@@ -279,6 +273,25 @@
 
         #bxform>label {
             padding: 0px 5px;
+        }
+        
+        .clicked {
+        	display : block !important;
+        	display : flex !important;
+        	
+        }
+        #isbx {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            width: 70%;
+            gap: 4vw;
+            margin: 0 auto;
+            display:none;
+
+        }
+        #selectp{
+        	cursor:default;
         }
         
     </style>
@@ -450,7 +463,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td id="td2">예약하기</td>
+                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
                         </tr>
                         <tr>
                             <td id="td1">
@@ -469,7 +482,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td id="td2">예약하기</td>
+                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
                         </tr>
                         <tr>
                             <td id="td1">
@@ -488,7 +501,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td id="td2">예약하기</td>
+                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
                         </tr>
                     </table>
                 </div>
@@ -528,7 +541,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td id="td2">예약하기</td>
+                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
                         </tr>
                         <tr>
                             <td id="td1">
@@ -547,7 +560,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td id="td2">예약하기</td>
+                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
                         </tr>
                         <tr>
                             <td id="td1">
@@ -566,7 +579,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td id="td2">예약하기</td>
+                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
                         </tr>
                     </table>
                 </div>
