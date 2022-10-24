@@ -159,8 +159,8 @@ button {
 							
 							<div class="form-group">
 								<div id="id_div">
-									<label for="id" style="width : 110px;">아이디</label> <input type="text" id="mem_id" name="mem_id" placeholder=" ID">
-									<button id="id_Checkbtn" type ="button" class="btn btn-primary btn-sm">중복체크</button>
+									<label for="id" style="width : 110px;">아이디</label> <input type="text" id="mem_id" name="mem_id" placeholder=" ID">&nbsp;&nbsp;
+									<button id="id_Checkbtn" type ="button" class="btn btn-primary btn-sm">중복체크</button>&nbsp;&nbsp;
 									<span id="idresult"></span>
 									<div class="eheck_font" id="id_check"></div>
 								</div>
@@ -227,7 +227,7 @@ button {
 							<div id ="addr_check1">
 							<input 
 								placeholder="우편번호" name="mem_oaddress" id="mem_address1"
-								type="text" readonly="readonly">
+								type="text" readonly="readonly">&nbsp;&nbsp;
 							<button type="button" class="btn btn-default"
 								onclick="execPostCode();">
 								<i class="fa fa-search"></i> 우편번호 찾기
