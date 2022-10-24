@@ -39,7 +39,7 @@ body {
 }
 
 #container {
-	position: fixed;
+	position: relative;
 	width: 100%;
 	height: 100%;
 	display: grid;
@@ -54,7 +54,7 @@ main {
 
 section {
 	width: 100vw;
-	height: 82vh;
+	height: 100%;
 }
 
 /* img */
@@ -65,7 +65,7 @@ section {
 	grid-template-areas: 'img1 img1 img2' 'img1 img1 img2' 'img1 img1 img5'
 		'img3 img4 img5' 'img3 img4 img5';
 	gap: 10px;
-	height: inherit;
+	height: 82vh;
 	width: 90%;
 	margin: 10px auto;
 }

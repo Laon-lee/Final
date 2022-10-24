@@ -51,7 +51,7 @@
 
         body {
             position: relative;
-            height: 3000px
+            height: 100%;
         }
 
         
