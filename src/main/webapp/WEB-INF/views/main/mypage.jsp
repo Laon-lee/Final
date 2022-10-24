@@ -188,7 +188,7 @@
                         <ul>
                              <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
-                            <li><a href="${pageContext.request.contextPath}/basket">관심상품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                             <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>

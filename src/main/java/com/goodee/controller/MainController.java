@@ -62,6 +62,9 @@ public class MainController {
 	public String gohotel() {
 		return "hotel/hotelmain";
 	}
-	
+	@GetMapping("wish")
+	public String gowish() {
+		return "main/wish";
+	}
 	
 }
