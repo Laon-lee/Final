@@ -106,7 +106,7 @@
       z-index: 3;
       transform: translateX(101%);
       position: absolute;
-      background: url("image/main/임시배경.png") no-repeat right;
+      background: url("image/main/쇼핑섹션.png") no-repeat right;
       background-size: contain;
       background-color: #f5ebe0;
       display: flex;
@@ -185,12 +185,12 @@
       <section id="sec2">
         <div id="sec2-div1">
           <h1>About Us</h1>
-          <p>소중한 것을 더 소중하게 여길게요</p>
-          <p>내곁에 그대 있는 거</p>
-          <p>그대와 함께 할 수 있는 모든것</p>
-          <p>그댈 지키겠단 약속 꼭 지킬게요</p><br>
+          <p>품격있는 애견 사이트</p>
+          <p>최고의 서비스</p>
+          <p>댕누리만이 사람과 반려견을 더 아름답게 하는</p>
+          <p>소명을 이루고자 미의 여정을 이어갑니다.</p>
+          <h5><오시는 길></h5>
           <div id="map" style="width:400px;height:400px;"></div>
-
 			<script>
 				var mapOptions = {
    				 center: new naver.maps.LatLng(37.478909798053834, 126.88135430793452),
@@ -210,10 +210,9 @@
         <div id="sec3-div1">
           <form action="${pageContext.request.contextPath}/goshop">
           	<h1>Shop</h1>
-          	<p>품격있는 쇼핑</p>
+          	<p>사랑하는 우리 애기들을 쇼핑</p>
           	<p>우리집 막둥이를 위한 선물</p>
-          	<p>싸다싸</p>
-          	<p>사장이 미쳤어요</p>
+          	<p>최고의 서비스로 모시겠습니다</p>
           	<button>Go Shopping</button>
           </form>
         </div>
@@ -223,9 +222,8 @@
         <form action="${pageContext.request.contextPath}/gohotel">
           <h1>Hotel</h1>
           <p>품격있는 호텔</p>
-          <p>우리집 막둥이를 위한 호텔</p>
-          <p>싸다싸</p>
-          <p>사장이 미쳤어요</p>
+          <p>품격있는 서비스로</p>
+          <p>최고의 쉼터가 되겠습니다</p>
           <button>Go Hotel</button>
             </form>
         </div>
