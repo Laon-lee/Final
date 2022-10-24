@@ -102,18 +102,7 @@
    .display-block{
     display: block !important;
    }
-        footer {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 100%;
-            height: 100%;
-            background-color: lightgray;
-            justify-content: space-around;
-            align-items: center;
-            
-            grid-area: footer;
-        }
+       
 
         button {
             cursor: pointer;
