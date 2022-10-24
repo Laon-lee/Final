@@ -304,11 +304,11 @@
 								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg>
 					</div>
-					<input type="text" id="datepicker1" name="dates">
+					<input type="text" id="datepicker1" name="dates" readonly>
 					<!-- <button class="selecbtn">검색</button> -->
 					<a href="#" class="selecbtn">검색</a>
 				</div>
-
+				
 				<script>
 					/* document.getElementById("selecbtn").addEventListener("click",function(){
 						location.href = "${pageContext.request.contextPath}/golist";
@@ -324,16 +324,35 @@
                             "endDate": tom,
                             "minDate": now,
                             "opens": "center",
+                            
+                   
                             locale: {
+                            	"separator": " ~ ",
+                            	 "applyLabel": "적용",
+                                 "cancelLabel": "취소",
                                 format: "YYYY-MM-DD",
                                 daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
                                 monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+                   				
                             }
                         }, function (start, end, label) {
                             console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
                             $('input[name="dates"]').val(start.format("YYYY-MM-DD") + " - " + end.format("YYYY-MM-DD"));
                         });
                        
+                        $('input[name="dates"]').on('show.daterangepicker', function (ev, picker) {
+                        	    $(".cancelBtn").css("float", "right");
+                        	 	$(".cancelBtn").css("background-color", "white");
+                        	 	$(".cancelBtn").css("color","black");
+                        	 	$(".applyBtn").css("background-color", "black");
+                        	 	$(".applyBtn").css("color","white");
+                        		$(".cancelBtn, .applyBtn").css("border","1px solid black");
+                        	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
+                        		$(".cancelBtn, .applyBtn").css("width", "60px");
+                        	});
+                        	
+                        
+                        
                         $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
                             console.log(picker.startDate.format('YYYY-MM-DD'));
                             console.log(picker.endDate.format('YYYY-MM-DD'));
@@ -350,7 +369,7 @@
 					
                     console.log(document.getElementsByName("dates").values);
                 </script>
-				<div class="coutbox" id="ioutbox">
+				<!-- <div class="coutbox" id="ioutbox"> -->
 					<div id="isbx" class="csbx">
 						<p>지역구분</p>
 						<form action="" id="bxform">
@@ -366,17 +385,32 @@
 							<label for="10"><input type="checkbox" name="" id="10">의정부시</label>
 						</form>
 					</div>
-				</div>
-				<script>
+				<!-- </div> -->
+	
+                <script>
                     var p = document.getElementById("selectp");
                     var svg = document.getElementById("svg");
                     var iob = document.getElementById("ioutbox");
-
+					var isbx = document.getElementById("isbx");
+                    var date = document.getElementById("datepicker1");
+					var div = document.getElementById("datepicker1").firstChild;
                     
-
                     p.addEventListener("click", function () {
-                        iob.classList.toggle("coutbox");
-                    })
+                    	isbx.classList.toggle("clicked");    
+                    });
+                    
+                    svg.addEventListener("click", function () {
+                    	isbx.classList.toggle("clicked");
+                    	
+                    });
+                    
+                    date.addEventListener("click", function () {
+                    	
+                    	if(isbx.className="clicked"){
+                    		isbx.classList.toggle("clicked");
+                    	}
+                    });
+                    
 
                 </script>
                 
