@@ -63,4 +63,5 @@ public class MainController {
 		return "hotel/hotelmain";
 	}
 	
+	
 }

@@ -154,6 +154,7 @@ option {
 #sub-box {
   width: 90%;
   padding: 10px 10px;  
+  margin-bottom : 5rem;
 }
 
 #sub-pic1, #sub-pic2, #sub-pic3, #sub-pic4 {
@@ -168,63 +169,24 @@ option {
   margin-top: 15px;
 
 }
-
+.line{
+	width:80%;
+	height:0%;
+	border-top : 2px dotted black;
+	padding-bottom : 2rem;
+	margin : 0 auto;
+}
 
 /* 리뷰를 위한 CSS*/
-#review {
-  margin-top: 40px;
-  width: 90%;
-  border-bottom: 3px solid rgb(65, 65, 65);
+.review{
+	width:60%;
+	margin : 0 auto;
+	margin-bottom : 2rem;
 }
-
-#review > #review-text > h3{
-  display: flex;
-}
-
-#review > #review-text > h4{
-  display: flex;
-}
-
-#review-box {
-  width: 90%;
-  
-  display: flex;
-  margin: 0 auto;
-
-}
-
-#review-pic1, #review-pic2, #review-pic3, #review-pic4 {
-  height: 280px;
-  margin-top: 10px;
-  width: 24%;
-}
-
-#review-pic1 {
-  background: url("imgs/제목\ 없음.png");
-}
-
-#review-pic2 {
-  background: url("imgs/main_pic.png");
-}
-#review-pic3 {
-  background: url("imgs/main_pic.png");
-}
-#review-pic4 {
-  background: url("imgs/main_pic.png");
-}
-
-#review-text {
-  width: 90%;
-  height: 300px;
-  display: flex;
-  margin: 0 auto;
-
-}
-
-#review-text1, #review-text2, #review-text3, #review-text4 {
-  height: 200px;
-  margin-top: 10px;
-  width: 24%;
+.review img{
+	width:100px;
+	height:100px;
+	margin-left : 20px;
 }
 .h3{
   margin-top: 55px;
@@ -235,6 +197,7 @@ option {
   margin-top: 45px;
   margin-bottom: 2px;
 }
+
 </style>
 
 
@@ -285,40 +248,20 @@ option {
         <div id="sub-text1">
           <h4>${content.content}</h4>
         </div>
-       
-       
         </div>
-      
         
-      <div id="review">
-        <h3>Re:Views</h3>
-      </div>
-      <div id="review-box">
-        <div id="review-pic1"></div>
-        <div id="review-pic2"></div>
-        <div id="review-pic3"></div>
-        <div id="review-pic4"></div>
-      </div>
-      <div id="review-text">
-        <div id="review-text1">
-          <h4>제목</h4>
-          <p>어머님은 짜장면이 싫다고하셨어</p>
-
+        <div class="line">
+        
         </div>
-        <div id="review-text2">
-          <h4>제목</h4>
-          <p>어머님은 짜장면이 싫다고하셨어</p>
-        </div>
-        <div id="review-text3">
-          <h4>제목</h4>
-          <p>탕수육이 좋다고하셨어</p>
-        </div>
-        <div id="review-text4">
-          <h4>제목</h4>
-          <p>또는 깐,, 풍기,,</p>
-        </div>
-      </div>
-
+       <div class="review">
+       <h4>포이치로, 리뷰 db에 저장된 값을 뿌려준다.구매내역에서 리뷰달기버튼을통해 새로 작성하게함.</h4>
+   <h2>review.title</h2>
+   <img src="${content.img }" alt="" /><img src="${content.img }" alt="" /><img src="${content.img }" alt="" />
+   <p>review.content</p>
+   <h3>review.comment</h3>
+   </div>
+        
+      
     <footer>
         <%@ include file="../frame/main/footer.jsp" %>
     </footer>

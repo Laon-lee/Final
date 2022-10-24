@@ -186,12 +186,12 @@
                 <section id="sec2">
                     <nav>
                         <ul>
-                            <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
+                             <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
-                            <li><a href="">관심상품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/basket">관심상품</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
-                            <li><a href="${pageContext.request.contextPath}/question" >문의하기</a></li>
-                            <li><a href="">쿠폰</a></li>
+                            <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>
                             
                         </ul>
                     </nav>
@@ -199,7 +199,7 @@
                         <div id="artcontainer">
                             <div id="sec2-div1">
                                 <ul>
-                                    <li class="selected">주문내역조회(0)</li>
+                                    <li class="selected">주문내역조회(order.count??)</li>
                                     <li>취소/반품/교환 내역(0)</li>
                                 </ul>
                             </div>
@@ -229,29 +229,25 @@
                                 주문 상품 정보
                                 <table id="sec2-div3-table1">
                                     <tr>
-                                        <td>주문일자<br>[주문번호]</td>
-                                        <td>이미지</td>
-                                        <td>상품정보</td>
-                                        <td>수량</td>
-                                        <td>상품구매금액</td>
-                                        <td>주문처리상태</td>
-                                        <td>취소/교환/반품</td>
+                                        <td><h3>주문일자</h3><h3>[주문번호]</h3></td>
+                                        <td><h3>이미지</h3></td>
+                                        <td><h3>상품정보</h3></td>
+                                        <td><h3>수량</h3></td>
+                                        <td><h3>상품구매금액</h3></td>
+                                        <td><h3>주문처리상태</h3></td>
+                                        <td><h3>정상구매/취소/교환/반품</h3></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="7">주문 내역이 없습니다.</td>
+                                     <td>vo.date<br>[vo.num]</td>
+                                        <td>vo.img</td>
+                                        <td>vo.name(상품이름)</td>
+                                        <td>vo.count(상품갯수)</td>
+                                        <td>vo.price</td>
+                                        <td>vo.처리상태</td>
+                                        <td>vo.상태</td>
                                     </tr>
                                 </table>
-                                <table id="sec2-div3-table2">
-                                    <tr>
-                                        <td>
-                                            <<</td>
-                                        <td>
-                                            <</td>
-                                        <td>1</td>
-                                        <td>></td>
-                                        <td>>></td>
-                                    </tr>
-                                </table>
+                               
                             </div>
                         </div>
                     </article>

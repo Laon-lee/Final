@@ -205,72 +205,185 @@
                     <nav>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
-                            <li><a href="">회원정보</a></li>
-                            <li><a href="">관심상품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
+                            <li><a href="${pageContext.request.contextPath}/basket">관심상품</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
-                            <li><a href="${pageContext.request.contextPath}/question" >문의하기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                             <li><a href="${pageContext.request.contextPath}/coupon" style="text-decoration: underline">쿠폰</a></li>
-                            
                         </ul>
                     </nav>
                     
                     <article id="art3">
                       	<ul>
-                      		<li><a href="">사용가능쿠폰</a></li><li><a href="">만료된쿠폰</a></li>
+                      		<li><a href="">사용가능쿠폰</a></li>
                       	</ul>
                       	<div id="coupon-container">
                       		<div class="div1">
                       			<div class="coupon">
                      	 			<div class="coupon-1"> 
-                      					<h5>신규 가입 쿠폰</h5>
-                      					<h1>10000원</h1>
-                      					<p>5만원 이상 구매시</p>
+                      					<h5>coupon.title</h5>
+                      					<h1>coupon.price</h1>
+                      					<p>coupon.content</p>
                       				</div>
                       			</div>
-                      			<p class="coupon-p">기간 : 제한 없음</p>
+                      			<p class="coupon-p">coupon.</p>
                       		</div>
-                      		<div class="div1">
+                              <div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>
+                            <div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>
+                            <div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
                       			<div class="coupon">
-                      				<div class="coupon-1"> 
-                      					<h5>신규 가입 쿠폰</h5>
-                      					<h3>10000원</h3>
-                      					<p>5만원 이상 구매시</p>
+                     	 			<div class="coupon-1"> 
+                      					<h5>coupon.title</h5>
+                      					<h1>coupon.price</h1>
+                      					<p>coupon.content</p>
                       				</div>
                       			</div>
-                      			<p class="coupon-p">기간 : 제한 없음</p>
-                  	    	</div>
-                   		   	<div class="div1">
-                   		   		<div class="coupon">
-                  	    			<div class="coupon-1"> 
-                   		   				<h5>신규 가입 쿠폰</h5>
-                   	   					<h3>10000원</h3>
-                   	   					<p>5만원 이상 구매시</p>
+                      			<p class="coupon-p">coupon.</p>
+                      		</div>	<div class="div1">
+                      			<div class="coupon">
+                     	 			<div class="coupon-1"> 
+                      					<h5>coupon.title</h5>
+                      					<h1>coupon.price</h1>
+                      					<p>coupon.content</p>
                       				</div>
                       			</div>
-                     	 		<p class="coupon-p">기간 : 제한 없음</p>
+                      			<p class="coupon-p">coupon.</p>
+                      		</div>	<div class="div1">
+                                <div class="coupon">
+                                    <div class="coupon-1"> 
+                                        <h5>coupon.title</h5>
+                                        <h1>coupon.price</h1>
+                                        <p>coupon.content</p>
+                                    </div>
+                                </div>
+                                <p class="coupon-p">coupon.</p>
+                            </div>	<div class="div1">
+                      			<div class="coupon">
+                     	 			<div class="coupon-1"> 
+                      					<h5>coupon.title</h5>
+                      					<h1>coupon.price</h1>
+                      					<p>coupon.content</p>
+                      				</div>
+                      			</div>
+                      			<p class="coupon-p">coupon.</p>
+                      		</div>	<div class="div1">
+                      			<div class="coupon">
+                     	 			<div class="coupon-1"> 
+                      					<h5>coupon.title</h5>
+                      					<h1>coupon.price</h1>
+                      					<p>coupon.content</p>
+                      				</div>
+                      			</div>
+                      			<p class="coupon-p">유통기한</p>
                       		</div>
-                  	    	<div class="div1">
-                   		   		<div class="coupon">
-                   	   				<div class="coupon-1"> 
-                      					<h5>신규 가입 쿠폰</h5>
-                      					<h3>10000원</h3>
-                      					<p>5만원 이상 구매시</p>
-                      				</div>
-                      			</div>
-              	        		<p class="coupon-p">기간 : 제한 없음</p>
-               		       	</div>
-               		       	<div class="div1">
-               	    	   		<div class="coupon">
-                      				<div class="coupon-1"> 
-                      					<h5>신규 가입 쿠폰</h5>
-                      					<h3>10000원</h3>
-                      					<p>5만원 이상 구매시</p>
-                      				</div>
-                      			</div>
-                      			<p class="coupon-p">기간 : 제한 없음</p>
-                      		</div>
-                      	</div>
-                      
                     </article>
                 </section>
                 </div>

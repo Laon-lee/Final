@@ -80,18 +80,22 @@
     text-align: center;
     margin-bottom: 2rem;
    }
-        .art3-Q{
+    
+   .art3-Q{
     color: darkcyan;
     font-size: 1.3rem;
     margin-right: 5px;
    }
-   #art3-question{
-    padding-bottom: 15px;
+
+   .art3-question{
+   padding-top : 10px;
+    padding-bottom: 17px;
     border-bottom: 2px solid black;
     font-weight: 600;
     color: rgb(70, 68, 68);
    }
-   #art3-content{
+
+   .art3-content{
     padding-top: 15px;
     padding-bottom: 18px;
     border-bottom: 2px solid black;
@@ -100,8 +104,12 @@
     
     display: none;
    }
+	.art3-content h3{
+    margin-left: 15px;
+   }
+   
    .display-block{
-    display: block !important;
+    display: block;
    }
 
 
@@ -223,93 +231,44 @@
                     <nav>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
-                            <li><a href="">회원정보</a></li>
-                            <li><a href="">관심상품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
+                            <li><a href="${pageContext.request.contextPath}/basket">관심상품</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion" style="text-decoration: underline">자주찾는질문</a></li>
-                            <li><a href="${pageContext.request.contextPath}/question" >문의하기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                             <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>
-                            
                         </ul>
                     </nav>
                     
                     <article id="art2">
                        
-                        <div id="art3-question">
+                        <div class="art3-question">
                             <span class="art3-Q">Q</span> vo.question
                            </div>
                         
-                           <div id="art3-content">
-                            vo.content
+                           <div class="art3-content">
+                           <h3>vo.content</h3>
                            </div>
-                           <div id="art3-question">
+
+                           <div class="art3-question">
                             <span class="art3-Q">Q</span> vo.question
                            </div>
                         
-                           <div id="art3-content">
-                            vo.content
+                           <div class="art3-content">
+                            <h3>vo.content</h3>
                            </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                           <div id="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div id="art3-content">
-                            vo.content
-                           </div>
-                            </article>
-                            
+
+                          
                           <script>
-                            document.getElementById("art3-question").addEventListener("click",function(){
-                                document.getElementById("art3-content").classList.toggle("display-block");
-                            });
+                         
+                           
+                          for(let i = 0; i<10; i++){
+                            document.getElementsByClassName("art3-question")[i].addEventListener("click",function(){
+                               
+                                    document.getElementsByClassName("art3-content")[i].classList.toggle("display-block");
+                                   
+                                });
+                        }
+                        
                           </script>
                     </article>
                 </section>
