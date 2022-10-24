@@ -20,47 +20,12 @@
     padding: 0 auto;
     box-sizing: border-box;
 }
-
+html { 
+	scroll-behavior: smooth; 
+}
 body{
     background-color:#e3d5ca;
 }
-
-/*header {
-    width: 90%;
-    border-bottom: 3px solid black;
-    background-color:#e3d5ca;
-}
-
-#head-logo{
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;s
-    
-}
-
-#head-icon{
-    display: flex;
-    position: relative;
-    width: 25%;
-    left: 400px;
-    bottom: 45px;
-
-}
-
-nav {
-    width: 90%;
-    height: 100px;
-    padding: 10px 10px;
-    margin-top: 10px;
-    background-color: #e3d5ca;
-}
-
-nav > a {
-    margin-left: 15px;
-}
-*/
 
 /*승철짱 CSS*/
 nav {
@@ -73,8 +38,14 @@ nav {
     }
 
     
-
-
+#container{
+	display:grid;
+	grid-template-rows:70px 1fr 70px;
+	
+}
+main{
+	width:100%;
+}
 
 #main-box {
     display: flex;
@@ -197,19 +168,38 @@ option {
   margin-top: 45px;
   margin-bottom: 2px;
 }
+#fixed{
+	font-weight:700;
+	display:flex;
+	justify-content:center;
+	text-align:center;
+	position:fixed;
+	bottom:7%;
+	right:3%;
+	border: none;
+	width:60px;
+	height:60px;
+	background-color: lightgray;
+	align-items:center;
+}
 
 </style>
 
 
 </head>
 <body>
-
+	<div id="fixed">
+		<a href="#top">
+		TOP
+		</a>
+	</div>
+	<a name="top"></a>
   <div id="container">
  
    <header>
       <%@ include file="../frame/shop/header.jsp" %>
     </header>
-
+	<main>
 
 
 
@@ -261,7 +251,7 @@ option {
    <h3>review.comment</h3>
    </div>
         
-      
+      </main>
     <footer>
         <%@ include file="../frame/main/footer.jsp" %>
     </footer>
