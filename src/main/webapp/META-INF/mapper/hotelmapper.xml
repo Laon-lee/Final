@@ -4,9 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.HotelDAO">
 	<select id="selectList" resultType="hotelVO">
-		select hotel_id, hotel_name, hotel_room, hotel_addr, hotel_opt, hotel_deopt, hotel_category, hotel_price, hotel_thum, hotel_img, hotel_content, hotel_here, hotel_tel
-		from hotel_reservation
+		select hotel_name, hotel_id, hotel_room, hotel_addr, hotel_opt, hotel_deopt, hotel_category, hotel_price, hotel_thum, hotel_img, hotel_content, hotel_here, hotel_tel
+		from hotel_reservation GROUP BY hotel_name;
 	</select>
+	
+	<select id="selectHotelNameList" resultType = "hotelVO">
+		SELECT distinct hotel_name from hotel_reservation ;
+	</select>
+	
+	<select id="selectRoomList" resultType="hotelVO">
+		SELECT hotel_name, hotel_room, hotel_price from hotel_reservation;
+	</select>
+	<select id="selectCateList" resultType="hotelVO">
+	select hotel_name, hotel_id, hotel_room, hotel_addr, hotel_opt, hotel_deopt, hotel_category, hotel_price, hotel_thum, hotel_img, hotel_content, hotel_here, hotel_tel
+		from hotel_reservation 
+		where hotel_category in 
+		<foreach item="cate" index="id" collection="list" open="(" separator="," close = ")">
+			 #{cate} 
+		</foreach>
+		GROUP BY hotel_name;
+	</select>
+	
 </mapper>
 
 

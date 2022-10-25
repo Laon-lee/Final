@@ -129,7 +129,7 @@
             justify-content: center
         }
 
-        #list,
+        .list,
         .option_list {
             width: 80%;
             margin: 5px auto;
@@ -143,19 +143,19 @@
             display: none;
         }
 
-        #inner1 {
+        .inner1 {
             width: 25%;
             background-color: red;
 
         }
 
-        #inner1>img {
+        .inner1>img {
             width: 100%;
     height: 100%;
     object-fit: cover;
         }
 
-        #inner2 {
+        .inner2 {
             width: 65%;
             padding-left: 20px;
         }
@@ -181,14 +181,14 @@
             border-collapse: collapse;
         }
 
-        #intr {
+        .intr {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             padding: 5px 20px;
         }
 
-        #intr_a {
+        .intr_a {
             display: flex;
             flex-direction: row;
 
@@ -198,15 +198,15 @@
             border: 1px solid black;
         }
 
-        #td1 {
+        .td1 {
             width: 80%;
         }
 
-        #td2 {
+        .td2 {
             text-align: center;
         }
 
-        #option_list {
+        .option_list {
             display: none;
         }
 
@@ -387,16 +387,21 @@
 					<div id="isbx" class="csbx">
 						<p>지역구분</p>
 						<form action="" id="bxform">
-							<label for="1"><input type="checkbox" name="" id="1">서울전체</label>
-							<label for="2"><input type="checkbox" name="" id="2">강남구</label>
-							<label for="3"><input type="checkbox" name="" id="3">강북구</label>
-							<label for="4"><input type="checkbox" name="" id="4">동작구</label>
-							<label for="5"><input type="checkbox" name="" id="5">경기전체</label>
-							<label for="6"><input type="checkbox" name="" id="6">고양시</label>
-							<label for="7"><input type="checkbox" name="" id="7">김포시</label>
-							<label for="8"><input type="checkbox" name="" id="8">남양주시</label>
-							<label for="9"><input type="checkbox" name="" id="9">성남시</label>
-							<label for="10"><input type="checkbox" name="" id="10">의정부시</label>
+							<label for="1"><input type="checkbox" name="서울" id="1">서울전체</label>
+							<label for="2"><input type="checkbox" name="금천구" id="2">금천구</label>
+							<label for="3"><input type="checkbox" name="은평구" id="3">은평구</label>
+							<label for="4"><input type="checkbox" name="강남구" id="4">강남구</label>
+							<label for="5"><input type="checkbox" name="서초구" id="5">서초구</label>
+							<label for="6"><input type="checkbox" name="서대문구" id="6">서대문구</label>
+							<label for="7"><input type="checkbox" name="강동구" id="7">강동구</label>
+							<label for="8"><input type="checkbox" name="인천" id="8">인천전체</label>
+							<label for="9"><input type="checkbox" name="연수구" id="9">연수구</label>
+							<label for="10"><input type="checkbox" name="남동구" id="10">남동구</label>
+							<label for="11"><input type="checkbox" name="경기" id="11">경기전체</label>
+							<label for="12"><input type="checkbox" name="성남시" id="12">성남시</label>
+							<label for="13"><input type="checkbox" name="김포시" id="13">김포시</label>
+							<label for="14"><input type="checkbox" name="용인시" id="14">용인시</label>
+							<label for="15"><input type="checkbox" name="시흥시" id="15">시흥시</label>
 						</form>
 					</div>
 				<!-- </div> -->
@@ -427,26 +432,60 @@
                     
 
                 </script>
-                <c:forEach var="item" items="${list}">
-                <div id="list">
+                <c:forEach var="item" items="${cate}">
+                <div class="list">
 
-                    <div id="inner1" class="inner">
+                    <div id="inner1" class="inner1 inner">
                         <img src="${pageContext.request.contextPath}/image/hotel/dog6.jpg" alt="">
                     </div>
-                    <div id="inner2" class="inner">
+                    <div id="inner2" class="inner2 inner">
                         <p>${item.hotelOpt }</p>
                         <h2>${item.hotelName }</h2>
                         <p>자세히보기</p>
                         <p>2021.12.11~2023.08.31</p>
-                        <h1>${hotelPrice }</h1>
+                        <h1>${item.hotelPrice }</h1>
                     </div>
                     <div id="innerbtn1" class="innerbtn">
                         <button>RESERVE</button>
                     </div>
 
                 </div>
+               
+                <c:forEach var="room" items="${list}">
+                 <c:if test="${item.hotelName eq room.hotelName}">
+                	<div class="option_list" id="option_list1">
+                    <table>
+                        <tr>
+                            <td class="td1">
+                                <div class="intr">
+                                    <div class="intr_room">
+                                        <p>${room.hotelRoom}</p>
+                                        <P>Size : 20.7</P>
+                                    </div>
+                                    <div class="intr_a">
+                                        <a href="#" class="a1">객실 상세보기</a>
+                                        <a href="#" class="a2">비교함 담기</a>
+                                        <p>${room.hotelPrice }</p>
+                                    </div>
+                                    <!-- <div id="intr_price">
+                                        36,000 KRW~
+                                    </div> -->
+                                </div>
+                            </td>
+                            <td class="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
+                        </tr>
+                   	</table>
+                   	</div>
+                   	</c:if>
                 </c:forEach>
-                <div id="list">
+                
+                </c:forEach>
+                
+                <%-- <c:forEach var="room" items="${list}">
+                	<p>${room.hotelName }</p>
+                	<p>${room.hotelRoom }</p>
+                </c:forEach> --%>
+                <%-- <div id="list">
 
                     <div id="inner1" class="inner">
                         <img src="${pageContext.request.contextPath}/image/hotel/dog6.jpg" alt="">
@@ -601,7 +640,7 @@
                             <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
                         </tr>
                     </table>
-                </div>
+                </div> --%>
             </section>
             <script>
             $(document).ready(function () {

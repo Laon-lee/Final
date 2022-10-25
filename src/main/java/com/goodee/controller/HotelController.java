@@ -31,13 +31,18 @@ public class HotelController {
 		return "hotel/hoteldetail";
 	}
 	
-	@GetMapping("golist/{startDate}/{endDate}")
-	public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate,
+	@GetMapping("golist/{startDate}/{endDate}/{cate}")
+	public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("cate") String[] category,
 						Model model) {
 		System.out.println(startdate);
 		System.out.println(enddate);
+		System.out.println(category.length);
 		
 		service.getList(model);
+		service.getRoomList(model);
+		service.getCateList(model, category);
+		
+		
 		return "hotel/hotellist";
 	}
 }

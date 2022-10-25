@@ -233,7 +233,31 @@ img {
 					<a href="#" class="selecbtn">검색</a>
 				</div>
 				
-				<script>
+				
+				<!-- <div class="coutbox" id="ioutbox"> -->
+					<div id="isbx" class="csbx">
+						<p>지역구분</p>
+						<form action="" id="bxform">
+							<label for="1"><input type="checkbox" name="cate" id="1" class="allseo" value="서울">서울전체</label>
+							<label for="2"><input type="checkbox" name="cate" id="2" class="seo" value="금천구">금천구</label>
+							<label for="3"><input type="checkbox" name="cate" id="3" class="seo" value="은평구">은평구</label>
+							<label for="4"><input type="checkbox" name="cate" id="4" class="seo" value="강남구">강남구</label>
+							<label for="5"><input type="checkbox" name="cate" id="5" class="seo" value="서초구">서초구</label>
+							<label for="6"><input type="checkbox" name="cate" id="6" class="seo" value="서대문구">서대문구</label>
+							<label for="7"><input type="checkbox" name="cate" id="7" class="seo" value="강동구">강동구</label><br />
+							<label for="8"><input type="checkbox" name="cate" id="8" class="allin" value="인천">인천전체</label>
+							<label for="9"><input type="checkbox" name="cate" id="9" class="in" value="연수구">연수구</label>
+							<label for="10"><input type="checkbox" name="cate" id="10" class="in" value="남동구">남동구</label>
+							<label for="11"><input type="checkbox" name="cate" id="11" class="allgyeong" value="경기">경기전체</label>
+							<label for="12"><input type="checkbox" name="cate" id="12" class="gyeong" value="성남시">성남시</label>
+							<label for="13"><input type="checkbox" name="cate" id="13" class="gyeong" value="김포시">김포시</label>
+							<label for="14"><input type="checkbox" name="cate" id="14" class="gyeong" value="용인시">용인시</label>
+							<label for="15"><input type="checkbox" name="cate" id="15" class="gyeong" value="시흥시">시흥시</label>
+						</form>
+					</div>
+				<!-- </div> -->
+	
+		<script>
 					/* document.getElementById("selecbtn").addEventListener("click",function(){
 						location.href = "${pageContext.request.contextPath}/golist";
 					}); */
@@ -242,7 +266,11 @@ img {
                         var now = new Date();
                         var tom = new Date();
                         tom.setDate(tom.getDate() + 1);
-                        console.log(now)
+                        console.log(now);
+                        var cateArr = new Array();
+                        
+                        
+                        
                         $('input[name="dates"]').daterangepicker({
                             "startDate": now,
                             "endDate": tom,
@@ -275,7 +303,29 @@ img {
                         		$(".cancelBtn, .applyBtn").css("width", "60px");
                         	});
                         	
+                        $('.allseo').click(function(){
+                        	if($('.allseo').is(':checked')){
+                        		$('.seo').prop("checked",true);
+                        	} else {
+                        		$('.seo').prop("checked",false);
+                        	}
+                        });
                         
+                        $('.allin').click(function(){
+                        	if($('.allin').is(':checked')){
+                        		$('.in').prop("checked",true);
+                        	} else {
+                        		$('.in').prop("checked",false);
+                        	}
+                        });
+                        
+                        $('.allgyeong').click(function(){
+                        	if($('.allgyeong').is(':checked')){
+                        		$('.gyeong').prop("checked",true);
+                        	} else {
+                        		$('.gyeong').prop("checked",false);
+                        	}
+                        });
                         
                         $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
                             console.log(picker.startDate.format('YYYY-MM-DD'));
@@ -284,33 +334,28 @@ img {
                             var start = picker.startDate.format('YYYY-MM-DD');
                             console.log("여기스타트"+start);
                             console.log("여기엔드"+end);
-                    		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end)
+                            
+                            $("input[name='cate']:checked").each(function(){
+                            	console.log(cate);
+                            	var cate = $(this).val();
+                            	cateArr.push(cate);
+                            	
+                            	
+                            	
+                            });
+                            
+                            
+                            var cateArr2 = cateArr.slice(1);
+                            
+                    		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2)
                         });
                         
-                                                
+                        
                     });
 	
 					
                     console.log(document.getElementsByName("dates").values);
                 </script>
-				<!-- <div class="coutbox" id="ioutbox"> -->
-					<div id="isbx" class="csbx">
-						<p>지역구분</p>
-						<form action="" id="bxform">
-							<label for="1"><input type="checkbox" name="" id="1">서울전체</label>
-							<label for="2"><input type="checkbox" name="" id="2">강남구</label>
-							<label for="3"><input type="checkbox" name="" id="3">강북구</label>
-							<label for="4"><input type="checkbox" name="" id="4">동작구</label>
-							<label for="5"><input type="checkbox" name="" id="5">경기전체</label>
-							<label for="6"><input type="checkbox" name="" id="6">고양시</label>
-							<label for="7"><input type="checkbox" name="" id="7">김포시</label>
-							<label for="8"><input type="checkbox" name="" id="8">남양주시</label>
-							<label for="9"><input type="checkbox" name="" id="9">성남시</label>
-							<label for="10"><input type="checkbox" name="" id="10">의정부시</label>
-						</form>
-					</div>
-				<!-- </div> -->
-	
                 <script>
                     var p = document.getElementById("selectp");
                     var svg = document.getElementById("svg");
