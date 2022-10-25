@@ -337,6 +337,14 @@
    #mainA1{
     margin-left: 9rem;
    }
+   .img-container{
+   width:70%;
+   margin-top : 50px;
+   margin: 0 auto;
+   }
+   .noticedog{
+  width:100%;
+   }
   </style>
 </head>
 
@@ -454,7 +462,9 @@
     <article class="art4">
         <p>${list.boardContent}</p>
     </article>
-  
+    <div class="img-container">
+  <img class="noticedog" src="${pageContext.request.contextPath}/image/main/메인.jpg" alt="" />
+  </div>
    </main>
     <footer>
       <ul id="footer-1stul">
