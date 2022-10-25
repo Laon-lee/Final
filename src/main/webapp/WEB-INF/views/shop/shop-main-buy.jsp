@@ -131,7 +131,7 @@ option {
 	border: 1px solid white;
 }
 
-/* 중간 sub 내욧ㅇ*/
+/* 중간 sub 내용*/
 #sub-box {
 	width: 90%;
 	padding: 10px 10px;
@@ -188,7 +188,7 @@ option {
 	justify-content: center;
 	text-align: center;
 	position: fixed;
-	bottom: 7%;
+	bottom: 9%;
 	right: 3%;
 	border: none;
 	width: 60px;
@@ -197,35 +197,52 @@ option {
 	align-items: center;
 }
 
+/* 메인 박스 css */
+
 #main-box {
-	border: 1px solid;
+	
 	height: 500px;
-	width: 70%;
+	width: 100%;
+	background-color :#D9D9D9;
 }
 
 #main1 {
-	border: 1px solid;
+	margin-left : 260px;
 	width: 500px;
 	height: 400px;
 	right: 10px;
 	background:
-		url("https://marlonshop.com/web/product/small/202210/48ab597982e07045fb5414b758ae7b62.jpg")
+		url("https://marlonshop.com/web/product/small/202210/48ab597982e07045fb5414b758ae7b62.jpg");
+	
 }
 
 #main2 {
-	border: 1px solid;
 	width: 500px;
+	margin-right : 260px;
 }
 
-#main2>h3 {
-	font-size: 1.5rem;
+#main2>h3, h4 {
+	font-size: 1.2rem;
 }
 
-#p-line {
-	    line-height: 7rem;
+#main2 > h4 {
+	line-height : 3.5rem
 }
 
+#main2 > button {
+	height: 35px;
+    border-radius: 5px;
+    width: 48%;
+    border: none;
+    margin-top: 10px;
+}
 
+#p-line1 {
+	line-height: 7rem;
+}
+#p-line2 {
+	line-height : 3rem;
+}
 #size-opt {
 	height : 30px;
 	width : 90%;
@@ -233,11 +250,56 @@ option {
 	border-radius : 5px;
 	color : black;
 }
+
+/* sub-box, 상태창, 상세상품 설명 */
+#sub-box {
+	width : 100%;
+	height : 1000px;
+	display : flex;
+}
+
+#status-bar {
+	width : 15%;
+	height : 200px;
+	margin-top : 50px;
+	margin-left : 100px;
+	padding: 30px 30px;
+    line-height: 40px;
+	}
+#status-bar > div:hover{
+	border-right : 2px solid black;
+	cursor : pointer;
+	font-size  : 1.2rem;
+}
+
+#proc-wrapper {
+	width :65%;
+	height : 100vh;
+	margin-right : 200px;
+	
+}
+
+
+#prdInfo > p {
+	font-size : 0.8rem;
+	margin-top : 0.6rem;
+
+}
+
+h5 {
+	font-size : 0.9rem;
+	line-height : 1.3rem;
+}
+
+font {
+	size :2;
+}
+
 <!-- 헤더 css 임시 -->
 
 	 header {
       z-index: 100;
-      background-color: white;
+      background-color: white !important;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -460,7 +522,7 @@ option {
 				</div>
 				<div id="main2">
 					<h3>[콤보] 아이캔터 노-풀 하네스+젠트리쉬</h3>
-					<p id="p-line">MADE IN KOREA</p>
+					<p id="p-line1">MADE IN KOREA</p>
 					<select id="size-opt">
 						<option value="사이즈선택">사이즈를 선택해주세요</option>
 						<option value="사이즈선택">----------------------------------------</option>
@@ -469,7 +531,82 @@ option {
 						<option value="">large</option>
 					</select>
 					<h4>Total</h4>
-					<p>{}개</p>
+					<p in="p-line2">{}개</p>
+					<button>BUY NOW</button><button>ADD TO CART</button>
+				</div>
+			</div>
+			<div id ="sub-box">
+				<div id="status-bar" class="tab_title">
+					<div class="on">Detail</div>
+					<div>Information</div>
+					<div>Review</div>
+					<div>Q&A</div>
+				</div>
+				<div id="proc-wrapper" class="tab_cont">
+					<div class="on" style="display:block;">
+						<div>제품 이미지</div>
+					</div>
+					<div style="display:none;">
+						<div id="prdInfo"">
+							<h3>상세 결제 정보</h3>
+							<p>고액 결제의 경구 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다</p>
+							<p>확인과정에서 도난 카드의 사용이나 타인 명의의 주문등 정상적인 주문이 아니라고 판단될 경우 임의로 주문을 보류 또는 취소할 수 있습니다.</p>
+							<p>무통장 입금은 상품 구매 대금은 PC뱅킹, 인터넷뱅킹, 텔레뱅킹 혹은 가까운 은행에서 직접 입금하시면 됩니다.</p>
+							<p>주문시 입력한 입금자명과 실제입금자의 성명이 반드시 일치하여야 하며, 7일 이내로 입금을 하셔야 하며 입금되지 않은 주문은 자동취소 됩니다.</p>
+							<br />
+							<h5>배송방법 :택배</h5>
+							<h5>배송 지역 : 전국지역</h5>
+							<h5>배송 비용 : 3,500원</h5>
+							<h5>배송 기간 : 3일 ~ 7일</h5>
+							<h5>배송안내</h5>
+							<p>뎅누리샵은 편집샵으로 운영되는 샵으로서 ,브랜드별로 출고지가 상이합니다.</p>
+							<p>마찬가지로 여러제품의 교환, 반품을 원하시면 이 또한 마찬가지로 배송비가 가각 부가될 수 있습니다.</p>
+							<p>**제품의 무게에 따라 배송비가 다를 수 있습니다.</p>
+							<p>**네이베 페이 구매시 : 상품별 출고지/수거지가 상이하여 교환,</p>
+							<p>반품은 자동수거가 불가 하므로 고객센터로 문의 부탁드립니다.</p>
+							<br />
+							<h4>교환 및 반품정보</h4>
+							<h5 style="line-height : 2.5rem;">택배회사 : 로젠택배, CJ대한통운</h5>
+							<p><b>무상 교환 반품 안내</b></p>
+							<p>-배송 중에 파손 및 오염이 된 경우</p>
+							<p>-주문한 제품이 아닌 다른 제품이 배송되었을 경우</p>
+							<p>-제품에 구조적인 문제가 있는 경우</p>
+							<p>-쿠션 패브릭의 변색과 찢어짐 등의 품질 불량</p>
+							<br />
+							<p><b>유상교환/반품</b></p>
+							<p>상품 수령후 7일 이내 소비자 단순 변심 및 주문 오류에 의한 교환 및 반품</p>
+							<p>(배송비 고객부탐/제품 및 포장 상태가 재판매 가능한 상태여야 함.)</p>
+							<p>**반품시 포장 불량으로 인한 파손은 고객님이 부담하셔야합니다.</p>
+							<br />
+							<p><b>*교환,반품을 원하실 경우 수령을로부터 7일 이내에 연락을 해주셔야 처리가 가능하며,</b></p>
+							<p><b>경과시 처리가 불가합니다.(미사용이라도 7일이 지나면 접수가 불가능합니다.)</b></p>
+							<br />
+							<p><b>교환 및 반품이 불가능한 경우</b></p>
+							<p>-교환/반품 요청 기간이 지난 경우</p>
+							<p>-상품의 포장이 손상되었거나 텍, 라벨이 제거된 경우</p>
+							<p>-사용 흔적이 남아 있거나, 이물질에 의한 오염이 된 경우</p>
+							<p>-고객 부주의에 의한 제품 파손 및 손상이 있는 경우</p>
+							<p>-구매자의 사용 등에 의해 상품 가치가 감소한 경우</p>
+							<p>-주문 제작된 상품일 경우</p>
+						</div>
+					</div>
+					<div style="display:none;" >
+						<div id="prdReview">
+							<div class="board">
+								<h3>REVIEW</h3>
+								<p class="desc">상품의 사용후기를 적어주세요</p>
+								<p class="nodata">게시물이 없습니다.</p>
+							</div>
+						</div>
+					</div>
+					<div style="display:none">
+						<div class="board">
+							<h3>Q&A</h3>
+							<p>상품에 대해 궁금한 점을 해결해 드립니다.</p>
+							<p class="nodata">게시물이 없습니다.</p>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 
@@ -478,5 +615,18 @@ option {
 			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
 	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".tab_title div").click(function(){
+				var idx=$(this).index();
+				$(".tab_title div").removeClass("on");
+				$(".tab_title div").eq(idx).addClass("on");
+				$(".tab_cont > div").hide();
+				$(".tab_cont > div").eq(idx).show();
+			})
+		});
+	</script>
 </body>
 </html>
