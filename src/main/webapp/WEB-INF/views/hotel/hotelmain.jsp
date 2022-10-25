@@ -346,8 +346,11 @@ img {
                             
                             
                             var cateArr2 = cateArr.slice(1);
-                            
-                    		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2)
+                            if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
+                    			$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2);
+                            } else {
+                            	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr);
+                            }
                         });
                         
                         

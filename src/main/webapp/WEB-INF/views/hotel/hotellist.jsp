@@ -320,10 +320,33 @@
 					</div>
 					<input type="text" id="datepicker1" name="dates" readonly>
 					<!-- <button class="selecbtn">검색</button> -->
-					<a href="#" class="selecbtn">검색</a>
+					<a href="#" class="selecbtn" id="sbtn">검색</a>
 				</div>
 				
-				<script>
+				
+				<!-- <div class="coutbox" id="ioutbox"> -->
+					<div id="isbx" class="csbx">
+						<p>지역구분</p>
+						<form action="" id="bxform">
+							<label for="1"><input type="checkbox" name="cate" id="1" class="allseo" value="서울">서울전체</label>
+							<label for="2"><input type="checkbox" name="cate" id="2" class="seo" value="금천구">금천구</label>
+							<label for="3"><input type="checkbox" name="cate" id="3" class="seo" value="은평구">은평구</label>
+							<label for="4"><input type="checkbox" name="cate" id="4" class="seo" value="강남구">강남구</label>
+							<label for="5"><input type="checkbox" name="cate" id="5" class="seo" value="서초구">서초구</label>
+							<label for="6"><input type="checkbox" name="cate" id="6" class="seo" value="서대문구">서대문구</label>
+							<label for="7"><input type="checkbox" name="cate" id="7" class="seo" value="강동구">강동구</label><br />
+							<label for="8"><input type="checkbox" name="cate" id="8" class="allin" value="인천">인천전체</label>
+							<label for="9"><input type="checkbox" name="cate" id="9" class="in" value="연수구">연수구</label>
+							<label for="10"><input type="checkbox" name="cate" id="10" class="in" value="남동구">남동구</label>
+							<label for="11"><input type="checkbox" name="cate" id="11" class="allgyeong" value="경기">경기전체</label>
+							<label for="12"><input type="checkbox" name="cate" id="12" class="gyeong" value="성남시">성남시</label>
+							<label for="13"><input type="checkbox" name="cate" id="13" class="gyeong" value="김포시">김포시</label>
+							<label for="14"><input type="checkbox" name="cate" id="14" class="gyeong" value="용인시">용인시</label>
+							<label for="15"><input type="checkbox" name="cate" id="15" class="gyeong" value="시흥시">시흥시</label>
+						</form>
+					</div>
+				<!-- </div> -->
+	<script>
 					/* document.getElementById("selecbtn").addEventListener("click",function(){
 						location.href = "${pageContext.request.contextPath}/golist";
 					}); */
@@ -332,10 +355,24 @@
                         var now = new Date();
                         var tom = new Date();
                         tom.setDate(tom.getDate() + 1);
-                        console.log(now)
+                        console.log(now);
+                        console.log('${startdate}');
+                        console.log('${enddate}');
+                        var startdate = new Date('${startdate}');
+                        var enddate = new Date('${enddate}');
+                        
+                        console.log(startdate);
+                        console.log(enddate);
+                     	
+                        //이미 category에 메인페이지에서 선택된 데이터가 배열로 들어있음
+                        //해당 val값을 가지고 있는 input을 체크되게 만든다
+                        
+                        
+                       
+                       	var cateArr = new Array();
                         $('input[name="dates"]').daterangepicker({
-                            "startDate": now,
-                            "endDate": tom,
+                        	"startDate": startdate,
+                            "endDate": enddate,
                             "minDate": now,
                             "opens": "center",
                             
@@ -365,47 +402,71 @@
                         		$(".cancelBtn, .applyBtn").css("width", "60px");
                         	});
                         	
+                        $('.allseo').click(function(){
+                        	if($('.allseo').is(':checked')){
+                        		$('.seo').prop("checked",true);
+                        	} else {
+                        		$('.seo').prop("checked",false);
+                        	}
+                        });
                         
+                        $('.allin').click(function(){
+                        	if($('.allin').is(':checked')){
+                        		$('.in').prop("checked",true);
+                        	} else {
+                        		$('.in').prop("checked",false);
+                        	}
+                        });
+                        
+                        $('.allgyeong').click(function(){
+                        	if($('.allgyeong').is(':checked')){
+                        		$('.gyeong').prop("checked",true);
+                        	} else {
+                        		$('.gyeong').prop("checked",false);
+                        	}
+                        });
                         
                         $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
                             console.log(picker.startDate.format('YYYY-MM-DD'));
                             console.log(picker.endDate.format('YYYY-MM-DD'));
+                            /* var end = picker.endDate.format('YYYY-MM-DD');
+                            var start = picker.startDate.format('YYYY-MM-DD'); */
                             var end = picker.endDate.format('YYYY-MM-DD');
                             var start = picker.startDate.format('YYYY-MM-DD');
                             console.log("여기스타트"+start);
                             console.log("여기엔드"+end);
-                    		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end)
+                            
+                            $("input[name='cate']:checked").each(function(){
+                            	console.log(cate);
+                            	var cate = $(this).val();
+                            	cateArr.push(cate);
+                            	
+                            });
+                            
+                            
+                            var cateArr2 = cateArr.slice(1);
+                            
+                    		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2)
                         });
                         
-                                                
+                        
                     });
 	
-					
-                    console.log(document.getElementsByName("dates").values);
+				
                 </script>
-				<!-- <div class="coutbox" id="ioutbox"> -->
-					<div id="isbx" class="csbx">
-						<p>지역구분</p>
-						<form action="" id="bxform">
-							<label for="1"><input type="checkbox" name="서울" id="1">서울전체</label>
-							<label for="2"><input type="checkbox" name="금천구" id="2">금천구</label>
-							<label for="3"><input type="checkbox" name="은평구" id="3">은평구</label>
-							<label for="4"><input type="checkbox" name="강남구" id="4">강남구</label>
-							<label for="5"><input type="checkbox" name="서초구" id="5">서초구</label>
-							<label for="6"><input type="checkbox" name="서대문구" id="6">서대문구</label>
-							<label for="7"><input type="checkbox" name="강동구" id="7">강동구</label>
-							<label for="8"><input type="checkbox" name="인천" id="8">인천전체</label>
-							<label for="9"><input type="checkbox" name="연수구" id="9">연수구</label>
-							<label for="10"><input type="checkbox" name="남동구" id="10">남동구</label>
-							<label for="11"><input type="checkbox" name="경기" id="11">경기전체</label>
-							<label for="12"><input type="checkbox" name="성남시" id="12">성남시</label>
-							<label for="13"><input type="checkbox" name="김포시" id="13">김포시</label>
-							<label for="14"><input type="checkbox" name="용인시" id="14">용인시</label>
-							<label for="15"><input type="checkbox" name="시흥시" id="15">시흥시</label>
-						</form>
-					</div>
-				<!-- </div> -->
-	
+                <!-- <script type="text/javascript">
+                	document.getElementById("sbtn").addEventListener("click",function(e){
+                		e.preventDefault();
+                		let cateArr[] = new Array();
+                		
+                		let catedata = document.querySelector('input[type=checkbox][name=cate]:checked').value;
+                		cateArr.push(catedata);
+                		
+                		let cateArr2 = cateArr.slice(1);
+                		
+                		fetch("${pageContext.request.contextPath}/")
+                	})
+                </script> -->
                 <script>
                     var p = document.getElementById("selectp");
                     var svg = document.getElementById("svg");
