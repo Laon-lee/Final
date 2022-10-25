@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.MemberService;
 import com.goodee.vo.MemberVO;
-import com.goodee.vo.UserVO;
 
 @Controller
 public class MemberController {
@@ -41,8 +40,8 @@ public class MemberController {
 						@RequestParam("mem_pw1") String mem_pw,
 						HttpSession session) {
 	MemberVO vo =new MemberVO();
-	vo.setMem_id(mem_id);
-	vo.setMem_pw(mem_pw);
+	vo.setMemId(mem_id);
+	vo.setMemPw(mem_pw);
 		if(mbservice.ismember2(vo)) {
 			mbservice.getmemberinfo(vo);
 			session.setAttribute("user",vo);

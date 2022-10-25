@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.NURIService;
 import com.goodee.service.BoardService;
-import com.goodee.vo.UserVO;
 
 @Controller
 public class MainController {

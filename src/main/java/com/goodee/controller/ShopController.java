@@ -1,5 +1,7 @@
 package com.goodee.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,8 +43,8 @@ public class ShopController {
 	@GetMapping("/shop/pay/{id}")
 	public String ShopPay(@PathVariable("id") String id,Model model,
 						@RequestParam("option") String option,
-						@RequestParam("count") int count) {
-		spservice.getListById(id, model);
+						@RequestParam("count") int count, HttpSession session) {
+		spservice.getListByIdS(id, model,session);
 		model.addAttribute("option", option);
 		model.addAttribute("count", count);
 		return "shop/shop-pay";	

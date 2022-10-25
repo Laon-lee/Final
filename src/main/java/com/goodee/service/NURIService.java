@@ -2,7 +2,7 @@ package com.goodee.service;
 
 import org.springframework.stereotype.Service;
 import com.goodee.dao.NURIDAO;
-import com.goodee.vo.UserVO;
+
 
 
 @Service

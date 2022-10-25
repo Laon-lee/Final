@@ -4,19 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.MemberDAO">
 	<select id="idCheck" parameterType="memberVO" resultType="int">
-		select count(*) from member where mem_id=#{mem_id};
+		select count(*) from member where mem_id=#{memId};
 	</select>
 	
 	<insert id="insertmembership" parameterType="memberVO">
 		insert into member (mem_id, mem_name, mem_pw, mem_birth,mem_oaddress, mem_address, mem_detailaddress, mem_email, mem_gender, mem_phone, agree) 
-				values (#{mem_id},#{mem_name},#{mem_pw},#{mem_birth},#{mem_oaddress}, #{mem_address},#{mem_detailaddress},#{mem_email},#{mem_gender},#{mem_phone},#{agree});
+				values (#{memId},#{memName},#{memPw},#{memBirth},#{memOaddress}, #{memAddress},#{memDetailaddress},#{memEmail},#{memGender},#{memPhone},#{agree});
 	</insert>
 
 	<select id="ismember2" resultType="int">
-		select count(*) from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
+		select count(*) from member where mem_id=#{memId} and mem_pw=#{memPw}
 	</select>
 	<select id="getmemberinfo" resultType="memberVO" parameterType="memberVO">
-		select * from member where mem_id=#{mem_id}
+		select * from member where mem_id=#{memId}
 	</select>
 </mapper>
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +124,7 @@ body{
     float: left;
     height: 140px;
     margin: 15px 20px;
-    background: url("imgs/main_pic.png");
+    
     }
     #art4-text{
       width: 60%;
@@ -134,7 +135,11 @@ body{
       font-size: 0.8rem;
       margin-top: 5px;
     }
-
+	#address-div2{
+		display:none;
+	}
+	
+	
     #info2, #info3, #info4, #info5, #info6{
         display: block;
         width: 90%;
@@ -196,10 +201,7 @@ body{
     #pay-box {
       width: 90%;
     }
-    #cash, #kakao {
-      margin-left: 20px;
-    }
-
+   
 
     select.box {
   width: 15%;
@@ -255,15 +257,6 @@ label {
     border: gray;
 }
 
-.last-check {
-  width: 20px;
-  height: 15px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-
-   
 
     #last-btn:hover {
       cursor : pointer;
@@ -293,11 +286,11 @@ label {
       <div id="art4-text">
         <h3>${list.productName}</h3>
         <p>
-        	옵션: <c:if test="${option != '사이즈를 선택해주세요'} "> ${option}</c:if>
-       			<c:if test="${option=='사이즈를 선택해주세요'} "> 없음 </c:if>
+        	옵션: <c:if test="${option != '사이즈선택'}"> ${option}</c:if>
+       			 <c:if test="${option == '사이즈선택'}"> 없음 </c:if>
        	</p>
         <p>수량: ${count}</p>
-        <p>금액</p>
+        <p>금액: <fmt:formatNumber value="${count * list.productPrice}" pattern="#,###"/>원</p>
       </div>
     </div>
     </article>
@@ -307,10 +300,9 @@ label {
                 <h3>주문정보</h3>
             </div>
             <div id="info1-info">
-                <label for="">주문자 * <input type="text" style="width : 70%; margin-left : 10px; margin-top: 20px;"></label><br>
-                <label for="">이메일 * <input type="email" style="width : 26%; margin-left : 10px;"></label>@
-                <input class="box" id="domain-txt" type="text" style="width : 26%"/>
-                <select name="email-list" id="email-list" class="box">
+                <label for="">주문자 * <input type="text" style="width : 70%; margin-left : 10px; margin-top: 20px;" value="${user.memName}"></label><br>
+                <label for="">이메일 * <input type="email" style="width : 70%; margin-left : 10px;" value="${user.memEmail}"></label>
+                <!-- <select name="email-list" id="email-list" class="box">
                     <option value="self">--직접입력--</option>
                     <option value="naver.com">naver.com</option>
                     <option value="google.com">google.com</option>
@@ -318,7 +310,7 @@ label {
                     <option value="nate.com">nate.com</option>
                     <option value="kakao.com">kakao.com</option>
                     <option value="msn.com">msn.com</option>
-                </select>
+                </select>  -->
                 <p class="info-p">이메일로 주문 처리 과정을 보내드립니다.</p>
                 <p class="info-p">수신 가능한 이메일을 주소로 입력해주세요.</p>
                 <label for="">일반 전화
@@ -357,11 +349,11 @@ label {
                 </label>
                 
                 <br>
-                <label for="address">주소 * <input type="text" placeholder="우편번호" class="addr-addr" style="text-align: center; margin-right: 10px; margin-top: 7px;"><button>주소 검색</button></label>
-                <br><input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" class="addr-box">
-                <br><input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" class="addr-box">
+                <label for="address">주소 * <input type="text" placeholder="우편번호" class="addr-addr" style="text-align: center; margin-right: 10px; margin-top: 7px;" value="${user.memOaddress}"><button>주소 검색</button></label>
+                <br><input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" class="addr-box" value="${user.memAddress}">
+                <br><input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" class="addr-box" value="${user.memDetailaddress}">
             </div>
-            <button id="info-btn">배송지 입력</button>
+            
         </div>
     </article>
     <article>
@@ -371,15 +363,40 @@ label {
             </div>
 
             <div id="send-select">
-                <label for="same-send"><input type="radio" name="same" id="same-send" style="margin-right: 6px;">주문자 정보와 동일</label>
-                <label for="same-send"><input type="radio" name="same" id="same-send"  style="margin-right: 6px;">새로운 배송지</label>
+                <label for="same-send1"><input type="radio" checked name="same" id="same-send1" style="margin-right: 6px;">주문자 정보와 동일</label>
+                <label for="same-send2"><input type="radio" name="same" id="same-send2"  style="margin-right: 6px;">새로운 배송지</label>
             </div>
+            <div id="address-div1">
+            <label for="" style="font-size: 0.85rem;">받는 사람 * <input type="text" name="owner" style="margin-top : 6px;"></label><br>
+            <label for="address">주소 * <input type="text" placeholder="우편번호" class="addr-addr" style="text-align: center; margin-right: 10px; margin-top: 7px;" value="${user.memOaddress}"></label>
+                <br><input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" class="addr-box" value="${user.memAddress}">
+                <br><input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" class="addr-box" value="${user.memDetailaddress}">
+                <br>
+			</div>
+			<div id="address-div2">
             <label for="" style="font-size: 0.85rem;">받는 사람 * <input type="text" name="owner" style="margin-top : 6px;"></label><br>
             <label for="address">주소 * <input type="text" placeholder="우편번호" class="addr-addr" style="text-align: center; margin-right: 10px; margin-top: 7px;"><button>주소 검색</button></label>
-                <br><input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" class="addr-box">
-                <br><input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" class="addr-box">
+                <br><input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" class="addr-box" >
+                <br><input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" class="addr-box" >
                 <br>
-                <button id="info-btn2">신규 배송지 입력</button>
+			</div>     
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
+			<script>
+			$("#same-send1").on("click",function(){
+				console.log("123")
+				 if($(this).is(":checked")){
+					$("#address-div2").hide();
+					$("#address-div1").show();
+				 }
+			})
+			$("#same-send2").on("click",function(){
+				console.log("456")
+				 if($(this).is(":checked")){
+					$("#address-div1").hide();
+					$("#address-div2").show();
+				 }
+			})
+			</script>           
         </div>
     </article>
     
@@ -437,7 +454,7 @@ label {
 
 
 <script>
-const domainListEl = document.querySelector('#domain-list')
+/* const domainListEl = document.querySelector('#domain-list')
 const domainInputEl = document.querySelector('#domain-txt')
 // select 옵션 변경 시
 domainListEl.addEventListener('change', (event) => {
@@ -450,7 +467,7 @@ domainListEl.addEventListener('change', (event) => {
     domainInputEl.value = ""
     domainInputEl.disabled = false
   }
-})
+}) */
 
 </script>
 
@@ -464,7 +481,7 @@ function requestPay() {
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
     name : '${content.name}',
-    amount : ${content.price},
+    amount : '${content.price}',
     buyer_email : 'iamport@siot.do',
     buyer_name : '구매자',
     buyer_tel : '010-1234-5678',

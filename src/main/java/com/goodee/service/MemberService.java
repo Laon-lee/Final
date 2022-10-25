@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.goodee.dao.MemberDAO;
 import com.goodee.vo.MemberVO;
-import com.goodee.vo.UserVO;
 
 @Service
 public class MemberService{
@@ -36,8 +35,6 @@ public class MemberService{
 
 
 	public int idCheck(MemberVO vo) {
-		System.out.println(vo.getMem_id() +"서비스");
-		System.out.println(dao.idCheck(vo));
 		return dao.idCheck(vo);
 	}
 	
