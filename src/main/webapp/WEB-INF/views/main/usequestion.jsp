@@ -248,27 +248,51 @@
                     
                     <article id="art2">
                         <c:forEach var="item" items="${list}"> 
-                        <div class="art3-question">
-                            <span class="art3-Q">Q</span> ${item.boardTitle}
-                           </div>
+                        	<div class="art3-question" class="tab_title">
+                              	<span class="art3-Q">Q</span> ${item.boardTitle}
+                           	</div>
                        
-                           <div class="art3-content">
-                           <h4>${item.boardContent}</h4>
-                           </div>
+                            <div class="art3-content">
+                           		<h4>${item.boardContent}</h4>
+                            </div>
  							</c:forEach>
                     
                           
+                          <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                           <script>
+                          for(let i = 0; i<document.getElementById("art2").children.length; i++){
+                              
+                        	  document.getElementsByClassName("art3-question")[i].addEventListener("click",function(){
+                                      
+                        		  document.getElementsByClassName("art3-content")[i].classList.toggle("display-block");
+                                      
+                        		  for(let j = 0; j<document.getElementById("art2").children.length; j++) {
+                                    	  
+                        			  if(j!= i){
+                                    		  
+                        				  document.getElementsByClassName("art3-content")[j].classList.remove("display-block");
+                                    	  }
+                                      }
+                                  });
+                          } 
                          
-                           
-                          for(let i = 0; i<10; i++){
-                            document.getElementsByClassName("art3-question")[i].addEventListener("click",function(){
-                               
-                                    document.getElementsByClassName("art3-content")[i].classList.toggle("display-block");
-                                   
-                                });
-                        }
-                        
+                          
+                    
+                         
+//                           $(document).ready(function(){
+//                         	  $(".tab_title div").click(function(){
+//                         		  console.log("방가방가");
+//                         		  var idx = $(this).index();
+//                         		  $(".tab_title h4").removeClass("on");
+//                         		  $(".tab_title h4").eq(idx).addClass("on");
+//                         		  $(".tab_cont > h4").hide();
+//                         		  $(".tab_cont > h4").eq(idx).show();
+//                         		  console.log("사요나라");
+//                         	  })
+                        	  
+//                           });
+                          
+                          
                           </script>
                     </article>
                 </section>
