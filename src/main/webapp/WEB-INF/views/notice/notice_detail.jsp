@@ -449,10 +449,10 @@
     </article>
     
     <article class="art3">
-        <h2>${contents.title}</h2>
+        <h2>${list.boardTitle}</h2>
     </article>
     <article class="art4">
-        <p>${contents.content}</p>
+        <p>${list.boardContent}</p>
     </article>
   
    </main>

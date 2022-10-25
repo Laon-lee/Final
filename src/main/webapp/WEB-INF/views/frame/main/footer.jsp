@@ -23,7 +23,7 @@
           <p>주소 : 서울특별시 구로구 구디동123-4</p>
         </li>
         <li>
-          <p><a href="${pageContext.request.contextPath}/usequestion">문의하기</a> </p>
+          <p><a href="${pageContext.request.contextPath}/question">문의하기</a> </p>
         </li>
       </ul>
       <ul id="social">

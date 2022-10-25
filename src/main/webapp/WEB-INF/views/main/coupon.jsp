@@ -99,12 +99,17 @@
 
         #sec2 nav {
             flex: 1;
-            padding: 0 30px 0 0;
+            padding: 0 20px 0 0;
             border-right: 1px solid black;
         }
 
+          #sec2 nav ul{
+            position: relative;
+            top: 20%;
+            
+        }
         #sec2 nav li {
-            margin: 0 0 10px 0;
+            margin: 0 0 20px 0;
             font-size: 20px;
             ;
             list-style-type: none;
@@ -199,7 +204,7 @@
         
                 </article>
                 <article class="art2">
-                    <h2>문의 하기</h2>
+                    <h2>쿠폰</h2>
                 </article>
                 <section id="sec2">
                     <nav>
@@ -207,7 +212,7 @@
                             <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
-                            <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
+                            <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                             <li><a href="${pageContext.request.contextPath}/coupon" style="text-decoration: underline">쿠폰</a></li>
                         </ul>

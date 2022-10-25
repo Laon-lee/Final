@@ -93,6 +93,8 @@
     border-bottom: 2px solid black;
     font-weight: 600;
     color: rgb(70, 68, 68);
+    cursor: pointer;
+    font-size: 1.3rem;
    }
 
    .art3-content{
@@ -140,12 +142,17 @@
 
         #sec2 nav {
             flex: 1;
-            padding: 0 30px 0 0;
+            padding: 0 20px 0 0;
             border-right: 1px solid black;
         }
 
+         #sec2 nav ul{
+            position: relative;
+            top: 14%;
+            
+        }
         #sec2 nav li {
-            margin: 0 0 10px 0;
+            margin: 0 0 20px 0;
             font-size: 20px;
             ;
             list-style-type: none;
@@ -225,7 +232,7 @@
         
                 </article>
                 <article class="art2">
-                    <h2>자주 찾는 질문</h2>
+                    <h2>자주 묻는 질문</h2>
                 </article>
                 <section id="sec2">
                     <nav>
@@ -233,30 +240,23 @@
                             <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
-                            <li><a href="${pageContext.request.contextPath}/usequestion" style="text-decoration: underline">자주찾는질문</a></li>
+                            <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문" style="text-decoration: underline">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                             <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>
                         </ul>
                     </nav>
                     
                     <article id="art2">
-                       
+                        <c:forEach var="item" items="${list}"> 
                         <div class="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
+                            <span class="art3-Q">Q</span> ${item.boardTitle}
                            </div>
-                        
+                       
                            <div class="art3-content">
-                           <h3>vo.content</h3>
+                           <h4>${item.boardContent}</h4>
                            </div>
-
-                           <div class="art3-question">
-                            <span class="art3-Q">Q</span> vo.question
-                           </div>
-                        
-                           <div class="art3-content">
-                            <h3>vo.content</h3>
-                           </div>
-
+ 							</c:forEach>
+                    
                           
                           <script>
                          

@@ -43,7 +43,7 @@
         body {
             height: 100vh;
         }
-		
+      
         #container {
             position: relative;
             width: 100%;
@@ -76,27 +76,8 @@
 
         
 
-     .category-menu{
-    	
-        padding: 15px 0 15px 0;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
-        margin-top: 10px;
-        margin: 0 auto;
-        width: 80%;
-        display: flex;
-        flex-direction: row;
-        justify-content: left;
-        gap: 30px;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .category-menu img{
-        margin-top: 10px;
-        width: 40px;
-        height: 40px;
-    }
-
+    
+ 
         #main-container {
             height:80vh;
             display: flex;
@@ -108,12 +89,12 @@
             display: flex;
             flex-direction: column;
             
-            width:50vw;
+            width0vw;
         }
        
         #sec2 {
             width:85%;
-            margin: 40px;
+            margin: 0px;
             display: flex;
             flex-direction: row;
             
@@ -121,20 +102,24 @@
 
         #sec2 nav {
             flex: 1;
-            padding: 0 30px 0 0;
+            padding: 0 20px 0 0;
             border-right: 1px solid black;
+            height:500px;
         }
 
+         #sec2 nav ul{
+            position: relative;
+            top: 34%;
+            
+        }
         #sec2 nav li {
-            margin: 0 0 10px 0;
+            margin: 0 0 20px 0;
             font-size: 20px;
             ;
             list-style-type: none;
             display: block;
         }
-        #sec2-div1{
-            
-        }
+       
         #sec2-div1 ul {
             width: 100%;
             background-color: #f5ebe0;
@@ -153,10 +138,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        #sec2-div2{
-            
-        
         }
         #sec2-div2 li {
             display: block;
@@ -199,7 +180,7 @@
         
     }
     #item-list{
-        margin-top:20px;
+        
         display:flex;
         align-items: center;
         flex-direction: column;
@@ -209,11 +190,12 @@
         height:80px;
     }
     #item-list table{
-        width:100%;
+     width: 120%;
         border-collapse: collapse;
     }
     #item-list button{
-        width: 80px;
+        width: 100px;
+        height: 30px;
         align-items: center;
     }
     #item-list button:nth-child(1){
@@ -231,10 +213,21 @@
         border-bottom:2px solid white;
     }
     #item-listbtns{
-        margin-top:20px;
+        margin-top:40px;
     }
    
-   
+   .th1{
+    text-align: left;
+    padding-left: 30px;
+   }
+   .tb1{
+    margin-bottom: 30px;
+    border: 1px solid #d7d5d5;
+    height: 50px;
+    text-align: left;
+    background-color: #f6f6f6;
+    
+   }
     </style>
 </head>
 
@@ -244,19 +237,9 @@
         <header>
            <%@ include file="../frame/mypage/header.jsp" %>
         </header>
-		 
+       
         <main>
-         <div class="category-menu">
-            <li><a href="${pageContext.request.contextPath}/shop/list/home"><img src="${pageContext.request.contextPath}/image/shop/Home.png" alt=""><br>Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Walk"><img src="${pageContext.request.contextPath}/image/shop/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Carrier"><img src="${pageContext.request.contextPath}/image/shop/Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Clothes"><img src="${pageContext.request.contextPath}/image/shop/Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Dining"><img src="${pageContext.request.contextPath}/image/shop/Dining.png" alt=""><br>Dining</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Grooming"><img src="${pageContext.request.contextPath}/image/shop/Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/toy"><img src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Big dog"><img src="${pageContext.request.contextPath}/image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Food"><img src="${pageContext.request.contextPath}/image/shop/Food.png" alt=""><br>Food</a></li>
-        </div>
+      
             <div id="main-container">
                 
                 <section id="sec2">
@@ -265,7 +248,7 @@
                             <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish"  style="text-decoration: underline">장바구니</a></li>
-                            <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
+                            <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                             <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>
                         </ul>
@@ -273,20 +256,26 @@
                  <article id="art2">
             <div id="item-list">
             <div class="user-info">
-            회원정보
+           
             </div>
+           <table class="tb1">
+            <tr>
+              <th class="th1">일반상품(1)</th>
+            </tr>
+           </table>
+           
                 <table id="item-list-table">
                     <tr>
-                       <th><input type="checkbox"></th>
-                       <th>이미지</th>
-                       <th>상품정보</th>
-                       <th>판매가</th>
-                       <th>수량</th>
-                       <th>적립금</th>
-                       <th>배송구분</th>
-                       <th>배송비</th>
-                       <th>합계</th>
-                       <th>선택</th>
+                       <td><input type="checkbox"></td>
+                       <td>이미지</td>
+                       <td>상품정보</td>
+                       <td>판매가</td>
+                       <td>수량</td>
+                       <td>적립금</td>
+                       <td>배송구분</td>
+                       <td>배송비</td>
+                       <td>합계</td>
+                       <td>선택</td>
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>

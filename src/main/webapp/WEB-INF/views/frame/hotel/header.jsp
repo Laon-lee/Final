@@ -48,7 +48,7 @@
             </div>
             <div id="nav2-li-2nddiv">
               <h2>알림받아라 인마</h2>
-			  <a href="${pageContext.request.contextPath}/notice">알림 페이지이동</a>
+			  <a href="${pageContext.request.contextPath}/notice/공지사항">알림 페이지이동</a>
             </div>
           </li>
           <li id="nav2-li-3rdli">

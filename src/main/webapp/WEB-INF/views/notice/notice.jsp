@@ -344,12 +344,16 @@ display: none;
     border-radius: 1rem;
   }
   .art3-first{
-    width: 20%;
+    width: 100%;
     min-width: 200px;
-    margin-left: 20px;
+    margin-left: 40px;
+   
+  }
+  .art3-first a{
+  margin-left : 10px;
   }
   .art3-second{
-    width: 600px;
+    width: 1300px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -472,14 +476,14 @@ display: none;
         <h2>공지사항</h2>
     </article>
     <article class="art3">
-        <a href="">
+        
         <c:forEach var="item" items="${list}">
       <div class="art3-container">
-        <div class="art3-first"><span class="art3-container-span">공지</span> <a href="${pageContext.request.contextPath}/noticedetail/${item.id}"> ${item.title}</a></div>
-        <div class="art3-second">${item.content}</div>
-        <div class="art3-third">${item.createdate}</div>
+        <div class="art3-first"><span class="art3-container-span">공지</span> <a href="${pageContext.request.contextPath}/noticedetail/${item.boardId}"> ${item.boardTitle}</a></div>
+        <div class="art3-second">${item.boardContent}</div>
+        <div class="art3-third">${item.boardDate}</div>
       </div>
-    </a>
+   
     </c:forEach>
     </article>
    </main>

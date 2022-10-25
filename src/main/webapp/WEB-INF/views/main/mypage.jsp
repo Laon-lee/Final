@@ -105,12 +105,18 @@
 
         #sec2 nav {
             flex: 1;
-            padding: 0 30px 0 0;
+            padding: 0 20px 0 0;
             border-right: 1px solid black;
+            height:500px;
         }
 
+          #sec2 nav ul{
+            position: relative;
+            top: 28%;
+            
+        }
         #sec2 nav li {
-            margin: 0 0 10px 0;
+            margin: 0 0 20px 0;
             font-size: 20px;
             ;
             list-style-type: none;
@@ -189,7 +195,7 @@
                              <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
-                            <li><a href="${pageContext.request.contextPath}/usequestion">자주찾는질문</a></li>
+                            <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                             <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>
                             
