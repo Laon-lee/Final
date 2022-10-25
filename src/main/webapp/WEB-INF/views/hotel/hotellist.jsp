@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +74,7 @@
 
         section {
             width: 100vw;
-            height: 82vh;
+            height: 100%;
         }
 
         /* img */
@@ -307,7 +308,7 @@
             <section>
             	<div class="date">
 					<div class="indate">
-						<p id="selectp">지역을 선택해주세요</p>
+						<p id="selectp">지역을 선택해주세요 </p>
 
 						<!-- <input type="text" placeholder="지역을" id="choicehotel"> -->
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -426,7 +427,25 @@
                     
 
                 </script>
-                
+                <c:forEach var="item" items="${list}">
+                <div id="list">
+
+                    <div id="inner1" class="inner">
+                        <img src="${pageContext.request.contextPath}/image/hotel/dog6.jpg" alt="">
+                    </div>
+                    <div id="inner2" class="inner">
+                        <p>${item.hotelOpt }</p>
+                        <h2>${item.hotelName }</h2>
+                        <p>자세히보기</p>
+                        <p>2021.12.11~2023.08.31</p>
+                        <h1>${hotelPrice }</h1>
+                    </div>
+                    <div id="innerbtn1" class="innerbtn">
+                        <button>RESERVE</button>
+                    </div>
+
+                </div>
+                </c:forEach>
                 <div id="list">
 
                     <div id="inner1" class="inner">

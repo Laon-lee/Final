@@ -1,11 +1,22 @@
 package com.goodee.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.goodee.service.HotelService;
+
 @Controller
 public class HotelController {
+	
+	private HotelService service;
+	
+	public HotelController(HotelService service) {
+		super();
+		this.service = service;
+	}
+	
 	@GetMapping("hoteldetail")
 	public String hoteldetail() {
 		return "hotel/hoteldetail";
@@ -21,9 +32,12 @@ public class HotelController {
 	}
 	
 	@GetMapping("golist/{startDate}/{endDate}")
-	public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate) {
+	public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate,
+						Model model) {
 		System.out.println(startdate);
 		System.out.println(enddate);
+		
+		service.getList(model);
 		return "hotel/hotellist";
 	}
 }
