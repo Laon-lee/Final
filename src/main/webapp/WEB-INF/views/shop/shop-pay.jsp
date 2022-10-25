@@ -23,7 +23,7 @@
 }
 
 body{
-    background-color:#e3d5ca;
+    background-color:white;
 }
  
     html,
@@ -278,11 +278,29 @@ label {
         <header>
            <%@ include file="../frame/shop/header.jsp" %>
 		</header>
-
+	
     <article>
         <div id="art1"><h4>주문 / 결제</h4></div>
     </article>
-
+	<article id="art4">
+      <div id="info4">
+        <h3>주문상품</h3>
+    </div>
+    <div id="art4-mainbox">
+      <div id="art4-img">
+      	<img src="${list.productImage}">
+      </div>
+      <div id="art4-text">
+        <h3>${list.productName}</h3>
+        <p>
+        	옵션: <c:if test="${option != '사이즈를 선택해주세요'} "> ${option}</c:if>
+       			<c:if test="${option=='사이즈를 선택해주세요'} "> 없음 </c:if>
+       	</p>
+        <p>수량: ${count}</p>
+        <p>금액</p>
+      </div>
+    </div>
+    </article>
     <article>
         <div id="art2">
             <div id="info2">
@@ -364,21 +382,7 @@ label {
                 <button id="info-btn2">신규 배송지 입력</button>
         </div>
     </article>
-    <article id="art4">
-      <div id="info4">
-        <h3>주문상품</h3>
-    </div>
-    <div id="art4-mainbox">
-      <div id="art4-img">
-      </div>
-      <div id="art4-text">
-        <h3>무니쿤트 옷 후아</h3>
-        <p>옵션</p>
-        <p>수량</p>
-        <p>금액</p>
-      </div>
-    </div>
-    </article>
+    
     <article>
       <div id="art5">
         <div id="info5">

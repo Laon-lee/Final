@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,35 +56,20 @@ body {
 main {
 	width: 100%;
 }
-
+#main-container {
+	background-color: #D9D9D9;
+}
 #main-box {
-	display: flex;
-	width: 90%;
+	
+	
+	display: grid;
+	grid-template-columns: 2fr 3fr ;
+	width: 61%;
 	height: 500px;
 	justify-items: center;
 	align-items: center;
 }
 
-#main-pic {
-	width: 49%;
-	height: 450px;
-	background: url("${content.img}") no-repeat center;
-	background-size: contain;
-}
-
-#main-text {
-	width: 49%;
-	height: 450px;
-	padding: 50px 10px;
-}
-
-#main-text>h4, p, button, select {
-	margin-left: 9px;
-}
-
-#main-text>h4 {
-	margin-bottom: 10px;
-}
 
 #shop-option {
 	width: 60%;
@@ -92,39 +78,12 @@ main {
 	height: 30px;
 }
 
-#btn1 {
-	height: 30px;
-	margin-left: 20px;
-}
-
-#btn2, #btn3 {
-	width: 70%;
-	height: 30px;
-	margin-left: 20px;
-	background-color: rgb(28, 25, 25);
-	color: white;
-	border-radius: 3px;
-	cursor: pointer;
-}
-
-#btn4 {
-	margin: 10px;
-	width: 92.5%;
-	height: 30px;
-	border: 0px;
-	border-radius: 3px;
-	background-color: rgb(29, 223, 29);
-	color: white;
-}
 
 #main-text>h4 {
 	margin-top: 20px;
 }
 
-#sub-text {
-	color: gray;
-	font-size: 0.7rem;
-}
+
 
 option {
 	border-radius: 2px;
@@ -132,23 +91,7 @@ option {
 }
 
 /* 중간 sub 내용*/
-#sub-box {
-	width: 90%;
-	padding: 10px 10px;
-	margin-bottom: 5rem;
-}
 
-#sub-pic1, #sub-pic2, #sub-pic3, #sub-pic4 {
-	width: 50%;
-	height: 450px;
-	background: url("${content.img}") no-repeat center;
-	margin-top: 40px;
-}
-
-#sub-text1, #sub-text2 {
-	width: 50%;
-	margin-top: 15px;
-}
 
 .line {
 	width: 80%;
@@ -177,11 +120,6 @@ option {
 	margin-left: 10px;
 }
 
-#btn2 {
-	margin-top: 45px;
-	margin-bottom: 2px;
-}
-
 #fixed {
 	font-weight: 700;
 	display: flex;
@@ -199,26 +137,20 @@ option {
 
 /* 메인 박스 css */
 
-#main-box {
-	
-	height: 500px;
-	width: 100%;
-	background-color :#D9D9D9;
-}
 
 #main1 {
-	margin-left : 260px;
+	
 	width: 500px;
 	height: 400px;
 	right: 10px;
-	background:
-		url("https://marlonshop.com/web/product/small/202210/48ab597982e07045fb5414b758ae7b62.jpg");
-	
 }
-
+#main1 img{
+	width: 100%;
+    height: 100%;
+}
 #main2 {
 	width: 500px;
-	margin-right : 260px;
+	
 }
 
 #main2>h3, h4 {
@@ -229,7 +161,7 @@ option {
 	line-height : 3.5rem
 }
 
-#main2 > button {
+#main2-btn1, #main2-btn2{
 	height: 35px;
     border-radius: 5px;
     width: 48%;
@@ -237,15 +169,36 @@ option {
     margin-top: 10px;
 }
 
-#p-line1 {
-	line-height: 7rem;
+#main2-btn1{
+	margin-right:10px;
 }
-#p-line2 {
-	line-height : 3rem;
+#p-line{
+	margin-top:5px;
+	color: gray;
+	font-size:15px;
+}
+
+#p-line1 {
+	line-height: 5rem;
+}
+#total{
+	width:25px;
+	outline:none;
+}
+#plus-btn, #minus-btn{
+	padding:0;
+	width:20px ;
+	height:20px ;
+	background-color: #f0f0f0;
+	
+	border:none;
+}
+#plus-btn{
+	margin-right:5px;
 }
 #size-opt {
 	height : 30px;
-	width : 90%;
+	width : 45%;
 	border : 0.5px solid gray;
 	border-radius : 5px;
 	color : black;
@@ -253,29 +206,49 @@ option {
 
 /* sub-box, 상태창, 상세상품 설명 */
 #sub-box {
-	width : 100%;
+	width : 90%;
 	height : 1000px;
-	display : flex;
+	display : grid;
+	grid-template-columns: 1fr 3fr;
+	padding: 10px 10px;
+	margin-bottom: 5rem;
 }
 
+
 #status-bar {
-	width : 15%;
+	margin-top:50px;
+	position:sticky;
+	top:20%;
+	width : 40%;
 	height : 200px;
-	margin-top : 50px;
-	margin-left : 100px;
-	padding: 30px 30px;
     line-height: 40px;
-	}
+}
+#status-bar div{
+	border-right: 2px solid lightgray;
+}
 #status-bar > div:hover{
 	border-right : 2px solid black;
 	cursor : pointer;
 	font-size  : 1.2rem;
 }
-
+.on{
+	border-right: 2px solid black !important;
+}
+.fadeIn{
+	animation: fadeIn 1.5s ease-out forwards;
+}
+@keyframes fadeIn{
+	0%{
+		opacity:0;
+	}
+	100%{
+		opaciry:1;
+	}
+}
 #proc-wrapper {
 	width :65%;
 	height : 100vh;
-	margin-right : 200px;
+	margin:50px;
 	
 }
 
@@ -295,212 +268,7 @@ font {
 	size :2;
 }
 
-<!-- 헤더 css 임시 -->
 
-	 header {
-      z-index: 100;
-      background-color: white !important;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 100vw;
-      height: 100%;
-    }
-	
-    nav div {
-      width: 100%;
-      height: 100%;
-    }
-	#mainA1{
-    font-family: 'Zilla Slab', serif;
-    }
-    #nav1 {
-      padding-top: 35px;
-      width: 20vw;
-      height: 70px;
-    }
-	#nav1 ul{
-	  margin-left: 20px;
-	}
-    #nav1 li {
-      margin-left: 15px;
-    }
-
-    header a {
-      cursor: pointer;
-    }
-
-    #nav2 {
-      padding-top:35px;
-      width: 20vw;
-      height: 70px;
-    }
-    #nav2 p{
-      width:100%;
-    }
-    #nav2 ul{
-      width: 100%;
-      margin-right:20px;
-      
-    }
-    #nav2 li {
-      height: 70px;
-      margin-left: 15px;
-    }
-
-    #nav2 a {
-      font-size: 20px;
-    }
-
-    /* 검색 아이콘 호버 */
-    
-    #nav2-li-1stdiv {
-      margin:20px 0 20px 0;
-      padding:50px;
-      display: none;
-      position: absolute;
-      top:4%;
-      left: 0px;
-      width: 100vw;
-      height: 60vh;
-      flex-direction: column;
-      z-index: 3;
-      justify-content: center;
-      align-items: center;
-      gap:40px;
-      background-color: white;
-      }
-    .hover-layout1{
-        position:absolute;
-        top:7%;
-        left:0;
-        display: none;
-        align-items: start;
-        width:100vw;
-        height:100vh;
-        background-color: black;
-        opacity: 0.5;
-    }
-    #nav2-li-1stli:hover div{
-      display: flex;
-    }
-    #nav2-li-2ndli:hover div{
-      display: flex;
-    }
-    #nav2-li-3rdli:hover div{
-      display: flex;
-    }
-    #nav2-li-4thli:hover div{
-      display: flex;
-    }
-    #nav2-searchdiv{
-      justify-content: center;
-    }
-    #nav2-searchdiv button{
-      font-size:25px;
-    }
-    #nav2-li-1stdiv input {
-      padding:5px;
-      width: 70vw;
-      height: 70px;
-      font-size:25px;
-      outline:none;
-    }
-    #nav2-li-1stdiv button{
-      height:84px;
-      width:8vw;
-    }
-    #btns{
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      width:60vw;
-      height:40vw;
-      justify-content: center;
-    }
-    #btns button {
-      margin:15px;
-      width:100px;
-      height: 30px;
-      border: 1px solid gray;
-      background-color: white;
-      cursor: pointer;
-    }
-    #nav2-li-2nddiv{
-      margin:20px 0 20px 0;
-      padding:50px;
-      display: none;
-      position: absolute;
-      top:4%;
-      right: 0px;
-      width: 20vw;
-      height: 40vh;
-      flex-direction: column;
-      z-index: 1;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
-      }
-    #nav2-li-3rddiv{
-      margin:20px 0 20px 0;
-      padding:50px;
-      display: none;
-      position: absolute;
-      top:4%;
-      right: 0px;
-      width: 20vw;
-      height: 40vh;
-      flex-direction: column;
-      z-index: 1;
-      justify-content: center;
-      align-items: center;
-      background-color:white;
-      }
-
-    #nav2-li-4thdiv{
-      margin:20px 0 20px 0;
-      padding:50px;
-      display: none;
-      position: absolute;
-      top:4%;
-      right: 0px;
-      width: 20vw;
-      height: 40vh;
-      flex-direction: column;
-      z-index: 10;
-      justify-content: center;
-      align-items: left;
-      background-color:white;
-      }
-    #nav2-li-4thdiv input{
-      width:300px;
-      height:30px;
-    }
-    #nav2-li-4thdiv button{ 
-      width: 308px;
-      height: 40px;
-      background-color: black;
-      color: white;
-      margin-top: 40px;
-    }
-    #nav2-li-4thdiv h4{
-      float: left;
-    }
-    li {
-      display: inline-block;
-      list-style-type: none;
-    }
-
-    a {
-      text-decoration: none;
-      color: black;
-    }
-
-    a:visited {
-      color: black;
-    }
-	/* 헤더 css 끝 */  
 </style>
 
 
@@ -511,29 +279,78 @@ font {
 	</div>
 	<a name="top"></a>
 	<div id="container">
-
+		
 		<header>
 			<%@ include file="../frame/shop/header.jsp"%>
+			<a name="top" id="heretop" style="display:none"></a>
 		</header>
 		<main>
+	      <div id ="main-container">
 			<div id="main-box">
 				<div id="main1">
-					<p>main1</p>
+					<img src="${list.productImage}">
 				</div>
 				<div id="main2">
-					<h3>[콤보] 아이캔터 노-풀 하네스+젠트리쉬</h3>
+					<h3>${list.productName}</h3>
+					<p id="p-line">BRAND-NAME <span>ㅡ</span> ${list.productShop}</p>
 					<p id="p-line1">MADE IN KOREA</p>
 					<select id="size-opt">
 						<option value="사이즈선택">사이즈를 선택해주세요</option>
 						<option value="사이즈선택">----------------------------------------</option>
-						<option value="">small</option>
-						<option value="">medium</option>
-						<option value="">large</option>
-					</select>
+						<option value="small">small</option>
+						<option value="medium">medium</option>
+						<option value="large">large</option>
+					</select>&nbsp;
+					
+					<input type="text" id="total" value="1">개 &nbsp; <button type="button" id="plus-btn">+</button><button type="button" id="minus-btn">-</button>
 					<h4>Total</h4>
-					<p in="p-line2">{}개</p>
-					<button>BUY NOW</button><button>ADD TO CART</button>
+					<h1 id="totalprice"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/>원</h1>
+					<br>
+					<button id="main2-btn1">BUY NOW</button><button id="main2-btn2">ADD TO CART</button>
+					<script>
+					document.getElementById("plus-btn").addEventListener("click",function(){
+						let total = document.getElementById("total");
+						let count = Number(Number(total.value) + Number("1"));
+						if(count < 1){ count =1 };
+						document.getElementById("total").value = count;
+						total.value=count;
+						let totalprice = document.getElementById("totalprice");
+						totalprice.innerText = (count*${list.productPrice}).toString()
+						  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+"원";
+					})
+					document.getElementById("minus-btn").addEventListener("click",function(){
+						let total = document.getElementById("total");
+						let count = total.value - 1;
+						if(count < 1){ count =1 };
+						document.getElementById("total").value = count;
+						total.value=count;
+						let totalprice = document.getElementById("totalprice");
+						
+						totalprice.innerText = (count*${list.productPrice}).toString()
+						  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+"원";
+					})
+					document.getElementById("total").addEventListener("blur",function(){
+						let totalprice = document.getElementById("totalprice");
+						let count = document.getElementById("total").value;
+						if(count < 1){ count =1 };
+						total.value=count;
+						totalprice.innerText = (count*${list.productPrice}).toString()
+						  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+"원";
+					})
+					
+					document.getElementById("main2-btn1").addEventListener("click",function(){
+						let option = document.getElementById("size-opt").value;
+						let count = document.getElementById("total").value;
+						location.href = "${pageContext.request.contextPath}/shop/pay/"+${list.productId}+"?option="+option+"&count="+count;
+					});
+					
+					document.getElementById("main2-btn2").addEventListener("click",function(){
+						location.href="${pageContext.request.contextPath}/";
+					});
+					
+					</script>
 				</div>
+			</div>
 			</div>
 			<div id ="sub-box">
 				<div id="status-bar" class="tab_title">
@@ -543,7 +360,7 @@ font {
 					<div>Q&A</div>
 				</div>
 				<div id="proc-wrapper" class="tab_cont">
-					<div class="on" style="display:block;">
+					<div style="display:block;">
 						<div>제품 이미지</div>
 					</div>
 					<div style="display:none;">
@@ -609,7 +426,7 @@ font {
 					
 				</div>
 			</div>
-
+		  
 		</main>
 		<footer>
 			<%@ include file="../frame/main/footer.jsp"%>
@@ -621,12 +438,17 @@ font {
 		$(document).ready(function(){
 			$(".tab_title div").click(function(){
 				var idx=$(this).index();
-				$(".tab_title div").removeClass("on");
-				$(".tab_title div").eq(idx).addClass("on");
+				$("html").animate({scrollTop : 0}, 0);
+				$(".tab_title > div").removeClass("on");
+				$(".tab_title > div").eq(idx).addClass("on");
+				
 				$(".tab_cont > div").hide();
+				$(".tab_cont > div").removeClass("fadeIn")
+				$(".tab_cont > div").eq(idx).addClass("fadeIn");
 				$(".tab_cont > div").eq(idx).show();
 			})
 		});
+		
 	</script>
 </body>
 </html>

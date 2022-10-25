@@ -21,4 +21,7 @@ public class ShopService {
 	public void getCateList(String category, Model model) {
 		model.addAttribute("list", dao.getCateList(category));
 	}
+	public void getListById(String id, Model model) {
+		model.addAttribute("list", dao.getListById(id));
+	}
 }
