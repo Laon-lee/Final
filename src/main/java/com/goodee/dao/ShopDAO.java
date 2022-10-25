@@ -3,11 +3,13 @@ package com.goodee.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.goodee.vo.ShopVO;
 
 @Mapper
 public interface ShopDAO {
-	public List<ShopVO> getList(String category);
-	public ShopVO getContent(String id);
+	public List<ShopVO> getProductList();
+	
+	public List<ShopVO> getCateList(@Param("productCategory") String category);
 }

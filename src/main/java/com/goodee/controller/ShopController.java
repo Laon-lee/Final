@@ -17,21 +17,26 @@ public class ShopController {
 		super();
 		this.spservice = spservice;
 	}
+	@GetMapping("goshop")
+	public String goshop(Model model) {
+		spservice.getProductList(model);
+		return "shop/shop-main-JJW";
+	}
 	@GetMapping("/shop/list/{category}")
 	public String ShopList(@PathVariable("category") String category,Model model) {
-		spservice.getList(category,model);
-		
+		spservice.getCateList(category, model);
 		return "/shop/shop-list";
 	}
 	//물품 상세 페이지 데이터 담을것
 	@GetMapping("/shop/main/buy/{id}")
 	public String ShopBuy(@PathVariable("id") String id,Model model) {
-		spservice.getContent(id, model);
+		
+		
 		return "shop/shop-main-buy";
 	}
 	@GetMapping("/shop/pay/{id}")
 	public String ShopPay(@PathVariable("id") String id,Model model) {
-		spservice.getContent(id, model);
+		
 		return "shop/shop-pay";	
 	}
 	@GetMapping("/shop/orderinfo")

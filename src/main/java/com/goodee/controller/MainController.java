@@ -54,10 +54,7 @@ public class MainController {
 	public String gomain2() {
 		return "main/main";
 	}
-	@GetMapping("goshop")
-	public String goshop() {
-		return "shop/shop-main-JJW";
-	}
+
 	@GetMapping("gohotel")
 	public String gohotel() {
 		return "hotel/hotelmain";

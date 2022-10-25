@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +39,7 @@
       padding: 0;
     }
     body{
-      background-color: #e3d5ca;
+      background-color: white;
     }
     li, a{
         list-style-type: none;
@@ -62,9 +63,12 @@
     }
 
     main {
-      width: 100%;
-      background-color: #e3d5ca;
-
+        width: 100%;
+    	background-color: white;
+    	display: flex;
+    	flex-direction: column;
+    	justify-items: center;
+    	align-items: center;
     }
 
     section {
@@ -107,30 +111,28 @@
         li{
             list-style-type: none;
         }
-      
-    .sh3{
-    width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-bottom: 5px;
+      .list p{
+      	width:200px;
+      	overflow: hidden;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+      }
+   
+   .shopname{
+   	color:gray;
+   	font-size:13px;
    }
    .flex-container{
     display: grid;
-    width: 100%;
+    width: 60%;
     height: 86vh;
-    
     justify-content: center;
-    grid-template-columns: 15% 15% 15% 15%;
-    grid-template-rows: 250px 250px 250px;
-    
-    margin-top: 5%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     gap : 3%;
-    z-index: -1;
-    
    }
   .flex-container div{
-  width : 75%;
+  width : 100%;
   }
   .flex-container img{
   width : 100%;
@@ -193,12 +195,11 @@
             <li><a href="${pageContext.request.contextPath}/shop/list/Dining"><img src="${pageContext.request.contextPath}/image/shop/Dining.png" alt=""><br>Dining</a></li>
             <li><a href="${pageContext.request.contextPath}/shop/list/Grooming"><img src="${pageContext.request.contextPath}/image/shop/Grooming.png" alt=""><br>Grooming</a></li>
             <li><a href="${pageContext.request.contextPath}/shop/list/toy"><img src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/Big dog"><img src="${pageContext.request.contextPath}/image/shop/Big Dog.png" alt=""><br>Big Dog</a></li>
             <li><a href="${pageContext.request.contextPath}/shop/list/Food"><img src="${pageContext.request.contextPath}/image/shop/Food.png" alt=""><br>Food</a></li>
         </div>
         <div class="flex-container">
        <c:forEach var="item" items="${list}"> 
-    	<div><a href="${pageContext.request.contextPath}/shop/main/buy/${item.id}"><img src="${item.img}" alt=""><br>${item.title}<br><h3>${item.price}</h3></a></div>
+    	<div class="list"><a href="${pageContext.request.contextPath}/shop/main/buy/${item.productId}"><img src="${item.productImage}" alt=""><p>${item.productName}</p><p class="shopname">${item.productShop}</p><h3><fmt:formatNumber value="${item.productPrice}" pattern="#,###"/>원</h3></a></div>
     	</c:forEach>
     	
     </div>

@@ -15,18 +15,10 @@ public class ShopService {
 		super();
 		this.dao = dao;
 	}
-	
-	/*
-	 * public void selectList(ShopVO vo) { PageVO inputVO = new PageVO();
-	 * inputVO.setTotal(dao.selectCount());
-	 * 
-	 * }
-	 */
-	public void getList(String category,Model model) {
-		model.addAttribute("list", dao.getList(category)); 
-		
+	public void getProductList(Model model) {
+		model.addAttribute("list", dao.getProductList());
 	}
-	public void getContent(String id, Model model) {
-		model.addAttribute("content", dao.getContent(id));
+	public void getCateList(String category, Model model) {
+		model.addAttribute("list", dao.getCateList(category));
 	}
 }
