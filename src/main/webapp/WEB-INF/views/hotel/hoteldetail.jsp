@@ -494,7 +494,7 @@
                 <div class="detail">
                     <div class="content">
                         <div class="c_title">
-                            <h1>SMARTCHOICE</h1>
+                            <h1>${room.hotelName}</h1>
                             <P>DELUXE / 2DOGS / STANDARD VIEW</P>
                         </div>
                         <div class="c_option">
@@ -547,7 +547,7 @@
                             <p>객실1</p>
                             <h1>39,600KRW</h1>
                             <p>2022.10.29</p>
-                            <p>36,000</p>
+                            <p>${room.hotelPrice }</p>
                             <p>세금</p>
                             <p>3,600</p>
                         </div>

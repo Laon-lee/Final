@@ -16,4 +16,5 @@ public interface HotelDAO {
 	
 	public List<HotelVO> selectCateList(@Param("list") String[] cate);
 	
+	public List<HotelVO> selectroomnameList(@Param ("hotelname") String hotelname);
 }

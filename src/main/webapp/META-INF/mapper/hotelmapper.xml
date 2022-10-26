@@ -24,6 +24,11 @@
 		</foreach>
 		GROUP BY hotel_name;
 	</select>
+	<select id="selectroomnameList" resultType="hotelVO">
+		select hotel_name, hotel_id, hotel_room, hotel_addr, hotel_opt, hotel_deopt, hotel_category, hotel_price, hotel_thum, hotel_img, hotel_content, hotel_here, hotel_tel
+		from hotel_reservation 
+		where hotel_name = #{hotelname};
+	</select>
 	
 </mapper>
 

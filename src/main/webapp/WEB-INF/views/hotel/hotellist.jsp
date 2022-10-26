@@ -69,6 +69,7 @@
         main {
             width: 100%;
             background-color: #EDEDE9;
+            min-height: 86vh;
 
         }
 
@@ -351,7 +352,7 @@
 						location.href = "${pageContext.request.contextPath}/golist";
 					}); */
 				
-                    $(document).ready(function () {
+                    $(function () {
                         var now = new Date();
                         var tom = new Date();
                         tom.setDate(tom.getDate() + 1);
@@ -367,8 +368,14 @@
                         //이미 category에 메인페이지에서 선택된 데이터가 배열로 들어있음
                         //해당 val값을 가지고 있는 input을 체크되게 만든다
                         
+                        console.log('${category}');
+                       for(let f of '${category}') {
+                    	   console.log(f);
+                    	   if($('.cate').val()==f){
+                    		   $(this).prop("checked",true);
+                    	   }
+                       }
                         
-                       
                        	var cateArr = new Array();
                         $('input[name="dates"]').daterangepicker({
                         	"startDate": startdate,
@@ -447,8 +454,26 @@
                             var cateArr2 = cateArr.slice(1);
                             
                     		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2)
+                    		
+                    		 if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
+                    			$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2);
+                            } else {
+                            	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr);
+                            }
+                    		
+                    		
                         });
                         
+                       
+                        
+                        /* var stringcate = '${category}';
+                        /* $("input[name='cate']").val(stringcate[i]).prop("checked",true); */
+                        /*for(let i=0; i<stringcate.length; i++){
+                        	if ($("input[name='cate']").val() == stringcate[i])) {
+								$().prop("checked",true);
+							} 
+                        	
+                        } */
                         
                     });
 	
@@ -464,7 +489,10 @@
                 		
                 		let cateArr2 = cateArr.slice(1);
                 		
-                		fetch("${pageContext.request.contextPath}/")
+                		fetch("${pageContext.request.contextPath}/restlist"), {
+                			method : "POST",
+                			headers : {"Content-Type" : }
+                		}
                 	})
                 </script> -->
                 <script>
@@ -533,7 +561,7 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td class="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
+                            <td class="td2"><a href="${pageContext.request.contextPath}/godetail/${item.hotelName}">예약하기</a></td>
                         </tr>
                    	</table>
                    	</div>
