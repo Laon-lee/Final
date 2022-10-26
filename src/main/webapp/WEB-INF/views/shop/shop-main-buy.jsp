@@ -242,11 +242,20 @@ keyframes fadeIn { 0%{
 }
 
 100
+
+
 %
 {
 opaciry
+
+
 :
-1;
+
+
+1
+;
+
+
 }
 }
 #proc-wrapper {
@@ -288,32 +297,31 @@ font {
 
 #btn-box1, #btn-box2 {
 	display: flex;
-    width: 25%;
-    margin-left: 38em;
-    margin-top: 0.7rem;
+	width: 25%;
+	margin-left: 38em;
+	margin-top: 0.7rem;
 }
+
 #write-btn1, #write-btn2 {
-	background-color : black;
-	color : white;
-	border : 1px solid;
-	width :200%;
-	height : 32px;
+	background-color: black;
+	color: white;
+	border: 1px solid;
+	width: 200%;
+	height: 32px;
 }
 
 #view-btn1, #view-btn2 {
-	background-color : white;
-	color : black;
-	border : 0.4px solid;
-	width : 175%;
-	height : 30px;
+	background-color: white;
+	color: black;
+	border: 0.4px solid;
+	width: 175%;
+	height: 30px;
 }
 
-#view-btn1:hover, #view-btn2:hover, #write-btn1:hover, #write-btn2:hover{
-	background-color : rgba(166, 166, 166, 0.7);
+#view-btn1:hover, #view-btn2:hover, #write-btn1:hover, #write-btn2:hover
+	{
+	background-color: rgba(166, 166, 166, 0.7);
 }
-
-
-
 </style>
 
 
@@ -398,6 +406,8 @@ font {
 					document.getElementById("main2-btn2").addEventListener("click",function(){
 						location.href="${pageContext.request.contextPath}/";
 					});
+					$("select option[value*='사이즈선택']").prop('disabled',true);
+					
 					
 					</script>
 					</div>
@@ -509,10 +519,11 @@ font {
 							<form action="">
 								<button id="view-btn2">view-all</button>
 							</form>
+
 						</div>
+
 					</div>
-
-
+					
 				</div>
 			</div>
 
