@@ -30,7 +30,10 @@ public class ShopService {
 	}
 	public void getListByIdS(String id, Model model,HttpSession session) {
 		MemberVO vo1 = (MemberVO)session.getAttribute("user");
-		model.addAttribute("user", mbdao.getmemberinfo(vo1));
+		MemberVO vo2 = mbdao.getmemberinfo(vo1);
+		
+		model.addAttribute("separateVO",mbdao.separate(vo2)); 
+		model.addAttribute("user", vo2);
 		model.addAttribute("list", dao.getListById(id));
 	}
 }

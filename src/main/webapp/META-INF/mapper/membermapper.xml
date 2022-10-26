@@ -18,6 +18,11 @@
 	<select id="getmemberinfo" resultType="memberVO" parameterType="memberVO">
 		select * from member where mem_id=#{memId}
 	</select>
+	<select id="separate" resultType="separateVO" parameterType="memberVO">
+		SELECT LEFT(mem_phone,3) AS phone1 , MID(mem_phone,4,4) AS phone2 ,RIGHT(mem_phone,4) AS phone3,
+				SUBSTRING_INDEX( #{memEmail} , '@' , 1) as email1 , SUBSTRING_INDEX( #{memEmail} , '@' , -1) as email2
+		 FROM member WHERE mem_id=#{memId};
+	</select>
 </mapper>
 
 
