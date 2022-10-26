@@ -71,4 +71,9 @@ public class HotelController {
 //		return vo;
 //		
 //	}
+	
+	@GetMapping("goreserve")
+	public String goreserve() {
+		return "hotel/hotelreserve";
+	}
 }

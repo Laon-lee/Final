@@ -556,6 +556,13 @@
                             <h1>총 예약금액 39,600KRW</h1>
                             <button id="reservebtn">회원예약</button>
                         </div>
+                        
+                        <script type="text/javascript">
+                        	document.getElementById("reservebtn").addEventListener("click",function(){
+                        		location.href = "${pageContext.request.contextPath}/goreserve"
+                        		
+                        	})
+                        </script>
                     </div>
                 </div>
 
