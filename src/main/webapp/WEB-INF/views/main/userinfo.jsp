@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+    
     <style>
        *{
           box-sizing: border-box;
@@ -183,24 +185,29 @@
                 width: 85%;
                 display: flex;
                 flex-direction: column;
-                gap: 5vh;
+                
             }
 
     
             .totalinfo {
                 width: 85%;
-                border: 3px solid black;
-                padding: 20px;
+                border: 2px solid gray;
+                height: 100px;
                
                 color: black;
                border-radius: 5px;
+               margin-bottom: 50px;
             }
-
+            .totalinfo h4{
+                margin-top: 37px;
+                margin-left: 13px;
+                
+            }
     
 
     
 			input {
- 			width : 25%;
+ 			width : 40%;
  			height : 30px;
  			border-radius : 5px;
  			border : none;
@@ -213,19 +220,21 @@
                 display: inline-block;
             }
             .h1{
+              
+               margin-bottom: 20px;
+                
+            }
+            .h2{
                 width: 85%;
-                border-radius: 5px;
-                border: 3px solid #ccc;
-                text-align: center;
-                color: black;
-                font-size: 30px;
+                text-align: right;
+                margin-bottom: 50px;
             }
             .h3{
                 display: inline-block;
             }
             .btn1{
                 margin-top: 40px;
-              margin-left: 150px;
+                margin-left: 150px;
                 width: 25%;
                 height: 30px;
                 border-radius: 10px;
@@ -254,6 +263,24 @@
             span{
                 opacity: 0.5;
             }
+
+            .info-container{
+                width: 85%;
+                padding: 18px 0 0 15px;
+
+                border-top: 1px;
+                border-bottom: 1px;
+                border-left: 0px;
+                border-right: 0px;
+                border-color: #ccc;
+                border-style: solid;
+            }
+            .email{
+            width:20%;
+            }
+            .phone{
+            width:20%;
+            }
     </style>
 </head>
 
@@ -281,49 +308,63 @@
                     </nav>
                     <article id="art2">
                    <div class="art2container">
-                   <h2>회원정보수정</h2>
+                   <h2 class="h2">회원정보수정</h2>
                        <div class="totalinfo">
                         <h4>저희 쇼핑몰을 이용해주셔서 감사합니다. ${list.memName}님은 [관리자]입니다.</h4>
                         </div>
                         <h1 class="h1">기본정보</h1>
                         <div class="detailinfo">
+                       <form:form action="${pageContext.request.contextPath}/userupdate" 
+                       				modelAttribute="separateVO" >
                        
-                       <form action="${pageContext.request.contextPath}/userupdate">
+                        <div class="info-container">
+
  						<label for="memId"><h3 class="h3">아이디</h3></label>
  						<input type="text" name="memId" id="memId" value="${list.memId}" readonly>
-                        <br>
-                        
+                       
+                    </div>
+
+                    <div class="info-container">
                         <label for="password"><h3 class="h3">비밀번호 변경</h3></label>
                         <input type="password" name="password" id="password" placeholder="변경할 비밀번호"  pattern=".{4,16}" required>
                         <span>(영문 대소문자/숫자, 4~16자)</span><br>
-                           
-                                          
+                        </div>
+                        
+                        <div class="info-container">
                         <label for="memPw"><h3 class="h3">비밀번호 확인</h3></label>
-                        <input type="password" name="memPw" id="memPw" placeholder="비밀번호 확인"  pattern=".{8,16}" required><br>
-                                           
-                                          
+                        <input type="password" name="memPw" id="memPw" placeholder="비밀번호 확인"  pattern=".{4,16}" required><br>
+                        </div>          
+                              
+                        <div class="info-container">
                         <label for="memName"><h3 class="h3">이름</h3></label>
                         <input type="text" name="memName" id="memName" value="${list.memName}"><br>
-                                               
+                        </div>                   
           
-   						<label for="memOaddress"><h3 class="h3">우편번호</h3></label>
-                     	<input type="text" name="memOaddress" id="memOaddress" value="${list.memOaddress}"><br>
-                                                  
+                        <div class="info-container">
+                                <label for="mem_address1"><h3 class="h3">주소</h3></label> <input type="text" placeholder="우편번호" id="mem_address1" name="mem_oaddress">
+                                <button onclick="execPostCode();">주소 검색</button></label><br>
+                                <label for="mem_address2"></label><input type="text" name="mem_address" id="mem_address2" placeholder="기본주소" value=""><span>기본주소</span><br>
+                                <label for="mem_detailaddress"></label><input type="text" name="mem_detailaddress" id="mem_detailaddress" placeholder="상세주소"><span>상세주소</span>
+                         </div>                         
                         
-                        <label for="memAddress"><h3 class="h3">기본주소</h3></label>
-                        <input type="text" name="memAddress" id="memAddress" value="${list.memAddress}"> <br>
-                        
-                        <label for="memDetailaddress"><h3 class="h3">상세주소</h3></label>
-                        <input type="text" name="memDetailaddress" id="memDetailaddress" value="${list.memDetailaddress}"><br>
-                        
-                        <label for="memPhone"><h3 class="h3">휴대전화</h3></label>
-                        <input type="text" name="memPhone" id="memPhone" value="${list.memPhone}"><br>
-                       
-                        <label for="memEmail"><h3 class="h3">이메일</h3></label>
-                        <input type="text" name="memEmail" id="memEmail" value="${list.memEmail}"><br>
+
+                        <div class="info-container">
+                            <label for="memPhone" class="lb">휴대 전화</label> 
+							<form:select path="phone1" id="memPhone" name="memPhone">
+								<form:option value="010">010</form:option>
+								<form:option value="011">011</form:option>
+								<form:option value="017">017</form:option>
+								<form:option value="019">019</form:option>
+							</form:select> - <form:input path="phone2" class="phone"/> - <form:input path="phone3" class="phone"/>
+                       </div>
+
+                       <div class="info-container">
+                        <label for="memEmail" class="lb">이메일 *</label> 
+                        <input type="email" value="${separateVO.email1}" id="memEmail" name="memEmail" class="email">@
+                        <input type="email" value="${separateVO.email2}" class="email">
                         <button class="btn1">회원정보수정</button>
-                    </form>
-                   
+                    </form:form>
+                   </div>
                     </article>
                 </section>
                 </div>
@@ -334,6 +375,72 @@
             <%@ include file="../frame/main/footer.jsp" %>
         </footer>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+					<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+					<script>
+					//우편번호 찾기 버튼 클릭 이벤트
+					function execPostCode() {
+				     new daum.Postcode({
+				         oncomplete: function(data) {
+				            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+				            // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+				            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				            var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+				            var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+				            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+				            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+				            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+				                extraRoadAddr += data.bname;
+				            }
+				            // 건물명이 있고, 공동주택일 경우 추가한다.
+				            if(data.buildingName !== '' && data.apartment === 'Y'){
+				               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+				            }
+				            // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+				            if(extraRoadAddr !== ''){
+				                extraRoadAddr = ' (' + extraRoadAddr + ')';
+				            }
+				            // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+				            if(fullRoadAddr !== ''){
+				                fullRoadAddr += extraRoadAddr;
+				            }
+				            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+				            console.log(data.zonecode);
+				            console.log(fullRoadAddr);
+				         /*      var a = console.log(data.zonecode);
+				            var b = console.log(fullRoadAddr);
+				            
+				            if(a == null || b = null){
+				               alert("주소를 확인하세요.");
+				               return false;
+				            }   */
+				            
+				            
+				            $("[name=mem_oaddress]").val(data.zonecode);
+				            $("[name=mem_address]").val(fullRoadAddr);
+				            
+				            document.getElementById('mem_oaddress').value = data.zonecode; //5자리 새우편번호 사용
+				            document.getElementById('mem_address').value = fullRoadAddr;
+				            
+				            //document.getElementById('mem_detailaddress').value = data.jibunAddress; 
+				        }
+				     }).open();
+				 }
+				/* radio버튼 클릭마다 배송지 div 변경 */
+			$("#same-send1").on("click",function(){
+				 if($(this).is(":checked")){
+					$("#address-div2").hide();
+					$("#address-div1").show();
+				 }
+			})
+			$("#same-send2").on("click",function(){
+				 if($(this).is(":checked")){
+					$("#address-div1").hide();
+					$("#address-div2").show();
+				 }
+			})
+					</script>
 </body>
 
 </html>

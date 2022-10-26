@@ -40,9 +40,11 @@ public class MemberService{
 	}
 	public void getmemberinfo(MemberVO vo,HttpSession session, Model model) {
 		MemberVO vo1 = (MemberVO)session.getAttribute("user");
-		
-		model.addAttribute("list",dao.getmemberinfo(vo1));
+		MemberVO vo2 = dao.getmemberinfo(vo1);
+		model.addAttribute("list",vo2);
+		model.addAttribute("separateVO",dao.separate(vo2));
 	}
+	
 	public void updateinfo(MemberVO vo,HttpSession session) {
 		MemberVO vo2 = (MemberVO)session.getAttribute("user");
 		vo.setMemId(vo2.getMemId());
