@@ -109,9 +109,6 @@ margin-top : 20px;
 	padding-left : 3rem;
 	margin-bottom: 2rem;
 }
-#mainA1 {
-	margin-left: 9rem;
-}
 #usercheck {
 	width : 70%;
 	padding-left  :350px;
