@@ -344,6 +344,7 @@
             <div id="main-container">
                 
                 <section id="sec2">
+                
                     <nav>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
@@ -366,7 +367,7 @@
                                 <div class="detailinfo">
                                     <p>기본정보</p>
                                     <div class="basicinfo">
-
+										<h1 id="asd">${list.memId}</h1>
                                         <table class="infotable">
                                             <tr class="binfotr">
                                                 <td class="binfotd1">아이디</td>

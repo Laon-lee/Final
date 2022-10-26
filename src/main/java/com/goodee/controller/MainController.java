@@ -32,11 +32,7 @@ public class MainController {
 	public String mypage() {
 		return "main/mypage";
 	}
-	// 회원정보
-	@GetMapping("userinfo")
-	public String userinfo() {
-		return "main/userinfo";
-	}
+	
 	// 자주묻는질문
 	@GetMapping("usequestion/{boardCategory}")
 	public String usequestion(Model model,@PathVariable("boardCategory") String boardCategory) {

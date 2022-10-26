@@ -15,4 +15,5 @@ public interface MemberDAO {
 
 	public int ismember2(MemberVO vo);
 	public MemberVO getmemberinfo(MemberVO vo);
+	/* public MemberVO getmemberinfo(@Param("memId") String id); */
 }

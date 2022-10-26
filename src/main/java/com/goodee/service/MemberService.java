@@ -2,7 +2,10 @@ package com.goodee.service;
 
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.goodee.dao.MemberDAO;
 import com.goodee.vo.MemberVO;
@@ -28,14 +31,17 @@ public class MemberService{
 		int i = dao.ismember2(vo);
 		return (i>0)?true:false;
 	}
+	public int idCheck(MemberVO vo) {
+		return dao.idCheck(vo);
+	}
 	public MemberVO getmemberinfo(MemberVO vo) {
 		return dao.getmemberinfo(vo);
 	
 	}
-
-
-	public int idCheck(MemberVO vo) {
-		return dao.idCheck(vo);
+	public void getmemberinfo(MemberVO vo,HttpSession session, Model model) {
+		MemberVO vo1 = (MemberVO)session.getAttribute("user");
+		System.out.println(dao.getmemberinfo(vo1));
+		model.addAttribute("list",dao.getmemberinfo(vo1));
 	}
 	
 }
