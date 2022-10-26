@@ -195,14 +195,28 @@
             height: 5vh;
         }
         
-        .reserveinfo {
+        .reservecont {
+           width: 60%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 3fr 1.8fr;
+}
+
+
+        
+         .reserveinfo {
             width: 80%;
-            margin: 5px auto;
-            display: grid;
-            grid-template-columns: 4fr 1.3fr;
-
-
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            position: relative;
         }
+        .meminfo {
+        display: flex;
+            flex-direction: column;
+            gap: 45px;
+            
+            }
     </style>
 </head>
 
