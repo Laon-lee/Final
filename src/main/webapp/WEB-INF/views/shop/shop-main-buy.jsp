@@ -406,7 +406,7 @@ font {
 					document.getElementById("main2-btn2").addEventListener("click",function(){
 						location.href="${pageContext.request.contextPath}/";
 					});
-					$("select option[value*='사이즈선택']").prop('disabled',true);
+					
 					
 					
 					</script>
@@ -548,6 +548,8 @@ font {
 				$(".tab_cont > div").eq(idx).show();
 			})
 		});
+		
+		$("select option[value*='사이즈선택']").prop('disabled',true);
 		
 	</script>
 </body>
