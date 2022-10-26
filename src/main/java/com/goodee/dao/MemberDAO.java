@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.goodee.vo.MemberVO;
+import com.goodee.vo.SeparateVO;
 
 
 
@@ -15,6 +16,11 @@ public interface MemberDAO {
 
 	public int ismember2(MemberVO vo);
 	public MemberVO getmemberinfo(MemberVO vo);
+
+	public SeparateVO separate(MemberVO vo);
+	
+
 	public int updateinfo(MemberVO vo);
 	/* public MemberVO getmemberinfo(@Param("memId") String id); */
+
 }
