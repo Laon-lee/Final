@@ -4,6 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("memberVO")
 public class MemberVO {
+	
 	private String memId;
 	private String memPw;
 	private String memName;
