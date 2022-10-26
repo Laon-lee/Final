@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://kit.fontawesome.com/4b992414b9.js"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -46,25 +47,44 @@ input, select{
 	margin:5px;
 	
 }
+input{
+	display:inline-block;
+	outline:none;
+}
+input[type='radio']{
+	margin:0;
+	padding:0;
+}
+
 .lb{
-	width:150px;
+	display: inline-block;
+    width: 70px;
+}
+.sp{
+	float:right;
 }
 #container{
 	display:grid;
 	grid-template-rows:70px 1fr 70px;
+	min-height:100vh;
 }
 #section-container{
-	display:grid;
-	grid-template-rows:1fr 1fr 1fr 1fr 1fr 1fr;
+	width:37%;
+	display:flex;
+	flex-direction:column;
 	justify-content: center;
     align-items: center;
 }
+section{
+	width:100%;
+}
 section> div{
+	
 	padding:10px;
 	margin:10px;
 	border-bottom: 2px dashed gray;
 }
-#sec1-div2{
+#img-div{
 	display:grid;
 	grid-template-columns:1fr 2fr;
 }
@@ -72,10 +92,75 @@ section> div{
 	width:200px;
 	height:200px;
 }
+.tab-div{
+	display:flex;
+}
 #pro-info{
 	display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.scbtn{
+	border: 1px solid black;
+    margin: 5px;
+    height: 29px;
+    background-color: #fde4d6;
+    width: 105px;
+    font-weight: 600;
+}
+.info-p{
+	font-size:13px;
+	color:gray;
+}
+.same-send{
+	height:13px;
+}
+#address-div2{
+	display:none;
+}
+.memName{
+	width:379px;
+}
+#phone2, #phone3{
+	width:143px;
+}
+.maid-addr{
+	width:449px; 
+}
+#write{
+	width:449px;
+	display:none;
+}
+#select-msg{
+	width:449px;
+	outline:none;
+}
+#cash{
+    top: 20%;
+    left: 73%;
+    padding: 15px;
+    position: fixed;
+    width: 350px;
+    height: 340px;
+    border: 2px solid gray;
+    background-color: white;
+}
+#cash-btn{
+	margin:0 auto;
+	margin-top:40px;
+	border:none;
+	text-align:center;
+	background-color:black;
+	color:white;
+	height:50px;
+	width:315px;
+	font-size:20px;
+	font-weight:500;
+}
+.cash-info{
+	font-size:14px;
+	color:gray;
 }
 </style>
 </head>
@@ -92,9 +177,11 @@ section> div{
 		
 			<section id="sec1">
 				<div>
-					<h3>주문상품</h3>
+					<h3>주문상품<span class="material-symbols-outlined sp">expand_more</span></h3>
+					
 				</div>
-				<div id="sec1-div2">
+				<div id="sec1-div2" class="tab-div">
+					<div id="img-div">
 					<div>
 						<img src="${list.productImage}">
 					</div>
@@ -105,20 +192,22 @@ section> div{
 							<c:if test="${option != '사이즈선택'}"> ${option}</c:if>
 							<c:if test="${option == '사이즈선택'}"> 없음 </c:if>
 						</p>
-						<p>수량: ${count}</p>
+						<p>수량: ${count}개</p>
 						<p>
 							금액:	<fmt:formatNumber value="${count * list.productPrice}"	pattern="#,###" />원
 						</p>
+					</div>
 					</div>
 				</div>
 			</section>
 			<section id="sec2">
 				<div>
-					<h3>주문정보</h3>
+					<h3>주문정보<span class="material-symbols-outlined sp">expand_more</span></h3>
 				</div>
-				<div>
-					<label for="memName" class="lb">주문자 *</label><input type="text" value="${user.memName}" id="memName" name="memName"><br> 
-					<label for="memEmail" class="lb">이메일 *</label> <input type="email" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="email" value="${separateVO.email2}">
+				<div  class="tab-div">
+					<div>
+					<label for="memName1" class="lb">주문자 *</label><input type="text" value="${user.memName}" id="memName1" class="memName" name="memName1"><br> 
+					<label for="memEmail" class="lb">이메일 *</label><input type="email" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="email" value="${separateVO.email2}">
 					<!-- <select name="email-list" id="email-list" class="box">
                     <option value="self">--직접입력--</option>
                     <option value="naver.com">naver.com</option>
@@ -131,43 +220,86 @@ section> div{
 					<p class="info-p">이메일로 주문 처리 과정을 보내드립니다.</p>
 					<p class="info-p">수신 가능한 이메일을 주소로 입력해주세요.</p>
 					<br> 
-					<label for="memPhone" class="lb">휴대 전화</label> 
-							<form:select path="phone1" id="memPhone" name="memPhone">
+					<label for="memPhone" class="lb">휴대 전화
+					</label><form:select path="phone1" id="memPhone" name="memPhone">
 								<form:option value="010">010</form:option>
 								<form:option value="011">011</form:option>
 								<form:option value="017">017</form:option>
 								<form:option value="019">019</form:option>
-							</form:select> - <form:input path="phone2" /> - <form:input path="phone3" />
-					<br>
+						</form:select> - <form:input path="phone2" /> - <form:input path="phone3" />
+					
 					<br> 
-					<label for="memAddress" class="lb">주소 * </label><input type="text" placeholder="우편번호" value="${user.memOaddress}" id="memAddress" name="memAddress"><br>
-					<input type="text" name="maid-addr1" id="maid-addr1" placeholder="기본주소" value="${user.memAddress}"><br>
-					<input type="text" name="maid-addr2" id="maid-addr2" placeholder="상세주소" value="${user.memDetailaddress}">
+					<label for="memAddress" class="lb">주소 * </label><input type="text" placeholder="우편번호" value="${user.memOaddress}" id="memAddress" name="memAddress"><button class="scbtn" onclick="execPostCode();">주소 검색</button><br>
+					<input type="text" name="maid-addr1" class="maid-addr" placeholder="기본주소" value="${user.memAddress}"><br>
+					<input type="text" name="maid-addr2" class="maid-addr" placeholder="상세주소" value="${user.memDetailaddress}">
+					</div>
 				</div>
 			</section>
 			<section id="sec3">
+				
 				<div>
-					<h3>배송지</h3>
+					<h3>배송지<span class="material-symbols-outlined sp">expand_more</span></h3>
 				</div>
-				<div>
+				<div  class="tab-div">
 					<div>
-						<input type="radio" name="same" id="same-send1"  checked><label for="same-send1">주문자 정보와 동일</label> 
-						<input type="radio" name="same" id="same-send2"><label for="same-send2">새로운	배송지</label>
+					<div>
+						<input type="radio" name="same" id="same-send1" class="same-send" checked> <label for="same-send1">주문자 정보와 동일</label> 
+						<input type="radio" name="same" id="same-send2" class="same-send"> <label for="same-send2">새로운	배송지</label>
 					</div>
 					<div id="address-div1">
-						<label for="">받는 사람 * <input type="text" name="owner" value="${user.memName}"></label><br>
-						<label for="address">주소 * <input type="text" placeholder="우편번호" class="addr-addr" value="${user.memOaddress}" readonly></label><br>
-						<input type="text" placeholder="기본주소" value="${user.memAddress}" readonly><br>
-						<input type="text" placeholder="상세주소" value="${user.memDetailaddress}" readonly><br>
+						<label for="memName" class="lb">받는 사람</label><input type="text" name="memName" class="memName" id="memName" value="${user.memName}"><br>
+						<label for="address"  class="lb">주소 * </label><input type="text" placeholder="우편번호" class="addr-addr" value="${user.memOaddress}" readonly><br>
+						<input type="text" placeholder="기본주소" class="maid-addr" value="${user.memAddress}" readonly><br>
+						<input type="text" placeholder="상세주소" class="maid-addr" value="${user.memDetailaddress}" readonly><br>
 					</div>
 					<div id="address-div2">
-						<label for="" style="font-size: 0.85rem;">받는 사람 * <input type="text"></label><br>
-						<label for="address">주소 * <input type="text" placeholder="우편번호" id="mem_address1" name="mem_oaddress">
-						<button onclick="execPostCode();">주소 검색</button></label><br>
-						<input type="text" name="mem_address" id="mem_address2" placeholder="기본주소"><br>
-						<input type="text" name="mem_detailaddress" id="mem_detailaddress" placeholder="상세주소"><br>
+						<label for="memName"  class="lb">받는 사람</label><input type="text" class="memName" id="memName"><br>
+						<label for="address"  class="lb">주소 * </label><input type="text" placeholder="우편번호" id="mem_address1" name="mem_oaddress">
+						<button class="scbtn" onclick="execPostCode();">주소 검색</button><br>
+						<input type="text" name="mem_address" class="maid-addr" id="mem_address2" placeholder="기본주소"><br>
+						<input type="text" name="mem_detailaddress" class="maid-addr" id="mem_detailaddress" placeholder="상세주소"><br>
+					</div>
+					<div id="message">
+					
+						<select name="message" id="select-msg" >
+							<option value="배송전에 미리 연락바랍니다">배송전에 미리 연락바랍니다</option>
+							<option value="부재 시 경비실에 맡겨주세요">부재 시 경비실에 맡겨주세요</option>
+							<option value="부재 시 문 앞에 놓아주세요">부재 시 문 앞에 놓아주세요</option>
+							<option value="빠른 배송 부탁드립니다">빠른 배송 부탁드립니다</option>
+							<option value="택배함에 보관해 주세요">택배함에 보관해 주세요</option>
+							<option value="직접 입력">직접 입력</option>
+							<input type="text" name="write" class="write" id="write" placeholder=" *직접입력">
+						</select><br>
+				<script>
+					document.getElementById("select-msg").addEventListener("change",function(){
+						if( document.getElementById("select-msg").value=="직접 입력"){
+							document.getElementById("write").style.display="block";
+						}else{
+							document.getElementById("write").style.display="none";
+						}
+					})
+					
+				</script>
+					</div>
 					</div>
 				</div>
+				<script type="text/javascript">
+				let span = document.getElementsByClassName("sp")
+				for(let i = 0; i< span.length ; i++){
+					span[i].addEventListener("click",function(){
+						let div = document.getElementsByClassName("tab-div")[i];
+						if(div.style.display == "none"){
+						
+							
+								div.style.display="flex";
+							
+						}else{
+							div.style.display="none";
+						}
+					})
+				}
+					
+				</script>
 					<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 					<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 					<script>
@@ -232,8 +364,29 @@ section> div{
 					$("#address-div2").show();
 				 }
 			})
+
 					</script>
 			</section>
+			<div id="cash">
+				<div>
+				<h3>결제 정보</h3>
+				<br>
+				<h1>
+				<fmt:formatNumber value="${count * list.productPrice}"	pattern="#,###" />KRW
+				</h1>
+				<br>
+				<hr>
+				<p>적립금 : <fmt:formatNumber value="${count * list.productPrice/100}"	pattern="#,###" />원</p>
+				<br>
+				<p class="cash-info"> - 무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에 대해 무이자할부가 적용되지 않습니다. 무이자할부를 원하시는 경우 장바구니에서 무이자할부 상품만 선택하여 주문하여 주시기 바랍니다.</p>
+				<p class="cash-info"> - 최소 결제 가능 금액은 결제금액에서 배송비를 제외한 금액입니다.</p>
+				
+				</div>
+				<div>
+				<button id="cash-btn"> 결제하기</button>
+				</div>
+			</div>
+			
 		</form:form>
 		</main>
 		<footer>
@@ -241,26 +394,6 @@ section> div{
 		</footer>
 
 	</div>
-
-
-	<script>
-/* const domainListEl = document.querySelector('#domain-list')
-const domainInputEl = document.querySelector('#domain-txt')
-// select 옵션 변경 시
-domainListEl.addEventListener('change', (event) => {
-  // option에 있는 도메인 선택 시
-  if(event.target.value !== "type") {
-    // 선택한 도메인을 input에 입력하고 disabled
-    domainInputEl.value = event.target.value
-    domainInputEl.disabled = true
-  } else { 
-    domainInputEl.value = ""
-    domainInputEl.disabled = false
-  }
-}) */
-
-</script>
-
 	<script>
 var IMP = window.IMP; // 생략가능
 IMP.init('imp70736007'); // <-- 본인 가맹점 식별코드 삽입
