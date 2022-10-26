@@ -269,6 +269,24 @@ font {
 }
 
 
+.board {
+
+	line-height : 2rem;
+}
+
+.board > p {
+	font-size : 0.8rem;
+	color : #979797;
+}
+
+.board-box {
+	border : 1px solid #d9d9d9;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	margin-top : 2rem;
+}
+
 </style>
 
 
@@ -412,7 +430,7 @@ font {
 							<div class="board">
 								<h3>REVIEW</h3>
 								<p class="desc">상품의 사용후기를 적어주세요</p>
-								<p class="nodata">게시물이 없습니다.</p>
+								<div class = "board-box"><p class="nodata">게시물이 없습니다.</p></div>
 							</div>
 						</div>
 					</div>
@@ -420,7 +438,9 @@ font {
 						<div class="board">
 							<h3>Q&A</h3>
 							<p>상품에 대해 궁금한 점을 해결해 드립니다.</p>
+							<div  class = "board-box">
 							<p class="nodata">게시물이 없습니다.</p>
+							</div>
 						</div>
 					</div>
 					
