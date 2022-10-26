@@ -40,8 +40,12 @@ public class MemberService{
 	}
 	public void getmemberinfo(MemberVO vo,HttpSession session, Model model) {
 		MemberVO vo1 = (MemberVO)session.getAttribute("user");
-		System.out.println(dao.getmemberinfo(vo1));
+		
 		model.addAttribute("list",dao.getmemberinfo(vo1));
 	}
-	
+	public void updateinfo(MemberVO vo,HttpSession session) {
+		MemberVO vo2 = (MemberVO)session.getAttribute("user");
+		vo.setMemId(vo2.getMemId());
+		dao.updateinfo(vo);
+	}
 }

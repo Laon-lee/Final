@@ -183,152 +183,76 @@
                 width: 85%;
                 display: flex;
                 flex-direction: column;
-                gap: 8vh;
+                gap: 5vh;
             }
 
-            .art2container>h2 {
-                width: 100%;
-                text-align: right;
-                border-top: 2px solid black;
-                padding-top: 3px;
-            }
-
-
+    
             .totalinfo {
                 width: 85%;
-                border: 1px solid gray;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 10px;
-                gap: 5%;
-                margin: 0 auto;
-
+                border: 3px solid black;
+                padding: 20px;
+               
+                color: black;
+               border-radius: 5px;
             }
 
-            .totalimg {
-                height: 8vh;
-            }
+    
 
-            .totalimg>img {
-                height: 100%;
+    
+			input {
+ 			width : 25%;
+ 			height : 30px;
+ 			border-radius : 5px;
+ 			border : none;
+ 			padding-left: 13px;
+ 			margin-bottom:20px;
+            margin-right: 8px;
+ 			}
+            label{
+                width: 200px;
+                display: inline-block;
             }
-
-            .detailinfo,
-            .addinfo {
+            .h1{
                 width: 85%;
-                margin: 0 auto;
+                border-radius: 5px;
+                border: 3px solid #ccc;
+                text-align: center;
+                color: black;
+                font-size: 30px;
             }
-
-            .detailinfo>p,
-            .addinfo>p {
-                padding-bottom: 1vh;
-                margin-bottom: 3vh;
-                border-bottom: 1px solid black;
+            .h3{
+                display: inline-block;
             }
-
-            .infotable {
-                font-size: 0.8rem;
-                width: 100%;
+            .btn1{
+                margin-top: 40px;
+              margin-left: 150px;
+                width: 25%;
+                height: 30px;
+                border-radius: 10px;
+                background-color: white;
+                color: black;
+               
+                font-weight: 600;
+                font-size: 17px;
             }
-
-            .binfotd1 {
-                width: 20%;
-                padding: 9px 0px;
+            .btn1:hover,.btn2:hover{
+                background-color: gainsboro;
+                display: inline;
             }
-
-            .binfotd2>input {
-                width: 15vw;
+            .btn2{
+                
+              margin-left: 150px;
+                width: 25%;
+                height: 30px;
+                border-radius: 10px;
+                background-color: white;
+                color: black;
+               
+                font-weight: 600;
+                font-size: 17px;
             }
-
-            .idpw {
-                display: flex;
-                flex-direction: row;
-                gap: 1vw;
-                padding: 9px 0px;
-
-            }
-
-            #addrnum,
-            #basicaddr,
-            #detailaddr {
-                display: flex;
-                flex-direction: row;
-                gap: 1vw;
-                padding: 2px 0px;
-            }
-
-            #addrnum>input {
-                width: 7vw;
-            }
-
-            #basicaddr>input,
-            #detailaddr>input {
-                width: 22vw;
-            }
-
-            .numb {
-                width: 4.5vw;
-            }
-
-            .infonum>input {
-                width: 6vw;
-            }
-
-            #tdbirth {
-                display: flex;
-                flex-direction: row;
-                padding: 9px 0px;
-
-            }
-
-            #tdbirth>input {
-                width: 5vw;
-            }
-
-            #tdbirth>span {
-                padding-right: 1vw;
-            }
-
-            input {
-                border: 1px solid grey;
-                border-radius: 2px;
-
-            }
-
-            .btnbox {
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-                margin: 0 auto;
-
-            }
-
-            .inbox {
-                display: flex;
-                flex-direction: row;
-                width: 68%;
-                justify-content: space-between;
-            }
-
-            .inbox>button,
-            .inbtnbox>button {
-                border: none;
-                width: 7vw;
-                height: 4vh;
-            }
-
-            .inbtnbox {
-                display: flex;
-                flex-direction: row;
-                gap: 1vw;
-            }
-
-            #okbtn {
-                background-color: black;
-                color: white;
-
+            span{
+                opacity: 0.5;
             }
     </style>
 </head>
@@ -356,180 +280,50 @@
                         </ul>
                     </nav>
                     <article id="art2">
-                       <div class="art2container">
-                                <h2>회원정보수정</h2>
-                                <div class="totalinfo">
-                                    <div class="totalimg">
-                                        <img src="./hotel/회원프사.png" alt="">
-                                    </div>
-                                    <p>저희 쇼핑몰을 이용해주셔서 감사합니다. ${username}님은 [${grade}]입니다.</p>
-                                </div>
-                                <div class="detailinfo">
-                                    <p>기본정보</p>
-                                    <div class="basicinfo">
-										<h1 id="asd">${list.memId}</h1>
-                                        <table class="infotable">
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">아이디</td>
-                                                <td class="binfotd2 idpw" id="tdid"> <input type="text" value="아이디">
-                                                    <p>(영문소문자/숫자, 4~16자)</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">비밀번호</td>
-                                                <td class="binfotd2 idpw" id="tdpw"><input type="text">
-                                                    <p>(영문 대소문자/숫자, 4~16자)</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">비밀번호 확인</td>
-                                                <td class="binfotd2" id="tdpwc"><input type="text"></td>
-                                            </tr>
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">이름</td>
-                                                <td class="binfotd2" id="tdname"><input type="text" value="${username}">
-                                                </td>
-                                            </tr>
-                                            <tr class="binfotr">
-                                                <td class="binfotd1" style="vertical-align: top">주소</td>
-                                                <td class="binfotd2" id="tdaddr">
-                                                    <div id="addrnum">
-                                                        <input type="text" name="" id=""><button>우편번호</button>
-                                                    </div>
-                                                    <div id="basicaddr">
-                                                        <input type="text">
-                                                        <p>기본주소</p>
-                                                    </div>
-                                                    <div id="detailaddr">
-                                                        <input type="text" name="" id="">
-                                                        <p>나머지주소(선택입력가능)</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">일반전화</td>
-                                                <td class="binfotd2 infonum" id="tdnum">
-                                                    <select name="senum" id="senum" class="numb">
-                                                        <option value="02">02</option>
-                                                        <option value="031">031</option>
-                                                        <option value="032">032</option>
-                                                        <option value="033">033</option>
-                                                        <option value="041">041</option>
-                                                        <option value="042">042</option>
-                                                        <option value="043">043</option>
-                                                        <option value="044">044</option>
-                                                        <option value="051">051</option>
-                                                        <option value="052">052</option>
-                                                        <option value="053">053</option>
-                                                        <option value="054">054</option>
-                                                        <option value="055">055</option>
-                                                        <option value="061">061</option>
-                                                        <option value="062">062</option>
-                                                        <option value="063">063</option>
-                                                        <option value="064">064</option>
-                                                        <option value="0502">0502</option>
-                                                        <option value="0503">0503</option>
-                                                        <option value="0504">0504</option>
-                                                        <option value="0505">0505</option>
-                                                        <option value="0506">0506</option>
-                                                        <option value="0507">0507</option>
-                                                        <option value="070">070</option>
-                                                        <option value="010">010</option>
-                                                        <option value="011">011</option>
-                                                        <option value="016">016</option>
-                                                        <option value="017">017</option>
-                                                        <option value="018">018</option>
-                                                        <option value="019">019</option>
-                                                        <option value="0508">0508</option>
-                                                    </select>
-                                                    - <input type="text">
-                                                    - <input type="text">
-                                                </td>
-                                            </tr>
-
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">휴대전화</td>
-                                                <td class="binfotd2 infonum" id="tdaddnum">
-                                                    <select name="senum" id="seaddnum" class="numb">
-
-                                                        <option value="010">010</option>
-                                                        <option value="011">011</option>
-                                                        <option value="016">016</option>
-                                                        <option value="017">017</option>
-                                                        <option value="018">018</option>
-                                                        <option value="019">019</option>
-
-                                                    </select>
-                                                    - <input type="text">
-                                                    - <input type="text">
-                                                </td>
-                                            </tr>
-                                            <tr class="binfor">
-                                                <td class="binfotd1">이메일</td>
-                                                <td class="binfotd2"><input type="text" name="" id=""></td>
-                                            </tr>
-
-                                        </table>
-
-                                    </div>
-                                </div>
-                                <div class="addinfo">
-                                    <p>추가정보</p>
-                                    <div class="basicinfo">
-
-                                        <table class="infotable">
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">생년월일</td>
-                                                <td class="binfotd2" id="tdbirth">
-                                                    <input type="text"><span>년</span>
-                                                    <input type="text" name="" id=""><span>월</span>
-                                                    <input type="text" name="" id=""><span>일</span>
-                                                    <label for="lift"><input type="radio" name="" id="lift">양력</label>
-                                                    <label for="lunar"><input type="radio" name="" id="lunar">음력</label>
-
-                                                </td>
-                                            </tr>
-                                            <tr class="binfotr">
-                                                <td class="binfotd1">지역</td>
-                                                <td class="binfotd2">
-                                                    <select name="region" id="region">
-                                                        <option value="선택">선택</option>
-                                                        <option value="경기">경기</option>
-                                                        <option value="서울">서울</option>
-                                                        <option value="인천">인천</option>
-                                                        <option value="강원">강원</option>
-                                                        <option value="충남">충남</option>
-                                                        <option value="충북">충북</option>
-                                                        <option value="대전">대전</option>
-                                                        <option value="경북">경북</option>
-                                                        <option value="경남">경남</option>
-                                                        <option value="대구">대구</option>
-                                                        <option value="부산">부산</option>
-                                                        <option value="울산">울산</option>
-                                                        <option value="전북">전북</option>
-                                                        <option value="전남">전남</option>
-                                                        <option value="광주">광주</option>
-                                                        <option value="세종">세종</option>
-                                                        <option value="제주">제주</option>
-                                                        <option value="해외">해외</option>
-                                                    </select>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                </div>
-                                <div class="btnbox">
-                                    <div class="inbox">
-                                        <div class="inbtnbox">
-                                            <button id="okbtn">회원정보수정</button>
-                                            <button id="cbtn">취소</button>
-                                        </div>
-                                        <button id="tbtn">탈퇴하기</button>
-                                    </div>
-                                </div>
-                            </div>
+                   <div class="art2container">
+                   <h2>회원정보수정</h2>
+                       <div class="totalinfo">
+                        <h4>저희 쇼핑몰을 이용해주셔서 감사합니다. ${list.memName}님은 [관리자]입니다.</h4>
+                        </div>
+                        <h1 class="h1">기본정보</h1>
+                        <div class="detailinfo">
+                       
+                       <form action="${pageContext.request.contextPath}/userupdate">
+ 						<label for="memId"><h3 class="h3">아이디</h3></label>
+ 						<input type="text" name="memId" id="memId" value="${list.memId}" readonly>
+                        <br>
+                        
+                        <label for="password"><h3 class="h3">비밀번호 변경</h3></label>
+                        <input type="password" name="password" id="password" placeholder="변경할 비밀번호"  pattern=".{4,16}" required>
+                        <span>(영문 대소문자/숫자, 4~16자)</span><br>
+                           
+                                          
+                        <label for="memPw"><h3 class="h3">비밀번호 확인</h3></label>
+                        <input type="password" name="memPw" id="memPw" placeholder="비밀번호 확인"  pattern=".{8,16}" required><br>
+                                           
+                                          
+                        <label for="memName"><h3 class="h3">이름</h3></label>
+                        <input type="text" name="memName" id="memName" value="${list.memName}"><br>
+                                               
+          
+   						<label for="memOaddress"><h3 class="h3">우편번호</h3></label>
+                     	<input type="text" name="memOaddress" id="memOaddress" value="${list.memOaddress}"><br>
+                                                  
+                        
+                        <label for="memAddress"><h3 class="h3">기본주소</h3></label>
+                        <input type="text" name="memAddress" id="memAddress" value="${list.memAddress}"> <br>
+                        
+                        <label for="memDetailaddress"><h3 class="h3">상세주소</h3></label>
+                        <input type="text" name="memDetailaddress" id="memDetailaddress" value="${list.memDetailaddress}"><br>
+                        
+                        <label for="memPhone"><h3 class="h3">휴대전화</h3></label>
+                        <input type="text" name="memPhone" id="memPhone" value="${list.memPhone}"><br>
+                       
+                        <label for="memEmail"><h3 class="h3">이메일</h3></label>
+                        <input type="text" name="memEmail" id="memEmail" value="${list.memEmail}"><br>
+                        <button class="btn1">회원정보수정</button>
+                    </form>
+                   
                     </article>
                 </section>
                 </div>
