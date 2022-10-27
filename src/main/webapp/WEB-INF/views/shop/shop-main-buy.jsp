@@ -152,7 +152,7 @@ option {
 	line-height: 3.5rem
 }
 
-#main2-btn1, #main2-btn2 {
+#main2-btn1, #main2-btn2, #main2-btn1-logout {
 	height: 35px;
 	border-radius: 5px;
 	width: 48%;
@@ -334,7 +334,7 @@ font {
 	<div id="container">
 
 		<header>
-			<%@ include file="../frame/shop/header.jsp"%>
+			<%@ include file="../frame/shop/header.jsp" %>
 			<a name="top" id="heretop" style="display: none"></a>
 		</header>
 		<main>
