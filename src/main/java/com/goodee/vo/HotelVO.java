@@ -6,18 +6,14 @@ import org.apache.ibatis.type.Alias;
 public class HotelVO {
 	private int hotelId;
 	private String hotelName;
-	private String hotelRoom;
 	private String hotelAddr;
+	private String hotelCategory;
+	private String hotelTel;
 	private String hotelOpt;
 	private String hotelDeopt;
-	private String hotelCategory;
-	private String hotelPrice;
 	private String hotelThum;
 	private String hotelImg;
 	private String hotelContent;
-	private String hotelHere;
-	private String hotelTel;
-	
 	public int getHotelId() {
 		return hotelId;
 	}
@@ -30,17 +26,23 @@ public class HotelVO {
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
-	public String getHotelRoom() {
-		return hotelRoom;
-	}
-	public void setHotelRoom(String hotelRoom) {
-		this.hotelRoom = hotelRoom;
-	}
 	public String getHotelAddr() {
 		return hotelAddr;
 	}
 	public void setHotelAddr(String hotelAddr) {
 		this.hotelAddr = hotelAddr;
+	}
+	public String getHotelCategory() {
+		return hotelCategory;
+	}
+	public void setHotelCategory(String hotelCategory) {
+		this.hotelCategory = hotelCategory;
+	}
+	public String getHotelTel() {
+		return hotelTel;
+	}
+	public void setHotelTel(String hotelTel) {
+		this.hotelTel = hotelTel;
 	}
 	public String getHotelOpt() {
 		return hotelOpt;
@@ -53,18 +55,6 @@ public class HotelVO {
 	}
 	public void setHotelDeopt(String hotelDeopt) {
 		this.hotelDeopt = hotelDeopt;
-	}
-	public String getHotelCategory() {
-		return hotelCategory;
-	}
-	public void setHotelCategory(String hotelCategory) {
-		this.hotelCategory = hotelCategory;
-	}
-	public String getHotelPrice() {
-		return hotelPrice;
-	}
-	public void setHotelPrice(String hotelPrice) {
-		this.hotelPrice = hotelPrice;
 	}
 	public String getHotelThum() {
 		return hotelThum;
@@ -84,18 +74,6 @@ public class HotelVO {
 	public void setHotelContent(String hotelContent) {
 		this.hotelContent = hotelContent;
 	}
-	public String getHotelHere() {
-		return hotelHere;
-	}
-	public void setHotelHere(String hotelHere) {
-		this.hotelHere = hotelHere;
-	}
-	public String getHotelTel() {
-		return hotelTel;
-	}
-	public void setHotelTel(String hotelTel) {
-		this.hotelTel = hotelTel;
-	}
-	
+
 	
 }

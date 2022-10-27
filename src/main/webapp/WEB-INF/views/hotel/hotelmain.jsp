@@ -217,7 +217,7 @@ img {
 					</div>
 					<input type="text" id="datepicker1" name="dates" readonly>
 					<!-- <button class="selecbtn">검색</button> -->
-					<a href="#" class="selecbtn">검색</a>
+					<a href="#" class="selecbtn" id="asearchbtn">검색</a>
 				</div>
 
 

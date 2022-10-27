@@ -40,6 +40,9 @@ public class HotelController {
 		return "hotel/hoteldetail";
 	}
 	
+	//hotelmain에서 hotellist로 넘어가는 컨트롤러
+	//메인에서 지역구와 일자를 선택했을 때 선택한 지역구에 해당하는 호텔의 목록이 넘어옴
+	
 	@GetMapping("golist/{startDate}/{endDate}/{cate}")
 	/* @GetMapping("golist/{startDate}/{endDate}") */
 	

@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.HotelDAO">
 	<select id="selectList" resultType="hotelVO">
-		select hotel_name, hotel_id, hotel_room, hotel_addr, hotel_opt, hotel_deopt, hotel_category, hotel_price, hotel_thum, hotel_img, hotel_content, hotel_here, hotel_tel
-		from hotel_reservation GROUP BY hotel_name;
+		select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
+		from hotel_reservation;
 	</select>
 	
 	<select id="selectHotelNameList" resultType = "hotelVO">
@@ -13,16 +13,18 @@
 	</select>
 	
 	<select id="selectRoomList" resultType="hotelVO">
-		SELECT hotel_name, hotel_room, hotel_price from hotel_reservation;
+		SELECT hotel_name from hotel_reservation;
 	</select>
+	
+	<!-- 지역구 값 받아서 해당 정보 출력 -->
 	<select id="selectCateList" resultType="hotelVO">
-	select hotel_name, hotel_id, hotel_room, hotel_addr, hotel_opt, hotel_deopt, hotel_category, hotel_price, hotel_thum, hotel_img, hotel_content, hotel_here, hotel_tel
+	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
 		from hotel_reservation 
 		where hotel_category in 
 		<foreach item="cate" index="id" collection="list" open="(" separator="," close = ")">
 			 #{cate} 
 		</foreach>
-		GROUP BY hotel_name;
+		
 	</select>
 	<select id="selectroomnameList" resultType="hotelVO">
 		select hotel_name, hotel_id, hotel_room, hotel_addr, hotel_opt, hotel_deopt, hotel_category, hotel_price, hotel_thum, hotel_img, hotel_content, hotel_here, hotel_tel

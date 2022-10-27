@@ -133,7 +133,7 @@
         .list,
         .option_list {
             width: 80%;
-            margin: 5px auto;
+            margin: 20px auto;
             display: flex;
             flex-direction: row;
             height: 25vh;
@@ -532,7 +532,7 @@
                         <h2>${item.hotelName }</h2>
                         <p>자세히보기</p>
                         <p>2021.12.11~2023.08.31</p>
-                        <h1>${item.hotelPrice }</h1>
+                        <h1>가격</h1>
                     </div>
                     <div id="innerbtn1" class="innerbtn">
                         <button>RESERVE</button>
@@ -548,13 +548,13 @@
                             <td class="td1">
                                 <div class="intr">
                                     <div class="intr_room">
-                                        <p>${room.hotelRoom}</p>
+                                        <p>방 이름 </p>
                                         <P>Size : 20.7</P>
                                     </div>
                                     <div class="intr_a">
                                         <a href="#" class="a1">객실 상세보기</a>
                                         <a href="#" class="a2">비교함 담기</a>
-                                        <p>${room.hotelPrice }</p>
+                                        <p>가격</p>
                                     </div>
                                     <!-- <div id="intr_price">
                                         36,000 KRW~

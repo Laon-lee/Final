@@ -28,7 +28,8 @@ public class HotelService {
 		model.addAttribute("room", dao.selectRoomList());
 
 	}
-
+	
+	//main에서 list로 페이지 이동할때 지역구 값 받아서 호텔 리스트 불러오는 서비스
 	public void getCateList(Model model, String[] cate) {
 		/*
 		 * for (int i = 0; i < dao.selectCateList(cate).size(); i++) {
