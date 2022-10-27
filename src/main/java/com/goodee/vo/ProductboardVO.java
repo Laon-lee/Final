@@ -1,6 +1,6 @@
 package com.goodee.vo;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import org.apache.ibatis.type.Alias;
 
@@ -10,7 +10,7 @@ public class ProductboardVO {
 	private int productId;
 	private String proboardTitle;
 	private String proboardContent;
-	private LocalDateTime proboardDate;
+	private String proboardDate;
 	private String memId;
 	private String proboardCategory;
 
@@ -40,10 +40,12 @@ public class ProductboardVO {
 	public void setProboardId(int proboardId) {
 		this.proboardId = proboardId;
 	}
-	public LocalDateTime getProboardDate() {
+	
+	
+	public String getProboardDate() {
 		return proboardDate;
 	}
-	public void setProboardDate(LocalDateTime proboardDate) {
+	public void setProboardDate(String proboardDate) {
 		this.proboardDate = proboardDate;
 	}
 	public String getMemId() {

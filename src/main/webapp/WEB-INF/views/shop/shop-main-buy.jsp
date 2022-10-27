@@ -525,7 +525,7 @@ font {
 										<div class="board-box">
 											<p><b>${item.memId}</b>&nbsp;
 											<span><small>
-												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parseDateTime" type="both"/>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parseDateTime" type="both"/>
 												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 											</small></span>
 											</p>
@@ -555,18 +555,52 @@ font {
 								});
 								document.getElementById("insertreview").addEventListener("click",function(e){
 									e.preventDefault();
-									let proboardContent = document.getElementById("writebox-content").value;
-									let productId= ${list.productId}
+									let today = new Date();
+
+									let year = today.getFullYear();
+									let month = ('0' + (today.getMonth() + 1)).slice(-2);
+									let day = ('0' + today.getDate()).slice(-2);
+									let hours = ('0' + today.getHours()).slice(-2); 
+									let minutes = ('0' + today.getMinutes()).slice(-2);
+									let seconds = ('0' + today.getSeconds()).slice(-2); 							
+									let proboardDate = year + '-' + month  + '-' + day +" "+ hours + ':' + minutes  + ':' + seconds;
 									
+									
+									let proboardContent = document.getElementById("writebox-content").value;
+									let proboardTitle = "리뷰 제목"
+									let memId = '${sessionScope.user.memId}';
+									let productId= ${list.productId}
 									fetch("${pageContext.request.contextPath}/insertreview", 
 										{ method: "POST",
 										  headers: {
 										    "Content-Type": "application/json"
 										  },
-										  body: JSON.stringify({proboardContent,productId})
+										  body: JSON.stringify({proboardContent,productId, proboardTitle,memId,proboardDate})
 										}).then((response) => response.json())
 										.then((data) => {
-											location.href = "${pageContext.request.contextPath}/shop/main/buy/"+${list.productId};
+											let box = document.getElementById("write-box");
+											let div = document.createElement("div");
+											let p = document.createElement("p");
+											let p1 = document.createElement("p");
+											let b = document.createElement("b");
+											var text = document.createTextNode("\u00a0\u00a0");
+											let span = document.createElement("span");
+											let small = document.createElement("small");
+
+											div.setAttribute("class","board-box");
+											b.innerText= memId;
+											small.innerText = proboardDate;
+											span.append(small);
+											p.append(b);
+											p.append(text)
+											p.append(span);
+											p1.innerText= proboardContent;
+											div.append(p);
+											div.append(p1);
+											box.before(div);
+											
+											document.getElementById("writebox-content").value="";
+											
 										});
 								})
 							</script>
@@ -590,7 +624,7 @@ font {
 										<div class="board-box">
 											<p><b>${item.memId}</b>&nbsp;
 											<span><small>
-												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parseDateTime" type="both"/>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parseDateTime" type="both"/>
 												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 											</small></span>
 											</p>
@@ -623,8 +657,20 @@ font {
 						});
 						document.getElementById("insertqna").addEventListener("click",function(e){
 							e.preventDefault();
+							let today = new Date();
+
+							let year = today.getFullYear();
+							let month = ('0' + (today.getMonth() + 1)).slice(-2);
+							let day = ('0' + today.getDate()).slice(-2);
+							let hours = ('0' + today.getHours()).slice(-2); 
+							let minutes = ('0' + today.getMinutes()).slice(-2);
+							let seconds = ('0' + today.getSeconds()).slice(-2); 							
+							let proboardDate = year + '-' + month  + '-' + day +" "+ hours + ':' + minutes  + ':' + seconds;
+							
+							
 							let proboardContent = document.getElementById("writebox-content2").value;
 							let proboardTitle = document.getElementById("writebox-title2").value;
+							let memId = '${sessionScope.user.memId}';
 							let productId= ${list.productId}
 							
 							fetch("${pageContext.request.contextPath}/insertqna", 
@@ -632,10 +678,35 @@ font {
 								  headers: {
 								    "Content-Type": "application/json"
 								  },
-								  body: JSON.stringify({proboardContent,productId, proboardTitle})
+								  body: JSON.stringify({proboardContent,productId, proboardTitle,memId,proboardDate})
 								}).then((response) => response.json())
 								.then((data) => {
-									location.href = "${pageContext.request.contextPath}/shop/main/buy/"+${list.productId};
+									let box = document.getElementById("write-box2");
+									let div = document.createElement("div");
+									let p = document.createElement("p");
+									let p1 = document.createElement("p");
+									let p2 = document.createElement("p");
+									let b = document.createElement("b");
+									var text = document.createTextNode("\u00a0\u00a0");
+									let span = document.createElement("span");
+									let small = document.createElement("small");
+
+									div.setAttribute("class","board-box");
+									b.innerText= memId;
+									small.innerText = proboardDate;
+									span.append(small);
+									p.append(b);
+									p.append(text);
+									p.append(span);
+									p1.innerText= proboardTitle;
+									p2.innerText= proboardContent;
+									div.append(p);
+									div.append(p1);
+									div.append(p2);
+									box.before(div);
+									
+									document.getElementById("writebox-content2").value="";
+									document.getElementById("writebox-title2").value="";
 								});
 						})
 						</script>

@@ -53,8 +53,10 @@ public class ShopService {
 	}
 	public void insertQna(ProductboardVO vo,HttpSession session) {
 		System.out.println("3");
-		MemberVO vo1 = (MemberVO)session.getAttribute("user");
-		vo.setMemId(vo1.getMemId());
+		/*
+		 * MemberVO vo1 = (MemberVO)session.getAttribute("user");
+		 * vo.setMemId(vo1.getMemId());
+		 */
 		vo.setProboardCategory("qna");
 		System.out.println("4");
 		dao.insertBoard(vo);
