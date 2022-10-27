@@ -217,7 +217,7 @@ img {
 					</div>
 					<input type="text" id="datepicker1" name="dates" readonly>
 					<!-- <button class="selecbtn">검색</button> -->
-					<a href="#" class="selecbtn">검색</a>
+					<a href="#" class="selecbtn" id="asearchbtn">검색</a>
 				</div>
 
 
@@ -252,133 +252,106 @@ img {
 				
 				<script>
 					
-                    $(function () {
-					//실행할 기능 정의
-						
-						
-                        //변수 cateArrr에 배열생성
-                       
-                       /*  var cate = $("input[name='cate']:checked").val();
-                        
-                    	console.log("cate"+cate);
-                        
-                    	cateArr.push(cate);
-						console.log("cateArr"+cateArr); */
-
-                        var now = new Date();
-						//현재 날짜 및 시간 생성
-                        var tom = new Date();
-                        tom.setDate(tom.getDate() + 1);
-                        //set은 설정 get은 반환
-                        //현재날짜를 생성한 tom의 일자를 받아와 1을 더한 값을 tom에 세팅
-                        console.log("now"+now);
-                        
-                        var cateArr = []; 	
+					window.addEventListener('DOMContentLoaded', function(){
+						//카테고리 배열 설저
+						var cateArr = [];
 						var cateArr2 = cateArr.slice(1);
-                        
-                        
-                        
-                        $('input[name="dates"]').daterangepicker({
-                        	//input창의 name이 dates인 요소에 daterangepicker실행
-                            "startDate": now,
-                            //시작날짜
-                            "endDate": tom,
-                            //종료날짜
-                            "minDate": now,
-                            //최소지정날짜
-                            "opens": "center",
- 
-                            locale: {
-                           	//기타 설정
-                            	"separator": " ~ ",
-                            	//구분자
-                            	 "applyLabel": "적용",
-                            	 //버튼 라벨
-                                 "cancelLabel": "취소",
-                                format: "YYYY-MM-DD",
-                                daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-                                monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-                   				
-                            }
-                        }, function (start, end, label) {
-                            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-                            $('input[name="dates"]').val(start.format("YYYY-MM-DD") + " - " + end.format("YYYY-MM-DD"));
-                        });
-                       
-                        
-                      /*   $('input[name="dates"]').on('apply.daterangepicker', function (ev, picker) {
-                        	
-                        }) */
-                        $('input[name="dates"]').on('show.daterangepicker apply.daterangepicker', function (ev, picker) {
-                        	//on 메소드를 이용하여 해당 요소에 여러개의 이벤트(show.daterangepicker apply.daterangepicker)를 연결
-                        	    $(".cancelBtn").css("float", "right");
-                        	 	$(".cancelBtn").css("background-color", "white");
-                        	 	$(".cancelBtn").css("color","black");
-                        	 	$(".applyBtn").css("background-color", "black");
-                        	 	$(".applyBtn").css("color","white");
-                        		$(".cancelBtn, .applyBtn").css("border","1px solid black");
-                        	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
-                        		$(".cancelBtn, .applyBtn").css("width", "60px");
-                        		
-                        		console.log(picker.startDate.format('YYYY-MM-DD'));
-                                console.log(picker.endDate.format('YYYY-MM-DD'));
-                                var end = picker.endDate.format('YYYY-MM-DD');
-                                var start = picker.startDate.format('YYYY-MM-DD');
-                                console.log("여기스타트"+start);
-                                console.log("여기엔드"+end);
-      		
-                                if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
-                        			$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2);
-                                	/* $(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end); */
-                                } else {
-                                	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr);
-                                	/* $(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end); */
-                                }
-                               
-                                /* $("input[name='cate']:checked").each(function(){
-                                	var cate = $(this).val();
-                                    cateArr.push(cate);
-                                    console.log("cate"+cate);
-                                    console.log("cateArr"+cateArr);
-                                    var cateArr2 = cateArr.slice(1);
-                                    console.log("cateArr2"+cateArr2);
-                                    	
-                                }); */
-                                
-                                /* $('#sbtn').click(function(e){ */
-                                	
-        							/* var cate[] = $("input[name='cate']:checked").val();
-        							cateArr.push(cate);
-        							이렇게 하면 cate=값&cate=값& 형식으로 href에 붙음
-        							*/
-        							 $("input[name='cate']:checked").each(function() { 
-        							        
-        							      cateArr.push($(this).val());
-        							      
-        							      console.log(cateArr);
-        							 });
-        							
-        						/* }); */
-                               
-                        	});                                              
-                        
-                        var stringstart =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
-                        var stringend = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
-                        
-                        if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
-                			$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+stringstart+"/"+stringend+"/"+cateArr2);
-                        	
-                        } else {
-                        	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+stringstart+"/"+stringend+"/"+cateArr);
-                        	
-                        	
-                        } 
-                        
-                        
-					
+						//datepicker 설정
 						
-                        
-                    });
+						let now = new Date();
+						let tom = new Date();
+											
+						tom.setDate(tom.getDate()+1);
+						
+						$('input[name="dates"]').daterangepicker({
+							 "startDate": now,
+	                            //시작날짜
+	                         "endDate": tom,
+	                            //종료날짜
+	                         "minDate": now,
+	                            //최소지정날짜
+	                         "opens": "center",
+	 
+	                         locale: {
+	                           	//기타 설정
+	                            "separator": " ~ ",
+	                            	//구분자
+	                           	"applyLabel": "적용",
+	                            	 //버튼 라벨
+	                            "cancelLabel": "취소",
+	                            format: "YYYY-MM-DD",
+	                            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+	                            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+	                        }
+	                    });
+						
+						 $('input[name="dates"]').on('show.daterangepicker', function() {
+							$(".cancelBtn").css("float", "right");
+                     	 	$(".cancelBtn").css("background-color", "white");
+                     	 	$(".cancelBtn").css("color","black");
+                     	 	$(".applyBtn").css("background-color", "black");
+                     	 	$(".applyBtn").css("color","white");
+                     		$(".cancelBtn, .applyBtn").css("border","1px solid black");
+                     	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
+                     		$(".cancelBtn, .applyBtn").css("width", "60px");
+						 });
+						 
+ 
+						 
+						 $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+							 //datepicker에서 적용버튼을 클릭했을 때
+							 var startdate = picker.startDate.format('YYYY-MM-DD');
+							 var enddate = picker.endDate.format('YYYY-MM-DD');
+							 
+							 
+							
+							 $('input[name="cate"]:checked').each(function(){
+								 var cate=$(this).val();
+								 cateArr.push(cate);
+							 });
+							 
+							 console.log("in"+cateArr);
+							 console.log("in2"+cateArr2);
+							 
+							 if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
+	                     		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
+	                         } else {
+	                           	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);        
+	                         }
+							 
+						 });
+						 
+						 document.getElementById("asearchbtn").addEventListener("click",function(){
+							 var jcateArr = [];
+							 var jcateArr2 = jcateArr.slice(1);
+							 
+							 const jchecked = document.querySelectorAll('input[name="cate"]:checked');
+							 jchecked.forEach((item)=>{
+								 var jcate = item.value;
+							 	jcateArr.push(jcate);
+							 });
+							 
+							 console.log(jcateArr);
+							 
+							 var today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
+		                     var tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
+		                     //오늘 날짜와 내일 날짜 출력
+		                     if(document.getElementById("1").checked || document.getElementById("8").checked || document.getElementById("11").checked) {
+		                			location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr2;   	
+		                     } else {
+		                    	 location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr;
+		                     }
+		                     //daterangepicker를 사용하지 않았으면 오늘 날짜와 내일 날짜가 들어감
+		                     
+		          
+						 });
+						 
+						 
+						 
+					});
+					
+					
+                   
 	
                 </script>
                 
