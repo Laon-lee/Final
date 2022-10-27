@@ -15,11 +15,12 @@
       height: 100%;
     }
 	#mainA1{
-    font-family: 'Zilla Slab', serif;
+		min-width:145px;
+    	font-family: 'Zilla Slab', serif;
     }
     #nav1 {
       padding-top: 35px;
-      width: 20vw;
+      min-width:300px;
       height: 70px;
     }
 	#nav1 ul{
@@ -35,15 +36,19 @@
 
     #nav2 {
       padding-top:35px;
-      width: 20vw;
+      margin-right:40px;
       height: 70px;
+      min-width:300px;
     }
     #nav2 p{
       width:100%;
     }
     #nav2 ul{
       width: 100%;
-      margin-right:20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      flex-wrap: nowrap;
       
     }
     #nav2 li {

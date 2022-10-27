@@ -259,7 +259,7 @@
       width: 100%;
       height: 100%;
       display: grid;
-      grid-template-rows: 7vh 86vh 7vh;
+      grid-template-rows: 70px 1fr 70px;
       grid-template-columns: 1fr;
     }
 
