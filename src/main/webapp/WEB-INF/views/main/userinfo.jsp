@@ -220,7 +220,7 @@
                 display: inline-block;
             }
             .h1{
-              
+               margin-left: 15px;
                margin-bottom: 20px;
                 
             }
@@ -332,7 +332,7 @@
                    <div class="art2container">
                    <h2 class="h2">회원정보수정</h2>
                        <div class="totalinfo">
-                        <h4>저희 쇼핑몰을 이용해주셔서 감사합니다. ${list.memName}님은 [관리자]입니다.</h4>
+                        <h4>저희 쇼핑몰을 이용해주셔서 감사합니다. ${list.memName}님의 정보입니다.</h4>
                         </div>
                         <h1 class="h1">기본정보</h1>
                         <div class="detailinfo">

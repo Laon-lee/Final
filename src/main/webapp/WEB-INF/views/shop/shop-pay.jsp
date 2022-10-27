@@ -383,7 +383,9 @@ section> div{
 				
 				</div>
 				<div>
+				
 				<button id="cash-btn"  type="button" onclick="requestPay()"> 결제하기</button>
+				
 				</div>
 			</div>
 			
@@ -403,8 +405,8 @@ function requestPay() {
     pg: "inicis",
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '${user.memName}',
-    amount : '${count * list.productPrice}',
+    name : '${list.productName}',
+    amount : '1',
     buyer_email : '${user.memEmail}',
     buyer_name : '${user.memName}',
     buyer_tel : '${user.memPhone}',
@@ -412,9 +414,10 @@ function requestPay() {
     buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {
-        
+    	  	
+        	location.href="${pageContext.request.contextPath}/gomain";
       } else {
-       
+    	  alert("결제에 실패하였습니다.");
       }
   });
 }
