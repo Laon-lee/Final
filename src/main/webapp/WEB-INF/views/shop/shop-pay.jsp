@@ -207,7 +207,7 @@ section> div{
 				<div  class="tab-div">
 					<div>
 					<label for="memName1" class="lb">주문자 *</label><input type="text" value="${user.memName}" id="memName1" class="memName" name="memName1"><br> 
-					<label for="memEmail" class="lb">이메일 *</label><input type="email" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="email" value="${separateVO.email2}">
+					<label for="memEmail" class="lb">이메일 *</label><input type="text" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="text" value="${separateVO.email2}">
 					<!-- <select name="email-list" id="email-list" class="box">
                     <option value="self">--직접입력--</option>
                     <option value="naver.com">naver.com</option>

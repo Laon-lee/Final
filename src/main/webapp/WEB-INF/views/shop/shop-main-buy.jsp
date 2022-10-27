@@ -24,16 +24,17 @@
 <style>
 * {
 	margin: 0 auto;
-	padding: 0 auto;
 	box-sizing: border-box;
 }
 
 html {
 	scroll-behavior: smooth;
+	height:100%;
 }
 
 body {
 	background-color: white;
+	height:100%;
 }
 
 /*승철짱 CSS*/
@@ -44,16 +45,18 @@ nav {
 }
 
 body {
-	height: 100vh;
+	height: 100%;
+	
 }
 
 #container {
+	min-height:100vh;
 	display: grid;
 	grid-template-rows: 70px 1fr 70px;
 }
 
 main {
-	width: 100%;
+	width: 95%;
 }
 
 #main-container {
@@ -175,7 +178,9 @@ option {
 }
 
 #total {
-	width: 25px;
+	background-color: #D9D9D9;
+	border:none;
+	width: 15px;
 	outline: none;
 }
 
@@ -194,7 +199,8 @@ option {
 #size-opt {
 	height: 30px;
 	width: 45%;
-	border: 0.5px solid gray;
+	border: none;
+	outline:none;
 	border-radius: 5px;
 	color: black;
 }
@@ -202,11 +208,9 @@ option {
 /* sub-box, 상태창, 상세상품 설명 */
 #sub-box {
 	width: 90%;
-	height: 1000px;
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	padding: 10px 10px;
-	margin-bottom: 5rem;
 }
 
 #status-bar {
@@ -260,7 +264,7 @@ opaciry
 }
 #proc-wrapper {
 	width: 65%;
-	height: 100vh;
+	height: 100%;
 	margin: 50px;
 }
 
@@ -422,7 +426,7 @@ font {
 				</div>
 				<div id="proc-wrapper" class="tab_cont">
 					<div style="display: block;">
-						<div>제품 이미지</div>
+						<div> <img src="${list.productContent}"></div>
 					</div>
 					<div style="display: none;">
 						<div id="prdInfo"">

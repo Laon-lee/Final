@@ -6,7 +6,6 @@
 	if( a.equals("true")){%>
 		<script> alert("로그인을 해주세요")</script>		
 <% };%>
-%>
 	<ul id="footer-1stul">
         <li><a href="${pageContext.request.contextPath}/gomain">Déng Nuri</a></li>
       </ul>
