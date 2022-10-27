@@ -292,28 +292,52 @@ font {
 }
 
 .board-box {
+	padding:5px;
 	border: 1px solid #d9d9d9;
-	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 2rem;
+	margin-top: 1rem;
 }
 
 #btn-box1, #btn-box2 {
 	display: flex;
-	width: 25%;
-	margin-left: 38em;
+	clear: both;
+	float:right;
 	margin-top: 0.7rem;
 }
 
-#write-btn1, #write-btn2 {
+#write-btn1,#write-btn2{
 	background-color: black;
 	color: white;
 	border: 1px solid;
-	width: 200%;
+	width: 100px;
 	height: 32px;
 }
-
+#write-box , #write-box2{
+	display:none;
+	margin-top:10px;
+}
+#write-box button , #write-box2 button{
+	float:right;
+	cursor: pointer;
+	border:none;
+	height:30px;
+	margin-top:5px;
+	margin-bottom:10px;
+}
+#writebox-content ,#writebox-content2{
+	height:30px;
+	width:100%;
+	margin-bottom:5px;
+}
+#writebox-title2{
+	    width: 40%;
+	    height:30px;
+	    margin-bottom:10px;
+}
+#writebox-content2{
+	height:150px;
+}
 #view-btn1, #view-btn2 {
 	background-color: white;
 	color: black;
@@ -499,26 +523,54 @@ font {
 								<c:if test="${reviews!=null}">
 									<c:forEach var="item" items="${reviews }">
 										<div class="board-box">
-											<p>${item.memId}</p>
-											<p>
-												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parseDateTime" type="both"/>
+											<p><b>${item.memId}</b>&nbsp;
+											<span><small>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parseDateTime" type="both"/>
 												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+											</small></span>
 											</p>
-											<p>${item.proboardTitle}</p>
 											<p>${item.proboardContent}</p>
 										</div>
 									</c:forEach>
+										<div id="write-box">
+											<label for="writebox-content">리뷰 내용 * </label><input type="text" id="writebox-content"><br><button id="insertreview">작성 완료</button>
+										</div>
 								</c:if>
 							</div>
 						</div>
 						<div id="btn-box1">
 							<form action="">
-								<button id="write-btn1">write</button>
-							</form>
-							<form action="">
-								<button id="view-btn1">view-all</button>
+								<c:if test="${sessionScope.user != null}">
+									<button id="write-btn1" type="button">write</button>
+								</c:if>
 							</form>
 						</div>
+							<script type="text/javascript">
+								document.getElementById("write-btn1").addEventListener("click",function(){
+									if(document.getElementById("write-box").style.display=="block"){
+										document.getElementById("write-box").style.display="none";
+									}else{
+										document.getElementById("write-box").style.display="block";
+									}
+								});
+								document.getElementById("insertreview").addEventListener("click",function(e){
+									e.preventDefault();
+									let proboardContent = document.getElementById("writebox-content").value;
+									let productId= ${list.productId}
+									
+									fetch("${pageContext.request.contextPath}/insertreview", 
+										{ method: "POST",
+										  headers: {
+										    "Content-Type": "application/json"
+										  },
+										  body: JSON.stringify({proboardContent,productId})
+										}).then((response) => response.json())
+										.then((data) => {
+											location.href = "${pageContext.request.contextPath}/shop/main/buy/"+${list.productId};
+										});
+								})
+							</script>
+						
 						
 					</div>
 
@@ -536,27 +588,57 @@ font {
 							<c:if test="${qna!=null}">
 									<c:forEach var="item" items="${qna}">
 										<div class="board-box">
-											<p>${item.memId}</p>
-											<p>
-												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parseDateTime" type="both"/>
+											<p><b>${item.memId}</b>&nbsp;
+											<span><small>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parseDateTime" type="both"/>
 												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+											</small></span>
 											</p>
 											<p>${item.proboardTitle}</p>
 											<p>${item.proboardContent}</p>
 										</div>
 									</c:forEach>
+									<div id="write-box2">
+										<label for="writebox-title2">문의 제목 * </label>
+										<input type="text" id="writebox-title2"><br>
+										
+										<textarea id="writebox-content2" placeholder="문의 내용"></textarea><br><button id="insertqna">작성 완료</button>
+									</div>
 								</c:if>
 						</div>
 						<div id="btn-box2">
 							<form action="">
-								<button id="write-btn2">write</button>
+								<c:if test="${sessionScope.user != null }">
+									<button id="write-btn2" type="button">write</button>
+								</c:if>
 							</form>
-							<form action="">
-								<button id="view-btn2">view-all</button>
-							</form>
-
 						</div>
-
+						<script>
+						document.getElementById("write-btn2").addEventListener("click",function(){
+									if(document.getElementById("write-box2").style.display=="block"){
+										document.getElementById("write-box2").style.display="none";
+									}else{
+										document.getElementById("write-box2").style.display="block";
+									}
+						});
+						document.getElementById("insertqna").addEventListener("click",function(e){
+							e.preventDefault();
+							let proboardContent = document.getElementById("writebox-content2").value;
+							let proboardTitle = document.getElementById("writebox-title2").value;
+							let productId= ${list.productId}
+							
+							fetch("${pageContext.request.contextPath}/insertqna", 
+								{ method: "POST",
+								  headers: {
+								    "Content-Type": "application/json"
+								  },
+								  body: JSON.stringify({proboardContent,productId, proboardTitle})
+								}).then((response) => response.json())
+								.then((data) => {
+									location.href = "${pageContext.request.contextPath}/shop/main/buy/"+${list.productId};
+								});
+						})
+						</script>
 					</div>
 					
 				</div>

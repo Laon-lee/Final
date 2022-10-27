@@ -136,11 +136,14 @@ public class ServletAppContext implements WebMvcConfigurer{
 			// 이 순서로 실행됨
 			InterceptorRegistration reg1 = registry.addInterceptor(inter1);
 			InterceptorRegistration reg2 = registry.addInterceptor(inter2);
+			
 			// 인터셉터를 어디에 걸지 타겟을 지정 - InterceptorRegistration.addPathPatterns("경로")
 			// 인터셉터를 경로를 통해 지정할 수 있으며 다른 옵션은 선택할 수 없다.
 			// addPathPatterns에 들어가는 경로는 사용자가 요청하는 요청 경로이다.
 			reg1.addPathPatterns("/gomain");
 			reg2.addPathPatterns("/shop/pay/{id}");
+			
+			
 			// 인터셉터에 동일 경로를 바라보게 하고 다수의 인터셉터를 걸 경우 맨 위에 등록된 intercepter의 prehandle부터
 			// 실행된다.
 			// postHandle 과 afterCompletion은 등록했던 순서의 반대로 실행된다.

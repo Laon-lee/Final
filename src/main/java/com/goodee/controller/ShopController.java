@@ -6,10 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.MemberService;
 import com.goodee.service.ShopService;
+import com.goodee.vo.BoardVO;
+import com.goodee.vo.ProductboardVO;
 import com.goodee.vo.ShopVO;
 
 @Controller
@@ -52,5 +57,21 @@ public class ShopController {
 	@GetMapping("/shop/orderinfo")
 	public String ShopOrderinfo() {
 		return "shop/shop-orderinfo";
+	}
+	
+	
+	@PostMapping("insertreview")
+	@ResponseBody
+	public ProductboardVO insertreview(@RequestBody ProductboardVO vo,HttpSession session) {
+		spservice.insertReview(vo, session);
+		return vo;
+	}
+	@PostMapping("insertqna")
+	@ResponseBody
+	public ProductboardVO insertqna(@RequestBody ProductboardVO vo,HttpSession session) {
+		System.out.println("1");
+		spservice.insertQna(vo, session);
+		System.out.println("2");
+		return vo;
 	}
 }

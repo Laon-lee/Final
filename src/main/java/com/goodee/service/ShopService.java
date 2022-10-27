@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 
 import com.goodee.dao.MemberDAO;
 import com.goodee.dao.ShopDAO;
+import com.goodee.vo.BoardVO;
 import com.goodee.vo.MemberVO;
+import com.goodee.vo.ProductboardVO;
 
 @Service
 public class ShopService {
@@ -38,5 +40,24 @@ public class ShopService {
 		model.addAttribute("separateVO",mbdao.separate(vo2)); 
 		model.addAttribute("user", vo2);
 		model.addAttribute("list", dao.getListById(id));
+	}
+	public void insertReview(ProductboardVO vo,HttpSession session) {
+		System.out.println("3");
+		MemberVO vo1 = (MemberVO)session.getAttribute("user");
+		vo.setMemId(vo1.getMemId());
+		vo.setProboardCategory("review");
+		vo.setProboardTitle("리뷰제목");
+		System.out.println("4");
+		dao.insertBoard(vo);
+		System.out.println("5");
+	}
+	public void insertQna(ProductboardVO vo,HttpSession session) {
+		System.out.println("3");
+		MemberVO vo1 = (MemberVO)session.getAttribute("user");
+		vo.setMemId(vo1.getMemId());
+		vo.setProboardCategory("qna");
+		System.out.println("4");
+		dao.insertBoard(vo);
+		System.out.println("5");
 	}
 }

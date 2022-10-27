@@ -19,4 +19,6 @@ public interface ShopDAO {
 	public List<ProductboardVO> getQna(@Param("productId") String id);
 	
 	public List<ProductboardVO> getReview(@Param("productId") String id);
+	
+	public int insertBoard(ProductboardVO vo);
 }
