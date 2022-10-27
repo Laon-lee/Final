@@ -63,11 +63,10 @@
     /* 검색 아이콘 호버 */
     
     #nav2-li-1stdiv {
-      margin:20px 0 20px 0;
       padding:50px;
       display: none;
       position: absolute;
-      top:4%;
+      top:70px;
       left: 0px;
       width: 100vw;
       height: 60vh;
@@ -81,7 +80,7 @@
     }
     .hover-layout1{
         position:absolute;
-        top:7%;
+        top:70px;
         left:0;
         display: none;
         align-items: start;

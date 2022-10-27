@@ -12,12 +12,13 @@
         <h1><a href="${pageContext.request.contextPath}/gomain" id="mainA1">Déng Nuri</a></h1>
       </div>
       <nav id="nav2">
-        <ul>
-          <li id="nav2-li-1stli">
-            <a href="#"><p style="font-size: 16px">Search</p></a>
-            <div id="hover-layout1" class="hover-layout1">
+      		<div id="hover-layout" class="hover-layout1">
                 
             </div>
+        <ul>
+          <li id="nav2-li-1stli"  class="hover-lis">
+            <a href="#"><p style="font-size: 16px">Search</p></a>
+            
             <div id="nav2-li-1stdiv">
               <div id="nav2-searchdiv">
                 <input type="text" placeholder="검색하실 물품을 적어주세요"><button>검색</button>
@@ -40,25 +41,21 @@
               
             </div>
           </li>
-          <li id="nav2-li-2ndli">
+          <li id="nav2-li-2ndli"  class="hover-lis">
             <a href="#">
               <p style="font-size: 16px">Notice</p>
             </a>
-            <div id="hover-layout2" class="hover-layout1">
-                
-            </div>
+            
             <div id="nav2-li-2nddiv">
               <h2>알림받아라 인마</h2>
 			  <a href="${pageContext.request.contextPath}/notice/공지사항">알림 페이지이동</a>
             </div>
           </li>
-          <li id="nav2-li-3rdli">
+          <li id="nav2-li-3rdli"  class="hover-lis">
             <a href="#">
               <p style="font-size: 16px">Wish</p>
             </a>
-            <div id="hover-layout3" class="hover-layout1">
-              
-            </div>
+            
             <div id="nav2-li-3rddiv">
               <h2>니가 좋아하는거다!</h2>
               <a href="${pageContext.request.contextPath}/basket">
@@ -73,12 +70,11 @@
             </a>
           </li>
           </c:if>
-          <li id="nav2-li-4thli">
+          
            <c:if test="${sessionScope.user == null}">
+           	<li id="nav2-li-4thli"  class="hover-lis">
             <a href="#"><p style="font-size: 16px">Login</p></a>
-            <div id="hover-layout4" class="hover-layout1">
-                
-            </div>
+            
             <div id="nav2-li-4thdiv">
               <h4>로그인</h4>
               <br>
@@ -92,10 +88,24 @@
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
               <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
             </div>
+            </li>
           	</c:if>
           	<c:if test="${sessionScope.user != null}">
+          		<li id="nav2-li-4thli">
           		<a href="${pageContext.request.contextPath}/logout"><p style="font-size: 16px">Logout</p></a>
+          		 </li>
           	</c:if>
-          </li>
+         
         </ul>
       </nav>
+      <script>
+      	let lis = document.getElementsByClassName("hover-lis");
+      	for(let i = 0 ; i< lis.length ; i++){
+      		lis[i].addEventListener("mouseover",function(){
+				document.getElementById("hover-layout").style.display="block";
+      		});
+      		lis[i].addEventListener("mouseleave",function(){
+				document.getElementById("hover-layout").style.display="none";
+      		});
+      	};
+      </script>
