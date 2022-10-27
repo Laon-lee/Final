@@ -491,9 +491,24 @@ font {
 							<div class="board">
 								<h3>REVIEW</h3>
 								<p class="desc">상품의 사용후기를 적어주세요</p>
-								<div class="board-box">
-									<p class="nodata">게시물이 없습니다.</p>
-								</div>
+								<c:if test="${reviews==null}">
+									<div class="board-box">
+										<p class="nodata">게시물이 없습니다.</p>
+									</div>
+								</c:if>
+								<c:if test="${reviews!=null}">
+									<c:forEach var="item" items="${reviews }">
+										<div class="board-box">
+											<p>${item.memId}</p>
+											<p>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parseDateTime" type="both"/>
+												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+											</p>
+											<p>${item.proboardTitle}</p>
+											<p>${item.proboardContent}</p>
+										</div>
+									</c:forEach>
+								</c:if>
 							</div>
 						</div>
 						<div id="btn-box1">
@@ -504,6 +519,7 @@ font {
 								<button id="view-btn1">view-all</button>
 							</form>
 						</div>
+						
 					</div>
 
 
@@ -512,9 +528,24 @@ font {
 						<div class="board">
 							<h3>Q&A</h3>
 							<p>상품에 대해 궁금한 점을 해결해 드립니다.</p>
-							<div class="board-box">
-								<p class="nodata">게시물이 없습니다.</p>
-							</div>
+							<c:if test="${qna==null}">
+								<div class="board-box">
+									<p class="nodata">게시물이 없습니다.</p>
+								</div>
+							</c:if>
+							<c:if test="${qna!=null}">
+									<c:forEach var="item" items="${qna}">
+										<div class="board-box">
+											<p>${item.memId}</p>
+											<p>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parseDateTime" type="both"/>
+												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+											</p>
+											<p>${item.proboardTitle}</p>
+											<p>${item.proboardContent}</p>
+										</div>
+									</c:forEach>
+								</c:if>
 						</div>
 						<div id="btn-box2">
 							<form action="">
