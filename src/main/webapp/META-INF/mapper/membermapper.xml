@@ -28,7 +28,7 @@
 	
 	<update id="updateinfo" parameterType="memberVO">
 	update member set mem_pw = #{memPw}, mem_name = #{memName}, mem_oaddress = #{memOaddress},
-	mem_address = #{memAddress}, mem_detailaddress = #{memDetailaddress},mem_phone = #{memPhone} where mem_id = #{memId}
+	mem_address = #{memAddress}, mem_detailaddress = #{memDetailaddress},mem_phone = #{memPhone} , mem_email = #{memEmail} where mem_id = #{memId}
 	</update>
 
 </mapper>

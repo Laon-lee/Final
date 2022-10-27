@@ -207,7 +207,7 @@ section> div{
 				<div  class="tab-div">
 					<div>
 					<label for="memName1" class="lb">주문자 *</label><input type="text" value="${user.memName}" id="memName1" class="memName" name="memName1"><br> 
-					<label for="memEmail" class="lb">이메일 *</label><input type="email" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="email" value="${separateVO.email2}">
+					<label for="memEmail" class="lb">이메일 *</label><input type="text" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="text" value="${separateVO.email2}">
 					<!-- <select name="email-list" id="email-list" class="box">
                     <option value="self">--직접입력--</option>
                     <option value="naver.com">naver.com</option>
@@ -383,7 +383,7 @@ section> div{
 				
 				</div>
 				<div>
-				<button id="cash-btn"> 결제하기</button>
+				<button id="cash-btn"  type="button" onclick="requestPay()"> 결제하기</button>
 				</div>
 			</div>
 			
@@ -392,7 +392,7 @@ section> div{
 		<footer>
 			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
-
+  
 	</div>
 	<script>
 var IMP = window.IMP; // 생략가능
@@ -403,12 +403,12 @@ function requestPay() {
     pg: "inicis",
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '${content.name}',
-    amount : '${content.price}',
-    buyer_email : 'iamport@siot.do',
-    buyer_name : '구매자',
-    buyer_tel : '010-1234-5678',
-    buyer_addr : '서울특별시 강남구 삼성동',
+    name : '${user.memName}',
+    amount : '${count * list.productPrice}',
+    buyer_email : '${user.memEmail}',
+    buyer_name : '${user.memName}',
+    buyer_tel : '${user.memPhone}',
+    buyer_addr : '${user.memAddress}',
     buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {

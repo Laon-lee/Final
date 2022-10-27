@@ -26,6 +26,9 @@ public class ShopService {
 		model.addAttribute("list", dao.getCateList(category));
 	}
 	public void getListById(String id, Model model) {
+		
+		model.addAttribute("qna", dao.getQna(id));
+		model.addAttribute("reviews", dao.getReview(id));
 		model.addAttribute("list", dao.getListById(id));
 	}
 	public void getListByIdS(String id, Model model,HttpSession session) {

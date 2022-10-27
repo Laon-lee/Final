@@ -234,24 +234,26 @@
             }
             .btn1{
                 margin-top: 40px;
-                margin-left: 150px;
-                width: 25%;
+                margin-left: 30%;
+                width: 15%;
                 height: 30px;
-                border-radius: 10px;
-                background-color: white;
-                color: black;
+               
+                background-color: black;
+                color: white;
                
                 font-weight: 600;
                 font-size: 17px;
             }
             .btn1:hover,.btn2:hover{
-                background-color: gainsboro;
+                background-color: gray;
+                border: 1px solid gray;
+                
                 display: inline;
             }
             .btn2{
                 
               margin-left: 150px;
-                width: 25%;
+                width: 30%;
                 height: 30px;
                 border-radius: 10px;
                 background-color: white;
@@ -280,6 +282,26 @@
             }
             .phone{
             width:20%;
+            }
+            #mem_address2, #mem_detailaddress{
+            margin-left: 4px;
+            }
+            select{
+            width: 65px;
+            padding-top : 5px;
+            padding-bottom : 5px;
+            text-align : center;
+            margin-right:10px;
+            }
+            .phone{
+            margin-left:10px;
+            text-align:center;
+           width:80px;
+           text-align:center;
+           padding-right:10px;
+            }
+            #iemail,#iphone{
+            display:none;
             }
     </style>
 </head>
@@ -314,8 +336,8 @@
                         </div>
                         <h1 class="h1">기본정보</h1>
                         <div class="detailinfo">
-                       <form:form action="${pageContext.request.contextPath}/userupdate" 
-                       				modelAttribute="separateVO" >
+                       
+                       <form:form action="${pageContext.request.contextPath}/userupdate" id="form-patch" modelAttribute="separateVO" >
                        
                         <div class="info-container">
 
@@ -333,6 +355,7 @@
                         <div class="info-container">
                         <label for="memPw"><h3 class="h3">비밀번호 확인</h3></label>
                         <input type="password" name="memPw" id="memPw" placeholder="비밀번호 확인"  pattern=".{4,16}" required><br>
+                        
                         </div>          
                               
                         <div class="info-container">
@@ -341,36 +364,45 @@
                         </div>                   
           
                         <div class="info-container">
-                                <label for="mem_address1"><h3 class="h3">주소</h3></label> <input type="text" placeholder="우편번호" id="mem_address1" name="mem_oaddress">
-                                <button onclick="execPostCode();">주소 검색</button></label><br>
-                                <label for="mem_address2"></label><input type="text" name="mem_address" id="mem_address2" placeholder="기본주소" value=""><span>기본주소</span><br>
-                                <label for="mem_detailaddress"></label><input type="text" name="mem_detailaddress" id="mem_detailaddress" placeholder="상세주소"><span>상세주소</span>
+                                <label for="memAddress1"><h3 class="h3">주소</h3></label> <input type="text" placeholder="우편번호" id="mem_address1" name="memOaddress" value="${list.memOaddress}">
+                                <button onclick="execPostCode();">주소 검색</button><br>
+                                <label for="memAddress2"></label><input type="text" name="memAddress" id="mem_address2" placeholder="기본주소" value="${list.memAddress}"><span>기본주소</span><br>
+                                <label for="memDetailaddress"></label><input type="text" name="memDetailaddress" id="mem_detailaddress" placeholder="상세주소" value="${list.memDetailaddress}"><span>상세주소</span>
                          </div>                         
                         
 
                         <div class="info-container">
                             <label for="memPhone" class="lb">휴대 전화</label> 
-							<form:select path="phone1" id="memPhone" name="memPhone">
+							<form:select path="phone1" id="phone1" name="memPhone">
 								<form:option value="010">010</form:option>
 								<form:option value="011">011</form:option>
 								<form:option value="017">017</form:option>
 								<form:option value="019">019</form:option>
-							</form:select> - <form:input path="phone2" class="phone"/> - <form:input path="phone3" class="phone"/>
+							</form:select> - 
+							<form:input path="phone2" class="phone" id="phone2" value="${separateVO.phone2}"/> - 
+							<form:input path="phone3" class="phone" id="phone3" value="${separateVO.phone3}"/>
                        </div>
-
+                  			<input type="text"  id="iphone" value="" name="memPhone"/>
+                  			<input type="text" value="" id="iemail" name="memEmail"/>
                        <div class="info-container">
-                        <label for="memEmail" class="lb">이메일 *</label> 
-                        <input type="email" value="${separateVO.email1}" id="memEmail" name="memEmail" class="email">@
-                        <input type="email" value="${separateVO.email2}" class="email">
-                        <button class="btn1">회원정보수정</button>
+                        <label for="mem_email" class="lb">이메일 *</label> 
+                        <input type="text" value="${separateVO.email1}" id="memEmail" name="mem_email" class="email">@
+                        <input type="text" value="${separateVO.email2}" class="email" name="mem_email">
+                        </div>
+                         <button class="btn1" id="sub1">회원정보수정</button>
+                      
                     </form:form>
+                    
                    </div>
+                  
+                   </div>
+                   
                     </article>
                 </section>
                 </div>
         </main>
-
-
+       
+      
         <footer>
             <%@ include file="../frame/main/footer.jsp" %>
         </footer>
@@ -417,8 +449,8 @@
 				            }   */
 				            
 				            
-				            $("[name=mem_oaddress]").val(data.zonecode);
-				            $("[name=mem_address]").val(fullRoadAddr);
+				            $("[name=memOaddress]").val(data.zonecode);
+				            $("[name=memAddress]").val(fullRoadAddr);
 				            
 				            document.getElementById('mem_oaddress').value = data.zonecode; //5자리 새우편번호 사용
 				            document.getElementById('mem_address').value = fullRoadAddr;
@@ -440,7 +472,22 @@
 					$("#address-div2").show();
 				 }
 			})
-					</script>
+			
+				 document.getElementById("sub1").addEventListener("click",function(){
+				
+				let phone1 = document.getElementById("phone1").value;
+				let phone2 = document.getElementById("phone2").value;
+				let phone3 = document.getElementById("phone3").value;
+				let email1 = document.getElementsByClassName("email")[0].value;
+				let email2 = document.getElementsByClassName("email")[1].value;
+				
+				document.getElementById("iemail").value = email1 + '@' + email2;
+				document.getElementById("iphone").value = phone1 + phone2 + phone3;
+				
+				
+			}); 
+			
+		</script>
 </body>
 
 </html>

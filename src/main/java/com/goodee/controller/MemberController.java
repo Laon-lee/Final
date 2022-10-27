@@ -71,7 +71,7 @@ public class MemberController {
 		return "main/userinfo";
 	}
 	
-	@GetMapping("userupdate")
+	@PostMapping("userupdate")
 	public String userupdate(@ModelAttribute MemberVO vo, HttpSession session) {
 		mbservice.updateinfo(vo, session);
 		return "redirect:/userinfo";

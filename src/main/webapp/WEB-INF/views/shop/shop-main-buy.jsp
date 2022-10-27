@@ -24,16 +24,17 @@
 <style>
 * {
 	margin: 0 auto;
-	padding: 0 auto;
 	box-sizing: border-box;
 }
 
 html {
 	scroll-behavior: smooth;
+	height:100%;
 }
 
 body {
 	background-color: white;
+	height:100%;
 }
 
 /*승철짱 CSS*/
@@ -44,16 +45,18 @@ nav {
 }
 
 body {
-	height: 100vh;
+	height: 100%;
+	
 }
 
 #container {
+	min-height:100vh;
 	display: grid;
 	grid-template-rows: 70px 1fr 70px;
 }
 
 main {
-	width: 100%;
+	width: 95%;
 }
 
 #main-container {
@@ -175,7 +178,9 @@ option {
 }
 
 #total {
-	width: 25px;
+	background-color: #D9D9D9;
+	border:none;
+	width: 15px;
 	outline: none;
 }
 
@@ -194,7 +199,8 @@ option {
 #size-opt {
 	height: 30px;
 	width: 45%;
-	border: 0.5px solid gray;
+	border: none;
+	outline:none;
 	border-radius: 5px;
 	color: black;
 }
@@ -202,11 +208,9 @@ option {
 /* sub-box, 상태창, 상세상품 설명 */
 #sub-box {
 	width: 90%;
-	height: 1000px;
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	padding: 10px 10px;
-	margin-bottom: 5rem;
 }
 
 #status-bar {
@@ -260,7 +264,7 @@ opaciry
 }
 #proc-wrapper {
 	width: 65%;
-	height: 100vh;
+	height: 100%;
 	margin: 50px;
 }
 
@@ -422,7 +426,7 @@ font {
 				</div>
 				<div id="proc-wrapper" class="tab_cont">
 					<div style="display: block;">
-						<div>제품 이미지</div>
+						<div> <img src="${list.productContent}"></div>
 					</div>
 					<div style="display: none;">
 						<div id="prdInfo"">
@@ -487,9 +491,24 @@ font {
 							<div class="board">
 								<h3>REVIEW</h3>
 								<p class="desc">상품의 사용후기를 적어주세요</p>
-								<div class="board-box">
-									<p class="nodata">게시물이 없습니다.</p>
-								</div>
+								<c:if test="${reviews==null}">
+									<div class="board-box">
+										<p class="nodata">게시물이 없습니다.</p>
+									</div>
+								</c:if>
+								<c:if test="${reviews!=null}">
+									<c:forEach var="item" items="${reviews }">
+										<div class="board-box">
+											<p>${item.memId}</p>
+											<p>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parseDateTime" type="both"/>
+												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+											</p>
+											<p>${item.proboardTitle}</p>
+											<p>${item.proboardContent}</p>
+										</div>
+									</c:forEach>
+								</c:if>
 							</div>
 						</div>
 						<div id="btn-box1">
@@ -500,6 +519,7 @@ font {
 								<button id="view-btn1">view-all</button>
 							</form>
 						</div>
+						
 					</div>
 
 
@@ -508,9 +528,24 @@ font {
 						<div class="board">
 							<h3>Q&A</h3>
 							<p>상품에 대해 궁금한 점을 해결해 드립니다.</p>
-							<div class="board-box">
-								<p class="nodata">게시물이 없습니다.</p>
-							</div>
+							<c:if test="${qna==null}">
+								<div class="board-box">
+									<p class="nodata">게시물이 없습니다.</p>
+								</div>
+							</c:if>
+							<c:if test="${qna!=null}">
+									<c:forEach var="item" items="${qna}">
+										<div class="board-box">
+											<p>${item.memId}</p>
+											<p>
+												<fmt:parseDate value="${item.proboardDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parseDateTime" type="both"/>
+												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+											</p>
+											<p>${item.proboardTitle}</p>
+											<p>${item.proboardContent}</p>
+										</div>
+									</c:forEach>
+								</c:if>
 						</div>
 						<div id="btn-box2">
 							<form action="">

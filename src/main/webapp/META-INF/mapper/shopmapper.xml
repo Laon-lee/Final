@@ -12,6 +12,14 @@
 	<select id="getListById" resultType="ShopVO" parameterType="String">
 		select * from product where product_id=#{productId};
 	</select>
+	<select id="getQna" resultType="productboardVO" parameterType="String">
+		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 ;
+	</select>
+	<select id="getReview" resultType="productboardVO" parameterType="String">
+		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0;
+	</select>
+	
+	
 </mapper>
 
 
