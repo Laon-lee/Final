@@ -96,7 +96,7 @@ a:hover {
 					<li>
 						<h2>SHOP 관리</h2>
 						<ul class="bar-menu">
-							<li><a href="">상품 등록</a></li>
+							<li><a href="${pageContext.request.contextPath}/proc-add">상품 등록</a></li>
 							<li><a href="">상품 수정</a></li>
 							<li><a href="">상품 삭제</a></li>
 							<li><a href="">주문 확인</a></li>
@@ -123,5 +123,6 @@ a:hover {
 		<footer>
 			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
+		</div>
 </body>
 </html>
