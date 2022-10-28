@@ -4,7 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("memberVO")
 public class MemberVO {
-	
+	private int id;
 	private String memId;
 	private String memPw;
 	private String memName;
@@ -17,6 +17,13 @@ public class MemberVO {
 	private String memAddress;
 	private String memDetailaddress;
 	private String agree;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getMemId() {
 		return memId;
 	}

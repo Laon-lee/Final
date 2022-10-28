@@ -16,6 +16,7 @@ import com.goodee.service.ShopService;
 import com.goodee.vo.BoardVO;
 import com.goodee.vo.ProductboardVO;
 import com.goodee.vo.ShopVO;
+import com.goodee.vo.WishVO;
 
 @Controller
 public class ShopController {
@@ -62,16 +63,20 @@ public class ShopController {
 	
 	@PostMapping("insertreview")
 	@ResponseBody
-	public ProductboardVO insertreview(@RequestBody ProductboardVO vo,HttpSession session) {
-		spservice.insertReview(vo, session);
+	public ProductboardVO insertreview(@RequestBody ProductboardVO vo) {
+		spservice.insertReview(vo);
 		return vo;
 	}
 	@PostMapping("insertqna")
 	@ResponseBody
-	public ProductboardVO insertqna(@RequestBody ProductboardVO vo,HttpSession session) {
-		System.out.println("1");
-		spservice.insertQna(vo, session);
-		System.out.println("2");
+	public ProductboardVO insertqna(@RequestBody ProductboardVO vo) {
+		spservice.insertQna(vo);
+		return vo;
+	}
+	@PostMapping("insertWish")
+	@ResponseBody
+	public WishVO insertWish(@RequestBody WishVO vo) {
+		spservice.insertWish(vo);
 		return vo;
 	}
 }

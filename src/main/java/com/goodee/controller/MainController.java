@@ -11,15 +11,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.NURIService;
+import com.goodee.service.ShopService;
 import com.goodee.service.BoardService;
 
 @Controller
 public class MainController {
 	private BoardService service;
+	private ShopService spservice;
 	
-	public MainController(BoardService service) {
+	public MainController(BoardService service,ShopService spservice) {
 		super();
 		this.service = service;
+		this.spservice = spservice;
 	}
 	
 	@GetMapping("membership")
@@ -65,7 +68,8 @@ public class MainController {
 	}
 	// 장바구니
 	@GetMapping("wish")
-	public String gowish() {
+	public String gowish(Model model, HttpSession session) {
+		spservice.getWishList(model, session);
 		return "main/wish";
 	}
 	// 쿠폰

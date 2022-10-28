@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.goodee.vo.ProductboardVO;
 import com.goodee.vo.ShopVO;
+import com.goodee.vo.WishVO;
 
 @Mapper
 public interface ShopDAO {
@@ -21,4 +22,8 @@ public interface ShopDAO {
 	public List<ProductboardVO> getReview(@Param("productId") String id);
 	
 	public int insertBoard(ProductboardVO vo);
-}
+	
+	public void insertWish(WishVO vo);
+	
+	public List<WishVO> getWishList(int id);
+}	

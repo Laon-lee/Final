@@ -6,8 +6,17 @@ import org.apache.ibatis.type.Alias;
 public class WishVO {
 	private int cartId;
 	private int productId;
-	private int memId;
-	private int productCount;
+	private int id;
+	
+	private String memId;
+	private int count;
+	private String option;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getCartId() {
 		return cartId;
 	}
@@ -20,18 +29,23 @@ public class WishVO {
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-	public int getMemId() {
+	public String getMemId() {
 		return memId;
 	}
-	public void setMemId(int memId) {
+	public void setMemId(String memId) {
 		this.memId = memId;
 	}
-	public int getProductCount() {
-		return productCount;
+	public int getCount() {
+		return count;
 	}
-	public void setProductCount(int productCount) {
-		this.productCount = productCount;
+	public void setCount(int count) {
+		this.count = count;
 	}
-	
+	public String getOption() {
+		return option;
+	}
+	public void setOption(String option) {
+		this.option = option;
+	}	
 	
 }
