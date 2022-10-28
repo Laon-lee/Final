@@ -26,4 +26,6 @@ public interface ShopDAO {
 	public void insertWish(WishVO vo);
 	
 	public List<WishVO> getWishList(int id);
+	
+	public void deletewish(int wishId);
 }	

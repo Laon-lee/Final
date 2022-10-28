@@ -79,4 +79,11 @@ public class ShopController {
 		spservice.insertWish(vo);
 		return vo;
 	}
+	
+	@GetMapping("deletewish/{wishId}")
+	public String deletewish(@PathVariable int wishId) {
+		spservice.deletewish(wishId);
+		return "redirect:/wish";
+	}
+	
 }

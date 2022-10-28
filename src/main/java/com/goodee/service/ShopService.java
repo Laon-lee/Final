@@ -56,9 +56,11 @@ public class ShopService {
 	}
 	
 	public void insertWish(WishVO vo) {
+		//
 		MemberVO mbvo = new MemberVO();
 		mbvo.setMemId(vo.getMemId());
 		vo.setId( mbdao.getmemberinfo(mbvo).getId());
+		
 		dao.insertWish(vo);
 	}
 	public void getWishList(Model model, HttpSession session) {
@@ -66,7 +68,7 @@ public class ShopService {
 		// 세션에 저장된 아이디를 통해 memId로 -> id를 불러오는 로직
 		MemberVO vo = (MemberVO)session.getAttribute("user");
 		int id = mbdao.getmemberinfo(vo).getId();
-		model.addAttribute("wish",dao.getWishList(id));
+		
 		
 		// 위시리스트에 저장된 상품id를 통해 한줄 한줄 상품 정보를 배열형태로 새로 만든 list에 담는 로직
 		List<ShopVO> list = new ArrayList<ShopVO>();
@@ -75,10 +77,16 @@ public class ShopService {
        		 	list.add(dao.getListById(a));
 		}
 		// 배열형태로 담긴 상품 정보를 model로 뿌려줌
+		model.addAttribute("wish",dao.getWishList(id));
 		model.addAttribute("item", list);
 		/*
 		 * for(ShopVO a :list) { System.out.println(a.getProductName()); } for(WishVO b
 		 * : dao.getWishList(id)) { System.out.println(b.getCount()); }
 		 */
 	}
+	
+	public void deletewish(int wishId) {
+		dao.deletewish(wishId);
+	}
+	
 }

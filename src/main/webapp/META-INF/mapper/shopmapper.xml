@@ -29,7 +29,9 @@
 	<select id="getWishList" resultType="wishVO" parameterType="int">
 		select * from wishlist where id = #{id}
 	</select>
-	
+	<delete id="deletewish" parameterType="int">
+		delete from wishlist where wish_id=#{wishId}
+	</delete>
 </mapper>
 
 

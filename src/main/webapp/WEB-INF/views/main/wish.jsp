@@ -285,18 +285,29 @@
                     <c:forEach var="item" items="${item}" varStatus="status" >
                     	
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"><input class="wishnum" type="hidden" value="${wish[status.index].wishId}"></td>
                         <td><img src="${item.productImage}" alt=""></td>
                         <td><h4>${item.productName}</h4><p><&nbsp;${item.productShop}&nbsp;></p><h5>[옵션 : <span>${wish[status.index].option}</span>]</h5></td>
                         <td><span class="product-price"><fmt:formatNumber value="${item.productPrice}" pattern="#,###" /></span>원</td>
                         <td><span class="product-count">${wish[status.index].count}</span>개</td>
                         <td><span class="point"></span>p</td>
-                        <td>기본배송</td>
+                        <td>기본배송 </td>
                         <td><span class="delivery">3000</span>원</td>
                         <td class="price"><span class="total-price"></span>원</td>
-                        <td><button>주문하기</button><br><button>삭제</button></td>
+                        <td><button>주문하기</button><br><button class="deletewish">삭제</button></td>
                     </tr>
                   	</c:forEach>
+                  		 <script>
+                        	let btns = document.getElementsByClassName("deletewish");
+                        	let wishnum = document.getElementsByClassName("wishnum");
+                        	for(let i = 0 ; i< btns.length ; i++ ){
+                        		btns[i].addEventListener("click",function(){
+                        			if(confirm('장바구니에서 삭제하시겠습니까?')){
+                        				location.href="${pageContext.request.contextPath}/deletewish/"+wishnum[i].value;                        			}
+                        		});
+                        	}
+                        	
+                        </script>
                     <tr>
                         <td colspan="2">[업체기본배송]</td><td colspan="8"><span>상품구매금액: <span id="allprice"></span> +  배송비: <span id="alldelivery"></span> = 합계: <span id="total"></span>원</span></td>
                     </tr>
@@ -312,8 +323,7 @@
                     	let deliveryprice = 0;
                     	for(let i = 0; i< totalprice.length; i++){
                     		let a = stringNumberToInt(proprice[i].innerText)*Number(count[i].innerText);
-                    		console.log(a);
-                    		console.log(priceToString(a));
+                    		
                     		totalprice[i].innerText = priceToString(a);
                     		point[i].innerText = priceToString(a/100);
                     		let b = Number(delivery[i].innerText);

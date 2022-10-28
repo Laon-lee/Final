@@ -4,10 +4,9 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("wishVO")
 public class WishVO {
-	private int cartId;
+	private int wishId;
 	private int productId;
 	private int id;
-	
 	private String memId;
 	private int count;
 	private String option;
@@ -17,11 +16,12 @@ public class WishVO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCartId() {
-		return cartId;
+	
+	public int getWishId() {
+		return wishId;
 	}
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
+	public void setWishId(int wishId) {
+		this.wishId = wishId;
 	}
 	public int getProductId() {
 		return productId;
