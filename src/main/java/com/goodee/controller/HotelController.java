@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.HotelService;
-import com.goodee.vo.HotelDateVO;
+import com.goodee.vo.HotelRoomVO;
 
 @Controller
 public class HotelController {
@@ -23,60 +23,52 @@ public class HotelController {
 		this.service = service;
 	}
 	
-	@GetMapping("hoteldetail")
-	public String hoteldetail() {
-		return "hotel/hoteldetail";
-	}
-	@GetMapping("hotellist")
-	public String hotellist() {
-		return "hotel/hotellist";
-	}
-	
-	@GetMapping("godetail/{hotelName}")
-	public String godetail(@PathVariable("hotelName") String hotelname, Model model) {
-		System.out.println(hotelname);
-		service.nameRoomList(model, hotelname);
-		System.out.println("컨트롤러"+hotelname);
-		return "hotel/hoteldetail";
-	}
-	
 	//hotelmain에서 hotellist로 넘어가는 컨트롤러
-	//메인에서 지역구와 일자를 선택했을 때 선택한 지역구에 해당하는 호텔의 목록이 넘어옴
-	
-	@GetMapping("golist/{startDate}/{endDate}/{cate}")
-	/* @GetMapping("golist/{startDate}/{endDate}") */
-	
-	public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("cate") String[] category,
-	/*public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate,*/ 
-						Model model) {
-		System.out.println(startdate);
-		System.out.println(enddate);
-		/* System.out.println(category.length); */
+		//메인에서 지역구와 일자를 선택했을 때 선택한 지역구에 해당하는 호텔의 목록이 넘어옴
 		
-		String stringcate = Arrays.toString(category);
-		System.out.println(stringcate);
-		model.addAttribute("startdate", startdate);
-		model.addAttribute("enddate", enddate);
-		model.addAttribute("category", stringcate);
-		service.getList(model);
-		service.getRoomList(model);
-		service.getCateList(model, category);
+		@GetMapping("golist/{startDate}/{endDate}/{cate}")
+		public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("cate") String[] category,
+							Model model) {
+			System.out.println(startdate);
+			System.out.println(enddate);
+			/* System.out.println(category.length); */
+			
+			String stringcate = Arrays.toString(category);
+			System.out.println(stringcate);
+			
+			model.addAttribute("startdate", startdate);
+			model.addAttribute("enddate", enddate);
+			model.addAttribute("category", stringcate);
+			
+			service.getHotelList(model, category);
+			
+			return "hotel/samplehotellist";
+		}
 		
+		/*@GetMapping("roomlist/{room}")
+		public String roomlist() {
+			
+		}*/
 		
-		return "hotel/hotellist";
-	}
-	
-//	@PostMapping("Restlist")
-//	@ResponseBody
-//	public HotelDateVO restlist(@RequestBody HotelDateVO vo) {
-//		
-//		
-//		return vo;
-//		
-//	}
-	
-	@GetMapping("goreserve")
-	public String goreserve() {
-		return "hotel/hotelreserve";
-	}
+		/*@PostMapping("Restlist")
+		@ResponseBody
+		public HotelRoomVO restlist(@RequestBody HotelRoomVO vo) {
+			service.nameRoomList(vo.getHotelName());
+			return vo;
+			
+		}*/
+		
+		@GetMapping("godetail/{hotelName}/{roomName}")
+		public String godetail(@PathVariable("hotelName") String hotelname, @PathVariable("roomName") String roomname, Model model) {
+			System.out.println(hotelname);
+			service.detailHotelList(model, hotelname, roomname);
+			
+			System.out.println("컨트롤러"+hotelname);
+			return "hotel/hoteldetail";
+		}
+		
+		@GetMapping("goreserve")
+		public String goreserve() {
+			return "hotel/hotelreserve";
+		}
 }

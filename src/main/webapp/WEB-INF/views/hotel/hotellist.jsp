@@ -347,154 +347,165 @@
 						</form>
 					</div>
 				<!-- </div> -->
-	<script>
-					/* document.getElementById("selecbtn").addEventListener("click",function(){
-						location.href = "${pageContext.request.contextPath}/golist";
-					}); */
-				
-                    $(function () {
-                        var now = new Date();
-                        var tom = new Date();
-                        tom.setDate(tom.getDate() + 1);
-                        console.log(now);
-                        console.log('${startdate}');
-                        console.log('${enddate}');
-                        var startdate = new Date('${startdate}');
-                        var enddate = new Date('${enddate}');
-                        
-                        console.log(startdate);
-                        console.log(enddate);
-                     	
-                        //이미 category에 메인페이지에서 선택된 데이터가 배열로 들어있음
-                        //해당 val값을 가지고 있는 input을 체크되게 만든다
-                        
-                        console.log('${category}');
-                       for(let f of '${category}') {
-                    	   console.log(f);
-                    	   if($('.cate').val()==f){
-                    		   $(this).prop("checked",true);
-                    	   }
-                       }
-                        
-                       	var cateArr = new Array();
-                        $('input[name="dates"]').daterangepicker({
-                        	"startDate": startdate,
-                            "endDate": enddate,
-                            "minDate": now,
-                            "opens": "center",
-                            
+				<script type="text/javascript">
+	window.addEventListener('DOMContentLoaded', function(){
+						//카테고리 배열 설저
+						var cateArr = [];
+						var cateArr2 = cateArr.slice(1);
+						//datepicker 설정
+						
+						let now = new Date();
+						let tom = new Date();
+											
+						tom.setDate(tom.getDate()+1);
+						
+						$('input[name="dates"]').daterangepicker({
+							 "startDate": now,
+	                            //시작날짜
+	                         "endDate": tom,
+	                            //종료날짜
+	                         "minDate": now,
+	                            //최소지정날짜
+	                         "opens": "center",
+	 
+	                         locale: {
+	                           	//기타 설정
+	                            "separator": " ~ ",
+	                            	//구분자
+	                           	"applyLabel": "적용",
+	                            	 //버튼 라벨
+	                            "cancelLabel": "취소",
+	                            format: "YYYY-MM-DD",
+	                            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+	                            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+	                        }
+	                    });
+						
+						 $('input[name="dates"]').on('show.daterangepicker', function() {
+							$(".cancelBtn").css("float", "right");
+                     	 	$(".cancelBtn").css("background-color", "white");
+                     	 	$(".cancelBtn").css("color","black");
+                     	 	$(".applyBtn").css("background-color", "black");
+                     	 	$(".applyBtn").css("color","white");
+                     		$(".cancelBtn, .applyBtn").css("border","1px solid black");
+                     	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
+                     		$(".cancelBtn, .applyBtn").css("width", "60px");
+						 });
+						 
+ 
+						 
+						 $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+							 //datepicker에서 적용버튼을 클릭했을 때
+							 var startdate = picker.startDate.format('YYYY-MM-DD');
+							 var enddate = picker.endDate.format('YYYY-MM-DD');
+							 
+							 
+							
+							 $('input[name="cate"]:checked').each(function(){
+								 var cate=$(this).val();
+								 cateArr.push(cate);
+							 });
+							 
+							 console.log("in"+cateArr);
+							 console.log("in2"+cateArr2);
+							 
+							 if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
+	                     		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
+	                         } else {
+	                           	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);        
+	                         }
+							 
+						 });
+						 
+						 document.getElementById("asearchbtn").addEventListener("click",function(){
+							 var jcateArr = [];
+							 var jcateArr2 = jcateArr.slice(1);
+							 
+							 const jchecked = document.querySelectorAll('input[name="cate"]:checked');
+							 jchecked.forEach((item)=>{
+								 var jcate = item.value;
+							 	jcateArr.push(jcate);
+							 });
+							 
+							 console.log(jcateArr);
+							 
+							 var today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
+		                     var tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
+		                     //오늘 날짜와 내일 날짜 출력
+		                     if(document.getElementById("1").checked || document.getElementById("8").checked || document.getElementById("11").checked) {
+		                			location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr2;   	
+		                     } else {
+		                    	 location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr;
+		                     }
+		                     //daterangepicker를 사용하지 않았으면 오늘 날짜와 내일 날짜가 들어감
+		                     
+		          
+						 });
+						 
+						 
+						 
+					});
+					
+					
                    
-                            locale: {
-                            	"separator": " ~ ",
-                            	 "applyLabel": "적용",
-                                 "cancelLabel": "취소",
-                                format: "YYYY-MM-DD",
-                                daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-                                monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-                   				
-                            }
-                        }, function (start, end, label) {
-                            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-                            $('input[name="dates"]').val(start.format("YYYY-MM-DD") + " - " + end.format("YYYY-MM-DD"));
-                        });
-                       
-                        $('input[name="dates"]').on('show.daterangepicker', function (ev, picker) {
-                        	    $(".cancelBtn").css("float", "right");
-                        	 	$(".cancelBtn").css("background-color", "white");
-                        	 	$(".cancelBtn").css("color","black");
-                        	 	$(".applyBtn").css("background-color", "black");
-                        	 	$(".applyBtn").css("color","white");
-                        		$(".cancelBtn, .applyBtn").css("border","1px solid black");
-                        	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
-                        		$(".cancelBtn, .applyBtn").css("width", "60px");
-                        	});
-                        	
-                        $('.allseo').click(function(){
-                        	if($('.allseo').is(':checked')){
-                        		$('.seo').prop("checked",true);
-                        	} else {
-                        		$('.seo').prop("checked",false);
-                        	}
-                        });
-                        
-                        $('.allin').click(function(){
-                        	if($('.allin').is(':checked')){
-                        		$('.in').prop("checked",true);
-                        	} else {
-                        		$('.in').prop("checked",false);
-                        	}
-                        });
-                        
-                        $('.allgyeong').click(function(){
-                        	if($('.allgyeong').is(':checked')){
-                        		$('.gyeong').prop("checked",true);
-                        	} else {
-                        		$('.gyeong').prop("checked",false);
-                        	}
-                        });
-                        
-                        $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-                            console.log(picker.startDate.format('YYYY-MM-DD'));
-                            console.log(picker.endDate.format('YYYY-MM-DD'));
-                            /* var end = picker.endDate.format('YYYY-MM-DD');
-                            var start = picker.startDate.format('YYYY-MM-DD'); */
-                            var end = picker.endDate.format('YYYY-MM-DD');
-                            var start = picker.startDate.format('YYYY-MM-DD');
-                            console.log("여기스타트"+start);
-                            console.log("여기엔드"+end);
-                            
-                            $("input[name='cate']:checked").each(function(){
-                            	console.log(cate);
-                            	var cate = $(this).val();
-                            	cateArr.push(cate);
-                            	
-                            });
-                            
-                            
-                            var cateArr2 = cateArr.slice(1);
-                            
-                    		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2)
-                    		
-                    		 if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
-                    			$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr2);
-                            } else {
-                            	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+start+"/"+end+"/"+cateArr);
-                            }
-                    		
-                    		
-                        });
-                        
-                       
-                        
-                        /* var stringcate = '${category}';
-                        /* $("input[name='cate']").val(stringcate[i]).prop("checked",true); */
-                        /*for(let i=0; i<stringcate.length; i++){
-                        	if ($("input[name='cate']").val() == stringcate[i])) {
-								$().prop("checked",true);
-							} 
-                        	
-                        } */
-                        
-                    });
 	
-				
                 </script>
-                <!-- <script type="text/javascript">
-                	document.getElementById("sbtn").addEventListener("click",function(e){
-                		e.preventDefault();
-                		let cateArr[] = new Array();
-                		
-                		let catedata = document.querySelector('input[type=checkbox][name=cate]:checked').value;
-                		cateArr.push(catedata);
-                		
-                		let cateArr2 = cateArr.slice(1);
-                		
-                		fetch("${pageContext.request.contextPath}/restlist"), {
-                			method : "POST",
-                			headers : {"Content-Type" : }
-                		}
-                	})
-                </script> -->
+          <script type="text/javascript">
+				$('.allseo').click(function(){
+                 	if($('.allseo').is(':checked')){
+                 		$('.seo').prop("checked",true);
+                 	} else {
+                 		$('.seo').prop("checked",false);
+                 	};
+                 });
+                 
+                 $('.allin').click(function(){
+                 	if($('.allin').is(':checked')){
+                 		$('.in').prop("checked",true);
+                 	} else {
+                 		$('.in').prop("checked",false);
+                 	};
+                 });
+                 
+                 $('.allgyeong').click(function(){
+                 	if($('.allgyeong').is(':checked')){
+                 		$('.gyeong').prop("checked",true);
+                 	} else {
+                 		$('.gyeong').prop("checked",false);
+                 	};
+                 });
+                 
+                 $('.seo').click(function(){
+                 	if($('.allseo').is(':checked')){
+                 		$('.allseo').prop("checked", false);
+                 	};
+                 	
+                 	if($('.seo:checked').length == $('.seo').length){
+                     	$('.allseo').prop("checked",true);
+                     };
+                 });
+                 
+                 $('.in').click(function(){
+                 	if($('.allin').is(':checked')){
+                 		$('.allin').prop("checked", false);
+                 	};
+                 	
+                 	if($('.in:checked').length == $('.in').length){
+                     	$('.allin').prop("checked",true);
+                     };
+                 });
+                 
+                 $('.gyeong').click(function(){
+                 	if($('.allgyeong').is(':checked')){
+                 		$('.allgyeong').prop("checked", false);
+                 	};
+                 	
+                 	if($('.gyeong:checked').length == $('.gyeong').length){
+                     	$('.allgyeong').prop("checked",true);
+                     };
+                 });
+				
+				</script>
                 <script>
                     var p = document.getElementById("selectp");
                     var svg = document.getElementById("svg");
@@ -521,7 +532,7 @@
                     
 
                 </script>
-                <c:forEach var="item" items="${cate}">
+                <c:forEach var="item" items="${hotel}">
                 <div class="list">
 
                     <div id="inner1" class="inner1 inner">
@@ -532,23 +543,25 @@
                         <h2>${item.hotelName }</h2>
                         <p>자세히보기</p>
                         <p>2021.12.11~2023.08.31</p>
+                        <h1>${item.hotelId}</h1>
                         <h1>가격</h1>
                     </div>
-                    <div id="innerbtn1" class="innerbtn">
+                    <div class="innerbtn" id="${item.hotelId }">
                         <button>RESERVE</button>
                     </div>
 
                 </div>
                
-                <c:forEach var="room" items="${list}">
-                 <c:if test="${item.hotelName eq room.hotelName}">
+               
                 	<div class="option_list" id="option_list1">
                     <table>
+                     <c:forEach var="room" items="${room}">
+                 <c:if test="${item.hotelId == room.hotelName}">
                         <tr>
                             <td class="td1">
                                 <div class="intr">
                                     <div class="intr_room">
-                                        <p>방 이름 </p>
+                                        <p>${room.roomName }</p>
                                         <P>Size : 20.7</P>
                                     </div>
                                     <div class="intr_a">
@@ -561,177 +574,10 @@
                                     </div> -->
                                 </div>
                             </td>
-                            <td class="td2"><a href="${pageContext.request.contextPath}/godetail/${item.hotelName}">예약하기</a></td>
+                            <td class="td2"><a href="${pageContext.request.contextPath}/godetail/${item.hotelName}/${room.roomNamd}">예약하기</a></td>
                         </tr>
-                   	</table>
-                   	</div>
-                   	</c:if>
-                </c:forEach>
-                
-                </c:forEach>
-                
-                <%-- <c:forEach var="room" items="${list}">
-                	<p>${room.hotelName }</p>
-                	<p>${room.hotelRoom }</p>
-                </c:forEach> --%>
-                <%-- <div id="list">
-
-                    <div id="inner1" class="inner">
-                        <img src="${pageContext.request.contextPath}/image/hotel/dog6.jpg" alt="">
-                    </div>
-                    <div id="inner2" class="inner">
-                        <p>대형/중형/소형</p>
-                        <h2>Smart Choice</h2>
-                        <p>자세히보기</p>
-                        <p>2021.12.11~2023.08.31</p>
-                        <h1>36,000 KRW~</h1>
-                    </div>
-                    <div id="innerbtn1" class="innerbtn">
-                        <button>RESERVE</button>
-                    </div>
-
-                </div>
-                <div class="option_list" id="option_list1">
-                    <table>
-                        <tr>
-                            <td id="td1">
-                                <div id="intr">
-                                    <div id="intr_room">
-                                        <p>STANDARD</p>
-                                        <P>Size : 20.7</P>
-                                    </div>
-                                    <div id="intr_a">
-                                        <a href="#" id="a1">객실 상세보기</a>
-                                        <a href="#" id="a2">비교함 담기</a>
-                                        <p>36,000 KRW~</p>
-                                    </div>
-                                    <!-- <div id="intr_price">
-                                        36,000 KRW~
-                                    </div> -->
-                                </div>
-                            </td>
-                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
-                        </tr>
-                        <tr>
-                            <td id="td1">
-                                <div id="intr">
-                                    <div id="intr_room">
-                                        <p>STANDARD</p>
-                                        <P>Size : 20.7</P>
-                                    </div>
-                                    <div id="intr_a">
-                                        <a href="#" id="a1">객실 상세보기</a>
-                                        <a href="#" id="a2">비교함 담기</a>
-                                        <p>36,000 KRW~</p>
-                                    </div>
-                                    <!-- <div id="intr_price">
-                                        36,000 KRW~
-                                    </div> -->
-                                </div>
-                            </td>
-                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
-                        </tr>
-                        <tr>
-                            <td id="td1">
-                                <div id="intr">
-                                    <div id="intr_room">
-                                        <p>STANDARD</p>
-                                        <P>Size : 20.7</P>
-                                    </div>
-                                    <div id="intr_a">
-                                        <a href="#" id="a1">객실 상세보기</a>
-                                        <a href="#" id="a2">비교함 담기</a>
-                                        <p>36,000 KRW~</p>
-                                    </div>
-                                    <!-- <div id="intr_price">
-                                        36,000 KRW~
-                                    </div> -->
-                                </div>
-                            </td>
-                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="list">
-
-                    <div id="inner1" class="inner">
-                        <img src="${pageContext.request.contextPath}/image/hotel/dog6.jpg" alt="">
-                    </div>
-                    <div id="inner2" class="inner">
-                        <p>대형/중형/소형</p>
-                        <h2>Smart Choice</h2>
-                        <p>자세히보기</p>
-                        <p>2021.12.11~2023.08.31</p>
-                        <h1>36,000 KRW~</h1>
-                    </div>
-                    <div id="innerbtn2" class="innerbtn">
-                        <button>RESERVE</button>
-                    </div>
-
-                </div>
-                <div class="option_list" id="option_list2">
-                    <table>
-                        <tr>
-                            <td id="td1">
-                                <div id="intr">
-                                    <div id="intr_room">
-                                        <p>STANDARD</p>
-                                        <P>Size : 20.7</P>
-                                    </div>
-                                    <div id="intr_a">
-                                        <a href="#" id="a1">객실 상세보기</a>
-                                        <a href="#" id="a2">비교함 담기</a>
-                                        <p>36,000 KRW~</p>
-                                    </div>
-                                    <!-- <div id="intr_price">
-                                        36,000 KRW~
-                                    </div> -->
-                                </div>
-                            </td>
-                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
-                        </tr>
-                        <tr>
-                            <td id="td1">
-                                <div id="intr">
-                                    <div id="intr_room">
-                                        <p>STANDARD</p>
-                                        <P>Size : 20.7</P>
-                                    </div>
-                                    <div id="intr_a">
-                                        <a href="#" id="a1">객실 상세보기</a>
-                                        <a href="#" id="a2">비교함 담기</a>
-                                        <p>36,000 KRW~</p>
-                                    </div>
-                                    <!-- <div id="intr_price">
-                                        36,000 KRW~
-                                    </div> -->
-                                </div>
-                            </td>
-                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
-                        </tr>
-                        <tr>
-                            <td id="td1">
-                                <div id="intr">
-                                    <div id="intr_room">
-                                        <p>STANDARD</p>
-                                        <P>Size : 20.7</P>
-                                    </div>
-                                    <div id="intr_a">
-                                        <a href="#" id="a1">객실 상세보기</a>
-                                        <a href="#" id="a2">비교함 담기</a>
-                                        <p>36,000 KRW~</p>
-                                    </div>
-                                    <!-- <div id="intr_price">
-                                        36,000 KRW~
-                                    </div> -->
-                                </div>
-                            </td>
-                            <td id="td2"><a href="${pageContext.request.contextPath}/godetail">예약하기</a></td>
-                        </tr>
-                    </table>
-                </div> --%>
-            </section>
-            <script>
+                        	</c:if>
+                        	 <script>
             $(document).ready(function () {
 
                 $("#innerbtn1").click(function () {
@@ -747,6 +593,16 @@
 
             });
         </script>
+                </c:forEach>
+                   	</table>
+                   	</div>
+                   
+                
+                </c:forEach>
+                
+               
+            </section>
+           
         </main>
 
         <footer>
