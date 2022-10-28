@@ -42,7 +42,7 @@ public class HotelController {
 			
 			service.getHotelList(model, category);
 			
-			return "hotel/samplehotellist";
+			return "hotel/hotellist";
 		}
 		
 		/*@GetMapping("roomlist/{room}")
