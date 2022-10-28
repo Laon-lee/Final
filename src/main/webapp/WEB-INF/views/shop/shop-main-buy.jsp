@@ -24,7 +24,7 @@
 <style>
 * {
 	margin: 0 auto;
-	box-sizing: border-box;
+	/* box-sizing: border-box; */
 }
 
 html {
@@ -43,7 +43,9 @@ nav {
 	margin: 0;
 	padding: 0;
 }
-
+#nav1 ul{
+	padding:0;
+}
 body {
 	height: 100%;
 	

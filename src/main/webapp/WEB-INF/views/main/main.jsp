@@ -67,7 +67,7 @@
       width: 100vw;
       height: 82vh;
     }
-
+	
     #sec1 {
       z-index: 1;
       transform: translateX(0);
@@ -82,22 +82,30 @@
       z-index: 2; 
       transform: translateX(101%);
       position: absolute;
-      background: url("image/main/메인섹션.png") no-repeat center right;
-      background-size: contain;
       background-color: #f5ebe0;
-      display: flex;
+      display: grid;
+      grid-template-columns:1fr 2fr;
       align-items: center;
-      background-position: 90%;
       border-left: 2px dashed gray;
       
     }
+    #sec2 img{
+		width: 90%;
+    	height: 80vh;
+	}
+	#sec3 img, #sec4 img{
+		width:95%;
+		height: 80vh;
+	}
     #map{
-    	margin-left:-4%;
+    	width: 21vw;
+    	height: 40vh;
     }
-    #sec2 div{
-      position: absolute;
-      left:4%;
+    #sec2 div, #sec3 div, #sec4 div{
       line-height: 34px;
+    }
+    #sec2-div1, #sec3-div1, #sec4-div1{
+    	margin-left: 15%;
     }
     #sec2 div h1{
       font-size: 40px;
@@ -108,18 +116,13 @@
       z-index: 3;
       transform: translateX(101%);
       position: absolute;
-      background: url("image/main/쇼핑섹션.png") no-repeat right;
-      background-size: contain;
+      
       background-color: #f5ebe0;
-      display: flex;
+      display: grid;
+      grid-template-columns:1fr 3fr;
       align-items: center;
-      background-position: 80%;
+      
       border-left: 2px dashed black;
-    }
-    #sec3 div{
-      position: absolute;
-      left:4%;
-      line-height: 34px;
     }
     #sec3 div h1{
       font-size: 40px;
@@ -139,19 +142,15 @@
       z-index: 4;
       transform: translateX(101%);
       position: absolute;
-      background: url("image/main/호텔섹션.png") no-repeat right;
-      background-size: contain;
+      
       background-color: #f5ebe0;
-      display: flex;
+      display: grid;
+      grid-template-columns:1fr 3fr;
       align-items: center;
-      background-position: 80%;
+      
       border-left: 2px dashed black;
     }
-    #sec4 div{
-      position: absolute;
-      left:4%;
-      line-height: 34px;
-    }
+
     #sec4 div h1{
       font-size: 40px;
       margin-bottom: 30px;
@@ -192,7 +191,7 @@
           <p>댕누리만이 사람과 반려견을 더 아름답게 하는</p>
           <p>소명을 이루고자 미의 여정을 이어갑니다.</p>
           <h5><오시는 길></h5>
-          <div id="map" style="width:400px;height:400px;"></div>
+          <div id="map" ></div>
 			<script>
 				var mapOptions = {
    				 center: new naver.maps.LatLng(37.478909798053834, 126.88135430793452),
@@ -207,6 +206,10 @@
 				});
 			</script>
         </div>
+        <div>
+        	<img alt="" src="image/main/메인섹션.png">
+        </div>
+
       </section>
       <section id="sec3">
         <div id="sec3-div1">
@@ -218,6 +221,10 @@
           	<button>Go Shopping</button>
           </form>
         </div>
+        <div>
+        	<img alt="" src="image/main/쇼핑섹션.png">
+        </div>
+        
       </section>
       <section id="sec4">
         <div id="sec4-div1">
@@ -229,7 +236,9 @@
           <button>Go Hotel</button>
             </form>
         </div>
-        
+        <div>
+        	<img alt="" src="image/main/호텔섹션.png">
+        </div>
       </section>
 
     </main>
