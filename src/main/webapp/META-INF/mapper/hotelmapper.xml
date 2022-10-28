@@ -16,11 +16,28 @@
 	
 	
 	<!-- 호텔 이름에 따른 객실 정보를 불러움 -->
-	<select id="selectroomnameList" resultType="hotelVO">
+	<select id="selectRoomList" resultType="hotelroomVO">
 		select * from hotel_room
-		where hotel_id = 
+		<!-- where hotel_id = 
+			(select hotel_id from hotel_reservation
+			where hotel_name in 
+			<foreach item="hotelname" index="id" collection="list" open="(" separator="," close = ")">
+			#{hotelname}
+			</foreach>
+			) -->
+	</select>
+	<select id="detailHotel" resultType="hotelVO">
+	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
+		from hotel_reservation 
+		where hotel_name = #{hotelname}
+		</select>
+		
+		<select id="detailRoom" resultType="hotelroomVO">
+		select * from hotel_room
+	 		where room_name = #{roomname} and hotel_id = 
 			(select hotel_id from hotel_reservation
 			where hotel_name = #{hotelname})
+			
 	</select>
 </mapper>
 
