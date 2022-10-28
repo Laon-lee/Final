@@ -264,7 +264,8 @@
             </div>
            <table class="tb1">
             <tr>
-              <th class="th1">일반상품( ${fn:length(wish)} )</th>
+              <th class="th1">일반상품( ${fn:length(wish)} 
+              )</th>
             </tr>
            </table>
            
