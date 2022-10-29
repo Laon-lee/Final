@@ -232,6 +232,12 @@
     background-color: #f6f6f6;
     
    }
+   #pro-name{
+   	width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+   }
     </style>
 </head>
 
@@ -287,7 +293,7 @@
                     <tr>
                         <td><input type="checkbox"><input class="wishnum" type="hidden" value="${wish[status.index].wishId}"></td>
                         <td><img src="${item.productImage}" alt=""></td>
-                        <td><h4>${item.productName}</h4><p><&nbsp;${item.productShop}&nbsp;></p><h5>[옵션 : <span>${wish[status.index].option}</span>]</h5></td>
+                        <td><h4 id="pro-name">${item.productName}</h4><p><&nbsp;${item.productShop}&nbsp;></p><h5>[옵션 : <span>${wish[status.index].option}</span>]</h5></td>
                         <td><span class="product-price"><fmt:formatNumber value="${item.productPrice}" pattern="#,###" /></span>원</td>
                         <td><span class="product-count">${wish[status.index].count}</span>개</td>
                         <td><span class="point"></span>p</td>

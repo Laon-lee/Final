@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.goodee.service.MemberService;
 import com.goodee.service.ShopService;
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.OrderVO;
+import com.goodee.vo.OrderdetailVO;
 import com.goodee.vo.ProductboardVO;
 import com.goodee.vo.ShopVO;
 import com.goodee.vo.WishVO;
@@ -85,5 +88,9 @@ public class ShopController {
 		spservice.deletewish(wishId);
 		return "redirect:/wish";
 	}
-	
+	@GetMapping("ordersuccess")
+	public String mypage(@ModelAttribute OrderVO vo, @ModelAttribute OrderdetailVO vo1,HttpSession session) {
+		spservice.insertorder(vo,vo1,session);
+		return "redirect:/mypage";
+	}
 }

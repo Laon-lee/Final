@@ -7,11 +7,12 @@ public class OrderdetailVO {
 	private int orderdetailId;
 	private int orderId;
 	private int productId;
-	private int orderstatusId;
-	private int productPrice;
-	private String productName;
-	private int productTotal;
-	private String productImage;
+	private int productCount;
+	private String orderStatus;
+	private int orderPrice;
+	
+	
+	
 	public int getOrderdetailId() {
 		return orderdetailId;
 	}
@@ -30,36 +31,25 @@ public class OrderdetailVO {
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-	public int getOrderstatusId() {
-		return orderstatusId;
+	public int getProductCount() {
+		return productCount;
 	}
-	public void setOrderstatusId(int orderstatusId) {
-		this.orderstatusId = orderstatusId;
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
 	}
-	public int getProductPrice() {
-		return productPrice;
+	public String getOrderStatus() {
+		return orderStatus;
 	}
-	public void setProductPrice(int productPrice) {
-		this.productPrice = productPrice;
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
-	public String getProductName() {
-		return productName;
+	public int getOrderPrice() {
+		return orderPrice;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setOrderPrice(int orderPrice) {
+		this.orderPrice = orderPrice;
 	}
-	public int getProductTotal() {
-		return productTotal;
-	}
-	public void setProductTotal(int productTotal) {
-		this.productTotal = productTotal;
-	}
-	public String getProductImage() {
-		return productImage;
-	}
-	public void setProductImage(String productImage) {
-		this.productImage = productImage;
-	}
+	
 	
 	
 }

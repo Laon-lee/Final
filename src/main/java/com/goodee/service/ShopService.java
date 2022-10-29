@@ -12,6 +12,8 @@ import com.goodee.dao.MemberDAO;
 import com.goodee.dao.ShopDAO;
 import com.goodee.vo.BoardVO;
 import com.goodee.vo.MemberVO;
+import com.goodee.vo.OrderVO;
+import com.goodee.vo.OrderdetailVO;
 import com.goodee.vo.ProductboardVO;
 import com.goodee.vo.ShopVO;
 import com.goodee.vo.WishVO;
@@ -87,6 +89,21 @@ public class ShopService {
 	
 	public void deletewish(int wishId) {
 		dao.deletewish(wishId);
+	}
+	public void insertorder(OrderVO vo, OrderdetailVO vo1,HttpSession session ) {
+		MemberVO uservo = (MemberVO)session.getAttribute("user");
+		vo.setId(mbdao.getmemberinfo(uservo).getId());
+		dao.insertOrder(vo);
+		vo1.setOrderId(vo.getOrderId());
+		vo1.setOrderStatus("배송준비중");
+		dao.insertOrderdetail(vo1);
+	}
+	
+	public void getMyOrder(HttpSession session, Model model) {
+		MemberVO uservo = (MemberVO)session.getAttribute("user");
+		int id = mbdao.getmemberinfo(uservo).getId();
+		System.out.println(dao.getMyOrder(id).get(0).getOrderDate());
+		model.addAttribute("list",dao.getMyOrder(id) );
 	}
 	
 }

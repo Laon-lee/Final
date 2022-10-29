@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +44,10 @@
         body {
             height: 100vh;
         }
-		
+		img{
+			width:100px;
+			height:100px;
+		}
         #container {
             position: relative;
             width: 100%;
@@ -205,7 +211,7 @@
                         <div id="artcontainer">
                             <div id="sec2-div1">
                                 <ul>
-                                    <li class="selected">주문내역조회(order.count??)</li>
+                                    <li class="selected">주문내역조회( ${fn:length(list)})</li>
                                     <li>취소/반품/교환 내역(0)</li>
                                 </ul>
                             </div>
@@ -241,17 +247,20 @@
                                         <td><h3>수량</h3></td>
                                         <td><h3>상품구매금액</h3></td>
                                         <td><h3>주문처리상태</h3></td>
-                                        <td><h3>정상구매/취소/교환/반품</h3></td>
+                                        
                                     </tr>
+                                    <c:forEach var="item" items="${list}">
                                     <tr>
-                                     <td>vo.date<br>[vo.num]</td>
-                                        <td>vo.img</td>
-                                        <td>vo.name(상품이름)</td>
-                                        <td>vo.count(상품갯수)</td>
-                                        <td>vo.price</td>
-                                        <td>vo.처리상태</td>
-                                        <td>vo.상태</td>
+                                     <td><fmt:parseDate value="${item.orderDate}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parseDateTime" type="both"/>
+												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/><br>[${item.orderId}]</td>
+                                        <td><img src="${item.productImage}"></td>
+                                        <td>${item.productName}</td>
+                                        <td>${item.productCount}</td>
+                                        <td>${item.orderPrice}</td>
+                                        <td>${item.orderStatus}</td>
+                                        
                                     </tr>
+                                    </c:forEach>
                                 </table>
                                
                             </div>

@@ -99,6 +99,7 @@ section> div{
 	display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left:20px;
 }
 
 .scbtn{
@@ -141,8 +142,8 @@ section> div{
     left: 73%;
     padding: 15px;
     position: fixed;
-    width: 350px;
-    height: 340px;
+    width: 315px;
+    height: 315px;
     border: 2px solid gray;
     background-color: white;
 }
@@ -247,10 +248,11 @@ section> div{
 						<input type="radio" name="same" id="same-send2" class="same-send"> <label for="same-send2">새로운	배송지</label>
 					</div>
 					<div id="address-div1">
-						<label for="memName" class="lb">받는 사람</label><input type="text" name="memName" class="memName" id="memName" value="${user.memName}"><br>
-						<label for="address"  class="lb">주소 * </label><input type="text" placeholder="우편번호" class="addr-addr" value="${user.memOaddress}" readonly><br>
-						<input type="text" placeholder="기본주소" class="maid-addr" value="${user.memAddress}" readonly><br>
-						<input type="text" placeholder="상세주소" class="maid-addr" value="${user.memDetailaddress}" readonly><br>
+						<label for="memName" class="lb">받는 사람</label><input type="text" name="memName" class="memName" id="receiverName" value="${user.memName}"><br>
+						<label for="address"  class="lb">주소 * </label><input type="text" placeholder="우편번호" class="addr-addr" id="receiverAddress1"value="${user.memOaddress}" readonly><br>
+						<input type="text" placeholder="기본주소" class="maid-addr" id="receiverAddress2"value="${user.memAddress}" readonly><br>
+						<input type="text" placeholder="상세주소" class="maid-addr" id="receiverAddress3"value="${user.memDetailaddress}" readonly><br>
+						<label for="receiverPhone">받는 사람 번호 </label><input type="text" id="receiverPhone" value="${user.memPhone}"><small> - 를 제외한 번호</small>
 					</div>
 					<div id="address-div2">
 						<label for="memName"  class="lb">받는 사람</label><input type="text" class="memName" id="memName"><br>
@@ -258,6 +260,7 @@ section> div{
 						<button class="scbtn" onclick="execPostCode();">주소 검색</button><br>
 						<input type="text" name="mem_address" class="maid-addr" id="mem_address2" placeholder="기본주소"><br>
 						<input type="text" name="mem_detailaddress" class="maid-addr" id="mem_detailaddress" placeholder="상세주소"><br>
+						<label for="receiverPhone">받는 사람 번호 </label><input type="text" id="receiverPhone"><span> - 를 제외한 번호</span>
 					</div>
 					<div id="message">
 					
@@ -406,7 +409,7 @@ function requestPay() {
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
     name : '${list.productName}',
-    amount : '1',
+    amount : '100',
     buyer_email : '${user.memEmail}',
     buyer_name : '${user.memName}',
     buyer_tel : '${user.memPhone}',
@@ -414,8 +417,13 @@ function requestPay() {
     buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {
-    	  	
-        	location.href="${pageContext.request.contextPath}/gomain";
+    	  	let receiverName = document.getElementById("receiverName").value;
+    	  	let receiverAddress1 = document.getElementById("receiverAddress1").value;
+    	  	let receiverAddress2 = document.getElementById("receiverAddress2").value;
+    	  	let receiverAddress3 = document.getElementById("receiverAddress3").value;
+    	  	let receiverPhone =document.getElementById("receiverPhone").value;
+    	  	let orderMsg = document.getElementById("select-msg").value;
+        	location.href="${pageContext.request.contextPath}/ordersuccess?productId=${list.productId}&productCount=${count}&orderPrice=${count*list.productPrice}&receiverName="+receiverName+"&receiverAddress1="+receiverAddress1+"&receiverAddress2="+receiverAddress2+"&receiverAddress3="+receiverAddress3+"&receiverPhone="+receiverPhone+"&orderMsg="+orderMsg;
       } else {
     	  alert("결제에 실패하였습니다.");
       }
