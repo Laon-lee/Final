@@ -125,7 +125,7 @@ li {
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
     gap: 1.2rem;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .flex-container div {
@@ -136,7 +136,16 @@ li {
 	width: 100%;
 	height: 200px;
 }
-
+.pagebtn{
+	border: none;
+    background-color: white;
+    font-size: 15px;
+    margin: 10px;
+    cursor:pointer;
+}
+#pageBtn{
+	margin: 20px 0;
+}
 @media ( max-width : 1500px) {
 	footer {
 		display: none;
@@ -293,32 +302,32 @@ li {
 					}
 					
 					$('#pageBtn').append(
-							'<button onclick="getCateList(1)">'+'\<\<'+'</button>'
+							'<button onclick="getCateList(1)" class="pagebtn">'+'\<\<'+'</button>'
 					);
 					
 					$('#pageBtn').append(
-							'<button onclick="getCateList('+preNum+')">'+'\<'+'</button>'
+							'<button onclick="getCateList('+preNum+')" class="pagebtn">'+'\<'+'</button>'
 					);
 					
 					for(var i=stNum;i<=edNum;i++){	
 						if(i==page){
 							$('#pageBtn').append(
-									'<button onclick="getCateList('+i+')" style="color:red;">'+i+'</button>'
+									'<button onclick="getCateList('+i+')" style="color:red;" class="pagebtn">'+i+'</button>'
 							);
 						}else{
 							$('#pageBtn').append(
-									'<button onclick="getCateList('+i+')">'+i+'</button>'
+									'<button onclick="getCateList('+i+')" class="pagebtn">'+i+'</button>'
 							);
 						}
 						
 					}
 					
 					$('#pageBtn').append(
-							'<button onclick="getCateList('+nextNum+')">'+'\>'+'</button>'
+							'<button onclick="getCateList('+nextNum+')" class="pagebtn">'+'\>'+'</button>'
 					);
 					
 					$('#pageBtn').append(
-							'<button onclick="getCateList('+total+')">'+'\>\>'+'</button>'
+							'<button onclick="getCateList('+total+')" class="pagebtn">'+'\>\>'+'</button>'
 					);
 					
  				});

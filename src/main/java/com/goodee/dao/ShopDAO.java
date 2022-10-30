@@ -40,5 +40,6 @@ public interface ShopDAO {
 	public List<OrderjoinVO> getMyOrder(@Param("id") int id);
 	
 	public List<Map<String, Object>> getPdList(Map<String,Object> inParam);
+	
 	public int getPdListCnt(Map<String,Object> inParam);
 }	
