@@ -589,6 +589,7 @@ font {
 									let proboardTitle = "리뷰 제목"
 									let memId = '${sessionScope.user.memId}';
 									let productId= ${list.productId}
+									
 									fetch("${pageContext.request.contextPath}/insertreview", 
 										{ method: "POST",
 										  headers: {

@@ -20,6 +20,8 @@
 	href="${pageContext.request.contextPath}/css/frame/shop/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <style>
 html, body, header, main, footer, section, h1, h2, h3, h4, h5, h6, p, a,
 	ul, li, nav {
@@ -209,24 +211,119 @@ li {
 						src="${pageContext.request.contextPath}/image/shop/Food.png"
 						alt=""><br>Food</a></li>
 			</div>
-			<div class="flex-container">
-				<c:forEach var="item" items="${list}">
-					<div class="list">
-						<a
-							href="${pageContext.request.contextPath}/shop/main/buy/${item.productId}"><img
-							src="${item.productImage}" alt="">
-						<p>${item.productName}</p>
-							<p class="shopname">${item.productShop}</p>
-							<h3>
-								<fmt:formatNumber value="${item.productPrice}" pattern="#,###" />
-								원
-							</h3></a>
-					</div>
-				</c:forEach>
-
+			<div id="productList" class="flex-container">
 			</div>
+			<div id="pageBtn">
+			</div>
+			<input type="hidden" id="category" value="${category}"/>
 		</main>
+		<script>
+			var pageCount=12;
+			getCateList(1);
 
+			function getCateList(page){
+				$('#productList').empty();
+				$('#pageBtn').empty();
+				
+				var category = document.getElementById("category").value;
+				
+				fetch("${pageContext.request.contextPath}/getPdList", { 
+					method: "POST",
+ 				  	headers: {
+ 				    	"Content-Type": "application/json"
+ 				  	},
+ 				  	body:JSON.stringify({"category":category, "page":page, "pageCount":pageCount})
+ 				}).then((response) => response.json())
+ 				.then((data) => {
+					console.log(data);
+	
+					var productListDiv=$("#productList");
+					
+					for(dict of data.list){
+						console.log('${pageContext.request.contextPath}');
+						productListDiv.append('<div class="list">'
+								+'<a href="'+'${pageContext.request.contextPath}'+'/shop/main/buy/'+dict.product_id+'">'
+								+'<img src="'+dict.product_image+'" alt="">'
+								+'<p>'+dict.product_name+'</p>'
+								+'<h3>'
+								+dict.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'
+								+'</h3></a>'
+						+'</div>');
+					}
+					
+					
+					var total=0;
+					var stNum;
+					var edNum;
+					var preNum;
+					var nextNum;
+					
+					total = parseInt(data.total/pageCount);
+					
+					if(parseInt(data.total%pageCount)!=0){
+						total++;
+					}
+					
+					stNum=parseInt(parseInt(page/10)*10);
+					
+					if(parseInt(page%10)!=0){
+						stNum++;
+					}else{
+						stNum-=9
+					}
+					
+					edNum = stNum + 10;
+					
+					edNum=parseInt(parseInt(edNum/10)*10);
+					
+					if(edNum>total){
+						edNum=total;
+					}
+					
+					
+					if(page==1){
+						preNum=1;
+					}else{
+						preNum=page-1;
+					}
+					if(page==total){
+						nextNum=total;
+					}else{
+						nextNum=page+1;
+					}
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList(1)">'+'\<\<'+'</button>'
+					);
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+preNum+')">'+'\<'+'</button>'
+					);
+					
+					for(var i=stNum;i<=edNum;i++){	
+						if(i==page){
+							$('#pageBtn').append(
+									'<button onclick="getCateList('+i+')" style="color:red;">'+i+'</button>'
+							);
+						}else{
+							$('#pageBtn').append(
+									'<button onclick="getCateList('+i+')">'+i+'</button>'
+							);
+						}
+						
+					}
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+nextNum+')">'+'\>'+'</button>'
+					);
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+total+')">'+'\>\>'+'</button>'
+					);
+					
+ 				});
+			}
+		</script>
 
 		<footer>
 			<%@ include file="../frame/main/footer.jsp"%>

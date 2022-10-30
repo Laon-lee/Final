@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/4b992414b9.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
@@ -389,6 +390,81 @@
                       			</div>
                       			<p class="coupon-p">유통기한</p>
                       		</div>
+                      		<div class="form-group email-form">
+    <label for="email">이메일</label>
+    <div class="input-group">
+   <input type="text" class="form-control" name="userEmail1" id="userEmail1" placeholder="이메일" >
+   <select class="form-control" name="userEmail2" id="userEmail2" >
+   <option>@naver.com</option>
+   <option>@daum.net</option>
+   <option>@gmail.com</option>
+   <option>@hanmail.com</option>
+    <option>@yahoo.co.kr</option>
+   </select>
+   </div>   
+<div class="input-group-addon">
+   <button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
+</div>
+   <div class="mail-check-box">
+<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
+</div>
+   <span id="mail-check-warn"></span>
+</div>
+
+<script type="text/javascript">
+$('#mail-Check-Btn').click(function(e) {
+      const email = $('#userEmail1').val() + $('#userEmail2').val(); // 이메일 주소값 얻어오기!
+      console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
+      const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+      
+      /* $.ajax({
+         type : 'get',
+         url : '<c:url value ="/user/mailCheck?email="/>'+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+         success : function (data) {
+            console.log("data : " +  data);
+            checkInput.attr('disabled',false);
+            code =data;
+            alert('인증번호가 전송되었습니다.')
+         }         
+      }); */ // end ajax
+      e.preventDefault();
+      
+      let simple_data = {email};      
+      fetch("${pageContext.request.contextPath}/check",{
+         method : "POST", // PUT, PATCH, DELETE
+         headers : {"Content-Type" : "application/json"},
+         body : JSON.stringify(simple_data)
+      }).then(response => response.json())
+      .then(data => {
+         console.log("data : " +  data);
+         checkInput.attr('disabled',false);
+         code =data;
+         alert('인증번호가 전송되었습니다.')
+      }).catch(error => {
+         console.log("error");
+      });
+   }); // end send eamil
+   
+   // 인증번호 비교 
+   // blur -> focus가 벗어나는 경우 발생
+   $('.mail-check-input').blur(function () {
+		const inputCode = $(this).val();
+		const $resultMsg = $('#mail-check-warn');
+		
+		if(inputCode === code){
+			$resultMsg.html('인증번호가 일치합니다.');
+			$resultMsg.css('color','green');
+			$('#mail-Check-Btn').attr('disabled',true);
+			$('#userEamil1').attr('readonly',true);
+			$('#userEamil2').attr('readonly',true);
+			$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+	         $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+      }else{
+         $resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+         $resultMsg.css('color','red');
+      }
+   });
+   </script>
                     </article>
                 </section>
                 </div>

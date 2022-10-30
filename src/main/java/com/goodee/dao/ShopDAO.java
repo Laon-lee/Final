@@ -1,6 +1,7 @@
 package com.goodee.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -37,4 +38,7 @@ public interface ShopDAO {
 	public void insertOrderdetail(OrderdetailVO vo1);
 	
 	public List<OrderjoinVO> getMyOrder(@Param("id") int id);
+	
+	public List<Map<String, Object>> getPdList(Map<String,Object> inParam);
+	public int getPdListCnt(Map<String,Object> inParam);
 }	

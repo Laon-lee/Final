@@ -1,7 +1,9 @@
 package com.goodee.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +12,6 @@ import org.springframework.ui.Model;
 
 import com.goodee.dao.MemberDAO;
 import com.goodee.dao.ShopDAO;
-import com.goodee.vo.BoardVO;
 import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderVO;
 import com.goodee.vo.OrderdetailVO;
@@ -22,7 +23,7 @@ import com.goodee.vo.WishVO;
 public class ShopService {
 	private ShopDAO dao;
 	private MemberDAO mbdao;
-	
+		
 	public ShopService(ShopDAO dao, MemberDAO mbdao) {
 		super();
 		this.dao = dao;
@@ -32,8 +33,15 @@ public class ShopService {
 		model.addAttribute("list", dao.getProductList());
 	}
 	public void getCateList(String category, Model model) {
-		model.addAttribute("list", dao.getCateList(category));
+		
+		
+//		Pageutil test = new Pageutil();
+//		System.out.println("-------------------------");
+//		System.out.println(test.test());
+//		model.addAttribute("list", dao.getCateList(category));
+		model.addAttribute("category", category);
 	}
+	
 	public void getListById(String id, Model model) {
 		
 		model.addAttribute("qna", dao.getQna(id));
@@ -104,6 +112,18 @@ public class ShopService {
 		int id = mbdao.getmemberinfo(uservo).getId();
 		System.out.println(dao.getMyOrder(id).get(0).getOrderDate());
 		model.addAttribute("list",dao.getMyOrder(id) );
+	}
+
+	public Map<String,Object> getPdList(Map<String,Object> inParam) {
+		Map<String,Object> dataMap=new HashMap<String,Object>();
+		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+
+		inParam.put("stPage", (Integer.parseInt(inParam.get("page").toString())-1)*Integer.parseInt(inParam.get("pageCount").toString()));
+		list = dao.getPdList(inParam);
+		
+		dataMap.put("list", list);
+		dataMap.put("total", dao.getPdListCnt(inParam));		
+		return dataMap;
 	}
 	
 }

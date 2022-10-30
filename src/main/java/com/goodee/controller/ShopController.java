@@ -1,7 +1,13 @@
 package com.goodee.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.MemberService;
 import com.goodee.service.ShopService;
-import com.goodee.vo.BoardVO;
 import com.goodee.vo.OrderVO;
 import com.goodee.vo.OrderdetailVO;
 import com.goodee.vo.ProductboardVO;
-import com.goodee.vo.ShopVO;
 import com.goodee.vo.WishVO;
+
 
 @Controller
 public class ShopController {
@@ -93,4 +98,21 @@ public class ShopController {
 		spservice.insertorder(vo,vo1,session);
 		return "redirect:/mypage";
 	}
+	
+	@PostMapping("getPdList")
+	@ResponseBody
+	public Map<String,Object> getPdList(@RequestBody String inParam) {
+		JSONParser parser = new JSONParser();
+		Map<String,Object> map=new HashMap<String,Object>();
+		try {
+			JSONObject jsonObject = (JSONObject) parser.parse(inParam);
+			map=spservice.getPdList(jsonObject);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return map;
+	}
+	
 }

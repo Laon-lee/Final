@@ -18,12 +18,12 @@ public class MailController {
 
    
    //회원가입 페이지 이동
-   
+ 
    
    //이메일 인증
-   @PostMapping("/mailCheck")
+   @PostMapping("/check")
    @ResponseBody
-   public String mailCheck(@RequestBody String email) {
+   public String check(@RequestBody String email) {
       System.out.println("이메일 인증 요청이 들어옴!");
       System.out.println("이메일 인증 이메일 : " + email);
       return mailService.joinEmail(email);   

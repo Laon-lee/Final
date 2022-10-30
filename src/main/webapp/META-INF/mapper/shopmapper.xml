@@ -46,6 +46,17 @@
 		INNER JOIN product ON product.product_id = ot.product_id 
 		where id=#{id}
 	</select>
+
+	<select id="getPdList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCT_CATEGORY =#{category} 
+		LIMIT #{stPage},#{pageCount}		
+	</select>
+
+	<select id="getPdListCnt" resultType="Integer" parameterType="java.util.HashMap">
+		SELECT COUNT(*) FROM PRODUCT
+		WHERE PRODUCT_CATEGORY =#{category} 		
+	</select>
 	
 </mapper>
 
