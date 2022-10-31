@@ -9,6 +9,12 @@ import com.goodee.service.SuperviserService;
 public class SuperviserController {
 
 	private SuperviserService superservice;
+	
+	public SuperviserController(SuperviserService superservice) {
+		super();
+		this.superservice = superservice;
+	}
+
 	@GetMapping("viser/main")
 	public String viserMain() {
 		return"superviser/viser-main";
@@ -16,12 +22,12 @@ public class SuperviserController {
 	
 	@GetMapping("viser/proc-add")
 	public String addPage() {
-		return"superviser/proc-add";
+		return"superviser/viser-shop-add";
 	}
 	
 	@GetMapping("viser/add-success")
 	public String success() {
 		
-		return "/superviser/proc-add";
+		return "/superviser/viser-shop-add";
 	}
 }
