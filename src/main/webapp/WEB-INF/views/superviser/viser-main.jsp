@@ -19,7 +19,7 @@
 	display: grid;
 	grid-template-columns: 300px 1fr;
 	grid-template-rows: 120px 100px 1fr 120px;
-	grid-template-areas: 'header header' 'nav nav' 'sec1 sec2'
+	grid-template-areas: 'header header' 'nav nav' 'main main'
 		'footer footer';
 }
 
@@ -39,10 +39,13 @@ nav {
 	background-color: gray;
 }
 
-
+main{
+	display: grid;
+	grid-area : main;
+	grid-template-columns:300px 1fr;
+}
 
 #sec1 {
-	grid-area: sec1;
 	height: 100%;
 	align-items: center;
  	padding-left: 2.4rem; 
@@ -50,10 +53,11 @@ nav {
 	border-right : 2px solid black;
 }
 
-
-
-#sec2 {
-	grid-area: sec2;
+#sec2-form {
+	display: flex;
+    flex-direction: column;
+    padding-top : 4rem;
+    padding-left : 4rem;
 }
 
 footer {
@@ -79,6 +83,16 @@ a:hover {
 .bar-menu { 
     display: none; 
 }
+
+button {
+	width : 10rem;
+}
+
+label {
+	line-height : 3rem;
+/* 	width : 5rem; */
+}
+
 </style>
 
 </head>
@@ -106,7 +120,7 @@ a:hover {
 			</div>
 			</div>
 			<div id="sec2">
-				
+			
 			</div>
 		</main>
 		<footer>

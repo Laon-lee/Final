@@ -10,4 +10,14 @@ public class ViserController {
 	public String addPage() {
 		return"superviser/proc-add";
 	}
+	
+//	@GetMapping("viser/add-success")
+//	public String success() {
+//		if() {
+//			return "/superviser/main";
+//		}else {
+//			return "/superviser/proc-add";
+//			
+//		}
+//	}
 }
