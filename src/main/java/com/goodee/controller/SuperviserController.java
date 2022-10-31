@@ -9,6 +9,10 @@ import com.goodee.service.SuperviserService;
 public class SuperviserController {
 
 	private SuperviserService superservice;
+	@GetMapping("viser/main")
+	public String viserMain() {
+		return"superviser/viser-main";
+	}
 	
 	@GetMapping("viser/proc-add")
 	public String addPage() {
