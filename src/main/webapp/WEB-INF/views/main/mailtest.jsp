@@ -48,16 +48,17 @@ $('#mail-Check-Btn').click(function(e) {
       }); */ // end ajax
       e.preventDefault();
       
-      let simple_data = {email:email};      
-      fetch("${pageContext.request.contextPath}/mailCheck",{
+      
+      fetch("${pageContext.request.contextPath}/check",{
          method : "POST", // PUT, PATCH, DELETE
          headers : {"Content-Type" : "application/json"},
-         body : JSON.stringify(simple_data)
+         body : JSON.stringify({"email":email})
       }).then(response => response.json())
       .then(data => {
-         console.log("data : " +  data);
+         console.log("data : " +  data["authNumber"]);
          checkInput.attr('disabled',false);
-         code =data;
+         
+         code =data["authNumber"];
          alert('인증번호가 전송되었습니다.')
       }).catch(error => {
          console.log("error");
@@ -77,7 +78,8 @@ $('#mail-Check-Btn').click(function(e) {
          $('#userEamil1').attr('readonly',true);
          $('#userEamil2').attr('readonly',true);
          $('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
-            $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+         $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+         window.close();
       }else{
          $resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
          $resultMsg.css('color','red');

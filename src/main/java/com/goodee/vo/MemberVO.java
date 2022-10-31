@@ -12,12 +12,18 @@ public class MemberVO {
 	private String memEmail;
 	private String memPhone;
 	private String memGender;
-	private String memHobby;
+	private int point;
 	private String memOaddress;
 	private String memAddress;
 	private String memDetailaddress;
 	private String agree;
 	
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	public int getId() {
 		return id;
 	}
@@ -66,12 +72,7 @@ public class MemberVO {
 	public void setMemGender(String memGender) {
 		this.memGender = memGender;
 	}
-	public String getMemHobby() {
-		return memHobby;
-	}
-	public void setMemHobby(String memHobby) {
-		this.memHobby = memHobby;
-	}
+	
 	public String getMemOaddress() {
 		return memOaddress;
 	}

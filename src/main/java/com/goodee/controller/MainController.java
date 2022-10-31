@@ -33,9 +33,13 @@ public class MainController {
 	
 	@GetMapping("membership")
 	public String membership(){
+		return "main/mailCheck";
+	}
+	@GetMapping("gomembership")
+	public String gomembership(@RequestParam String email, Model model){
+		model.addAttribute("email", email);
 		return "main/membership";
 	}
-	
 	// 마이페이지
 	@GetMapping("mypage")
 	public String mypage(HttpSession session, Model model) {

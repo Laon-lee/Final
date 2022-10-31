@@ -98,9 +98,15 @@ public class ShopService {
 	public void deletewish(int wishId) {
 		dao.deletewish(wishId);
 	}
-	public void insertorder(OrderVO vo, OrderdetailVO vo1,HttpSession session ) {
+	public void insertorder(OrderVO vo, OrderdetailVO vo1,HttpSession session, int point ) {
 		MemberVO uservo = (MemberVO)session.getAttribute("user");
-		vo.setId(mbdao.getmemberinfo(uservo).getId());
+		int updatepoint = mbdao.getmemberinfo(uservo).getPoint()+point;
+		int id= mbdao.getmemberinfo(uservo).getId();
+		System.out.println(updatepoint);
+		uservo.setId(id);
+		uservo.setPoint(updatepoint);
+		dao.updatePoint(uservo);
+		vo.setId(id);
 		dao.insertOrder(vo);
 		vo1.setOrderId(vo.getOrderId());
 		vo1.setOrderStatus("배송준비중");

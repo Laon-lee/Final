@@ -76,4 +76,17 @@ public class MemberController {
 		mbservice.updateinfo(vo, session);
 		return "redirect:/userinfo";
 	}
+	@GetMapping("mail")
+	public String mail() {
+		return "main/mailtest";
+	}
+	
+	@PostMapping("/check")
+	@ResponseBody
+	public Map<String, String> check(@RequestBody Map<String, String> email) {
+	    System.out.println("이메일 인증 요청이 들어옴!");
+	    System.out.println("이메일 인증 이메일 : " + email.get("email"));
+	    
+	    return mbservice.joinEmail(email);   
+	}
 }

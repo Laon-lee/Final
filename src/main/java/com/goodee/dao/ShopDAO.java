@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderVO;
 import com.goodee.vo.OrderdetailVO;
 import com.goodee.vo.OrderjoinVO;
@@ -42,4 +43,6 @@ public interface ShopDAO {
 	public List<Map<String, Object>> getPdList(Map<String,Object> inParam);
 	
 	public int getPdListCnt(Map<String,Object> inParam);
+	
+	public void updatePoint(MemberVO vo);
 }	

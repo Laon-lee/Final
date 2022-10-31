@@ -137,13 +137,17 @@ section> div{
 	width:449px;
 	outline:none;
 }
+#use-point{
+	height:20px;
+	width:49px;
+}
 #cash{
     top: 20%;
     left: 73%;
     padding: 15px;
     position: fixed;
     width: 315px;
-    height: 315px;
+    height: 415px;
     border: 2px solid gray;
     background-color: white;
 }
@@ -374,12 +378,31 @@ section> div{
 				<div>
 				<h3>결제 정보</h3>
 				<br>
-				<h1>
-				<fmt:formatNumber value="${count * list.productPrice}"	pattern="#,###" />KRW
-				</h1>
+				<p>회원 보유 포인트 : &nbsp;<span id="point">${user.point}</span>p</p>
+				<label for="use-point">사용할 포인트 : </label><input id="use-point" type="text">p
+				<h1><small>총 결제 금액 : </small><span id="total-pay"></span>KRW</h1>
+				<script type="text/javascript">
+					let usepoint = Number(document.getElementById("use-point").value);
+					document.getElementById("total-pay").innerText = (Number(${count * list.productPrice})-usepoint).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+					document.getElementById("use-point").addEventListener("blur",function(){
+						let point = Number(this.value);
+						if(point%100 == 0 ){
+							if(point > Number(${user.point})){
+								alert('보유 포인트이하의 수를 입력해주세요.');
+							}else{
+								usepoint = Number(document.getElementById("use-point").value);
+								document.getElementById("total-pay").innerText = (Number(${count * list.productPrice})-usepoint).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');;
+							}
+						}else{
+							alert('포인트는 100p 단위로 입력해주세요.')
+						}
+					});
+				</script>
+				
+				
 				<br>
 				<hr>
-				<p>적립금 : <fmt:formatNumber value="${count * list.productPrice/100}"	pattern="#,###" />원</p>
+				<p>적립금 : <fmt:formatNumber value="${count * list.productPrice/100}"	pattern="#,###" />p</p>
 				<br>
 				<p class="cash-info"> - 무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에 대해 무이자할부가 적용되지 않습니다. 무이자할부를 원하시는 경우 장바구니에서 무이자할부 상품만 선택하여 주문하여 주시기 바랍니다.</p>
 				<p class="cash-info"> - 최소 결제 가능 금액은 결제금액에서 배송비를 제외한 금액입니다.</p>
@@ -417,13 +440,14 @@ function requestPay() {
     buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {
+    	  	let point = Number(${count * list.productPrice/100}) - Number(document.getElementById("use-point").value);
     	  	let receiverName = document.getElementById("receiverName").value;
     	  	let receiverAddress1 = document.getElementById("receiverAddress1").value;
     	  	let receiverAddress2 = document.getElementById("receiverAddress2").value;
     	  	let receiverAddress3 = document.getElementById("receiverAddress3").value;
     	  	let receiverPhone =document.getElementById("receiverPhone").value;
     	  	let orderMsg = document.getElementById("select-msg").value;
-        	location.href="${pageContext.request.contextPath}/ordersuccess?productId=${list.productId}&productCount=${count}&orderPrice=${count*list.productPrice}&receiverName="+receiverName+"&receiverAddress1="+receiverAddress1+"&receiverAddress2="+receiverAddress2+"&receiverAddress3="+receiverAddress3+"&receiverPhone="+receiverPhone+"&orderMsg="+orderMsg;
+        	location.href="${pageContext.request.contextPath}/ordersuccess?productId=${list.productId}&productCount=${count}&orderPrice=${count*list.productPrice}&receiverName="+receiverName+"&receiverAddress1="+receiverAddress1+"&receiverAddress2="+receiverAddress2+"&receiverAddress3="+receiverAddress3+"&receiverPhone="+receiverPhone+"&orderMsg="+orderMsg+"&point="+point;
       } else {
     	  alert("결제에 실패하였습니다.");
       }

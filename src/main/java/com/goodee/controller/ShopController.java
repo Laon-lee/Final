@@ -94,8 +94,9 @@ public class ShopController {
 		return "redirect:/wish";
 	}
 	@GetMapping("ordersuccess")
-	public String mypage(@ModelAttribute OrderVO vo, @ModelAttribute OrderdetailVO vo1,HttpSession session) {
-		spservice.insertorder(vo,vo1,session);
+	public String mypage(@ModelAttribute OrderVO vo, @ModelAttribute OrderdetailVO vo1,
+							HttpSession session,@RequestParam int point) {
+		spservice.insertorder(vo,vo1,session,point);
 		return "redirect:/mypage";
 	}
 	

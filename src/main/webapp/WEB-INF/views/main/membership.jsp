@@ -198,8 +198,9 @@ button {
 								<div class="eheck_font" id="email_div">
 									<label for="mem_email" style="width : 110px;">이메일 주소</label> <input type="email"
 									 id="mem_email" name="mem_email"
-									placeholder=" E-mail">
+									placeholder=" E-mail" value="${email}" readonly>
 									 <div class="eheck_font" id="email_check"></div>
+
 								</div>
 							</div>
 

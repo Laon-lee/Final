@@ -36,6 +36,9 @@
 		insert into ordertable (product_id, id,receiver_name, receiver_phone, receiver_address1, receiver_address2, receiver_address3, order_msg) 
 					values (#{productId},#{id},#{receiverName},#{receiverPhone},#{receiverAddress1},#{receiverAddress2},#{receiverAddress3},#{orderMsg})
 	</insert>
+	<update id="updatePoint" parameterType="memberVO">
+		update member set point = #{point} where id=#{id}
+	</update>
 	<insert id="insertOrderdetail" parameterType="orderdetailVO">
 		insert into detailorder (order_id,product_id, product_count, order_status,order_price) 
 						values (#{orderId},#{productId},#{productCount},#{orderStatus},#{orderPrice})

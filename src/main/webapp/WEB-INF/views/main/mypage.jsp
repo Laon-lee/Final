@@ -44,7 +44,7 @@
         body {
             height: 100vh;
         }
-		img{
+		#sec2-div3-table1 img{
 			width:100px;
 			height:100px;
 		}
