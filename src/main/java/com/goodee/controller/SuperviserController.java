@@ -38,7 +38,7 @@ public class SuperviserController {
 		return"superviser/viser-main";
 	}
 	
-	@GetMapping("viser/proc-add")
+	@GetMapping("viser/shop-add")
 	public String addPage() {
 		return"superviser/viser-shop-add";
 	}

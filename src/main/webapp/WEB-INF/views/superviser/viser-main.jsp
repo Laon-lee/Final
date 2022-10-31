@@ -109,9 +109,9 @@ label {
 			<div id="sec1">
 				<div id="menu-bar">
 				<ul><h2>쇼핑몰</h2>
-					<li><a href="${pageContext.request.contextPath}/viser/proc-add">상품 등록</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
-					<li><a href="${pageContext.request.contextPath}/"></a>상품 삭제</li>
+					<li><a href="${pageContext.request.contextPath}/viser/shop-delete"></a>상품 삭제</li>
 				</ul>
 				<ul><h2>호텔</h2>
 					<li>예약 확인</li>
