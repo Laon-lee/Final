@@ -224,7 +224,7 @@ img {
 				<!-- <div class="coutbox" id="ioutbox"> -->
 				<div id="isbx" class="csbx">
 					<p>지역구분</p>
-					<form action="" id="bxform">
+					<form action="#" id="bxform">
 						<label for="1"><input type="checkbox" name="cate" id="1" class="allseo" value="서울">서울전체</label> 
 						<label for="2"><input type="checkbox" name="cate" id="2" class="seo" value="금천구">금천구</label>
 						<label for="3"><input type="checkbox" name="cate" id="3" class="seo" value="은평구">은평구</label> 
@@ -240,23 +240,53 @@ img {
 						<label for="13"><input type="checkbox" name="cate" id="13" class="gyeong" value="김포시">김포시</label> 
 						<label for="14"><input type="checkbox" name="cate" id="14" class="gyeong" value="용인시">용인시</label>
 						<label for="15"><input type="checkbox" name="cate" id="15" class="gyeong" value="시흥시">시흥시</label>
-						<!-- <button id="sbtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						<button type="button"  id="sbtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 							fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
 							id="svg">
                             <path
 								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg></button> -->
+                        </svg></button>
 					</form>
 				</div>
 				<!-- </div> -->
-				
+			
 				<script>
 					
 					window.addEventListener('DOMContentLoaded', function(){
 						//카테고리 배열 설저
-						var cateArr = [];
-						var cateArr2 = cateArr.slice(1);
-						//datepicker 설정
+						let cateArr = [];
+						
+						let arr = [];
+						let arr2 = [];
+				
+		                
+						
+	                     
+						
+						
+						document.getElementById("sbtn").addEventListener("click", function(){
+							
+							//name cate의 값을 가져옴
+							
+							
+							 //각 값을 배열에 넣어줌
+							
+							//all체크 누르면 전체지역 빼고 들어감
+							
+						const jchecked = document.querySelectorAll('input[name="cate"]:checked');
+						jchecked.forEach((item)=>{
+							let jcate = item.value;
+							cateArr.push(jcate);
+						});
+						
+						if(document.getElementById("1").checked || document.getElementById("8").checked || document.getElementById("11").checked) {
+							cateArr.slice(1);
+						}
+							console.log("이겅가ㅇ"+cateArr);
+							
+							arr = cateArr;
+
+						});
 						
 						let now = new Date();
 						let tom = new Date();
@@ -304,50 +334,47 @@ img {
 							 var enddate = picker.endDate.format('YYYY-MM-DD');
 							 
 							 
-							
+							/* 
 							 $('input[name="cate"]:checked').each(function(){
 								 var cate=$(this).val();
 								 cateArr.push(cate);
-							 });
+							 }); */
 							 
 							 console.log("in"+cateArr);
-							 console.log("in2"+cateArr2);
+							
 							 
-							 if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
-	                     		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
-	                         } else {
-	                           	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);        
-	                         }
+							 $(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);
 							 
 						 });
 						 
+						
 						 document.getElementById("asearchbtn").addEventListener("click",function(){
-							 var jcateArr = [];
-							 var jcateArr2 = jcateArr.slice(1);
+							 var jjcateArr = [];
+							 var jjcateArr2 = jjcateArr.slice(1);
 							 
-							 const jchecked = document.querySelectorAll('input[name="cate"]:checked');
-							 jchecked.forEach((item)=>{
-								 var jcate = item.value;
-							 	jcateArr.push(jcate);
+							 const jjchecked = document.querySelectorAll('input[name="cate"]:checked');
+							 jjchecked.forEach((item)=>{
+								 var jjcate = item.value;
+							 	jjcateArr.push(jjcate);
 							 });
 							 
-							 console.log(jcateArr);
+							 console.log(jjcateArr);
 							 
 							 var today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
 		                     var tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
 		                     //오늘 날짜와 내일 날짜 출력
 		                     if(document.getElementById("1").checked || document.getElementById("8").checked || document.getElementById("11").checked) {
-		                			location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr2;   	
+		                			location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jjcateArr2;   	
 		                     } else {
-		                    	 location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr;
+		                    	 location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jjcateArr;
 		                     }
 		                     //daterangepicker를 사용하지 않았으면 오늘 날짜와 내일 날짜가 들어감
 		                     
 		          
 						 });
-						 
-						 
-						 
+						console.log("제발 이겅가요"+cateArr);
+						
+						console.log("이거"+arr);
 					});
 					
 					
@@ -411,55 +438,71 @@ img {
                  });
 				
 				</script>
-				<script>
-                    var p = document.getElementById("selectp");
-                    var svg = document.getElementById("svg");
-                    var iob = document.getElementById("ioutbox");
+				<!--  --><script>
+                    
+				 var p = document.getElementById("selectp");
+                 var svg = document.getElementById("svg");
+                 var iob = document.getElementById("ioutbox");
 					var isbx = document.getElementById("isbx");
-                    var date = document.getElementById("datepicker1");
+                 var date = document.getElementById("datepicker1");
 					var div = document.getElementById("datepicker1").firstChild;
+                 
+                 p.addEventListener("click", function () {
+                 	isbx.classList.toggle("clicked");    
+                 });
+                 
+                /* svg.addEventListener("click", function () {
+                 	isbx.classList.toggle("clicked");
+                 	
+                 });*/
+                 
+                 date.addEventListener("click", function () {
+                 	
+                 	if(isbx.className="clicked"){
+                 		isbx.classList.toggle("clicked");
+                 	}
+                 });
                     
-                    p.addEventListener("click", function () {
-                    	isbx.classList.toggle("clicked");    
-                    });
-                    
-                    svg.addEventListener("click", function () {
-                    	isbx.classList.toggle("clicked");
-                    	
-                    });
-                    
-                    date.addEventListener("click", function () {
-                    	
-                    	if(isbx.className="clicked"){
-                    		isbx.classList.toggle("clicked");
-                    	}
-                    });
-                    
-
+                 document.getElementById("sbtn").addEventListener("click", function(){
+                	 isbx.classList.toggle("clicked");
+                	 
+                 });
                 </script>
 				<div id="hotel_img">
 					<div id="img1">
-						<a href="${pageContext.request.contextPath}/godetail"><img
+						<a href="#" class="link"><img
 							src="image/hotel/dog1.jpg" alt="" class="aimg"></a>
 					</div>
 					<div id="img2">
-						<a href="${pageContext.request.contextPath}/godetail"><img
+						<a href="#" class="link"><img
 							src="image/hotel/dog2.jpg" alt="" class="aimg"></a>
 					</div>
 					<div id="img3">
-						<a href="${pageContext.request.contextPath}/godetail"><img
+						<a href="#" class="link"><img
 							src="image/hotel/dog4.jpg" alt="" class="aimg"></a>
 					</div>
 					<div id="img4">
-						<a href="${pageContext.request.contextPath}/godetail"><img
+						<a href="#" class="link"><img
 							src="image/hotel/dog5.jpg" alt="" class="aimg"></a>
 					</div>
 					<div id="img5">
-						<a href="${pageContext.request.contextPath}/godetail"><img
+						<a href="#" class="link"><img
 							src="image/hotel/dog3.jpg" alt="" class="aimg"></a>
 					</div>
 				</div>
-
+				<script type="text/javascript">
+					const min = 1;
+					const max = 45;
+					
+					/*document.getElementsByClassName("link").addEventListener("click",function(){
+						location.href = "${pageContext.request.contextPath}/maindetail/"+random;
+					})*/
+					$(".link").click(function(){
+						let random = Math.floor(Math.random()*(max-min)+min);
+						console.log(random);
+						location.href = "${pageContext.request.contextPath}/maindetail/"+random;
+					})
+				</script>
 			</section>
 		</main>
 

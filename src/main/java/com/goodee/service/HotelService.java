@@ -22,13 +22,23 @@ public class HotelService {
 			System.out.println(cate);
 			System.out.println("여기 서비스");
 			model.addAttribute("hotel", dao.selectHotelList(cate));
+			
 			model.addAttribute("room", dao.selectRoomList());
 			
 			
 		}
 		
 		public void detailHotelList(Model model, String hotelname, String roomname) {
-			model.addAttribute("hotel", dao.detailHotel(hotelname));
-			model.addAttribute("room", dao.detailRoom(hotelname, roomname));
+			model.addAttribute("hotel", dao.detailHotel(hotelname).get(0));
+			model.addAttribute("room", dao.detailRoom(hotelname, roomname).get(0));
 		}
+		
+		public void ranHotelList(Model model, int ran) {
+			model.addAttribute("hotel",dao.ranHotel(ran));
+			
+			String hotelname = dao.ranHotel(ran).getHotelName();
+			
+			model.addAttribute("room", dao.ranRoom(hotelname).get(0));
+		};
+		
 }

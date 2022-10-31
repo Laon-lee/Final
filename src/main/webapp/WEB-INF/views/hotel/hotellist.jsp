@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -136,12 +138,15 @@
             margin: 20px auto;
             display: flex;
             flex-direction: row;
-            height: 25vh;
+          
 
         }
-
+		
+		.list {
+		height:25vh;}
         .option_list {
             display: none;
+            
         }
 
         .inner1 {
@@ -207,9 +212,9 @@
             text-align: center;
         }
 
-        .option_list {
+       /*  .option_list {
             display: none;
-        }
+        } */
 
 	 .date {
             width: 90%;
@@ -280,7 +285,7 @@
         .clicked {
         	display : block !important;
         	display : flex !important;
-        	
+
         }
         #isbx {
             display: flex;
@@ -360,9 +365,9 @@
 						tom.setDate(tom.getDate()+1);
 						
 						$('input[name="dates"]').daterangepicker({
-							 "startDate": now,
+							 "startDate": "${startdate}",
 	                            //시작날짜
-	                         "endDate": tom,
+	                         "endDate": "${enddate}",
 	                            //종료날짜
 	                         "minDate": now,
 	                            //최소지정날짜
@@ -541,65 +546,97 @@
                     <div id="inner2" class="inner2 inner">
                         <p>${item.hotelOpt }</p>
                         <h2>${item.hotelName }</h2>
-                        <p>자세히보기</p>
+                        <p>${item.hotelAddr}</p>
                         <p>2021.12.11~2023.08.31</p>
-                        <h1>${item.hotelId}</h1>
+                        <h1 class="${item.hotelId}" id="h1">${item.hotelId}</h1>
                         <h1>가격</h1>
+                        <input type="hidden" name="hidden"  value="${item.hotelId }"/>
                     </div>
-                    <div class="innerbtn" id="${item.hotelId }">
-                        <button>RESERVE</button>
+                    <div class="innerbtn" >
+                        <button class="realbtn" >RESERVE</button>
                     </div>
 
                 </div>
                
                
-                	<div class="option_list" id="option_list1">
+                	<div class="option_list" id="${item.hotelId}">
+                	
                     <table>
                      <c:forEach var="room" items="${room}">
-                 <c:if test="${item.hotelId == room.hotelName}">
+                 <c:if test="${item.hotelId == room.hotelId}">
                         <tr>
                             <td class="td1">
                                 <div class="intr">
                                     <div class="intr_room">
                                         <p>${room.roomName }</p>
-                                        <P>Size : 20.7</P>
+                                        <P>${room.roomType }견</P>
                                     </div>
                                     <div class="intr_a">
                                         <a href="#" class="a1">객실 상세보기</a>
-                                        <a href="#" class="a2">비교함 담기</a>
-                                        <p>가격</p>
+                                       
+                                        <p><fmt:formatNumber type="currency" value="${room.roomPrice}"/></p>
                                     </div>
                                     <!-- <div id="intr_price">
                                         36,000 KRW~
                                     </div> -->
                                 </div>
                             </td>
-                            <td class="td2"><a href="${pageContext.request.contextPath}/godetail/${item.hotelName}/${room.roomNamd}">예약하기</a></td>
+                            <td class="td2"><a href="${pageContext.request.contextPath}/godetail/${item.hotelName}/${room.roomName}/${startdate}/${enddate}">예약하기</a></td>
                         </tr>
                         	</c:if>
-                        	 <script>
-            $(document).ready(function () {
-
-                $("#innerbtn1").click(function () {
-
-                    $("#option_list1").slideToggle();
-
-                });
-                $("#innerbtn2").click(function () {
-
-                    $("#option_list2").slideToggle();
-
-                });
-
-            });
-        </script>
+                        	 
                 </c:forEach>
                    	</table>
                    	</div>
-                   
+                  
                 
                 </c:forEach>
-                
+                 <script>
+           
+           $(function(){
+        	   
+        	   let hidden = $('input[name="hidden"]').val();
+        	   let listid =$(".option_list").attr("id");
+        	   let btnid =$(".realbtn").attr("id");
+        	   let h = $("#h1").attr("class");
+        	   
+        	   let arr = [];
+        	   
+        	   <c:forEach var="item" items="${hotel}">
+        	   	arr.push("${item.hotelId}");
+        	   </c:forEach>
+        	   
+        	   console.log(arr);
+        	   
+        	   for(let i = 0; i<arr.length; i++){
+        		   if(arr[i]==listid){
+        			   $(".realbtn").click(function(){
+        			   	$('#'+arr[i]).slideToggle();
+        			   })
+        		   }
+        	   }
+        	   
+        	  
+        	  
+        	  /*  if(hidden==btnid){
+        	   $(".realbtn").click(function(){
+        		   console.log(h);
+           			console.log(listid);
+           			console.log(hidden);
+           		console.log(hotel);
+           		console.log("되냐요?");
+           		
+           			$('.option_list').slideToggle();
+           		
+        	  
+        	   }; */
+        	   
+           })
+        
+            	
+            	
+
+        </script>
                
             </section>
            

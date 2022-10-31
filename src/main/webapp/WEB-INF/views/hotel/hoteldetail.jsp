@@ -1,6 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -605,8 +607,8 @@
                 <div class="detail">
                     <div class="content">
                         <div class="c_title">
-                            <h1>${room.hotelName}</h1>
-                            <P>DELUXE / 2DOGS / STANDARD VIEW</P>
+                            <h1>${hotel.hotelName}</h1>
+                            <P>${room.roomType}견 전용</P>
                         </div>
                         <div class="c_option">
                             <p class="c_p">option</p>
@@ -656,15 +658,17 @@
                     <div class="price">
                         <div class="p_box">
                             <p>객실1</p>
-                            <h1>39,600KRW</h1>
+                            <h1><fmt:formatNumber type="currency" value="${room.roomPrice}"/></h1>
                             <p>2022.10.29</p>
-                            <p>${room.hotelPrice }</p>
+                            
                             <p>세금</p>
-                            <p>3,600</p>
+                            <p><fmt:parseNumber var="price" integerOnly="true" value="${room.roomPrice * 0.1}"/>
+                            <fmt:formatNumber type="currency" value="${price}"/>
+                            </p>
                         </div>
                         <div class="total">
                             <p>+세금(10%)</p>
-                            <h1>총 예약금액 39,600KRW</h1>
+                            <h1>총 예약금액 <fmt:formatNumber value="${room.roomPrice + price }" pattern="#,#00" />KRW</h1>
                             <button id="reservebtn">회원예약</button>
                         </div>
                         

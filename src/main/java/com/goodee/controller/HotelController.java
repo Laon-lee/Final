@@ -58,11 +58,13 @@ public class HotelController {
 			
 		}*/
 		
-		@GetMapping("godetail/{hotelName}/{roomName}")
-		public String godetail(@PathVariable("hotelName") String hotelname, @PathVariable("roomName") String roomname, Model model) {
+		@GetMapping("godetail/{hotelName}/{roomName}/{startDate}/{endDate}")
+		public String godetail(@PathVariable("hotelName") String hotelname, @PathVariable("roomName") String roomname, @PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, Model model) {
 			System.out.println(hotelname);
+			model.addAttribute("startdate", startdate);
+			model.addAttribute("enddate", enddate);
 			service.detailHotelList(model, hotelname, roomname);
-			
+			System.out.println("여까지 오니"+startdate+":"+enddate);
 			System.out.println("컨트롤러"+hotelname);
 			return "hotel/hoteldetail";
 		}
@@ -70,5 +72,13 @@ public class HotelController {
 		@GetMapping("goreserve")
 		public String goreserve() {
 			return "hotel/hotelreserve";
+		}
+		
+		@GetMapping("maindetail/{random}")
+		public String maindetail(@PathVariable("random") int ran, Model model) {
+			
+			System.out.println("넘어왔느뇨"+ran);
+			service.ranHotelList(model, ran);
+			return "hotel/hoteldetail";
 		}
 }
