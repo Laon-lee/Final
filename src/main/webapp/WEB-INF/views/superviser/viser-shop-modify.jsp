@@ -213,7 +213,8 @@ label {
                             src="${pageContext.request.contextPath}/image/shop/Grooming.png"
                             alt=""><br>Grooming</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/modify/toy"><img
-                            src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
+                            src="${pageContext.request.contextPath}/image/shop/Toy.png" 
+                            alt=""><br>Toy</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/modify/Food"><img
                             src="${pageContext.request.contextPath}/image/shop/Food.png"
                             alt=""><br>Food</a></li>

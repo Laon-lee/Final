@@ -120,7 +120,8 @@ label {
 			</div>
 			</div>
 			<div id="sec2">
-			{category
+				<h2>이것은 관리자 페이지 임시 메인 페이지입니다.</h2>
+				<h3>우리는 할 수 있다 쉬부럴~~</h3>
 			</div>
 		</main>
 		<footer>

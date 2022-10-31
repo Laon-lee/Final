@@ -38,6 +38,7 @@ public class SuperviserController {
 		return"superviser/viser-main";
 	}
 	
+	// 상품 추가 
 	@GetMapping("viser/shop-add")
 	public String addPage() {
 		return"superviser/viser-shop-add";
@@ -45,13 +46,11 @@ public class SuperviserController {
 	
 	@GetMapping("viser/add-success")
 	public String success(ShopVO vo) {
-		
-		System.out.println(vo.getProductImage());
-		System.out.println(vo.getProductContent());
 		superservice.viseradd(vo);
-		System.out.println("컨트롤러");
-		return "/superviser/viser-shop-add";
+		return "/superviser/viser-main";
 	}
+	
+	// 상품 수정
 	@GetMapping("viser/modify/{category}")
 	public String modCategory(@PathVariable("category")String category,Model model) {
 		spservice.getCateList(category, model);
@@ -73,4 +72,14 @@ public class SuperviserController {
 		
 		return map;
 	}
+	
+	//상품 삭제
+	@GetMapping("/viser/shop-delete")
+	public String viserDelete() {
+		return "superviser/viser-main";
+	}
+	
+	
+	
+	
 }
