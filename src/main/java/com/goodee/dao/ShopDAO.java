@@ -20,6 +20,9 @@ public interface ShopDAO {
 	
 	public List<ShopVO> getCateList(@Param("productCategory") String category);
 	
+	public List<ShopVO> getCateList2(@Param("productCategory") String category);
+	
+	
 	public ShopVO getListById(@Param("productId") String id);
 	
 	public List<ProductboardVO> getQna(@Param("productId") String id);

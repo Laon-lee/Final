@@ -9,6 +9,13 @@
 	<select id="getCateList" resultType="ShopVO" parameterType="String">
 		select * from product where product_category=#{productCategory} limit 0, 12;
 	</select>
+	
+	<!-- 장인우 카테고리 임시 생성 -->
+	<select id="getCateList2" resultType="ShopVO" parameterType="String">
+		select * from product where product_category=#{productCategory} limit 0, 12;
+	</select>
+	
+	
 	<select id="getListById" resultType="ShopVO" parameterType="String">
 		select * from product where product_id=#{productId};
 	</select>

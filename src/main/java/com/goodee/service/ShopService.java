@@ -42,6 +42,13 @@ public class ShopService {
 		model.addAttribute("category", category);
 	}
 	
+	//임싯 생성
+	public void getCateList2(String category, Model model) {
+		model.addAttribute("category", category);
+	}
+	
+	
+	
 	public void getListById(String id, Model model) {
 		
 		model.addAttribute("qna", dao.getQna(id));

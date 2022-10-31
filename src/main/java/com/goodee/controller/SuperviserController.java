@@ -41,7 +41,7 @@ public class SuperviserController {
 	// 상품 추가 
 	@GetMapping("viser/shop-add")
 	public String addPage() {
-		return"superviser/viser-shop-add";
+		return"/superviser/viser-shop-add";
 	}
 	
 	@GetMapping("viser/add-success")
@@ -74,9 +74,10 @@ public class SuperviserController {
 	}
 	
 	//상품 삭제
-	@GetMapping("/viser/shop-delete")
-	public String viserDelete() {
-		return "superviser/viser-main";
+	@GetMapping("viser/delete/{category}")
+	public String viserDelete(@PathVariable("category")String category,Model model) {
+		spservice.getCateList2(category, model);
+		return "/superviser/viser-shop-delete";
 	}
 	
 	

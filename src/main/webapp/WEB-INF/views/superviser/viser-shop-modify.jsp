@@ -221,11 +221,11 @@ label {
                 </div>
 
                 <div id="productList" class="flex-container">
-                
+
                 </div>
 
                 <div id="pageBtn">
-
+					
                 </div>
 
                 <input type="hidden" id="category" value="${category}"/>

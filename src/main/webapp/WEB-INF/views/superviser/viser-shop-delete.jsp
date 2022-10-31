@@ -80,7 +80,7 @@ a {
 }
 
 a:hover {
-	color: white;
+	color: red;
 }
 .bar-menu { 
     display: none; 
@@ -190,46 +190,46 @@ label {
 			</div>
 			<div id="sec2">
 				<div class="category-menu">
-                    <li class="li"><a href="${pageContext.request.contextPath}/viser/modify/home"><img
+                    <li class="li"><a href="${pageContext.request.contextPath}/viser/delete/home"><img
                             src="${pageContext.request.contextPath}/image/shop/Home.png"
                             alt=""><br>Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/viser/modify/Walk"><img
+                    <li><a href="${pageContext.request.contextPath}/viser/delete/Walk"><img
                             src="${pageContext.request.contextPath}/image/shop/Walk.png"
                             alt=""><br>Walk</a></li>
                     <li><a
-                        href="${pageContext.request.contextPath}/viser/modify/Carrier"><img
+                        href="${pageContext.request.contextPath}/viser/delete/Carrier"><img
                             src="${pageContext.request.contextPath}/image/shop/Carrier.png"
                             alt=""><br>Carrier</a></li>
                     <li><a
-                        href="${pageContext.request.contextPath}/viser/modify/Clothes"><img
+                        href="${pageContext.request.contextPath}/viser/delete/Clothes"><img
                             src="${pageContext.request.contextPath}/image/shop/Clothes.png"
                             alt=""><br>Clothes</a></li>
                     <li><a
-                        href="${pageContext.request.contextPath}/viser/modify/Dining"><img
+                        href="${pageContext.request.contextPath}/viser/delete/Dining"><img
                             src="${pageContext.request.contextPath}/image/shop/Dining.png"
                             alt=""><br>Dining</a></li>
                     <li><a
-                        href="${pageContext.request.contextPath}/viser/modify/Grooming"><img
+                        href="${pageContext.request.contextPath}/viser/delete/Grooming"><img
                             src="${pageContext.request.contextPath}/image/shop/Grooming.png"
                             alt=""><br>Grooming</a></li>
-                    <li><a href="${pageContext.request.contextPath}/viser/modify/toy"><img
+                    <li><a href="${pageContext.request.contextPath}/viser/delete/toy"><img
                             src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
-                    <li><a href="${pageContext.request.contextPath}/viser/modify/Food"><img
+                    <li><a href="${pageContext.request.contextPath}/viser/delete/Food"><img
                             src="${pageContext.request.contextPath}/image/shop/Food.png"
                             alt=""><br>Food</a></li>
                 </div>
 
+				<form action="${pageContext.request.contextPath}/viser/go-delete">
                 <div id="productList" class="flex-container">
-                
+				
                 </div>
-
+</form>
                 <div id="pageBtn">
 
                 </div>
 
                 <input type="hidden" id="category" value="${category}"/>
-
-           
+			         
             
 
 			</div>
