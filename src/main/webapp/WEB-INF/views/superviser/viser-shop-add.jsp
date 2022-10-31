@@ -58,6 +58,7 @@ main{
     flex-direction: column;
     padding-top : 4rem;
     padding-left : 4rem;
+
 }
 
 footer {
@@ -86,13 +87,30 @@ a:hover {
 
 button {
 	width : 10rem;
+	margin-top : 2rem;
+	margin-left : 5rem;
 }
 
 label {
-	line-height : 3rem;
-/* 	width : 5rem; */
+	line-height : 1.5rem;
 }
 
+#proc_category {
+width :11rem;
+ height : 30px;
+}
+
+p {
+	display : inline-block;
+	width : 10rem;
+}
+
+
+input {
+	height : 20px;
+	border-radius : 5px;
+	
+}
 </style>
 
 </head>
@@ -120,13 +138,13 @@ label {
 			</div>
 			</div>
 			<div id="sec2">
-			<form id="sec2-form" action="${pageContext.request.contextPath}">
-				<label for="proc_name">상품 이름 : <input type="text" name="proc_name" id="proc_name"/></label>
-				<label for="proc_shop">업체 이름 : <input type="text" name="proc_shop" id="proc_shop"/></label>
-				<label for="proc_image">상품 썸네일 : <input type="text" name="proc_image" id="proc_image"/></label>
-				<label for="proc_content">상품 이미지 : <input type="text" name="proc_content" id="proc_content"/></label>
-				<label for="proc_category">
-					<select id="proc_category" name="proc_category">
+			<form id="sec2-form" action="${pageContext.request.contextPath}/viser/add-success">
+				<label for="proc_name"><p>상품 이름</p><input type="text" name="productName" id="proc_name"/></label>
+				<label for="proc_shop"><p>업체 이름</p><input type="text" name="productShop" id="proc_shop"/></label>
+				<label for="proc_image"><p>상품 썸네일</p><input type="text" name="productImage" id="proc_image"/></label>
+				<label for="proc_content"><p>상품 이미지</p><input type="text" name="productContent" id="proc_content"/></label>
+				<label for="proc_category"><p style="width: 9.6rem;">카테고리</p>
+					<select id="proc_category" name="productCategory">
 						<option value="choice">카테고리를 선택하세요</option>
 						<option value="line">-----------------</option>
 						<option value="home">Home</option>
@@ -139,7 +157,7 @@ label {
 						<option value="Food">Food</option>
 					</select>
 				</label>
-				<label for="proc_price">상품 가격<input type="text" name="proc_price" name="proc_price"></label>
+				<label for="proc_price"><p>상품 가격</p><input type="text" name="productPrice"></label>
 				
 					<button>상품 등록</button>
 				

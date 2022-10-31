@@ -109,9 +109,9 @@ label {
 			<div id="sec1">
 				<div id="menu-bar">
 				<ul><h2>쇼핑몰</h2>
-					<li><a href="${pageContext.request.contextPath}/viser/proc-add">상품 등록</a></li>
-					<li>상품 수정</li>
-					<li>상품 삭제</li>
+					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/shop-delete"></a>상품 삭제</li>
 				</ul>
 				<ul><h2>호텔</h2>
 					<li>예약 확인</li>
@@ -120,7 +120,8 @@ label {
 			</div>
 			</div>
 			<div id="sec2">
-			
+				<h2>이것은 관리자 페이지 임시 메인 페이지입니다.</h2>
+				<h3>우리는 할 수 있다 쉬부럴~~</h3>
 			</div>
 		</main>
 		<footer>

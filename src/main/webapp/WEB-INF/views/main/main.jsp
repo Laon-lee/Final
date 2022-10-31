@@ -186,6 +186,7 @@
       <section id="sec2">
         <div id="sec2-div1">
           <h1>About Us</h1>
+          <a href="${pageContext.request.contextPath}/viser/main">관리자 페이지 테스트</a>
           <p>품격있는 애견 사이트</p>
           <p>최고의 서비스</p>
           <p>댕누리만이 사람과 반려견을 더 아름답게 하는</p>
