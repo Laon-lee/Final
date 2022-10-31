@@ -120,13 +120,13 @@ label {
 			</div>
 			</div>
 			<div id="sec2">
-			<form id="sec2-form" action="${pageContext.request.contextPath}">
-				<label for="proc_name">상품 이름 : <input type="text" name="proc_name" id="proc_name"/></label>
-				<label for="proc_shop">업체 이름 : <input type="text" name="proc_shop" id="proc_shop"/></label>
-				<label for="proc_image">상품 썸네일 : <input type="text" name="proc_image" id="proc_image"/></label>
-				<label for="proc_content">상품 이미지 : <input type="text" name="proc_content" id="proc_content"/></label>
+			<form id="sec2-form" action="${pageContext.request.contextPath}/viser/add-success">
+				<label for="proc_name">상품 이름 : <input type="text" name="productName" id="proc_name"/></label>
+				<label for="proc_shop">업체 이름 : <input type="text" name="productShop" id="proc_shop"/></label>
+				<label for="proc_image">상품 썸네일 : <input type="text" name="productImage" id="proc_image"/></label>
+				<label for="proc_content">상품 이미지 : <input type="text" name="productContent" id="proc_content"/></label>
 				<label for="proc_category">
-					<select id="proc_category" name="proc_category">
+					<select id="proc_category" name="productCategory">
 						<option value="choice">카테고리를 선택하세요</option>
 						<option value="line">-----------------</option>
 						<option value="home">Home</option>
@@ -139,7 +139,7 @@ label {
 						<option value="Food">Food</option>
 					</select>
 				</label>
-				<label for="proc_price">상품 가격<input type="text" name="proc_price" name="proc_price"></label>
+				<label for="proc_price">상품 가격<input type="text" name="productPrice"></label>
 				
 					<button>상품 등록</button>
 				

@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.SuperviserDAO">
 	
-	<insert id="add_proc">
-	insert into product (product_name, product_shop, product_imgage, product_content, product_category, product_price ) 
-				values (#{procName},#{procShop},#{procImage},#{procContent},#{proc_category},#{procPrice});
+	<insert id="addproc" parameterType="shopVO">
+	insert into product (product_name, product_shop, product_image, product_content, product_category, product_price ) 
+				values (#{productName},#{productShop},#{productImage},#{productContent},#{productCategory},#{productPrice});
 	</insert>
 	
 </mapper>
