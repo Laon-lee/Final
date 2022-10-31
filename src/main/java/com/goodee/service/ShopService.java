@@ -132,4 +132,15 @@ public class ShopService {
 		return dataMap;
 	}
 	
+	public void orders(String[] checks, Model model, HttpSession session) {
+		MemberVO vo1 = (MemberVO)session.getAttribute("user");
+		MemberVO vo2 = mbdao.getmemberinfo(vo1);
+		
+		model.addAttribute("separateVO",mbdao.separate(vo2)); 
+		model.addAttribute("user", vo2);
+		model.addAttribute("list", dao.ordersInfo(checks));
+	}
+	public void deleteWishAll(String[] checks,Model model) {
+		dao.deleteWishAll(checks);
+	}
 }

@@ -94,6 +94,8 @@ section> div{
 }
 .tab-div{
 	display:flex;
+	flex-direction:column;
+	margin:10px 0;
 }
 #pro-info{
 	display: flex;
@@ -186,23 +188,25 @@ section> div{
 					
 				</div>
 				<div id="sec1-div2" class="tab-div">
+					<c:forEach var="list" items="${list}">
 					<div id="img-div">
-					<div>
-						<img src="${list.productImage}">
+						<div>
+							<img src="${list.productImage}">
+						</div>
+						<div id="pro-info">
+							<h3>${list.productName}</h3>
+							<p>
+								옵션:
+								<c:if test="${list.option != '사이즈선택'}"> ${list.option}</c:if>
+								<c:if test="${list.option == '사이즈선택'}"> 없음 </c:if>
+							</p>
+							<p>수량: <span class="count">${list.count}</span>개</p>
+							<p>
+								금액:	<span class="pay"><fmt:formatNumber value="${list.count * list.productPrice}"	pattern="#,###" /></span>원
+							</p>
+						</div>
 					</div>
-					<div id="pro-info">
-						<h3>${list.productName}</h3>
-						<p>
-							옵션:
-							<c:if test="${option != '사이즈선택'}"> ${option}</c:if>
-							<c:if test="${option == '사이즈선택'}"> 없음 </c:if>
-						</p>
-						<p>수량: ${count}개</p>
-						<p>
-							금액:	<fmt:formatNumber value="${count * list.productPrice}"	pattern="#,###" />원
-						</p>
-					</div>
-					</div>
+					</c:forEach>
 				</div>
 			</section>
 			<section id="sec2">
@@ -381,28 +385,9 @@ section> div{
 				<p>회원 보유 포인트 : &nbsp;<span id="point">${user.point}</span>p</p>
 				<label for="use-point">사용할 포인트 : </label><input id="use-point" type="text">p
 				<h1><small>총 결제 금액 : </small><span id="total-pay"></span>KRW</h1>
-				<script type="text/javascript">
-					let usepoint = Number(document.getElementById("use-point").value);
-					document.getElementById("total-pay").innerText = (Number(${count * list.productPrice})-usepoint).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-					document.getElementById("use-point").addEventListener("blur",function(){
-						let point = Number(this.value);
-						if(point%100 == 0 ){
-							if(point > Number(${user.point})){
-								alert('보유 포인트이하의 수를 입력해주세요.');
-							}else{
-								usepoint = Number(document.getElementById("use-point").value);
-								document.getElementById("total-pay").innerText = (Number(${count * list.productPrice})-usepoint).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');;
-							}
-						}else{
-							alert('포인트는 100p 단위로 입력해주세요.')
-						}
-					});
-				</script>
-				
-				
 				<br>
 				<hr>
-				<p>적립금 : <fmt:formatNumber value="${count * list.productPrice/100}"	pattern="#,###" />p</p>
+				<p>적립금 : <span id="getpoint"></span></p>
 				<br>
 				<p class="cash-info"> - 무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을 동시에 구매할 경우 전체 주문 상품 금액에 대해 무이자할부가 적용되지 않습니다. 무이자할부를 원하시는 경우 장바구니에서 무이자할부 상품만 선택하여 주문하여 주시기 바랍니다.</p>
 				<p class="cash-info"> - 최소 결제 가능 금액은 결제금액에서 배송비를 제외한 금액입니다.</p>
@@ -413,6 +398,36 @@ section> div{
 				<button id="cash-btn"  type="button" onclick="requestPay()"> 결제하기</button>
 				
 				</div>
+				<script type="text/javascript">
+					function stringNumberToInt(stringNumber){
+				    	return parseInt(stringNumber.replace(/,/g , ''));
+					}	
+					let usepoint = Number(document.getElementById("use-point").value);
+					let pay = document.getElementsByClassName("pay");
+					let total = 0;
+					for(let i = 0 ; i<pay.length;i++){
+						
+ 						total += stringNumberToInt(pay[i].innerText)
+					}
+					document.getElementById("getpoint").innerText=total/100+'p';
+					document.getElementById("total-pay").innerText = (total-usepoint).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+					document.getElementById("use-point").addEventListener("blur",function(){
+						let point = Number(this.value);
+						if(point%100 == 0 ){
+							if(point > Number(${user.point})){
+								alert('보유 포인트이하의 수를 입력해주세요.');
+							}else{
+								usepoint = Number(document.getElementById("use-point").value);
+								document.getElementById("total-pay").innerText = (total-usepoint).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+							}
+						}else{
+							alert('포인트는 100p 단위로 입력해주세요.')
+						}
+					});
+				</script>
+				
+				
+				
 			</div>
 			
 		</form:form>
@@ -431,7 +446,7 @@ function requestPay() {
     pg: "inicis",
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '${list.productName}',
+    name : '',
     amount : '100',
     buyer_email : '${user.memEmail}',
     buyer_name : '${user.memName}',
@@ -440,14 +455,31 @@ function requestPay() {
     buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {
-    	  	let point = Number(${count * list.productPrice/100}) - Number(document.getElementById("use-point").value);
+    	  	let pay = document.getElementsByClassName("pay");
+    	  	let count = document.getElementsByClassName("count");
+			let total = 0;
+			for(let i = 0 ; i<pay.length;i++){
+				total += stringNumberToInt(pay[i].innerText)
+			}
+    	  	let point = total/100 - Number(document.getElementById("use-point").value);
     	  	let receiverName = document.getElementById("receiverName").value;
     	  	let receiverAddress1 = document.getElementById("receiverAddress1").value;
     	  	let receiverAddress2 = document.getElementById("receiverAddress2").value;
     	  	let receiverAddress3 = document.getElementById("receiverAddress3").value;
     	  	let receiverPhone =document.getElementById("receiverPhone").value;
     	  	let orderMsg = document.getElementById("select-msg").value;
-        	location.href="${pageContext.request.contextPath}/ordersuccess?productId=${list.productId}&productCount=${count}&orderPrice=${count*list.productPrice}&receiverName="+receiverName+"&receiverAddress1="+receiverAddress1+"&receiverAddress2="+receiverAddress2+"&receiverAddress3="+receiverAddress3+"&receiverPhone="+receiverPhone+"&orderMsg="+orderMsg+"&point="+point;
+        	location.href="${pageContext.request.contextPath}/orderssuccess"
+        	location.href="${pageContext.request.contextPath}/ordersuccess?
+        			+"productId=
+        			+"&productCount=
+        			+"&orderPrice=     // let pay 하나하나의 값
+        			+"&receiverName="+receiverName
+        			+"&receiverAddress1="+receiverAddress1
+        			+"&receiverAddress2="+receiverAddress2
+        			+"&receiverAddress3="+receiverAddress3
+        			+"&receiverPhone="+receiverPhone
+        			+"&orderMsg="+orderMsg
+        			+"&point="+point;
       } else {
     	  alert("결제에 실패하였습니다.");
       }
