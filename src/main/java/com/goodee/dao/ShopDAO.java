@@ -13,6 +13,7 @@ import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ProductboardVO;
 import com.goodee.vo.ShopVO;
 import com.goodee.vo.WishVO;
+import com.goodee.vo.WishjoinVO;
 
 @Mapper
 public interface ShopDAO {
@@ -48,4 +49,8 @@ public interface ShopDAO {
 	public int getPdListCnt(Map<String,Object> inParam);
 	
 	public void updatePoint(MemberVO vo);
+	
+	public void deleteWishAll(@Param("checks") String[] checks);
+	
+	public List<WishjoinVO> ordersInfo(@Param("checks") String[] checks);
 }	

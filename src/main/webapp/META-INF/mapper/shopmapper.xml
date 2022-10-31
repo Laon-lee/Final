@@ -67,7 +67,20 @@
 		SELECT COUNT(*) FROM PRODUCT
 		WHERE PRODUCT_CATEGORY =#{category} 		
 	</select>
-	
+	<delete id="deleteWishAll" parameterType="map" >
+		delete from wishlist where wish_id in
+		<foreach collection="checks" item="item" open="(" close=")" separator=",">
+			 #{item}
+		</foreach>
+	</delete>
+	<select id="ordersInfo" resultType="wishjoinVO" parameterType="map" >
+		select * from wishlist wl 
+		INNER JOIN product pr ON wl.product_id = pr.product_id
+		WHERE wl.wish_id IN
+		<foreach collection="checks" item="item" open="(" close=")" separator=",">
+			 #{item}
+		</foreach>
+	</select>
 </mapper>
 
 

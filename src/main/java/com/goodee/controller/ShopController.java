@@ -100,6 +100,7 @@ public class ShopController {
 		return "redirect:/mypage";
 	}
 	
+	
 	@PostMapping("getPdList")
 	@ResponseBody
 	public Map<String,Object> getPdList(@RequestBody String inParam) {
@@ -116,4 +117,16 @@ public class ShopController {
 		return map;
 	}
 	
+	@GetMapping("orders")
+	public String orders(@RequestParam String[] checks,Model model,HttpSession session) {
+		spservice.orders(checks, model ,session);
+		return "shop/shop-allpay";	
+	}
+	
+	@GetMapping("deleteWishAll")
+	public String deleteWishAll(@RequestParam String[] checks,Model model) {
+		spservice.deleteWishAll(checks, model);
+		
+		return "redirect:/wish";
+	}
 }
