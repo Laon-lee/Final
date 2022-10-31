@@ -18,27 +18,59 @@
         
           <li id="nav2-li-1stli" class="hover-lis">
             <a href="#"><p style="font-size: 16px">Search</p></a>
-           
+            
             <div id="nav2-li-1stdiv">
               <div id="nav2-searchdiv">
-                <input type="text" placeholder="검색하실 물품을 적어주세요"><button>검색</button>
+                <select id="search-category" name = "search">
+                	<option value="shop">Shop</option>
+                	<option value="hotel">Hotel</option>
+                </select> 
+                <input type="text" id="search" name="search" placeholder="검색하실 물품을 적어주세요"><button id="search-btn">검색</button>
               </div>
+              <script type="text/javascript">
+              		document.getElementById("search-btn").addEventListener("click",function(){
+              			let category = document.getElementById("search-category").value;
+              			let search = document.getElementById("search").value;
+              			location.href="${pageContext.request.contextPath}/search?category="+category+"&search="+search;
+              		});
+              </script>
               <h2>아래 품목도 검색해보세요.</h2>              
               <div id="btns">
-                <button type="button">사료</button>
-                <button type="button">영양제</button>
-                <button type="button">산책줄</button>
-                <button type="button">집</button>
-                <button type="button">의류</button>
-                <button type="button">장난감</button>
-                <button type="button">사료</button>
-                <button type="button">영양제</button>
-                <button type="button">산책줄</button>
-                <button type="button">집</button>
-                <button type="button">의류</button>
-                <button type="button">장난감</button>
+                <button class="search-btns" type="button">Home</button>
+                <button class="search-btns" type="button">Walk</button>
+                <button class="search-btns" type="button">Carrier</button>
+                <button class="search-btns" type="button">Clothes</button>
+                <button class="search-btns" type="button">Dining</button>
+                <button class="search-btns" type="button">Grooming</button>
+                <button class="search-btns" type="button">Toy</button>
+                <button class="search-btns" type="button">Food</button>
+                <button id="gohotel" type="button">Hotel</button>
+                <button id="goshop" type="button">Shop</button>
+                <button class="search-btns2" type="button">몽슈슈</button>
+                <button class="search-btns2" type="button">앤블랭크</button>
               </div>
-              
+              <script type="text/javascript">
+              		let btns = document.getElementsByClassName("search-btns");
+              		for(let i = 0 ; i< btns.length; i++){
+              			let category = btns[i].innerText;
+              			btns[i].addEventListener("click",function(){
+              				location.href="${pageContext.request.contextPath}/shop/list/"+category;
+              			})
+              		}
+              		let btns2 = document.getElementsByClassName("search-btns2");
+              		for(let i = 0 ; i< btns2.length; i++){
+              			let search = btns2[i].innerText;
+              			btns2[i].addEventListener("click",function(){
+              				location.href="${pageContext.request.contextPath}/search?category=shop&search="+search;
+              			})
+              		}
+              		document.getElementById("gohotel").addEventListener("click",function(){
+              			location.href="${pageContext.request.contextPath}/gohotel"
+              		})
+              		document.getElementById("goshop").addEventListener("click",function(){
+              			location.href="${pageContext.request.contextPath}/goshop"
+              		})
+              </script>
             </div>
           </li>
           <li id="nav2-li-2ndli"  class="hover-lis">

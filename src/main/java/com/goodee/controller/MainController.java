@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.goodee.service.NURIService;
+import com.goodee.service.NuriService;
 import com.goodee.service.ShopService;
 import com.goodee.vo.OrderVO;
 import com.goodee.vo.OrderdetailVO;
@@ -21,11 +22,13 @@ import com.goodee.service.BoardService;
 public class MainController {
 	private BoardService service;
 	private ShopService spservice;
+	private NuriService nrservice;
 	
-	public MainController(BoardService service,ShopService spservice) {
+	public MainController(BoardService service,ShopService spservice,NuriService nrservice) {
 		super();
 		this.service = service;
 		this.spservice = spservice;
+		this.nrservice = nrservice;
 	}
 	
 	@GetMapping("membership")
@@ -91,5 +94,12 @@ public class MainController {
 	public String noticedetail(Model model,@PathVariable("boardId") String boardId) {
 		service.selectList(model, boardId);
 		return "notice/notice_detail";
+	}
+	
+	@GetMapping("search")
+	public String search(@RequestParam String category, @RequestParam String search,Model model ) {
+		model.addAttribute("search", search);
+		nrservice.search(category, search, model);
+		return "main/search";
 	}
 }

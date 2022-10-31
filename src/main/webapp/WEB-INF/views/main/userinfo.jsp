@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css?11">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
     
     <style>

@@ -17,7 +17,7 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/shop/header.css">
+	href="${pageContext.request.contextPath}/css/frame/shop/header.css?11">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
 <script type="text/javascript"
