@@ -39,18 +39,18 @@ nav {
 	background-color: gray;
 }
 
-#sec1>ul>li:hover>ul {
-	display: block;
-}
+
 
 #sec1 {
 	grid-area: sec1;
-	display: flex;
-	background-color: gray;
 	height: 100%;
 	align-items: center;
-	padding-left: 2.4rem;
+ 	padding-left: 2.4rem; 
+	padding-top:4rem;
+	border-right : 2px solid black;
 }
+
+
 
 #sec2 {
 	grid-area: sec2;
@@ -85,43 +85,33 @@ a:hover {
 <body>
 	<div id="container">
 		<header>
-			<h1>Déng Nuri</h1>
-		</header>
+		<h1>임시 헤더</h1>
+<%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
+        </header>
 		<nav>
 			<h2>관리자 페이지</h2>
 		</nav>
 		<main>
-			<section id="sec1">
-				<ul>
-					<li>
-						<h2>SHOP 관리</h2>
-						<ul class="bar-menu">
-							<li><a href="${pageContext.request.contextPath}/proc-add">상품 등록</a></li>
-							<li><a href="">상품 수정</a></li>
-							<li><a href="">상품 삭제</a></li>
-							<li><a href="">주문 확인</a></li>
-						</ul>
-					</li>
-					<li>
-						<h2>HOTEL 관리</h2>
-						<ul class="bar-menu">
-							<li><a href="">예약 확인</a></li>
-							<li><a href="">가격 수정</a></li>
-						</ul>
-					</li>
-					<li><h2>BOARD</h2>
-						<ul class="bar-menu">
-							<li><a href="">고객 정보</a></li>
-							<li><a href="">QnA</a></li>
-						</ul></li>
+			<div id="sec1">
+				<div id="menu-bar">
+				<ul><h2>쇼핑몰</h2>
+					<li>상품 등록</li>
+					<li>상품 수정</li>
+					<li>상품 삭제</li>
 				</ul>
-
-
-			</section>
-			<section id="sec2"></section>
+				<ul><h2>호텔</h2>
+					<li>예약 확인</li>
+					<li>이모 저모</li>
+				</ul>
+			</div>
+			</div>
+			<div id="sec2">
+				
+			</div>
 		</main>
 		<footer>
-			<%@ include file="../frame/main/footer.jsp"%>
+		<h1>임시 푸터</h1>
+<%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
 		</footer>
 		</div>
 </body>

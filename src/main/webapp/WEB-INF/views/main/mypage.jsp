@@ -204,7 +204,7 @@
                             <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
                            
-                            
+              
                         </ul>
                     </nav>
                     <article id="art2">
