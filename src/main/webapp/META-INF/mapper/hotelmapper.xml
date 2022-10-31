@@ -6,7 +6,7 @@
 	<!-- 지역구 값 받아서 해당 정보 출력 -->
 	<select id="selectHotelList" resultType="hotelVO">
 	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
-		from hotel_reservation 
+		from hotel_info
 		where hotel_category in 
 		<foreach item="cate" index="id" collection="list" open="(" separator="," close = ")">
 			 #{cate} 
@@ -17,7 +17,8 @@
 	
 	<!-- 호텔 이름에 따른 객실 정보를 불러움 -->
 	<select id="selectRoomList" resultType="hotelroomVO">
-		select * from hotel_room
+		select distinct room_name, room_id, hotel_id, hotel_name, room_type, room_price, room_content from hotel_room 
+
 		<!-- where hotel_id = 
 			(select hotel_id from hotel_reservation
 			where hotel_name in 
@@ -28,16 +29,27 @@
 	</select>
 	<select id="detailHotel" resultType="hotelVO">
 	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
-		from hotel_reservation 
+		from hotel_info
 		where hotel_name = #{hotelname}
 		</select>
 		
 		<select id="detailRoom" resultType="hotelroomVO">
 		select * from hotel_room
 	 		where room_name = #{roomname} and hotel_id = 
-			(select hotel_id from hotel_reservation
+			(select hotel_id from hotel_info
 			where hotel_name = #{hotelname})
 			
+	</select>
+	
+	<select id="ranHotel" resultType="hotelVO">
+		select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
+		from hotel_info
+		where hotel_id = #{hotelid}; 
+	</select>
+	<select id="ranRoom" resultType="hotelroomVO">
+		select room_id, hotel_id, hotel_name, room_name, room_type, room_price, room_content
+		from hotel_room
+		where hotel_name = #{hotelname}
 	</select>
 </mapper>
 
