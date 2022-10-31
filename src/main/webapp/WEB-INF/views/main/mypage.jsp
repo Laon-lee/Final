@@ -203,7 +203,7 @@
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
-                            <li><a href="${pageContext.request.contextPath}/coupon">쿠폰</a></li>
+                           
                             
                         </ul>
                     </nav>
