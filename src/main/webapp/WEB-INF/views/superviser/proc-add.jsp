@@ -4,109 +4,128 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
 
-<style>
-        *{
-            margin: 0 auto;
-            padding: 0;
-            box-sizing: border-box;
-
-        }
-        #container {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
-            border: 1px solid black ;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        #add-box {
-            width: 35%;
-            line-height: 4rem;
-        }
-
-        input {
-            height: 30px;;
-        }
-        #no1 , #no2, #no3, #no4, #no5, #no6 {
-            display: flex;
-            width: 80%;
-        } 
-
-        #pr_name1, #pr_shop1, #pr_thum1, #pr_content1, #pr_cate1, #pr_price1 {
-            width: 50%;
-        }
-
-        h3 {
-            width: 100%;
-        }
-
-        option {
-            width: 2000px;
-        }
-
-        #proc_category{
-            width: 100%;
-            margin-right: 0.7rem;
-            height: 30px;
-        }
-
-        button {
-            width : 15rem;
-            height: 30px;
-            border: none;
-            border-radius: 5px;
-            background-color: black;
-            color: yellow;
-        }
-
-    </style>
 
 <title>Insert title here</title>
+<style>
+#container {
+	margin: 0 auto;
+	padding: 0 auto;
+	box-sizing: border-box;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	grid-template-rows: 120px 100px 1fr 120px;
+	grid-template-areas: 'header header' 'nav nav' 'main main'
+		'footer footer';
+}
+
+header {
+	grid-area: header;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+nav {
+	grid-area: nav;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-color: gray;
+}
+
+main{
+	display: grid;
+	grid-area : main;
+	grid-template-columns:300px 1fr;
+}
+
+#sec1 {
+	height: 100%;
+	align-items: center;
+ 	padding-left: 2.4rem; 
+	padding-top:4rem;
+	border-right : 2px solid black;
+}
+
+#sec2-form {
+	display: flex;
+    flex-direction: column;
+    padding-top : 4rem;
+    padding-left : 4rem;
+}
+
+footer {
+	grid-area: footer;
+	background-color: gray;
+}
+
+li {
+	list-style: none;
+	line-height: 3.5rem;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(214, 214, 214);
+	width: 200px;
+}
+
+a:hover {
+	color: white;
+}
+.bar-menu { 
+    display: none; 
+}
+
+button {
+	width : 10rem;
+}
+
+label {
+	line-height : 3rem;
+/* 	width : 5rem; */
+}
+
+</style>
+
 </head>
 <body>
 	<div id="container">
-		<form id="add-box" action="${pageContext.request.contextPath}/">
-			<h1>상품 등록 할 거 지 롱 메 롱</h1>
-			<div id="no1">
-				<div id="pr_name1">
-					<h3>상품 이름</h3>
-				</div>
-				<div id="pr_name2">
-					<input type="text" name="proc_name" id="proc_name">
-				</div>
+		<header>
+		<h1>임시 헤더</h1>
+<%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
+        </header>
+		<nav>
+			<h2>관리자 페이지</h2>
+		</nav>
+		<main>
+			<div id="sec1">
+				<div id="menu-bar">
+				<ul><h2>쇼핑몰</h2>
+					<li><a href="${pageContext.request.contextPath}/viser/proc-add">상품 등록</a></li>
+					<li>상품 수정</li>
+					<li>상품 삭제</li>
+				</ul>
+				<ul><h2>호텔</h2>
+					<li>예약 확인</li>
+					<li>이모 저모</li>
+				</ul>
 			</div>
-			<div id="no2">
-				<div id="pr_shop1">
-					<h3>업체 이름</h3>
-				</div>
-				<div id="pr_shop2">
-					<input type="text" name="proc_shop" id="proc_shop">
-				</div>
 			</div>
-			<div id="no3">
-				<div id="pr_thum1">
-					<h3>상품 썸네일</h3>
-				</div>
-				<div id="pr_thum2">
-					<input type="text" name="proc_image" id="proc_image">
-				</div>
-			</div>
-			<div id="no4">
-				<div id="pr_content1">
-					<h3>상품 이미지</h3>
-				</div>
-				<div id="pr_content2">
-					<input type="text" name="proc_content" id="proc_content">
-				</div>
-			</div>
-			<div id="no5">
-				<div id="pr_cate1">
-					<h3>카테고리</h3>
-				</div>
-				<div id="pr_cate2">
+			<div id="sec2">
+			<form id="sec2-form" action="${pageContext.request.contextPath}">
+				<label for="proc_name">상품 이름 : <input type="text" name="proc_name" id="proc_name"/></label>
+				<label for="proc_shop">업체 이름 : <input type="text" name="proc_shop" id="proc_shop"/></label>
+				<label for="proc_image">상품 썸네일 : <input type="text" name="proc_image" id="proc_image"/></label>
+				<label for="proc_content">상품 이미지 : <input type="text" name="proc_content" id="proc_content"/></label>
+				<label for="proc_category">
 					<select id="proc_category" name="proc_category">
 						<option value="choice">카테고리를 선택하세요</option>
 						<option value="line">-----------------</option>
@@ -119,28 +138,18 @@
 						<option value="Toy">Toy</option>
 						<option value="Food">Food</option>
 					</select>
-				</div>
+				</label>
+				<label for="proc_price">상품 가격<input type="text" name="proc_price" name="proc_price"></label>
+				
+					<button>상품 등록</button>
+				
+				</form>
 			</div>
-			<div id="no6">
-				<div id="pr_price1">
-					<h3>상품 가격</h3>
-				</div>
-				<div id="pr_price2">
-					<input type="text" name="proc_price" name="proc_price">
-				</div>
-			</div>
-			<div>
-				<button>상품 등록 할 거 지롱 메롱 바보들아</button>
-			</div>
-		</form>
-	</div>
-
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script>
-		$("select option[value*='choice']").prop('disabled', true);
-		$("select option[value*='line']").prop('disabled', true);
-	</script>
-
-
+		</main>
+		<footer>
+		<h1>임시 푸터</h1>
+<%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
+		</footer>
+		</div>
 </body>
 </html>

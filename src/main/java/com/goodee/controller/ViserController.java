@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ViserController {
 
-	@GetMapping("proc-add")
+	@GetMapping("viser/proc-add")
 	public String addPage() {
-		return"/proc-add";
+		return"superviser/proc-add";
 	}
 }

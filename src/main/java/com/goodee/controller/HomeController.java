@@ -8,7 +8,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/")
 	public String home() {
-		return "superviser/viser-main";
+		return "superviser/proc-add";
 	}
 	
 }

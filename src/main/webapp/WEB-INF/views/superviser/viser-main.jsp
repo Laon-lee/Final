@@ -95,7 +95,7 @@ a:hover {
 			<div id="sec1">
 				<div id="menu-bar">
 				<ul><h2>쇼핑몰</h2>
-					<li>상품 등록</li>
+					<li><a href="${pageContext.request.contextPath}/viser/proc-add">상품 등록</a></li>
 					<li>상품 수정</li>
 					<li>상품 삭제</li>
 				</ul>
