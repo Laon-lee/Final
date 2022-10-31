@@ -110,8 +110,8 @@ label {
 				<div id="menu-bar">
 				<ul><h2>쇼핑몰</h2>
 					<li><a href="${pageContext.request.contextPath}/viser/proc-add">상품 등록</a></li>
-					<li>상품 수정</li>
-					<li>상품 삭제</li>
+					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
+					<li><a href="${pageContext.request.contextPath}/"></a>상품 삭제</li>
 				</ul>
 				<ul><h2>호텔</h2>
 					<li>예약 확인</li>
@@ -120,7 +120,7 @@ label {
 			</div>
 			</div>
 			<div id="sec2">
-			
+			{category
 			</div>
 		</main>
 		<footer>
