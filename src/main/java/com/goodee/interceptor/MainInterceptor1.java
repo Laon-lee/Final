@@ -1,5 +1,7 @@
 package com.goodee.interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,11 +21,16 @@ public class MainInterceptor1 implements HandlerInterceptor {
 				
 		if(session.getAttribute("user") != null) {
 			System.out.println("여기는 인터셉터");
-			return true;
+			String beforeURL = request.getHeader("referer"); 
+			String[] urlStr = beforeURL.split("\\?"); 
+			response.sendRedirect(urlStr[0]+"?isalert=login");
+			return false;
 		}else {
 			System.out.println("여기는 세션없는 인터셉터");
 			session.invalidate();
-			response.sendRedirect(request.getContextPath()+"/gomain2");
+			String beforeURL = request.getHeader("referer"); 
+			String[] urlStr = beforeURL.split("\\?"); 
+			response.sendRedirect(urlStr[0]+"?isalert=logout");
 			return false;
 		}
 	}

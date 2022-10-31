@@ -1,10 +1,17 @@
 package com.goodee.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.MemberService;
 import com.goodee.service.ShopService;
-import com.goodee.vo.BoardVO;
+import com.goodee.vo.OrderVO;
+import com.goodee.vo.OrderdetailVO;
 import com.goodee.vo.ProductboardVO;
-import com.goodee.vo.ShopVO;
+import com.goodee.vo.WishVO;
+
 
 @Controller
 public class ShopController {
@@ -62,16 +71,48 @@ public class ShopController {
 	
 	@PostMapping("insertreview")
 	@ResponseBody
-	public ProductboardVO insertreview(@RequestBody ProductboardVO vo,HttpSession session) {
-		spservice.insertReview(vo, session);
+	public ProductboardVO insertreview(@RequestBody ProductboardVO vo) {
+		spservice.insertReview(vo);
 		return vo;
 	}
 	@PostMapping("insertqna")
 	@ResponseBody
-	public ProductboardVO insertqna(@RequestBody ProductboardVO vo,HttpSession session) {
-		System.out.println("1");
-		spservice.insertQna(vo, session);
-		System.out.println("2");
+	public ProductboardVO insertqna(@RequestBody ProductboardVO vo) {
+		spservice.insertQna(vo);
 		return vo;
 	}
+	@PostMapping("insertWish")
+	@ResponseBody
+	public WishVO insertWish(@RequestBody WishVO vo) {
+		spservice.insertWish(vo);
+		return vo;
+	}
+	
+	@GetMapping("deletewish/{wishId}")
+	public String deletewish(@PathVariable int wishId) {
+		spservice.deletewish(wishId);
+		return "redirect:/wish";
+	}
+	@GetMapping("ordersuccess")
+	public String mypage(@ModelAttribute OrderVO vo, @ModelAttribute OrderdetailVO vo1,HttpSession session) {
+		spservice.insertorder(vo,vo1,session);
+		return "redirect:/mypage";
+	}
+	
+	@PostMapping("getPdList")
+	@ResponseBody
+	public Map<String,Object> getPdList(@RequestBody String inParam) {
+		JSONParser parser = new JSONParser();
+		Map<String,Object> map=new HashMap<String,Object>();
+		try {
+			JSONObject jsonObject = (JSONObject) parser.parse(inParam);
+			map=spservice.getPdList(jsonObject);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return map;
+	}
+	
 }

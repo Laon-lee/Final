@@ -5,7 +5,11 @@
 	if(a==null){a="false";};
 	if( a.equals("true")){%>
 		<script> alert("로그인을 해주세요")</script>		
-<% };%>
+<% }else if(a.equals("login")){%>
+		<script> alert("로그인에 성공하셨습니다")</script>
+<% }else if(a.equals("logout")){%>	
+		<script> alert("로그아웃 하셨습니다")</script>
+<% }%>
 	<ul id="footer-1stul">
         <li><a href="${pageContext.request.contextPath}/gomain">Déng Nuri</a></li>
       </ul>

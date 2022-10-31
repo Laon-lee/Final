@@ -22,7 +22,41 @@
 		insert into productboard (product_id, proboard_title, proboard_content, mem_id, proboard_category, proboard_date) 
 						values (#{productId},#{proboardTitle},#{proboardContent},#{memId},#{proboardCategory},#{proboardDate})
 	</insert>
-	
+	<insert id="insertWish" parameterType="wishVO">
+		insert into wishlist (id , product_id, count, option) 
+						values (#{id}, #{productId}, #{count},#{option})
+	</insert>
+	<select id="getWishList" resultType="wishVO" parameterType="int">
+		select * from wishlist where id = #{id}
+	</select>
+	<delete id="deletewish" parameterType="int">
+		delete from wishlist where wish_id=#{wishId}
+	</delete>
+	<insert id="insertOrder" parameterType="orderVO" useGeneratedKeys="true" keyProperty="orderId">
+		insert into ordertable (product_id, id,receiver_name, receiver_phone, receiver_address1, receiver_address2, receiver_address3, order_msg) 
+					values (#{productId},#{id},#{receiverName},#{receiverPhone},#{receiverAddress1},#{receiverAddress2},#{receiverAddress3},#{orderMsg})
+	</insert>
+	<insert id="insertOrderdetail" parameterType="orderdetailVO">
+		insert into detailorder (order_id,product_id, product_count, order_status,order_price) 
+						values (#{orderId},#{productId},#{productCount},#{orderStatus},#{orderPrice})
+	</insert>
+	<select id="getMyOrder" resultType="orderjoinVO" parameterType="int">
+		select * from ordertable as ot 
+		INNER JOIN detailorder as do ON ot.order_id= do.order_id 
+		INNER JOIN product ON product.product_id = ot.product_id 
+		where id=#{id}
+	</select>
+
+	<select id="getPdList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCT_CATEGORY =#{category} 
+		LIMIT #{stPage},#{pageCount}		
+	</select>
+
+	<select id="getPdListCnt" resultType="Integer" parameterType="java.util.HashMap">
+		SELECT COUNT(*) FROM PRODUCT
+		WHERE PRODUCT_CATEGORY =#{category} 		
+	</select>
 	
 </mapper>
 

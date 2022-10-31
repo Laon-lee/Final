@@ -433,8 +433,25 @@ font {
 						location.href = "${pageContext.request.contextPath}/shop/pay/"+${list.productId}+"?option="+option+"&count="+count;
 					});
 					
-					document.getElementById("main2-btn2").addEventListener("click",function(){
-						location.href="${pageContext.request.contextPath}/";
+					document.getElementById("main2-btn2").addEventListener("click",function(e){
+						e.preventDefault();
+						let option = document.getElementById("size-opt").value;
+						let count = document.getElementById("total").value;
+						let memId = '${sessionScope.user.memId}';
+						let productId= ${list.productId}
+						
+						fetch("${pageContext.request.contextPath}/insertWish", 
+							{ method: "POST",
+							  headers: {
+							    "Content-Type": "application/json"
+							  },
+							  body: JSON.stringify({count,productId, memId, option})
+							}).then((response) => response.json())
+							.then((data) => {
+								if (confirm("장바구니에 추가 되었습니다. 장바구니로 이동하시겠습니까? ")) {
+									location.href="${pageContext.request.contextPath}/wish"
+								}
+						});						
 					});
 					
 					
@@ -572,6 +589,7 @@ font {
 									let proboardTitle = "리뷰 제목"
 									let memId = '${sessionScope.user.memId}';
 									let productId= ${list.productId}
+									
 									fetch("${pageContext.request.contextPath}/insertreview", 
 										{ method: "POST",
 										  headers: {

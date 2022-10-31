@@ -47,7 +47,7 @@ public class MemberController {
 		if(mbservice.ismember2(vo)) {
 			mbservice.getmemberinfo(vo);
 			session.setAttribute("user",vo);
-			return "redirect:gomain";
+			return "redirect:gomain2";
 		}else {
 			return "redirect:gomain";
 		}
@@ -56,7 +56,7 @@ public class MemberController {
 	@GetMapping("logout")
 	public String loginout(HttpSession session) {
 		session.invalidate();
-		return "redirect:gomain";
+		return "redirect:gomain2";
 	}
 	
 	@PostMapping("/idcheck")
@@ -76,5 +76,4 @@ public class MemberController {
 		mbservice.updateinfo(vo, session);
 		return "redirect:/userinfo";
 	}
-	
 }

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -228,6 +232,12 @@
     background-color: #f6f6f6;
     
    }
+   #pro-name{
+   	width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+   }
     </style>
 </head>
 
@@ -260,7 +270,8 @@
             </div>
            <table class="tb1">
             <tr>
-              <th class="th1">일반상품(1)</th>
+              <th class="th1">일반상품( ${fn:length(wish)} 
+              )</th>
             </tr>
            </table>
            
@@ -277,43 +288,66 @@
                        <td>합계</td>
                        <td>선택</td>
                     </tr>
+                    <c:forEach var="item" items="${item}" varStatus="status" >
+                    	
                     <tr>
-                        <td><input type="checkbox"></td>
-                        <td><img src="./image/쇼핑섹션.png" alt=""></td>
-                        <td><h4>뮤니쿤트 Easy Fit All In One:Gary</h4><h6>[옵션: 2L(+5000)]</h6></td>
-                        <td>59,000원</td>
-                        <td>1</td>
-                        <td>500원</td>
-                        <td>기본배송</td>
-                        <td class="delivery"><span>3000</span>원</td>
-                        <td class="price"><span>59000</span>원</td>
-                        <td><button>주문하기</button><br><button>관심상품등록</button><br><button>삭제</button></td>
+                        <td><input type="checkbox"><input class="wishnum" type="hidden" value="${wish[status.index].wishId}"></td>
+                        <td><img src="${item.productImage}" alt=""></td>
+                        <td><h4 id="pro-name">${item.productName}</h4><p><&nbsp;${item.productShop}&nbsp;></p><h5>[옵션 : <span>${wish[status.index].option}</span>]</h5></td>
+                        <td><span class="product-price"><fmt:formatNumber value="${item.productPrice}" pattern="#,###" /></span>원</td>
+                        <td><span class="product-count">${wish[status.index].count}</span>개</td>
+                        <td><span class="point"></span>p</td>
+                        <td>기본배송 </td>
+                        <td><span class="delivery">3000</span>원</td>
+                        <td class="price"><span class="total-price"></span>원</td>
+                        <td><button>주문하기</button><br><button class="deletewish">삭제</button></td>
                     </tr>
-                  
+                  	</c:forEach>
+                  		 <script>
+                        	let btns = document.getElementsByClassName("deletewish");
+                        	let wishnum = document.getElementsByClassName("wishnum");
+                        	for(let i = 0 ; i< btns.length ; i++ ){
+                        		btns[i].addEventListener("click",function(){
+                        			if(confirm('장바구니에서 삭제하시겠습니까?')){
+                        				location.href="${pageContext.request.contextPath}/deletewish/"+wishnum[i].value;                        			}
+                        		});
+                        	}
+                        	
+                        </script>
                     <tr>
                         <td colspan="2">[업체기본배송]</td><td colspan="8"><span>상품구매금액: <span id="allprice"></span> +  배송비: <span id="alldelivery"></span> = 합계: <span id="total"></span>원</span></td>
                     </tr>
                     
+                    
                     <script>
-                        const delivery = document.querySelectorAll(".delivery>span");
-                        const price = document.querySelectorAll(".price>span");
-                        console.log(price[0].innerHTML);
-                        var alldelivery=0;
-                        var allprice=0;
-                         for (let i = 0; i < delivery.length; i++) {
-                            alldelivery= alldelivery + Number(delivery[i].innerHTML)
-                         }
-                         for (let j = 0; j < price.length; j++) {
-                            allprice= allprice + Number(price[j].innerHTML)
-                         }
-                         const spprice = document.querySelector("#allprice")
-                         const spdelivery = document.querySelector("#alldelivery")
-                         const total = document.querySelector("#total")
-                         spprice.innerHTML 
-                         spprice.innerHTML = "1234";
-                         spprice.innerHTML = String(allprice);
-                         spdelivery.innerHTML = String(alldelivery);
-                         total.innerHTML = String(allprice + alldelivery);
+                    	let totalprice = document.getElementsByClassName("total-price");
+                    	let proprice = document.getElementsByClassName("product-price");
+                    	let count = document.getElementsByClassName("product-count");
+                    	let delivery = document.getElementsByClassName("delivery");
+                    	let point = document.getElementsByClassName("point");
+                    	let result = 0;
+                    	let deliveryprice = 0;
+                    	for(let i = 0; i< totalprice.length; i++){
+                    		let a = stringNumberToInt(proprice[i].innerText)*Number(count[i].innerText);
+                    		
+                    		totalprice[i].innerText = priceToString(a);
+                    		point[i].innerText = priceToString(a/100);
+                    		let b = Number(delivery[i].innerText);
+                    		result = result+a;
+                    		deliveryprice += b;
+                    	}
+                    	document.getElementById("allprice").innerText = priceToString(result);
+                    	document.getElementById("alldelivery").innerText = priceToString(deliveryprice);
+                    	document.getElementById("total").innerText = priceToString(result+deliveryprice);
+                    	/* 1000단위 ,찍혀있는 문자를 숫자로*/
+                    	function stringNumberToInt(stringNumber){
+                    	    return parseInt(stringNumber.replace(/,/g , ''));
+                    	}
+                    	/* 숫자를 1000단위 ,찍혀있는 문자로*/
+                    	function priceToString(price) {
+                    	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    	}
+                    	
                     </script>
                 </table>
                 <div id="item-listbtns">

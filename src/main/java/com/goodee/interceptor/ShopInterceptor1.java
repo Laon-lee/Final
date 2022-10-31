@@ -27,14 +27,14 @@ public class ShopInterceptor1 implements HandlerInterceptor {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html; charset=UTF-8");
 			
-			String beforeURL = request.getHeader("referer");
-			String[] urlStr = beforeURL.split("\\?");
+			String beforeURL = request.getHeader("referer"); String[] urlStr =
+			beforeURL.split("\\?"); response.sendRedirect(urlStr[0]+"?isalert=true");
+			 
 			
-			response.sendRedirect(urlStr[0]+"?isalert=true");
-			//PrintWriter printwriter = response.getWriter();
-			//printwriter.print("<script>alert('로그인을 해주세요'); history.go(-1);</script>");
-			//printwriter.flush();
-			//printwriter.close();
+//			PrintWriter printwriter = response.getWriter();
+//			printwriter.print("<script>alert('로그인을 해주세요'); history.go(-1);</script>");
+//			printwriter.flush();
+//			printwriter.close();
 			//session.invalidate();
 			
 			/* response.sendRedirect(request.getContextPath()+"/gomain2"); */

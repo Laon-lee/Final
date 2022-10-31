@@ -5,21 +5,27 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.NURIService;
+import com.goodee.service.ShopService;
+import com.goodee.vo.OrderVO;
+import com.goodee.vo.OrderdetailVO;
 import com.goodee.service.BoardService;
 
 @Controller
 public class MainController {
 	private BoardService service;
+	private ShopService spservice;
 	
-	public MainController(BoardService service) {
+	public MainController(BoardService service,ShopService spservice) {
 		super();
 		this.service = service;
+		this.spservice = spservice;
 	}
 	
 	@GetMapping("membership")
@@ -29,7 +35,8 @@ public class MainController {
 	
 	// 마이페이지
 	@GetMapping("mypage")
-	public String mypage() {
+	public String mypage(HttpSession session, Model model) {
+		spservice.getMyOrder(session, model);
 		return "main/mypage";
 	}
 	
@@ -65,7 +72,8 @@ public class MainController {
 	}
 	// 장바구니
 	@GetMapping("wish")
-	public String gowish() {
+	public String gowish(Model model, HttpSession session) {
+		spservice.getWishList(model, session);
 		return "main/wish";
 	}
 	// 쿠폰
