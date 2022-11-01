@@ -78,8 +78,13 @@ a {
 }
 
 a:hover {
-	color: white;
+	color: black;
 }
+
+.li{
+    margin-left: 30px;
+}
+
 .bar-menu { 
     display: none; 
 }
