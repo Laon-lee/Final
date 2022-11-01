@@ -473,17 +473,23 @@ display: none;
         
     </article>
     <article class="art2">
-        <h2>공지사항</h2>
+        <h2>공지사항 삭제/수정</h2>
     </article>
     <article class="art3">
         
         <c:forEach var="item" items="${list}">
       <div class="art3-container">
+      <form action="">
         <div class="art3-first"><span class="art3-container-span">공지</span> <a href="${pageContext.request.contextPath}/noticedetail/${item.boardId}"> ${item.boardTitle}</a></div>
-        <div class="art3-second">${item.boardContent}</div>
+        <div class="art3-second">
+        
+        수정/삭제할 공지사항번호<input type="text" name="boardId" value="${item.boardId}"/>
+        
+        <input type="number" name="isDelete" value=""/>
+        </div>
         <div class="art3-third">${item.boardDate}</div>
       </div>
-   
+   </form>
     </c:forEach>
     </article>
    </main>
