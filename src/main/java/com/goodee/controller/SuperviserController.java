@@ -51,6 +51,7 @@ public class SuperviserController {
 		return "/superviser/viser-main";
 	}
 	
+	
 	// 상품 수정
 	@GetMapping("viser/modify/{category}")
 	public String modCategory(@PathVariable("category")String category,Model model) {
