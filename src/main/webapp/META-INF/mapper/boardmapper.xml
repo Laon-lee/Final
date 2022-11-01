@@ -6,11 +6,14 @@
 	<select id="getList" resultType="boardVO">
 	select board_id, id, board_title, board_content,
 	date_format(board_date, '%Y-%m-%d') board_date
-	 from board where board_category = #{boardCategory}
+	 from board where board_category = #{boardCategory} and is_delete=0
 	</select>
 	<select id="selectList" resultType="boardVO">
 	select * from board where board_id = #{boardId}
 	</select>
+	<update id="deleteBoard" parameterType="boardVO">
+	update board set is_delte = #{isDelete} where board_id =#{boardId}
+	</update>
 </mapper>
 
 

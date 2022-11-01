@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.goodee.service.BoardService;
 import com.goodee.service.ShopService;
 import com.goodee.service.SuperviserService;
+import com.goodee.vo.BoardVO;
 import com.goodee.vo.ShopVO;
 
 @Controller
@@ -24,12 +26,13 @@ public class SuperviserController {
 
 	private SuperviserService superservice;
 	private ShopService spservice;
+	private BoardService bdservice;
 	
-	
-	public SuperviserController(SuperviserService superservice, ShopService spservice) {
+	public SuperviserController(SuperviserService superservice, ShopService spservice,BoardService bdservice) {
 		super();
 		this.superservice = superservice;
 		this.spservice = spservice;
+		this.bdservice = bdservice;
 	}
 
 	
@@ -50,7 +53,6 @@ public class SuperviserController {
 		superservice.viseradd(vo);
 		return "/superviser/viser-main";
 	}
-	
 	
 	// 상품 수정
 	@GetMapping("viser/modify/{category}")
@@ -108,6 +110,10 @@ public class SuperviserController {
 		superservice.updateInfo(vo);
 		return "superviser/viser-main";
 	}
-
+	@GetMapping("viser/notice/delete/{boardCategory}")
+	public String noticeDelete(@PathVariable("boardCategory") String boardCategory,Model model) {
+		bdservice.getList(model, boardCategory);
+		return "superviser/viser-notice-delete";
+	}
 	
 }
