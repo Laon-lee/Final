@@ -94,7 +94,7 @@ public class ShopController {
 		return "redirect:/wish";
 	}
 	@GetMapping("ordersuccess")
-	public String mypage(@ModelAttribute OrderVO vo, @ModelAttribute OrderdetailVO vo1,
+	public String ordersuccess(@ModelAttribute OrderVO vo, @ModelAttribute OrderdetailVO vo1,
 							HttpSession session,@RequestParam int point) {
 		spservice.insertorder(vo,vo1,session,point);
 		return "redirect:/mypage";
@@ -128,5 +128,11 @@ public class ShopController {
 		spservice.deleteWishAll(checks, model);
 		
 		return "redirect:/wish";
+	}
+	@GetMapping("orderssuccess")
+	public String orderssuccess(@RequestParam int[] productIds, @RequestParam int[] productCounts,
+								@ModelAttribute OrderVO vo,	HttpSession session,@RequestParam int point) {
+		spservice.insertorders(productIds,productCounts, vo,session,point);
+		return "redirect:/mypage";
 	}
 }

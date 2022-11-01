@@ -200,6 +200,7 @@ section> div{
 								<c:if test="${list.option != '사이즈선택'}"> ${list.option}</c:if>
 								<c:if test="${list.option == '사이즈선택'}"> 없음 </c:if>
 							</p>
+							<input type="hidden" class="productId" value="${list.productId}"/>
 							<p>수량: <span class="count">${list.count}</span>개</p>
 							<p>
 								금액:	<span class="pay"><fmt:formatNumber value="${list.count * list.productPrice}"	pattern="#,###" /></span>원
@@ -457,9 +458,14 @@ function requestPay() {
       if (rsp.success) {
     	  	let pay = document.getElementsByClassName("pay");
     	  	let count = document.getElementsByClassName("count");
+    	  	let productId = document.getElementsByClassName("productId");
 			let total = 0;
-			for(let i = 0 ; i<pay.length;i++){
+			let counts = [];
+			let productIds = [];
+			for(let i = 0 ; i< pay.length;i++){
 				total += stringNumberToInt(pay[i].innerText)
+				productIds.push(Number(productId[i].innerText));
+				counts.push(Number(count[i].innerText));
 			}
     	  	let point = total/100 - Number(document.getElementById("use-point").value);
     	  	let receiverName = document.getElementById("receiverName").value;
@@ -469,10 +475,9 @@ function requestPay() {
     	  	let receiverPhone =document.getElementById("receiverPhone").value;
     	  	let orderMsg = document.getElementById("select-msg").value;
         	location.href="${pageContext.request.contextPath}/orderssuccess"
-        	location.href="${pageContext.request.contextPath}/ordersuccess?
-        			+"productId=
-        			+"&productCount=
-        			+"&orderPrice=     // let pay 하나하나의 값
+        			+"?productIds="+productIds       // 여러개 
+        			+"&productCounts="+counts // 여러개
+        			<%--//"&orderPrice=     // 여러개     let pay 하나하나의 값 뺄 것--%> 
         			+"&receiverName="+receiverName
         			+"&receiverAddress1="+receiverAddress1
         			+"&receiverAddress2="+receiverAddress2

@@ -150,4 +150,38 @@ public class ShopService {
 	public void deleteWishAll(String[] checks,Model model) {
 		dao.deleteWishAll(checks);
 	}
+	public void insertorders(int[] productIds, int[] productCounts, OrderVO vo,
+							HttpSession session, int point ) {
+		//세션에 저장된 id를 통해 고유번호 추출
+		MemberVO vo1 = (MemberVO)session.getAttribute("user");
+		MemberVO vo2 = mbdao.getmemberinfo(vo1);
+		
+		//orderVO에 유저고유번호 저장
+		vo.setId(vo2.getId());
+		
+		OrderdetailVO dvo = new OrderdetailVO();
+		
+		for(int productId : productIds) {
+			//order table에 맞는 정보 8개 저장
+
+			dao.insertOrder(vo);
+			
+			//insert된 녀석들의 order_id를 바로 빼옴
+			System.out.println(vo.getOrderId());
+			
+			//order detail table에 정보 저장
+			dvo.setOrderId(vo.getOrderId());
+			dvo.setProductId(productId);
+			dvo.setOrderStatus("배송준비중");
+			dao.getListById2(productId).getProductPrice();  //상품아이디로 상품 가격 불러오기			
+		}
+		for(int count : productCounts) {
+			
+		}
+		
+		//포인트 업데이트 로직
+		int updatepoint = vo2.getPoint()+point;
+		vo2.setPoint(updatepoint);
+		dao.updatePoint(vo2);
+	}
 }

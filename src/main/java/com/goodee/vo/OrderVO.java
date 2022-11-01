@@ -6,7 +6,6 @@ import org.apache.ibatis.type.Alias;
 public class OrderVO {
 	private int orderId;
 	private int id;
-	private int productId;
 	private String receiverName;
 	private String receiverPhone;
 	private String orderMsg;
@@ -45,12 +44,7 @@ public class OrderVO {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public int getProductId() {
-		return productId;
-	}
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
+	
 	public String getReceiverName() {
 		return receiverName;
 	}

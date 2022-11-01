@@ -19,6 +19,9 @@
 	<select id="getListById" resultType="ShopVO" parameterType="String">
 		select * from product where product_id=#{productId};
 	</select>
+	<select id="getListById2" resultType="ShopVO" parameterType="int">
+		select * from product where product_id=#{productId};
+	</select>
 	<select id="getQna" resultType="productboardVO" parameterType="String">
 		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 ;
 	</select>
@@ -40,8 +43,8 @@
 		delete from wishlist where wish_id=#{wishId}
 	</delete>
 	<insert id="insertOrder" parameterType="orderVO" useGeneratedKeys="true" keyProperty="orderId">
-		insert into ordertable (product_id, id,receiver_name, receiver_phone, receiver_address1, receiver_address2, receiver_address3, order_msg) 
-					values (#{productId},#{id},#{receiverName},#{receiverPhone},#{receiverAddress1},#{receiverAddress2},#{receiverAddress3},#{orderMsg})
+		insert into ordertable (id,receiver_name, receiver_phone, receiver_address1, receiver_address2, receiver_address3, order_msg) 
+					values (#{id},#{receiverName},#{receiverPhone},#{receiverAddress1},#{receiverAddress2},#{receiverAddress3},#{orderMsg})
 	</insert>
 	<update id="updatePoint" parameterType="memberVO">
 		update member set point = #{point} where id=#{id}
@@ -53,7 +56,7 @@
 	<select id="getMyOrder" resultType="orderjoinVO" parameterType="int">
 		select * from ordertable as ot 
 		INNER JOIN detailorder as do ON ot.order_id= do.order_id 
-		INNER JOIN product ON product.product_id = ot.product_id 
+		INNER JOIN product ON product.product_id = do.product_id 
 		where id=#{id}
 	</select>
 
@@ -81,6 +84,10 @@
 			 #{item}
 		</foreach>
 	</select>
+	<insert id="insertProductIds" parameterType="String" useGeneratedKeys="true" keyProperty="orderId">
+		insert into ordertable (product_id) values (#{productId})
+	</insert>
+	
 </mapper>
 
 

@@ -26,6 +26,8 @@ public interface ShopDAO {
 	
 	public ShopVO getListById(@Param("productId") String id);
 	
+	public ShopVO getListById2(@Param("productId") int id);
+	
 	public List<ProductboardVO> getQna(@Param("productId") String id);
 	
 	public List<ProductboardVO> getReview(@Param("productId") String id);
@@ -53,4 +55,9 @@ public interface ShopDAO {
 	public void deleteWishAll(@Param("checks") String[] checks);
 	
 	public List<WishjoinVO> ordersInfo(@Param("checks") String[] checks);
+	
+	public void insertProductIds(@Param("productId")int productId);
+	
+
+	
 }	
