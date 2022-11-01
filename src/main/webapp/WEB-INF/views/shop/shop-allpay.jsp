@@ -188,7 +188,7 @@ section> div{
 					
 				</div>
 				<div id="sec1-div2" class="tab-div">
-					<c:forEach var="list" items="${list}">
+					<c:forEach var="list" items="${list}" varStatus="status">
 					<div id="img-div">
 						<div>
 							<img src="${list.productImage}">
@@ -201,6 +201,7 @@ section> div{
 								<c:if test="${list.option == '사이즈선택'}"> 없음 </c:if>
 							</p>
 							<input type="hidden" class="productId" value="${list.productId}"/>
+							<input type="hidden" class="wishId" value="${checks[status.index]}"/>
 							<p>수량: <span class="count">${list.count}</span>개</p>
 							<p>
 								금액:	<span class="pay"><fmt:formatNumber value="${list.count * list.productPrice}"	pattern="#,###" /></span>원
@@ -385,7 +386,7 @@ section> div{
 				<br>
 				<p>회원 보유 포인트 : &nbsp;<span id="point">${user.point}</span>p</p>
 				<label for="use-point">사용할 포인트 : </label><input id="use-point" type="text">p
-				<h1><small>총 결제 금액 : </small><span id="total-pay"></span>KRW</h1>
+				<h1><small>총 결제 금액 : </small><br><span id="total-pay"></span>KRW</h1>
 				<br>
 				<hr>
 				<p>적립금 : <span id="getpoint"></span></p>
@@ -459,13 +460,16 @@ function requestPay() {
     	  	let pay = document.getElementsByClassName("pay");
     	  	let count = document.getElementsByClassName("count");
     	  	let productId = document.getElementsByClassName("productId");
+    	  	let wishId = document.getElementsByClassName("wishId");
 			let total = 0;
 			let counts = [];
 			let productIds = [];
+			let checks = [];
 			for(let i = 0 ; i< pay.length;i++){
 				total += stringNumberToInt(pay[i].innerText)
 				productIds.push(Number(productId[i].value));
 				counts.push(Number(count[i].innerText));
+				checks.push(wishId[i].value);
 			}
     	  	let point = Math.floor(total/100) - Number(document.getElementById("use-point").value);
     	  	let receiverName = document.getElementById("receiverName").value;
@@ -474,6 +478,7 @@ function requestPay() {
     	  	let receiverAddress3 = document.getElementById("receiverAddress3").value;
     	  	let receiverPhone =document.getElementById("receiverPhone").value;
     	  	let orderMsg = document.getElementById("select-msg").value;
+    	  	
         	location.href="${pageContext.request.contextPath}/orderssuccess"
         			+"?productIds="+productIds       // 여러개 
         			+"&productCounts="+counts // 여러개
@@ -484,7 +489,8 @@ function requestPay() {
         			+"&receiverAddress3="+receiverAddress3
         			+"&receiverPhone="+receiverPhone
         			+"&orderMsg="+orderMsg
-        			+"&point="+point;
+        			+"&point="+point
+        			+"&checks="+checks;
       } else {
     	  alert("결제에 실패하였습니다.");
       }

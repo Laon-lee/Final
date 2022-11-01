@@ -206,7 +206,7 @@
             text-align: center;
             
         }
-        input, select{
+        #art3 input,#art3 select{
           width: 55%;
           height: 30px;
           border-radius: 5px;
@@ -214,11 +214,11 @@
           margin-bottom: 40px;
         }
         #accept{
-          width: 15px;
-          height: 15px;
+          width: 15px !important;
+          height: 15px !important;
         }
-        button{
-          margin-left: 10rem;
+        #art3 button{
+          
           width: 45%;
           height: 50px;
           background-color: #D9D9D9;

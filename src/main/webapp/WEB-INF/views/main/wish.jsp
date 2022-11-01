@@ -231,10 +231,13 @@ html {
 }
 
 #pro-name {
-	width: 200px;
+	width:100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+.td3{
+	max-width:300px;
 }
 </style>
 </head>
@@ -282,7 +285,6 @@ html {
 									<td>수량</td>
 									<td>적립금</td>
 									<td>배송구분</td>
-									<td>배송비</td>
 									<td>합계</td>
 									<td>선택</td>
 								</tr>
@@ -296,7 +298,7 @@ html {
 											class="productId" type="hidden"
 											value="${item.productId}"></td>
 										<td><img src="${item.productImage}" alt=""></td>
-										<td><h4 id="pro-name">${item.productName}</h4>
+										<td class="td3"><h4 id="pro-name">${item.productName}</h4>
 											<p><&nbsp;${item.productShop}&nbsp;></p>
 											<h5>
 												[옵션 : <span class="options">${wish[status.index].option}</span>]
@@ -306,7 +308,6 @@ html {
 										<td><span class="product-count">${wish[status.index].count}</span>개</td>
 										<td><span class="point"></span>p</td>
 										<td>기본배송</td>
-										<td><span class="delivery">3000</span>원</td>
 										<td class="price"><span class="total-price"></span>원</td>
 										<td><button class="orderbtns">주문하기</button>
 											<br>
@@ -331,19 +332,21 @@ html {
                         	for(let i = 0 ; i< buttons.length ; i++ ){
                         		buttons[i].addEventListener("click",function(){
                         			if(confirm('장바구니에서 삭제하시겠습니까?')){
-                        				location.href="${pageContext.request.contextPath}/deletewish/"+wishnum[i].value;                        			}
+                        				location.href="${pageContext.request.contextPath}/deletewish/"+wishnum[i].value;                        			
+                        			}
                         		});
                         		orderbtns[i].addEventListener("click",function(){
                         			if(confirm('해당 상품을 주문하시겠습니까?')){
-                        				location.href="${pageContext.request.contextPath}/shop/pay/"+productId[i].value+"?option="+options[i].innerText+"&count="+counts[i].innerText;                        			}
+                        				location.href="${pageContext.request.contextPath}/shop/pay2/"+productId[i].value+"?option="+options[i].innerText+"&count="+counts[i].innerText+"&wishId="+wishnum[i].value;                        			
+                        			}
                         		});
                         	}
                         	
                         </script>
 								<tr>
 									<td colspan="2">[업체기본배송]</td>
-									<td colspan="8"><span>상품구매금액: <span id="allprice"></span>
-											+ 배송비: <span id="alldelivery"></span> = 합계: <span id="total"></span>원
+									<td colspan="8"><span>전체 합계 금액: &nbsp;<span id="allprice"></span>원
+											
 									</span></td>
 								</tr>
 
@@ -352,22 +355,19 @@ html {
                     	let totalprice = document.getElementsByClassName("total-price");
                     	let proprice = document.getElementsByClassName("product-price");
                     	let count = document.getElementsByClassName("product-count");
-                    	let delivery = document.getElementsByClassName("delivery");
                     	let point = document.getElementsByClassName("point");
                     	let result = 0;
-                    	let deliveryprice = 0;
+                    	
                     	for(let i = 0; i< totalprice.length; i++){
                     		let a = stringNumberToInt(proprice[i].innerText)*Number(count[i].innerText);
                     		
                     		totalprice[i].innerText = priceToString(a);
                     		point[i].innerText = priceToString(a/100);
-                    		let b = Number(delivery[i].innerText);
                     		result = result+a;
-                    		deliveryprice += b;
                     	}
                     	document.getElementById("allprice").innerText = priceToString(result);
-                    	document.getElementById("alldelivery").innerText = priceToString(deliveryprice);
-                    	document.getElementById("total").innerText = priceToString(result+deliveryprice);
+                    	
+                    	
                     	/* 1000단위 ,찍혀있는 문자를 숫자로*/
                     	function stringNumberToInt(stringNumber){
                     	    return parseInt(stringNumber.replace(/,/g , ''));

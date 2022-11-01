@@ -105,6 +105,7 @@ public class ShopService {
 	public void deletewish(int wishId) {
 		dao.deletewish(wishId);
 	}
+	
 	public void insertorder(OrderVO vo, OrderdetailVO vo1,HttpSession session, int point ) {
 		MemberVO uservo = (MemberVO)session.getAttribute("user");
 		int updatepoint = mbdao.getmemberinfo(uservo).getPoint()+point;
@@ -146,8 +147,9 @@ public class ShopService {
 		model.addAttribute("separateVO",mbdao.separate(vo2)); 
 		model.addAttribute("user", vo2);
 		model.addAttribute("list", dao.ordersInfo(checks));
+		model.addAttribute("checks",checks);
 	}
-	public void deleteWishAll(String[] checks,Model model) {
+	public void deleteWishAll(String[] checks) {
 		dao.deleteWishAll(checks);
 	}
 	public void insertorders(int[] productIds, int[] productCounts, OrderVO vo,

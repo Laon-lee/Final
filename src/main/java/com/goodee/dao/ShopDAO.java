@@ -40,6 +40,8 @@ public interface ShopDAO {
 	
 	public void deletewish(int wishId);
 	
+	
+	
 	public void insertOrder(OrderVO vo);
 	
 	public void insertOrderdetail(OrderdetailVO vo1);
