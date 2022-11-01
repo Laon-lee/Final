@@ -121,7 +121,7 @@ input {
 <%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
         </header>
 		<nav>
-			<h2><a href="${pageContext.request.contextPath}/viser/main">관리자 페이지</a></h2>
+			<h2><a href="${pageContext.request.contextPath}/viser/main" style="color : black;">관리자 페이지</a></h2>
 		</nav>
 		<main>
 			<div id="sec1">
