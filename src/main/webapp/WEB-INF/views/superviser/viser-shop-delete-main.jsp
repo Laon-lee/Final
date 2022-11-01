@@ -369,7 +369,7 @@ font {
 		</header>
 		
 		<main>
-		<form action="${pageContext.request.contextPath}/delete/success/${productId}">
+		<form action="${pageContext.request.contextPath}/delete/success/${list.productId}">
 			<div id="main-container">
 				<div id="main-box">
 					<div id="main1">
