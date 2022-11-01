@@ -138,7 +138,7 @@ li {
 
 a {
 	text-decoration: none;
-	color: rgb(214, 214, 214);
+	color: gray;
 	width: 200px;
 }
 
