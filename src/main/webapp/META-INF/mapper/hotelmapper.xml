@@ -5,7 +5,7 @@
 <mapper namespace="com.goodee.dao.HotelDAO">
 	<!-- 지역구 값 받아서 해당 정보 출력 -->
 	<select id="selectHotelList" resultType="hotelVO">
-	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
+	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_thum, hotel_img
 		from hotel_info
 		where hotel_category in 
 		<foreach item="cate" index="id" collection="list" open="(" separator="," close = ")">
@@ -17,7 +17,7 @@
 	
 	<!-- 호텔 이름에 따른 객실 정보를 불러움 -->
 	<select id="selectRoomList" resultType="hotelroomVO">
-		select distinct room_name, room_id, hotel_id, hotel_name, room_type, room_price, room_content from hotel_room 
+		select room_name, room_id, hotel_id, hotel_name, room_type, room_price, room_content from hotel_room 
 
 		<!-- where hotel_id = 
 			(select hotel_id from hotel_reservation
@@ -28,7 +28,7 @@
 			) -->
 	</select>
 	<select id="detailHotel" resultType="hotelVO">
-	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
+	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_thum, hotel_img
 		from hotel_info
 		where hotel_name = #{hotelname}
 		</select>
@@ -42,7 +42,7 @@
 	</select>
 	
 	<select id="ranHotel" resultType="hotelVO">
-		select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_opt, hotel_deopt, hotel_thum, hotel_img, hotel_content
+		select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_thum, hotel_img
 		from hotel_info
 		where hotel_id = #{hotelid}; 
 	</select>
@@ -50,6 +50,23 @@
 		select room_id, hotel_id, hotel_name, room_name, room_type, room_price, room_content
 		from hotel_room
 		where hotel_name = #{hotelname}
+	</select>
+	
+	<select id="dateCount" resultType="int">
+		SELECT COUNT(*)
+		FROM hotel_detail_res
+		WHERE room_id in 
+		<foreach item="roomid" index="id" collection="roomid" open="(" separator="," close = ")">
+			 #{roomid} 
+		</foreach> 
+		and (res_start &lt; #{enddate} AND res_end &gt; #{startdate});
+		</select>
+	<select id="countRoom" resultType="hotelroomVO">
+	select room_name, room_id, hotel_id, hotel_name, room_type, room_price, room_content from hotel_room
+	WHERE NOT room_id in 
+		<foreach item="roomid" index="id" collection="roomid" open="(" separator="," close = ")">
+			 #{roomid} 
+		</foreach> 
 	</select>
 </mapper>
 

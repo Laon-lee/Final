@@ -144,10 +144,10 @@
 		
 		.list {
 		height:25vh;}
-        .option_list {
+        /* .option_list {
             display: none;
             
-        }
+        } */
 
         .inner1 {
             width: 25%;
@@ -326,7 +326,7 @@
 					</div>
 					<input type="text" id="datepicker1" name="dates" readonly>
 					<!-- <button class="selecbtn">검색</button> -->
-					<a href="#" class="selecbtn" id="sbtn">검색</a>
+					<a href="#" class="selecbtn" id="asearchbtn">검색</a>
 				</div>
 				
 				
@@ -334,122 +334,152 @@
 					<div id="isbx" class="csbx">
 						<p>지역구분</p>
 						<form action="" id="bxform">
-							<label for="1"><input type="checkbox" name="cate" id="1" class="allseo" value="서울">서울전체</label>
-							<label for="2"><input type="checkbox" name="cate" id="2" class="seo" value="금천구">금천구</label>
-							<label for="3"><input type="checkbox" name="cate" id="3" class="seo" value="은평구">은평구</label>
-							<label for="4"><input type="checkbox" name="cate" id="4" class="seo" value="강남구">강남구</label>
-							<label for="5"><input type="checkbox" name="cate" id="5" class="seo" value="서초구">서초구</label>
-							<label for="6"><input type="checkbox" name="cate" id="6" class="seo" value="서대문구">서대문구</label>
-							<label for="7"><input type="checkbox" name="cate" id="7" class="seo" value="강동구">강동구</label><br />
-							<label for="8"><input type="checkbox" name="cate" id="8" class="allin" value="인천">인천전체</label>
-							<label for="9"><input type="checkbox" name="cate" id="9" class="in" value="연수구">연수구</label>
-							<label for="10"><input type="checkbox" name="cate" id="10" class="in" value="남동구">남동구</label>
-							<label for="11"><input type="checkbox" name="cate" id="11" class="allgyeong" value="경기">경기전체</label>
-							<label for="12"><input type="checkbox" name="cate" id="12" class="gyeong" value="성남시">성남시</label>
-							<label for="13"><input type="checkbox" name="cate" id="13" class="gyeong" value="김포시">김포시</label>
-							<label for="14"><input type="checkbox" name="cate" id="14" class="gyeong" value="용인시">용인시</label>
-							<label for="15"><input type="checkbox" name="cate" id="15" class="gyeong" value="시흥시">시흥시</label>
+							<label for="1"><input type="checkbox" name="cate" id="1" class="allseo" value="서울">서울전체</label> 
+						<label for="2"><input type="checkbox" name="cate" id="2" class="seo" value="금천구">금천구</label>
+						<label for="3"><input type="checkbox" name="cate" id="3" class="seo" value="은평구">은평구</label> 
+						<label for="4"><input type="checkbox" name="cate" id="4" class="seo" value="강남구">강남구</label>
+						<label for="5"><input type="checkbox" name="cate" id="5" class="seo" value="강서구">강서구</label>
+						<label for="6"><input type="checkbox" name="cate" id="6" class="seo" value="관악구">관악구</label>
+						<label for="7"><input type="checkbox" name="cate" id="7" class="seo" value="도봉구">도봉구</label><br />
+						<label for="8"><input type="checkbox" name="cate" id="8" class="seo" value="서초구">서초구</label>
+						<label for="9"><input type="checkbox" name="cate" id="9" class="seo" value="성동구">성동구</label>
+						<label for="10"><input type="checkbox" name="cate" id="10" class="seo" value="양천구">양천구</label> 
+						<label for="11"><input type="checkbox" name="cate" id="11" class="seo" value="용산구">용산구</label>
+						<label for="12"><input type="checkbox" name="cate" id="12" class="seo" value="서대문구">서대문구</label>
+						<label for="13"><input type="checkbox" name="cate" id="13" class="seo" value="동대문구">동대문구</label>
+						<label for="14"><input type="checkbox" name="cate" id="14" class="seo" value="강동구">강동구</label> <br />
+						<label for="20"><input type="checkbox" name="cate" id="20" class="allgyeong" value="경기">경기전체</label> 
+						<label for="21"><input type="checkbox" name="cate" id="21" class="gyeong" value="구리시">구리시</label>
+						<label for="22"><input type="checkbox" name="cate" id="22" class="gyeong" value="남양주시">남양주시</label> 
+						<label for="23"><input type="checkbox" name="cate" id="23" class="gyeong" value="의정부시">의정부시</label>
+						<label for="24"><input type="checkbox" name="cate" id="24" class="gyeong" value="포천시">포천시</label>
+						<label for="25"><input type="checkbox" name="cate" id="25" class="gyeong" value="하남시">하남시</label><br />
+						<label for="15"><input type="checkbox" name="cate" id="15" class="allin" value="인천">인천전체</label>
+						<label for="16"><input type="checkbox" name="cate" id="16" class="in" value="연수구">연수구</label> 
+						<label for="17"><input type="checkbox" name="cate" id="17" class="in" value="부평구">부평구</label> 
+						<label for="18"><input type="checkbox" name="cate" id="18" class="in" value="남동구">남동구</label>
+						<label for="19"><input type="checkbox" name="cate" id="19" class="in" value="서구">서구</label> 
+						<label for="26"><input type="checkbox" name="cate" id="26" class="allchung" value="충북">충북전체</label>
+						<label for="27"><input type="checkbox" name="cate" id="27" class="chung" value="음성군">음성군</label>
+						<label for="28"><input type="checkbox" name="cate" id="28" class="chung" value="제천시">제천시</label>
+						<label for="29"><input type="checkbox" name="cate" id="29" class="chung" value="청주시">청주시</label>
+						<label for="30"><input type="checkbox" name="cate" id="30" class="chung" value="충주시">충주시</label> 
 						</form>
 					</div>
 				<!-- </div> -->
 				<script type="text/javascript">
-	window.addEventListener('DOMContentLoaded', function(){
-						//카테고리 배열 설저
-						var cateArr = [];
-						var cateArr2 = cateArr.slice(1);
-						//datepicker 설정
+
+				window.addEventListener('DOMContentLoaded', function(){
+					
+					document.getElementById("asearchbtn").addEventListener("click",function(){ 
 						
-						let now = new Date();
-						let tom = new Date();
-											
-						tom.setDate(tom.getDate()+1);
+						var jjjcateArr = [];
+						var jjjcateArr2 = [];
 						
-						$('input[name="dates"]').daterangepicker({
-							 "startDate": "${startdate}",
-	                            //시작날짜
-	                         "endDate": "${enddate}",
-	                            //종료날짜
-	                         "minDate": now,
-	                            //최소지정날짜
-	                         "opens": "center",
-	 
-	                         locale: {
-	                           	//기타 설정
-	                            "separator": " ~ ",
-	                            	//구분자
-	                           	"applyLabel": "적용",
-	                            	 //버튼 라벨
-	                            "cancelLabel": "취소",
-	                            format: "YYYY-MM-DD",
-	                            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-	                            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-	                        }
-	                    });
+						const jjjchecked = document.querySelectorAll('input[name="cate"]:checked');
+						jjjchecked.forEach((item)=>{
+							var jjjcate = item.value;
+						 	jjjcateArr.push(jjjcate);
+						 	jjjcateArr2 = jjjcateArr.slice(1);
+						});
 						
-						 $('input[name="dates"]').on('show.daterangepicker', function() {
-							$(".cancelBtn").css("float", "right");
-                     	 	$(".cancelBtn").css("background-color", "white");
-                     	 	$(".cancelBtn").css("color","black");
-                     	 	$(".applyBtn").css("background-color", "black");
-                     	 	$(".applyBtn").css("color","white");
-                     		$(".cancelBtn, .applyBtn").css("border","1px solid black");
-                     	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
-                     		$(".cancelBtn, .applyBtn").css("width", "60px");
-						 });
-						 
+						console.log(jjjcateArr);
+						console.log("slice"+jjjcateArr2);
+						
+	                    if(Array.isArray(jjjcateArr) && jjjcateArr.length === 0){
+	                    	document.getElementById("selectp").style.color="red";
+	                    	document.getElementById("selectp").style.fontWeight = "900";
+	                    	document.getElementById("isbx").style.display = "block";
+	                    	document.getElementById("isbx").style.display = "flex";
+	                    }else {
+	                    	document.getElementById("selectp").style.color="black";
+	                    	document.getElementById("isbx").style.display = "none";
+	                     	if(document.getElementById("1").checked || document.getElementById("20").checked || document.getElementById("15").checked || document.getElementById("26").checked) {
+	                    	 	console.log("slice"+jjjcateArr2);
+	                			location.href = "${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+jjjcateArr2; 	
+	                    	} else {
+	                    	 	console.log("여기에오나1"+jjjcateArr);
+	                    	 	console.log("여기에오나2"+jjjcateArr2);
+	                    	 	location.href = "${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+jjjcateArr;
+	                     	}
+	                    }
+	                    
+					});
+					
+					
+					//카테고리 배열 설저
+					let cateArr = [];
+					let cateArr2 = [];
+	            
+					let now = new Date();
+					let tom = new Date();
+										
+					tom.setDate(tom.getDate()+1);
+					
+					$('input[name="dates"]').daterangepicker({
+						 "startDate": "${startdate}",
+                            //시작날짜
+                         "endDate": "${enddate}",
+                            //종료날짜
+                         "minDate": now,
+                            //최소지정날짜
+                         "opens": "center",
  
+                         locale: {
+                           	//기타 설정
+                            "separator": " ~ ",
+                            	//구분자
+                           	"applyLabel": "적용",
+                            	 //버튼 라벨
+                            "cancelLabel": "취소",
+                            format: "YYYY-MM-DD",
+                            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+                            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+                        }
+                    });
+					
+					$('input[name="dates"]').on('show.daterangepicker', function() {
+						$(".cancelBtn").css("float", "right");
+                 	 	$(".cancelBtn").css("background-color", "white");
+                 	 	$(".cancelBtn").css("color","black");
+                 	 	$(".applyBtn").css("background-color", "black");
+                 	 	$(".applyBtn").css("color","white");
+                 		$(".cancelBtn, .applyBtn").css("border","1px solid black");
+                 	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
+                 		$(".cancelBtn, .applyBtn").css("width", "60px");
+					});
+
+					$('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+						 //datepicker에서 적용버튼을 클릭했을 때
+						 var startdate = picker.startDate.format('YYYY-MM-DD');
+						 var enddate = picker.endDate.format('YYYY-MM-DD');
 						 
-						 $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-							 //datepicker에서 적용버튼을 클릭했을 때
-							 var startdate = picker.startDate.format('YYYY-MM-DD');
-							 var enddate = picker.endDate.format('YYYY-MM-DD');
-							 
-							 
-							
-							 $('input[name="cate"]:checked').each(function(){
-								 var cate=$(this).val();
-								 cateArr.push(cate);
-							 });
-							 
-							 console.log("in"+cateArr);
-							 console.log("in2"+cateArr2);
-							 
-							 if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
-	                     		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
-	                         } else {
-	                           	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);        
-	                         }
-							 
-						 });
+						$('input[name="cate"]:checked').each(function(){
+							var cate=$(this).val();
+							cateArr.push(cate);
+							cateArr2 = cateArr.slice(1);
+						});
 						 
-						 document.getElementById("asearchbtn").addEventListener("click",function(){
-							 var jcateArr = [];
-							 var jcateArr2 = jcateArr.slice(1);
-							 
-							 const jchecked = document.querySelectorAll('input[name="cate"]:checked');
-							 jchecked.forEach((item)=>{
-								 var jcate = item.value;
-							 	jcateArr.push(jcate);
-							 });
-							 
-							 console.log(jcateArr);
-							 
-							 var today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
-		                     var tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
-		                     //오늘 날짜와 내일 날짜 출력
-		                     if(document.getElementById("1").checked || document.getElementById("8").checked || document.getElementById("11").checked) {
-		                			location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr2;   	
-		                     } else {
-		                    	 location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr;
-		                     }
-		                     //daterangepicker를 사용하지 않았으면 오늘 날짜와 내일 날짜가 들어감
-		                     
-		          
-						 });
+						console.log("in"+cateArr);
 						 
-						 
+						if(Array.isArray(cateArr) && cateArr.length === 0) {
+							$("#asearchbtn").click(function(){
+								$("#selectp").css("color","red");
+								$("#selectp").css("fontWeight","900");
+								$("#isbx").css("display", "block");
+								$("#isbx").css("display", "flex");
+							});
+						} else {
+							$("#asearchbtn").click(function(){
+								$("#selectp").css("color","black");
+								$("#isbx").css("display", "none");
+						 		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);	
+							});	
+						}
 						 
 					});
+					 
+				});	
 					
 					
                    

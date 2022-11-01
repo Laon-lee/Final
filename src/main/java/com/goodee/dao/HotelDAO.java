@@ -1,5 +1,6 @@
 package com.goodee.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +17,10 @@ public interface HotelDAO {
 	public List<HotelRoomVO> detailRoom(@Param("hotelname") String hotelname, @Param("roomname") String roomname);
 	public HotelVO ranHotel(@Param("hotelid") int ran);
 	public List<HotelRoomVO> ranRoom(@Param("hotelname") String hotelname);
+	
+	//public int dateCount(@Param("roomid")int[] roomid, @Param("startdate")String startdate, @Param("enddate") String enddate);
+	
+	public List<HotelRoomVO> countRoom(@Param("roomid") List<Integer> roomid, @Param("startdate")String startdate, @Param("enddate") String enddate);
+	public int dateCount(@Param("roomid") List<Integer> roomid, @Param("startdate")String startdate, @Param("enddate") String enddate);
+	
 }

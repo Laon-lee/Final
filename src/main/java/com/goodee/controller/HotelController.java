@@ -40,7 +40,11 @@ public class HotelController {
 			model.addAttribute("enddate", enddate);
 			model.addAttribute("category", stringcate);
 			
-			service.getHotelList(model, category);
+			//service.getHotelList(model, category);
+			service.sampleHotelList(model, category, startdate, enddate);
+			
+			
+			
 			
 			return "hotel/hotellist";
 		}
