@@ -447,7 +447,7 @@ function requestPay() {
     	  	let receiverAddress3 = document.getElementById("receiverAddress3").value;
     	  	let receiverPhone =document.getElementById("receiverPhone").value;
     	  	let orderMsg = document.getElementById("select-msg").value;
-        	location.href="${pageContext.request.contextPath}/ordersuccess?productId=${list.productId}&productCount=${count}&orderPrice=${count*list.productPrice}&receiverName="+receiverName+"&receiverAddress1="+receiverAddress1+"&receiverAddress2="+receiverAddress2+"&receiverAddress3="+receiverAddress3+"&receiverPhone="+receiverPhone+"&orderMsg="+orderMsg+"&point="+point;
+        	location.href="${pageContext.request.contextPath}/ordersuccess2?productId=${list.productId}&productCount=${count}&orderPrice=${count*list.productPrice}&receiverName="+receiverName+"&receiverAddress1="+receiverAddress1+"&receiverAddress2="+receiverAddress2+"&receiverAddress3="+receiverAddress3+"&receiverPhone="+receiverPhone+"&orderMsg="+orderMsg+"&point="+point+"&wishId=${wishId}"
       } else {
     	  alert("결제에 실패하였습니다.");
       }

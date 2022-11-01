@@ -146,7 +146,8 @@ option {
 }
 
 #main2 {
-	width: 500px;
+	width:500px;
+	margin:20px;
 }
 
 #main2>h3, h4 {
@@ -211,7 +212,7 @@ option {
 #sub-box {
 	width: 90%;
 	display: grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 300px 3fr;
 	padding: 10px 10px;
 }
 
@@ -484,7 +485,7 @@ font {
 							<br />
 							<h5>배송방법 :택배</h5>
 							<h5>배송 지역 : 전국지역</h5>
-							<h5>배송 비용 : 3,500원</h5>
+							<h5>배송 비용 : 무료</h5>
 							<h5>배송 기간 : 3일 ~ 7일</h5>
 							<h5>배송안내</h5>
 							<p>뎅누리샵은 편집샵으로 운영되는 샵으로서 ,브랜드별로 출고지가 상이합니다.</p>

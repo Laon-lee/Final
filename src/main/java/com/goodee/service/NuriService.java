@@ -17,9 +17,17 @@ public class NuriService {
 	} 
 	public void search(String category, String search, Model model){
 		if(category.equals("shop")) {
-			model.addAttribute("shop", dao.searchshop("%"+search+"%"));
+			if(search=="") {
+				model.addAttribute("shop", null);
+			}else {
+				model.addAttribute("shop", dao.searchshop("%"+search+"%"));
+			}
 		}else if(category.equals("hotel")) {
-			model.addAttribute("hotel", dao.searchhotel("%"+search+"%"));
+			if(search=="") {
+				model.addAttribute("hotel", null);
+			}else {
+				model.addAttribute("hotel", dao.searchhotel("%"+search+"%"));
+			}
 		}
 	}
 	

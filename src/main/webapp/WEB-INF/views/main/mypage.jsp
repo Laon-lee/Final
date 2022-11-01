@@ -256,7 +256,7 @@
                                         <td><img src="${item.productImage}"></td>
                                         <td>${item.productName}</td>
                                         <td>${item.productCount}</td>
-                                        <td>${item.orderPrice}</td>
+                                        <td><fmt:formatNumber value="${item.productPrice*item.productCount}" pattern="#,###" />원</td>
                                         <td>${item.orderStatus}</td>
                                         
                                     </tr>

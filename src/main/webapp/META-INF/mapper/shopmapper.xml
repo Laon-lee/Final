@@ -42,6 +42,7 @@
 	<delete id="deletewish" parameterType="int">
 		delete from wishlist where wish_id=#{wishId}
 	</delete>
+	
 	<insert id="insertOrder" parameterType="orderVO" useGeneratedKeys="true" keyProperty="orderId">
 		insert into ordertable (id,receiver_name, receiver_phone, receiver_address1, receiver_address2, receiver_address3, order_msg) 
 					values (#{id},#{receiverName},#{receiverPhone},#{receiverAddress1},#{receiverAddress2},#{receiverAddress3},#{orderMsg})

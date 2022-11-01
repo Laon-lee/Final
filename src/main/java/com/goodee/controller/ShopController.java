@@ -63,6 +63,16 @@ public class ShopController {
 		model.addAttribute("count", count);
 		return "shop/shop-pay";	
 	}
+	@GetMapping("/shop/pay2/{id}")
+	public String ShopPay2(@PathVariable("id") String id,Model model,
+						@RequestParam("option") String option, @RequestParam("wishId") String wishId,
+						@RequestParam("count") int count, HttpSession session) {
+		spservice.getListByIdS(id, model,session);
+		model.addAttribute("option", option);
+		model.addAttribute("count", count);
+		model.addAttribute("wishId",wishId);
+		return "shop/shop-pay2";	
+	}
 	@GetMapping("/shop/orderinfo")
 	public String ShopOrderinfo() {
 		return "shop/shop-orderinfo";
@@ -99,7 +109,14 @@ public class ShopController {
 		spservice.insertorder(vo,vo1,session,point);
 		return "redirect:/mypage";
 	}
-	
+	@GetMapping("ordersuccess2")
+	public String ordersuccess2(@RequestParam("wishId") String wishId,@ModelAttribute OrderVO vo, @ModelAttribute OrderdetailVO vo1,
+							HttpSession session,@RequestParam int point) {
+		spservice.insertorder(vo,vo1,session,point);
+		int wishid = Integer.parseInt(wishId);
+		spservice.deletewish(wishid);
+		return "redirect:/mypage";
+	}
 	
 	@PostMapping("getPdList")
 	@ResponseBody
@@ -124,15 +141,17 @@ public class ShopController {
 	}
 	
 	@GetMapping("deleteWishAll")
-	public String deleteWishAll(@RequestParam String[] checks,Model model) {
-		spservice.deleteWishAll(checks, model);
+	public String deleteWishAll(@RequestParam String[] checks) {
+		spservice.deleteWishAll(checks);
 		
 		return "redirect:/wish";
 	}
 	@GetMapping("orderssuccess")
 	public String orderssuccess(@RequestParam int[] productIds, @RequestParam int[] productCounts,
-								@ModelAttribute OrderVO vo,	HttpSession session,@RequestParam int point) {
+								@ModelAttribute OrderVO vo,	HttpSession session,
+								@RequestParam String[] checks,@RequestParam int point) {
 		spservice.insertorders(productIds,productCounts, vo,session,point);
+		spservice.deleteWishAll(checks);
 		return "redirect:/mypage";
 	}
 }
