@@ -112,8 +112,12 @@ public class SuperviserController {
 	}
 	@GetMapping("viser/notice/delete/{boardCategory}")
 	public String noticeDelete(@PathVariable("boardCategory") String boardCategory,Model model) {
-		bdservice.getList(model, boardCategory);
+		superservice.getList(boardCategory, model);
 		return "superviser/viser-notice-delete";
 	}
-	
+	@GetMapping("viser/delete/modify")
+	public String noticeDeleteModify(BoardVO vo) {
+		superservice.deleteBoard(vo);
+		return "superviser/viser-main";
+	}
 }

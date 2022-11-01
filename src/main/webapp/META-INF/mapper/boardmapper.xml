@@ -11,9 +11,7 @@
 	<select id="selectList" resultType="boardVO">
 	select * from board where board_id = #{boardId}
 	</select>
-	<update id="deleteBoard" parameterType="boardVO">
-	update board set is_delte = #{isDelete} where board_id =#{boardId}
-	</update>
+	
 </mapper>
 
 

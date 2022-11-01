@@ -1,6 +1,7 @@
 package com.goodee.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.goodee.dao.SuperviserDAO;
 import com.goodee.vo.BoardVO;
@@ -30,7 +31,14 @@ public class SuperviserService {
 	public void updateInfo(ShopVO vo) {
 		superdao.updateInfo(vo);
 	}
+	
 	public void deleteBoard(BoardVO vo) {
 		superdao.deleteBoard(vo);
+	}
+	
+	public void getList(String boardCategory,Model model) {
+		
+		model.addAttribute("list",superdao.getList(boardCategory));
+		System.out.println("오류");
 	}
 }
