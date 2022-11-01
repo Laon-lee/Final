@@ -21,7 +21,7 @@
 	update board set is_delete = #{isDelete},board_title=#{boardTitle},board_content = #{boardContent} where board_id =#{boardId}
 	</update>
 	
-	<select id="getList" parameterType="boardVO" resultType="String">
+	<select id="getList" parameterType="String" resultType="boardVO">
 	select board_id, id, board_title, board_content,
 	date_format(board_date, '%Y-%m-%d') board_date
 	 from board where board_category = #{boardCategory}

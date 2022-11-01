@@ -1,5 +1,7 @@
 package com.goodee.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,5 +18,5 @@ public interface SuperviserDAO {
 	
 	public int updateInfo(ShopVO vo);
 	public int deleteBoard(BoardVO vo);
-	public BoardVO getList(@Param("boardCategory")String boardCategory);
+	public List<BoardVO> getList(@Param("boardCategory")String boardCategory);
 }
