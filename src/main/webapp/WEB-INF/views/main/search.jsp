@@ -83,10 +83,12 @@
 			
         }
         #sec1{
-        	margin-top: 30px;
+        	padding: 10px;
+    		margin-top: 30px;
+    		padding-bottom: 30px;
+    		border-bottom: 2px dashed black;
         }
 		#sec2{
-			border-top: 2px dashed black;
 			padding:10px;
 		}
         button {
