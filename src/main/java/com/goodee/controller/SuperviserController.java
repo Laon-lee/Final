@@ -25,6 +25,7 @@ public class SuperviserController {
 	private SuperviserService superservice;
 	private ShopService spservice;
 	
+	
 	public SuperviserController(SuperviserService superservice, ShopService spservice) {
 		super();
 		this.superservice = superservice;
@@ -80,7 +81,18 @@ public class SuperviserController {
 		return "/superviser/viser-shop-delete";
 	}
 	
-	
+	@GetMapping("shop/delete/main/{id}")
+	   public String deletePage(@PathVariable("id") String id,Model model) {
+	      spservice.getListById(id, model);
+	      return "/superviser/viser-shop-delete-main";
+	      }
+	   
+	   @GetMapping("delete/success/{productId}")
+	   public String deleteProc(@PathVariable int productId) {
+	      System.out.println("오나보까");
+	      superservice.godelete(productId);
+	      return "/superviser/viser-main";
+	   }
 	
 	
 }

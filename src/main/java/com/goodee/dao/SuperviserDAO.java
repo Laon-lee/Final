@@ -10,4 +10,6 @@ public interface SuperviserDAO {
 	
 	public int addproc(ShopVO vo);
 	
+	public void godelete(int productId);
+	
 }

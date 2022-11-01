@@ -264,7 +264,7 @@ label {
                         for(dict of data.list){
                             console.log('${pageContext.request.contextPath}');
                             productListDiv.append('<div class="list">'
-                                    +'<a href="'+'${pageContext.request.contextPath}'+'/shop/main/buy/'+dict.product_id+'">'
+                                    +'<a href="'+'${pageContext.request.contextPath}'+'/shop/delete/main/'+dict.product_id+'">'
                                     +'<img src="'+dict.product_image+'" alt="">'
                                     +'<p>'+dict.product_name+'</p>'
                                     +'<h3>'

@@ -9,6 +9,10 @@
 				values (#{productName},#{productShop},#{productImage},#{productContent},#{productCategory},#{productPrice});
 	</insert>
 	
+	   <delete id="godelete" parameterType="int">
+      delete from product where product_id=#{productId}
+   </delete>
+	
 </mapper>
 
 
