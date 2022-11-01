@@ -19,9 +19,15 @@ public class SuperviserService {
 		superdao.addproc(vo);
 		System.out.println("서비스2");
 	}
+
 	
 	   public void godelete(int productId) {
 		      System.out.println("오나안오나");
 		      superdao.godelete(productId);
 		   }
+
+	public void updateInfo(ShopVO vo) {
+		superdao.updateInfo(vo);
+	}
+
 }
