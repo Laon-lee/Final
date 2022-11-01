@@ -9,5 +9,5 @@ public interface SuperviserDAO {
 	
 	
 	public int addproc(ShopVO vo);
-	
+	public int updateInfo(ShopVO vo);
 }

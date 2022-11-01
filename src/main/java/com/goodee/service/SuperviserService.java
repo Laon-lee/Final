@@ -19,4 +19,7 @@ public class SuperviserService {
 		superdao.addproc(vo);
 		System.out.println("서비스2");
 	}
+	public void updateInfo(ShopVO vo) {
+		superdao.updateInfo(vo);
+	}
 }

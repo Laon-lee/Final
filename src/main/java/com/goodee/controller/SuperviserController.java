@@ -79,8 +79,17 @@ public class SuperviserController {
 		spservice.getCateList2(category, model);
 		return "/superviser/viser-shop-delete";
 	}
+	@GetMapping("viser/update/id/{id}")
+	public String updateshowid(@PathVariable("id")String id,Model model) {
+		spservice.getListById(id, model);
+		return "superviser/viser-shop-updateinfo";
+	}
 	
-	
-	
+	//상품 수정
+	@GetMapping("viser/update")
+	public String updateInfo(ShopVO vo) {
+		superservice.updateInfo(vo);
+		return "superviser/viser-main";
+	}
 	
 }

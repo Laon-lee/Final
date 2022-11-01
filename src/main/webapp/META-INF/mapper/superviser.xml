@@ -8,6 +8,10 @@
 	insert into product (product_name, product_shop, product_image, product_content, product_category, product_price ) 
 				values (#{productName},#{productShop},#{productImage},#{productContent},#{productCategory},#{productPrice});
 	</insert>
+	<update id="updateInfo" parameterType="shopVO">
+	update product set product_name= #{productName}, product_shop = #{productShop}, product_total = #{productTotal} ,product_image = #{productImage}, product_content = #{productContent}, product_category=#{productCategory},product_total=#{productTotal},product_price=#{productPrice},product_opt=#{productOpt}
+	where product_id = #{productId}
+	</update>
 	
 </mapper>
 
