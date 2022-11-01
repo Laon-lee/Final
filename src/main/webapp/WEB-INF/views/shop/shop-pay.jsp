@@ -440,7 +440,7 @@ function requestPay() {
     buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {
-    	  	let point = Number(${count * list.productPrice/100}) - Number(document.getElementById("use-point").value);
+    	  	let point = Math.floor(Number(${count * list.productPrice/100})) - Number(document.getElementById("use-point").value);
     	  	let receiverName = document.getElementById("receiverName").value;
     	  	let receiverAddress1 = document.getElementById("receiverAddress1").value;
     	  	let receiverAddress2 = document.getElementById("receiverAddress2").value;

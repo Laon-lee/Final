@@ -158,25 +158,18 @@ public class ShopService {
 		
 		//orderVO에 유저고유번호 저장
 		vo.setId(vo2.getId());
+		dao.insertOrder(vo);
+		System.out.println( vo.getOrderId());;
 		
 		OrderdetailVO dvo = new OrderdetailVO();
-		
-		for(int productId : productIds) {
-			//order table에 맞는 정보 8개 저장
-
-			dao.insertOrder(vo);
-			
-			//insert된 녀석들의 order_id를 바로 빼옴
-			System.out.println(vo.getOrderId());
-			
-			//order detail table에 정보 저장
-			dvo.setOrderId(vo.getOrderId());
-			dvo.setProductId(productId);
-			dvo.setOrderStatus("배송준비중");
-			dao.getListById2(productId).getProductPrice();  //상품아이디로 상품 가격 불러오기			
-		}
-		for(int count : productCounts) {
-			
+		dvo.setOrderId(vo.getOrderId()); // 새로뽑아낸 orderId
+		dvo.setOrderStatus("배송준비중");
+		for (int i = 0; i < productCounts.length; i++) {
+			dvo.setProductId(productIds[i]);
+			dvo.setProductCount(productCounts[i]);
+			int totalprice = dao.getListById2(productIds[i]).getProductPrice()*productCounts[i];
+			dvo.setOrderPrice(totalprice);
+			dao.insertOrderdetail(dvo);
 		}
 		
 		//포인트 업데이트 로직

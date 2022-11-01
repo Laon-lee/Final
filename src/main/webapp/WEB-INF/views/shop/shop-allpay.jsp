@@ -410,7 +410,7 @@ section> div{
 						
  						total += stringNumberToInt(pay[i].innerText)
 					}
-					document.getElementById("getpoint").innerText=total/100+'p';
+					document.getElementById("getpoint").innerText=Math.floor(total/100) +'p';
 					document.getElementById("total-pay").innerText = (total-usepoint).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 					document.getElementById("use-point").addEventListener("blur",function(){
 						let point = Number(this.value);
@@ -447,7 +447,7 @@ function requestPay() {
     pg: "inicis",
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '',
+    name : '123',
     amount : '100',
     buyer_email : '${user.memEmail}',
     buyer_name : '${user.memName}',
@@ -464,10 +464,10 @@ function requestPay() {
 			let productIds = [];
 			for(let i = 0 ; i< pay.length;i++){
 				total += stringNumberToInt(pay[i].innerText)
-				productIds.push(Number(productId[i].innerText));
+				productIds.push(Number(productId[i].value));
 				counts.push(Number(count[i].innerText));
 			}
-    	  	let point = total/100 - Number(document.getElementById("use-point").value);
+    	  	let point = Math.floor(total/100) - Number(document.getElementById("use-point").value);
     	  	let receiverName = document.getElementById("receiverName").value;
     	  	let receiverAddress1 = document.getElementById("receiverAddress1").value;
     	  	let receiverAddress2 = document.getElementById("receiverAddress2").value;
@@ -477,7 +477,7 @@ function requestPay() {
         	location.href="${pageContext.request.contextPath}/orderssuccess"
         			+"?productIds="+productIds       // 여러개 
         			+"&productCounts="+counts // 여러개
-        			<%--//"&orderPrice=     // 여러개     let pay 하나하나의 값 뺄 것--%> 
+        			<%--//"&orderPrice=     // 여러개     let pay 하나하나의 값 / 뺄 것!!--%> 
         			+"&receiverName="+receiverName
         			+"&receiverAddress1="+receiverAddress1
         			+"&receiverAddress2="+receiverAddress2

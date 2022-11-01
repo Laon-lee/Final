@@ -56,7 +56,7 @@ public interface ShopDAO {
 	
 	public List<WishjoinVO> ordersInfo(@Param("checks") String[] checks);
 	
-	public void insertProductIds(@Param("productId")int productId);
+	
 	
 
 	
