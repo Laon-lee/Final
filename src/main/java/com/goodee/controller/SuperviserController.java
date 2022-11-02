@@ -126,4 +126,10 @@ public class SuperviserController {
 		superservice.deleteBoard(vo);
 		return "superviser/viser-main";
 	}
+	
+	@GetMapping("viser/create/modify")
+	public String createboard(BoardVO vo) {
+		superservice.createboard(vo);
+		return "superviser/viser-main";
+	}
 }

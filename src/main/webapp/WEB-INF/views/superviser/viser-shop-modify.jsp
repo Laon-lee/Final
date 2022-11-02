@@ -179,10 +179,14 @@ label {
 		<main>
 			<div id="sec1">
 				<div id="menu-bar">
-				<ul><h2>쇼핑몰</h2>
+				<ul>
+				<a  href="${pageContext.request.contextPath}/viser/main"><h2>Main Page</h2></a>
+				<h2>쇼핑몰</h2>
 					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
-					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
+					<li style="text-decoration:underline"><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/delete/home">상품 삭제</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/notice/delete/공지사항">공지사항 등록/수정/삭제</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/QNA/delete/자주묻는질문">자주묻는질문 등록/수정/삭제</a></li>
 				</ul>
 				<ul><h2>호텔</h2>
 					<li>예약 확인</li>

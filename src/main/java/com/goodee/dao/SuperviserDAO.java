@@ -19,4 +19,5 @@ public interface SuperviserDAO {
 	public int updateInfo(ShopVO vo);
 	public int deleteBoard(BoardVO vo);
 	public List<BoardVO> getList(@Param("boardCategory")String boardCategory);
+	public int createboard(BoardVO vo);
 }

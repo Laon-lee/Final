@@ -71,7 +71,9 @@ li {
 	line-height: 3.5rem;
 	cursor: pointer;
 }
-
+.create-form{
+margin-left : 3rem;
+}
 a {
 	text-decoration: none;
 	color: gray;
@@ -153,6 +155,51 @@ a:hover {
   #boardId{
   width:15px;
   }
+  .create{
+ 
+  width:100%;
+  margin:0 auto;
+  
+  }
+  .create h1,h1{
+  text-align:left;
+  font-size:2rem;
+  margin-top: 30px;
+  margin-bottom:15px;
+  }
+  .create label{
+  width: 200px;
+  display:inline-block;
+  }
+  .create input{
+  width:60%;
+	 font-weight: 600;
+	 font-size: 1.3rem;
+    height:60px;
+    color: rgb(70, 68, 68);
+    border:1px solid #ccc;
+    border-radius:1rem;
+  }
+  .create button{
+  margin-top:15px;
+  margin-bottom:15px;
+  margin-left:200px;
+  width:30%;
+  height:50px;
+  border: none;
+  color:white;
+  background-color:black;
+  font-size:25px;
+  border-radius:10px;
+  }
+  #btn3{
+  margin-left:0;
+  }
+  .create button:hover{
+  
+  background-color:#ccc;
+  color:black;
+  }
 </style>
 
 </head>
@@ -168,11 +215,14 @@ a:hover {
 		<main>
 			<div id="sec1">
 				<div id="menu-bar">
-				<ul><h2>쇼핑몰</h2>
+				<ul>
+				<a href="${pageContext.request.contextPath}/viser/main"><h2>Main Page</h2></a>
+				<h2>쇼핑몰</h2>
 					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/delete/home">상품 삭제</a></li>
-					<li><a href="${pageContext.request.contextPath}/viser/notice/delete/공지사항">공지사항 삭제</a></li>
+					<li style="text-decoration:underline"><a href="${pageContext.request.contextPath}/viser/notice/delete/공지사항">공지사항 등록/수정/삭제</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/QNA/delete/자주묻는질문">자주묻는질문 등록/수정/삭제</a></li>
 				</ul>
 				<ul><h2>호텔</h2>
 					<li>예약 확인</li>
@@ -199,6 +249,19 @@ a:hover {
       </div>
    </form>
     </c:forEach>
+    <div class="create">
+    <form class="create-form"  action="${pageContext.request.contextPath}/viser/create/modify">
+							<h1>공지사항 새로 추가하기</h1>
+							
+							<label for="boardTitle"><h2>제목</h2></label> <input type="text" id="CTT" name="boardTitle" placeholder="제목을 입력하세요" value=""/><br />
+							<label for="boardContent"><h2>내용</h2></label> <input type="text" id="CCT" name="boardContent" placeholder="내용을 입력하세요" value=""/><br />
+							<button>생성하기</button> <button id="btn3">생성 내용 미리보기</button>
+							<input type="hidden" name="boardCategory" value="공지사항"/>
+							<input type="hidden" name="isDelete" value="0"/>
+							<h2>생성 제목 : <span id="CT"></span> </h2>
+							<h3>생성 내용 : <span id="CC"></span> </h3>
+							</form>
+							</div>
     </article>
 			</div>
 		</main>
@@ -218,6 +281,17 @@ a:hover {
 			document.getElementById("delete").value=1;
 			alert("삭제에 성공하셨습니다.")
 		});
+		
+		document.getElementById("btn3").addEventListener("click",function(e){
+ 			
+			 var CTT = document.getElementById("CTT").value;
+            var CCT = document.getElementById("CCT").value;
+           
+           document.getElementById("CT").innerText =CTT;
+			document.getElementById("CC").innerText = CCT;
+			
+			e.preventDefault();
+		})
 		</script>
 </body>
 </html>

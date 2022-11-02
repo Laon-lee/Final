@@ -26,6 +26,11 @@
 	date_format(board_date, '%Y-%m-%d') board_date
 	 from board where board_category = #{boardCategory}
 	</select>
+	
+	<insert id="createboard" parameterType="boardVO">
+	insert into board (board_title,board_content,board_category,is_delete)
+	values( #{boardTitle}, #{boardContent}, #{boardCategory}, #{isDelete} )
+	</insert>
 </mapper>
 
 

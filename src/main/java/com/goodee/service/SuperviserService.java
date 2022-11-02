@@ -41,4 +41,7 @@ public class SuperviserService {
 		model.addAttribute("list",superdao.getList(boardCategory));
 		
 	}
+	public void createboard(BoardVO vo) {
+		superdao.createboard(vo);
+	}
 }
