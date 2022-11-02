@@ -31,6 +31,13 @@
 	insert into board (board_title,board_content,board_category,is_delete)
 	values( #{boardTitle}, #{boardContent}, #{boardCategory}, #{isDelete} )
 	</insert>
+	
+	<select id="getMyOrder" resultType="orderjoinVO" parameterType="int">
+		select * from ordertable as ot 
+		INNER JOIN detailorder as do ON ot.order_id= do.order_id 
+		INNER JOIN product ON product.product_id = do.product_id 
+		
+	</select>
 </mapper>
 
 

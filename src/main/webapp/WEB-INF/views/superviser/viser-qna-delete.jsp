@@ -290,11 +290,11 @@ a:hover {
                            		<h4><span class="art3-Q">N</span><input type="text" value="${item.boardContent}" name="boardContent"/></h4><br />
                            		 1 == 삭제, 0 == 수정 // 상태: ${item.isDelete}
                            		
-                           		 <button id="btn1">수정</button>
-                           		 <button id="btn2">삭제</button>
+                           		 <button class="btn1" id="btn1">수정</button>
+                           		 <button class="btn2" id="btn2">삭제</button>
                            		   
                             </div>
-                             <input type="hidden" name="isDelete" id="delete" value=""/>
+                             <input type="hidden" name="isDelete" id="delete" class="delete" value=""/>
                          </form>
  							</c:forEach>
  							
@@ -343,29 +343,28 @@ a:hover {
 
                                        </script>
                                        <script>
+                                       document.getElementById("btn3").addEventListener("click",function(e){
+                                			
+                               			 var CTT = document.getElementById("CTT").value;
+                                           var CCT = document.getElementById("CCT").value;
+                                          
+                                          document.getElementById("CT").innerText =CTT;
+                               			document.getElementById("CC").innerText = CCT;
+                               			
+                               			e.preventDefault();
+                               		})
+                                        for(let i=0; i<100; i++){
+                                    	   document.getElementsByClassName('btn1')[i].addEventListener("click",function(){
+                                    		   document.getElementsByClassName('delete')[i].value = 0;
+                                    			alert("수정에 성공하셨습니다.")
+                                    		});
+                                    	   document.getElementsByClassName('btn2')[i].addEventListener("click",function(){
+                                    		   document.getElementsByClassName('delete')[i].value = 1;
+                                    			alert("삭제에 성공하셨습니다.")
+                                    		});
+                                       }
                                        
-                                       
-                                       
-                                       document.getElementById("btn1").addEventListener("click",function(){
-                                 			document.getElementById("delete").value=0;
-                                 			alert("수정에 성공하셨습니다.")
-                                 		});
                                  		
-                                 		document.getElementById("btn2").addEventListener("click",function(){
-                                 			document.getElementById("delete").value=1;
-                                 			alert("삭제에 성공하셨습니다.")
-                                 		});
-                                 		
-                                 		document.getElementById("btn3").addEventListener("click",function(e){
-                                 			
-                                 			 var CTT = document.getElementById("CTT").value;
-                                             var CCT = document.getElementById("CCT").value;
-                                            
-                                            document.getElementById("CT").innerText =CTT;
-                                 			document.getElementById("CC").innerText = CCT;
-                                 			
-                                 			e.preventDefault();
-                                 		})
                                        </script>
 </body>
 </html>

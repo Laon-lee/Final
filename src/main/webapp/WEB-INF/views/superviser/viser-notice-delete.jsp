@@ -240,8 +240,8 @@ a:hover {
         <div class="art3-second">
         <label for="boardId">수정/삭제할 번호</label><input type="text" name="boardId" id="boardId" value="${item.boardId}" readonly/>
         <label for="boardContent">수정할 내용</label><textarea name="boardContent" id="boardContent">${item.boardContent}</textarea><br />
-        <input type="hidden" name="isDelete" id="delete" value=""/>
-        <button id="btn1">수정</button><button id="btn2">삭제</button>
+        <input type="hidden" name="isDelete" id="delete" class="delete" value=""/>
+        <button class="btn1" id="btn1">수정</button><button class="btn2" id="btn2">삭제</button>
         </div>
         <div class="art3-third">
         s1 == 삭제, 0 == 수정 <br />
@@ -270,18 +270,7 @@ a:hover {
 <%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
 		</footer>
 		</div>
-		<script>
-		
-		document.getElementById("btn1").addEventListener("click",function(){
-			document.getElementById("delete").value=0;
-			alert("수정에 성공하셨습니다.")
-		});
-		
-		document.getElementById("btn2").addEventListener("click",function(){
-			document.getElementById("delete").value=1;
-			alert("삭제에 성공하셨습니다.")
-		});
-		
+	 <script>
 		document.getElementById("btn3").addEventListener("click",function(e){
  			
 			 var CTT = document.getElementById("CTT").value;
@@ -291,7 +280,19 @@ a:hover {
 			document.getElementById("CC").innerText = CCT;
 			
 			e.preventDefault();
-		})
-		</script>
+		});
+                                        for(let i=0; i<100; i++){
+                                    	   document.getElementsByClassName('btn1')[i].addEventListener("click",function(){
+                                    		   document.getElementsByClassName('delete')[i].value = 0;
+                                    			alert("수정에 성공하셨습니다.")
+                                    		});
+                                    	   document.getElementsByClassName('btn2')[i].addEventListener("click",function(){
+                                    		   document.getElementsByClassName('delete')[i].value = 1;
+                                    			alert("삭제에 성공하셨습니다.")
+                                    		});
+                                       }
+                                       
+                                 	
+                                       </script>
 </body>
 </html>
