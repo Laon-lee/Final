@@ -156,7 +156,7 @@ button {
 							
 							<div class="form-group">
 								<div id="id_div">
-									<label for="id" style="width : 110px;">아이디</label> <input type="text" id="mem_id" name="mem_id" placeholder=" ID">&nbsp;&nbsp;
+									<label for="id" style="width : 110px;">아이디</label> <input type="text" id="mem_id" name="memId" placeholder=" ID">&nbsp;&nbsp;
 									<button id="id_Checkbtn" type ="button" class="btn btn-primary btn-sm">중복체크</button>&nbsp;&nbsp;
 									<span id="idresult"></span>
 									<div class="eheck_font" id="id_check"></div>
@@ -165,7 +165,7 @@ button {
 							
 							<div class="form-group">
 								<div class="eheck_font" id="pw_div">
-									<label for="pw" style="width : 110px;">비밀번호</label> <input type="password" id="mem_pw" name="mem_pw" placeholder=" PASSWORD">
+									<label for="pw" style="width : 110px;">비밀번호</label> <input type="password" id="mem_pw" name="memPw" placeholder=" PASSWORD">
 									<div class="eheck_font" id="pw_check"></div>
 								</div>
 							</div>
@@ -180,7 +180,7 @@ button {
 							<div class="form-group">
 								<div class="eheck_font" id="name_div">
 									<label for="mem_name" style="width : 110px;">이름</label> <input type="text"
-									 id="mem_name" name="mem_name"
+									 id="mem_name" name="memName"
 									placeholder=" Name">
 									<div class="eheck_font" id="name_check"></div>
 							</div>
@@ -188,7 +188,7 @@ button {
 
 							<div class="eheck_font" id="birth_div">
 							<label for="mem_birth" style="width : 110px;">생년월일</label> <input type="tel"
-								id="mem_birth" name="mem_birth"
+								id="mem_birth" name="memBirth"
 								placeholder=" ex) 19990101"> 
 								 <div class="eheck_font" id="birth_check"></div>
 							</div>
@@ -197,7 +197,7 @@ button {
 							<div class="form-group">
 								<div class="eheck_font" id="email_div">
 									<label for="mem_email" style="width : 110px;">이메일 주소</label> <input type="email"
-									 id="mem_email" name="mem_email"
+									 id="mem_email" name="memEmail"
 									placeholder=" E-mail" value="${email}" readonly>
 									 <div class="eheck_font" id="email_check"></div>
 
@@ -208,7 +208,7 @@ button {
 							<div class="form-group">
 							<div class="eheck_font" id="phone_div">
 							<label for="mem_phone" style="width : 110px;">휴대폰 번호</label> <input
-								type="tel"  id="mem_phone" name="mem_phone"
+								type="tel"  id="mem_phone" name="memPhone"
 								placeholder=" '-' 없이 입력하세요">
 								<div class="eheck_font" id="phone_check"></div>
 							</div>
@@ -217,14 +217,14 @@ button {
 							<div class="form-group">
 							<div id="gender_div">
 							<label for="mem_gender" style="width : 110px;">성별 </label> <input type="radio"
-								id="male" name="mem_gender" value="남" class="c_box">남 <input
+								id="male" name="memGender" value="남" class="c_box">남 <input
 								type="radio" id="female" name="mem_gender" value="여" class="c_box">여
 							</div>
 							</div>
 
 							<div id ="addr_check1">
 							<input 
-								placeholder="우편번호" name="mem_oaddress" id="mem_address1"
+								placeholder="우편번호" name="memOaddress" id="mem_address1"
 								type="text" readonly="readonly">&nbsp;&nbsp;
 							<button type="button" class="btn btn-default"
 								onclick="execPostCode();">
@@ -234,13 +234,13 @@ button {
 
 							
 							<input 
-								placeholder="도로명 주소" name="mem_address" id="mem_address2"
+								placeholder="도로명 주소" name="memAddress" id="mem_address2"
 								type="text" readonly="readonly" />
 							
 
 						
 							<input placeholder="상세주소"
-								name="mem_detailaddress" id="mem_detailaddress" type="text" />
+								name="memDetailaddress" id="mem_detailaddress" type="text" />
 								
 									<div class="art5_1">
 									<h3>[필수] 이용약관 동의 <input type="checkbox" style="width : 15px; height :12px; " name="agree" value="Y"/></h3>
@@ -639,11 +639,11 @@ function execPostCode() {
             }   */
             
             
-            $("[name=mem_oaddress]").val(data.zonecode);
-            $("[name=mem_address]").val(fullRoadAddr);
+            $("[name=memOaddress]").val(data.zonecode);
+            $("[name=memAddress]").val(fullRoadAddr);
             
-            document.getElementById('mem_oaddress').value = data.zonecode; //5자리 새우편번호 사용
-            document.getElementById('mem_address').value = fullRoadAddr;
+            document.getElementById('memOaddress').value = data.zonecode; //5자리 새우편번호 사용
+            document.getElementById('memAddress').value = fullRoadAddr;
             //document.getElementById('mem_detailaddress').value = data.jibunAddress; 
         }
      }).open();

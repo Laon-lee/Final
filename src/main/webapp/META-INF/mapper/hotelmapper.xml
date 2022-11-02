@@ -27,19 +27,12 @@
 			</foreach>
 			) -->
 	</select>
-	<select id="detailHotel" resultType="hotelVO">
-	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_thum, hotel_img
-		from hotel_info
-		where hotel_name = #{hotelname}
-		</select>
-		
-		<select id="detailRoom" resultType="hotelroomVO">
-		select * from hotel_room
-	 		where room_name = #{roomname} and hotel_id = 
-			(select hotel_id from hotel_info
-			where hotel_name = #{hotelname})
-			
+	<select id="detailHotel" resultType="hoteljoinVO">
+		select * from hotel_room as hr
+		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
+		where hr.hotel_id = #{hotelId}
 	</select>
+		
 	
 	<select id="ranHotel" resultType="hotelVO">
 		select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_thum, hotel_img
@@ -67,6 +60,12 @@
 		<foreach item="roomid" index="id" collection="roomid" open="(" separator="," close = ")">
 			 #{roomid} 
 		</foreach> 
+	</select>
+	<select id="getHotelReview" resultType="hotelreviewVO">
+		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 
+	</select>
+	<select id="getHotelQna" resultType="hotelqnaVO">
+		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 
 	</select>
 </mapper>
 

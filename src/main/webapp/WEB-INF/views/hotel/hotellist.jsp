@@ -580,10 +580,11 @@
                         <p>2021.12.11~2023.08.31</p>
                         <h1 class="${item.hotelId}" id="h1">${item.hotelId}</h1>
                         <h1>가격</h1>
-                        <input type="hidden" name="hidden"  value="${item.hotelId }"/>
+                        <input type="hidden" name="hidden"  value="${item.hotelId}"/>
                     </div>
                     <div class="innerbtn" >
                         <button class="realbtn" >RESERVE</button>
+                        <a href="${pageContext.request.contextPath}/godetail/${item.hotelId}/${startdate}/${enddate}">예약하기</a>
                     </div>
 
                 </div>

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.goodee.dao.HotelDAO;
+import com.goodee.vo.HotelQnaVO;
+import com.goodee.vo.HotelReviewVO;
 import com.goodee.vo.HotelVO;
 
 @Service
@@ -32,9 +34,9 @@ public class HotelService {
 			
 		}
 		
-		public void detailHotelList(Model model, String hotelname, String roomname) {
-			model.addAttribute("hotel", dao.detailHotel(hotelname).get(0));
-			model.addAttribute("room", dao.detailRoom(hotelname, roomname).get(0));
+		public void detailHotelList(Model model, int hotelId) {
+			model.addAttribute("hotel", dao.detailHotel(hotelId));
+			
 		}
 		
 		public void ranHotelList(Model model, int ran) {
@@ -86,4 +88,10 @@ public class HotelService {
 			 */
 		}
 		
+		public List<HotelReviewVO> getHotelReview(HotelReviewVO vo){
+			return dao.getHotelReview(vo);
+		}
+		public List<HotelQnaVO> getHotelQna(HotelQnaVO vo){
+			return dao.getHotelQna(vo);
+		}
 }

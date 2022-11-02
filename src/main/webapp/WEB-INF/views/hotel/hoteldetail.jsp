@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +25,7 @@
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <title>Document</title>
     <style>
         
@@ -64,6 +65,7 @@
             display: grid;
             grid-template-rows: 70px 1fr 70px;
             grid-template-columns: 1fr;
+            min-height: 100vh;
         }
 
         header {
@@ -212,22 +214,48 @@
         }
 
         .content {
-            width: 85%;
+            width: 80%;
             display: flex;
             flex-direction: column;
             gap: 45px;
             position: relative;
+            align-items: center;
         }
-
+		#hotel-img{
+			max-width:400px;
+			max-height:300px;
+		}
+		#hotel-img img{
+			width:100%;
+		}
+		#hotel-info{
+			display:flex;
+			flex-direction:column;
+			align-items:center;
+		}
+		#hotel-info button{
+			width: 200px;
+    		height: 45px;
+    		color: white;
+    		font-size: 15px;
+    		padding: 10px;
+   			background-color: black;
+		}
         .detail {
-            width: 80%;
+            width: 65vw;
             margin: 5px auto;
             display: grid;
-            grid-template-columns: 4fr 1.3fr;
-
+            grid-template-columns: 1fr;
+			justify-items: center;
 
         }
-
+		.c_title{
+			display:grid;
+			grid-template-columns: 1fr 1fr;
+			justify-items:center;
+			align-items:center;
+			width:100%;
+		}
         .c_p {
             width: 100%;
             border-bottom: 1px solid black;
@@ -350,7 +378,113 @@
         #selectp{
         	cursor:default;
         }
-        
+        .c_info{
+        	width: 100%;
+			display: grid;
+			grid-template-rows: 55px 1fr;
+        }
+        #nav{
+        	background-color: gray;
+        	color:white;
+        	display: flex;
+    		justify-content: space-around;
+    		position:sticky;
+    		top:0;
+    		z-index:10;
+        }
+        #nav div{
+        	padding-top:14px;
+        	width: 25%;
+    		text-align: center;
+    		cursor:pointer;
+        }
+        #info-container li{
+        	display:block;
+        }
+        .info-container-div{
+        	margin:30px;
+        }
+        .on{
+        	background-color: black;
+        }
+        .fadeIn {
+			animation: fadeIn 1.5s ease-out forwards;
+		}
+		
+		@keyframes fadeIn { 
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opaciry:1;
+			}
+		}
+		#notice-title{
+			margin-bottom:15px
+		}
+		#notice-content{
+			margin-left:10px;
+		}
+		.room-list{
+			position:relative;
+			margin:10px 0 10px 20px;
+			border-bottom: 2px dashed black;
+		}
+		.room-list-div{
+			padding: 10px 0;
+		}
+		.material-symbols-outlined{
+			float:left;
+			padding-top:5px;
+			margin-right:10px;
+		}
+		.room-info{
+			font-size:25px;
+		}
+		.room-type{
+			margin-left:10px;
+			font-weight: 400;
+			font-size: 16px;
+		}
+		.room-price{
+			position:absolute;
+			top: 30px;
+			right:13px;
+			float:right;
+			font-size:23px;
+			font-weight:400;
+		}
+		.room-content{
+			margin-left:20px;
+		}
+		.review-box, .qna-box{
+			position:relative;
+			margin:20px 20px 0 20px;
+		}
+		.review-write, .qna-title{
+			font-size:18px;
+		}
+		.review-roomname{
+			font-size:13px;
+			color:gray;
+			margin-left:5px;
+		}
+		.qna-writer{
+			margin-left:5px;
+		}
+		.review-date, .qna-date{
+			position:absolute;
+			right:25px;
+			top:20px;
+			float:right;
+		}
+		.review-content, .qna-content{
+			padding:10px;
+		}
+		#review-count, #qna-count{
+			color: blue;
+		}
+		
     </style>
 </head>
 
@@ -386,25 +520,62 @@
 					</div>
 					<input type="text" id="datepicker1" name="dates" readonly>
 					<!-- <button class="selecbtn">검색</button> -->
-					<a href="#" class="selecbtn">검색</a>
+					<a href="#" id= "asearchbtn"class="selecbtn">검색</a>
 				</div>
 				
-				<script>
+				<script type="text/javascript">
+
 				window.addEventListener('DOMContentLoaded', function(){
-					//카테고리 배열 설저
-					var cateArr = [];
-					var cateArr2 = cateArr.slice(1);
-					//datepicker 설정
 					
+					document.getElementById("asearchbtn").addEventListener("click",function(){ 
+						
+						var jjjcateArr = [];
+						var jjjcateArr2 = [];
+						
+						const jjjchecked = document.querySelectorAll('input[name="cate"]:checked');
+						jjjchecked.forEach((item)=>{
+							var jjjcate = item.value;
+						 	jjjcateArr.push(jjjcate);
+						 	jjjcateArr2 = jjjcateArr.slice(1);
+						});
+						
+						console.log(jjjcateArr);
+						console.log("slice"+jjjcateArr2);
+						
+	                    if(Array.isArray(jjjcateArr) && jjjcateArr.length === 0){
+	                    	document.getElementById("selectp").style.color="red";
+	                    	document.getElementById("selectp").style.fontWeight = "900";
+	                    	document.getElementById("isbx").style.display = "block";
+	                    	document.getElementById("isbx").style.display = "flex";
+	                    }else {
+	                    	document.getElementById("selectp").style.color="black";
+	                    	document.getElementById("isbx").style.display = "none";
+	                     	if(document.getElementById("1").checked || document.getElementById("20").checked || document.getElementById("15").checked || document.getElementById("26").checked) {
+	                    	 	console.log("slice"+jjjcateArr2);
+	                			location.href = "${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+jjjcateArr2; 	
+	                    	} else {
+	                    	 	console.log("여기에오나1"+jjjcateArr);
+	                    	 	console.log("여기에오나2"+jjjcateArr2);
+	                    	 	location.href = "${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+jjjcateArr;
+	                     	}
+	                    }
+	                    
+					});
+					
+					
+					//카테고리 배열 설저
+					let cateArr = [];
+					let cateArr2 = [];
+	            
 					let now = new Date();
 					let tom = new Date();
 										
 					tom.setDate(tom.getDate()+1);
 					
 					$('input[name="dates"]').daterangepicker({
-						 "startDate": now,
+						 "startDate": "${startdate}",
                             //시작날짜
-                         "endDate": tom,
+                         "endDate": "${enddate}",
                             //종료날짜
                          "minDate": now,
                             //최소지정날짜
@@ -423,7 +594,7 @@
                         }
                     });
 					
-					 $('input[name="dates"]').on('show.daterangepicker', function() {
+					$('input[name="dates"]').on('show.daterangepicker', function() {
 						$(".cancelBtn").css("float", "right");
                  	 	$(".cancelBtn").css("background-color", "white");
                  	 	$(".cancelBtn").css("color","black");
@@ -432,66 +603,44 @@
                  		$(".cancelBtn, .applyBtn").css("border","1px solid black");
                  	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
                  		$(".cancelBtn, .applyBtn").css("width", "60px");
-					 });
-					 
+					});
 
-					 
-					 $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+					$('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
 						 //datepicker에서 적용버튼을 클릭했을 때
 						 var startdate = picker.startDate.format('YYYY-MM-DD');
 						 var enddate = picker.endDate.format('YYYY-MM-DD');
 						 
+						$('input[name="cate"]:checked').each(function(){
+							var cate=$(this).val();
+							cateArr.push(cate);
+							cateArr2 = cateArr.slice(1);
+						});
 						 
-						
-						 $('input[name="cate"]:checked').each(function(){
-							 var cate=$(this).val();
-							 cateArr.push(cate);
-						 });
+						console.log("in"+cateArr);
 						 
-						 console.log("in"+cateArr);
-						 console.log("in2"+cateArr2);
+						if(Array.isArray(cateArr) && cateArr.length === 0) {
+							$("#asearchbtn").click(function(){
+								$("#selectp").css("color","red");
+								$("#selectp").css("fontWeight","900");
+								$("#isbx").css("display", "block");
+								$("#isbx").css("display", "flex");
+							});
+						} else {
+							$("#asearchbtn").click(function(){
+								$("#selectp").css("color","black");
+								$("#isbx").css("display", "none");
+						 		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);	
+							});	
+						}
 						 
-						 if($('.allseo').is(':checked') || $('.allin').is(':checked') || $('.allgyeong').is(':checked')) {
-                     		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
-                         } else {
-                           	$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);        
-                         }
-						 
-					 });
+					});
 					 
-					 document.getElementById("asearchbtn").addEventListener("click",function(){
-						 var jcateArr = [];
-						 var jcateArr2 = jcateArr.slice(1);
-						 
-						 const jchecked = document.querySelectorAll('input[name="cate"]:checked');
-						 jchecked.forEach((item)=>{
-							 var jcate = item.value;
-						 	jcateArr.push(jcate);
-						 });
-						 
-						 console.log(jcateArr);
-						 
-						 var today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
-	                     var tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
-	                     //오늘 날짜와 내일 날짜 출력
-	                     if(document.getElementById("1").checked || document.getElementById("8").checked || document.getElementById("11").checked) {
-	                			location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr2;   	
-	                     } else {
-	                    	 location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jcateArr;
-	                     }
-	                     //daterangepicker를 사용하지 않았으면 오늘 날짜와 내일 날짜가 들어감
-	                     
-	          
-					 });
-					 
-					 
-					 
-				});
-				
-				
-               
-
-            </script>
+				});	
+					
+					
+                   
+	
+                </script>
             
            <script type="text/javascript">
 			$('.allseo').click(function(){
@@ -607,68 +756,242 @@
                 <div class="detail">
                     <div class="content">
                         <div class="c_title">
-                            <h1>${hotel.hotelName}</h1>
-                            <P>${room.roomType}견 전용</P>
-                        </div>
-                        <div class="c_option">
-                            <p class="c_p">option</p>
-                            <p class="p_cont">조식 제공, extra bed 제공</p>
+                        	<div id="hotel-img">
+                        		<img src="https://www.qplace.kr/content/images/2021/09/9-14.jpg">
+                        	</div>
+                        	<div id="hotel-info">
+                        		<div>
+                            		<h1>${hotel[0].hotelName}</h1><br>
+                            		<p>상세주소: ${hotel[0].hotelAddr }</p>
+                            		<p>전화번호: ${hotel[0].hotelTel}</p><br>
+                            	</div>
+                            	<div>
+                            		<button>RESERVATION</button>
+                            	</div>
+                            </div>
                         </div>
                         <div class="c_info">
-                            <p class="c_p">information</p>
-                            <p class="p_cont">강아지들 재방문률 95%
+                            <div id="nav">
+								<div class="on">Information</div>
+								<div>Notice</div>
+								<div id="review">Review</div>
+								<div id="qna">Q&A</div>
+                            </div>
+                            <div id="info-container">
+                            	<div style="display: block;" class="info-container-div">
+                            		<div>
+                            			<h1>객실정보</h1>
+                            		</div>
+                            		<ul>
+                            		<c:forEach var="item" items="${hotel}">
+                            			<li class="room-list">
+                            				<div class="room-list-div">
+                            					
+                            					<p class="room-info"><span class="material-symbols-outlined">pets</span> ${item.roomName}
+                            						<span class="room-price"><fmt:formatNumber value="${item.roomPrice}" pattern="#,###" /> KRW</span>
+                            					</p>
+                            					
+                            					<p class="room-content"><span class="room-type">[${item.roomType}견 전용]</span> ${item.roomContent}</p>
+                            				</div>
+                            			</li>
+                            		</c:forEach>
+                            		</ul>
+                            	</div>
+                            	<div style="display: none;" class="info-container-div">
+                            		<div id="notice-title"><h1>유의사항</h1></div>
+                            		<div id="notice-content">
+                            			<p>☑ 1년 이내 5가지 접종(종합, 코로나, 켄넬코프, 인플루엔자, 광견병) 받지 않은 반려견은 입실이 제한됩니다.<br>
+										   ※ 접종기록은 접종병원명이 꼭 필요하므로 증빙 자료는 미리 준비해주세요.</p>
+										<p>☑ 1살 미만의 반려견인 경우 항체 검사가 필수 입니다. (단, 1살 이상 시 재접종 기록 확인)</p>
+										<p>☑ 생리,건강문제 또는 공격성이 강해 타 고객의 이용에 피해가 되는 반려견 일 경우 입실이 제한됩니다.</p>
+                            		</div>
+                            	</div>
+                            	<div style="display: none;" class="info-container-div">
+                            		<h1>Review</h1>
+                            		<p>호텔의 방문후기를 작성해주세요</p><hr/>
+                            		&nbsp;&nbsp;<h3>후기 <span id="review-count"></span>개</h3>
+                            		<div id="review-container">
+                            			
+                            			
+                            		</div>
+                            	</div>
+                            	<div style="display: none;" class="info-container-div">
+                            		<h1> Q&A</h1>
+                            		<p>궁금한 사항은 이곳에 작성해주세요</p><hr/>
+                            		&nbsp;&nbsp;<h3>문의 <span id="qna-count"></span>개</h3>
+                            		<div id="qna-container">
+                            			
+                            			
+                            		</div>
+                            	</div>
+                            	
+                            	
+                            </div>
+							<script type="text/javascript">
+									<%-- nav div 클릭 hide/block 효과 --%>
+									$("#nav div").click(function(){
+										var idx=$(this).index();
+										$("html").animate({scrollTop : 0}, 0);
+										$("#nav> div").removeClass("on");
+										$("#nav> div").eq(idx).addClass("on");
+					
+										$("#info-container> div").hide();
+										$("#info-container> div").removeClass("fadeIn")
+										$("#info-container> div").eq(idx).addClass("fadeIn");
+										$("#info-container> div").eq(idx).show();
+									})
+									
+									function formatDate(date) {
+		                            	var d = new Date(date),
+		                            	month = '' + (d.getMonth() + 1),
+		                            	day = '' + d.getDate(),
+		                            	year = d.getFullYear();
 
-                                품격있는 애견 호텔 저희 비숑프라자를 방문 해주셔서 너무 감사합니다.
+		                            	if (month.length < 2) month = '0' + month;
+		                             	if (day.length < 2) day = '0' + day;
+										return [year, month, day].join('. ');
+		                            }
+									
+									<%-- 호텔 리뷰 불러오기--%>
+									$("#review").click(function(){
+										let hotelId = ${hotel[0].hotelId};
+										
+										fetch("${pageContext.request.contextPath}/gethotelreview", {
+		                                    method: "POST",
+		                                    headers: { "Content-Type": "application/json" },
+		                                    body: JSON.stringify({ hotelId })
+		                                }).then(response => response.json())
+		                                    .then(data => {
+		                                    	$("#review-container").empty();
+		                                        document.getElementById("review-count").innerText = data.length;
+		                                        for (let review of data) {
+		                                    			const div = document.createElement("div");
+		                                    			div.setAttribute("class","review-box")
 
-                                항상 감사하는 마음으로 최고의 품질, 최고의 서비스를 제공하게습니다.
+		                                    			const p1 = document.createElement("p");
+		                                    			const strong = document.createElement("strong");
+		                                    			strong.setAttribute("class","review-writer");
+		                                    			strong.innerText = review.memId;
 
-                                애견들을 사람처럼, 사람들을 애견처럼 </p>
-                            <img src="https://www.mypetplus.co.kr/upload/201701261318010.jpg" alt="" id="c_img">
+		                                    			const sp1 = document.createElement("span");
+		                                    			sp1.setAttribute("class","review-roomname");
+		                                    			sp1.innerText= '['+review.hotelreviewRoomname+']';
+
+		                                    			const sp2 = document.createElement("span");
+		                                    			sp2.setAttribute("class","review-date");
+		                                    			sp2.innerText= formatDate(review.hotelreviewDate);
+
+		                                    			p1.append(strong);
+		                                    			p1.append(sp1);
+		                                    			p1.append(sp2);
+
+		                                    			const p2 = document.createElement("p");
+		                                    			p2.setAttribute("class","review-content")
+		                                    			p2.innerText = review.hotelreviewContent;
+		                                    			
+		                                    			const hr = document.createElement("hr");
+		                                    			div.append(p1);
+		                                    			div.append(p2);
+		                                    			div.append(hr);
+		                                    			const container = document.getElementById("review-container");
+		                                    			container.append(div);
+		                                        }
+		                                    }).catch(error => {
+		                                        console.log("error");
+		                                    });
+									})
+									
+									
+									<%-- 호텔 문의 불러오기--%>
+									$("#qna").click(function(){
+										let hotelId = ${hotel[0].hotelId};
+										console.log(hotelId);
+										fetch("${pageContext.request.contextPath}/gethotelqna", {
+		                                    method: "POST",
+		                                    headers: { "Content-Type": "application/json" },
+		                                    body: JSON.stringify({ hotelId })
+		                                }).then(response => response.json())
+		                                    .then(data => {
+		                                    	$("#qna-container").empty();		                           
+		                                        
+		                                        document.getElementById("qna-count").innerText = data.length;
+		                                        for (let qna of data) {
+		                                    			const div = document.createElement("div");
+		                                    			div.setAttribute("class","qna-box")
+
+		                                    			const p1 = document.createElement("p");
+		                                    			const strong = document.createElement("strong");
+		                                    			strong.setAttribute("class","qna-title");
+		                                    			strong.innerText = '[문의] '+qna.hotelqnaTitle;
+
+		                                    			const sp1 = document.createElement("span");
+		                                    			sp1.setAttribute("class","qna-writer");
+		                                    			sp1.innerText= 'by. '+qna.memId;
+
+		                                    			const sp2 = document.createElement("span");
+		                                    			sp2.setAttribute("class","qna-date");
+		                                    			sp2.innerText= formatDate(qna.hotelqnaDate);
+
+		                                    			p1.append(strong);
+		                                    			p1.append(sp1);
+		                                    			p1.append(sp2);
+
+		                                    			const p2 = document.createElement("p");
+		                                    			p2.setAttribute("class","qna-content")
+		                                    			p2.innerText = qna.hotelqnaContent;
+		                                    			
+		                                    			const hr = document.createElement("hr");
+		                                    			div.append(p1);
+		                                    			div.append(p2);
+		                                    			div.append(hr);
+		                                    			const container = document.getElementById("qna-container");
+		                                    			container.append(div);
+		                                        }
+
+		                                    }).catch(error => {
+		                                        console.log("error");
+		                                    });
+									})
+							</script>		
                         </div>
-                        <div class="c_review">
-                            <p class="c_p">review</p>
-                            <table>
-                                <tr>
-                                    <th>견종</th>
-                                    <th>닉네임</th>
-                                    <th>투숙일</th>
-                                    <th>내용</th>
-                                </tr>
-                                <tr>
-                                    <td>비숑</td>
-                                    <td>홍길동</td>
-                                    <td>2022.10.17~2022.10.18</td>
-                                    <td>어쩌구저쩌구</td>
-                                </tr>
-                                <tr>
-                                    <td>비숑</td>
-                                    <td>홍길동</td>
-                                    <td>2022.10.17~2022.10.18</td>
-                                    <td>어쩌구저쩌구</td>
-                                </tr>
-                                <tr>
-                                    <td>비숑</td>
-                                    <td>홍길동</td>
-                                    <td>2022.10.17~2022.10.18</td>
-                                    <td>어쩌구저쩌구</td>
-                                </tr>
-                            </table>
-                        </div>
+                        
                     </div>
-                    <div class="price">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <%-- <div class="price">
                         <div class="p_box">
-                            <p>객실1</p>
-                            <h1><fmt:formatNumber type="currency" value="${room.roomPrice}"/></h1>
-                            <p>2022.10.29</p>
+                            <p>${room.roomName}</p>
+                            <fmt:parseDate value="${startdate}" var="start" pattern="yyyy-MM-dd"/>
+							<fmt:parseNumber value="${start.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+							<fmt:parseDate value="${enddate }" var="end" pattern="yyyy-MM-dd"/>
+							<fmt:parseNumber value="${end.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
+                            
+                            
+                            <h1><fmt:formatNumber value="${room.roomPrice * (endDate - strDate)}"/>KRW</h1>
+                            <p>${startdate} ~ ${enddate} <br>
+                            <span>${endDate - strDate} 박</span>
+                            
+                            		<c:if test="${(endDate - strDate)==0}"><span>당일 이용 예약</span></c:if>
+                            		<c:if test="${(endDate - strDate)!=0}"><span>${endDate - strDate} 박</span></c:if>
+                             </p>
                             
                             <p>세금</p>
-                            <p><fmt:parseNumber var="price" integerOnly="true" value="${room.roomPrice * 0.1}"/>
-                            <fmt:formatNumber type="currency" value="${price}"/>
+                            <p><fmt:parseNumber var="price" integerOnly="true" value="${room.roomPrice * (endDate - strDate) * 0.1}"/>
+                            <fmt:formatNumber  value="${price}"/>KRW
                             </p>
                         </div>
                         <div class="total">
                             <p>+세금(10%)</p>
-                            <h1>총 예약금액 <fmt:formatNumber value="${room.roomPrice + price }" pattern="#,#00" />KRW</h1>
+                            <h1>총 예약금액 <fmt:formatNumber value="${room.roomPrice * (endDate - strDate)  + price }" pattern="#,#00" />KRW</h1>
                             <button id="reservebtn">회원예약</button>
                         </div>
                         
@@ -679,8 +1002,8 @@
                         	})
                         </script>
                     </div>
-                </div>
-
+                </div> --%>
+				</div>
             </section>
         </main>
         <footer>

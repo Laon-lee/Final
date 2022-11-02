@@ -1,6 +1,7 @@
 package com.goodee.controller;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.HotelService;
+import com.goodee.vo.HotelQnaVO;
+import com.goodee.vo.HotelReviewVO;
 import com.goodee.vo.HotelRoomVO;
 
 @Controller
@@ -62,14 +65,13 @@ public class HotelController {
 			
 		}*/
 		
-		@GetMapping("godetail/{hotelName}/{roomName}/{startDate}/{endDate}")
-		public String godetail(@PathVariable("hotelName") String hotelname, @PathVariable("roomName") String roomname, @PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, Model model) {
-			System.out.println(hotelname);
+		@GetMapping("godetail/{hotelId}/{startDate}/{endDate}")
+		public String godetail(@PathVariable("hotelId") int hotelId, @PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, Model model) {
+			
 			model.addAttribute("startdate", startdate);
 			model.addAttribute("enddate", enddate);
-			service.detailHotelList(model, hotelname, roomname);
-			System.out.println("여까지 오니"+startdate+":"+enddate);
-			System.out.println("컨트롤러"+hotelname);
+			service.detailHotelList(model, hotelId);
+			
 			return "hotel/hoteldetail";
 		}
 		
@@ -85,4 +87,16 @@ public class HotelController {
 			service.ranHotelList(model, ran);
 			return "hotel/hoteldetail";
 		}
+		@PostMapping("gethotelreview")
+		@ResponseBody
+		public List<HotelReviewVO> getHotelReview(@RequestBody HotelReviewVO vo){
+	        return service.getHotelReview(vo);
+	    }
+		
+		@PostMapping("gethotelqna")
+		@ResponseBody
+		public List<HotelQnaVO> getHotelQna(@RequestBody HotelQnaVO vo){
+	        return service.getHotelQna(vo);
+	    }
+		
 }

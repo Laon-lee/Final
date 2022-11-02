@@ -124,7 +124,6 @@ public class ShopService {
 	public void getMyOrder(HttpSession session, Model model) {
 		MemberVO uservo = (MemberVO)session.getAttribute("user");
 		int id = mbdao.getmemberinfo(uservo).getId();
-		System.out.println(dao.getMyOrder(id).get(0).getOrderDate());
 		model.addAttribute("list",dao.getMyOrder(id) );
 	}
 

@@ -244,26 +244,13 @@ option {
 }
 
 @
-keyframes fadeIn { 0%{
-	opacity: 0;
-}
-
-100
-
-
-%
-{
-opaciry
-
-
-:
-
-
-1
-;
-
-
-}
+keyframes fadeIn { 
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opaciry:1;
+	}
 }
 #proc-wrapper {
 	width: 65%;
@@ -534,7 +521,7 @@ font {
 						<div id="prdReview">
 							<div class="board">
 								<h3>REVIEW</h3>
-								<p class="desc">상품의 사용후기를 적어주세요</p>
+								<p>상품의 사용후기를 적어주세요</p>
 								<c:if test="${reviews==null}">
 									<div class="board-box">
 										<p class="nodata">게시물이 없습니다.</p>
