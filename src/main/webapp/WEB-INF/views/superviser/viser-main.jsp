@@ -117,7 +117,8 @@ label {
 					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/delete/home">상품 삭제</a></li>
-					<li><a href="${pageContext.request.contextPath}/viser/notice/delete/공지사항">공지사항 삭제</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/notice/delete/공지사항">공지사항 수정/삭제</a></li>
+					<li><a href="${pageContext.request.contextPath}/viser/QNA/delete/자주묻는질문">자주묻는질문 수정/삭제</a></li>
 				</ul>
 				<ul><h2>호텔</h2>
 					<li>예약 확인</li>

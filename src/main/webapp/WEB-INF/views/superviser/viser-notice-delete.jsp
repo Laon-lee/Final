@@ -190,10 +190,12 @@ a:hover {
         <div class="art3-second">
         <label for="boardId">수정/삭제할 번호</label><input type="text" name="boardId" id="boardId" value="${item.boardId}" readonly/>
         <label for="boardContent">수정할 내용</label><textarea name="boardContent" id="boardContent">${item.boardContent}</textarea><br />
-        <input type="text" name="isDelete" id="delete" value="1"/>
+        <input type="hidden" name="isDelete" id="delete" value=""/>
         <button id="btn1">수정</button><button id="btn2">삭제</button>
         </div>
-        <div class="art3-third">${item.boardDate}</div>
+        <div class="art3-third">
+        s1 == 삭제, 0 == 수정 <br />
+        상태 : ${item.isDelete}</div>
       </div>
    </form>
     </c:forEach>

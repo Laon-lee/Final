@@ -22,7 +22,7 @@
 	</update>
 	
 	<select id="getList" parameterType="String" resultType="boardVO">
-	select board_id, id, board_title, board_content,
+	select board_id, id, board_title, board_content,is_delete,
 	date_format(board_date, '%Y-%m-%d') board_date
 	 from board where board_category = #{boardCategory}
 	</select>

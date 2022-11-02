@@ -39,6 +39,6 @@ public class SuperviserService {
 	public void getList(String boardCategory,Model model) {
 		
 		model.addAttribute("list",superdao.getList(boardCategory));
-		System.out.println("오류");
+		
 	}
 }

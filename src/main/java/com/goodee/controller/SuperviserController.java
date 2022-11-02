@@ -115,6 +115,12 @@ public class SuperviserController {
 		superservice.getList(boardCategory, model);
 		return "superviser/viser-notice-delete";
 	}
+	@GetMapping("viser/QNA/delete/{boardCategory}")
+	public String QNADelete(@PathVariable("boardCategory") String boardCategory,Model model) {
+		superservice.getList(boardCategory, model);
+		return "superviser/viser-qna-delete";
+	}
+	
 	@GetMapping("viser/delete/modify")
 	public String noticeDeleteModify(BoardVO vo) {
 		superservice.deleteBoard(vo);

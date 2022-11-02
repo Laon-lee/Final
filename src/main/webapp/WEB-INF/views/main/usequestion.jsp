@@ -131,7 +131,18 @@
             
             width:50vw;
         }
-       
+        #art2 {
+            
+            flex:5;
+            width:70vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #art2 div{
+            width:85%;
+        }
         #sec2 {
             width:85%;
             margin: 40px;
@@ -171,22 +182,8 @@
             background-color: black;
             color:white;
         }
-        #art2 {
-            
-            flex:5;
-            width:70vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        #art2 div{
-            width:85%;
-        }
-        #sec2-div2{
-            
-        
-        }
+       
+       
         #sec2-div2 li {
             display: block;
             font-size: 13px;
