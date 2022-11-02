@@ -352,7 +352,7 @@ a:hover {
                                			document.getElementById("CC").innerText = CCT;
                                			
                                			e.preventDefault();
-                               		})
+                               		});
                                         for(let i=0; i<100; i++){
                                     	   document.getElementsByClassName('btn1')[i].addEventListener("click",function(){
                                     		   document.getElementsByClassName('delete')[i].value = 0;
