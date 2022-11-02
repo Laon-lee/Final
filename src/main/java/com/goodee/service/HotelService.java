@@ -22,17 +22,34 @@ public class HotelService {
 	}
 
 	//main에서 list로 페이지 이동할때 지역구 값 받아서 호텔 리스트 불러오는 서비스
-		public void getHotelList(Model model, String[] cate) {
-			System.out.println(cate);
-			System.out.println("여기 서비스");
-			model.addAttribute("hotel", dao.selectHotelList(cate));
-			
-			model.addAttribute("room", dao.selectRoomList());
-			
-			
-			
-			
+	public void getHotelList(Model model, String[] cate, String startdate, String enddate) {
+		System.out.println(cate);
+		System.out.println("여기 서비스");
+		
+		
+		//지역구에 따른 호텔 리스트
+		//dao.selectHotelList(cate);
+		
+		
+		List<Integer> idlist = new ArrayList<Integer>();
+		
+		//출력된 호텔의 개수만큼 for문이 반복. 해당 데이터의 hotelid를 출력해서 배열에 저장
+		for (int i = 0; i < dao.selectHotelList(cate).size(); i++) {
+			System.out.println("id"+dao.selectHotelList(cate).get(i).getHotelId());
+			idlist.add(dao.selectHotelList(cate).get(i).getHotelId());
 		}
+		
+		System.out.println("idlist"+idlist);
+		
+		System.out.println("방"+dao.selectroom(idlist).get(0).getRoomName());
+		System.out.println("방"+dao.selectroom(idlist).get(1).getRoomName());
+		System.out.println("방개수"+dao.selectroom(idlist).size());
+		
+		
+		model.addAttribute("hotel", dao.selectHotelList(cate));
+		
+		model.addAttribute("room", dao.selectroom(idlist));
+	}
 		
 		public void detailHotelList(Model model, int hotelId) {
 			model.addAttribute("hotel", dao.detailHotel(hotelId));
@@ -48,45 +65,6 @@ public class HotelService {
 		};
 		
 		
-		public void sampleHotelList(Model model, String[] cate, String startdate, String enddate) {
-			System.out.println(cate);
-			System.out.println("서비스탔나용");
-			model.addAttribute("hotel", dao.selectHotelList(cate));
-			
-			int here = 0;
-			int roomid[] = null;
-			
-			List<Integer> rid = new ArrayList<Integer>();
-			
-			for (int i = 0; i < dao.selectHotelList(cate).size(); i++) {
-				int room = dao.selectRoomList().get(i).getRoomId(); 
-				rid.add(room);
-				
-			
-			}
-			System.out.println("여기배열"+rid);
-			int c = dao.dateCount(rid, startdate, enddate);
-			if(c==0) {
-				System.out.println("count == 0");
-				model.addAttribute("room", dao.selectRoomList());
-			} else {
-				System.out.println("count != 0");
-				model.addAttribute("room", dao.countRoom(rid, startdate, enddate));
-			}
-			
-			/*
-			 * System.out.println("here" + here); int hotelid =
-			 * dao.selectHotelList(cate).get(0).getHotelId();
-			 * System.out.println("hotelid"+hotelid); int roomid =
-			 * dao.selectRoomList().get(0).getRoomId(); System.out.println("roomid"+roomid);
-			 * int count = dao.dateCount(roomid, startdate, enddate);
-			 * System.out.println("count"+count); if(count==0) {
-			 * System.out.println("count == 0"); model.addAttribute("room",
-			 * dao.selectRoomList()); } else { System.out.println("count != 0");
-			 * model.addAttribute("room", dao.countRoom(roomid)); }
-			 * System.out.println("서비스끝낫서용");
-			 */
-		}
 		
 		public List<HotelReviewVO> getHotelReview(HotelReviewVO vo){
 			return dao.getHotelReview(vo);

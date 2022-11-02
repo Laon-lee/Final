@@ -14,7 +14,18 @@
 		
 	</select>
 	
-	
+	<select id="selectroom" resultType="hotelroomVO">
+		 SELECT room_type, room_name, room_id, h.hotel_id, h.hotel_name, room_price, room_content
+		FROM hotel_info h INNER JOIN hotel_room r
+		ON h.hotel_id = r.hotel_id
+		WHERE r.hotel_id IN 
+		<foreach item="hotelid" collection="hotelid" open="(" separator="," close = ")">
+			 #{hotelid} 
+		</foreach> 
+		
+		GROUP BY room_type,h.hotel_id;
+		
+	</select>
 	<!-- 호텔 이름에 따른 객실 정보를 불러움 -->
 	<select id="selectRoomList" resultType="hotelroomVO">
 		select room_name, room_id, hotel_id, hotel_name, room_type, room_price, room_content from hotel_room 

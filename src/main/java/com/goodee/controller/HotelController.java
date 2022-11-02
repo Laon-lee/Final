@@ -29,28 +29,29 @@ public class HotelController {
 	//hotelmain에서 hotellist로 넘어가는 컨트롤러
 		//메인에서 지역구와 일자를 선택했을 때 선택한 지역구에 해당하는 호텔의 목록이 넘어옴
 		
-		@GetMapping("golist/{startDate}/{endDate}/{cate}")
-		public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("cate") String[] category,
-							Model model) {
-			System.out.println(startdate);
-			System.out.println(enddate);
-			/* System.out.println(category.length); */
-			
-			String stringcate = Arrays.toString(category);
-			System.out.println(stringcate);
-			
-			model.addAttribute("startdate", startdate);
-			model.addAttribute("enddate", enddate);
-			model.addAttribute("category", stringcate);
-			
-			//service.getHotelList(model, category);
-			service.sampleHotelList(model, category, startdate, enddate);
-			
-			
-			
-			
-			return "hotel/hotellist";
-		}
+	@GetMapping("golist/{startDate}/{endDate}/{cate}")
+	public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("cate") String[] category,
+						Model model) {
+		System.out.println(startdate);
+		System.out.println(enddate);
+		/* System.out.println(category.length); */
+		
+		String stringcate = Arrays.toString(category);
+		System.out.println(stringcate);
+		
+		model.addAttribute("startdate", startdate);
+		model.addAttribute("enddate", enddate);
+		model.addAttribute("category", stringcate);
+		
+		service.getHotelList(model, category, startdate, enddate);
+		//service.sampleHotelList(model, category, startdate, enddate);
+		
+		//지역구 값에 따른 호텔 리스트를 출력
+		//호텔 리스트의 호텔 id를 참고해서 roomlist를 뽑는데 room_type으로 묶음
+		
+		
+		return "hotel/hotellist";
+	}
 		
 		/*@GetMapping("roomlist/{room}")
 		public String roomlist() {

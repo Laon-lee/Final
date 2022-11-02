@@ -144,10 +144,10 @@
 		
 		.list {
 		height:25vh;}
-        /* .option_list {
+        .option_list {
             display: none;
             
-        } */
+        }
 
         .inner1 {
             width: 25%;
@@ -212,10 +212,7 @@
             text-align: center;
         }
 
-       /*  .option_list {
-            display: none;
-        } */
-
+  
 	 .date {
             width: 90%;
             margin: 0 auto;
@@ -334,36 +331,36 @@
 					<div id="isbx" class="csbx">
 						<p>지역구분</p>
 						<form action="" id="bxform">
-							<label for="1"><input type="checkbox" name="cate" id="1" class="allseo" value="서울">서울전체</label> 
-						<label for="2"><input type="checkbox" name="cate" id="2" class="seo" value="금천구">금천구</label>
-						<label for="3"><input type="checkbox" name="cate" id="3" class="seo" value="은평구">은평구</label> 
-						<label for="4"><input type="checkbox" name="cate" id="4" class="seo" value="강남구">강남구</label>
-						<label for="5"><input type="checkbox" name="cate" id="5" class="seo" value="강서구">강서구</label>
-						<label for="6"><input type="checkbox" name="cate" id="6" class="seo" value="관악구">관악구</label>
-						<label for="7"><input type="checkbox" name="cate" id="7" class="seo" value="도봉구">도봉구</label><br />
-						<label for="8"><input type="checkbox" name="cate" id="8" class="seo" value="서초구">서초구</label>
-						<label for="9"><input type="checkbox" name="cate" id="9" class="seo" value="성동구">성동구</label>
-						<label for="10"><input type="checkbox" name="cate" id="10" class="seo" value="양천구">양천구</label> 
-						<label for="11"><input type="checkbox" name="cate" id="11" class="seo" value="용산구">용산구</label>
-						<label for="12"><input type="checkbox" name="cate" id="12" class="seo" value="서대문구">서대문구</label>
-						<label for="13"><input type="checkbox" name="cate" id="13" class="seo" value="동대문구">동대문구</label>
-						<label for="14"><input type="checkbox" name="cate" id="14" class="seo" value="강동구">강동구</label> <br />
-						<label for="20"><input type="checkbox" name="cate" id="20" class="allgyeong" value="경기">경기전체</label> 
-						<label for="21"><input type="checkbox" name="cate" id="21" class="gyeong" value="구리시">구리시</label>
-						<label for="22"><input type="checkbox" name="cate" id="22" class="gyeong" value="남양주시">남양주시</label> 
-						<label for="23"><input type="checkbox" name="cate" id="23" class="gyeong" value="의정부시">의정부시</label>
-						<label for="24"><input type="checkbox" name="cate" id="24" class="gyeong" value="포천시">포천시</label>
-						<label for="25"><input type="checkbox" name="cate" id="25" class="gyeong" value="하남시">하남시</label><br />
-						<label for="15"><input type="checkbox" name="cate" id="15" class="allin" value="인천">인천전체</label>
-						<label for="16"><input type="checkbox" name="cate" id="16" class="in" value="연수구">연수구</label> 
-						<label for="17"><input type="checkbox" name="cate" id="17" class="in" value="부평구">부평구</label> 
-						<label for="18"><input type="checkbox" name="cate" id="18" class="in" value="남동구">남동구</label>
-						<label for="19"><input type="checkbox" name="cate" id="19" class="in" value="서구">서구</label> 
-						<label for="26"><input type="checkbox" name="cate" id="26" class="allchung" value="충북">충북전체</label>
-						<label for="27"><input type="checkbox" name="cate" id="27" class="chung" value="음성군">음성군</label>
-						<label for="28"><input type="checkbox" name="cate" id="28" class="chung" value="제천시">제천시</label>
-						<label for="29"><input type="checkbox" name="cate" id="29" class="chung" value="청주시">청주시</label>
-						<label for="30"><input type="checkbox" name="cate" id="30" class="chung" value="충주시">충주시</label> 
+							<label for="l1"><input type="checkbox" name="cate" id="l1" class="allseo" value="서울">서울전체</label> 
+						<label for="l2"><input type="checkbox" name="cate" id="l2" class="seo" value="금천구">금천구</label>
+						<label for="l3"><input type="checkbox" name="cate" id="l3" class="seo" value="은평구">은평구</label> 
+						<label for="l4"><input type="checkbox" name="cate" id="l4" class="seo" value="강남구">강남구</label>
+						<label for="l5"><input type="checkbox" name="cate" id="l5" class="seo" value="강서구">강서구</label>
+						<label for="l6"><input type="checkbox" name="cate" id="l6" class="seo" value="관악구">관악구</label>
+						<label for="l7"><input type="checkbox" name="cate" id="l7" class="seo" value="도봉구">도봉구</label><br />
+						<label for="l8"><input type="checkbox" name="cate" id="l8" class="seo" value="서초구">서초구</label>
+						<label for="l9"><input type="checkbox" name="cate" id="l9" class="seo" value="성동구">성동구</label>
+						<label for="l10"><input type="checkbox" name="cate" id="l10" class="seo" value="양천구">양천구</label> 
+						<label for="l11"><input type="checkbox" name="cate" id="l11" class="seo" value="용산구">용산구</label>
+						<label for="l12"><input type="checkbox" name="cate" id="l12" class="seo" value="서대문구">서대문구</label>
+						<label for="l13"><input type="checkbox" name="cate" id="l13" class="seo" value="동대문구">동대문구</label>
+						<label for="l14"><input type="checkbox" name="cate" id="l14" class="seo" value="강동구">강동구</label> <br />
+						<label for="l20"><input type="checkbox" name="cate" id="l20" class="allgyeong" value="경기">경기전체</label> 
+						<label for="l21"><input type="checkbox" name="cate" id="l21" class="gyeong" value="구리시">구리시</label>
+						<label for="l22"><input type="checkbox" name="cate" id="l22" class="gyeong" value="남양주시">남양주시</label> 
+						<label for="l23"><input type="checkbox" name="cate" id="l23" class="gyeong" value="의정부시">의정부시</label>
+						<label for="l24"><input type="checkbox" name="cate" id="l24" class="gyeong" value="포천시">포천시</label>
+						<label for="l25"><input type="checkbox" name="cate" id="l25" class="gyeong" value="하남시">하남시</label><br />
+						<label for="l15"><input type="checkbox" name="cate" id="l15" class="allin" value="인천">인천전체</label>
+						<label for="l16"><input type="checkbox" name="cate" id="l16" class="in" value="연수구">연수구</label> 
+						<label for="l17"><input type="checkbox" name="cate" id="l17" class="in" value="부평구">부평구</label> 
+						<label for="l18"><input type="checkbox" name="cate" id="l18" class="in" value="남동구">남동구</label>
+						<label for="l19"><input type="checkbox" name="cate" id="l19" class="in" value="서구">서구</label> 
+						<label for="l26"><input type="checkbox" name="cate" id="l26" class="allchung" value="충북">충북전체</label>
+						<label for="l27"><input type="checkbox" name="cate" id="l27" class="chung" value="음성군">음성군</label>
+						<label for="l28"><input type="checkbox" name="cate" id="l28" class="chung" value="제천시">제천시</label>
+						<label for="l29"><input type="checkbox" name="cate" id="l29" class="chung" value="청주시">청주시</label>
+						<label for="l30"><input type="checkbox" name="cate" id="l30" class="chung" value="충주시">충주시</label> 
 						</form>
 					</div>
 				<!-- </div> -->
@@ -567,7 +564,7 @@
                     
 
                 </script>
-                <c:forEach var="item" items="${hotel}">
+                <c:forEach var="item" items="${hotel}" varStatus="status">
                 <div class="list">
 
                     <div id="inner1" class="inner1 inner">
@@ -580,15 +577,16 @@
                         <p>2021.12.11~2023.08.31</p>
                         <h1 class="${item.hotelId}" id="h1">${item.hotelId}</h1>
                         <h1>가격</h1>
-                        <input type="hidden" name="hidden"  value="${item.hotelId}"/>
+                        <input type="hidden" name="hidden"  id="hidden" value="${item.hotelId }"/>
                     </div>
                     <div class="innerbtn" >
-                        <button class="realbtn" >RESERVE</button>
+                        <button class="realbtn" id="btn${status.index}">객실보기</button>
                         <a href="${pageContext.request.contextPath}/godetail/${item.hotelId}/${startdate}/${enddate}">예약하기</a>
                     </div>
 
                 </div>
-               
+					
+							   
                
                 	<div class="option_list" id="${item.hotelId}">
                 	
@@ -622,61 +620,76 @@
                   
                 
                 </c:forEach>
-                 <script>
-           
-           $(function(){
-        	   
-        	   let hidden = $('input[name="hidden"]').val();
-        	   let listid =$(".option_list").attr("id");
-        	   let btnid =$(".realbtn").attr("id");
-        	   let h = $("#h1").attr("class");
-        	   
-        	   let arr = [];
-        	   
-        	   <c:forEach var="item" items="${hotel}">
-        	   	arr.push("${item.hotelId}");
-        	   </c:forEach>
-        	   
-        	   console.log(arr);
-        	   
-        	   for(let i = 0; i<arr.length; i++){
-        		   if(arr[i]==listid){
-        			   $(".realbtn").click(function(){
-        			   	$('#'+arr[i]).slideToggle();
-        			   })
-        		   }
-        	   }
-        	   
-        	  
-        	  
-        	  /*  if(hidden==btnid){
-        	   $(".realbtn").click(function(){
-        		   console.log(h);
-           			console.log(listid);
-           			console.log(hidden);
-           		console.log(hotel);
-           		console.log("되냐요?");
-           		
-           			$('.option_list').slideToggle();
-           		
-        	  
-        	   }; */
-        	   
-           })
-        
-            	
-            	
-
-        </script>
-               
+          
             </section>
-           
+       
+                 
         </main>
 
         <footer>
            <%@ include file="../frame/main/footer.jsp" %>
         </footer>
     </div>
+    <script>
+    let btn = document.getElementsByClassName("realbtn");
+    for(let i = 0 ; i < btn.length ; i++){
+    	btn[i].addEventListener("click",function(){
+    		$(".option_list").eq(i).slideToggle();	
+    	});
+    };
+	
+           
+	    	<%--$(function(){
+	    		
+	    		let btnarr = new Array();
+	    		let listarr = new Array();
+	    		
+	    		let btnid = $(".realbtn").attr("id");
+        	    let listid = $(".option_list").attr("id");
+	    		
+	    		$('.realbtn').each(function (i, item){
+	    			//let hidden = $(this).val();
+	    			let btn = $(this).attr("id");
+	    			
+	    			btnarr.push(btn);
+	    			
+	    			console.log("i"+i);
+	    			console.log("btnarr[i]"+btnarr[i]);
+	    			
+	    			
+	    			
+	    			
+	    		})
+	    		
+	    		$(".option_list").each(function(j,items){
+	    			let list = $(this).attr("id");
+	    			listarr.push(list);
+	    			console.log("i"+j);
+	    			console.log("listarr[i]"+listarr[j]);
+	    		})
+	    		
+	    		for(let i = 0; i <btnarr.length; i++){
+	    			
+	    				$(".realbtn").click(function(){
+	            			
+	            			
+	    					if(listarr[i] == btnid) {
+	        					console.log("forlistid"+listarr);
+	        					$("#11").slideToggle();
+	        				}
+	        	    })
+	    			
+	    		}
+	    		
+	    		
+        	    
+        	    
+        	    console.log("listid"+listid);
+        	    
+        		
+       
+           })--%>
 
+        </script>
 </body>
 </html>

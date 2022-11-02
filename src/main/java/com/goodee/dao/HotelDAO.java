@@ -15,6 +15,8 @@ import com.goodee.vo.HotelVO;
 @Mapper
 public interface HotelDAO {
 	public List<HotelVO> selectHotelList(@Param("list") String[] cate);
+	public List<HotelRoomVO> selectroom(@Param("hotelid") List<Integer> idlist);
+	
 	public List<HotelRoomVO> selectRoomList();
 	public List<HotelJoinVO> detailHotel(@Param("hotelId") int hotelId);
 	
