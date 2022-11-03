@@ -1,5 +1,8 @@
 package com.goodee.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("hotelroomVO")
 public class HotelRoomVO {
 	private int roomId;
 	private int hotelId;

@@ -6,11 +6,15 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.goodee.vo.HotelDetailResVO;
 import com.goodee.vo.HotelJoinVO;
 import com.goodee.vo.HotelQnaVO;
+
+import com.goodee.vo.HotelResVO;
 import com.goodee.vo.HotelReviewVO;
 import com.goodee.vo.HotelRoomVO;
 import com.goodee.vo.HotelVO;
+import com.goodee.vo.MemberVO;
 
 @Mapper
 public interface HotelDAO {
@@ -31,5 +35,9 @@ public interface HotelDAO {
 	public List<HotelReviewVO> getHotelReview(HotelReviewVO vo);
 	public List<HotelQnaVO> getHotelQna(HotelQnaVO vo);
 	public void insertHotelQna(HotelQnaVO vo);
+	public HotelRoomVO getRoomInfo(HotelRoomVO vo);
+	public void setDetailRes(HotelDetailResVO vo);
+	public void setRes(HotelResVO vo1);
+	public List<HotelJoinVO> getMyHotelres(MemberVO mbvo2);
 	
 }

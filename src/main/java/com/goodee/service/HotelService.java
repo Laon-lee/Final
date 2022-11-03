@@ -5,20 +5,30 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.lang.model.element.ModuleElement;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.goodee.dao.HotelDAO;
+import com.goodee.dao.MemberDAO;
+import com.goodee.vo.HotelDetailResVO;
 import com.goodee.vo.HotelQnaVO;
+import com.goodee.vo.HotelResVO;
 import com.goodee.vo.HotelReviewVO;
+import com.goodee.vo.HotelRoomVO;
 import com.goodee.vo.HotelVO;
+import com.goodee.vo.MemberVO;
 
 @Service
 public class HotelService {
 	private HotelDAO dao;
+	private MemberDAO mbdao;
 
-	public HotelService(HotelDAO dao) {
+	public HotelService(HotelDAO dao, MemberDAO mbdao) {
 		this.dao = dao;
+		this.mbdao = mbdao;
 	}
 
 	//main에서 list로 페이지 이동할때 지역구 값 받아서 호텔 리스트 불러오는 서비스
@@ -75,4 +85,29 @@ public class HotelService {
 		public void insertHotelQna(HotelQnaVO vo){
 			dao.insertHotelQna(vo);
 		}
+		public void goreserve(int hotelId,Model model, HttpSession session) {
+			MemberVO vo1 = (MemberVO)session.getAttribute("user");
+			model.addAttribute("user",mbdao.getmemberinfo(vo1));
+			model.addAttribute("separateVO",mbdao.separate(mbdao.getmemberinfo(vo1))); 
+			model.addAttribute("hotel", dao.detailHotel(hotelId));
+		}
+		
+		public HotelRoomVO getRoomInfo(HotelRoomVO vo) {
+			return dao.getRoomInfo(vo);
+		}
+
+		public void resSuccess(HotelDetailResVO vo, HotelResVO vo1, Model model, HttpSession session) {
+			MemberVO mbvo = (MemberVO)session.getAttribute("user");
+			MemberVO mbvo2 = mbdao.getmemberinfo(mbvo);
+			
+			vo.setResStatus("예약 완료");
+			dao.setDetailRes(vo);
+			vo1.setResDetailNum(vo.getResDetailNum());
+			vo1.setId(mbvo2.getId());
+			dao.setRes(vo1);
+			
+			model.addAttribute("list",dao.getMyHotelres(mbvo2));
+			
+		}
+		
 }

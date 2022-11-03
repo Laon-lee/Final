@@ -19,7 +19,78 @@ public class HotelJoinVO {
    private String roomType;
    private String roomPrice;
    private String roomContent;
-   public int getHotelId() {
+	private int resId;
+	private int resDetailNum;
+	private String resDate;
+	private String memName;
+	private String memEmail;
+	private String memPhone;
+	private String resMsg;
+	private String resStart;
+	private String resEnd;
+	private String resStatus;
+	
+   public int getResId() {
+		return resId;
+	}
+	public void setResId(int resId) {
+		this.resId = resId;
+	}
+	public int getResDetailNum() {
+		return resDetailNum;
+	}
+	public void setResDetailNum(int resDetailNum) {
+		this.resDetailNum = resDetailNum;
+	}
+	public String getResDate() {
+		return resDate;
+	}
+	public void setResDate(String resDate) {
+		this.resDate = resDate;
+	}
+	public String getMemName() {
+		return memName;
+	}
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+	public String getMemEmail() {
+		return memEmail;
+	}
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
+	}
+	public String getMemPhone() {
+		return memPhone;
+	}
+	public void setMemPhone(String memPhone) {
+		this.memPhone = memPhone;
+	}
+	public String getResMsg() {
+		return resMsg;
+	}
+	public void setResMsg(String resMsg) {
+		this.resMsg = resMsg;
+	}
+	public String getResStart() {
+		return resStart;
+	}
+	public void setResStart(String resStart) {
+		this.resStart = resStart;
+	}
+	public String getResEnd() {
+		return resEnd;
+	}
+	public void setResEnd(String resEnd) {
+		this.resEnd = resEnd;
+	}
+	public String getResStatus() {
+		return resStatus;
+	}
+	public void setResStatus(String resStatus) {
+		this.resStatus = resStatus;
+	}
+public int getHotelId() {
       return hotelId;
    }
    public void setHotelId(int hotelId) {

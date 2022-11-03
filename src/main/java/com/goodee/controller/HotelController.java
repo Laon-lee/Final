@@ -3,6 +3,8 @@ package com.goodee.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.service.HotelService;
+import com.goodee.vo.HotelDetailResVO;
 import com.goodee.vo.HotelQnaVO;
+import com.goodee.vo.HotelResVO;
 import com.goodee.vo.HotelReviewVO;
 import com.goodee.vo.HotelRoomVO;
 
@@ -76,8 +80,14 @@ public class HotelController {
 			return "hotel/hoteldetail";
 		}
 		
-		@GetMapping("goreserve")
-		public String goreserve() {
+		@GetMapping("goreserve/{hotelId}/{startdate}/{enddate}")
+		public String goreserve(@PathVariable("hotelId") int hotelId,
+								@PathVariable("startdate") String startdate,
+								@PathVariable("enddate") String enddate,
+								Model model,HttpSession session) {
+			model.addAttribute("startdate", startdate);
+			model.addAttribute("enddate", enddate);
+			service.goreserve(hotelId,model,session);
 			return "hotel/hotelreserve";
 		}
 		
@@ -104,5 +114,28 @@ public class HotelController {
 		public void insertHotelQna(@RequestBody HotelQnaVO vo){
 			service.insertHotelQna(vo);
 	    }
+		@PostMapping("getroominfo")
+		@ResponseBody
+		public HotelRoomVO getRoomInfo(@RequestBody HotelRoomVO vo){
+			System.out.println(vo.getRoomId());
+			return service.getRoomInfo(vo);
+	    }
+		
+		@GetMapping("myhotelres/{startdate}/{enddate}")
+		public String resSuccess(@PathVariable String startdate, 
+								@PathVariable String enddate,
+								HotelDetailResVO vo, HotelResVO vo1,
+								Model model, HttpSession session) {
+			vo.setResStart(startdate);
+			vo.setResEnd(enddate);
+			service.resSuccess(vo,vo1,model,session);
+			
+			return "main/myhotelres";
+		}
+		
+		
+		
+		
+		
 		
 }

@@ -82,6 +82,25 @@
 		insert into hotelqna (hotel_id, hotelqna_title, hotelqna_content, hotelqna_date, mem_id)
 					values (#{hotelId}, #{hotelqnaTitle},#{hotelqnaContent},#{hotelqnaDate},#{memId})
 	</insert>
+	<select id="getRoomInfo" resultType="hotelroomVO" parameterType="hotelroomVO">
+		select * from hotel_room where room_id = #{roomId} 
+	</select>
+	<insert id="setDetailRes" parameterType="hoteldetailresVO" useGeneratedKeys="true" keyProperty="resDetailNum">
+		insert into hotel_detail_res (room_id, res_start, res_end, res_status)
+					values (#{roomId}, #{resStart},#{resEnd},#{resStatus})
+	</insert>
+	<insert id="setRes" parameterType="hotelresVO">
+		insert into hotel_res (res_detail_num, mem_name, mem_email, mem_phone)
+					values (#{resDetailNum}, #{memName},#{memEmail},#{memPhone})
+	</insert>
+	<select id="getMyHotelres" resultType="memberVO" parameterType="hoteljoinVO">
+		select * from hotel_res hr 
+		INNER JOIN hotel_detail_res hdr ON hr.res_detail_num = hdr.res_detail_num
+		INNER JOIN hotel_room hrm ON hdr.room_id = hrm.room_id
+		INNER JOIN hotel_info hi ON hrm.hotel_id = hi.hotel_id
+		where id = #{id}
+	</select>
+	
 </mapper>
 
 

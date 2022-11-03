@@ -1,7 +1,9 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,8 +55,19 @@
             position: relative;
             height: 100%;
         }
-
-       
+		input{
+    		height: 25px;
+    		margin: 10px 0;
+    		outline: none;
+    		font-size: 15px;
+		}
+		input[type="radio"]{
+			padding:10px 0 0 0;
+			margin:0;
+		}
+       	select{
+       		height:30px;
+       	}
         #container {
             position: relative;
             width: 100%;
@@ -108,65 +121,15 @@
             gap: 15px;
         }
 
-        #datepicker1 {
-            width: fit-content;
-            border: 0;
-            background-color: #edede9;
-            font-size: 17px;
-        }
-
-        /* #selecbtn {
-            height: 70%;
-            border: 0;
-            background-color: black;
-            width: 5vw;
-            color: white;
-        } */
-	
-		.selecbtn {
-            height: 70%;
-    border: 0;
-    background-color: black;
-    width: 5vw;
-    color: white !important;
-    text-align: center;
-            
-        }
-
-.isbx-toggle {
-	display: block !important;
-}
-/*  #ioutbox {
-           display: none;
-            width: 90%;
-            margin: 0 auto;
-            padding-bottom: 1vh;
-        }
- */
         .outbox {
             display: block !important;
             width: 90%;
             margin: 0 auto;
         }
 
-        #bxform>label {
-            padding: 0px 5px;
-        }
-        
         .clicked {
         	display : block !important;
         	display : flex !important;
-        	
-        }
-        #isbx {
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            width: 70%;
-            gap: 4vw;
-            margin: 0 auto;
-            display:none;
-
         }
         
         .price {
@@ -208,15 +171,39 @@
             width: 80%;
             display: flex;
             flex-direction: column;
-            gap: 45px;
+            gap:30px;
             position: relative;
         }
+        .dogtype label{
+        	margin-left: 20px;
+    		width: 100px;
+    		display: inline-block;
+        }
+        #room-info{
+        	margin: 10px 0;
+        }
         .meminfo {
-        display: flex;
+        	display: flex;
             flex-direction: column;
-            gap: 45px;
             
-            }
+            
+        }
+        #meminfo-div2{
+        	margin-left:20px;
+        }
+        .meminfo label{
+        	width: 100px;
+    		display: inline-block;
+        }
+        #memName1{
+        	width:303px;
+        }
+        #memEmail, #memEmail2{
+        	width:140px;
+        }
+        #memPhone1,#memPhone2,#memPhone3{
+        	width:90px;
+        } 
     </style>
 </head>
 
@@ -229,170 +216,114 @@
         <main>
             <section>
                 <div class="date">
-                    <div class="indate">
-                        <p id="selectp">지역을 선택해주세요</p>
-
-                        <!-- <input type="text" placeholder="지역을" id="choicehotel"> -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-search" viewBox="0 0 16 16" id="svg">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                    </div>
-                    <input type="text" id="datepicker1" name="dates" readonly>
-                    <!-- <button class="selecbtn">검색</button> -->
-                    <a href="#" class="selecbtn">검색</a>
-                </div>
-
-                <script>
-                    /* document.getElementById("selecbtn").addEventListener("click",function(){
-                        location.href = "${pageContext.request.contextPath}/golist";
-                    }); */
-
-                    $(document).ready(function () {
-                        var now = new Date();
-                        var tom = new Date();
-                        tom.setDate(tom.getDate() + 1);
-                        console.log(now)
-                        $('input[name="dates"]').daterangepicker({
-                            "startDate": now,
-                            "endDate": tom,
-                            "minDate": now,
-                            "opens": "center",
-
-
-                            locale: {
-                                "separator": " ~ ",
-                                "applyLabel": "적용",
-                                "cancelLabel": "취소",
-                                format: "YYYY-MM-DD",
-                                daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-                                monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-
-                            }
-                        }, function (start, end, label) {
-                            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-                            $('input[name="dates"]').val(start.format("YYYY-MM-DD") + " - " + end.format("YYYY-MM-DD"));
-                        });
-
-                        $('input[name="dates"]').on('show.daterangepicker', function (ev, picker) {
-                            $(".cancelBtn").css("float", "right");
-                            $(".cancelBtn").css("background-color", "white");
-                            $(".cancelBtn").css("color", "black");
-                            $(".applyBtn").css("background-color", "black");
-                            $(".applyBtn").css("color", "white");
-                            $(".cancelBtn, .applyBtn").css("border", "1px solid black");
-                            $(".cancelBtn, .applyBtn").css("cursor", "pointer");
-                            $(".cancelBtn, .applyBtn").css("width", "60px");
-                        });
-
-
-
-                        $('input[name="dates"]').on('apply.daterangepicker', function (ev, picker) {
-                            console.log(picker.startDate.format('YYYY-MM-DD'));
-                            console.log(picker.endDate.format('YYYY-MM-DD'));
-                            var end = picker.endDate.format('YYYY-MM-DD');
-                            var start = picker.startDate.format('YYYY-MM-DD');
-                            console.log("여기스타트" + start);
-                            console.log("여기엔드" + end);
-                            $(".selecbtn").attr("href", "${pageContext.request.contextPath}/golist/" + start + "/" + end)
-                        });
-
-
-                    });
-
-
-                    console.log(document.getElementsByName("dates").values);
-                </script>
-                <!-- <div class="coutbox" id="ioutbox"> -->
-                <div id="isbx" class="csbx">
-                    <p>지역구분</p>
-                    <form action="" id="bxform">
-                        <label for="1"><input type="checkbox" name="" id="1">서울전체</label>
-                        <label for="2"><input type="checkbox" name="" id="2">강남구</label>
-                        <label for="3"><input type="checkbox" name="" id="3">강북구</label>
-                        <label for="4"><input type="checkbox" name="" id="4">동작구</label>
-                        <label for="5"><input type="checkbox" name="" id="5">경기전체</label>
-                        <label for="6"><input type="checkbox" name="" id="6">고양시</label>
-                        <label for="7"><input type="checkbox" name="" id="7">김포시</label>
-                        <label for="8"><input type="checkbox" name="" id="8">남양주시</label>
-                        <label for="9"><input type="checkbox" name="" id="9">성남시</label>
-                        <label for="10"><input type="checkbox" name="" id="10">의정부시</label>
-                    </form>
-                </div>
-                <!-- </div> -->
-
-                <script>
-                    var p = document.getElementById("selectp");
-                    var svg = document.getElementById("svg");
-                    var iob = document.getElementById("ioutbox");
-                    var isbx = document.getElementById("isbx");
-                    var date = document.getElementById("datepicker1");
-                    var div = document.getElementById("datepicker1").firstChild;
-
-                    p.addEventListener("click", function () {
-                        isbx.classList.toggle("clicked");
-                    });
-
-                    svg.addEventListener("click", function () {
-                        isbx.classList.toggle("clicked");
-
-                    });
-
-                    date.addEventListener("click", function () {
-
-                        if (isbx.className = "clicked") {
-                            isbx.classList.toggle("clicked");
-                        }
-                    });
-
-
-
-                </script>
-
+					<div>
+						<p> 선택날짜 : ${startdate} ~ ${enddate}</p> 
+					</div>
+				</div>
+                    
                 <div class="reservecont">
                 	<div class="reserveinfo">
-                		<h2>호텔이름</h2>
-                		<p>옵션</p>
+                		<div>
+                			<p>Hotel</p>
+                			<h1>${hotel[0].hotelName}</h1>
+                		</div>
                 		<div class="dogtype">
-                		<form action="">
-                			<label for="1"><input type="radio" name="" id="1" />대형</label>
-                			<label for="2"><input type="radio" name="" id="2" />중형</label>
-                			<label for="3"><input type="radio" name="" id="3" />소형</label>
-                		</form>
+                			<div>
+                				<h2>객실 선택</h2><hr/>
+                			</div>
+                			<label for="room-info">객식 종류 * </label>
+                			<select id="room-info">
+                				<c:forEach var="item" items="${hotel}">
+                					<option value = "${item.roomId}">객실명 : ${item.roomName} / 객실 타입: ${item.roomType}</option>
+                				</c:forEach>
+                			</select>
                 		</div>
                 		<div class="meminfo">
-                			<label for="name">예약자 명<input type="text" name="" id="name" /></label>
-                			<label for="phone">전화번호<input type="text" name="" id="phone" /></label>
-                			<label for="email">이메일<input type="text" name="" id="email" /></label>
-                			<p>요청사항</p>
-                			<textarea name="" id="req" cols="20" rows="5"></textarea>
-                			
+                			<div>
+                				<h2>예약자 정보</h2><hr/>
+                			</div>
+                			<form:form action="" modelAttribute="separateVO" id="section-container">
+                			<div id="meminfo-div2">
+								<label for="memName1" class="lb">예약자 *</label><input type="text" value="${user.memName}" id="memName1" class="memName" name="memName1"><br> 
+								<label for="memEmail" class="lb">이메일 *</label><input type="text" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="text" id="memEmail2" value="${separateVO.email2}"><br>
+ 
+								<label for="memPhone" class="lb">휴대 전화
+								</label><form:select path="phone1" id="memPhone1" name="memPhone">
+											<form:option value="010">010</form:option>
+											<form:option value="011">011</form:option>
+											<form:option value="017">017</form:option>
+											<form:option value="019">019</form:option>
+									</form:select> - <form:input path="phone2" id="memPhone2" /> - <form:input path="phone3" id="memPhone3"/>
+
+							</div>
+							</form:form>
                 		</div>
                 	</div>
-					 <div class="price">
+					<div class="price">
                         <div class="p_box">
-                            <p>객실1</p>
-                            <h1>39,600KRW</h1>
-                            <p>2022.10.29</p>
-                            <p>${room.hotelPrice }</p>
-                            <p>세금</p>
-                            <p>3,600</p>
+                        	<fmt:parseDate value="${startdate }" var="strPlanDate" pattern="yyyy-MM-dd"/>
+							<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+							<fmt:parseDate value="${enddate }" var="endPlanDate" pattern="yyyy-MM-dd"/>
+							<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
+							<p>[ ${startdate} ~ ${enddate} ]</p><br>
+                            <p>Room : <span id="room-name">${hotel[0].roomName}</span> <span id="room-type">[${hotel[0].roomType}견]</span></p>
+                            <h3>가격 : <span id="room-price"><fmt:formatNumber value="${hotel[0].roomPrice}" pattern="#,###" /></span>KRW</h3>
+                            <p><span id="room-date">${endDate - strDate }</span> 박</p>
+                            <p>+세금(10%)</p>
+                            <p><span  id="room-tax"><fmt:formatNumber value="${((endDate - strDate)*hotel[0].roomPrice)*0.1}" pattern="#,###" /></span>KRW</p>
                         </div>
                         <div class="total">
-                            <p>+세금(10%)</p>
-                            <h1>총 예약금액 39,600KRW</h1>
+                            <h1>총 예약금액 <br><span id="total-price"><fmt:formatNumber value="${((endDate - strDate)*hotel[0].roomPrice)*1.1}" pattern="#,###" /></span>KRW</h1><br>
                             <button id="reservebtn">회원예약</button>
                         </div>
-                        
-                        <script type="text/javascript">
-                        	document.getElementById("reservebtn").addEventListener("click",function(){
-                        		location.href = "${pageContext.request.contextPath}/goreserve"
-                        		
-                        	})
-                        </script>
                     </div>
                 </div>
+              	<script type="text/javascript">
+              		document.getElementById("room-info").addEventListener("change",function(){
+              			let roomId = Number(document.getElementById("room-info").value);
+              			console.log(roomId);
+              			let roomName= document.getElementById("room-name");
+              			let roomType= document.getElementById("room-type");
+              			let roomPrice= document.getElementById("room-price");
+              			let roomDate= document.getElementById("room-date");
+              			let roomTax = document.getElementById("room-tax");
+              			let totalPrice= document.getElementById("total-price");
+              			
+              			fetch("${pageContext.request.contextPath}/getroominfo",{ 
+              				method: "POST",
+							headers: {
+								    "Content-Type": "application/json"
+							},
+							body: JSON.stringify({roomId})
+						}).then((response) => response.json())
+							.then((data) => {
+								roomName.innerText = data.roomName;
+								roomType.innerText = "["+data.roomType+"견]";
+								roomPrice.innerText = data.roomPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+								let date = Number(roomDate.innerText);
+								roomTax.innerText = (Math.floor(date * data.roomPrice)*0.1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+								totalPrice.innerText = (Math.floor(date * data.roomPrice)*1.1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+								
+						});
+              		})
+              		
+              		document.getElementById("reservebtn").addEventListener("click",function(){
+              			let roomId = $("#room-info").val();
+              			let memPhone = $("#memPhone1").val()+$("#memPhone2").val()+$("#memPhone3").val();
+              			let memEmail = $("#memEmail").val()+'@'+$("#memEmail2").val();
+              			let memName = $("#memName1").val();
+              			
+              			console.log(roomId);
+              			console.log(memPhone);
+              			console.log(memEmail);
+              			console.log(memName);
+              			location.href="${pageContext.request.contextPath}/myhotelres/${startdate}/${enddate}"
+              							+"?roomId="+roomId
+              							+"&memPhone="+memPhone
+              							+"&memEmail="+memEmail
+              							+"&memName="+memName;
+              		});
+              	</script>
             </section>
         </main>
         <footer>

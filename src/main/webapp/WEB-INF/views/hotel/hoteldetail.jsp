@@ -484,7 +484,7 @@
 		#review-count, #qna-count{
 			color: blue;
 		}
-		#qna-button{
+		#qna-button, #qna-button2{
 			color: white;
 			background-color:black;
 			float:right;
@@ -513,6 +513,9 @@
 		#qnatitle{
 			margin-left:10px;
 		}
+		button{
+			cursor:pointer;
+		}
     </style>
 </head>
 
@@ -521,266 +524,15 @@
         <header>
             <%@ include file="../frame/hotel/header.jsp" %>
         </header>
-        <script>
-            $(document).ready(function () {
-
-                $("#innerbtn").click(function () {
-
-                    $("#option_list").slideToggle();
-
-                });
-
-            });
-        </script>
+        
         <main>
             <section>
                <div class="date">
-					<div class="indate">
-						<p id="selectp">지역을 선택해주세요</p>
-
-						<!-- <input type="text" placeholder="지역을" id="choicehotel"> -->
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
-							id="svg">
-                            <path
-								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
+					<div>
+						<p> 선택날짜 : ${startdate} ~ ${enddate}</p> 
 					</div>
-					<input type="text" id="datepicker1" name="dates" readonly>
-					<!-- <button class="selecbtn">검색</button> -->
-					<a href="#" id= "asearchbtn"class="selecbtn">검색</a>
 				</div>
 				
-				<script type="text/javascript">
-
-				window.addEventListener('DOMContentLoaded', function(){
-					
-					document.getElementById("asearchbtn").addEventListener("click",function(){ 
-						
-						var jjjcateArr = [];
-						var jjjcateArr2 = [];
-						
-						const jjjchecked = document.querySelectorAll('input[name="cate"]:checked');
-						jjjchecked.forEach((item)=>{
-							var jjjcate = item.value;
-						 	jjjcateArr.push(jjjcate);
-						 	jjjcateArr2 = jjjcateArr.slice(1);
-						});
-						
-						console.log(jjjcateArr);
-						console.log("slice"+jjjcateArr2);
-						
-	                    if(Array.isArray(jjjcateArr) && jjjcateArr.length === 0){
-	                    	document.getElementById("selectp").style.color="red";
-	                    	document.getElementById("selectp").style.fontWeight = "900";
-	                    	document.getElementById("isbx").style.display = "block";
-	                    	document.getElementById("isbx").style.display = "flex";
-	                    }else {
-	                    	document.getElementById("selectp").style.color="black";
-	                    	document.getElementById("isbx").style.display = "none";
-	                     	if(document.getElementById("1").checked || document.getElementById("20").checked || document.getElementById("15").checked || document.getElementById("26").checked) {
-	                    	 	console.log("slice"+jjjcateArr2);
-	                			location.href = "${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+jjjcateArr2; 	
-	                    	} else {
-	                    	 	console.log("여기에오나1"+jjjcateArr);
-	                    	 	console.log("여기에오나2"+jjjcateArr2);
-	                    	 	location.href = "${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+jjjcateArr;
-	                     	}
-	                    }
-	                    
-					});
-					
-					
-					//카테고리 배열 설저
-					let cateArr = [];
-					let cateArr2 = [];
-	            
-					let now = new Date();
-					let tom = new Date();
-										
-					tom.setDate(tom.getDate()+1);
-					
-					$('input[name="dates"]').daterangepicker({
-						 "startDate": "${startdate}",
-                            //시작날짜
-                         "endDate": "${enddate}",
-                            //종료날짜
-                         "minDate": now,
-                            //최소지정날짜
-                         "opens": "center",
- 
-                         locale: {
-                           	//기타 설정
-                            "separator": " ~ ",
-                            	//구분자
-                           	"applyLabel": "적용",
-                            	 //버튼 라벨
-                            "cancelLabel": "취소",
-                            format: "YYYY-MM-DD",
-                            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-                            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-                        }
-                    });
-					
-					$('input[name="dates"]').on('show.daterangepicker', function() {
-						$(".cancelBtn").css("float", "right");
-                 	 	$(".cancelBtn").css("background-color", "white");
-                 	 	$(".cancelBtn").css("color","black");
-                 	 	$(".applyBtn").css("background-color", "black");
-                 	 	$(".applyBtn").css("color","white");
-                 		$(".cancelBtn, .applyBtn").css("border","1px solid black");
-                 	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
-                 		$(".cancelBtn, .applyBtn").css("width", "60px");
-					});
-
-					$('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-						 //datepicker에서 적용버튼을 클릭했을 때
-						 var startdate = picker.startDate.format('YYYY-MM-DD');
-						 var enddate = picker.endDate.format('YYYY-MM-DD');
-						 
-						$('input[name="cate"]:checked').each(function(){
-							var cate=$(this).val();
-							cateArr.push(cate);
-							cateArr2 = cateArr.slice(1);
-						});
-						 
-						console.log("in"+cateArr);
-						 
-						if(Array.isArray(cateArr) && cateArr.length === 0) {
-							$("#asearchbtn").click(function(){
-								$("#selectp").css("color","red");
-								$("#selectp").css("fontWeight","900");
-								$("#isbx").css("display", "block");
-								$("#isbx").css("display", "flex");
-							});
-						} else {
-							$("#asearchbtn").click(function(){
-								$("#selectp").css("color","black");
-								$("#isbx").css("display", "none");
-						 		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);	
-							});	
-						}
-						 
-					});
-					 
-				});	
-					
-					
-                   
-	
-                </script>
-            
-           <script type="text/javascript">
-			$('.allseo').click(function(){
-             	if($('.allseo').is(':checked')){
-             		$('.seo').prop("checked",true);
-             	} else {
-             		$('.seo').prop("checked",false);
-             	};
-             });
-             
-             $('.allin').click(function(){
-             	if($('.allin').is(':checked')){
-             		$('.in').prop("checked",true);
-             	} else {
-             		$('.in').prop("checked",false);
-             	};
-             });
-             
-             $('.allgyeong').click(function(){
-             	if($('.allgyeong').is(':checked')){
-             		$('.gyeong').prop("checked",true);
-             	} else {
-             		$('.gyeong').prop("checked",false);
-             	};
-             });
-             
-             $('.seo').click(function(){
-             	if($('.allseo').is(':checked')){
-             		$('.allseo').prop("checked", false);
-             	};
-             	
-             	if($('.seo:checked').length == $('.seo').length){
-                 	$('.allseo').prop("checked",true);
-                 };
-             });
-             
-             $('.in').click(function(){
-             	if($('.allin').is(':checked')){
-             		$('.allin').prop("checked", false);
-             	};
-             	
-             	if($('.in:checked').length == $('.in').length){
-                 	$('.allin').prop("checked",true);
-                 };
-             });
-             
-             $('.gyeong').click(function(){
-             	if($('.allgyeong').is(':checked')){
-             		$('.allgyeong').prop("checked", false);
-             	};
-             	
-             	if($('.gyeong:checked').length == $('.gyeong').length){
-                 	$('.allgyeong').prop("checked",true);
-                 };
-             });
-			
-			</script>
-				<!-- <div class="coutbox" id="ioutbox"> -->
-					<div id="isbx" class="csbx">
-					<p>지역구분</p>
-					<form action="" id="bxform">
-						<label for="1"><input type="checkbox" name="cate" id="1" class="allseo" value="서울">서울전체</label> 
-						<label for="2"><input type="checkbox" name="cate" id="2" class="seo" value="금천구">금천구</label>
-						<label for="3"><input type="checkbox" name="cate" id="3" class="seo" value="은평구">은평구</label> 
-						<label for="4"><input type="checkbox" name="cate" id="4" class="seo" value="강남구">강남구</label>
-						<label for="5"><input type="checkbox" name="cate" id="5" class="seo" value="서초구">서초구</label> 
-						<label for="6"><input type="checkbox" name="cate" id="6" class="seo" value="서대문구">서대문구</label>
-						<label for="7"><input type="checkbox" name="cate" id="7" class="seo" value="강동구">강동구</label><br /> 
-						<label for="8"><input type="checkbox" name="cate" id="8" class="allin" value="인천">인천전체</label>
-						<label for="9"><input type="checkbox" name="cate" id="9" class="in" value="연수구">연수구</label> 
-						<label for="10"><input type="checkbox" name="cate" id="10" class="in" value="남동구">남동구</label>
-						<label for="11"><input type="checkbox" name="cate" id="11" class="allgyeong" value="경기">경기전체</label> 
-						<label for="12"><input type="checkbox" name="cate" id="12" class="gyeong" value="성남시">성남시</label>
-						<label for="13"><input type="checkbox" name="cate" id="13" class="gyeong" value="김포시">김포시</label> 
-						<label for="14"><input type="checkbox" name="cate" id="14" class="gyeong" value="용인시">용인시</label>
-						<label for="15"><input type="checkbox" name="cate" id="15" class="gyeong" value="시흥시">시흥시</label>
-						<!-- <button id="sbtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
-							id="svg">
-                            <path
-								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg></button> -->
-					</form>
-				</div>
-				<!-- </div> -->
-	
-                <script>
-                    var p = document.getElementById("selectp");
-                    var svg = document.getElementById("svg");
-                    var iob = document.getElementById("ioutbox");
-					var isbx = document.getElementById("isbx");
-                    var date = document.getElementById("datepicker1");
-					var div = document.getElementById("datepicker1").firstChild;
-                    
-                    p.addEventListener("click", function () {
-                    	isbx.classList.toggle("clicked");    
-                    });
-                    
-                    /*svg.addEventListener("click", function () {
-                    	isbx.classList.toggle("clicked");
-                    	
-                    });*/
-                    
-                    date.addEventListener("click", function () {
-                    	
-                    	if(isbx.className="clicked"){
-                    		isbx.classList.toggle("clicked");
-                    	}
-                    });
-                    
-
-                </script>
                 <div class="detail">
                     <div class="content">
                         <div class="c_title">
@@ -794,8 +546,13 @@
                             		<p>전화번호: ${hotel[0].hotelTel}</p><br>
                             	</div>
                             	<div>
-                            		<button>RESERVATION</button>
+                            		<button id="goreserve">RESERVATION</button>
                             	</div>
+                            	<script type="text/javascript">
+                            		document.getElementById("goreserve").addEventListener("click",function(){
+                            			location.href="${pageContext.request.contextPath}/goreserve/${hotel[0].hotelId}/${startdate}/${enddate}"
+                            		})
+                            	</script>
                             </div>
                         </div>
                         <div class="c_info">
@@ -851,8 +608,13 @@
                             			
                             			
                             		</div>
+                            		<c:if test="${sessionScope.user !=null }">
+                            			<button id="qna-button">Write</button>
+                            		</c:if>
+                            		<c:if test="${sessionScope.user ==null }">
+                            			<button id="qna-button2">Write</button>
+                            		</c:if>
                             		
-                            		<button id="qna-button">Write</button>
                             		<div id="writebox-qna" >
                             			<div>
 											<label for="qnatitle">문의 분류 * </label>
@@ -871,19 +633,20 @@
                             	</div>
                             	<script type="text/javascript">
                             		
-                            	
-                            		document.getElementById("qna-button").addEventListener("click",function(){
-                            			/*const login = ${sessionScope.user.memId};
-                            			 if( login !=null || login !=''){ */
+                            		if(document.getElementById("qna-button")){
+                            			document.getElementById("qna-button").addEventListener("click",function(){
                             				if(document.getElementById("writebox-qna").style.display=="flex"){
 												document.getElementById("writebox-qna").style.display="none";
 											}else{
 												document.getElementById("writebox-qna").style.display="flex";
 											}
-                            			/* }else{	
-                            				alert('로그인 후에 이용해주세요!')
-                            			} */
-									});
+										});
+                            		}
+                            		if(document.getElementById("qna-button2")){
+                            			document.getElementById("qna-button2").addEventListener("click",function(){
+                            				alert('로그인 후에 이용해주세요');
+                            			});
+                            		}
                             		document.getElementById("insertqna").addEventListener("click",function(e){
             							e.preventDefault();
             							let today = new Date();
