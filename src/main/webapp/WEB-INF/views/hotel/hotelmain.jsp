@@ -222,42 +222,42 @@ img {
 					<!-- <button class="selecbtn">검색</button> -->
 					<a href="#" class="selecbtn" id="asearchbtn">검색</a>
 				</div>
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<!-- <div class="coutbox" id="ioutbox"> -->
 				<div id="isbx" class="csbx">
 					<p>지역구분</p>
 					<form action="#" id="bxform">
-						<input type="checkbox" name="cate" id="1" class="allseo" value="서울"><label for="1">서울전체</label> 
-<input type="checkbox" name="cate" id="2" class="seo" value="금천구"><label for="2">금천구</label>
-<input type="checkbox" name="cate" id="3" class="seo" value="은평구"><label for="3">은평구</label> 
-<input type="checkbox" name="cate" id="4" class="seo" value="강남구"><label for="4">강남구</label>
-<input type="checkbox" name="cate" id="5" class="seo" value="강서구"><label for="5">강서구</label>
-<input type="checkbox" name="cate" id="6" class="seo" value="관악구"><label for="6">관악구</label>
-<input type="checkbox" name="cate" id="7" class="seo" value="도봉구"><label for="7">도봉구</label><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="cate" id="8" class="seo" value="서초구" ><label for="8">서초구</label>
-<input type="checkbox" name="cate" id="9" class="seo" value="성동구"><label for="9">성동구</label>
-<input type="checkbox" name="cate" id="10" class="seo" value="양천구"><label for="10">양천구</label> 
-<input type="checkbox" name="cate" id="11" class="seo" value="용산구"><label for="11">용산구</label>
-<input type="checkbox" name="cate" id="12" class="seo" value="서대문구"><label for="12">서대문구</label>
-<input type="checkbox" name="cate" id="13" class="seo" value="동대문구"><label for="13">동대문구</label>
-<input type="checkbox" name="cate" id="14" class="seo" value="강동구"><label for="14">강동구</label> <br />
-<input type="checkbox" name="cate" id="20" class="allgyeong" value="경기"><label for="20">경기전체</label> 
-<input type="checkbox" name="cate" id="21" class="gyeong" value="구리시"><label for="21">구리시</label>
-<input type="checkbox" name="cate" id="22" class="gyeong" value="남양주시"><label for="22">남양주시</label> 
-<input type="checkbox" name="cate" id="23" class="gyeong" value="의정부시"><label for="23">의정부시</label>
-<input type="checkbox" name="cate" id="24" class="gyeong" value="포천시"><label for="24">포천시</label>
-<input type="checkbox" name="cate" id="25" class="gyeong" value="하남시"><label for="25">하남시</label><br />
-<input type="checkbox" name="cate" id="15" class="allin" value="인천"><label for="15">인천전체</label>
-<input type="checkbox" name="cate" id="16" class="in" value="연수구"><label for="16">연수구</label> 
-<input type="checkbox" name="cate" id="17" class="in" value="부평구"><label for="17">부평구</label> 
-<input type="checkbox" name="cate" id="18" class="in" value="남동구"><label for="18">남동구</label>
-<input type="checkbox" name="cate" id="19" class="in" value="서구"><label for="19">서구</label> <br />
-<input type="checkbox" name="cate" id="26" class="allchung" value="충북"><label for="26">충북전체</label>
-<input type="checkbox" name="cate" id="27" class="chung" value="음성군"><label for="27">음성군</label>
-<input type="checkbox" name="cate" id="28" class="chung" value="제천시"><label for="28">제천시</label>
-<input type="checkbox" name="cate" id="29" class="chung" value="청주시"><label for="29">청주시</label>
-<input type="checkbox" name="cate" id="30" class="chung" value="충주시"><label for="30">충주시</label> 
+						<input type="checkbox" name="cate" id="l1" class="allseo" value="서울"><label for="l1">서울전체</label> 
+						<input type="checkbox" name="cate" id="l2" class="seo" value="금천구"><label for="l2">금천구</label>
+						<input type="checkbox" name="cate" id="l3" class="seo" value="은평구"><label for="l3">은평구</label> 
+						<input type="checkbox" name="cate" id="l4" class="seo" value="강남구"><label for="l4">강남구</label>
+						<input type="checkbox" name="cate" id="l5" class="seo" value="강서구"><label for="l5">강서구</label>
+						<input type="checkbox" name="cate" id="l6" class="seo" value="관악구"><label for="l6">관악구</label>
+						<input type="checkbox" name="cate" id="l7" class="seo" value="도봉구"><label for="l7">도봉구</label><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="cate" id="l8" class="seo" value="서초구" ><label for="l8">서초구</label>
+						<input type="checkbox" name="cate" id="l9" class="seo" value="성동구"><label for="l9">성동구</label>
+						<input type="checkbox" name="cate" id="l10" class="seo" value="양천구"><label for="l10">양천구</label> 
+						<input type="checkbox" name="cate" id="l11" class="seo" value="용산구"><label for="l11">용산구</label>
+						<input type="checkbox" name="cate" id="l12" class="seo" value="서대문구"><label for="l12">서대문구</label>
+						<input type="checkbox" name="cate" id="l13" class="seo" value="동대문구"><label for="l13">동대문구</label>
+						<input type="checkbox" name="cate" id="l14" class="seo" value="강동구"><label for="l14">강동구</label> <br />
+						<input type="checkbox" name="cate" id="l20" class="allgyeong" value="경기"><label for="l20">경기전체</label> 
+						<input type="checkbox" name="cate" id="l21" class="gyeong" value="구리시"><label for="l21">구리시</label>
+						<input type="checkbox" name="cate" id="l22" class="gyeong" value="남양주시"><label for="l22">남양주시</label> 
+						<input type="checkbox" name="cate" id="l23" class="gyeong" value="의정부시"><label for="l23">의정부시</label>
+						<input type="checkbox" name="cate" id="l24" class="gyeong" value="포천시"><label for="l24">포천시</label>
+						<input type="checkbox" name="cate" id="l25" class="gyeong" value="하남시"><label for="l25">하남시</label><br />
+						<input type="checkbox" name="cate" id="l15" class="allin" value="인천"><label for="l15">인천전체</label>
+						<input type="checkbox" name="cate" id="l16" class="in" value="연수구"><label for="l16">연수구</label> 
+						<input type="checkbox" name="cate" id="l17" class="in" value="부평구"><label for="l17">부평구</label> 
+						<input type="checkbox" name="cate" id="l18" class="in" value="남동구"><label for="l18">남동구</label>
+						<input type="checkbox" name="cate" id="l19" class="in" value="서구"><label for="l19">서구</label> <br />
+						<input type="checkbox" name="cate" id="l26" class="allchung" value="충북"><label for="l26">충북전체</label>
+						<input type="checkbox" name="cate" id="l27" class="chung" value="음성군"><label for="l27">음성군</label>
+						<input type="checkbox" name="cate" id="l28" class="chung" value="제천시"><label for="l28">제천시</label>
+						<input type="checkbox" name="cate" id="l29" class="chung" value="청주시"><label for="l29">청주시</label>
+						<input type="checkbox" name="cate" id="l30" class="chung" value="충주시"><label for="l30">충주시</label> 
 						<!-- <button type="button"  id="sbtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 							fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
 							id="svg">
@@ -271,40 +271,15 @@ img {
 				<script>
 					
 					window.addEventListener('DOMContentLoaded', function(){
-						//카테고리 배열 설저
-						let cateArr = [];
-						let cateArr2 = [];
-		                
 						
-	                     
+					//카테고리 배열 설저
 						
-						
-						//document.getElementById("sbtn").addEventListener("click", function(){ 버튼이벤트 날림
-							
-							//name cate의 값을 가져옴
-							
-							
-							 //각 값을 배열에 넣어줌
-							
-							//all체크 누르면 전체지역 빼고 들어감
-							
-						/*const checked = document.querySelectorAll('input[name="cate"]:checked');
-						checked.forEach((item)=>{
-							let cate = item.value;
-							cateArr.push(cate);
-						});
-						
-						if(document.getElementById("1").checked || document.getElementById("8").checked || document.getElementById("11").checked) {
-							cateArr.slice(1);
-						}
-							console.log("이겅가ㅇ"+cateArr);
-
-						});*/
 						
 						let now = new Date();
 						let tom = new Date();
-											
+						
 						tom.setDate(tom.getDate()+1);
+						
 						
 						$('input[name="dates"]').daterangepicker({
 							 "startDate": now,
@@ -338,78 +313,85 @@ img {
                      	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
                      		$(".cancelBtn, .applyBtn").css("width", "60px");
 						});
-						 
- 
-						 
+						
 						$('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
 							 //datepicker에서 적용버튼을 클릭했을 때
-							 var startdate = picker.startDate.format('YYYY-MM-DD');
-							 var enddate = picker.endDate.format('YYYY-MM-DD');
-							 
-							$('input[name="cate"]:checked').each(function(){
-								var cate=$(this).val();
-								cateArr.push(cate);
-								cateArr2 = cateArr.slice(1);
-							});
-							 
-							console.log("in"+cateArr);
-							 
-							if(Array.isArray(cateArr) && cateArr.length === 0) {
-								$("#asearchbtn").click(function(){
-									$("#selectp").css("color","red");
-									$("#selectp").css("fontWeight","900");
-									$("#isbx").css("display", "block");
-									$("#isbx").css("display", "flex");
-								});
-							} else {
-								$("#asearchbtn").click(function(){
-									$("#selectp").css("color","black");
-									$("#isbx").css("display", "none");
-							 		$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);	
-								});	
-							}
-							 
+							 startdate = picker.startDate.format('YYYY-MM-DD');
+							 enddate = picker.endDate.format('YYYY-MM-DD');
+							
 						});
 						
-						document.getElementById("asearchbtn").addEventListener("click",function(){ 
 						
-						var jjcateArr = [];
-						var jjcateArr2 = [];
-						 
-						const jjchecked = document.querySelectorAll('input[name="cate"]:checked');
-						jjchecked.forEach((item)=>{
-							var jjcate = item.value;
-						 	jjcateArr.push(jjcate);
-						 	jjcateArr2 = jjcateArr.slice(1);
-						});
-						 
-						console.log(jjcateArr);
-						console.log("slice"+jjcateArr2);
-						 
-						 
-						 
-						var today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
-	                    var tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
-	                    //오늘 날짜와 내일 날짜 출력
-	                    if(Array.isArray(jjcateArr) && jjcateArr.length === 0){
-	                    	document.getElementById("selectp").style.color="red";
-	                    	document.getElementById("selectp").style.fontWeight = "900";
-	                    	document.getElementById("isbx").style.display = "block";
-	                    	document.getElementById("isbx").style.display = "flex";
-	                    }else {
-	                    	document.getElementById("selectp").style.color="black";
-	                    	document.getElementById("isbx").style.display = "none";
-	                    	if(document.getElementById("1").checked || document.getElementById("20").checked || document.getElementById("15").checked || document.getElementById("26").checked){
-	                    	 	console.log("slice"+jjcateArr2);
-	                			location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jjcateArr2; 	
-	                    	} else {
-	                    	 	console.log("여기에오나1"+jjcateArr);
-	                    	 	console.log("여기에오나2"+jjcateArr2);
-	                    	 	location.href = "${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+jjcateArr;
-	                     	}
-	                    }
+						
+						console.log("스타트"+startdate);
+						console.log("엔드"+enddate);
+				
+						let today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
+	                    let tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
 	                    
-						});
+	                    let cateArr = [];
+						let cateArr2 = [];
+		        
+						var startdate = null;
+						var enddate=null;
+	                    
+	                   
+	                    
+	                   
+						
+						//지역구 선택 안했으면 글씨 빨간색으로 바뀌는거
+						$("#asearchbtn").click(function(){
+							
+							 $('input[name="cate"]:checked').each(function(){
+									var cate=$(this).val();
+									cateArr.push(cate);
+									cateArr2 = cateArr.slice(1);
+								});
+							 
+							 console.log("cateArr"+cateArr);
+			                 console.log("cateArr2"+cateArr2);
+							
+						if(Array.isArray(cateArr) && cateArr.length === 0) {
+							$("#asearchbtn").click(function(){
+								$("#selectp").css("color","red");
+								$("#selectp").css("fontWeight","900");
+								$("#isbx").css("display", "block");
+								$("#isbx").css("display", "flex");
+							});
+						} else { //지역구를 선택한 경우
+							
+							
+								$("#selectp").css("color","black");
+								$("#isbx").css("display", "none");
+						 		if(startdate!=null){ // 날짜적용선택시
+						 			console.log("start" + startdate);
+						 			console.log("end"+enddate);
+						 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
+						 				console.log("적용버튼 누르고 all누름");
+						 				console.log("cateArr2"+cateArr2);
+										$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
+						 			} else {
+						 				console.log("적용버튼 누르고 all 안누름");
+						 				console.log("cateArr2"+cateArr);
+						 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);
+						 			}
+						 		} else { //날짜 선택 안했을 시 오늘 날짜가 들어감
+						 			console.log("today"+today);
+						 			console.log("tommorow"+tommorow);
+						 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
+						 				console.log("적용버튼 안 누르고 all누름");
+						 				console.log("cateArr2"+cateArr2);
+										$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+cateArr2);
+						 			} else {
+						 				console.log("적용버튼 안 누르고 all안누름");
+						 				console.log("cateArr2"+cateArr);
+						 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+cateArr);
+						 			}
+						 		}
+							
+						}
+						
+						});	
 						 
 					});	
 						/*  document.getElementById("asearchbtn").addEventListener("click",function(){ */
@@ -450,6 +432,14 @@ img {
                  	};
                  });
                  
+                 $('.allchung').click(function(){
+                  	if($('.allchung').is(':checked')){
+                  		$('.chung').prop("checked",true);
+                  	} else {
+                  		$('.chung').prop("checked",false);
+                  	};
+                  });
+                 
                  $('.seo').click(function(){
                  	if($('.allseo').is(':checked')){
                  		$('.allseo').prop("checked", false);
@@ -479,6 +469,16 @@ img {
                      	$('.allgyeong').prop("checked",true);
                      };
                  });
+                 
+                 $('.chung').click(function(){
+                  	if($('.allchung').is(':checked')){
+                  		$('.allchung').prop("checked", false);
+                  	};
+                  	
+                  	if($('.chung:checked').length == $('.chung').length){
+                      	$('.allchung').prop("checked",true);
+                      };
+                  });
 				
 				</script>
 				<!--  --><script>
@@ -551,7 +551,7 @@ img {
 					})
 				</script>
 			</section>
-			여기서 수정하면 일로오나?
+			
 		</main>
 
 		<footer>
