@@ -78,6 +78,10 @@
 	<select id="getHotelQna" resultType="hotelqnaVO">
 		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 
 	</select>
+	<insert id="insertHotelQna" parameterType="hotelqnaVO">
+		insert into hotelqna (hotel_id, hotelqna_title, hotelqna_content, hotelqna_date, mem_id)
+					values (#{hotelId}, #{hotelqnaTitle},#{hotelqnaContent},#{hotelqnaDate},#{memId})
+	</insert>
 </mapper>
 
 

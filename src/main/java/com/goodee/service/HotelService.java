@@ -72,4 +72,7 @@ public class HotelService {
 		public List<HotelQnaVO> getHotelQna(HotelQnaVO vo){
 			return dao.getHotelQna(vo);
 		}
+		public void insertHotelQna(HotelQnaVO vo){
+			dao.insertHotelQna(vo);
+		}
 }

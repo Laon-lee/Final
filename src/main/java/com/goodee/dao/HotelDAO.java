@@ -30,5 +30,6 @@ public interface HotelDAO {
 	
 	public List<HotelReviewVO> getHotelReview(HotelReviewVO vo);
 	public List<HotelQnaVO> getHotelQna(HotelQnaVO vo);
+	public void insertHotelQna(HotelQnaVO vo);
 	
 }

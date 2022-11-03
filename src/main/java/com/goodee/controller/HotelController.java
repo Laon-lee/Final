@@ -99,5 +99,10 @@ public class HotelController {
 		public List<HotelQnaVO> getHotelQna(@RequestBody HotelQnaVO vo){
 	        return service.getHotelQna(vo);
 	    }
+		@PostMapping("inserthotelqna")
+		@ResponseBody
+		public void insertHotelQna(@RequestBody HotelQnaVO vo){
+			service.insertHotelQna(vo);
+	    }
 		
 }

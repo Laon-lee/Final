@@ -484,7 +484,35 @@
 		#review-count, #qna-count{
 			color: blue;
 		}
-		
+		#qna-button{
+			color: white;
+			background-color:black;
+			float:right;
+			width:100px;
+			height:30px;
+		}
+		#writebox-qna{
+			
+			margin-top:15px;
+			gap:20px;
+			margin: 20px 0 0 20px;
+			clear:both;
+			display:none;
+			flex-direction:row;
+			justify-content:center;
+			padding-top:20px;
+		}
+		#insertqna{
+			float:right;
+			color:white;
+			background-color:gray;
+			width:90px;
+			height:25px;
+			border:none;
+		}
+		#qnatitle{
+			margin-left:10px;
+		}
     </style>
 </head>
 
@@ -823,8 +851,102 @@
                             			
                             			
                             		</div>
+                            		
+                            		<button id="qna-button">Write</button>
+                            		<div id="writebox-qna" >
+                            			<div>
+											<label for="qnatitle">문의 분류 * </label>
+											<select name="qnatitle" id="qnatitle">
+												<option value="호텔 문의">호텔 문의</option>
+												<option value="날짜 문의">날짜 문의</option>
+												<option value="예약 문의">예약 문의</option>
+												<option value="견종 문의">견종 문의</option>
+												<option value="기타 문의">기타 문의</option>
+											</select>
+										</div>
+										<div>
+											<textarea id="writecontent-qna" placeholder="문의 내용" cols="70" rows="3"></textarea><br><button id="insertqna">작성 완료</button>
+										</div>
+									</div>
                             	</div>
+                            	<script type="text/javascript">
+                            		
                             	
+                            		document.getElementById("qna-button").addEventListener("click",function(){
+                            			/*const login = ${sessionScope.user.memId};
+                            			 if( login !=null || login !=''){ */
+                            				if(document.getElementById("writebox-qna").style.display=="flex"){
+												document.getElementById("writebox-qna").style.display="none";
+											}else{
+												document.getElementById("writebox-qna").style.display="flex";
+											}
+                            			/* }else{	
+                            				alert('로그인 후에 이용해주세요!')
+                            			} */
+									});
+                            		document.getElementById("insertqna").addEventListener("click",function(e){
+            							e.preventDefault();
+            							let today = new Date();
+
+            							let year = today.getFullYear();
+            							let month = ('0' + (today.getMonth() + 1)).slice(-2);
+            							let day = ('0' + today.getDate()).slice(-2);
+            							let hours = ('0' + today.getHours()).slice(-2); 
+            							let minutes = ('0' + today.getMinutes()).slice(-2);
+            							let seconds = ('0' + today.getSeconds()).slice(-2); 							
+            							let hotelqnaDate = year + '-' + month  + '-' + day +" "+ hours + ':' + minutes  + ':' + seconds;
+            							
+            							
+            							let hotelqnaContent = document.getElementById("writecontent-qna").value;
+            							let hotelqnaTitle = document.getElementById("qnatitle").value;
+            							let memId = '${sessionScope.user.memId}';
+            							let hotelId= ${hotel[0].hotelId}
+            							
+            							fetch("${pageContext.request.contextPath}/inserthotelqna", 
+            								{ method: "POST",
+            								  headers: {
+            								    "Content-Type": "application/json"
+            								  },
+            								  body: JSON.stringify({hotelqnaContent,hotelId, hotelqnaTitle,memId,hotelqnaDate})
+            								})<%-- .then((response) => response.json()) --%>
+            								.then(() => {
+            									const div = document.createElement("div");
+                                    			div.setAttribute("class","qna-box")
+
+                                    			const p1 = document.createElement("p");
+                                    			const strong = document.createElement("strong");
+                                    			strong.setAttribute("class","qna-title");
+                                    			strong.innerText = '['+hotelqnaTitle+']';
+
+                                    			const sp1 = document.createElement("span");
+                                    			sp1.setAttribute("class","qna-writer");
+                                    			sp1.innerText= 'by. '+memId;
+
+                                    			const sp2 = document.createElement("span");
+                                    			sp2.setAttribute("class","qna-date");
+                                    			sp2.innerText= formatDate(hotelqnaDate);
+
+                                    			p1.append(strong);
+                                    			p1.append(sp1);
+                                    			p1.append(sp2);
+
+                                    			const p2 = document.createElement("p");
+                                    			p2.setAttribute("class","qna-content")
+                                    			p2.innerText = hotelqnaContent;
+                                    			
+                                    			const hr = document.createElement("hr");
+                                    			div.append(p1);
+                                    			div.append(p2);
+                                    			div.append(hr);
+                                    			const container = document.getElementById("qna-container");
+                                    			container.append(div);
+            									let sp = document.getElementById("qna-count").innerText;
+            									document.getElementById("qna-count").innerText= Number(sp)+1;
+            									document.getElementById("writecontent-qna").value="";
+            									
+            								});
+            						})
+                            	</script>
                             	
                             </div>
 							<script type="text/javascript">
@@ -864,7 +986,8 @@
 		                                    .then(data => {
 		                                    	$("#review-container").empty();
 		                                        document.getElementById("review-count").innerText = data.length;
-		                                        for (let review of data) {
+		                                        if(data.length>0){
+		                                        	for (let review of data) {
 		                                    			const div = document.createElement("div");
 		                                    			div.setAttribute("class","review-box")
 
@@ -895,6 +1018,15 @@
 		                                    			div.append(hr);
 		                                    			const container = document.getElementById("review-container");
 		                                    			container.append(div);
+		                                        	}
+		                                        }else{
+		                                        	const div = document.createElement("div");
+		                                        	const p1 = document.createElement("p");
+		                                        	p1.innerText='아직 작성된 후기가 없습니다.'
+		                                        	p1.style.textAlign="center";
+		                                        	div.append(p1);
+		                                        	const container = document.getElementById("review-container");
+	                                    			container.append(div);
 		                                        }
 		                                    }).catch(error => {
 		                                        console.log("error");
@@ -915,14 +1047,16 @@
 		                                    	$("#qna-container").empty();		                           
 		                                        
 		                                        document.getElementById("qna-count").innerText = data.length;
-		                                        for (let qna of data) {
+		                                        
+		                                        if(data.length>0){
+		                                       		for (let qna of data) {
 		                                    			const div = document.createElement("div");
 		                                    			div.setAttribute("class","qna-box")
 
 		                                    			const p1 = document.createElement("p");
 		                                    			const strong = document.createElement("strong");
 		                                    			strong.setAttribute("class","qna-title");
-		                                    			strong.innerText = '[문의] '+qna.hotelqnaTitle;
+		                                    			strong.innerText = '['+qna.hotelqnaTitle+']';
 
 		                                    			const sp1 = document.createElement("span");
 		                                    			sp1.setAttribute("class","qna-writer");
@@ -946,8 +1080,16 @@
 		                                    			div.append(hr);
 		                                    			const container = document.getElementById("qna-container");
 		                                    			container.append(div);
+		                                        	}
+		                                        }else{
+		                                        	const div = document.createElement("div");
+		                                        	const p1 = document.createElement("p");
+		                                        	p1.innerText='아직 작성된 문의가 없습니다.'
+		                                        	p1.style.textAlign="center";
+		                                        	div.append(p1);
+		                                        	const container = document.getElementById("qna-container");
+	                                    			container.append(div);
 		                                        }
-
 		                                    }).catch(error => {
 		                                        console.log("error");
 		                                    });
