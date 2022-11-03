@@ -90,15 +90,15 @@
 					values (#{roomId}, #{resStart},#{resEnd},#{resStatus})
 	</insert>
 	<insert id="setRes" parameterType="hotelresVO">
-		insert into hotel_res (res_detail_num, mem_name, mem_email, mem_phone)
-					values (#{resDetailNum}, #{memName},#{memEmail},#{memPhone})
+		insert into hotel_res (res_detail_num, mem_name, mem_email, mem_phone, id)
+					values (#{resDetailNum}, #{memName},#{memEmail},#{memPhone}, #{id})
 	</insert>
-	<select id="getMyHotelres" resultType="memberVO" parameterType="hoteljoinVO">
+	<select id="getMyHotelres" resultType="hoteljoinVO" parameterType="memberVO">
 		select * from hotel_res hr 
 		INNER JOIN hotel_detail_res hdr ON hr.res_detail_num = hdr.res_detail_num
 		INNER JOIN hotel_room hrm ON hdr.room_id = hrm.room_id
 		INNER JOIN hotel_info hi ON hrm.hotel_id = hi.hotel_id
-		where id = #{id}
+		where hr.id = #{id}
 	</select>
 	
 </mapper>
