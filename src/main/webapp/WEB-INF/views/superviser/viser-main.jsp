@@ -117,6 +117,7 @@ label {
 				<ul>
 				<a style="text-decoration:underline" href="${pageContext.request.contextPath}/viser/main"><h2>Main Page</h2></a>
 				<h2>쇼핑몰</h2>
+					<li><a href="${pageContext.request.contextPath}/viser/CSOrderInfo">고객 주문 정보</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/delete/home">상품 삭제</a></li>
