@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 
 import com.goodee.dao.SuperviserDAO;
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ShopVO;
 
 @Service
@@ -43,5 +44,10 @@ public class SuperviserService {
 	}
 	public void createboard(BoardVO vo) {
 		superdao.createboard(vo);
+	}
+	
+	public void getCSOrder(OrderjoinVO vo,Model model) {
+		
+		model.addAttribute("list",superdao.getCSOrder(vo));
 	}
 }

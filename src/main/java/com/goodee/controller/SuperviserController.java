@@ -19,6 +19,7 @@ import com.goodee.service.BoardService;
 import com.goodee.service.ShopService;
 import com.goodee.service.SuperviserService;
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ShopVO;
 
 @Controller
@@ -131,5 +132,10 @@ public class SuperviserController {
 	public String createboard(BoardVO vo) {
 		superservice.createboard(vo);
 		return "superviser/viser-main";
+	}
+	@GetMapping("viser/CSOrderInfo")
+	public String getCSOrder(OrderjoinVO vo,Model model) {
+		superservice.getCSOrder(vo, model);
+		return "superviser/viser-shop-orderinfo";
 	}
 }
