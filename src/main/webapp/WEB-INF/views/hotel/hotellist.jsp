@@ -30,10 +30,6 @@
     <title>Document</title>
     <style>
         
-        *{
-        	box-sizing : border-box;
-        }
-
         html,
         body,
         header,
@@ -129,13 +125,13 @@
             background-color: purple;
         }
 
-        .date {
+        /* .date {
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center
         }
-
+ */
         .list {
         	        width: 65%;
     
@@ -196,9 +192,9 @@
         }
 
         .innerbtn>button {
-               border: 2px solid gray;
+               border: 2px solid #000000de;
     font-size: 15px;
-    color: gray;
+    color: #000000de;
     width: 100%;
     height: 40%;
     font-weight: 700;
@@ -212,7 +208,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: gray;
+    background-color: #000000de;
 		
 		}
 		
@@ -295,15 +291,13 @@
         } */
 	
 		.selecbtn {
-            height: 100%;
-    border: 0;
-    background-color: black;
-    width: 5vw;
-    color: white !important;
-    text-align: center;
-            
-        }
-
+	height: 70%;
+	border: 0;
+	background-color: black;
+	width: 5vw;
+	color: white !important;
+	text-align: center;
+}
 .isbx-toggle {
 	display: block !important;
 }
