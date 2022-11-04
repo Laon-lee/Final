@@ -125,17 +125,19 @@ public class HotelController {
 		public String resSuccess(@PathVariable String startdate, 
 								@PathVariable String enddate,
 								HotelDetailResVO vo, HotelResVO vo1,
-								Model model, HttpSession session) {
+								HttpSession session) {
 			vo.setResStart(startdate);
 			vo.setResEnd(enddate);
-			service.resSuccess(vo,vo1,model,session);
+			System.out.println(vo1.getResMsg());
 			
-			return "main/myhotelres";
+			service.resSuccess(vo,vo1,session);
+			
+			return "redirect:/myhotelres";
 		}
 		
-		
-		
-		
-		
-		
+		@GetMapping("resCancel/{resDetailNum}")
+		public String resCancel(@PathVariable int resDetailNum) {
+			service.resCancel(resDetailNum);
+			return "redirect:/myhotelres";
+		}
 }

@@ -110,6 +110,7 @@ public class ShopService {
 		MemberVO uservo = (MemberVO)session.getAttribute("user");
 		int updatepoint = mbdao.getmemberinfo(uservo).getPoint()+point;
 		int id= mbdao.getmemberinfo(uservo).getId();
+		
 		System.out.println(updatepoint);
 		uservo.setId(id);
 		uservo.setPoint(updatepoint);

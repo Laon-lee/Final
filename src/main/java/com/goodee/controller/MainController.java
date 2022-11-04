@@ -17,18 +17,21 @@ import com.goodee.service.ShopService;
 import com.goodee.vo.OrderVO;
 import com.goodee.vo.OrderdetailVO;
 import com.goodee.service.BoardService;
+import com.goodee.service.HotelService;
 
 @Controller
 public class MainController {
 	private BoardService service;
 	private ShopService spservice;
 	private NuriService nrservice;
+	private HotelService htservice;
 	
-	public MainController(BoardService service,ShopService spservice,NuriService nrservice) {
+	public MainController(BoardService service,ShopService spservice,NuriService nrservice,HotelService htservice) {
 		super();
 		this.service = service;
 		this.spservice = spservice;
 		this.nrservice = nrservice;
+		this.htservice = htservice;
 	}
 	
 	@GetMapping("membership")
@@ -45,6 +48,11 @@ public class MainController {
 	public String mypage(HttpSession session, Model model) {
 		spservice.getMyOrder(session, model);
 		return "main/mypage";
+	}
+	@GetMapping("myhotelres")
+	public String myhotelres(Model model,HttpSession session) {
+		htservice.getMyHotelRes(model,session);
+		return "main/myhotelres";
 	}
 	
 	// 자주묻는질문

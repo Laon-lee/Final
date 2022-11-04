@@ -143,7 +143,9 @@
             left: 70%;
             top: 5%;
         }
-
+		button{
+			cursor:pointer;
+		}
         .p_box,
         .total {
             display: flex;
@@ -181,6 +183,7 @@
         }
         #room-info{
         	margin: 10px 0;
+        	width:306px;
         }
         .meminfo {
         	display: flex;
@@ -188,7 +191,7 @@
             
             
         }
-        #meminfo-div2{
+        #meminfo-div2,#notice-content{
         	margin-left:20px;
         }
         .meminfo label{
@@ -204,6 +207,11 @@
         #memPhone1,#memPhone2,#memPhone3{
         	width:90px;
         } 
+        #resMsg{
+        	margin-top:10px;
+        	padding:3px;
+        	outline: none;
+        }
     </style>
 </head>
 
@@ -215,11 +223,11 @@
 
         <main>
             <section>
-                <div class="date">
+                <%-- <div class="date">
 					<div>
 						<p> 선택날짜 : ${startdate} ~ ${enddate}</p> 
 					</div>
-				</div>
+				</div> --%>
                     
                 <div class="reservecont">
                 	<div class="reserveinfo">
@@ -253,11 +261,23 @@
 											<form:option value="011">011</form:option>
 											<form:option value="017">017</form:option>
 											<form:option value="019">019</form:option>
-									</form:select> - <form:input path="phone2" id="memPhone2" /> - <form:input path="phone3" id="memPhone3"/>
+									</form:select> - <form:input path="phone2" id="memPhone2" /> - <form:input path="phone3" id="memPhone3"/><br>
+								<label for="resMsg" class="lb">기타 사항</label><br><textarea id="resMsg" cols="55" rows="5" placeholder="* 추가로 전달하시고 싶은 내용을 적어주세요"></textarea>	
 
 							</div>
 							</form:form>
                 		</div>
+                		<div class="notice">
+                    		<div>
+                				<h2>주의 사항</h2><hr/>
+                			</div>
+                			<div id="notice-content">
+                            	<p>☑ 1년 이내 5가지 접종(종합, 코로나, 켄넬코프, 인플루엔자, 광견병) 받지 않은 반려견은 입실이 제한됩니다.<br>
+								   ※ 접종기록은 접종병원명이 꼭 필요하므로 증빙 자료는 미리 준비해주세요.</p>
+								<p>☑ 1살 미만의 반려견인 경우 항체 검사가 필수 입니다. (단, 1살 이상 시 재접종 기록 확인)</p>
+								<p>☑ 생리,건강문제 또는 공격성이 강해 타 고객의 이용에 피해가 되는 반려견 일 경우 입실이 제한됩니다.</p>
+                            </div>
+                    	</div>
                 	</div>
 					<div class="price">
                         <div class="p_box">
@@ -277,6 +297,7 @@
                             <button id="reservebtn">회원예약</button>
                         </div>
                     </div>
+                    
                 </div>
               	<script type="text/javascript">
               		document.getElementById("room-info").addEventListener("change",function(){
@@ -301,8 +322,8 @@
 								roomType.innerText = "["+data.roomType+"견]";
 								roomPrice.innerText = data.roomPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 								let date = Number(roomDate.innerText);
-								roomTax.innerText = (Math.floor(date * data.roomPrice)*0.1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-								totalPrice.innerText = (Math.floor(date * data.roomPrice)*1.1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+								roomTax.innerText = Math.floor((date * data.roomPrice)*0.1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+								totalPrice.innerText = Math.floor((date * data.roomPrice)*1.1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 								
 						});
               		})
@@ -312,16 +333,14 @@
               			let memPhone = $("#memPhone1").val()+$("#memPhone2").val()+$("#memPhone3").val();
               			let memEmail = $("#memEmail").val()+'@'+$("#memEmail2").val();
               			let memName = $("#memName1").val();
-              			
-              			console.log(roomId);
-              			console.log(memPhone);
-              			console.log(memEmail);
-              			console.log(memName);
+              			let resMsg = $("#resMsg").val();
+              			console.log(resMsg);
               			location.href="${pageContext.request.contextPath}/myhotelres/${startdate}/${enddate}"
               							+"?roomId="+roomId
               							+"&memPhone="+memPhone
               							+"&memEmail="+memEmail
-              							+"&memName="+memName;
+              							+"&memName="+memName
+              							+"&resMsg="+resMsg;
               		});
               	</script>
             </section>
