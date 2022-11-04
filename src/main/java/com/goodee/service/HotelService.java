@@ -111,6 +111,7 @@ public class HotelService {
 			MemberVO mbvo = (MemberVO)session.getAttribute("user");
 			MemberVO mbvo2 = mbdao.getmemberinfo(mbvo);
 			model.addAttribute("list",dao.getMyHotelres(mbvo2));
+			model.addAttribute("history",dao.getMyHotelHistoryres(mbvo2));
 			model.addAttribute("cancel",dao.getMyHotelCancelres(mbvo2));
 		}
 

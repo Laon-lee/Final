@@ -148,24 +148,20 @@
             width:70vw;
             display: flex;
             justify-content: center;
-            align-items: center;
-        }
-        #sec2-div2{
             
-        
         }
+       
         #sec2-div2 li {
             display: block;
             font-size: 13px;
         }
-        #sec2-div2-sel{
+        .sec2-div2-sel{
+        	margin:10px 0;
             padding:10px;
             height: 100%;
             border:5px solid white;
         }
-        #sec2-div3{
-            margin-top:20px;
-        }
+        
         .sec2-div3-table1{
             border-collapse: collapse;
             width:100%;
@@ -239,22 +235,62 @@
                             <div id="sec2-div1">
                                 <ul>
                                     <li class="selected">예약내역 조회( ${fn:length(list)} )</li>
+                                    <li>이용내역 조회( ${fn:length(history)} )</li>
                                     <li>예약취소내역 조회( ${fn:length(cancel)} )</li>
                                 </ul>
                             </div>
-                            <div id="sec2-div2">
-                                <form action="">
-                                    <div id="sec2-div2-sel">
+                           
+                            <div id="sec2-div3">
+                                <div>
+                                    <div class="sec2-div2-sel">
                                         * 예약 취소는 예약날짜 3일전까지만 가능합니다.<br>
                                         * 추가 문의 사항은 해당 호텔 전화로 문의 해주시길 바랍니다.
                                     </div>
+                                	<table class="sec2-div3-table1">
+                                    	<tr>
+                                    		<td><p>결제날짜</p></td>
+                                        	<td><p>예약일자</p></td>
+                                        	<td><p>이미지</p></td>
+                                        	<td><p>호텔정보</p></td>
+                                        	<td><p>예약자 연락처</p></td>
+                                        	<td><p>예약자 이메일</p></td>
+                                        	<td><p>결제금액</p></td>
+                                        	<td><p>주문처리상태</p></td>
+                                    	</tr>
                                     
-                                </form>
-
-                            </div>
-                            <div id="sec2-div3">
-                                
-                                <table class="sec2-div3-table1">
+                                    	<c:forEach var="item" items="${list}">
+                                    	<tr>
+                                    		<fmt:parseDate value="${item.resStart }" var="strPlanDate" pattern="yyyy-MM-dd"/>
+											<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+											<fmt:parseDate value="${item.resEnd }" var="endPlanDate" pattern="yyyy-MM-dd"/>
+											<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
+											<fmt:parseDate value="${item.resDate}" var="resDate" pattern="yyyy-MM-dd HH:mm:ss.S"/>
+										
+                                     		<td rowspan="2"><fmt:formatDate value="${resDate}" pattern="yyyy-MM-dd"/></td>
+                                     		<td rowspan="2">${item.resStart}~ <br>${item.resEnd}</td>
+                                        	<td rowspan="2">호텔 사진!!</td>
+                                        	<td class="hotel-info">호텔명: ${item.hotelName} <br>
+                                        		객실정보: ${item.roomName}[${item.roomType}]
+                                        	</td>
+                                        	<td>${item.memPhone}</td>
+                                        	<td>${item.memEmail}</td>
+                                        	<td><fmt:formatNumber value="${Math.floor((item.roomPrice* (endDate - strDate))*1.1)}"	pattern="#,###" />원</td>
+                                        	<td>${item.resStatus}<br>
+                                        		<a href="#" class="res-cancel" onclick="fnalert(${item.resDetailNum},'${item.resStart}')">[예약취소]</a>
+                                        	</td>
+                                    	</tr>
+                                    	<tr>
+                                    		<td colspan="5"><p class="resMsg">전달 사항 : ${item.resMsg}</p></td>
+                                    	</tr>
+                                    	</c:forEach>
+                                	</table>
+                                </div>
+                                <div style="display:none">
+                                	<div class="sec2-div2-sel">
+                                        * 호텔 이용 내역입니다.<br>
+                                        * 따뜻한 리뷰 한줄이라도 감사하게 생각하겠습니다.
+                                    </div>
+                                    <table class="sec2-div3-table1" >
                                     <tr>
                                     	<td><p>결제날짜</p></td>
                                         <td><p>예약일자</p></td>
@@ -266,7 +302,7 @@
                                         <td><p>주문처리상태</p></td>
                                     </tr>
                                     
-                                    <c:forEach var="item" items="${list}">
+                                    <c:forEach var="item" items="${history}">
                                     <tr>
                                     	<fmt:parseDate value="${item.resStart }" var="strPlanDate" pattern="yyyy-MM-dd"/>
 										<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
@@ -284,15 +320,20 @@
                                         <td>${item.memEmail}</td>
                                         <td><fmt:formatNumber value="${Math.floor((item.roomPrice* (endDate - strDate))*1.1)}"	pattern="#,###" />원</td>
                                         <td>${item.resStatus}<br>
-                                        	<a href="#" class="res-cancel" onclick="fnalert(${item.resDetailNum},'${item.resStart}')">[예약취소]</a>
+                                        	
                                         </td>
                                     </tr>
                                     <tr>
                                     	<td colspan="5"><p class="resMsg">전달 사항 : ${item.resMsg}</p></td>
                                     </tr>
                                     </c:forEach>
-                                </table>
-                                <table class="sec2-div3-table1" style="display:none">
+                                	</table>
+                                </div>
+                                <div style="display:none">
+                                	<div class="sec2-div2-sel">
+                                        * 취소된 예약 내역입니다.
+                                    </div>
+                                	<table class="sec2-div3-table1" >
                                     <tr>
                                     	<td><p>결제날짜</p></td>
                                         <td><p>예약일자</p></td>
@@ -329,7 +370,8 @@
                                     	<td colspan="5"><p class="resMsg">전달 사항 : ${item.resMsg}</p></td>
                                     </tr>
                                     </c:forEach>
-                                </table>
+                                	</table>
+                                </div>
                                 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                                 <script type="text/javascript">
                                 	var now = new Date();
@@ -363,10 +405,10 @@
                         				$("#sec2-div1 li").removeClass("selected");
                         				$("#sec2-div1 li").eq(idx).addClass("selected");
                         				
-                        				$("#sec2-div3 table").removeClass("fadeIn")
-                        				$("#sec2-div3 table").eq(idx).addClass("fadeIn");
-                        				$("#sec2-div3 table").hide();
-                        				$("#sec2-div3 table").eq(idx).show();
+                        				$("#sec2-div3> div").removeClass("fadeIn")
+                        				$("#sec2-div3> div").eq(idx).addClass("fadeIn");
+                        				$("#sec2-div3> div").hide();
+                        				$("#sec2-div3> div").eq(idx).show();
                         			})
                                 	
                                 </script>

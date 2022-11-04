@@ -98,14 +98,21 @@
 		INNER JOIN hotel_detail_res hdr ON hr.res_detail_num = hdr.res_detail_num
 		INNER JOIN hotel_room hrm ON hdr.room_id = hrm.room_id
 		INNER JOIN hotel_info hi ON hrm.hotel_id = hi.hotel_id
-		where hr.id = #{id} and hdr.res_status != "예약 취소"
+		where hr.id = #{id} and hdr.res_status != "예약 취소" and hdr.res_end <![CDATA[>=]]> now()
 	</select>
 	<select id="getMyHotelCancelres" resultType="hoteljoinVO" parameterType="memberVO">
 		select * from hotel_res hr 
 		INNER JOIN hotel_detail_res hdr ON hr.res_detail_num = hdr.res_detail_num
 		INNER JOIN hotel_room hrm ON hdr.room_id = hrm.room_id
 		INNER JOIN hotel_info hi ON hrm.hotel_id = hi.hotel_id
-		where hr.id = #{id} and hdr.res_status = "예약 취소"
+		where hr.id = #{id} and hdr.res_status = "예약 취소" 
+	</select>
+	<select id="getMyHotelHistoryres" resultType="hoteljoinVO" parameterType="memberVO">
+		select * from hotel_res hr 
+		INNER JOIN hotel_detail_res hdr ON hr.res_detail_num = hdr.res_detail_num
+		INNER JOIN hotel_room hrm ON hdr.room_id = hrm.room_id
+		INNER JOIN hotel_info hi ON hrm.hotel_id = hi.hotel_id
+		where hr.id = #{id} and hdr.res_status != "예약 취소" and hdr.res_end <![CDATA[<]]> now()
 	</select>
 	<update id="resDetailCancel" parameterType="int">
 		update hotel_detail_res set res_status = "예약 취소" where res_detail_num = #{resDetailNum} 

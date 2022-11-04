@@ -40,7 +40,9 @@ public interface HotelDAO {
 	public void setRes(HotelResVO vo1);
 	public List<HotelJoinVO> getMyHotelres(MemberVO mbvo2);
 	public List<HotelJoinVO> getMyHotelCancelres(MemberVO mbvo2);
+	public List<HotelJoinVO> getMyHotelHistoryres(MemberVO mbvo2);
 	public void resDetailCancel(@Param("resDetailNum") int resDetailNum);
+	
 	
 
 	
