@@ -152,7 +152,22 @@ display: none;
     <article class="art2">
         <h2>공지사항</h2>
     </article>
-
+<c:forEach var="item" items="${list}">
+     
+      <div class="art3-container">
+      
+        <div class="art3-first"><span class="art3-container-span">제목</span>
+         <a href="${pageContext.request.contextPath}/noticedetail/${item.boardId}">${item.boardTitle }</a></div>
+        <div class="art3-second">
+         <a href="${pageContext.request.contextPath}/noticedetail/${item.boardId}">${item.boardContent}</a>
+        </div>
+        
+        <div class="art3-third">
+      ${item.boardDate }
+      </div>
+      </div>
+  
+    </c:forEach>
    </main>
     <footer>
       <%@ include file="../frame/main/footer.jsp" %>

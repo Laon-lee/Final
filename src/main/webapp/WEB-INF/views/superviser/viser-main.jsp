@@ -115,9 +115,10 @@ label {
 				<div id="menu-bar">
 				
 				<ul>
-				<a style="text-decoration:underline" href="${pageContext.request.contextPath}/viser/main"><h2>Main Page</h2></a>
+				
 				<h2>쇼핑몰</h2>
-					<li><a href="${pageContext.request.contextPath}/viser/CSOrderInfo">고객 주문 정보</a></li>
+				<li><a style="text-decoration:underline" href="${pageContext.request.contextPath}/viser/main">쇼핑몰 배송 현황</a></li>
+					
 					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/delete/home">상품 삭제</a></li>
@@ -133,7 +134,7 @@ label {
 			<div id="sec2">
 			<h1>고객 검색</h1>
 			
-			<input type="text" id="name" name="memName" value="" placeholder="이름을 검색하세요(정확히)"/>
+			<input type="text" id="name" name="memName" value="" placeholder="이름을 검색하세요(정확히)"/><br />
 			<button id="memName" >수정하기</button>
 			
 			</div>

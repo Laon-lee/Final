@@ -74,12 +74,12 @@ li {
 
 a {
 	text-decoration: none;
-	color: rgb(214, 214, 214);
+	color: gray;
 	width: 200px;
 }
 
 a:hover {
-	color: white;
+	color: black;
 }
 .bar-menu { 
     display: none; 
@@ -127,8 +127,9 @@ input {
 			<div id="sec1">
 				<div id="menu-bar">
 				<ul>
-				<a  href="${pageContext.request.contextPath}/viser/main"><h2>Main Page</h2></a>
+			
 				<h2>쇼핑몰</h2>
+				<li><a href="${pageContext.request.contextPath}/viser/main">쇼핑몰 배송 현황</a></li>
 					<li style="text-decoration:underline"><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/delete/home">상품 삭제</a></li>
