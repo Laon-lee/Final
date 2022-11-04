@@ -249,6 +249,7 @@
                     <nav>
                         <ul>
                            <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
+                           <li><a href="${pageContext.request.contextPath}/myhotelres">예약내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>

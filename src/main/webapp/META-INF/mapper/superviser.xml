@@ -34,10 +34,18 @@
 	values( #{boardTitle}, #{boardContent}, #{boardCategory}, #{isDelete} )
 	</insert>
 	
-	<select id="getCSOrder" resultType="orderjoinVO" parameterType="int">
+	<select id="getCSOrder" resultType="orderjoinVO" parameterType="String">
 		select * from ordertable as ot 
 		INNER JOIN detailorder as do ON ot.order_id= do.order_id 
-		INNER JOIN product ON product.product_id = do.product_id 
+		INNER JOIN product ON product.product_id = do.product_id where id = #{id} AND order_status = #{orderStatus};
+	</select>
+	
+	<update id="CSOrderModify" parameterType="orderjoinVO">
+	update detailorder set order_status = #{orderStatus} where product_id = #{productId}
+	</update>
+	
+	<select id="memberInfo" parameterType="memberVO" resultType="memberVO">
+	select * from member where mem_name = #{memName}
 	</select>
 </mapper>
 

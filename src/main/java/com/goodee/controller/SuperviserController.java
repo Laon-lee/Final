@@ -9,6 +9,7 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ import com.goodee.service.BoardService;
 import com.goodee.service.ShopService;
 import com.goodee.service.SuperviserService;
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ShopVO;
 
@@ -182,9 +184,20 @@ public class SuperviserController {
 		superservice.createboard(vo);
 		return "superviser/viser-main";
 	}
-	@GetMapping("viser/CSOrderInfo")
-	public String getCSOrder(OrderjoinVO vo,Model model) {
-		superservice.getCSOrder(vo, model);
+	@GetMapping("viser/CSOrderInfo/{id}")
+	public String getCSOrder(@PathVariable("id") String id,String orderStatus,Model model) {
+		superservice.getCSOrder(id,orderStatus, model);
 		return "superviser/viser-shop-orderinfo";
 	}
+	@GetMapping("viser/CSOrderModify")
+	public String CSOrderModify(OrderjoinVO vo) {
+		superservice.CSOrderModify(vo);
+		return "superviser/viser-main";
+	}
+	@GetMapping("viser/memInfo/{memName}")
+	public String memInfo(@PathVariable("memName") String memName,Model model) {
+		superservice.memberInfo(memName, model);
+		return "superviser/viser-shop-memName";
+	}
+	
 }

@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.goodee.dao.SuperviserDAO;
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ShopVO;
 
@@ -92,8 +94,16 @@ public class SuperviserService  {
 		superdao.createboard(vo);
 	}
 	
-	public void getCSOrder(OrderjoinVO vo,Model model) {
+	public void getCSOrder(String id,String orderStatus,Model model) {
 		
-		model.addAttribute("list",superdao.getCSOrder(vo));
+		model.addAttribute("list",superdao.getCSOrder(id,orderStatus));
+	}
+	public void CSOrderModify(OrderjoinVO vo) {
+		superdao.CSOrderModify(vo);
+		
+	}
+	public void memberInfo(String memName,Model model) {
+		
+		model.addAttribute("list",superdao.memberInfo(memName));
 	}
 }

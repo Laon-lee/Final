@@ -96,7 +96,7 @@ public class HotelService {
 			return dao.getRoomInfo(vo);
 		}
 
-		public void resSuccess(HotelDetailResVO vo, HotelResVO vo1, Model model, HttpSession session) {
+		public void resSuccess(HotelDetailResVO vo, HotelResVO vo1, HttpSession session) {
 			MemberVO mbvo = (MemberVO)session.getAttribute("user");
 			MemberVO mbvo2 = mbdao.getmemberinfo(mbvo);
 			
@@ -105,9 +105,17 @@ public class HotelService {
 			vo1.setResDetailNum(vo.getResDetailNum());
 			vo1.setId(mbvo2.getId());
 			dao.setRes(vo1);
-			
+
+		}
+		public void getMyHotelRes(Model model,HttpSession session){
+			MemberVO mbvo = (MemberVO)session.getAttribute("user");
+			MemberVO mbvo2 = mbdao.getmemberinfo(mbvo);
 			model.addAttribute("list",dao.getMyHotelres(mbvo2));
-			
+			model.addAttribute("cancel",dao.getMyHotelCancelres(mbvo2));
+		}
+
+		public void resCancel(int resDetailNum) {
+			dao.resDetailCancel(resDetailNum);
 		}
 		
 }

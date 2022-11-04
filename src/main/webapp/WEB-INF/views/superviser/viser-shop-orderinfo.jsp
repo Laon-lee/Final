@@ -89,68 +89,43 @@ a:hover {
 .bar-menu { 
     display: none; 
 }
-
+input{
+width:80px;
+border:none;
+text-align:center;
+background-color:black;
+color:white;
+cursor:pointer;
+}
+button{
+cursor:pointer;
+background-color:black;
+color:white;
+width:50px;
+height:50px;
+}
 
 .grid-container{
 	display:grid;
+	
 	grid-template-columns: 1fr;
 	text-align:center;
 }
-#id,#productId{
-width:20px;
-text-align:center;
-}
-#receiverName{
-width:50px;
-text-align:center;
-}
-#receiverAddress1{
-width:60px;
-text-align:center;
-}
-#receiverAddress2{
-width:100px;
-text-align:center;
-}
-#receiverAddress3{
-width:70px;
-text-align:center;
-padding-top: 3px;
-}
-#productName{
-width:200px;
- white-space: nowrap;
+table{
+width:100%;
+height:100px;
+font-size:12px;
+border:1px solid black;
+ overflow: hidden;
     text-overflow: ellipsis;
-    overflow: hidden;
+    white-space: nowrap;
 }
-#productPrice{
-width:70px;
-text-align:center;
+th,td{
+border:1px solid black;
 }
-#productCount{
-width:15px;
-text-align:center;
-}
-#orderPrice{
-width:70px;
-text-align:center;
-}
-#orderStatus{
-width:70px;
-text-align:center;
-}
-input{
-border:none;
+.black{
 background-color:black;
-color: white;
-height:30px;
-cursor:pointer;
-border-radius:5px;
-margin-right:1rem;
-}
-input:hover{
-background-color:white;
-color: black;
+color:white;
 }
 label{
 margin-right:1rem;
@@ -163,32 +138,20 @@ height:40px;
 padding-bottom:10px;
 border-radius:10px;
 }
-button{
-border-radius:10px;
-background-color:black;
-color:white;
-width:350px;
-height:40px;
-cursor:pointer;
-font-size:1rem;
-font-weight:bold;
-}
-button:hover{
-background-color:white;
-color:black;
-}
-img{
-width:100px;
-height:100px;
-margin-bottom:-50px;
-}
-p{
 
-text-align:left;
-border:1px solid darkgray;
+img{
+width:75px;
+height:75px;
+
 }
+
 .CSInfo h1{
 width:82%;
+}
+#pid{
+border:none;
+background-color:white;
+color:black;
 }
 </style>
 
@@ -207,9 +170,9 @@ width:82%;
 				<div id="menu-bar">
 				
 				<ul>
-				<a href="${pageContext.request.contextPath}/viser/main"><h2>Main Page</h2></a>
+				
 				<h2>쇼핑몰</h2>
-					<li><a style="text-decoration:underline" href="${pageContext.request.contextPath}/viser/CSOrderInfo">고객 주문 정보</a></li>
+					<li><a style="text-decoration:underline" href="${pageContext.request.contextPath}/viser/main">쇼핑몰 배송 현황</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/shop-add">상품 등록</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/modify/home">상품 수정</a></li>
 					<li><a href="${pageContext.request.contextPath}/viser/delete/home">상품 삭제</a></li>
@@ -225,27 +188,46 @@ width:82%;
 			<div id="sec2">
 				<div class="grid-container">
 				<div class="CSInfo">
-				<h1>고객 정보</h1>
+				<h1>배송 상태</h1>
 				<c:forEach var="list" items="${list}">
-				<form action="${pageContext.request.contextPath}/modify/CS/info">
-				<p> <span><label>고객 고유 번호 :</label><input type="text" name="id" id="id" value="${list.id}" readonly/> </span>
-					<span><label>고객 이름 :</label><input type="text" name="receiverName" id="receiverName" value="${list.receiverName}"/></span>
-					<span><label>우편번호 :</label><input type="text" name="receiverAddress1" id="receiverAddress1" value="${list.receiverAddress1}"/></span>
+				<form action="${pageContext.request.contextPath}/viser/CSOrderModify">
+				<table>
+				<tr>
+				<th>고유 번호</th>
+				<th>고객명</th>
+				<th>주소</th>
+				<th>우편번호</th>
+				<th>폰번호</th>
+				<th>상품 고유 번호</th>
+				<th>상품 이름</th>
+				<th>상품 이미지</th>
+				<th>상품 가격</th>
+				<th>상품 수량</th>
+				<th>가격 * 수량</th>
+				<th class="black">배송 상태</th>
+				<th>배송시 주의사항</th>
+				<th class="black">배송 상태 수정</th>
+				</tr>
+				<tr>
+				<th>${list.id}</th>
+				<th>${list.receiverName}</th>
+				<th>${list.receiverAddress2}${list.receiverAddress3}</th>
+				<th>${list.receiverAddress1}</th>
+				<th>${list.receiverPhone}</th>
+				<th><input type="text" name="productId" id="pid" value="${list.productId}"/></th>
+				<th>${list.productName}</th>
+				<th><img src="${list.productImage}" alt="" /></th>
+				<th>${list.productPrice}</th>
+				<th>${list.productCount}</th>
+				<th>${list.orderPrice}</th>
+				<th class="black"><input type="text" name="orderStatus" value="${list.orderStatus}" /></th>
+				<th>${list.orderMsg }</th>
+				<th class="black"><button>수정</button></th>
+				</tr>
+				</form>
+				</table>
+			
 					
-					<span><label>배송지 :</label><input type="text" name="receiverAddress2" id="receiverAddress2" value="${list.receiverAddress2}"/>
-					<input type="text" value="${list.receiverAddress3}" name="receiverAddress3" id="receiverAddress3"/></span>
-					<span><label for="">상품 고유 번호 :</label><input type="text" id="productId" name="productId" value="${list.productId}" readonly/></span>
-					<span><label for="">상품 이름 :</label><input type="text" id="productName" name="productName" value="${list.productName}" readonly/></span>
-					<span><label for="">상품 이미지 :</label><img src="${list.productImage}" alt="" /></span>
-					<span><label for="">상품 가격 :</label><input type="text" id="productPrice" name="productPrice" value="${list.productPrice}"/></span>
-					<span><label for="">상품 수량 :</label><input type="text" id="productCount" name="productCount" value="${list.productCount}"/></span>
-					<span><label for="">가격*수량 :</label><input type="text" id="orderPrice" name="orderPrice" value="${list.orderPrice}"/></span>
-					<span><label for="">배송 상태 :</label><input type="text" id="orderStatus" name="orderStatus" value="${list.orderStatus}"/></span>
-					
-					<span><label>배송시 주의사항 :</label><input type="text" value="${list.orderMsg}"/> </span>
-					<button>정보수정</button>
-						</p>
-					</form>
 			
 				</c:forEach>
 				</div>

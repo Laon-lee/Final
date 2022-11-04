@@ -18,28 +18,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
   <style>
   
-    html,
-    body,
-    header,
-    main,
-    footer,
-    section,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    a,
-    ul,
-    li,
-    nav {
-      font-family: 'Noto Sans KR', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
+   
 
     nav div {
       width: 100%;
@@ -181,7 +160,31 @@
     white-space: nowrap;
     margin-bottom: 5px;
    }
-   
+    html,
+    body,
+    header,
+    main,
+    footer,
+    section,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    ul,
+    li,
+    nav {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+    box-sizing: border-box;
+    }
+	body{
+	overflow-x:hidden;
+	}
   </style>
 </head>
 
