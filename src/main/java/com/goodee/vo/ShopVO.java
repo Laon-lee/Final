@@ -14,23 +14,8 @@ public class ShopVO {
 	private int productPrice;
 	private String productOpt;
 	private String productImage;
+
 	
-//	private MultipartFile thumnail;
-//	private MultipartFile contImage;
-//	
-	
-//	public MultipartFile getThumnail() {
-//		return thumnail;
-//	}
-//	public void setThumnail(MultipartFile thumnail) {
-//		this.thumnail = thumnail;
-//	}
-//	public MultipartFile getContImage() {
-//		return contImage;
-//	}
-//	public void setContImage(MultipartFile contImage) {
-//		this.contImage = contImage;
-//	}
 	public int getProductId() {
 		return productId;
 	}
