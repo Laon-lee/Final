@@ -32,6 +32,7 @@ html, body, header, main, footer, section, h1, h2, h3, h4, h5, h6, p, a,
 
 body {
 	background-color: white;
+	overflow-x:hidden;
 }
 
 li, a {

@@ -36,6 +36,7 @@ html, body, header, main, footer, section, h1, h2, h3, h4, h5, h6, p, a,
 body {
 	position: relative;
 	height: 100%;
+	overflow-x:hidden;
 }
 
 #container {

@@ -55,6 +55,7 @@
         body {
             position: relative;
             height: 100%;
+            overflow-x:hidden;
         }
 
         

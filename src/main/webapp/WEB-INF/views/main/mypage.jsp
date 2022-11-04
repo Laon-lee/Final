@@ -182,6 +182,10 @@
             text-align: center;
             
         }
+        .fixed div{
+       position: sticky;
+       top: 40%;
+      }
     </style>
 </head>
 
@@ -196,16 +200,16 @@
             <div id="main-container">
                 
                 <section id="sec2">
-                    <nav>
-                        <ul>
+                    <nav class="fixed-pa">
+                        <ul class="fixed">
+                        <div>
                              <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
                              <li><a href="${pageContext.request.contextPath}/myhotelres">예약내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
-                           
-              
+              </div>
                         </ul>
                     </nav>
                     <article id="art2">

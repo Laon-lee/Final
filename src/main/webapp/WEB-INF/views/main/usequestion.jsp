@@ -66,13 +66,16 @@
             width: 70vw;
 
         }
+        h4{
+        line-height:50px;
+        }
         .art1{
     width: 80%;
     margin: 0 auto;
     border-top: 2px solid black;
    }
    .art2{
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     height: 50px;
     background-color: black;
@@ -83,18 +86,19 @@
     
    .art3-Q{
     color: darkcyan;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     margin-right: 5px;
    }
 
    .art3-question{
+   height:60px;
    padding-top : 10px;
-    padding-bottom: 17px;
+  
     border-bottom: 2px solid black;
     font-weight: 600;
     color: rgb(70, 68, 68);
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
    }
 
    .art3-content{
@@ -103,8 +107,9 @@
     border-bottom: 2px solid black;
     font-weight: 600;
     color: rgb(70, 68, 68);
-    
+    font-size:1.5rem;
     display: none;
+    
    }
 	.art3-content h3{
     margin-left: 15px;
@@ -141,7 +146,7 @@
             align-items: center;
         }
         #art2 div{
-            width:85%;
+            width:90%;
         }
         #sec2 {
             width:85%;
@@ -246,11 +251,11 @@
                     <article id="art2">
                         <c:forEach var="item" items="${list}"> 
                         	<div class="art3-question" class="tab_title">
-                              	<span class="art3-Q">Q</span> ${item.boardTitle}
+                              	<span class="art3-Q">Q </span> ${item.boardTitle}
                            	</div>
                        
                             <div class="art3-content">
-                           		<h4>${item.boardContent}</h4>
+                           		<h4><span class="art3-Q">A </span> ${item.boardContent}</h4>
                             </div>
  							</c:forEach>
                     
