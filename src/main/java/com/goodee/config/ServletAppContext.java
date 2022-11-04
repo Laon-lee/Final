@@ -14,6 +14,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -66,6 +68,28 @@ public class ServletAppContext implements WebMvcConfigurer{
 		// TODO Auto-generated method stub
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 		registry.addResourceHandler("/**").addResourceLocations("/resources/");
+		registry.addResourceHandler("/upload/**").addResourceLocations("file:///C:/sample/");
+	}
+	
+	
+	private final int MAX_SIZE = 1 * 1024 * 1024;
+	@Bean
+	public MultipartResolver multipartResolver() {
+		
+		
+		
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		
+		// 디폴트 인코딩 타입 설정
+		multipartResolver.setDefaultEncoding("UTF-8");
+
+		// 전체 올릴 수 있는 파일들의 총 용량 최대치
+		multipartResolver.setMaxUploadSize(MAX_SIZE*2);
+		
+		// 파일 한 개당 올릴 수 있는 용량 최대치
+		multipartResolver.setMaxUploadSize(MAX_SIZE);
+		
+		return multipartResolver;
 	}
 	
 	// 데이터 베이스 접속 정보 관리

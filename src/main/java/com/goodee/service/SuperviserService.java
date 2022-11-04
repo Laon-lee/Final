@@ -1,7 +1,13 @@
 package com.goodee.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.dao.SuperviserDAO;
 import com.goodee.vo.BoardVO;
@@ -9,7 +15,7 @@ import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ShopVO;
 
 @Service
-public class SuperviserService {
+public class SuperviserService  {
 	private SuperviserDAO superdao;
 
 	public SuperviserService(SuperviserDAO superdao) {
@@ -17,11 +23,51 @@ public class SuperviserService {
 		this.superdao = superdao;
 	}
 	
-	public void viseradd(ShopVO vo) {
-		System.out.println("서비스1");
-		superdao.addproc(vo);
-		System.out.println("서비스2");
-	}
+//	public void viseradd(ShopVO vo, @RequestParam("thumnail") MultipartFile thumnail,
+//						@RequestParam("contImage") MultipartFile contImage)  throws IOException{
+//		System.out.println("서비스1");
+//		superdao.addproc(vo);
+//		
+////		thumnail.transferTo(Path.get("C:/JavaTPC/Goodee_Spring_workspace/Board5/"));
+//	
+//		
+////		try {
+////			
+////			
+////            thumnail.transferTo(path1);
+////            //vo.setPic1(Path + pic1File.getOriginalFilename());
+////            vo.setProductImage(path1 + thumnail.getOriginalFilename());
+////         } catch (IllegalStateException e) {
+////            // TODO Auto-generated catch block
+////            e.printStackTrace();
+////         } catch (IOException e) {
+////            // TODO Auto-generated catch block
+////            e.printStackTrace();
+////         }
+//		
+//	}
+//	public void viseradd(ShopVO vo){
+//		System.out.println("서비스1");
+//		superdao.addproc(vo);
+		
+//		thumnail.transferTo(Path.get("C:/JavaTPC/Goodee_Spring_workspace/Board5/"));
+		
+		
+//		try {
+//			
+//			
+//            thumnail.transferTo(path1);
+//            //vo.setPic1(Path + pic1File.getOriginalFilename());
+//            vo.setProductImage(path1 + thumnail.getOriginalFilename());
+//         } catch (IllegalStateException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//         } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//         }
+		
+//	}
 
 	
 	   public void godelete(int productId) {

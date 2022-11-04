@@ -1,5 +1,8 @@
 package com.goodee.controller;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.service.BoardService;
 import com.goodee.service.ShopService;
@@ -49,11 +54,56 @@ public class SuperviserController {
 		return"/superviser/viser-shop-add";
 	}
 	
-	@GetMapping("viser/add-success")
-	public String success(ShopVO vo) {
-		superservice.viseradd(vo);
-		return "/superviser/viser-main";
-	}
+//	@PostMapping("viser/add-success")
+//	public String success(ShopVO vo,
+//							@RequestParam("thumnail") MultipartFile thumnail,
+//							@RequestParam("contImage") MultipartFile contImage) throws IOException {
+//		superservice.viseradd(vo, thumnail, contImage);
+//		
+//			if (!contImage.getOriginalFilename().isEmpty()) {
+//				Path path = Paths.get("C:/sample/" + contImage.getOriginalFilename());
+//				contImage.transferTo(path);
+//				System.out.println(contImage.getOriginalFilename() + "저장이 되었습니다.");
+//			} else {
+//				System.out.println("에러가 발생헀습니다.");
+//			}
+//		
+//		return "/superviser/viser-main";
+//	}
+	
+	
+//	@PostMapping("viser/add-success")
+//	public String success(ShopVO vo,@RequestParam("contImage") MultipartFile contImage,@RequestParam("thumnail") MultipartFile thumnail) throws IllegalStateException, IOException {
+//		System.out.println("아무거나1");
+//		
+//		if (!contImage.getOriginalFilename().isEmpty()) {
+//			Path path = Paths.get("C:/sample/" + contImage.getOriginalFilename());
+//			
+//			Path path = Paths.get("http://localhost:8080/FinalProject/image/shop/"+vo.getProductCategory()+"/"+contImage.getOriginalFilename());
+//			
+//			contImage.transferTo(path);			
+//			System.out.println(contImage.getOriginalFilename() + "저장이 되었습니다.");
+//			vo.setProductContent("http://localhost:8080/FinalProject/image/shop/"+vo.getProductCategory()+"/"+contImage.getOriginalFilename());
+//		} else {
+//			System.out.println("에러가 발생헀습니다.");
+//		}
+//
+//		if (!thumnail.getOriginalFilename().isEmpty()) {
+//			Path path = Paths.get("C:/sample/" + thumnail.getOriginalFilename());
+//			thumnail.transferTo(path);			
+//			System.out.println(thumnail.getOriginalFilename() + "저장이 되었습니다.");
+//			vo.setProductImage("${pageContext.request.contextPath}/upload/"+thumnail.getOriginalFilename());
+//		} else {
+//			System.out.println("에러가 발생헀습니다.");
+//		}
+		
+		
+		
+//		superservice.viseradd(vo);
+//		
+//		System.out.println("아무거나2");
+//		return "/superviser/viser-main";
+//	}
 	
 	// 상품 수정
 	@GetMapping("viser/modify/{category}")

@@ -142,11 +142,11 @@ input {
 			</div>
 			</div>
 			<div id="sec2">
-			<form id="sec2-form" action="${pageContext.request.contextPath}/viser/add-success">
+			<form id="sec2-form" action="${pageContext.request.contextPath}/viser/add-success" enctype="multipart/form-data" method="post">
 				<label for="proc_name"><p>상품 이름</p><input type="text" name="productName" id="proc_name"/></label>
 				<label for="proc_shop"><p>업체 이름</p><input type="text" name="productShop" id="proc_shop"/></label>
-				<label for="proc_image"><p>상품 썸네일</p><input type="text" name="productImage" id="proc_image"/></label>
-				<label for="proc_content"><p>상품 이미지</p><input type="text" name="productContent" id="proc_content"/></label>
+				<label for="proc_image"><p>상품 썸네일</p><input type="file" name="thumnail" id="proc_image"  required=false/></label>
+				<label for="proc_content"><p>상품 이미지</p><input type="file" name="contImage" id="proc_content" required=false/></label>
 				<label for="proc_category"><p style="width: 9.6rem;">카테고리</p>
 					<select id="proc_category" name="productCategory">
 						<option value="choice">카테고리를 선택하세요</option>

@@ -1,6 +1,7 @@
 package com.goodee.vo;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.web.multipart.MultipartFile;
 
 @Alias("shopVO")
 public class ShopVO {
@@ -13,6 +14,23 @@ public class ShopVO {
 	private int productPrice;
 	private String productOpt;
 	private String productImage;
+	
+//	private MultipartFile thumnail;
+//	private MultipartFile contImage;
+//	
+	
+//	public MultipartFile getThumnail() {
+//		return thumnail;
+//	}
+//	public void setThumnail(MultipartFile thumnail) {
+//		this.thumnail = thumnail;
+//	}
+//	public MultipartFile getContImage() {
+//		return contImage;
+//	}
+//	public void setContImage(MultipartFile contImage) {
+//		this.contImage = contImage;
+//	}
 	public int getProductId() {
 		return productId;
 	}

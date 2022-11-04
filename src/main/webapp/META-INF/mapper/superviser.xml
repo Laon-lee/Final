@@ -6,6 +6,8 @@
 	
 	<insert id="addproc" parameterType="shopVO">
 	insert into product (product_name, product_shop, product_image, product_content, product_category, product_price ) 
+	
+	
 				values (#{productName},#{productShop},#{productImage},#{productContent},#{productCategory},#{productPrice});
 	</insert>
 	<update id="updateInfo" parameterType="shopVO">
