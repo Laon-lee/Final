@@ -131,11 +131,7 @@ label {
 			</div>
 			</div>
 			<div id="sec2">
-			<h1>고객 검색</h1>
-			
-			<input type="text" id="name" name="memName" value="" placeholder="이름을 검색하세요(정확히)"/>
-			<button id="memName" >수정하기</button>
-			
+				
 			</div>
 		</main>
 		<footer>
@@ -143,14 +139,5 @@ label {
 <%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
 		</footer>
 		</div>
-		<script>
-		
-		document.getElementById("memName").addEventListener("click",function(){
-			const value = document.getElementById("name").value;
-			var temp = "${pageContext.request.contextPath}/viser/memInfo/"+value;
-			location.href = temp;
-		});
-		 /* location.href = "${pageContext.request.contextPath}/`${value}`"; */
-		</script>
 </body>
 </html>

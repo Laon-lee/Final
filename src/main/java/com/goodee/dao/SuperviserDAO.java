@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ShopVO;
 
@@ -21,6 +22,7 @@ public interface SuperviserDAO {
 	public int deleteBoard(BoardVO vo);
 	public List<BoardVO> getList(@Param("boardCategory")String boardCategory);
 	public int createboard(BoardVO vo);
-	public List<OrderjoinVO> getCSOrder(OrderjoinVO vo);
-	
+	public List<OrderjoinVO> getCSOrder(@Param("id")String id,@Param("orderStatus")String orderStatus);
+	public int CSOrderModify(OrderjoinVO vo);
+	public List<MemberVO> memberInfo(@Param("memName")String memName);
 }

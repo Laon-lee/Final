@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +98,10 @@ label {
 	line-height : 3rem;
 /* 	width : 5rem; */
 }
-
+table, td,th{
+text-align:center;
+border:1px solid black;
+}
 </style>
 
 </head>
@@ -131,10 +135,43 @@ label {
 			</div>
 			</div>
 			<div id="sec2">
-			<h1>고객 검색</h1>
+			<h1>고객 정보</h1>
+			<table>
+			<tr>
+			<th>고유 아이디</th>
+			<th>고객명</th>
+			<th>고객 아이디</th>
+			<th>주소</th>
+			<th>우편번호</th>
+			<th>폰번호</th>
+			<th>성별</th>
+			<th>관리자? 고객? Y==관리자</th>
+			<th>배송상태</th>
+			<th>주문정보 들어가기</th>
+			</tr>
+			<c:forEach var="list" items="${list}">
+			<form action="${pageContext.request.contextPath}/viser/CSOrderInfo/${list.id}">
+			<tr>
+			<td>${list.id}</td>
+			<td>${list.memName}</td>
+			<td>${list.memId}</td>
+			<td>${list.memAddress}${list.memDetailaddress}</td>
+			<td>${list.memOaddress}</td>
+			<td>${list.memPhone}</td>
+			<td>${list.memGender }</td>
+			<td>${list.agree }</td>
+			<th><select name="orderStatus" id="orderStatus">
+			<option value="배송준비중">배송준비중</option>
+			<option value="배송중">배송중</option>
+			<option value="배송완료">배송완료</option>
+			</select></th>
+			<td><button>go go move move</button></td>
+		</tr>
+		</form>
+		</c:forEach>
+			</table>
 			
-			<input type="text" id="name" name="memName" value="" placeholder="이름을 검색하세요(정확히)"/>
-			<button id="memName" >수정하기</button>
+			
 			
 			</div>
 		</main>
@@ -143,14 +180,5 @@ label {
 <%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
 		</footer>
 		</div>
-		<script>
-		
-		document.getElementById("memName").addEventListener("click",function(){
-			const value = document.getElementById("name").value;
-			var temp = "${pageContext.request.contextPath}/viser/memInfo/"+value;
-			location.href = temp;
-		});
-		 /* location.href = "${pageContext.request.contextPath}/`${value}`"; */
-		</script>
 </body>
 </html>
