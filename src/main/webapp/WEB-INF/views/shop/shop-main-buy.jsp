@@ -35,6 +35,7 @@ html {
 body {
 	background-color: white;
 	height:100%;
+	overflow-x:hidden;
 }
 
 /*승철짱 CSS*/

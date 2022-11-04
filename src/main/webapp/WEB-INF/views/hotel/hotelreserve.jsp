@@ -54,6 +54,7 @@
         body {
             position: relative;
             height: 100%;
+            overflow-x:hidden;
         }
 		input{
     		height: 25px;
