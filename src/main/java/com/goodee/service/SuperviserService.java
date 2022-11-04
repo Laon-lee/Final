@@ -46,9 +46,9 @@ public class SuperviserService  {
 ////         }
 //		
 //	}
-//	public void viseradd(ShopVO vo){
-//		System.out.println("서비스1");
-//		superdao.addproc(vo);
+	public void viseradd(ShopVO vo){
+		System.out.println("서비스1");
+		superdao.addproc(vo);
 		
 //		thumnail.transferTo(Path.get("C:/JavaTPC/Goodee_Spring_workspace/Board5/"));
 		
@@ -67,7 +67,7 @@ public class SuperviserService  {
 //            e.printStackTrace();
 //         }
 		
-//	}
+	}
 
 	
 	   public void godelete(int productId) {
