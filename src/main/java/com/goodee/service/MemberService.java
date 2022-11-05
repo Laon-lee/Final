@@ -39,6 +39,10 @@ public class MemberService{
 		int i = dao.ismember2(vo);
 		return (i>0)?true:false;
 	}
+	public boolean isadmin(MemberVO vo) {
+		int i = dao.isadmin(vo);
+		return (i>0)?true:false;
+	}
 	public int idCheck(MemberVO vo) {
 		return dao.idCheck(vo);
 	}

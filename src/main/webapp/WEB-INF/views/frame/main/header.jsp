@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <nav id="nav1">
         <ul>
           <li><a id="mainA2">About Us</a></li>
@@ -110,13 +111,20 @@
             <div id="nav2-li-4thdiv">
               <h4>로그인</h4>
               <br>
-              <form action="${pageContext.request.contextPath}/login">
+              <form action="${pageContext.request.contextPath}/login" onsubmit="submitJoinForm(this)">
                 <h6>아이디</h6>
                 <input type="text" name="mem_id1" id="mem_id1">
                 <h6>비밀번호</h6>
                 <input type="password" name="mem_pw1" id="mem_pw1"><br>
                 <button>Login</button>
               </form>
+              
+              <script>
+                   function submitJoinForm(form) {
+                        form.mem_pw1.value = sha256(form.mem_pw1.value);
+                        form.submit();
+                   }
+              </script>
               <p style="font-size: 11px; border-bottom:1px solid black; width:130px; margin-top:10px;" >혹시 회원이 아니신가요??</p>
               <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
             </div>

@@ -264,22 +264,25 @@
       console.log(((200 - (percent * 3))<0)?0:(200 - percent * 3));
       // progress-bar에 width 적용
       function fnscroll (a){
+    	// 주석 제거시 섹션별로 덮는 효과  
        /*  if(a<0){
           return a=0;
         }else{ */
           return a;
         /* }  */
       }
-      document.getElementById("sec1").style.transform = "translateX(" + fnscroll((0 - (percent * 3))) + "%)";
-      document.getElementById("sec2").style.transform = "translateX(" + fnscroll((100 - (percent * 3))) + "%)";
-      document.getElementById("sec3").style.transform = "translateX(" + fnscroll((200 - (percent * 3))) + "%)";
-      document.getElementById("sec4").style.transform = "translateX(" + fnscroll((300 - (percent * 3))) + "%)";
+      sec1.style.transform = "translateX(" + fnscroll((0 - (percent * 3))) + "%)";
+      sec2.style.transform = "translateX(" + fnscroll((100 - (percent * 3))) + "%)";
+      sec3.style.transform = "translateX(" + fnscroll((200 - (percent * 3))) + "%)";
+      sec4.style.transform = "translateX(" + fnscroll((300 - (percent * 3))) + "%)";
     });
     const a1 = document.getElementById("mainA1");
     const a2 = document.getElementById("mainA2");
     const a3 = document.getElementById("mainA3");
     const a4 = document.getElementById("mainA4");
+    
     let height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+    
     a1.addEventListener("click", function () {
       document.documentElement.scrollTop = 0;
     });

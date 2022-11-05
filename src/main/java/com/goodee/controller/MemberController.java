@@ -48,6 +48,8 @@ public class MemberController {
 			mbservice.getmemberinfo(vo);
 			session.setAttribute("user",vo);
 			return "redirect:gomain2";
+		}else if(mbservice.isadmin(vo)){
+			return "superviser/viser-main";
 		}else {
 			return "redirect:gomain";
 		}

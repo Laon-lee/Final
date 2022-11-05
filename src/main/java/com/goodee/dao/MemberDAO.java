@@ -15,6 +15,7 @@ public interface MemberDAO {
 	public int insertmembership(MemberVO vo);
 
 	public int ismember2(MemberVO vo);
+	public int isadmin(MemberVO vo);
 	public MemberVO getmemberinfo(MemberVO vo);
 
 	public SeparateVO separate(MemberVO vo);

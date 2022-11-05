@@ -449,7 +449,7 @@ function requestPay() {
     pg: "inicis",
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '123',
+    name : '반트 푸딩P 펫 강아지소파 화이트스노우(부클) 외 1개',
     amount : '100',
     buyer_email : '${user.memEmail}',
     buyer_name : '${user.memName}',

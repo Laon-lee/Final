@@ -8,6 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://kit.fontawesome.com/4b992414b9.js"
 	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -124,7 +127,7 @@ button {
  border : none;
  }
  
- .c_box {
+ .mem_gender {
  	margin-right : 10px;
  	width : 15px;
 	padding-bottom : 5px;
@@ -160,12 +163,13 @@ button {
 									<button id="id_Checkbtn" type ="button" class="btn btn-primary btn-sm">중복체크</button>&nbsp;&nbsp;
 									<span id="idresult"></span>
 									<div class="eheck_font" id="id_check"></div>
+									<input type="hidden" id="id_check2">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="eheck_font" id="pw_div">
-									<label for="pw" style="width : 110px;">비밀번호</label> <input type="password" id="mem_pw" name="memPw" placeholder=" PASSWORD">
+									<label for="pw" style="width : 110px;">비밀번호</label> <input type="password" id="mem_pw3" name="mem_pw3" placeholder=" PASSWORD">
 									<div class="eheck_font" id="pw_check"></div>
 								</div>
 							</div>
@@ -174,6 +178,7 @@ button {
 								<dIv CLASS="EHECK_FONT" ID="pw2_div">
 									<label for="pw2" style="width : 110px;">비밀번호 확인</label> <input type="password" id="mem_pw2" name="mem_pw2" placeholder=" Confirm Password">
 									<div class="eheck_font" id="pw2_check"></div>
+									<input type="hidden" id="mem_pw" name="memPw">
 								</div>
 							</div>
 						
@@ -217,8 +222,8 @@ button {
 							<div class="form-group">
 							<div id="gender_div">
 							<label for="mem_gender" style="width : 110px;">성별 </label> <input type="radio"
-								id="male" name="memGender" value="남" class="c_box">남 <input
-								type="radio" id="female" name="mem_gender" value="여" class="c_box">여
+								id="male" name="memGender" class="mem_gender"  value="남">남 <input
+								type="radio" id="female" name="memGender" class="mem_gender" value="여">여
 							</div>
 							</div>
 
@@ -243,7 +248,7 @@ button {
 								name="memDetailaddress" id="mem_detailaddress" type="text" />
 								
 									<div class="art5_1">
-									<h3>[필수] 이용약관 동의 <input type="checkbox" style="width : 15px; height :12px; " name="agree" value="Y"/></h3>
+									<h3>[필수] 이용약관 동의 <input type="checkbox" style="width : 15px; height :12px; " id="agree" name="agree" value="Y"/></h3>
 									
 									</div>
 					<div class="art5">			
@@ -299,15 +304,13 @@ button {
   
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 //모든 공백 체크 정규식
 var empJ = /\s/g;
 //아이디 정규식
 var idJ = /^[a-z0-9][a-z0-9_\-]{4,19}$/;
 // 비밀번호 정규식
-var pwJ = /^[A-Za-z0-9]{4,12}$/;
+var pwJ = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 // 이름 정규식
 var nameJ = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
 // 이메일 검사 정규식
@@ -317,40 +320,29 @@ var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/
 var birthJ = false;
 $(document).ready(function() {
-   var address = $('#mem_detailaddress');
+   
    
    $("#id_Checkbtn").click(function(){	
-	   console.log("hi")
-	   var user_id = $('#mem_id').val();
 	   
-	   let simple_data = { mem_id : user_id };
-	   console.log(simple_data);
+	   var user_id = $('#mem_id').val();   
+	   let simple_data = { memId : user_id };
 	   fetch("${pageContext.request.contextPath}/idcheck",{
 		   	method : "POST",
 			headers : {"Content-Type" : "application/json"},
 			body : JSON.stringify(simple_data)
 	   	}).then(response => response.json())
-	   		.then(data=> {
-	   			/* if(data==1){
-	   				$("#id_check").text("중복된 아이디입니다.")
-	   				$("#id_check").css('color', 'red');
-	   			}else{
-	   				$("#id_check").text("사용 가능 아이디입니다.")
-	   				$("#id_check").css('color', 'green');
-	   			
-	   			} */
-	   			
-	   			if(idJ.test(user_id)){
-	   				// 0 : 아이디 길이 / 문자열 검사
-	   				/* $("#id_check").text("");
-	   				$("#usercheck").attr("disabled", false); */
+	   		.then(data=> {	   			
+	   			if(idJ.test(user_id)){	   				
 	   				if(data==1){
 		   				$("#id_check").text("중복된 아이디입니다.")
 		   				$("#id_check").css('color', 'red');
 		   			}else{
-		   				$("#id_check").text("사용 가능 아이디입니다.")
-		   				$("#id_check").css('color', 'green');
-		   			
+		   				if(confirm('사용 가능한 아이디입니다. 사용하시겠습니까?')){
+		   					$("#mem_id").attr('readonly','true');
+		   					$("#id_check").text("사용 가능 아이디입니다.");
+		   					$("#id_check").css('color', 'green');
+		   					$("#id_check2").val('Y');
+		   				}
 		   			}
 	   			} else if(user_id == ""){
 	   				
@@ -367,149 +359,42 @@ $(document).ready(function() {
 	   		}).catch(error => {
 	   			console.log("error");
 	   		});
-   });
-	   	  /*  	$.ajax({
-   			url : '${pageContext.request.contextPath}/idCheck?memId='+user_id,
-   			type : 'POST',
-   			success : function(data) {
-   				console.log("1 = 중복o / 0 = 중복x : "+ data);							
-   				
-   				if (data == 1) {
-   						// 1 : 아이디가 중복되는 문구
-   						$("#id_check").text("사용중인 아이디입니다 :p");
-   						$("#id_check").css("color", "red");
-   						$("#usercheck").attr("disabled", true);
-   				} else {
-   						
-   						
-   						
-   				}
-   			}, error : function() {
-   					console.log("실패");
-   			} */ 
+   });	   	  
 	         
 	   
    //아이디 유효성
    $("#mem_id").blur(function() {
-		// id = "id_reg" / name = "userId"
 		var user_id = $('#mem_id').val();
 		if(idJ.test(user_id)){
 			// 0 : 아이디 길이 / 문자열 검사
 			$("#id_check").text("");
 			$("#usercheck").attr("disabled", false);
 		} else if(user_id == ""){
-			
 			$('#id_check').text('아이디를 입력해주세요 :)');
 			$('#id_check').css('color', 'red');
 			$("#usercheck").attr("disabled", true);				
 			
-		} else {
-			
+		} else {	
 			$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :)");
 			$('#id_check').css('color', 'red');
 			$("#usercheck").attr("disabled", true);
 		}
 	
 	});
-    $('#mem_pw').blur(function() {
-        if (pwJ.test($('#mem_pw').val())) {
-           console.log('true');
+    $('#mem_pw3').blur(function() {
+        if (pwJ.test($('#mem_pw3').val())) {
            $('#pw_check').text('');
         } else {
-           console.log('false');
-           $('#pw_check').text('4~12자의 숫자 , 문자로만 사용 가능합니다.');
+           $('#pw_check').text('8~25자의 숫자와 문자, 특수문자 조합으로 설정해주세요.');
            $('#pw_check').css('color', 'red');
         }
      });
-     $('form').on('submit',function(){
-         var inval_Arr = new Array(8).fill(false);
-         if (idJ.test($('#mem_id').val())) {
-            inval_Arr[0] = true;   
-         } else {
-            inval_Arr[0] = false;
-            alert('아이디를  확인하세요.');
-            return false;
-         }
-         // 비밀번호가 같은 경우 && 비밀번호 정규식
-         if (($('#mem_pw').val() == ($('#mem_pw2').val()))
-               && pwJ.test($('#mem_pw').val())) {
-            inval_Arr[1] = true;
-         } else {
-            inval_Arr[1] = false;
-            alert('비밀번호를 확인하세요.');
-            return false;
-         }
-         // 이름 정규식
-         if (nameJ.test($('#mem_name').val())) {
-            inval_Arr[2] = true;   
-         } else {
-            inval_Arr[2] = false;
-            alert('이름을 확인하세요.');
-            return false;
-         }
-         // 생년월일 정규식
-          if (birthJ) {
-            console.log(birthJ);
-            inval_Arr[3] = true; 
-         } else {
-            inval_Arr[3] = false;
-            alert('생년월일을 확인하세요.');
-            return false;
-         } 
-         // 이메일 정규식
-         if (mailJ.test($('#mem_email').val())){
-            console.log(phoneJ.test($('#mem_email').val()));
-            inval_Arr[4] = true;
-         } else {
-            inval_Arr[4] = false;
-            alert('이메일을 확인하세요.');
-            return false;
-         }
-         // 휴대폰번호 정규식
-         if (phoneJ.test($('#mem_phone').val())) {
-            console.log(phoneJ.test($('#mem_phone').val()));
-            inval_Arr[5] = true;
-         } else {
-            inval_Arr[5] = false;
-            alert('휴대폰 번호를 확인하세요.');
-            return false;
-         }
-         //성별 확인
-          if(member.mem_gender[0].checked==false&&member.mem_gender[1].checked==false){
-                 inval_Arr[6] = false;
-               alert('성별을 확인하세요.');
-               return false;
-             
-         } else{
-            inval_Arr[6] = true;
-         } 
-   
-         //주소확인
-         if(address.val() == ''){
-            inval_Arr[7] = false;
-            alert('주소를 확인하세요.');
-            return false;
-         }else
-            inval_Arr[7] = true;
-      
-         //전체 유효성 검사
-         var validAll = true;
-         for(var i = 0; i < inval_Arr.length; i++){
-            if(inval_Arr[i] == false){
-               validAll = false;
-            }
-         }
-         if(validAll == true){ // 유효성 모두 통과
-            alert('Welcome Déng Nuri');      
-         } else{
-            alert('정보를 다시 확인하세요.')
-         }
-       });
+     
  
    
    //1~2 패스워드 일치 확인
    $('#mem_pw2').blur(function() {
-      if ($('#mem_pw').val() != $(this).val()) {
+      if ($('#mem_pw3').val() != $(this).val()) {
          $('#pw2_check').text('비밀번호가 일치하지 않습니다.');
          $('#pw2_check').css('color', 'red');
       } else {
@@ -519,7 +404,6 @@ $(document).ready(function() {
    //이름에 특수문자 들어가지 않도록 설정
    $("#mem_name").blur(function() {
       if (nameJ.test($(this).val())) {
-         console.log(nameJ.test($(this).val()));
          $("#name_check").text('');
       } else {
          $('#name_check').text('한글 2~4자 이내로 입력하세요. (특수기호, 공백 사용 불가)');
@@ -535,71 +419,157 @@ $(document).ready(function() {
       }
    });
    
-         // 생일 유효성 검사
-           var birthJ = false;
+   // 생일 유효성 검사
+   var birthJ = false;
            
-           // 생년월일   birthJ 유효성 검사
-           $('#mem_birth').blur(function(){
-              var dateStr = $(this).val();      
-               var year = Number(dateStr.substr(0,4)); // 입력한 값의 0~4자리까지 (연)
-               var month = Number(dateStr.substr(4,2)); // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
-               var day = Number(dateStr.substr(6,2)); // 입력한 값 6번째 자리부터 2자리 숫자 (일)
-               var today = new Date(); // 날짜 변수 선언
-               var yearNow = today.getFullYear(); // 올해 연도 가져옴
+   // 생년월일   birthJ 유효성 검사
+   $('#mem_birth').blur(function(){
+      var dateStr = $(this).val();      
+      var year = Number(dateStr.substr(0,4)); // 입력한 값의 0~4자리까지 (연)
+      var month = Number(dateStr.substr(4,2)); // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
+      var day = Number(dateStr.substr(6,2)); // 입력한 값 6번째 자리부터 2자리 숫자 (일)
+      var today = new Date(); // 날짜 변수 선언
+      var yearNow = today.getFullYear(); // 올해 연도 가져옴
               
-               if (dateStr.length <=8) {
-                 // 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
-                  if (year > yearNow || year < 1900 ){
-                     
-                     $('#birth_check').text('생년월일을 확인해주세요');
-                    $('#birth_check').css('color', 'red');
-                  }  
-                  else if (month < 1 || month > 12) {
+      if (dateStr.length <=8) {
+      // 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
+          if (year > yearNow || year < 1900 ){               
+               $('#birth_check').text('생년월일을 확인해주세요');
+               $('#birth_check').css('color', 'red');
+          }else if (month < 1 || month > 12) {         
+               $('#birth_check').text('생년월일을 확인해주세요 ');
+               $('#birth_check').css('color', 'red'); 
+          }else if (day < 1 || day > 31) { 
+               $('#birth_check').text('생년월일을 확인해주세요 ');
+               $('#birth_check').css('color', 'red'); 
+          }else if ((month==4 || month==6 || month==9 || month==11) && day==31) { 
+               $('#birth_check').text('생년월일을 확인해주세요 ');
+               $('#birth_check').css('color', 'red'); 
+          }else if (month == 2) {
+               var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
                         
+               if (day>29 || (day==29 && !isleap)) {          
                      $('#birth_check').text('생년월일을 확인해주세요 ');
-                    $('#birth_check').css('color', 'red'); 
-                  
-                  }else if (day < 1 || day > 31) {
-                     
-                     $('#birth_check').text('생년월일을 확인해주세요 ');
-                    $('#birth_check').css('color', 'red'); 
-                     
-                  }else if ((month==4 || month==6 || month==9 || month==11) && day==31) { 
-                     $('#birth_check').text('생년월일을 확인해주세요 ');
-                    $('#birth_check').css('color', 'red'); 
-                  }else if (month == 2) {
-                        var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
-                        
-                      if (day>29 || (day==29 && !isleap)) {
-                         
-                         $('#birth_check').text('생년월일을 확인해주세요 ');
-                       $('#birth_check').css('color', 'red'); 
-                     
-                    }else{
-                       $('#birth_check').text('');
-                       birthJ = true;
-                    }
-                  }else{
-                     $('#birth_check').text(''); 
-                    birthJ = true;
-                 }//end of if
-                 }else{
+                     $('#birth_check').css('color', 'red'); 
+               }else{
+                     $('#birth_check').text('');
+                     birthJ = true;
+               }
+           }else{
+               $('#birth_check').text(''); 
+               birthJ = true;
+           }//end of if
+       }else{
                     //1.입력된 생년월일이 8자 초과할때 :  auth:false
-                    $('#birth_check').text('생년월일을 확인해주세요 ');
-                    $('#birth_check').css('color', 'red');  
-                 }
-              }); //End of method /*
+         $('#birth_check').text('생년월일을 확인해주세요 ');
+         $('#birth_check').css('color', 'red');  
+       }
+   }); //End of method /*
  
-              // 휴대전화
-              $('#mem_phone').blur(function(){
-                 if(phoneJ.test($(this).val())){
-                    console.log(nameJ.test($(this).val()));
-                    $("#phone_check").text('');
-                 } else {
-                    $('#phone_check').text('휴대폰번호를 확인해주세요 ');
-                    $('#phone_check').css('color', 'red');
-                 }
-              });
+   // 휴대전화
+   $('#mem_phone').blur(function(){
+       if(phoneJ.test($(this).val())){
+            $("#phone_check").text('');
+       } else {
+            $('#phone_check').text('휴대폰번호를 확인해주세요 ');
+            $('#phone_check').css('color', 'red');
+       }
+   });
+                       
+   $('#usercheck').on('submit',function(){
+       var inval_Arr = new Array(9).fill(false);
+       if (idJ.test($('#mem_id').val()) && ($("#id_check2").val()=='Y')) {
+            inval_Arr[0] = true;   
+       } else if($("#id_check2").val()!='Y'){
+            inval_Arr[0] = false;
+            alert('아이디 중복 확인을 해주세요.');
+            return false;
+       } else{
+    	   inval_Arr[0] = false;
+           alert('아이디를  확인하세요.');
+           return false;
+       };
+       // 비밀번호가 같은 경우 && 비밀번호 정규식
+       if (($('#mem_pw3').val() == ($('#mem_pw2').val()))
+                        && (pwJ.test($('#mem_pw3').val()))) {
+                 	 
+            $('#mem_pw').val(sha256($('#mem_pw3').val()));
+            inval_Arr[1] = true;
+       } else {
+            inval_Arr[1] = false;
+            alert('비밀번호를 확인하세요.');
+            return false;
+       };
+       // 이름 정규식
+       if (nameJ.test($('#mem_name').val())) {
+            inval_Arr[2] = true;   
+       } else {
+            inval_Arr[2] = false;
+            alert('이름을 확인하세요.');
+            return false;
+       };
+       // 생년월일 정규식
+       if (birthJ) {
+            inval_Arr[3] = true; 
+       } else {
+            inval_Arr[3] = false;
+            alert('생년월일을 확인하세요.');
+            return false;
+       } 
+       // 이메일 정규식
+       if (mailJ.test($('#mem_email').val())){
+            inval_Arr[4] = true;
+       } else {
+            inval_Arr[4] = false;
+            alert('이메일을 확인하세요.');
+            return false;
+       }
+       // 휴대폰번호 정규식
+       if (phoneJ.test($('#mem_phone').val())) {
+            inval_Arr[5] = true;
+       } else {
+            inval_Arr[5] = false;
+            alert('휴대폰 번호를 확인하세요.');
+            return false;
+       }
+       //성별 확인
+       let mem_gender = $('.mem_gender');
+       if(mem_gender[0].checked==false&&mem_gender[1].checked==false){
+            inval_Arr[6] = false;
+            alert('성별을 확인하세요.');
+            return false;
+       } else{
+            inval_Arr[6] = true;
+       } 
+       //주소확인
+       var address1 = $('#mem_address1');
+       var address2 = $('#mem_address2');
+       var address3 = $('#mem_detailaddress');
+       if(address1.val() == '' || address2.val() == ''||address3.val() == ''){
+             inval_Arr[7] = false;
+             alert('주소를 확인하세요.');
+             return false;
+       }else inval_Arr[7] = true;
+               		
+       if($('#agree').is(":checked")==false){
+             inval_Arr[8] = false;
+             alert('정보 수집에 동의를 해주세요.');
+             return false;
+       }else inval_Arr[8] = true;
+        //전체 유효성 검사
+       var validAll = true;
+       for(var i = 0; i < inval_Arr.length; i++){
+            if(inval_Arr[i] == false){
+                 validAll = false;
+            }
+       }
+       if(validAll == true){ // 유효성 모두 통과
+            alert('Welcome Déng Nuri');      
+        } else{
+            alert('정보를 다시 확인하세요.')
+            return false;
+        }
+    });
 });
 //우편번호 찾기 버튼 클릭시 발생 이벤트
 function execPostCode() {

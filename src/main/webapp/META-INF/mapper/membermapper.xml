@@ -13,7 +13,10 @@
 	</insert>
 
 	<select id="ismember2" resultType="int">
-		select count(*) from member where mem_id=#{memId} and mem_pw=#{memPw}
+		select count(*) from member where mem_id=#{memId} and mem_pw=#{memPw} and who = 'member'
+	</select>
+	<select id="isadmin" resultType="int">
+		select count(*) from member where mem_id=#{memId} and mem_pw=#{memPw} and who = 'admin'
 	</select>
 	<select id="getmemberinfo" resultType="memberVO" parameterType="memberVO">
 		select * from member where mem_id=#{memId}
