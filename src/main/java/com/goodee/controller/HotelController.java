@@ -70,15 +70,15 @@ public class HotelController {
 			
 		}*/
 		
-		@GetMapping("godetail/{hotelId}/{startDate}/{endDate}")
-		public String godetail(@PathVariable("hotelId") int hotelId, @PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, Model model) {
-			
-			model.addAttribute("startdate", startdate);
-			model.addAttribute("enddate", enddate);
-			service.detailHotelList(model, hotelId);
-			
-			return "hotel/hoteldetail";
-		}
+	@GetMapping("godetail/{hotelId}/{startDate}/{endDate}")
+	public String godetail(@PathVariable("hotelId") int hotelId, @PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, Model model) {
+		
+		model.addAttribute("startdate", startdate);
+		model.addAttribute("enddate", enddate);
+		service.detailHotelList(model, hotelId, startdate, enddate);
+		
+		return "hotel/hoteldetail";
+	}
 		
 		@GetMapping("goreserve/{hotelId}/{startdate}/{enddate}")
 		public String goreserve(@PathVariable("hotelId") int hotelId,
@@ -87,7 +87,7 @@ public class HotelController {
 								Model model,HttpSession session) {
 			model.addAttribute("startdate", startdate);
 			model.addAttribute("enddate", enddate);
-			service.goreserve(hotelId,model,session);
+			service.goreserve(hotelId,model,session, startdate, enddate);
 			return "hotel/hotelreserve";
 		}
 		

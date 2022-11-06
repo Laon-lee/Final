@@ -2,6 +2,7 @@ package com.goodee.service;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,10 +62,15 @@ public class HotelService {
 		model.addAttribute("room", dao.selectroom(idlist));
 	}
 		
-		public void detailHotelList(Model model, int hotelId) {
-			model.addAttribute("hotel", dao.detailHotel(hotelId));
-			
-		}
+	public void detailHotelList(Model model, int hotelId, String startdate, String enddate) {
+		int[] roomId = dao.detailRoomId(startdate, enddate);
+		System.out.println("roomid"+Arrays.toString(dao.detailRoomId(startdate, enddate)));
+		model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomId));
+		System.out.println("hotel"+dao.detailHotelRoom(hotelId, roomId).get(0).getHotelId());
+		//model.addAttribute("hotel", dao.detailHotel(hotelId));
+		
+		
+	}
 		
 		public void ranHotelList(Model model, int ran) {
 			model.addAttribute("hotel",dao.ranHotel(ran));
@@ -85,11 +91,13 @@ public class HotelService {
 		public void insertHotelQna(HotelQnaVO vo){
 			dao.insertHotelQna(vo);
 		}
-		public void goreserve(int hotelId,Model model, HttpSession session) {
+		public void goreserve(int hotelId,Model model, HttpSession session,  String startdate, String enddate) {
 			MemberVO vo1 = (MemberVO)session.getAttribute("user");
 			model.addAttribute("user",mbdao.getmemberinfo(vo1));
 			model.addAttribute("separateVO",mbdao.separate(mbdao.getmemberinfo(vo1))); 
-			model.addAttribute("hotel", dao.detailHotel(hotelId));
+			int[] roomId = dao.detailRoomId(startdate, enddate);
+		
+			model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomId));
 		}
 		
 		public HotelRoomVO getRoomInfo(HotelRoomVO vo) {

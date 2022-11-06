@@ -43,6 +43,18 @@
 		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
 		where hr.hotel_id = #{hotelId}
 	</select>
+		<select id="detailHotelRoom" resultType="hoteljoinVO">
+	select * from hotel_room as hr
+		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
+		where hr.hotel_id = #{hotelId} and not hr.room_id in
+		<foreach item="roomId" collection="roomId" open="(" separator="," close = ")">
+			#{roomId}
+		</foreach> 
+	</select>
+	
+	<select id="detailRoomId" resultType="int">
+		SELECT distinct room_id FROM hotel_detail_res WHERE (res_start &lt; #{enddate} AND res_end &gt; #{startdate});
+	</select>
 		
 	
 	<select id="ranHotel" resultType="hotelVO">

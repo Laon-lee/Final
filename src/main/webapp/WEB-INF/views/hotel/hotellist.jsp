@@ -26,7 +26,7 @@
      <%-- <script src="${pageContext.request.contextPath}/hotel/jquery-3.6.1.min.js"></script> --%>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
-	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38c22d800f1aec1bb2343f51973224a6&libraries=services"></script>
     <title>Document</title>
     <style>
         
@@ -55,7 +55,6 @@
         body {
             position: relative;
             height: 100%;
-            overflow-x:hidden;
         }
 
         
@@ -354,7 +353,7 @@
         height: 35%;
         }
         
-        .modal {
+        .modal, .mapmodal{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -366,8 +365,8 @@
 
         }
 
-        .modalback {
-            background-color: rgba(0, 0, 0, 0.6);
+        .modalback, .mapmodalback {
+            background-color: rgba(0, 0, 0, 0.4);
             width: 100%;
             height: 100%;
             position: absolute;
@@ -387,6 +386,22 @@
             align-items: center;
             justify-content: center;
 			margin: 8% auto;
+        }
+        
+        .mapmodalcont {
+            text-align: center;
+            position: relative;
+            
+            border-radius: 10px;
+            top: 0;
+            
+            width: 40%;
+    height: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+			margin: 12% auto;
         }
 
         .hidden {
@@ -413,6 +428,17 @@
 
         }
         
+        .mapclose {
+           border: none;
+    background-color:rgb(0 0 0 / 0%);
+    color:white;
+    cursor: pointer;
+    /* border-bottom: 1px solid black; */
+    font-weight: bold;
+    margin-left: 90%;
+
+    font-size: 20px;
+        }
 
         .simg {
             position: absolute;
@@ -472,6 +498,14 @@
         td {
         border : none;
         border-bottom : 1px dotted black;
+        }
+        
+        .mapbtn{
+        width: fit-content;
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+    cursor: pointer;
         }
     </style>
 </head>
@@ -594,8 +628,8 @@
 						
 						
 						
-						console.log("스타트"+startdate);
-						console.log("엔드"+enddate);
+						/* console.log("스타트"+startdate);
+						console.log("엔드"+enddate); */
 				
 						let today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
 	                    let tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
@@ -603,12 +637,6 @@
 	                    let cateArr = [];
 						let cateArr2 = [];
 		        
-						var startdate = null;
-						var enddate=null;
-	                    
-	                   
-	                    
-	                   
 						
 						//지역구 선택 안했으면 글씨 빨간색으로 바뀌는거
 						$("#asearchbtn").click(function(){
@@ -640,10 +668,12 @@
 						 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
 						 				console.log("적용버튼 누르고 all누름");
 						 				console.log("cateArr2"+cateArr2);
+						 				console.log("datearr"+re);
 										$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
 						 			} else {
 						 				console.log("적용버튼 누르고 all 안누름");
 						 				console.log("cateArr2"+cateArr);
+						 				console.log("datearr"+re);
 						 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);
 						 			}
 						 		} else { //날짜 선택 안했을 시 오늘 날짜가 들어감
@@ -652,17 +682,22 @@
 						 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
 						 				console.log("적용버튼 안 누르고 all누름");
 						 				console.log("cateArr2"+cateArr2);
-										$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+cateArr2);
+						 				console.log("datearr"+re);
+										$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+cateArr2);
 						 			} else {
 						 				console.log("적용버튼 안 누르고 all안누름");
 						 				console.log("cateArr2"+cateArr);
-						 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+today+"/"+tommorow+"/"+cateArr);
+						 				console.log("datearr"+re);
+						 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+cateArr);
 						 			}
 						 		}
 							
-						}
+							}
 						
 						});	
+						
+						
+						
 						 
 					});			
 					
@@ -762,17 +797,21 @@
             				<div class="listbox">
                 				<div id="inner2" class="inner2 inner">
                     				<p>${item.hotelOpt }</p>
-                    				<h2>${item.hotelName }</h2>
-                    				<p>${item.hotelAddr}</p>
+                    				<h2 class="mapname" class="${item.hotelName }">${item.hotelName }</h2>
+                    				<p class="hotelAddr">${item.hotelAddr}</p>
+                    				<button class="mapbtn ${item.hotelAddr}" id="${item.hotelAddr}">위치보기</button>
                     				<!-- <p>2021.12.11~2023.08.31</p> -->
                     				<%-- <h1 class="${item.hotelId}" id="h1">${item.hotelId}</h1> --%>
                     				<!-- <h1>가격</h1> -->
                     				<input type="hidden" name="hidden" id="hidden" value="${item.hotelId }" />
                 				</div>
+                				
+                			
                 				<div class="innerbtn">
                     				<button class="realbtn" id="btn${status.index}">객실보기</button>
                     				<div class="innera">
                     					<a href="${pageContext.request.contextPath}/godetail/${item.hotelId}/${startdate}/${enddate}">예약하기</a>
+                    					<!-- <a href="#" id="adetail">예약하기</a> -->
                     				</div>
                 				</div>
             				</div>	
@@ -835,6 +874,20 @@
                         			</div>
                     			</div>
                 			</div>
+                			<div class="mapmodal hidden">
+                    			<div class="mapmodalback"></div>
+								<div class="mapmodalcont">
+								
+									<button class="mapclose">
+                        				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+  											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+										</svg>
+                        			</button>
+                        			<div id="map"style="width:100%;height:100%;margin:0 auto;">
+                        			</div>	
+                        		</div>
+                			</div>
+                			
             </section>
        
                  
@@ -847,6 +900,8 @@
     
         <script>
         window.addEventListener('DOMContentLoaded', function () {
+        	
+        	//모달창 띄우기
         	let btn = document.getElementsByClassName("realbtn");
             for(let i = 0 ; i < btn.length ; i++){
             	btn[i].addEventListener("click",function(){
@@ -854,12 +909,11 @@
             	});
             };
         	
-            
-        	
             $(".detail, .close, .modalback").click(function(){
                 $(".modal").toggle();
             })
 
+            //모달창 내 버튼 이벤트
             $(".prev").click(function (e) {
                 e.preventDefault();
 
@@ -918,7 +972,65 @@
                 
               
             });
-        });
-    </script>
+            
+          //지도 모달
+	         	$(".mapbtn, .mapclose, .mapmodalback").click(function(){
+	                $(".mapmodal").toggle();
+	            });
+	           
+	         	
+	       
+	        	  
+	           $(".mapbtn").click(function(){
+	        	   var addrid = $(this).attr('id');
+	        	
+	        	   console.log("언디파인그만"+addrid);
+	      
+	        	   
+	        	   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	        	    mapOption = { 
+	        	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        	        level: 3 // 지도의 확대 레벨
+	        	    };
+
+	        		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+	        		var map = new kakao.maps.Map(mapContainer, mapOption);
+	        	   
+	        		// 주소-좌표 변환 객체를 생성합니다
+	        		var geocoder = new kakao.maps.services.Geocoder();
+
+	        		// 주소로 좌표를 검색합니다
+	        		geocoder.addressSearch(addrid, function(result, status) {
+
+	        		    // 정상적으로 검색이 완료됐으면 
+	        		     if (status === kakao.maps.services.Status.OK) {
+
+	        		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+	        		        // 결과값으로 받은 위치를 마커로 표시합니다
+	        		        var marker = new kakao.maps.Marker({
+	        		            map: map,
+	        		            position: coords
+	        		        });
+
+	        		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        		      /*   var infowindow = new kakao.maps.InfoWindow({
+	        		            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+	        		        });
+	        		        infowindow.open(map, marker); */
+
+	        		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        		        map.setCenter(coords);
+	        		    } 
+	        		});
+	           });
+	       		
+	        });
+         
+        
+    </script>	
+                				   
+                		           
+                				
 </body>
 </html>
