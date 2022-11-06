@@ -578,130 +578,129 @@
 				window.addEventListener('DOMContentLoaded', function(){
 					
 					//카테고리 배열 설저
+					
+					
+					let now = new Date();
+					let tom = new Date();
+					
+					tom.setDate(tom.getDate()+1);
+					
+					
+					$('input[name="dates"]').daterangepicker({
+						 "startDate": "${startdate}",
+                            //시작날짜
+                         "endDate": "${enddate}",
+                            //종료날짜
+                         "minDate": now,
+                            //최소지정날짜
+                         "opens": "center",
+ 
+                         locale: {
+                           	//기타 설정
+                            "separator": " ~ ",
+                            	//구분자
+                           	"applyLabel": "적용",
+                            	 //버튼 라벨
+                            "cancelLabel": "취소",
+                            format: "YYYY-MM-DD",
+                            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+                            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+                        }
+                    });
+					
+					$('input[name="dates"]').on('show.daterangepicker', function() {
+						$(".cancelBtn").css("float", "right");
+                 	 	$(".cancelBtn").css("background-color", "white");
+                 	 	$(".cancelBtn").css("color","black");
+                 	 	$(".applyBtn").css("background-color", "black");
+                 	 	$(".applyBtn").css("color","white");
+                 		$(".cancelBtn, .applyBtn").css("border","1px solid black");
+                 	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
+                 		$(".cancelBtn, .applyBtn").css("width", "60px");
+					});
+					var startdate = null;
+					var enddate = null;
+					
+					
+					$('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+						 //datepicker에서 적용버튼을 클릭했을 때
+						 startdate = picker.startDate.format('YYYY-MM-DD');
+						 enddate = picker.endDate.format('YYYY-MM-DD');
 						
+					});
+					
+					
+					
+					/* console.log("스타트"+startdate);
+					console.log("엔드"+enddate); */
+			
+                    
+                    let cateArr = [];
+					let cateArr2 = [];
+	        
+					
+					//지역구 선택 안했으면 글씨 빨간색으로 바뀌는거
+					$("#asearchbtn").click(function(){
 						
-						let now = new Date();
-						let tom = new Date();
-						
-						tom.setDate(tom.getDate()+1);
-						
-						
-						$('input[name="dates"]').daterangepicker({
-							 "startDate": "${startdate}",
-	                            //시작날짜
-	                         "endDate": "${enddate}",
-	                            //종료날짜
-	                         "minDate": now,
-	                            //최소지정날짜
-	                         "opens": "center",
-	 
-	                         locale: {
-	                           	//기타 설정
-	                            "separator": " ~ ",
-	                            	//구분자
-	                           	"applyLabel": "적용",
-	                            	 //버튼 라벨
-	                            "cancelLabel": "취소",
-	                            format: "YYYY-MM-DD",
-	                            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-	                            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-	                        }
-	                    });
-						
-						$('input[name="dates"]').on('show.daterangepicker', function() {
-							$(".cancelBtn").css("float", "right");
-                     	 	$(".cancelBtn").css("background-color", "white");
-                     	 	$(".cancelBtn").css("color","black");
-                     	 	$(".applyBtn").css("background-color", "black");
-                     	 	$(".applyBtn").css("color","white");
-                     		$(".cancelBtn, .applyBtn").css("border","1px solid black");
-                     	 	$(".cancelBtn, .applyBtn").css("cursor","pointer");
-                     		$(".cancelBtn, .applyBtn").css("width", "60px");
-						});
-						
-						$('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-							 //datepicker에서 적용버튼을 클릭했을 때
-							 startdate = picker.startDate.format('YYYY-MM-DD');
-							 enddate = picker.endDate.format('YYYY-MM-DD');
-							
-						});
-						
-						
-						
-						/* console.log("스타트"+startdate);
-						console.log("엔드"+enddate); */
-				
-						let today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
-	                    let tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
-	                    
-	                    let cateArr = [];
-						let cateArr2 = [];
-		        
-						
-						//지역구 선택 안했으면 글씨 빨간색으로 바뀌는거
-						$("#asearchbtn").click(function(){
-							
-							 $('input[name="cate"]:checked').each(function(){
-									var cate=$(this).val();
-									cateArr.push(cate);
-									cateArr2 = cateArr.slice(1);
-								});
-							 
-							 console.log("cateArr"+cateArr);
-			                 console.log("cateArr2"+cateArr2);
-							
-						if(Array.isArray(cateArr) && cateArr.length === 0) {
-							$("#asearchbtn").click(function(){
-								$("#selectp").css("color","red");
-								$("#selectp").css("fontWeight","900");
-								$("#isbx").css("display", "block");
-								$("#isbx").css("display", "flex");
+						 $('input[name="cate"]:checked').each(function(){
+								var cate=$(this).val();
+								cateArr.push(cate);
+								cateArr2 = cateArr.slice(1);
 							});
-						} else { //지역구를 선택한 경우
-							
-							
-								$("#selectp").css("color","black");
-								$("#isbx").css("display", "none");
-						 		if(startdate!=null){ // 날짜적용선택시
-						 			console.log("start" + startdate);
-						 			console.log("end"+enddate);
-						 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
-						 				console.log("적용버튼 누르고 all누름");
-						 				console.log("cateArr2"+cateArr2);
-						 				console.log("datearr"+re);
-										$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
-						 			} else {
-						 				console.log("적용버튼 누르고 all 안누름");
-						 				console.log("cateArr2"+cateArr);
-						 				console.log("datearr"+re);
-						 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);
-						 			}
-						 		} else { //날짜 선택 안했을 시 오늘 날짜가 들어감
-						 			console.log("today"+today);
-						 			console.log("tommorow"+tommorow);
-						 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
-						 				console.log("적용버튼 안 누르고 all누름");
-						 				console.log("cateArr2"+cateArr2);
-						 				console.log("datearr"+re);
-										$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+cateArr2);
-						 			} else {
-						 				console.log("적용버튼 안 누르고 all안누름");
-						 				console.log("cateArr2"+cateArr);
-						 				console.log("datearr"+re);
-						 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+cateArr);
-						 			}
-						 		}
-							
-							}
-						
-						});	
-						
-						
-						
 						 
-					});			
+						 console.log("cateArr"+cateArr);
+		                 console.log("cateArr2"+cateArr2);
+						
+					if(Array.isArray(cateArr) && cateArr.length === 0) {
+						$("#asearchbtn").click(function(){
+							$("#selectp").css("color","red");
+							$("#selectp").css("fontWeight","900");
+							$("#isbx").css("display", "block");
+							$("#isbx").css("display", "flex");
+						});
+					} else { //지역구를 선택한 경우
+						
+						
+							$("#selectp").css("color","black");
+							$("#isbx").css("display", "none");
+					 		if(startdate!=null){ // 날짜적용선택시
+					 			console.log("start" + startdate);
+					 			console.log("end"+enddate);
+					 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
+					 				console.log("적용버튼 누르고 all누름");
+					 				console.log("cateArr2"+cateArr2);
+					 	
+									$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr2);
+					 			} else {
+					 				console.log("적용버튼 누르고 all 안누름");
+					 				console.log("cateArr2"+cateArr);
+					 		
+					 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/"+startdate+"/"+enddate+"/"+cateArr);
+					 			}
+					 		} else { //날짜 선택 안했을 시 오늘 날짜가 들어감
+					 			
+					 			
+					 			if($('#l1').is(':checked') || $('#l20').is(':checked') || $('#l15').is(':checked') || $('#26').is(':checked')) {
+					 				console.log("적용버튼 안 누르고 all누름");
+					 				console.log("cateArr2"+cateArr2);
+					 			
+									$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+cateArr2);
+					 			} else {
+					 				console.log("적용버튼 안 누르고 all안누름");
+					 				console.log("cateArr2"+cateArr);
+					 			
+					 				$(".selecbtn").attr("href","${pageContext.request.contextPath}/golist/${startdate}/${enddate}/"+cateArr);
+					 			}
+					 		}
+						
+						}
+					
+					});	
 					
 					
+					
+					 
+				});		
                    
 	
                 </script>
