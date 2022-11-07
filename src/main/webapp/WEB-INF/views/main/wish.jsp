@@ -75,7 +75,7 @@ html {
 #artcontainer {
 	display: flex;
 	flex-direction: column;
-	width: 50vw;
+	width: 60vw;
 	 margin-bottom:300px;
 }
 
@@ -125,7 +125,7 @@ html {
 	flex: 5;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	
 }
 
 #sec2-div2 li {
@@ -242,8 +242,9 @@ html {
 }
 .h2{
 	width:100%;
-	text-align:center;
+	text-align:left;
 	margin-bottom:50px;
+	margin-top:30px;
 	font-size:30px;
 }
 </style>

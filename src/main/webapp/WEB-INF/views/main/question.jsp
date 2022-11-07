@@ -101,11 +101,12 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            height:100%;
         }
         #artcontainer{
             display: flex;
             flex-direction: column;
-             margin-bottom:300px;
+            
             width:50vw;
         }
        
@@ -114,7 +115,7 @@
             margin: 40px;
             display: flex;
             flex-direction: row;
-            gap:10%;
+           
             
         }
 
@@ -153,19 +154,20 @@
         #art3 {
             
             flex:5;
-            width:50vw;
+            
             display: flex;
-            flex-direction: column;
-            margin-left: 20px;
+           
+            justify-content:center;
             gap: 4px;
         }
-        #art3 div{
-            width:85%;
+       .art2container{
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            width:60vw;
+           
         }
-        #sec2-div2{
-            
-        
-        }
+      
         #sec2-div2 li {
             display: block;
             font-size: 13px;
@@ -195,7 +197,7 @@
             text-align: center;
             
         }
-        #art3 input,#art3 select{
+        #art3 input{
           width: 55%;
           height: 30px;
           border-radius: 5px;
@@ -216,12 +218,25 @@
           font-weight: 600;
           border-radius: 5px;
         }
-        .h2{
-        width:60%;
-       text-align:center;
-       font-size:30px;
-        margin-bottom:4rem;
+        #art3 button:hover{
+       background-color:#f1f1f1;
+       border:none;
+       
         }
+        .h2{
+		width:100%;
+		text-align:left;
+		margin-bottom:50px;
+		margin-top:30px;
+		font-size:30px;
+		}
+		#qacategory{
+		width:55.5%;
+		height:30px;
+ 		border-radius: 5px;
+        border: none;
+        margin-bottom: 40px;
+		}
     </style>
 </head>
 
@@ -250,6 +265,7 @@
                     </nav>
                     
                     <article id="art3">
+                    <div class="art2container">
                     <h2 style="text-decoration: underline" class="h2">문의하기</h2>
                        <div>
                         <p>문의 사항이 있으신 경우 <br> 
@@ -273,7 +289,7 @@
                        <input type="text" name="senderName" id="senderName" placeholder="* 이름">
                        <input type="email" name="senderMail" id="senderMail" placeholder="* 이메일 주소">
                        <input type="text" name="title" id="title" placeholder="* 문의 제목"><br>
-                       <textarea rows="15" cols="91" name="content" id="content"></textarea>
+                       <textarea rows="15" cols="88" name="content" id="content"></textarea>
                        <p>※ 개인정보보호를 위해 내용 입력란에 개인정보가 포함되지 않도록 주의해주세요.</p>
                        <p>개인정보 수집 및 이용에 대한 동의 (필수)
                         회사는 본 웹사이트를 통한 상담 서비스 제공을 위하여 아래와 같은 개인정보를 수집하고 있습니다. <br><br>
@@ -295,7 +311,7 @@
                         </form>
                        
                         
-                      
+                      </div>
                     </article>
                 </section>
                 </div>

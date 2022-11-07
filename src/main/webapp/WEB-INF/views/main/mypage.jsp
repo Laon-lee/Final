@@ -97,8 +97,8 @@
         #artcontainer{
             display: flex;
             flex-direction: column;
-            margin-bottom:300px;
-            width:50vw;
+            
+            width:60vw;
         }
        
         #sec2 {
@@ -148,7 +148,7 @@
             width:70vw;
             display: flex;
             justify-content: center;
-            align-items: center;
+            
         }
         #sec2-div2{
             
@@ -184,8 +184,9 @@
         }
      	.h2{
 	width:100%;
-	text-align:center;
+	text-align:left;
 	margin-bottom:50px;
+	margin-top:30px;
 	font-size:30px;
 }
     </style>

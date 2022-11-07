@@ -98,7 +98,8 @@
     font-weight: 600;
     color: rgb(70, 68, 68);
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    width:80%;
    }
 
    .art3-content{
@@ -107,9 +108,9 @@
     border-bottom: 2px solid black;
     font-weight: 600;
     color: rgb(70, 68, 68);
-    font-size:1.2rem;
+    font-size:1rem;
     display: none;
-    
+    width:80%;
    }
 	.art3-content h3{
     margin-left: 15px;
@@ -135,16 +136,12 @@
         #art2 {
             
             flex:5;
-            width:70vw;
+           
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom:300px;
+           justify-content:center;
+            
         }
-        #art2 div{
-            width:90%;
-        }
+        
         #sec2 {
             width:85%;
             margin: 40px;
@@ -216,13 +213,18 @@
             text-align: center;
             
         }
-        .h2{
+         #art2container {
+                width: 60vw;
+                display: flex;
+                flex-direction: column;
+                
+            }
+     .h2{
 	width:100%;
 	text-align:left;
 	margin-bottom:50px;
-	
+	margin-top:30px;
 	font-size:30px;
-	text-align:center;
 }
     </style>
 </head>
@@ -250,6 +252,7 @@
                     </nav>
                     
                     <article id="art2">
+                      <div id="art2container">
                     <h2 style="text-decoration: underline" class="h2">자주묻는질문</h2>
                         <c:forEach var="item" items="${list}"> 
                         	<div class="art3-question" class="tab_title">
@@ -263,14 +266,26 @@
                     
                           
                           <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-                          <script>
-                          for(let i = 0; i<document.getElementById("art2").children.length; i++){
+                         
+                          </div>
+                    </article>
+                </section>
+                </div>
+        </main>
+
+
+        <footer>
+            <%@ include file="../frame/main/footer.jsp" %>
+        </footer>
+    </div>
+     <script>
+                          for(let i = 0; i<document.getElementById("art2container").children.length; i++){
                               
                         	  document.getElementsByClassName("art3-question")[i].addEventListener("click",function(){
                                       
                         		  document.getElementsByClassName("art3-content")[i].classList.toggle("display-block");
                                       
-                        		  for(let j = 0; j<document.getElementById("art2").children.length; j++) {
+                        		  for(let j = 0; j<document.getElementById("art2container").children.length; j++) {
                                     	  
                         			  if(j!= i){
                                     		  
@@ -298,16 +313,6 @@
                           
                           
                           </script>
-                    </article>
-                </section>
-                </div>
-        </main>
-
-
-        <footer>
-            <%@ include file="../frame/main/footer.jsp" %>
-        </footer>
-    </div>
 </body>
 
 </html>

@@ -97,8 +97,8 @@
         #artcontainer{
             display: flex;
             flex-direction: column;
-             margin-bottom:300px;
-            width:50vw;
+             
+            width:60vw;
         }
        
         #sec2 {
@@ -148,7 +148,7 @@
             width:70vw;
             display: flex;
             justify-content: center;
-            align-items: center;
+           
         }
        
         #sec2-div2 li {
@@ -204,10 +204,11 @@
 				opaciry:1;
 			}
 		}
-		.h2{
+	.h2{
 	width:100%;
-	text-align:center;
+	text-align:left;
 	margin-bottom:50px;
+	margin-top:30px;
 	font-size:30px;
 }
     </style>
@@ -236,7 +237,9 @@
               
                         </ul>
                     </nav>
+                    
                     <article id="art2">
+                    
                         <div id="artcontainer">
                         <h2 style="text-decoration: underline" class="h2">예약내역조회</h2>
                             <div id="sec2-div1">

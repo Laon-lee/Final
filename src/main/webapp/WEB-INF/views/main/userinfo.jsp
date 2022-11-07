@@ -94,7 +94,7 @@
             display: flex;
             flex-direction: column;
              margin-bottom:300px;
-            width:50vw;
+            width:60vw;
         }
        
         #sec2 {
@@ -178,7 +178,7 @@
         
         
       .art2container {
-                width: 85%;
+                width: 60vw;
                 display: flex;
                 flex-direction: column;
                 
@@ -220,12 +220,13 @@
                margin-bottom: 20px;
                 
             }
-            .h2{
-                width: 85%;
-                text-align: center;
-                margin-bottom: 50px;
-                font-size:30px;
-            }
+           .h2{
+	width:100%;
+	text-align:left;
+	margin-bottom:50px;
+	margin-top:30px;
+	font-size:30px;
+}
             .h3{
                 display: inline-block;
             }
