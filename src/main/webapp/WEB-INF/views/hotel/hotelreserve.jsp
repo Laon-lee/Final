@@ -23,7 +23,7 @@
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css?11">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
         <title>Document</title>
     <style>

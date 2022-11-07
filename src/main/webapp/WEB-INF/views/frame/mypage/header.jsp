@@ -17,7 +17,7 @@
             </div>
         <ul>
           <li id="nav2-li-1stli" class="hover-lis">
-            <a href="#"><p style="font-size: 16px">Search</p></a>
+            <a href="#">Search</a>
             
             <div id="nav2-li-1stdiv">
               <div id="nav2-searchdiv">
@@ -73,39 +73,20 @@
               </script>
             </div>
           </li>
-          <li id="nav2-li-2ndli" class="hover-lis">
-            <a href="#">
-              <p style="font-size: 16px">Notice</p>
-            </a>
-           
-            <div id="nav2-li-2nddiv">
-              <h2>알림받아라 인마</h2>
-			  <a href="${pageContext.request.contextPath}/notice">알림 페이지이동</a>
-            </div>
-          </li>
-          <li id="nav2-li-3rdli"  class="hover-lis">
-            <a href="#">
-              <p style="font-size: 16px">Wish</p>
-            </a>
-            
-            <div id="nav2-li-3rddiv">
-              <h2>니가 좋아하는거다!</h2>
-              <a href="${pageContext.request.contextPath}/basket">
-              장바구니 바로가기
-              </a>
-            </div>
+          <li id="nav2-li-2ndli">
+              <a href="${pageContext.request.contextPath}/notice/공지사항">Notice</a>
           </li>
           <c:if test="${sessionScope.user != null}">
-          <li id="nav2-li-mypage">
+          <li id="nav2-li-mypage" >
             <a href="${pageContext.request.contextPath}/mypage">
-              <p style="font-size: 16px;">MyPage</p>
+              MyPage
             </a>
           </li>
           </c:if>
           
            <c:if test="${sessionScope.user == null}">
            	<li id="nav2-li-4thli"  class="hover-lis">
-            <a href="#"><p style="font-size: 16px">Login</p></a>
+            <a href="#">Login</a>
             
             <div id="nav2-li-4thdiv">
               <h4>로그인</h4>
@@ -130,7 +111,7 @@
           	</c:if>
           	<c:if test="${sessionScope.user != null}">
           		<li id="nav2-li-4thli">
-          		<a href="${pageContext.request.contextPath}/logout"><p style="font-size: 16px">Logout</p></a>
+          		<a href="${pageContext.request.contextPath}/logout">Logout</a>
           		</li>
           	</c:if>
           

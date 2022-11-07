@@ -18,7 +18,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/shop/header.css?11">
+	href="${pageContext.request.contextPath}/css/frame/shop/header.css">
 
 <title>Document</title>
 <style>

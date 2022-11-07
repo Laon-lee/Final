@@ -143,7 +143,7 @@ display: none;
 
   <div id="container">
     <header>
-      <%@ include file="../frame/main/header.jsp" %>
+      <%@ include file="../frame/mypage/header.jsp" %>
     </header>
    <main>
     <article class="art1">

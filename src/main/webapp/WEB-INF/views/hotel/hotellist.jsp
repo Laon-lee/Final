@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
      <%-- <script src="${pageContext.request.contextPath}/hotel/jquery-3.6.1.min.js"></script> --%>
-     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css">
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css?11">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38c22d800f1aec1bb2343f51973224a6&libraries=services"></script>
     <title>Document</title>
