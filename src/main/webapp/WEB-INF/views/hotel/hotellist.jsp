@@ -789,7 +789,7 @@
                  <c:forEach var="item" items="${hotel}" varStatus="status">
     				<div class="hotelbox">
         				<div id="inner1" class="inner1 inner">
-            				<img src="${pageContext.request.contextPath}/image/hotel/dog6.jpg" alt="">
+            				<img src="${item.hotelThum }" alt="">
         				</div>
 
         				<div class="list">
