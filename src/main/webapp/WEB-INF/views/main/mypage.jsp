@@ -97,7 +97,7 @@
         #artcontainer{
             display: flex;
             flex-direction: column;
-            
+            margin-bottom:300px;
             width:50vw;
         }
        
@@ -113,12 +113,12 @@
             flex: 1;
             padding: 0 20px 0 0;
             border-right: 1px solid black;
-            height:500px;
+           height:1000px;
         }
 
-          #sec2 nav ul{
+         #sec2 nav ul{
             position: relative;
-            top: 28%;
+            top: 25%;
             
         }
         #sec2 nav li {
@@ -182,10 +182,12 @@
             text-align: center;
             
         }
-        .fixed div{
-       position: sticky;
-       top: 40%;
-      }
+     	.h2{
+	width:100%;
+	text-align:center;
+	margin-bottom:50px;
+	font-size:30px;
+}
     </style>
 </head>
 
@@ -202,18 +204,19 @@
                 <section id="sec2">
                     <nav class="fixed-pa">
                         <ul class="fixed">
-                        <div>
+                      
                              <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
                              <li><a href="${pageContext.request.contextPath}/myhotelres">예약내역조회</a></li>
                             <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
-              </div>
+             
                         </ul>
                     </nav>
                     <article id="art2">
                         <div id="artcontainer">
+                        <h2 style="text-decoration: underline" class="h2">주문내역조회</h2>
                             <div id="sec2-div1">
                                 <ul>
                                     <li class="selected">주문내역조회( ${fn:length(list)})</li>

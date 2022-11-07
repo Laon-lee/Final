@@ -67,7 +67,7 @@
 
         }
         h4{
-        line-height:50px;
+        line-height:40px;
         }
         .art1{
     width: 80%;
@@ -86,28 +86,28 @@
     
    .art3-Q{
     color: darkcyan;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     margin-right: 5px;
    }
 
    .art3-question{
-   height:60px;
+   height:45px;
    padding-top : 10px;
   
     border-bottom: 2px solid black;
     font-weight: 600;
     color: rgb(70, 68, 68);
     cursor: pointer;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
    }
 
    .art3-content{
-    padding-top: 15px;
-    padding-bottom: 18px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     border-bottom: 2px solid black;
     font-weight: 600;
     color: rgb(70, 68, 68);
-    font-size:1.5rem;
+    font-size:1.2rem;
     display: none;
     
    }
@@ -125,17 +125,13 @@
         }
 
         #main-container {
+        height:100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        #artcontainer{
-            display: flex;
-            flex-direction: column;
-            
-            width:50vw;
-        }
+       
         #art2 {
             
             flex:5;
@@ -144,6 +140,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            margin-bottom:300px;
         }
         #art2 div{
             width:90%;
@@ -160,11 +157,12 @@
             flex: 1;
             padding: 0 20px 0 0;
             border-right: 1px solid black;
+            height:1000px;
         }
 
          #sec2 nav ul{
             position: relative;
-            top: 14%;
+            top: 25%;
             
         }
         #sec2 nav li {
@@ -218,6 +216,14 @@
             text-align: center;
             
         }
+        .h2{
+	width:100%;
+	text-align:left;
+	margin-bottom:50px;
+	
+	font-size:30px;
+	text-align:center;
+}
     </style>
 </head>
 
@@ -230,12 +236,7 @@
 
         <main>
             <div id="main-container">
-                <article class="art1">
-        
-                </article>
-                <article class="art2">
-                    <h2>자주 묻는 질문</h2>
-                </article>
+                
                 <section id="sec2">
                     <nav>
                         <ul>
@@ -249,6 +250,7 @@
                     </nav>
                     
                     <article id="art2">
+                    <h2 style="text-decoration: underline" class="h2">자주묻는질문</h2>
                         <c:forEach var="item" items="${list}"> 
                         	<div class="art3-question" class="tab_title">
                               	<span class="art3-Q">Q </span> ${item.boardTitle}

@@ -16,9 +16,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
     
     <style>
-       *{
-          box-sizing: border-box;
-            }
+     
 
         html,
         body,
@@ -95,7 +93,7 @@
         #artcontainer{
             display: flex;
             flex-direction: column;
-            
+             margin-bottom:300px;
             width:50vw;
         }
        
@@ -111,6 +109,7 @@
             flex: 1;
             padding: 0 20px 0 0;
             border-right: 1px solid black;
+            height:1000px;
         }
 
            #sec2 nav ul{
@@ -147,10 +146,7 @@
             justify-content: center;
             align-items: center;
         }
-        #sec2-div2{
-            
-        
-        }
+     
         #sec2-div2 li {
             display: block;
             font-size: 13px;
@@ -226,8 +222,9 @@
             }
             .h2{
                 width: 85%;
-                text-align: right;
+                text-align: center;
                 margin-bottom: 50px;
+                font-size:30px;
             }
             .h3{
                 display: inline-block;
@@ -303,10 +300,8 @@
             #iemail,#iphone{
             display:none;
             }
-             .fixed div{
-       position: sticky;
-       top: 40%;
-      }
+           
+        
     </style>
 </head>
 
@@ -324,19 +319,19 @@
                 
                     <nav>
                          <ul class="fixed">
-                        <div>
-                             <li><a href="${pageContext.request.contextPath}/mypage" style="text-decoration: underline">주문내역조회</a></li>
+                        
+                             <li><a href="${pageContext.request.contextPath}/mypage" >주문내역조회</a></li>
                              <li><a href="${pageContext.request.contextPath}/myhotelres">예약내역조회</a></li>
-                            <li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
+                            <li><a style="text-decoration: underline" href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
                             <li><a href="${pageContext.request.contextPath}/wish">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
-              </div>
+              
                         </ul>
                     </nav>
                     <article id="art2">
                    <div class="art2container">
-                   <h2 class="h2">회원정보수정</h2>
+                   <h2 style="text-decoration: underline" class="h2">회원정보수정</h2>
                        <div class="totalinfo">
                         <h4>저희 쇼핑몰을 이용해주셔서 감사합니다. ${list.memName}님의 정보입니다.</h4>
                         </div>

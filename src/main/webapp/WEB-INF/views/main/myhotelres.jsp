@@ -97,7 +97,7 @@
         #artcontainer{
             display: flex;
             flex-direction: column;
-            
+             margin-bottom:300px;
             width:50vw;
         }
        
@@ -113,12 +113,12 @@
             flex: 1;
             padding: 0 20px 0 0;
             border-right: 1px solid black;
-            height:500px;
+            height:1000px;
         }
 
           #sec2 nav ul{
             position: relative;
-            top: 28%;
+            top: 25%;
             
         }
         #sec2 nav li {
@@ -148,7 +148,7 @@
             width:70vw;
             display: flex;
             justify-content: center;
-            
+            align-items: center;
         }
        
         #sec2-div2 li {
@@ -204,6 +204,12 @@
 				opaciry:1;
 			}
 		}
+		.h2{
+	width:100%;
+	text-align:center;
+	margin-bottom:50px;
+	font-size:30px;
+}
     </style>
 </head>
 
@@ -232,6 +238,7 @@
                     </nav>
                     <article id="art2">
                         <div id="artcontainer">
+                        <h2 style="text-decoration: underline" class="h2">예약내역조회</h2>
                             <div id="sec2-div1">
                                 <ul>
                                     <li class="selected">예약내역 조회( ${fn:length(list)} )</li>

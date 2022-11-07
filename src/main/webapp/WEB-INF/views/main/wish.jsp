@@ -23,9 +23,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
 <style>
-* {
-	box-sizing: border-box;
-}
+
 
 html, body, header, main, footer, section, h1, h2, h3, h4, h5, h6, p, a,
 	ul, li, nav {
@@ -77,12 +75,13 @@ html {
 #artcontainer {
 	display: flex;
 	flex-direction: column;
-	width0vw;
+	width: 50vw;
+	 margin-bottom:300px;
 }
 
 #sec2 {
 	width: 85%;
-	margin: 0px;
+	margin: 40px;
 	display: flex;
 	flex-direction: row;
 }
@@ -91,13 +90,14 @@ html {
 	flex: 1;
 	padding: 0 20px 0 0;
 	border-right: 1px solid black;
-	height: 500px;
+	height: 1000px;
 }
 
-#sec2 nav ul {
-	position: relative;
-	top: 34%;
-}
+ #sec2 nav ul{
+            position: relative;
+            top: 25%;
+            
+        }
 
 #sec2 nav li {
 	margin: 0 0 20px 0;
@@ -179,6 +179,7 @@ html {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	margin-bottom:300px;
 }
 
 #item-list img {
@@ -239,6 +240,12 @@ html {
 .td3{
 	max-width:300px;
 }
+.h2{
+	width:100%;
+	text-align:center;
+	margin-bottom:50px;
+	font-size:30px;
+}
 </style>
 </head>
 
@@ -256,6 +263,7 @@ html {
 				<section id="sec2">
 					<nav>
 						<ul>
+						
 							<li><a href="${pageContext.request.contextPath}/mypage">주문내역조회</a></li>
 							<li><a href="${pageContext.request.contextPath}/myhotelres">예약내역조회</a></li>
 							<li><a href="${pageContext.request.contextPath}/userinfo">회원정보</a></li>
@@ -264,12 +272,14 @@ html {
 							<li><a
 								href="${pageContext.request.contextPath}/usequestion/자주묻는질문">자주묻는질문</a></li>
 							<li><a href="${pageContext.request.contextPath}/question">문의하기</a></li>
+							
 						</ul>
 					</nav>
 					<article id="art2">
 						<c:if test="${fn:length(wish) > 0}">
 						<div id="item-list">
 							<div class="user-info"></div>
+							<h2 style="text-decoration: underline" class="h2"> 장바구니</h2>
 							<table class="tb1">
 								<tr>
 									<th class="th1">일반상품( ${fn:length(wish)} )</th>

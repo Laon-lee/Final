@@ -70,20 +70,8 @@
     margin: 0 auto;
     border-top: 2px solid black;
    }
-   .art2{
-    width: 60%;
-    margin: 0 auto;
-    height: 50px;
-    background-color: black;
-    color: white;
-    text-align: center;
-    margin-bottom: 2rem;
-   }
-        .art3-Q{
-    color: darkcyan;
-    font-size: 1.3rem;
-    margin-right: 5px;
-   }
+   
+    
    #art3-question{
     padding-bottom: 15px;
     border-bottom: 2px solid black;
@@ -117,7 +105,7 @@
         #artcontainer{
             display: flex;
             flex-direction: column;
-            
+             margin-bottom:300px;
             width:50vw;
         }
        
@@ -134,11 +122,12 @@
             flex: 1;
             padding: 0 20px 0 0;
             border-right: 1px solid black;
+            height:1000px;
         }
 
-          #sec2 nav ul{
+        #sec2 nav ul{
             position: relative;
-            top: 14%;
+            top: 25%;
             
         }
         #sec2 nav li {
@@ -227,6 +216,12 @@
           font-weight: 600;
           border-radius: 5px;
         }
+        .h2{
+        width:60%;
+       text-align:center;
+       font-size:30px;
+        margin-bottom:4rem;
+        }
     </style>
 </head>
 
@@ -239,12 +234,8 @@
 
         <main>
             <div id="main-container">
-                <article class="art1">
-        
-                </article>
-                <article class="art2">
-                    <h2>문의 하기</h2>
-                </article>
+               
+               
                 <section id="sec2">
                     <nav>
                         <ul>
@@ -259,6 +250,7 @@
                     </nav>
                     
                     <article id="art3">
+                    <h2 style="text-decoration: underline" class="h2">문의하기</h2>
                        <div>
                         <p>문의 사항이 있으신 경우 <br> 
                          
@@ -267,7 +259,7 @@
                           감사합니다.</p>
                        </div>
                        <br>
-                       <h2>이메일 문의</h2><br>
+                       <h3>이메일 문의</h3><br>
                        <p style="margin-bottom: 5px;">문의 내용</p>
                        <form action="${pageContext.request.contextPath}/mailing">
                        <select name="qacategory" id="qacategory">
@@ -281,7 +273,7 @@
                        <input type="text" name="senderName" id="senderName" placeholder="* 이름">
                        <input type="email" name="senderMail" id="senderMail" placeholder="* 이메일 주소">
                        <input type="text" name="title" id="title" placeholder="* 문의 제목"><br>
-                       <textarea rows="15" cols="101" name="content" id="content"></textarea>
+                       <textarea rows="15" cols="91" name="content" id="content"></textarea>
                        <p>※ 개인정보보호를 위해 내용 입력란에 개인정보가 포함되지 않도록 주의해주세요.</p>
                        <p>개인정보 수집 및 이용에 대한 동의 (필수)
                         회사는 본 웹사이트를 통한 상담 서비스 제공을 위하여 아래와 같은 개인정보를 수집하고 있습니다. <br><br>
