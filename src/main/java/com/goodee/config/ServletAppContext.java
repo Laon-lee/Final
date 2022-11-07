@@ -134,8 +134,8 @@ public class ServletAppContext implements WebMvcConfigurer{
 	      javaMailSender.setHost("smtp.naver.com");
 	      javaMailSender.setPort(587);
 	      javaMailSender.setProtocol("smtp");
-	      javaMailSender.setUsername("dkfcks0404@naver.com");
-	      javaMailSender.setPassword("dlfkdhs1!!");
+	      javaMailSender.setUsername("spdlwhdwls@naver.com");
+	      javaMailSender.setPassword("QWKMF9U9H4CG");
 	      Properties mailProperties = new Properties();
 	      mailProperties.put("mail.debug", "true");
 	      mailProperties.put("mail.smtp.auth", "true");
