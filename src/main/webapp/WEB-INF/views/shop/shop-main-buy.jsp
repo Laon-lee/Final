@@ -369,11 +369,11 @@ font {
 						</p>
 						<p id="p-line1">MADE IN KOREA</p>
 						<select id="size-opt">
-							<option value="사이즈선택">사이즈를 선택해주세요</option>
-							<option value="사이즈선택">----------------------------------------</option>
-							<option value="small">small</option>
-							<option value="medium">medium</option>
-							<option value="large">large</option>
+							<option value="옵션선택">옵션을 선택해주세요</option>
+							<option value="옵션선택">----------------------------------------</option>
+							<c:forEach var="item" items="${option}">
+								<option value="${item.option}">${item.option}</option>
+							</c:forEach>
 						</select>&nbsp; <input type="text" id="total" value="1">개 &nbsp;
 						<button type="button" id="plus-btn">+</button>
 						<button type="button" id="minus-btn">-</button>
@@ -419,7 +419,11 @@ font {
 					document.getElementById("main2-btn1").addEventListener("click",function(){
 						let option = document.getElementById("size-opt").value;
 						let count = document.getElementById("total").value;
-						location.href = "${pageContext.request.contextPath}/shop/pay/"+${list.productId}+"?option="+option+"&count="+count;
+						if(option=="옵션선택"){
+							alert("옵션을 선택해주세요");
+						}else{
+							location.href = "${pageContext.request.contextPath}/shop/pay/"+${list.productId}+"?option="+option+"&count="+count;
+						}
 					});
 					
 					document.getElementById("main2-btn2").addEventListener("click",function(e){

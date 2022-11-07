@@ -53,6 +53,7 @@ public class ShopService {
 		
 		model.addAttribute("qna", dao.getQna(id));
 		model.addAttribute("reviews", dao.getReview(id));
+		model.addAttribute("option", dao.getOptionById(id));
 		model.addAttribute("list", dao.getListById(id));
 	}
 	public void getListByIdS(String id, Model model,HttpSession session) {

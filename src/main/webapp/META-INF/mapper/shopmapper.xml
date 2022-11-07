@@ -19,6 +19,9 @@
 	<select id="getListById" resultType="ShopVO" parameterType="String">
 		select * from product where product_id=#{productId};
 	</select>
+	<select id="getOptionById" resultType="productoptionVO" parameterType="String">
+		select * from product_option where product_id=#{productId};
+	</select>
 	<select id="getListById2" resultType="ShopVO" parameterType="int">
 		select * from product where product_id=#{productId};
 	</select>

@@ -37,7 +37,7 @@
         </li>
       </ul>
       <ul id="social">
-        <li><a href="#"><img src="https://i.ibb.co/LrVMXNR/social-fb.png" alt=""></a></li>
-        <li><a href="#"><img src="https://i.ibb.co/vJvbLwm/social-twitter.png" alt=""></a></li>
-        <li><a href="#"><img src="https://i.ibb.co/b30HMhR/social-linkedin.png" alt=""></a></li>
+        <li><a href="https://www.facebook.com" target='_blank'><img src="https://i.ibb.co/LrVMXNR/social-fb.png" alt=""></a></li>
+        <li><a href="https://twitter.com/?lang=ko" target='_blank'><img src="https://i.ibb.co/vJvbLwm/social-twitter.png" alt=""></a></li>
+        <li><a href="https://kr.linkedin.com" target='_blank'><img src="https://i.ibb.co/b30HMhR/social-linkedin.png" alt=""></a></li>
       </ul>

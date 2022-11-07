@@ -10,6 +10,7 @@ import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderVO;
 import com.goodee.vo.OrderdetailVO;
 import com.goodee.vo.OrderjoinVO;
+import com.goodee.vo.ProductOptionVO;
 import com.goodee.vo.ProductboardVO;
 import com.goodee.vo.ShopVO;
 import com.goodee.vo.WishVO;
@@ -25,6 +26,7 @@ public interface ShopDAO {
 	
 	
 	public ShopVO getListById(@Param("productId") String id);
+	public List<ProductOptionVO> getOptionById(String id);
 	
 	public ShopVO getListById2(@Param("productId") int id);
 	
@@ -57,6 +59,8 @@ public interface ShopDAO {
 	public void deleteWishAll(@Param("checks") String[] checks);
 	
 	public List<WishjoinVO> ordersInfo(@Param("checks") String[] checks);
+
+	
 	
 	
 	
