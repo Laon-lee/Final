@@ -277,7 +277,7 @@ html {
 						</ul>
 					</nav>
 					<article id="art2">
-						<c:if test="${fn:length(wish) > 0}">
+						
 						<div id="item-list">
 							<div class="user-info"></div>
 							<h2 style="text-decoration: underline" class="h2"> 장바구니</h2>
@@ -326,6 +326,11 @@ html {
 										<button class="deletewish">삭제</button></td>
 									</tr>
 								</c:forEach>
+								<c:if test="${fn:length(wish) == 0}">
+									<tr>
+										<td colspan="9" style="height:50px;">비어 있음</td>
+									</tr>
+								</c:if>
 								<script>
                   			function selectAll(selectAll)  {
                   		  		const checkboxes = document.getElementsByName('productIds');
@@ -391,43 +396,39 @@ html {
                     	
                     </script>
 							</table>
-							<div id="item-listbtns">
-								<button id="total-order">선택상품주문</button>
-								<button id="total-delete">선택상품삭제</button>
-							</div>
+							
+							<c:if test="${fn:length(wish) > 0}">
+								<div id="item-listbtns">
+									<button id="total-order">선택상품주문</button>
+									<button id="total-delete">선택상품삭제</button>
+								</div>
+							</c:if>
 							<script>
                 	
                 	
-                	
-					document.getElementById("total-order").addEventListener("click",function(){
-						let checkvals = []
-	                	cbox = document.querySelectorAll("input[name='productIds']:checked")
-	                	for(let i = 0 ; i< cbox.length ; i++){
-	                		checkvals.push(cbox[i].value)
-	                	}
-						location.href = "${pageContext.request.contextPath}/orders?checks="+checkvals;
-					});
-					document.getElementById("total-delete").addEventListener("click",function(){
-						let checkvals = []
-	                	cbox = document.querySelectorAll("input[name='productIds']:checked")
-	                	for(let i = 0 ; i< cbox.length ; i++){
-	                		checkvals.push(cbox[i].value)
-	                	}
-						if(confirm('선택하신 상품들을 장바구니에서 삭제하시겠습니까?')){
-							location.href = "${pageContext.request.contextPath}/deleteWishAll?checks="+checkvals;
-						}				
-					});
-					
+                	if(document.getElementById("total-order")){
+						document.getElementById("total-order").addEventListener("click",function(){
+							let checkvals = []
+	                		box = document.querySelectorAll("input[name='productIds']:checked")
+	                		for(let i = 0 ; i< cbox.length ; i++){
+	                			checkvals.push(cbox[i].value)
+	                		}
+							location.href = "${pageContext.request.contextPath}/orders?checks="+checkvals;
+						});
+						document.getElementById("total-delete").addEventListener("click",function(){
+							let checkvals = []
+	                		cbox = document.querySelectorAll("input[name='productIds']:checked")
+	                		for(let i = 0 ; i< cbox.length ; i++){
+	                			checkvals.push(cbox[i].value)
+	                		}
+							if(confirm('선택하신 상품들을 장바구니에서 삭제하시겠습니까?')){
+								location.href = "${pageContext.request.contextPath}/deleteWishAll?checks="+checkvals;
+							}				
+						});
+                	}
                 </script>
 						</div>
-						</c:if>
-						<c:if test="${fn:length(wish) == 0}">
-							<div>
-								<h1 style="font-size: 40px;">이런!</h1>
-								<h2>장바구니에 담긴 상품이 없습니다.</h2><br>
-								<h3><a href="${pageContext.request.contextPath}/goshop"  style="color: red; text-align:center">쇼핑하러가기 <br>Go →</a></h3>
-							</div>
-						</c:if>
+						
 					</article>
 					
 				</section>
