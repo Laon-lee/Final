@@ -29,9 +29,11 @@ public class ShopService {
 		this.dao = dao;
 		this.mbdao = mbdao;
 	}
-	public void getProductList(Model model) {
-		model.addAttribute("list", dao.getProductList());
-	}
+
+	/*
+	 * public void getProductList(Model model) { model.addAttribute("list",
+	 * dao.getProductList()); }
+	 */
 	public void getCateList(String category, Model model) {
 		
 		
@@ -140,7 +142,17 @@ public class ShopService {
 		dataMap.put("total", dao.getPdListCnt(inParam));		
 		return dataMap;
 	}
-	
+	public Map<String,Object> getWlList(Map<String,Object> inParam) {
+		Map<String,Object> dataMap=new HashMap<String,Object>();
+		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+
+		inParam.put("stPage", (Integer.parseInt(inParam.get("page").toString())-1)*Integer.parseInt(inParam.get("pageCount").toString()));
+		list = dao.getWlList(inParam);
+		
+		dataMap.put("list", list);
+		dataMap.put("total", dao.getPdListCnt(inParam));		
+		return dataMap;
+	}
 	public void orders(String[] checks, Model model, HttpSession session) {
 		MemberVO vo1 = (MemberVO)session.getAttribute("user");
 		MemberVO vo2 = mbdao.getmemberinfo(vo1);

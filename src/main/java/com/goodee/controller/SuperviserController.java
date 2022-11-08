@@ -46,7 +46,7 @@ public class SuperviserController {
 	
 	@GetMapping("viser/main")
 	public String viserMain(Model model) {
-		spservice.getProductList(model);
+		/* spservice.getProductList(model); */
 		return"superviser/viser-main";
 	}
 	
