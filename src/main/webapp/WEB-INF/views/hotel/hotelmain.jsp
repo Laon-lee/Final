@@ -71,7 +71,7 @@ section {
 	margin: 10px auto;
 }
 
-#img1 {
+#img0 {
 	grid-area: img1;
 	background-color: red;
 }
@@ -80,32 +80,32 @@ img {
 	size: inherit;
 }
 
-#img2 {
+#img1 {
 	grid-area: img2;
 	background-color: yellow;
 }
 
-#img3 {
+#img2 {
 	grid-area: img3;
 	background-color: green;
 }
 
-#img4 {
+#img3 {
 	grid-area: img4;
 	background-color: blue;
 }
 
-#img5 {
+#img4 {
 	grid-area: img5;
 	background-color: purple;
 }
 
-#img1, #img2, #img3, #img4, #img5 {
+#img1, #img2, #img3, #img4, #img0 {
 	width: 100%;
 	height: 100%;
 }
 
-#img1>button {
+#img0>button {
 	width: 100%;
 	height: 100%;
 	border: none;
@@ -517,40 +517,34 @@ img {
                   }); */
                 </script>
 				<div id="hotel_img">
-					<div id="img1">
-						<a href="#" class="link"><img
-							src="image/hotel/dog1.jpg" alt="" class="aimg"></a>
-					</div>
-					<div id="img2">
-						<a href="#" class="link"><img
-							src="image/hotel/dog2.jpg" alt="" class="aimg"></a>
-					</div>
-					<div id="img3">
-						<a href="#" class="link"><img
-							src="image/hotel/dog4.jpg" alt="" class="aimg"></a>
-					</div>
-					<div id="img4">
-						<a href="#" class="link"><img
-							src="image/hotel/dog5.jpg" alt="" class="aimg"></a>
-					</div>
-					<div id="img5">
-						<a href="#" class="link"><img
-							src="image/hotel/dog3.jpg" alt="" class="aimg"></a>
-					</div>
-				</div>
-				<script type="text/javascript">
-					const min = 1;
-					const max = 45;
-					
-					/*document.getElementsByClassName("link").addEventListener("click",function(){
-						location.href = "${pageContext.request.contextPath}/maindetail/"+random;
-					})*/
-					$(".link").click(function(){
-						let random = Math.floor(Math.random()*(max-min)+min);
-						console.log(random);
-						location.href = "${pageContext.request.contextPath}/maindetail/"+random;
-					})
-				</script>
+                <c:forEach var="item" items="${ranhotel}" varStatus="status">
+                	
+                	<div id="img${status.index}">
+						<a href="#" class="link" id=${item.hotelId }><img
+							src="${item.hotelThum}" alt="" class="aimg"></a>
+					</div>	
+                
+                </c:forEach>
+				    </div>
+				    <script type="text/javascript">
+				    window.addEventListener('DOMContentLoaded', function(){
+				    	let now = new Date();
+						let tom = new Date();
+						
+						tom.setDate(tom.getDate()+1);
+				    	
+				    	let today =  now.getFullYear() + "-" + ((now.getMonth() + 1) > 9 ? (now.getMonth() + 1).toString() : "0" + (now.getMonth() + 1)) + "-" + (now.getDate() > 9 ? now.getDate().toString() : "0" + now.getDate().toString());
+	                    let tommorow = tom.getFullYear() + "-" + ((tom.getMonth() + 1) > 9 ? (tom.getMonth() + 1).toString() : "0" + (tom.getMonth() + 1)) + "-" + (tom.getDate() > 9 ? tom.getDate().toString() : "0" + tom.getDate().toString());
+	                    
+				    	
+				    	$(".link").click(function(){
+				    		var id = $(this).attr("id");
+				    		console.log(id);
+				    		$(this).attr("href","${pageContext.request.contextPath}/godetail/"+id+"/"+today+"/"+tommorow);
+				    	})
+				    	
+				    })
+				    </script>
 			</section>
 			
 		</main>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.lang.model.element.ModuleElement;
 import javax.servlet.http.HttpSession;
@@ -31,7 +32,12 @@ public class HotelService {
 		this.dao = dao;
 		this.mbdao = mbdao;
 	}
-
+	
+	public void ranHotelList(Model model, Set<Integer> set) {
+		model.addAttribute("ranhotel", dao.selectRanHotel(set));
+		System.out.println(dao.selectRanHotel(set).get(0).getHotelName());
+	}
+	
 	//main에서 list로 페이지 이동할때 지역구 값 받아서 호텔 리스트 불러오는 서비스
 	public void getHotelList(Model model, String[] cate, String startdate, String enddate) {
 		System.out.println(cate);

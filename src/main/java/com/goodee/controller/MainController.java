@@ -1,5 +1,8 @@
 package com.goodee.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -82,7 +85,18 @@ public class MainController {
 	
 	// 호텔
 	@GetMapping("gohotel")
-	public String gohotel() {
+	public String gohotel(Model model) {
+		Set<Integer> set = new HashSet<>();
+		
+		while(set.size()<5) {
+			Double ran = Math.random()*45+1;
+			set.add(ran.intValue());
+		}
+		
+		System.out.println("set"+set);
+		
+		htservice.ranHotelList(model, set);
+		
 		return "hotel/hotelmain";
 	}
 	// 장바구니

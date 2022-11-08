@@ -2,6 +2,7 @@ package com.goodee.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,6 +19,8 @@ import com.goodee.vo.MemberVO;
 
 @Mapper
 public interface HotelDAO {
+	public List<HotelVO> selectRanHotel(@Param("ran")Set<Integer> set);
+	
 	public List<HotelVO> selectHotelList(@Param("list") String[] cate);
 	public List<HotelRoomVO> selectroom(@Param("hotelid") List<Integer> idlist);
 	
