@@ -128,4 +128,10 @@ public class MainController {
 		nrservice.search(category, search, model);
 		return "main/search";
 	}
+	
+	//id찾기
+	@GetMapping("findidpw")
+	public String findidpw() {
+		return "main/findid";
+	}
 }
