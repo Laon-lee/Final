@@ -1,5 +1,4 @@
-
-	 header {
+	header {
       z-index: 100;
       background-color: #edede9; 
       display: flex;
@@ -16,7 +15,7 @@
     }
 	#mainA1{
 	  min-width:145px;
-    font-family: 'Zilla Slab', serif;
+      font-family: 'Zilla Slab', serif;
     }
     #nav1 {
       padding-top: 35px;
@@ -92,12 +91,7 @@
     #nav2-li-1stli:hover div{
       display: flex;
     }
-    #nav2-li-2ndli:hover div{
-      display: flex;
-    }
-    #nav2-li-3rdli:hover div{
-      display: flex;
-    }
+    
     #nav2-li-4thli:hover div{
       display: flex;
     }
@@ -138,40 +132,11 @@
     	height: 84px;
    	 	font-size: 25px;
     }	
-    #nav2-li-2nddiv{
-      margin:20px 0 20px 0;
-      padding:50px;
-      display: none;
-      position: absolute;
-      top:4%;
-      right: 0px;
-      width: 20vw;
-      height: 40vh;
-      flex-direction: column;
-      z-index: 1;
-      justify-content: center;
-      align-items: center;
-      background-color:#edede9; 
-    }
-    #nav2-li-3rddiv{
-      margin:20px 0 20px 0;
-      padding:50px;
-      display: none;
-      position: absolute;
-      top:4%;
-      right: 0px;
-      width: 20vw;
-      height: 40vh;
-      flex-direction: column;
-      z-index: 1;
-      justify-content: center;
-      align-items: center;
-      background-color:#edede9; 
-    }
+   
 
     #nav2-li-4thdiv{
       margin:20px 0 20px 0;
-      padding:50px;
+      padding:50px 0 50px 50px;
       display: none;
       position: absolute;
       top:4%;

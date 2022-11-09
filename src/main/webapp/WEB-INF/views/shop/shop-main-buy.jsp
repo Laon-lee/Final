@@ -480,7 +480,7 @@ font {
 						<div> <img src="${list.productContent}"></div>
 					</div>
 					<div style="display: none;">
-						<div id="prdInfo"">
+						<div id="prdInfo">
 							<h3>상세 결제 정보</h3>
 							<p>고액 결제의 경구 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다</p>
 							<p>확인과정에서 도난 카드의 사용이나 타인 명의의 주문등 정상적인 주문이 아니라고 판단될 경우 임의로 주문을
