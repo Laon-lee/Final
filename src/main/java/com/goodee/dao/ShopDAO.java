@@ -62,9 +62,13 @@ public interface ShopDAO {
 	
 	public List<Map<String, Object>> getWlList(Map<String,Object> inParam);
 	
+	public List<Map<String, Object>> getOdList(Map<String,Object> inParam);
+	
 	public int getPdListCnt(Map<String,Object> inParam);
 	
 	public int getWlListCnt(Map<String,Object> inParam);
+	
+	public int getOdListCnt(Map<String,Object> inParam);
 	
 	public void updatePoint(MemberVO vo);
 	

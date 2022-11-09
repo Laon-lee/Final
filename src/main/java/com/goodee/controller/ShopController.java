@@ -165,6 +165,22 @@ public class ShopController {
 		return map;
 	}
 	
+	@PostMapping("getOdList")
+	@ResponseBody
+	public Map<String,Object> getOdList(@RequestBody String inParam) {
+		JSONParser parser = new JSONParser();
+		Map<String,Object> map=new HashMap<String,Object>();
+		try {
+			JSONObject jsonObject = (JSONObject) parser.parse(inParam);
+			map=spservice.getOdList(jsonObject);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return map;
+	}
+	
 	@GetMapping("orders")
 	public String orders(@RequestParam String[] checks,Model model,HttpSession session) {
 		spservice.orders(checks, model ,session);

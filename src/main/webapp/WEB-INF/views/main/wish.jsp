@@ -13,6 +13,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://kit.fontawesome.com/4b992414b9.js"
 	crossorigin="anonymous"></script>
+	<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -247,6 +249,7 @@ html {
 	margin-top:30px;
 	font-size:30px;
 }
+
 </style>
 </head>
 
@@ -288,7 +291,7 @@ html {
 							</table>
 
 							<table id="item-list-table">
-								<tr>
+								<tr id="first-tr">
 									<td><input type="checkbox" name="productIds"
 										onclick="selectAll(this)"></td>
 									<td>이미지</td>
@@ -300,8 +303,8 @@ html {
 									<td>합계</td>
 									<td>선택</td>
 								</tr>
-							
-								<c:forEach var="item" items="${item}" varStatus="status">
+								<tbody id="tbody"></tbody>
+								<%-- <c:forEach var="item" items="${item}" varStatus="status">
 									
 									<tr>
 										<td><input type="checkbox" name="productIds"
@@ -327,8 +330,9 @@ html {
 										<button class="deletewish">삭제</button></td>
 									</tr>
 									
-								</c:forEach>
-									
+								</c:forEach> --%>
+								
+							
 								<c:if test="${fn:length(wish) == 0}">
 									<tr>
 										<td colspan="9" style="height:50px;">비어 있음</td>
@@ -372,33 +376,7 @@ html {
 								</tr>
 
 
-								<script>
-                    	let totalprice = document.getElementsByClassName("total-price");
-                    	let proprice = document.getElementsByClassName("product-price");
-                    	let count = document.getElementsByClassName("product-count");
-                    	let point = document.getElementsByClassName("point");
-                    	let result = 0;
-                    	
-                    	for(let i = 0; i< totalprice.length; i++){
-                    		let a = stringNumberToInt(proprice[i].innerText)*Number(count[i].innerText);
-                    		
-                    		totalprice[i].innerText = priceToString(a);
-                    		point[i].innerText = priceToString(a/100);
-                    		result = result+a;
-                    	}
-                    	document.getElementById("allprice").innerText = priceToString(result);
-                    	
-                    	
-                    	/* 1000단위 ,찍혀있는 문자를 숫자로*/
-                    	function stringNumberToInt(stringNumber){
-                    	    return parseInt(stringNumber.replace(/,/g , ''));
-                    	}
-                    	/* 숫자를 1000단위 ,찍혀있는 문자로*/
-                    	function priceToString(price) {
-                    	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                    	}
-                    	
-                    </script>
+								
 							</table>
 							
 							<c:if test="${fn:length(wish) > 0}">
@@ -407,13 +385,15 @@ html {
 									<button id="total-delete">선택상품삭제</button>
 								</div>
 							</c:if>
+							<div id="pageBtn">
+							</div>
 							<script>
                 	
                 	
                 	if(document.getElementById("total-order")){
 						document.getElementById("total-order").addEventListener("click",function(){
 							let checkvals = []
-	                		box = document.querySelectorAll("input[name='productIds']:checked")
+	                		cbox = document.querySelectorAll("input[name='productIds']:checked")
 	                		for(let i = 0 ; i< cbox.length ; i++){
 	                			checkvals.push(cbox[i].value)
 	                		}
@@ -438,44 +418,60 @@ html {
 				</section>
 			</div>
 		</main>
-
+			
+			
 
 		<footer>
 			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
+		
+			
 	</div>
 	<script>
-			var pageCount=12;
+			var pageCount=8;
 			getCateList(1);
 
 			function getCateList(page){
-			/* 	$('#productList').empty();
-				$('#pageBtn').empty(); */
+			$('#tbody').empty();
+				$('#pageBtn').empty(); 
 				
-				var category = document.getElementById("IdValue").value;
+				var id = document.getElementById("IdValue").value;
 				
 				fetch("${pageContext.request.contextPath}/getWlList", { 
 					method: "POST",
  				  	headers: {
  				    	"Content-Type": "application/json"
  				  	},
- 				  	body:JSON.stringify({"id":category, "page":page, "pageCount":pageCount})
+ 				  	body:JSON.stringify({"id":id, "page":page, "pageCount":pageCount})
  				}).then((response) => response.json())
  				.then((data) => {
 					console.log(data);
 	
-				/* 	var productListDiv=$("#productList"); */
+				var productListDiv= $("#tbody");
 					
 					for(dict of data.list){
-						console.log('${pageContext.request.contextPath}');
-						productListDiv.append('<div class="list">'
-								+'<a href="'+'${pageContext.request.contextPath}'+'/shop/main/buy/'+dict.product_id+'">'
-								+'<img src="'+dict.product_image+'" alt="">'
-								+'<p>'+dict.product_name+'</p>'
-								+'<h3>'
-								+dict.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'
-								+'</h3></a>'
-						+'</div>');
+						
+					
+					productListDiv.append(
+							"<tr>"
+					+"<td><input type='checkbox' class='cbox' name='productIds' value='"+dict.wish_id+"'>"
+					+"<input class='wishnum' type='hidden' value='"+ dict.wish_id+"'>"
+					+"<input class='productId' type='hidden' value='"+dict.product_id +"'></td>"
+					+"<td><img src='"+dict.product_image+"'></td>"
+					+"<td class='td3'><h4 id='pro-name'>"+dict.product_name+"</h4>"
+						+"<p><&nbsp;"+dict.product_shop+"&nbsp;></p>"
+						+"<h5>"
+							+"[옵션 : <span class='options'>"+dict.option+"</span>]"
+						+"</h5></td>"
+					+"<td><span class='product-price'>"+dict.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"</span>원</td>"
+					+"<td><span class='product-count'>"+dict.count+"</span>개</td>"
+					+"<td><span class='point'>"+(dict.product_price/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"</span>p</td>"
+					+"<td>기본배송</td>"
+					+"<td class='price'><span class='total-price'>"+(dict.product_price*dict.count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"</span>원</td>"
+					+"<td><button class='orderbtns'>주문하기</button>"
+						+"<br>"
+					+"<button class='deletewish'>삭제</button></td>"
+					+"</tr>")
 					}
 					
 					
@@ -551,6 +547,34 @@ html {
  				});
 			}
 		</script>
+		<script>
+                    	let totalprice = document.getElementsByClassName("total-price");
+                    	let proprice = document.getElementsByClassName("product-price");
+                    	let count = document.getElementsByClassName("product-count");
+                    	let point = document.getElementsByClassName("point");
+                    	let result = 0;
+                    	
+                    	for(let i = 0; i< totalprice.length; i++){
+                    		let a = stringNumberToInt(proprice[i].innerText)*Number(count[i].innerText);
+                    		
+                    		totalprice[i].innerText = priceToString(a);
+                    		point[i].innerText = priceToString(a/100);
+                    		result = result+a;
+                    	}
+                    	document.getElementById("allprice").innerText = priceToString(result);
+                    	
+                    	
+                    	/* 1000단위 ,찍혀있는 문자를 숫자로*/
+                    	function stringNumberToInt(stringNumber){
+                    	    return parseInt(stringNumber.replace(/,/g , ''));
+                    	}
+                    	/* 숫자를 1000단위 ,찍혀있는 문자로*/
+                    	function priceToString(price) {
+                    	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    	}
+                    	
+                    </script>
+		
 </body>
 
 </html>

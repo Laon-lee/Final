@@ -159,7 +159,18 @@ public class ShopService {
 		list = dao.getWlList(inParam);
 		
 		dataMap.put("list", list);
-		dataMap.put("total", dao.getPdListCnt(inParam));		
+		dataMap.put("total", dao.getWlListCnt(inParam));		
+		return dataMap;
+	}
+	public Map<String,Object> getOdList(Map<String,Object> inParam) {
+		Map<String,Object> dataMap=new HashMap<String,Object>();
+		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+
+		inParam.put("stPage", (Integer.parseInt(inParam.get("page").toString())-1)*Integer.parseInt(inParam.get("pageCount").toString()));
+		list = dao.getOdList(inParam);
+		
+		dataMap.put("list", list);
+		dataMap.put("total", dao.getOdListCnt(inParam));		
 		return dataMap;
 	}
 	public void orders(String[] checks, Model model, HttpSession session) {
