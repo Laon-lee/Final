@@ -541,7 +541,7 @@ font {
 						<div id="prdReview">
 							<div class="board">
 								<h3>REVIEW</h3>
-								<p>상품의 사용후기를 적어주세요</p>
+								<p id ="board-p">상품의 사용후기를 적어주세요</p>
 								<c:if test="${reviews==null}">
 									<div class="board-box">
 										<p class="nodata">게시물이 없습니다.</p>
@@ -660,7 +660,7 @@ font {
 										  body: JSON.stringify({proboardContent,productId, proboardTitle,memId,proboardDate})
 										}).then((response) => response.json())
 										.then((data) => {
-											let box = document.getElementById("write-box");
+											let box = document.getElementById("board-p");
 											let div = document.createElement("div");
 											let p = document.createElement("p");
 											let p1 = document.createElement("p");
@@ -679,7 +679,7 @@ font {
 											p1.innerText= proboardContent;
 											div.append(p);
 											div.append(p1);
-											box.before(div);
+											box.after(div);
 											
 											document.getElementById("writebox-content").value="";
 											
@@ -696,7 +696,7 @@ font {
 
 						<div class="board">
 							<h3>Q&A</h3>
-							<p>상품에 대해 궁금한 점을 해결해 드립니다.</p>
+							<p id="board-p2">상품에 대해 궁금한 점을 해결해 드립니다.</p>
 							<c:if test="${qna==null}">
 								<div class="board-box">
 									<p class="nodata">게시물이 없습니다.</p>
@@ -820,7 +820,7 @@ font {
 								  body: JSON.stringify({proboardContent,productId, proboardTitle,memId,proboardDate})
 								}).then((response) => response.json())
 								.then((data) => {
-									let box = document.getElementById("write-box2");
+									let box = document.getElementById("board-p2");
 									let div = document.createElement("div");
 									let p = document.createElement("p");
 									let p1 = document.createElement("p");
@@ -842,7 +842,7 @@ font {
 									div.append(p);
 									div.append(p1);
 									div.append(p2);
-									box.before(div);
+									box.after(div);
 									
 									document.getElementById("writebox-content2").value="";
 									document.getElementById("writebox-title2").value="";

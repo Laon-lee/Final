@@ -723,7 +723,7 @@
                                     			div.append(p2);
                                     			div.append(hr);
                                     			const container = document.getElementById("qna-container");
-                                    			container.append(div);
+                                    			container.prepend(div);
             									let sp = document.getElementById("qna-count").innerText;
             									document.getElementById("qna-count").innerText= Number(sp)+1;
             									document.getElementById("writecontent-qna").value="";
@@ -987,55 +987,7 @@
 										}
 							</script>		
                         </div>
-                        
                     </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <%-- <div class="price">
-                        <div class="p_box">
-                            <p>${room.roomName}</p>
-                            <fmt:parseDate value="${startdate}" var="start" pattern="yyyy-MM-dd"/>
-							<fmt:parseNumber value="${start.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
-							<fmt:parseDate value="${enddate }" var="end" pattern="yyyy-MM-dd"/>
-							<fmt:parseNumber value="${end.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
-                            
-                            
-                            <h1><fmt:formatNumber value="${room.roomPrice * (endDate - strDate)}"/>KRW</h1>
-                            <p>${startdate} ~ ${enddate} <br>
-                            <span>${endDate - strDate} 박</span>
-                            
-                            		<c:if test="${(endDate - strDate)==0}"><span>당일 이용 예약</span></c:if>
-                            		<c:if test="${(endDate - strDate)!=0}"><span>${endDate - strDate} 박</span></c:if>
-                             </p>
-                            
-                            <p>세금</p>
-                            <p><fmt:parseNumber var="price" integerOnly="true" value="${room.roomPrice * (endDate - strDate) * 0.1}"/>
-                            <fmt:formatNumber  value="${price}"/>KRW
-                            </p>
-                        </div>
-                        <div class="total">
-                            <p>+세금(10%)</p>
-                            <h1>총 예약금액 <fmt:formatNumber value="${room.roomPrice * (endDate - strDate)  + price }" pattern="#,#00" />KRW</h1>
-                            <button id="reservebtn">회원예약</button>
-                        </div>
-                        
-                        <script type="text/javascript">
-                        	document.getElementById("reservebtn").addEventListener("click",function(){
-                        		location.href = "${pageContext.request.contextPath}/goreserve"
-                        		
-                        	})
-                        </script>
-                    </div>
-                </div> --%>
 				</div>
             </section>
         </main>

@@ -94,23 +94,23 @@
 	</select>
 	
 	<select id="getHotelReview" resultType="hotelreviewVO">
-		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 limit 0, 5
+		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 order by hotelreview_date desc limit 0, 5
 	</select>
 	<select id="getHotelReviewCount" resultType="int">
 		select count(*) from hotelreview where hotel_id = #{hotelId} and is_delete = 0
 	</select>
 	<select id="getMoreHotelReview" resultType="hotelreviewVO">
-		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 limit #{page}, 5;
+		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 order by hotelreview_date desc limit #{page}, 5;
 	</select>
 	
 	<select id="getHotelQna" resultType="hotelqnaVO">
-		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 limit 0, 5;
+		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 order by hotelqna_date desc limit 0, 5;
 	</select>
 	<select id="getHotelQnaCount" resultType="int">
 		select count(*) from hotelqna where hotel_id = #{hotelId} and is_delete = 0
 	</select>
 	<select id="getMoreHotelQna" resultType="hotelqnaVO">
-		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 limit #{page}, 5;
+		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 order by hotelqna_date desc limit #{page}, 5;
 	</select>
 	
 	<insert id="insertHotelQna" parameterType="hotelqnaVO">

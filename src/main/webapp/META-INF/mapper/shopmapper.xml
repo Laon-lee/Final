@@ -28,24 +28,24 @@
 		select * from product where product_id=#{productId};
 	</select>
 	<select id="getQna" resultType="productboardVO" parameterType="String">
-		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 limit 0, 5;
+		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 order by proboard_date desc  limit 0, 5;
 	</select>
 	
 	<select id="getQnaCount" resultType="int" parameterType="String">
 		select count(*) from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0;
 	</select>
 	<select id="getQnaMore" resultType="productboardVO">
-		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 limit #{page}, 5;
+		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 order by proboard_date desc limit #{page}, 5;
 	</select>
 	
 	<select id="getReview" resultType="productboardVO" parameterType="String">
-		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0 limit 0, 5;
+		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0 order by proboard_date desc limit 0, 5;
 	</select>
 	<select id="getReviewCount" resultType="int" parameterType="String">
 		select count(*) from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0;
 	</select>
 	<select id="getReviewMore" resultType="productboardVO">
-		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0 limit #{page}, 5;
+		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0 order by proboard_date desc limit #{page}, 5;
 	</select>
 	<insert id="insertBoard" parameterType="productboardVO">
 		insert into productboard (product_id, proboard_title, proboard_content, mem_id, proboard_category, proboard_date) 
