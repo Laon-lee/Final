@@ -1,6 +1,7 @@
 package com.goodee.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -77,7 +78,21 @@ public class ShopController {
 	public String ShopOrderinfo() {
 		return "shop/shop-orderinfo";
 	}
+	@PostMapping("getMoreReview")
+	@ResponseBody
+	public List<ProductboardVO> getMoreReview(@RequestBody Map<String, String> map) {
+		int page = Integer.parseInt(map.get("page"));
+		String id = map.get("id");
+		return spservice.getReviewMore(id, page);
+	}
 	
+	@PostMapping("getMoreQna")
+	@ResponseBody
+	public List<ProductboardVO> getMoreQna(@RequestBody Map<String, String> map) {
+		int page = Integer.parseInt(map.get("page"));
+		String id = map.get("id");
+		return spservice.getQnaMore(id, page);
+	}
 	
 	@PostMapping("insertreview")
 	@ResponseBody

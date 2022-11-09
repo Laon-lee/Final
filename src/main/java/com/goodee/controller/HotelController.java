@@ -2,6 +2,7 @@ package com.goodee.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +20,7 @@ import com.goodee.vo.HotelQnaVO;
 import com.goodee.vo.HotelResVO;
 import com.goodee.vo.HotelReviewVO;
 import com.goodee.vo.HotelRoomVO;
+import com.goodee.vo.ProductboardVO;
 
 @Controller
 public class HotelController {
@@ -109,11 +111,28 @@ public class HotelController {
 		public List<HotelQnaVO> getHotelQna(@RequestBody HotelQnaVO vo){
 	        return service.getHotelQna(vo);
 	    }
+		
 		@PostMapping("inserthotelqna")
 		@ResponseBody
 		public void insertHotelQna(@RequestBody HotelQnaVO vo){
 			service.insertHotelQna(vo);
 	    }
+		@PostMapping("getMoreHotelReview")
+		@ResponseBody
+		public List<HotelReviewVO> getMoreHotelReview(@RequestBody Map<String, String> map) {
+			int page = Integer.parseInt(map.get("page"));
+			String id = map.get("id");
+			return service.getMoreHotelReview(id, page);
+		}
+		
+		@PostMapping("getMoreHotelQna")
+		@ResponseBody
+		public List<HotelQnaVO> getMoreHotelQna(@RequestBody Map<String, String> map) {
+			int page = Integer.parseInt(map.get("page"));
+			String id = map.get("id");
+			return service.getMoreHotelQna(id, page);
+		}
+		
 		@PostMapping("getroominfo")
 		@ResponseBody
 		public HotelRoomVO getRoomInfo(@RequestBody HotelRoomVO vo){

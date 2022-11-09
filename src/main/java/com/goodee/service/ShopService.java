@@ -54,7 +54,9 @@ public class ShopService {
 	public void getListById(String id, Model model) {
 		
 		model.addAttribute("qna", dao.getQna(id));
+		model.addAttribute("qnacount", dao.getQnaCount(id));
 		model.addAttribute("reviews", dao.getReview(id));
+		model.addAttribute("reviewcount", dao.getReviewCount(id));
 		model.addAttribute("option", dao.getOptionById(id));
 		model.addAttribute("list", dao.getListById(id));
 	}
@@ -65,6 +67,13 @@ public class ShopService {
 		model.addAttribute("separateVO",mbdao.separate(vo2)); 
 		model.addAttribute("user", vo2);
 		model.addAttribute("list", dao.getListById(id));
+	}
+	
+	public List<ProductboardVO> getReviewMore(String id,int page) {
+		return dao.getReviewMore(id, page);
+	}
+	public List<ProductboardVO> getQnaMore(String id,int page) {
+		return dao.getQnaMore(id, page);
 	}
 	public void insertReview(ProductboardVO vo) {
 		vo.setProboardCategory("review");
