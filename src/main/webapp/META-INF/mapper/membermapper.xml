@@ -34,16 +34,17 @@
 	mem_address = #{memAddress}, mem_detailaddress = #{memDetailaddress},mem_phone = #{memPhone} , mem_email = #{memEmail} where mem_id = #{memId}
 	</update>
 	
-	<select id="findid" resultType="memberVO">
+	<select id="findidmail" resultType="memberVO">
 		SELECT * FROM member 
-		<where>
-		<if test="memName != null"> 
-			and mem_name = #{memName}
-		</if> 
-		<if test="memEmail != null">
+			where  mem_name = #{memName} 
 			AND mem_email = #{memEmail};
-		</if>
-		</where>
+		
+	</select>
+	<select id="findidphone" resultType="memberVO">
+		SELECT * FROM member 
+			where  mem_name = #{memName} 
+			AND mem_phone = #{memPhone};
+		
 	</select>
 
 </mapper>
