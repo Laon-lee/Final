@@ -21,6 +21,10 @@
 	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css?11">
@@ -255,7 +259,7 @@
                 			<div id="meminfo-div2">
 								<label for="memName1" class="lb">예약자 *</label><input type="text" value="${user.memName}" id="memName1" class="memName" name="memName1"><br> 
 								<label for="memEmail" class="lb">이메일 *</label><input type="text" value="${separateVO.email1}" id="memEmail" name="memEmail">@<input type="text" id="memEmail2" value="${separateVO.email2}"><br>
- 
+ 								
 								<label for="memPhone" class="lb">휴대 전화
 								</label><form:select path="phone1" id="memPhone1" name="memPhone">
 											<form:option value="010">010</form:option>
@@ -266,6 +270,7 @@
 								<label for="resMsg" class="lb">기타 사항</label><br><textarea id="resMsg" cols="55" rows="5" placeholder="* 추가로 전달하시고 싶은 내용을 적어주세요"></textarea>	
 
 							</div>
+							
 							</form:form>
                 		</div>
                 		<div class="notice">
@@ -295,7 +300,7 @@
                         </div>
                         <div class="total">
                             <h1>총 예약금액 <br><span id="total-price"><fmt:formatNumber value="${((endDate - strDate)*hotel[0].roomPrice)*1.1}" pattern="#,###" /></span>KRW</h1><br>
-                            <button id="reservebtn">회원예약</button>
+                            <button onclick="requestPay()" id="reservebtn">회원예약</button>
                         </div>
                     </div>
                     
@@ -329,7 +334,7 @@
 						});
               		})
               		
-              		document.getElementById("reservebtn").addEventListener("click",function(){
+              		/* document.getElementById("reservebtn").addEventListener("click",function(){
               			let roomId = $("#room-info").val();
               			let memPhone = $("#memPhone1").val()+$("#memPhone2").val()+$("#memPhone3").val();
               			let memEmail = $("#memEmail").val()+'@'+$("#memEmail2").val();
@@ -342,8 +347,44 @@
               							+"&memEmail="+memEmail
               							+"&memName="+memName
               							+"&resMsg="+resMsg;
-              		});
+              		}); */
               	</script>
+              	 <script>
+var IMP = window.IMP; // 생략가능
+IMP.init('imp70736007'); // <-- 본인 가맹점 식별코드 삽입
+function requestPay() {
+  IMP.init('iamport'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+  IMP.request_pay({
+    pg: "inicis",
+    pay_method: "card",
+    merchant_uid : 'merchant_'+new Date().getTime(),
+    name : '${hotel[0].hotelName}',
+    amount : '100',
+    buyer_email : 'nu052308@naver.com',
+    buyer_name : 'good',
+    buyer_tel : '폰번',
+    buyer_addr : '주소',
+    buyer_postcode : '123-456'
+  }, function (rsp) { // callback
+      if (rsp.success) {
+    	   let roomId = $("#room-info").val();
+			let memPhone = $("#memPhone1").val()+$("#memPhone2").val()+$("#memPhone3").val();
+			let memEmail = $("#memEmail").val()+'@'+$("#memEmail2").val();
+			let memName = $("#memName1").val();
+			let resMsg = $("#resMsg").val();
+			console.log(resMsg);
+			location.href="${pageContext.request.contextPath}/myhotelres/${startdate}/${enddate}"
+							+"?roomId="+roomId
+							+"&memPhone="+memPhone
+							+"&memEmail="+memEmail
+							+"&memName="+memName
+							+"&resMsg="+resMsg; 
+      } else {
+    	  alert("결제에 실패하였습니다.");
+      }
+  });
+}
+</script> 
             </section>
         </main>
         <footer>

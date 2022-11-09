@@ -22,14 +22,30 @@
 	<select id="getOptionById" resultType="productoptionVO" parameterType="String">
 		select * from product_option where product_id=#{productId};
 	</select>
+	
+
 	<select id="getListById2" resultType="ShopVO" parameterType="int">
 		select * from product where product_id=#{productId};
 	</select>
 	<select id="getQna" resultType="productboardVO" parameterType="String">
-		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 ;
+		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 order by proboard_date desc  limit 0, 5;
 	</select>
+	
+	<select id="getQnaCount" resultType="int" parameterType="String">
+		select count(*) from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0;
+	</select>
+	<select id="getQnaMore" resultType="productboardVO">
+		select * from productboard where product_id=#{productId} and proboard_category="qna" and is_delete=0 order by proboard_date desc limit #{page}, 5;
+	</select>
+	
 	<select id="getReview" resultType="productboardVO" parameterType="String">
-		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0;
+		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0 order by proboard_date desc limit 0, 5;
+	</select>
+	<select id="getReviewCount" resultType="int" parameterType="String">
+		select count(*) from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0;
+	</select>
+	<select id="getReviewMore" resultType="productboardVO">
+		select * from productboard where product_id=#{productId} and proboard_category="review" and is_delete=0 order by proboard_date desc limit #{page}, 5;
 	</select>
 	<insert id="insertBoard" parameterType="productboardVO">
 		insert into productboard (product_id, proboard_title, proboard_content, mem_id, proboard_category, proboard_date) 
@@ -70,17 +86,28 @@
 		LIMIT #{stPage},#{pageCount}	
 	</select>
 	<select id="getWlList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
-		SELECT * FROM wishlist
-		where id = #{id} 
+		select * from wishlist As wl INNER JOIN product As pd ON wl.product_id = pd.product_id WHERE id = #{id}  
 		LIMIT #{stPage},#{pageCount}	
+		</select>
+	<select id="getOdList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		select * from ordertable as ot 
+		INNER JOIN detailorder as do ON ot.order_id= do.order_id 
+		INNER JOIN product ON product.product_id = do.product_id 
+		where id=#{id} LIMIT #{stPage},#{pageCount}
 	</select>
 	<select id="getPdListCnt" resultType="Integer" parameterType="java.util.HashMap">
 		SELECT COUNT(*) FROM PRODUCT
 		WHERE PRODUCT_CATEGORY =#{category} 		
 	</select>
 	<select id="getWlListCnt" resultType="Integer" parameterType="java.util.HashMap">
-		SELECT COUNT(*) FROM wishlist
+		SELECT COUNT(*) from wishlist As wl INNER JOIN product As pd ON wl.product_id = pd.product_id
 		WHERE id =#{id} 		
+	</select>
+	<select id="getOdListCnt" resultType="Integer" parameterType="java.util.HashMap">
+		select count(*) from ordertable as ot 
+		INNER JOIN detailorder as do ON ot.order_id= do.order_id 
+		INNER JOIN product ON product.product_id = do.product_id 
+		where id=#{id}
 	</select>
 	<delete id="deleteWishAll" parameterType="map" >
 		delete from wishlist where wish_id in

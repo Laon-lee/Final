@@ -1,6 +1,7 @@
 package com.goodee.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -77,7 +78,21 @@ public class ShopController {
 	public String ShopOrderinfo() {
 		return "shop/shop-orderinfo";
 	}
+	@PostMapping("getMoreReview")
+	@ResponseBody
+	public List<ProductboardVO> getMoreReview(@RequestBody Map<String, String> map) {
+		int page = Integer.parseInt(map.get("page"));
+		String id = map.get("id");
+		return spservice.getReviewMore(id, page);
+	}
 	
+	@PostMapping("getMoreQna")
+	@ResponseBody
+	public List<ProductboardVO> getMoreQna(@RequestBody Map<String, String> map) {
+		int page = Integer.parseInt(map.get("page"));
+		String id = map.get("id");
+		return spservice.getQnaMore(id, page);
+	}
 	
 	@PostMapping("insertreview")
 	@ResponseBody
@@ -142,6 +157,22 @@ public class ShopController {
 		try {
 			JSONObject jsonObject = (JSONObject) parser.parse(inParam);
 			map=spservice.getWlList(jsonObject);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return map;
+	}
+	
+	@PostMapping("getOdList")
+	@ResponseBody
+	public Map<String,Object> getOdList(@RequestBody String inParam) {
+		JSONParser parser = new JSONParser();
+		Map<String,Object> map=new HashMap<String,Object>();
+		try {
+			JSONObject jsonObject = (JSONObject) parser.parse(inParam);
+			map=spservice.getOdList(jsonObject);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

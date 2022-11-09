@@ -35,13 +35,12 @@ public class HotelService {
 	
 	public void ranHotelList(Model model, Set<Integer> set) {
 		model.addAttribute("ranhotel", dao.selectRanHotel(set));
-		System.out.println(dao.selectRanHotel(set).get(0).getHotelName());
+
 	}
 	
 	//main에서 list로 페이지 이동할때 지역구 값 받아서 호텔 리스트 불러오는 서비스
 	public void getHotelList(Model model, String[] cate, String startdate, String enddate) {
-		System.out.println(cate);
-		System.out.println("여기 서비스");
+
 		
 		
 		//지역구에 따른 호텔 리스트
@@ -52,15 +51,10 @@ public class HotelService {
 		
 		//출력된 호텔의 개수만큼 for문이 반복. 해당 데이터의 hotelid를 출력해서 배열에 저장
 		for (int i = 0; i < dao.selectHotelList(cate).size(); i++) {
-			System.out.println("id"+dao.selectHotelList(cate).get(i).getHotelId());
 			idlist.add(dao.selectHotelList(cate).get(i).getHotelId());
 		}
 		
-		System.out.println("idlist"+idlist);
-		
-		System.out.println("방"+dao.selectroom(idlist).get(0).getRoomName());
-		System.out.println("방"+dao.selectroom(idlist).get(1).getRoomName());
-		System.out.println("방개수"+dao.selectroom(idlist).size());
+
 		
 		
 		model.addAttribute("hotel", dao.selectHotelList(cate));
@@ -74,7 +68,12 @@ public class HotelService {
 		model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomId));
 		System.out.println("hotel"+dao.detailHotelRoom(hotelId, roomId).get(0).getHotelId());
 		//model.addAttribute("hotel", dao.detailHotel(hotelId));
-		
+		HotelQnaVO vo1 = new HotelQnaVO();
+		HotelReviewVO vo2 = new HotelReviewVO();
+		vo1.setHotelId(hotelId);
+		vo2.setHotelId(hotelId);
+		model.addAttribute("hotelqnacount", dao.getHotelQnaCount(vo1));
+		model.addAttribute("hotelreviewcount", dao.getHotelReviewCount(vo2));
 		
 	}
 		
@@ -91,12 +90,20 @@ public class HotelService {
 		public List<HotelReviewVO> getHotelReview(HotelReviewVO vo){
 			return dao.getHotelReview(vo);
 		}
+		public List<HotelReviewVO> getMoreHotelReview(String id, int page) {
+			return dao.getMoreHotelReview(id, page);
+		}
+		
 		public List<HotelQnaVO> getHotelQna(HotelQnaVO vo){
 			return dao.getHotelQna(vo);
 		}
 		public void insertHotelQna(HotelQnaVO vo){
 			dao.insertHotelQna(vo);
 		}
+		public List<HotelQnaVO> getMoreHotelQna(String id, int page) {
+			return dao.getMoreHotelQna(id, page);
+		}
+		
 		public void goreserve(int hotelId,Model model, HttpSession session,  String startdate, String enddate) {
 			MemberVO vo1 = (MemberVO)session.getAttribute("user");
 			model.addAttribute("user",mbdao.getmemberinfo(vo1));
@@ -132,5 +139,7 @@ public class HotelService {
 		public void resCancel(int resDetailNum) {
 			dao.resDetailCancel(resDetailNum);
 		}
+
+		
 		
 }

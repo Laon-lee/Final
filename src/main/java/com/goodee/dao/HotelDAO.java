@@ -16,6 +16,7 @@ import com.goodee.vo.HotelReviewVO;
 import com.goodee.vo.HotelRoomVO;
 import com.goodee.vo.HotelVO;
 import com.goodee.vo.MemberVO;
+import com.goodee.vo.ProductboardVO;
 
 @Mapper
 public interface HotelDAO {
@@ -37,7 +38,13 @@ public interface HotelDAO {
 	public int dateCount(@Param("roomid") List<Integer> roomid, @Param("startdate")String startdate, @Param("enddate") String enddate);
 	
 	public List<HotelReviewVO> getHotelReview(HotelReviewVO vo);
+	public int getHotelReviewCount(HotelReviewVO vo);
+	public List<HotelReviewVO> getMoreHotelReview(@Param("hotelId") String id, @Param("page") int page);
+	
 	public List<HotelQnaVO> getHotelQna(HotelQnaVO vo);
+	public int getHotelQnaCount(HotelQnaVO vo);
+	public List<HotelQnaVO> getMoreHotelQna(@Param("hotelId") String id, @Param("page") int page);
+	
 	public void insertHotelQna(HotelQnaVO vo);
 	public HotelRoomVO getRoomInfo(HotelRoomVO vo);
 	public void setDetailRes(HotelDetailResVO vo);
@@ -47,7 +54,5 @@ public interface HotelDAO {
 	public List<HotelJoinVO> getMyHotelHistoryres(MemberVO mbvo2);
 	public void resDetailCancel(@Param("resDetailNum") int resDetailNum);
 	
-	
 
-	
 }

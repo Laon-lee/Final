@@ -51,8 +51,8 @@
 		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
 		where hr.hotel_id = #{hotelId}
 	</select>
-		<select id="detailHotelRoom" resultType="hoteljoinVO">
-	select * from hotel_room as hr
+	<select id="detailHotelRoom" resultType="hoteljoinVO">
+		select * from hotel_room as hr
 		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
 		where hr.hotel_id = #{hotelId} and not hr.room_id in
 		<foreach item="roomId" collection="roomId" open="(" separator="," close = ")">
@@ -92,12 +92,27 @@
 			 #{roomid} 
 		</foreach> 
 	</select>
+	
 	<select id="getHotelReview" resultType="hotelreviewVO">
-		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 
+		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 order by hotelreview_date desc limit 0, 5
 	</select>
+	<select id="getHotelReviewCount" resultType="int">
+		select count(*) from hotelreview where hotel_id = #{hotelId} and is_delete = 0
+	</select>
+	<select id="getMoreHotelReview" resultType="hotelreviewVO">
+		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 order by hotelreview_date desc limit #{page}, 5;
+	</select>
+	
 	<select id="getHotelQna" resultType="hotelqnaVO">
-		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 
+		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 order by hotelqna_date desc limit 0, 5;
 	</select>
+	<select id="getHotelQnaCount" resultType="int">
+		select count(*) from hotelqna where hotel_id = #{hotelId} and is_delete = 0
+	</select>
+	<select id="getMoreHotelQna" resultType="hotelqnaVO">
+		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 order by hotelqna_date desc limit #{page}, 5;
+	</select>
+	
 	<insert id="insertHotelQna" parameterType="hotelqnaVO">
 		insert into hotelqna (hotel_id, hotelqna_title, hotelqna_content, hotelqna_date, mem_id)
 					values (#{hotelId}, #{hotelqnaTitle},#{hotelqnaContent},#{hotelqnaDate},#{memId})

@@ -517,6 +517,16 @@
 		button{
 			cursor:pointer;
 		}
+		.showmore-div{
+			display:flex;
+			justify-content:center;
+		}
+		.showmore-div button{
+			border:none;
+			font-size:18px;
+			background-color: #EDEDE9;
+			margin-top:10px;
+		}
     </style>
 </head>
 
@@ -600,6 +610,11 @@
                             			
                             			
                             		</div>
+                            		<c:if test="${hotelreviewcount> 5}">
+                            			<div class="showmore-div">
+                            				<button id="showmore-review">- Show More -</button>
+                            			</div>
+                            		</c:if>
                             	</div>
                             	<div style="display: none;" class="info-container-div">
                             		<h1> Q&A</h1>
@@ -609,6 +624,11 @@
                             			
                             			
                             		</div>
+                            		<c:if test="${hotelqnacount> 5}">
+                            			<div class="showmore-div">
+                            				<button id="showmore-qna">- Show More -</button>
+                            			</div>
+                            		</c:if>
                             		<c:if test="${sessionScope.user !=null }">
                             			<button id="qna-button">Write</button>
                             		</c:if>
@@ -703,7 +723,7 @@
                                     			div.append(p2);
                                     			div.append(hr);
                                     			const container = document.getElementById("qna-container");
-                                    			container.append(div);
+                                    			container.prepend(div);
             									let sp = document.getElementById("qna-count").innerText;
             									document.getElementById("qna-count").innerText= Number(sp)+1;
             									document.getElementById("writecontent-qna").value="";
@@ -810,12 +830,12 @@
 		                                    .then(data => {
 		                                    	$("#qna-container").empty();		                           
 		                                        
-		                                        document.getElementById("qna-count").innerText = data.length;
+		                                        document.getElementById("qna-count").innerText = ${hotelqnacount};
 		                                        
 		                                        if(data.length>0){
 		                                       		for (let qna of data) {
 		                                    			const div = document.createElement("div");
-		                                    			div.setAttribute("class","qna-box")
+		                                    			div.setAttribute("class","qna-box fadeIn")
 
 		                                    			const p1 = document.createElement("p");
 		                                    			const strong = document.createElement("strong");
@@ -858,57 +878,116 @@
 		                                        console.log("error");
 		                                    });
 									})
+									<%--호텔 리뷰 페이징--%>
+									let page1 = 5;
+									let hotelId = '${hotel[0].hotelId}';
+									if(document.getElementById("showmore-review")){
+										document.getElementById("showmore-review").addEventListener("click",function(){
+											console.log(page2);
+											fetch("${pageContext.request.contextPath}/getMoreHotelReview", 
+													{ method: "POST",
+													  headers: {
+													    "Content-Type": "application/json"
+													  },
+													  body: JSON.stringify({id: hotelId,page: page1})
+													}).then((response) => response.json())
+													.then((data) => {
+														console.log("hi");
+														for( review in data){
+															const div = document.createElement("div");
+			                                    			div.setAttribute("class","review-box")
+
+			                                    			const p1 = document.createElement("p");
+			                                    			const strong = document.createElement("strong");
+			                                    			strong.setAttribute("class","review-writer");
+			                                    			strong.innerText = data[review].memId;
+
+			                                    			const sp1 = document.createElement("span");
+			                                    			sp1.setAttribute("class","review-roomname");
+			                                    			sp1.innerText= '['+data[review].hotelreviewRoomname+']';
+
+			                                    			const sp2 = document.createElement("span");
+			                                    			sp2.setAttribute("class","review-date");
+			                                    			sp2.innerText= formatDate(data[review].hotelreviewDate);
+
+			                                    			p1.append(strong);
+			                                    			p1.append(sp1);
+			                                    			p1.append(sp2);
+
+			                                    			const p2 = document.createElement("p");
+			                                    			p2.setAttribute("class","review-content")
+			                                    			p2.innerText = data[review].hotelreviewContent;
+			                                    			
+			                                    			const hr = document.createElement("hr");
+			                                    			div.append(p1);
+			                                    			div.append(p2);
+			                                    			div.append(hr);
+			                                    			const container = document.getElementById("review-container");
+			                                    			container.append(div);
+														
+														if(page1>=${hotelreviewcount})document.getElementById("showmore-review").style.display="none";
+														}
+													});
+											page1 = page1+5;
+										});
+										}
+									
+									<%--호텔 문의 페이징--%>
+									let page2 = 5;
+									
+									if(document.getElementById("showmore-qna")){
+										document.getElementById("showmore-qna").addEventListener("click",function(){
+											console.log(page2);
+											fetch("${pageContext.request.contextPath}/getMoreHotelQna", 
+													{ method: "POST",
+													  headers: {
+													    "Content-Type": "application/json"
+													  },
+													  body: JSON.stringify({id: hotelId,page: page2})
+													}).then((response) => response.json())
+													.then((data) => {
+														console.log("hi");
+														for( qna in data){
+															const div = document.createElement("div");
+			                                    			div.setAttribute("class","qna-box")
+
+			                                    			const p1 = document.createElement("p");
+			                                    			const strong = document.createElement("strong");
+			                                    			strong.setAttribute("class","qna-title");
+			                                    			strong.innerText = '['+data[qna].hotelqnaTitle+']';
+
+			                                    			const sp1 = document.createElement("span");
+			                                    			sp1.setAttribute("class","qna-writer");
+			                                    			sp1.innerText= 'by. '+data[qna].memId;
+
+			                                    			const sp2 = document.createElement("span");
+			                                    			sp2.setAttribute("class","qna-date");
+			                                    			sp2.innerText= formatDate(data[qna].hotelqnaDate);
+
+			                                    			p1.append(strong);
+			                                    			p1.append(sp1);
+			                                    			p1.append(sp2);
+
+			                                    			const p2 = document.createElement("p");
+			                                    			p2.setAttribute("class","qna-content")
+			                                    			p2.innerText = data[qna].hotelqnaContent;
+			                                    			
+			                                    			const hr = document.createElement("hr");
+			                                    			div.append(p1);
+			                                    			div.append(p2);
+			                                    			div.append(hr);
+			                                    			const container = document.getElementById("qna-container");
+			                                    			container.append(div);
+														
+														if(page2>=${hotelqnacount})document.getElementById("showmore-qna").style.display="none";
+														}
+													});
+											page2 = page2+5;
+										});
+										}
 							</script>		
                         </div>
-                        
                     </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <%-- <div class="price">
-                        <div class="p_box">
-                            <p>${room.roomName}</p>
-                            <fmt:parseDate value="${startdate}" var="start" pattern="yyyy-MM-dd"/>
-							<fmt:parseNumber value="${start.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
-							<fmt:parseDate value="${enddate }" var="end" pattern="yyyy-MM-dd"/>
-							<fmt:parseNumber value="${end.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
-                            
-                            
-                            <h1><fmt:formatNumber value="${room.roomPrice * (endDate - strDate)}"/>KRW</h1>
-                            <p>${startdate} ~ ${enddate} <br>
-                            <span>${endDate - strDate} 박</span>
-                            
-                            		<c:if test="${(endDate - strDate)==0}"><span>당일 이용 예약</span></c:if>
-                            		<c:if test="${(endDate - strDate)!=0}"><span>${endDate - strDate} 박</span></c:if>
-                             </p>
-                            
-                            <p>세금</p>
-                            <p><fmt:parseNumber var="price" integerOnly="true" value="${room.roomPrice * (endDate - strDate) * 0.1}"/>
-                            <fmt:formatNumber  value="${price}"/>KRW
-                            </p>
-                        </div>
-                        <div class="total">
-                            <p>+세금(10%)</p>
-                            <h1>총 예약금액 <fmt:formatNumber value="${room.roomPrice * (endDate - strDate)  + price }" pattern="#,#00" />KRW</h1>
-                            <button id="reservebtn">회원예약</button>
-                        </div>
-                        
-                        <script type="text/javascript">
-                        	document.getElementById("reservebtn").addEventListener("click",function(){
-                        		location.href = "${pageContext.request.contextPath}/goreserve"
-                        		
-                        	})
-                        </script>
-                    </div>
-                </div> --%>
 				</div>
             </section>
         </main>

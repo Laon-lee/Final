@@ -26,14 +26,20 @@ public interface ShopDAO {
 	
 	
 	public ShopVO getListById(@Param("productId") String id);
-	public List<ProductOptionVO> getOptionById(String id);
 	
 	public ShopVO getListById2(@Param("productId") int id);
 	
 	public List<ProductboardVO> getQna(@Param("productId") String id);
 	
+	public int getQnaCount(@Param("productId") String id);
+	
+	public List<ProductboardVO> getQnaMore(@Param("productId") String id, @Param("page") int page);
+	
 	public List<ProductboardVO> getReview(@Param("productId") String id);
 	
+	public int getReviewCount(@Param("productId") String id);
+	
+	public List<ProductboardVO> getReviewMore(@Param("productId") String id, @Param("page") int page);
 	public int insertBoard(ProductboardVO vo);
 	
 	public void insertWish(WishVO vo);
@@ -43,6 +49,8 @@ public interface ShopDAO {
 	public void deletewish(int wishId);
 	
 	
+	
+	public List<ProductOptionVO> getOptionById(String id);
 	
 	public void insertOrder(OrderVO vo);
 	
@@ -54,9 +62,13 @@ public interface ShopDAO {
 	
 	public List<Map<String, Object>> getWlList(Map<String,Object> inParam);
 	
+	public List<Map<String, Object>> getOdList(Map<String,Object> inParam);
+	
 	public int getPdListCnt(Map<String,Object> inParam);
 	
 	public int getWlListCnt(Map<String,Object> inParam);
+	
+	public int getOdListCnt(Map<String,Object> inParam);
 	
 	public void updatePoint(MemberVO vo);
 	

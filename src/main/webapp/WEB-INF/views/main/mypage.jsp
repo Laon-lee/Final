@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -189,6 +191,19 @@
 	margin-top:30px;
 	font-size:30px;
 }
+.pagebtn{
+	border: none;
+    background-color: #f5ebe0;
+    font-size: 15px;
+    margin: 10px;
+    cursor:pointer;
+}
+#pageBtn{
+
+width:100%;
+text-align:center;
+	margin: 20px 0;
+}
     </style>
 </head>
 
@@ -258,20 +273,12 @@
                                         <td><h3>주문처리상태</h3></td>
                                         
                                     </tr>
-                                    <c:forEach var="item" items="${list}">
-                                    <tr>
-                                     <td><fmt:parseDate value="${item.orderDate}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parseDateTime" type="both"/>
-												<fmt:formatDate value="${parseDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/><br>[${item.orderId}]</td>
-                                        <td><img src="${item.productImage}"></td>
-                                        <td>${item.productName}</td>
-                                        <td>${item.productCount}</td>
-                                        <td><fmt:formatNumber value="${item.productPrice*item.productCount}" pattern="#,###" />원</td>
-                                        <td>${item.orderStatus}</td>
-                                        
-                                    </tr>
-                                    </c:forEach>
+                                    
+                                    <tbody id="tbody"></tbody>
+                                   
+                                    
                                 </table>
-                               
+                               <div id="pageBtn"></div>
                             </div>
                         </div>
                     </article>
@@ -279,11 +286,123 @@
                 </div>
         </main>
 
-
+	<input type="hidden" value="${list[0].id }" id="IdValue" />
         <footer>
             <%@ include file="../frame/main/footer.jsp" %>
         </footer>
     </div>
+    <script>
+			var pageCount=6;
+			getCateList(1);
+
+			function getCateList(page){
+			$('#tbody').empty();
+				$('#pageBtn').empty(); 
+				
+				var id = document.getElementById("IdValue").value;
+				
+				fetch("${pageContext.request.contextPath}/getOdList", { 
+					method: "POST",
+ 				  	headers: {
+ 				    	"Content-Type": "application/json"
+ 				  	},
+ 				  	body:JSON.stringify({"id":id, "page":page, "pageCount":pageCount})
+ 				}).then((response) => response.json())
+ 				.then((data) => {
+					console.log(data);
+	
+				var productListDiv= $("#tbody");
+					
+				 	for(dict of data.list){
+				 		const date = new Date(dict.order_date);
+				 		console.log(date.toLocaleString());
+							productListDiv.append(
+									
+							 "<tr>"
+                             +"<td>"+date.toLocaleString()+"<br>"+'['+dict.order_id+']'+"</td>"
+                              + "<td><img src='"+dict.product_image+"'></td>"
+                                +"<td>"+dict.product_name+"</td>"
+                                +"<td>"+dict.product_count+"</td>"
+                                +"<td>"+(dict.product_price*dict.product_count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'+"</td>"
+                                +"<td>"+dict.order_status+"</td>"
+                                
+                           +"</tr>" 
+					)
+					} 
+					
+					
+					var total=0;
+					var stNum;
+					var edNum;
+					var preNum;
+					var nextNum;
+					
+					total = parseInt(data.total/pageCount);
+					
+					if(parseInt(data.total%pageCount)!=0){
+						total++;
+					}
+					
+					stNum=parseInt(parseInt(page/10)*10);
+					
+					if(parseInt(page%10)!=0){
+						stNum++;
+					}else{
+						stNum-=9
+					}
+					
+					edNum = stNum + 10;
+					
+					edNum=parseInt(parseInt(edNum/10)*10);
+					
+					if(edNum>total){
+						edNum=total;
+					}
+					
+					
+					if(page==1){
+						preNum=1;
+					}else{
+						preNum=page-1;
+					}
+					if(page==total){
+						nextNum=total;
+					}else{
+						nextNum=page+1;
+					}
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList(1)" class="pagebtn">'+'\<\<'+'</button>'
+					);
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+preNum+')" class="pagebtn">'+'\<'+'</button>'
+					);
+					
+					for(var i=stNum;i<=edNum;i++){	
+						if(i==page){
+							$('#pageBtn').append(
+									'<button onclick="getCateList('+i+')" style="color:red;" class="pagebtn">'+i+'</button>'
+							);
+						}else{
+							$('#pageBtn').append(
+									'<button onclick="getCateList('+i+')" class="pagebtn">'+i+'</button>'
+							);
+						}
+						
+					}
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+nextNum+')" class="pagebtn">'+'\>'+'</button>'
+					);
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+total+')" class="pagebtn">'+'\>\>'+'</button>'
+					);
+					
+ 				});
+			}
+		</script>
 </body>
 
 </html>

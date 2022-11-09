@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -308,6 +309,7 @@ font {
 	display:none;
 	margin-top:10px;
 }
+
 #write-box button , #write-box2 button{
 	float:right;
 	cursor: pointer;
@@ -316,6 +318,7 @@ font {
 	margin-top:5px;
 	margin-bottom:10px;
 }
+
 #writebox-content ,#writebox-content2{
 	height:30px;
 	width:100%;
@@ -340,6 +343,18 @@ font {
 #view-btn1:hover, #view-btn2:hover, #write-btn1:hover, #write-btn2:hover
 	{
 	background-color: rgba(166, 166, 166, 0.7);
+}
+#review-btn-div, #review-btn-div2{
+	display:flex;
+	justfy-content:center;
+	
+}
+#review-btn-div button, #review-btn-div2 button{
+	border:none;
+	font-size:18px;
+	background-color: white;
+	margin-top:10px;
+	cursor:pointer;
 }
 </style>
 
@@ -465,7 +480,7 @@ font {
 						<div> <img src="${list.productContent}"></div>
 					</div>
 					<div style="display: none;">
-						<div id="prdInfo"">
+						<div id="prdInfo">
 							<h3>상세 결제 정보</h3>
 							<p>고액 결제의 경구 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다</p>
 							<p>확인과정에서 도난 카드의 사용이나 타인 명의의 주문등 정상적인 주문이 아니라고 판단될 경우 임의로 주문을
@@ -526,7 +541,7 @@ font {
 						<div id="prdReview">
 							<div class="board">
 								<h3>REVIEW</h3>
-								<p>상품의 사용후기를 적어주세요</p>
+								<p id ="board-p">상품의 사용후기를 적어주세요</p>
 								<c:if test="${reviews==null}">
 									<div class="board-box">
 										<p class="nodata">게시물이 없습니다.</p>
@@ -544,9 +559,62 @@ font {
 											<p>${item.proboardContent}</p>
 										</div>
 									</c:forEach>
+									
 										<div id="write-box">
 											<label for="writebox-content">리뷰 내용 * </label><input type="text" id="writebox-content"><br><button id="insertreview">작성 완료</button>
 										</div>
+										<c:if test="${reviewcount > 5}">
+										<div id="review-btn-div">
+											<button type="button" id="moreList">- Show More - </button>
+										</div>
+										</c:if>
+										<script type="text/javascript">
+											let page = 5;
+											let id = '${list.productId}';
+											
+											if(document.getElementById("moreList")){
+											document.getElementById("moreList").addEventListener("click",function(){
+												console.log(page);
+												fetch("${pageContext.request.contextPath}/getMoreReview", 
+														{ method: "POST",
+														  headers: {
+														    "Content-Type": "application/json"
+														  },
+														  body: JSON.stringify({id: id,page: page})
+														}).then((response) => response.json())
+														.then((data) => {
+															console.log("hi");
+															for( review in data){
+																console.log(data[review].memId);
+															
+															var box = document.getElementById("write-box");
+															var div = document.createElement("div");
+															var p = document.createElement("p");
+															var p1 = document.createElement("p");
+															var b = document.createElement("b");
+															var text = document.createTextNode("\u00a0\u00a0");
+															var span = document.createElement("span");
+															var small = document.createElement("small");
+
+															div.setAttribute("class","board-box fadeIn");
+															b.innerText= data[review].memId;
+															small.innerText = data[review].proboardDate.slice(0,19);
+															span.append(small);
+															p.append(b);
+															p.append(text)
+															p.append(span);
+															p1.innerText= data[review].proboardContent;
+															div.append(p);
+															div.append(p1);
+															
+															box.before(div);
+															if(page>=${reviewcount})document.getElementById("moreList").style.display="none";
+															}
+														});
+												page = page+5;
+											});
+											}
+										</script>
 								</c:if>
 							</div>
 						</div>
@@ -558,6 +626,7 @@ font {
 							</form>
 						</div>
 							<script type="text/javascript">
+								if(document.getElementById("write-btn1")){
 								document.getElementById("write-btn1").addEventListener("click",function(){
 									if(document.getElementById("write-box").style.display=="block"){
 										document.getElementById("write-box").style.display="none";
@@ -591,7 +660,7 @@ font {
 										  body: JSON.stringify({proboardContent,productId, proboardTitle,memId,proboardDate})
 										}).then((response) => response.json())
 										.then((data) => {
-											let box = document.getElementById("write-box");
+											let box = document.getElementById("board-p");
 											let div = document.createElement("div");
 											let p = document.createElement("p");
 											let p1 = document.createElement("p");
@@ -610,12 +679,13 @@ font {
 											p1.innerText= proboardContent;
 											div.append(p);
 											div.append(p1);
-											box.before(div);
+											box.after(div);
 											
 											document.getElementById("writebox-content").value="";
 											
 										});
 								})
+								}
 							</script>
 						
 						
@@ -626,7 +696,7 @@ font {
 
 						<div class="board">
 							<h3>Q&A</h3>
-							<p>상품에 대해 궁금한 점을 해결해 드립니다.</p>
+							<p id="board-p2">상품에 대해 궁금한 점을 해결해 드립니다.</p>
 							<c:if test="${qna==null}">
 								<div class="board-box">
 									<p class="nodata">게시물이 없습니다.</p>
@@ -651,6 +721,61 @@ font {
 										
 										<textarea id="writebox-content2" placeholder="문의 내용"></textarea><br><button id="insertqna">작성 완료</button>
 									</div>
+									<c:if test="${qnacount > 5}">
+										<div id="review-btn-div2">
+											<button type="button" id="moreList2">- Show More - </button>
+										</div>
+										</c:if>
+										<script type="text/javascript">
+											let page2 = 5;
+
+											
+											if(document.getElementById("moreList2")){
+											document.getElementById("moreList2").addEventListener("click",function(){
+												console.log(page2);
+												fetch("${pageContext.request.contextPath}/getMoreQna", 
+														{ method: "POST",
+														  headers: {
+														    "Content-Type": "application/json"
+														  },
+														  body: JSON.stringify({id: id,page: page2})
+														}).then((response) => response.json())
+														.then((data) => {
+															console.log("hi");
+															for( qna in data){
+																console.log(data[qna].memId);
+															
+															var box = document.getElementById("write-box2");
+															var div = document.createElement("div");
+															var p = document.createElement("p");
+															var p1 = document.createElement("p");
+															var p2 = document.createElement("p");
+															var b = document.createElement("b");
+															var text = document.createTextNode("\u00a0\u00a0");
+															var span = document.createElement("span");
+															var small = document.createElement("small");
+
+															div.setAttribute("class","board-box fadeIn");
+															b.innerText= data[qna].memId;
+															small.innerText = data[qna].proboardDate.slice(0,19);
+															span.append(small);
+															p.append(b);
+															p.append(text)
+															p.append(span);
+															p1.innerText= data[qna].proboardTitle;
+															p2.innerText= data[qna].proboardContent;
+															div.append(p);
+															div.append(p1);
+															div.append(p2);
+															
+															box.before(div);
+															if(page2>=${qnacount})document.getElementById("moreList2").style.display="none";
+															}
+														});
+												page2 = page2+5;
+											});
+											}
+										</script>
 								</c:if>
 						</div>
 						<div id="btn-box2">
@@ -661,6 +786,7 @@ font {
 							</form>
 						</div>
 						<script>
+						if(document.getElementById("write-btn2")){
 						document.getElementById("write-btn2").addEventListener("click",function(){
 									if(document.getElementById("write-box2").style.display=="block"){
 										document.getElementById("write-box2").style.display="none";
@@ -694,7 +820,7 @@ font {
 								  body: JSON.stringify({proboardContent,productId, proboardTitle,memId,proboardDate})
 								}).then((response) => response.json())
 								.then((data) => {
-									let box = document.getElementById("write-box2");
+									let box = document.getElementById("board-p2");
 									let div = document.createElement("div");
 									let p = document.createElement("p");
 									let p1 = document.createElement("p");
@@ -716,12 +842,13 @@ font {
 									div.append(p);
 									div.append(p1);
 									div.append(p2);
-									box.before(div);
+									box.after(div);
 									
 									document.getElementById("writebox-content2").value="";
 									document.getElementById("writebox-title2").value="";
 								});
-						})
+						});
+						}
 						</script>
 					</div>
 					
