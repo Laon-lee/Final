@@ -1,6 +1,7 @@
 package com.goodee.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -77,26 +78,38 @@ public class SuperviserController {
 	@PostMapping("viser/add-success")
 	public String success(ShopVO vo,@RequestParam("contImage") MultipartFile contImage,@RequestParam("thumnail") MultipartFile thumnail) throws IllegalStateException, IOException {
 		System.out.println("아무거나1");
-		
+
 		if (!contImage.getOriginalFilename().isEmpty()) {
-			Path path = Paths.get("C:/sample/" + contImage.getOriginalFilename());			
-		//	Path path = Paths.get("http://localhost:8080/FinalProject/image/shop/"+vo.getProductCategory()+"/"+contImage.getOriginalFilename());
+			Path path = Paths.get("C:\\Users\\장인우\\git\\FinalProject\\src\\main\\webapp\\resources\\image\\shop"+"/"+vo.getProductCategory());
 			
-			contImage.transferTo(path);			
+			System.out.println(path);
+			System.out.println("여기서부터 문제1");
+						
 			System.out.println(contImage.getOriginalFilename() + "저장이 되었습니다.");
-			vo.setProductContent("http://localhost:8080/FinalProject/image/shop/"+vo.getProductCategory()+"/"+contImage.getOriginalFilename());
+			
+			vo.setProductContent("C:\\Users\\장인우\\git\\FinalProject\\src\\main\\webapp\\resources\\image\\shop"+"/"+vo.getProductCategory()+"/"+contImage.getOriginalFilename());
+			System.out.println(vo.getProductContent());
+//			contImage.transferTo(path);
+			System.out.println("여기서부터 문제2");
 		} else {
 			System.out.println("에러가 발생헀습니다.");
 		}
+		
 
 		if (!thumnail.getOriginalFilename().isEmpty()) {
-			Path path = Paths.get("C:/sample/" + thumnail.getOriginalFilename());
-			thumnail.transferTo(path);			
+			Path path = Paths.get("C:\\Users\\장인우\\git\\FinalProject\\src\\main\\webapp\\resources\\image\\shop"+"/"+vo.getProductCategory());
+			System.out.println("섬네일 문제1");
+			
+//			thumnail.transferTo(path);
+			System.out.println("섬네일 문제2");
 			System.out.println(thumnail.getOriginalFilename() + "저장이 되었습니다.");
-			vo.setProductImage("${pageContext.request.contextPath}/upload/"+thumnail.getOriginalFilename());
+			vo.setProductImage("http://localhost:8080/FinalProject/image/shop/"+vo.getProductCategory()+"/"+thumnail.getOriginalFilename());
 		} else {
 			System.out.println("에러가 발생헀습니다.");
 		}
+		
+		
+		
 		
 		
 		

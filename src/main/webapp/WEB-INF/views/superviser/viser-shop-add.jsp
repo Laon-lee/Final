@@ -153,13 +153,13 @@ input {
 						<option value="choice">카테고리를 선택하세요</option>
 						<option value="line">-----------------</option>
 						<option value="home">Home</option>
-						<option value="Walk">Walk</option>
-						<option value="Carrier">Carrier</option>
-						<option value="Clothes">Clothes</option>
-						<option value="Dining">Dining</option>
-						<option value="Grooming">Grooming</option>
-						<option value="Toy">Toy</option>
-						<option value="Food">Food</option>
+						<option value="walk">Walk</option>
+						<option value="carrier">Carrier</option>
+						<option value="clothes">Clothes</option>
+						<option value="dining">Dining</option>
+						<option value="grooming">Grooming</option>
+						<option value="toy">Toy</option>
+						<option value="food">Food</option>
 					</select>
 				</label>
 				<label for="proc_price"><p>상품 가격</p><input type="text" name="productPrice"></label>
