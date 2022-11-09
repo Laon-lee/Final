@@ -41,7 +41,7 @@ public class ShopController {
 	}
 	@GetMapping("goshop")
 	public String goshop(Model model) {
-		/* spservice.getProductList(model); */
+		spservice.getProductList(model); 
 		return "shop/shop-main";
 	}
 	@GetMapping("/shop/list/{category}")

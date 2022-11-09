@@ -30,10 +30,10 @@ public class ShopService {
 		this.mbdao = mbdao;
 	}
 
-	/*
-	 * public void getProductList(Model model) { model.addAttribute("list",
-	 * dao.getProductList()); }
-	 */
+	
+	  public void getProductList(Model model) { model.addAttribute("list",
+	  dao.getProductList()); }
+	 
 	public void getCateList(String category, Model model) {
 		
 		
