@@ -40,8 +40,8 @@ public class ShopController {
 	}
 	@GetMapping("goshop")
 	public String goshop(Model model) {
-		spservice.getProductList(model);
-		return "shop/shop-main-JJW";
+		/* spservice.getProductList(model); */
+		return "shop/shop-main";
 	}
 	@GetMapping("/shop/list/{category}")
 	public String ShopList(@PathVariable("category") String category,Model model) {
@@ -126,6 +126,22 @@ public class ShopController {
 		try {
 			JSONObject jsonObject = (JSONObject) parser.parse(inParam);
 			map=spservice.getPdList(jsonObject);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return map;
+	}
+	
+	@PostMapping("getWlList")
+	@ResponseBody
+	public Map<String,Object> getWlList(@RequestBody String inParam) {
+		JSONParser parser = new JSONParser();
+		Map<String,Object> map=new HashMap<String,Object>();
+		try {
+			JSONObject jsonObject = (JSONObject) parser.parse(inParam);
+			map=spservice.getWlList(jsonObject);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

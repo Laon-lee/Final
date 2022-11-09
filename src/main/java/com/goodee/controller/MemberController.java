@@ -91,4 +91,14 @@ public class MemberController {
 	    
 	    return mbservice.joinEmail(email);   
 	}
+	
+	//아이디찾기
+	@PostMapping("/findid")
+	public String findid(MemberVO vo, Model model) {
+		System.out.println(vo.getMemName());
+		System.out.println(vo.getMemEmail());
+		mbservice.findid(vo, model);
+		
+		return "main/sucfindid";
+	}
 }

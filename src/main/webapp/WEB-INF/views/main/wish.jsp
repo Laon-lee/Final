@@ -300,8 +300,9 @@ html {
 									<td>합계</td>
 									<td>선택</td>
 								</tr>
+							
 								<c:forEach var="item" items="${item}" varStatus="status">
-
+									
 									<tr>
 										<td><input type="checkbox" name="productIds"
 											value="${wish[status.index].wishId}"><input
@@ -325,12 +326,15 @@ html {
 											<br>
 										<button class="deletewish">삭제</button></td>
 									</tr>
+									
 								</c:forEach>
+									
 								<c:if test="${fn:length(wish) == 0}">
 									<tr>
 										<td colspan="9" style="height:50px;">비어 있음</td>
 									</tr>
 								</c:if>
+								
 								<script>
                   			function selectAll(selectAll)  {
                   		  		const checkboxes = document.getElementsByName('productIds');
@@ -430,7 +434,7 @@ html {
 						</div>
 						
 					</article>
-					
+					<input type="hidden" value="${wish[0].id}" id="IdValue" />
 				</section>
 			</div>
 		</main>
@@ -440,6 +444,113 @@ html {
 			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
 	</div>
+	<script>
+			var pageCount=12;
+			getCateList(1);
+
+			function getCateList(page){
+			/* 	$('#productList').empty();
+				$('#pageBtn').empty(); */
+				
+				var category = document.getElementById("IdValue").value;
+				
+				fetch("${pageContext.request.contextPath}/getWlList", { 
+					method: "POST",
+ 				  	headers: {
+ 				    	"Content-Type": "application/json"
+ 				  	},
+ 				  	body:JSON.stringify({"id":category, "page":page, "pageCount":pageCount})
+ 				}).then((response) => response.json())
+ 				.then((data) => {
+					console.log(data);
+	
+				/* 	var productListDiv=$("#productList"); */
+					
+					for(dict of data.list){
+						console.log('${pageContext.request.contextPath}');
+						productListDiv.append('<div class="list">'
+								+'<a href="'+'${pageContext.request.contextPath}'+'/shop/main/buy/'+dict.product_id+'">'
+								+'<img src="'+dict.product_image+'" alt="">'
+								+'<p>'+dict.product_name+'</p>'
+								+'<h3>'
+								+dict.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'
+								+'</h3></a>'
+						+'</div>');
+					}
+					
+					
+					var total=0;
+					var stNum;
+					var edNum;
+					var preNum;
+					var nextNum;
+					
+					total = parseInt(data.total/pageCount);
+					
+					if(parseInt(data.total%pageCount)!=0){
+						total++;
+					}
+					
+					stNum=parseInt(parseInt(page/10)*10);
+					
+					if(parseInt(page%10)!=0){
+						stNum++;
+					}else{
+						stNum-=9
+					}
+					
+					edNum = stNum + 10;
+					
+					edNum=parseInt(parseInt(edNum/10)*10);
+					
+					if(edNum>total){
+						edNum=total;
+					}
+					
+					
+					if(page==1){
+						preNum=1;
+					}else{
+						preNum=page-1;
+					}
+					if(page==total){
+						nextNum=total;
+					}else{
+						nextNum=page+1;
+					}
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList(1)" class="pagebtn">'+'\<\<'+'</button>'
+					);
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+preNum+')" class="pagebtn">'+'\<'+'</button>'
+					);
+					
+					for(var i=stNum;i<=edNum;i++){	
+						if(i==page){
+							$('#pageBtn').append(
+									'<button onclick="getCateList('+i+')" style="color:red;" class="pagebtn">'+i+'</button>'
+							);
+						}else{
+							$('#pageBtn').append(
+									'<button onclick="getCateList('+i+')" class="pagebtn">'+i+'</button>'
+							);
+						}
+						
+					}
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+nextNum+')" class="pagebtn">'+'\>'+'</button>'
+					);
+					
+					$('#pageBtn').append(
+							'<button onclick="getCateList('+total+')" class="pagebtn">'+'\>\>'+'</button>'
+					);
+					
+ 				});
+			}
+		</script>
 </body>
 
 </html>

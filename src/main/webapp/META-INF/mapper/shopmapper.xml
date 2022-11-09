@@ -67,12 +67,20 @@
 	<select id="getPdList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
 		SELECT * FROM PRODUCT
 		WHERE PRODUCT_CATEGORY =#{category} 
-		LIMIT #{stPage},#{pageCount}		
+		LIMIT #{stPage},#{pageCount}	
 	</select>
-
+	<select id="getWlList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		SELECT * FROM wishlist
+		where id = #{id} 
+		LIMIT #{stPage},#{pageCount}	
+	</select>
 	<select id="getPdListCnt" resultType="Integer" parameterType="java.util.HashMap">
 		SELECT COUNT(*) FROM PRODUCT
 		WHERE PRODUCT_CATEGORY =#{category} 		
+	</select>
+	<select id="getWlListCnt" resultType="Integer" parameterType="java.util.HashMap">
+		SELECT COUNT(*) FROM wishlist
+		WHERE id =#{id} 		
 	</select>
 	<delete id="deleteWishAll" parameterType="map" >
 		delete from wishlist where wish_id in

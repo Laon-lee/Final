@@ -111,4 +111,10 @@ public class MemberService{
 				e.printStackTrace();
 			}
 		}
+		
+		//아이디찾기
+		public void findid(MemberVO vo, Model model) {
+			model.addAttribute("vo", dao.findid(vo));
+					
+		}
 }

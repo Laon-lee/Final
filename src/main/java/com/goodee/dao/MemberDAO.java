@@ -24,4 +24,6 @@ public interface MemberDAO {
 	public int updateinfo(MemberVO vo);
 	/* public MemberVO getmemberinfo(@Param("memId") String id); */
 
+	public MemberVO findid(MemberVO vo);
+
 }
