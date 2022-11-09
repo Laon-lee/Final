@@ -78,7 +78,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	width: 60vw;
-	 margin-bottom:300px;
+	 
 }
 
 #sec2 {
@@ -181,7 +181,7 @@ html {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	margin-bottom:300px;
+	
 }
 
 #item-list img {
@@ -249,7 +249,22 @@ html {
 	margin-top:30px;
 	font-size:30px;
 }
+.pagebtn{
+	border: none;
+    background-color: #f5ebe0;
+    font-size: 15px;
+    margin: 10px;
+    cursor:pointer;
+}
+#pageBtn button{
+width:30px;
+}
+#pageBtn{
 
+width:100%;
+text-align:center;
+	margin: 20px 0;
+}
 </style>
 </head>
 
@@ -428,7 +443,7 @@ html {
 			
 	</div>
 	<script>
-			var pageCount=8;
+			var pageCount=6;
 			getCateList(1);
 
 			function getCateList(page){

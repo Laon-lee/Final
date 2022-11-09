@@ -191,6 +191,19 @@
 	margin-top:30px;
 	font-size:30px;
 }
+.pagebtn{
+	border: none;
+    background-color: #f5ebe0;
+    font-size: 15px;
+    margin: 10px;
+    cursor:pointer;
+}
+#pageBtn{
+
+width:100%;
+text-align:center;
+	margin: 20px 0;
+}
     </style>
 </head>
 
@@ -279,7 +292,7 @@
         </footer>
     </div>
     <script>
-			var pageCount=8;
+			var pageCount=6;
 			getCateList(1);
 
 			function getCateList(page){
