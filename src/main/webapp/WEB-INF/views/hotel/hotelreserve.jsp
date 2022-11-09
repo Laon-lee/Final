@@ -21,6 +21,10 @@
 	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css?11">
@@ -330,7 +334,7 @@
 						});
               		})
               		
-              		document.getElementById("reservebtn").addEventListener("click",function(){
+              		/* document.getElementById("reservebtn").addEventListener("click",function(){
               			let roomId = $("#room-info").val();
               			let memPhone = $("#memPhone1").val()+$("#memPhone2").val()+$("#memPhone3").val();
               			let memEmail = $("#memEmail").val()+'@'+$("#memEmail2").val();
@@ -343,9 +347,9 @@
               							+"&memEmail="+memEmail
               							+"&memName="+memName
               							+"&resMsg="+resMsg;
-              		});
+              		}); */
               	</script>
-              	<!-- <script>
+              	 <script>
 var IMP = window.IMP; // 생략가능
 IMP.init('imp70736007'); // <-- 본인 가맹점 식별코드 삽입
 function requestPay() {
@@ -354,16 +358,16 @@ function requestPay() {
     pg: "inicis",
     pay_method: "card",
     merchant_uid : 'merchant_'+new Date().getTime(),
-    name : '{hotel[0].roomType}',
+    name : '${hotel[0].hotelName}',
     amount : '100',
-    buyer_email : '${user.memEmail}',
-    buyer_name : '${user.memName}',
-    buyer_tel : '${user.memPhone}',
-    buyer_addr : '${user.memAddress}',
+    buyer_email : 'nu052308@naver.com',
+    buyer_name : 'good',
+    buyer_tel : '폰번',
+    buyer_addr : '주소',
     buyer_postcode : '123-456'
   }, function (rsp) { // callback
       if (rsp.success) {
-    	  let roomId = $("#room-info").val();
+    	   let roomId = $("#room-info").val();
 			let memPhone = $("#memPhone1").val()+$("#memPhone2").val()+$("#memPhone3").val();
 			let memEmail = $("#memEmail").val()+'@'+$("#memEmail2").val();
 			let memName = $("#memName1").val();
@@ -374,13 +378,13 @@ function requestPay() {
 							+"&memPhone="+memPhone
 							+"&memEmail="+memEmail
 							+"&memName="+memName
-							+"&resMsg="+resMsg;
+							+"&resMsg="+resMsg; 
       } else {
     	  alert("결제에 실패하였습니다.");
       }
   });
 }
-</script> -->
+</script> 
             </section>
         </main>
         <footer>
