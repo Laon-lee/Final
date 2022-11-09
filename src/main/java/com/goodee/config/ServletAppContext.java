@@ -24,6 +24,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.goodee.interceptor.MainInterceptor1;
+import com.goodee.interceptor.MypageInterceptor1;
 import com.goodee.interceptor.ShopInterceptor1;
 
 // Spring MVC프로젝트에 관련된 설정을 하는 클래스
@@ -156,16 +157,25 @@ public class ServletAppContext implements WebMvcConfigurer{
 			// 인터셉터가 등록되는 로직이 실행
 			MainInterceptor1 inter1 = new MainInterceptor1();
 			ShopInterceptor1 inter2 = new ShopInterceptor1();
+			MypageInterceptor1 inter3 = new MypageInterceptor1();
+			
 			
 			// 이 순서로 실행됨
 			InterceptorRegistration reg1 = registry.addInterceptor(inter1);
 			InterceptorRegistration reg2 = registry.addInterceptor(inter2);
+			InterceptorRegistration reg3 = registry.addInterceptor(inter3);
+			
 			
 			// 인터셉터를 어디에 걸지 타겟을 지정 - InterceptorRegistration.addPathPatterns("경로")
 			// 인터셉터를 경로를 통해 지정할 수 있으며 다른 옵션은 선택할 수 없다.
 			// addPathPatterns에 들어가는 경로는 사용자가 요청하는 요청 경로이다.
 			reg1.addPathPatterns("/gomain2");
 			reg2.addPathPatterns("/shop/pay/{id}");
+			reg3.addPathPatterns("/wish");
+			reg3.addPathPatterns("/mypage");
+			reg3.addPathPatterns("/userinfo");
+			reg3.addPathPatterns("/myhotelres");
+			reg2.addPathPatterns("/goreserve/{hotelId}/{startdate}/{enddate}");
 			
 			
 			// 인터셉터에 동일 경로를 바라보게 하고 다수의 인터셉터를 걸 경우 맨 위에 등록된 intercepter의 prehandle부터

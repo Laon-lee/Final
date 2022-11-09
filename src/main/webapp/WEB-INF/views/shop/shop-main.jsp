@@ -250,7 +250,7 @@
       
         <ul class="slides">
         	<c:forEach var="item" items="${list}" >
-        		<li><a href="${pageContext.request.contextPath}/shop/main/buy/${item.productId}"><img src="${item.productImage}" alt=""><h3 class="sh3">${item.productName}</h3><p>${item.productShop}</p><h4><fmt:formatNumber value="${item.productPrice}" pattern="#,###"/>원</h4></a></li>
+        		<li><a href="${pageContext.request.contextPath}/shop/main/buy/${item.productId}"><img src="/upload/${item.productImage}" alt=""><h3 class="sh3">${item.productName}</h3><p>${item.productShop}</p><h4><fmt:formatNumber value="${item.productPrice}" pattern="#,###"/>원</h4></a></li>
         	</c:forEach>
         </ul>
     	</div>
