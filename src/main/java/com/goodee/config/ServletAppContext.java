@@ -68,7 +68,7 @@ public class ServletAppContext implements WebMvcConfigurer{
 		// TODO Auto-generated method stub
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 		registry.addResourceHandler("/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/upload/**").addResourceLocations("file:///C:/sample/");
+		registry.addResourceHandler("/upload/**").addResourceLocations("file:///C:/finalprojectimage/");
 	}
 	
 	

@@ -210,11 +210,11 @@
     	
         <article class="sec1">
             <div class="img-header">
-                <a href="${pageContext.request.contextPath}/shop/list/carrier"><img class="slide1" id="imgSlide" src="image/shop/EventImg1.jpg" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/toy"><img class="slide1" id="imgSlide" src="image/shop/EventImg2.jpg" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/clothes"><img class="slide1" id="imgSlide" src="image/shop/EventImg3.jpg" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/food"><img class="slide1" id="imgSlide" src="image/shop/EventImg4.png" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/walk"><img class="slide1" id="imgSlide" src="image/shop/EventImg5.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/carrier"><img class="slide1" id="${pageContext.request.contextPath}/imgSlide" src="image/shop/EventImg1.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/toy"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg2.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/clothes"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg3.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/food"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg4.png" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/walk"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg5.jpg" alt=""></a>
                 </div>
         </article>
     </main>
