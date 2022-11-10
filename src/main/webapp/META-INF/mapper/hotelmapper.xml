@@ -34,7 +34,7 @@
 	</select>
 	
 	<select id="detailRoomId" resultType="hoteldetailresVO">
-		SELECT distinct room_id FROM hotel_detail_res WHERE (res_start &lt; #{enddate} AND res_end &gt; #{startdate});
+		SELECT distinct room_id FROM hotel_detail_res WHERE (res_start &lt; #{enddate} AND res_end &gt; #{startdate}) AND not res_status = '예약 완료';
 	</select>
 
 	<select id="detailHotelRoom" resultType="hoteljoinVO">
