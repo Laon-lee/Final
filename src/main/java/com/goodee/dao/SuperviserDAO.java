@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.goodee.vo.BoardVO;
 import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
+import com.goodee.vo.ProductOptionVO;
 import com.goodee.vo.ShopVO;
 
 @Mapper
@@ -27,4 +28,6 @@ public interface SuperviserDAO {
 	public List<OrderjoinVO> getCSOrder(@Param("id")String id,@Param("orderStatus")String orderStatus);
 	public int CSOrderModify(OrderjoinVO vo);
 	public List<MemberVO> memberInfo(MemberVO vo);
+
+	public void addprodoption(ProductOptionVO opvo);
 }

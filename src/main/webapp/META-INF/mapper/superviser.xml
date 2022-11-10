@@ -4,11 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.SuperviserDAO">
 	
-	<insert id="addproc" parameterType="shopVO">
+	<insert id="addproc" parameterType="shopVO" useGeneratedKeys="true" keyProperty="productId">
 	insert into product (product_name, product_shop, product_image, product_content, product_category, product_price ) 
 	
 	
 				values (#{productName},#{productShop},#{productImage},#{productContent},#{productCategory},#{productPrice});
+	</insert>
+	<insert id="addprodoption" parameterType="productoptionVO">
+	insert into product_option (product_id, option) values (#{productId},#{option})
 	</insert>
 	<update id="updateInfo" parameterType="shopVO">
 	update product set product_name= #{productName}, product_shop = #{productShop}, product_total = #{productTotal} ,product_image = #{productImage}, product_content = #{productContent}, product_category=#{productCategory},product_total=#{productTotal},product_price=#{productPrice},product_opt=#{productOpt}

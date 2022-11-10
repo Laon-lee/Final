@@ -78,20 +78,21 @@ public class SuperviserController {
 	
 	
 	   @PostMapping("viser/add-success")
-	   public String success(ShopVO vo,@RequestParam("thumnail") MultipartFile thumnail,@RequestParam("contImage") MultipartFile contImage) throws IllegalStateException, IOException {
-	      System.out.println("아무거나1");
+	   public String success(ShopVO vo,@RequestParam("thumnail") MultipartFile thumnail,@RequestParam("contImage") MultipartFile contImage
+			   				,@RequestParam("options") String[] opts) throws IllegalStateException, IOException {
+		   for (String a : opts) {
+			System.out.println(a);
+		}		   
+	      
 	     
 	      if (!thumnail.getOriginalFilename().isEmpty()) {
 		         Path path = Paths.get("c:/finalprojectimage"+"/shop/"+vo.getProductCategory()+"/"+thumnail.getOriginalFilename());
 		         thumnail.transferTo(path);
-		         System.out.println("여기서부터 문제1");
-		         System.out.println(thumnail.getOriginalFilename() + "저장이 되었습니다.");
-		         vo.setProductContent("upload"+"/shop/"+vo.getProductCategory()+"/"+thumnail.getOriginalFilename());
-		         System.out.println(vo.getProductContent());
 		         
-		         System.out.println("여기서부터 문제2");
+		         vo.setProductContent("upload"+"/shop/"+vo.getProductCategory()+"/"+thumnail.getOriginalFilename());
+		         
 		      } else {
-		         System.out.println("에러가 발생헀습니다.");
+		         
 		      }
 		
 	      
@@ -113,7 +114,7 @@ public class SuperviserController {
 		
 		
 		
-		superservice.viseradd(vo);
+		superservice.viseradd(opts, vo);
 		
 		System.out.println("아무거나2");
 		return "/superviser/viser-main";
