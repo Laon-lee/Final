@@ -216,6 +216,8 @@
         	margin-top:10px;
         	padding:3px;
         	outline: none;
+        	width: 603px;
+    		height: 193px;
         }
     </style>
 </head>
@@ -244,7 +246,7 @@
                 			<div>
                 				<h2>객실 선택</h2><hr/>
                 			</div>
-                			<label for="room-info">객식 종류 * </label>
+                			<label for="room-info">객실 종류 * </label>
                 			<select id="room-info">
                 				<c:forEach var="item" items="${hotel}">
                 					<option value = "${item.roomId}">객실명 : ${item.roomName} / 객실 타입: ${item.roomType}</option>
