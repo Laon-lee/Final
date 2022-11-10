@@ -33,7 +33,8 @@
 	</select>
 	
 	<select id="checkRes" parameterType="String" resultType="hotelviserVO">
-		select * from hotel_detail_res as hdr inner join hotel_res as hr on hrd.res_datail_num
+		SELECT * FROM hotel_info AS hi INNER JOIN hotel_room AS hr ON hi.hotel_id = hr.hotel_id 
+INNER JOIN hotel_detail_res AS hdr ON hr.room_id = hdr.room_id where  
 	</select>
 	
 	
