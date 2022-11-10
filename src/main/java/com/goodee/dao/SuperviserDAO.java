@@ -26,5 +26,5 @@ public interface SuperviserDAO {
 	public int createboard(BoardVO vo);
 	public List<OrderjoinVO> getCSOrder(@Param("id")String id,@Param("orderStatus")String orderStatus);
 	public int CSOrderModify(OrderjoinVO vo);
-	public List<MemberVO> memberInfo(@Param("memName")String memName);
+	public List<MemberVO> memberInfo(MemberVO vo);
 }

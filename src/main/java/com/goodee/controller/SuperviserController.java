@@ -207,9 +207,9 @@ public class SuperviserController {
 		superservice.CSOrderModify(vo);
 		return "superviser/viser-main";
 	}
-	@GetMapping("viser/memInfo/{memName}")
-	public String memInfo(@PathVariable("memName") String memName,Model model) {
-		superservice.memberInfo(memName, model);
+	@GetMapping("viser/memInfo")
+	public String memInfo(MemberVO vo,Model model) {
+		superservice.memberInfo(vo, model);
 		return "superviser/viser-shop-memName";
 	}
 	

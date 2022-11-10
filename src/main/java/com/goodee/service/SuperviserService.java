@@ -102,8 +102,8 @@ public class SuperviserService  {
 		superdao.CSOrderModify(vo);
 		
 	}
-	public void memberInfo(String memName,Model model) {
+	public void memberInfo(MemberVO vo,Model model) {
 		
-		model.addAttribute("list",superdao.memberInfo(memName));
+		model.addAttribute("list",superdao.memberInfo(vo));
 	}
 }

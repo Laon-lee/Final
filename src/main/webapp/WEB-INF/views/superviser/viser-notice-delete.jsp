@@ -114,10 +114,24 @@ a:hover {
     width: 80%;
     margin: 0 auto;
     display: flex;
-    border: 1px solid black;
-    height: 100px;
+    border: 1px solid darkblue;
+    border-radius:10px;
+    height: 140px;
     align-items: center;
     overflow: hidden;
+   }
+   .art3-container button{
+   width:50px;
+   height:30px;
+   background-color:black;
+   color:white;
+   border-radius:5px;
+   cursor:pointer;
+  	margin-left:3px;
+   }
+   .art3-container button:hover{
+   background-color:white;
+   color:black;
    }
   .art3-container-span{
     display: inline-block;
@@ -180,11 +194,24 @@ a:hover {
     border:1px solid #ccc;
     border-radius:1rem;
   }
+  #boardTitle{
+  margin-left:5px;
+  border-radius:7px;
+  width:250px;
+  height:30px;
+  border:1px solid darkblue;
+  }
+  textarea{
+  border-radius:7px;
+   border:1px solid darkblue;
+   height:70px;
+   
+  }
   .create button{
   margin-top:15px;
   margin-bottom:15px;
   margin-left:200px;
-  width:30%;
+  width:15%;
   height:50px;
   border: none;
   color:white;
@@ -245,8 +272,9 @@ a:hover {
         <button class="btn1" id="btn1">수정</button><button class="btn2" id="btn2">삭제</button>
         </div>
         <div class="art3-third">
-        s1 == 삭제, 0 == 수정 <br />
-        상태 : ${item.isDelete}</div>
+       
+        상태 : ${item.isDelete} <br />
+         1 == 삭제상태, 0 == 공개상태 <br /></div>
       </div>
    </form>
     </c:forEach>

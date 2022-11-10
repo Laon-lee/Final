@@ -36,7 +36,8 @@ nav {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	background-color: gray;
+	background-color: black;
+	color:white;
 }
 
 main{
@@ -97,18 +98,49 @@ label {
 	line-height : 3rem;
 /* 	width : 5rem; */
 }
+form{
+display:flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+width:1000px;
+height:500px;
+text-align:center;
+}
+form input{
+width:300px;
+height:50px;
+border-radius:10px;
+border:2px dotted darkblue;
+margin-bottom:5px;
+text-align:center;
+}
+form button{
+width:200px;
+height:30px;
+border-radius:10px;
+border:1px dotted darkblue;
+cursor:pointer;
+background-color:black;
+color:white;
 
+}
+form button:hover{
+background-color:white;
+color:black;
+border:1px solid black;
+}
 </style>
 
 </head>
 <body>
 	<div id="container">
 		<header>
-		<h1>임시 헤더</h1>
-<%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
+		
+        
         </header>
 		<nav>
-			<h2>관리자 페이지</h2>
+				<%@ include file="../frame/viser/header.jsp"%>
 		</nav>
 		<main>
 			<div id="sec1">
@@ -131,12 +163,17 @@ label {
 				</ul>
 			</div>
 			</div>
+				
 			<div id="sec2">
 			<h1>고객 검색</h1>
+			<div class="sec2-container">
 			
+			<form action="${pageContext.request.contextPath}/viser/memInfo">
 			<input type="text" id="name" name="memName" value="" placeholder="이름을 검색하세요(정확히)"/><br />
-			<button id="memName" >수정하기</button>
+			<button id="memName" >검색하기</button>
+			</form>
 			
+			</div>
 			</div>
 		</main>
 		<footer>
@@ -146,12 +183,17 @@ label {
 		</div>
 		<script>
 		
-		document.getElementById("memName").addEventListener("click",function(){
-			const value = document.getElementById("name").value;
-			var temp = "${pageContext.request.contextPath}/viser/memInfo/"+value;
-			location.href = temp;
+		document.getElementById("memName").addEventListener("click",function(e){
+			var value = document.getElementById("name").value;
+			
+			
+			if(value==""){
+				e.preventDefault();
+				alert("이름을 입력하세요");
+			}
 		});
-		 /* location.href = "${pageContext.request.contextPath}/`${value}`"; */
+		
+	
 		</script>
 </body>
 </html>
