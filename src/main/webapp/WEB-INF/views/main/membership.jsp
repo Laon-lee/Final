@@ -16,8 +16,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <title>Document</title>
 <style>
 html, body, header, main, footer, section, h1, h2, h3, h4, h5, h6, p, a,

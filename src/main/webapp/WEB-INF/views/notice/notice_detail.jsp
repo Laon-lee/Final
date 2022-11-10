@@ -9,8 +9,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/4b992414b9.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
@@ -45,6 +45,7 @@
       position: relative;
       width: 100%;
       height: 100%;
+      min-height : 100vh;
       display: grid;
       grid-template-rows: 70px 1fr 70px;
       grid-template-columns: 1fr;
@@ -120,7 +121,7 @@
         <p>${list.boardContent}</p>
     </article>
     <div class="img-container">
-  <img class="noticedog" src="${pageContext.request.contextPath}/image/main/메인.jpg" alt="" />
+  <img class="noticedog" src="${pageContext.request.contextPath}/final/image/main/메인.jpg" alt="" />
   </div>
    </main>
     <footer>

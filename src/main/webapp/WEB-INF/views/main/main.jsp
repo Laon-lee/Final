@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fyiyg55rlb"></script>
   <title>Document</title>
   <style type="text/css">		 
@@ -72,7 +72,7 @@
       z-index: 1;
       transform: translateX(0);
       position: absolute;
-      background: url("image/main/메인.jpg") no-repeat;
+      background: url("final/image/main/메인.jpg") no-repeat;
       background-size: contain;
       background-position:right;
       
@@ -205,7 +205,7 @@
 			</script>
         </div>
         <div>
-        	<img alt="" src="image/main/메인섹션.png">
+        	<img alt="" src="final/image/main/메인섹션.png">
         </div>
 
       </section>
@@ -220,7 +220,7 @@
           </form>
         </div>
         <div>
-        	<img alt="" src="image/main/쇼핑섹션.png">
+        	<img alt="" src="final/image/main/쇼핑섹션.png">
         </div>
         
       </section>
@@ -235,7 +235,7 @@
             </form>
         </div>
         <div>
-        	<img alt="" src="image/main/호텔섹션.png">
+        	<img alt="" src="final/image/main/호텔섹션.png">
         </div>
       </section>
 

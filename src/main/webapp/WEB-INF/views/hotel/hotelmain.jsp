@@ -21,9 +21,9 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/hotel/header.css?11">
+	href="${pageContext.request.contextPath}/final/css/frame/hotel/header.css?11">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <title>Insert title here</title>
 <style>
 html, body, header, main, footer, section, h1, h2, h3, h4, h5, h6, p, a,
