@@ -72,7 +72,7 @@
       z-index: 1;
       transform: translateX(0);
       position: absolute;
-      background: url("image/main/메인.jpg") no-repeat;
+      background: url("final/image/main/메인.jpg") no-repeat;
       background-size: contain;
       background-position:right;
       
@@ -183,7 +183,7 @@
       <section id="sec2">
         <div id="sec2-div1">
           <h1>About Us</h1>
-          <a href="${pageContext.request.contextPath}/final/viser/main">관리자 페이지 테스트</a>
+          <a href="${pageContext.request.contextPath}/viser/main">관리자 페이지 테스트</a>
           <p>품격있는 애견 사이트</p>
           <p>최고의 서비스</p>
           <p>댕누리만이 사람과 반려견을 더 아름답게 하는</p>
@@ -205,7 +205,7 @@
 			</script>
         </div>
         <div>
-        	<img alt="" src="image/main/메인섹션.png">
+        	<img alt="" src="final/image/main/메인섹션.png">
         </div>
 
       </section>
@@ -220,13 +220,13 @@
           </form>
         </div>
         <div>
-        	<img alt="" src="image/main/쇼핑섹션.png">
+        	<img alt="" src="final/image/main/쇼핑섹션.png">
         </div>
         
       </section>
       <section id="sec4">
         <div id="sec4-div1">
-        <form action="${pageContext.request.contextPath}/final/gohotel">
+        <form action="${pageContext.request.contextPath}/gohotel">
           <h1>Hotel</h1>
           <p>품격있는 호텔</p>
           <p>품격있는 서비스로</p>
@@ -235,7 +235,7 @@
             </form>
         </div>
         <div>
-        	<img alt="" src="image/main/호텔섹션.png">
+        	<img alt="" src="final/image/main/호텔섹션.png">
         </div>
       </section>
 
