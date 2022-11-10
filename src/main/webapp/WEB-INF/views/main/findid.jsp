@@ -86,6 +86,7 @@
                     display: flex;
                     flex-direction: column;
                     gap: 2vh;
+                        min-width: 275px;
                 }
 
                 .form_name,
@@ -111,10 +112,14 @@
     align-items: center;
                 }
                 .find_btn {
-                   width: 35%;
+                   width: 100%;
+                       display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
                 }
                 .find_btn>button {
-                    width: 100%;
+                    width: 35%;
                     background-color: black;
                     color: white;
                     font-weight: bold;
@@ -155,7 +160,7 @@
                                 <input type="radio" name="r_find" id="r_phone"><label for="r_phone">휴대폰번호</label>
                             </div>
                             <div class="form_container">
-                                <form action="${pageContext.request.contextPath}/findid" method="post">
+                                <form action="${pageContext.request.contextPath}/findidmail" method="get" class="cform">
                                     <div class="find_form find_email">
                                         <div class="form_name">
                                             <label for="">이름</label><input type="text" name="memName" id="memName">
@@ -164,7 +169,12 @@
                                             <label for="">이메일로 찾기</label><input type="text" name="memEmail"
                                                 id="memEmail">
                                         </div>
+                                        <div class="find_btn">
+                                        <button id="mailbtn">확인</button>
                                     </div>
+                                    </div>
+                                    </form>
+                                    <form action="${pageContext.request.contextPath}/findidphone" method="get" class="cform">
                                     <div class="find_form find_phone" style="display: none;">
                                         <div class="form_name">
                                             <label for="">이름</label><input type="text" name="memName" id="memName2">
@@ -172,15 +182,17 @@
                                         <div class="form_phone">
                                             <label for="">휴대폰번호</label><input type="text" name="memPhone" id="memPhone">
                                         </div>
+                                        <div class="find_btn">
+                                        <button id="phonebtn">확인</button>
                                     </div>
-                                    <div class="find_btn">
-                                        <button>확인</button>
                                     </div>
+                                    
                                 </form>
                             </div>
                         </div>
                         <script>
                             window.addEventListener('DOMContentLoaded', function(){
+                          
                                 $("input:radio[name=r_find]").change(function(){
                                     if($("#r_phone").is(":checked")){
                                         $(".find_phone").show();
@@ -193,8 +205,64 @@
                                     }
                                 })
                                 
+                                //이메일 정규표현식, 통과 시 true 리턴
+                                /* function email_check( email ) { */
+    	
+   								 var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    							/* 	return (email != '' && email != 'undefined' && regex.test(email)); */
 
-                            })
+								/* } */
+								//공백 체크 정규식
+								var regExp = /\s/g; 
+
+                                $("input[name='memEmail']").blur(function(){
+                                	var email = $(this).val();
+                                	
+                                	//// 값을 입력안한경우는 아예 체크를 하지 않는다.
+        							
+                                	//이메일 공백 확인
+                                	
+       								 // 이메일 유효성 검사
+       								if(!regex.test(email)) {
+           								alert("이메일 확인");
+           								
+        							}
+       								 
+                                });
+								
+                                $("input[name='memName']").blur(function(){
+                                	var name =$(this).val();
+                                	/* if(!regExp.test(name)){
+                                		alert('이름 입력하라고');
+                                	} */
+                                });
+                                
+                                $("#mailbtn").click(function(){
+                                	if($("#memName").val() == "") {
+                                		alert("이름 입력안했다")
+                                		$("form").attr("action","#");
+                                	}
+                                	
+                                	if($("input[name='memEmail']").val() == ""){
+                                		alert("메일 입력안했다")
+                                		$("form").attr("action","#");
+                                	}
+                                	
+                                })
+                                
+                                $("#phonebtn").click(function(){
+                                	if($("#memName2").val() == "") {
+                                		alert("이름 입력안했다")
+                                		$("form").attr("action","#");
+                                	}
+                                	
+                             
+                                	if($("input[name='memPhone']").val() == ""){
+                                		alert("번호 입력안했다")
+                                		$("form").attr("action","#");
+                                	}
+                                })
+                            });
                         </script>
                     </section>
     </main>

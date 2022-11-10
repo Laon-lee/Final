@@ -83,7 +83,7 @@
                 }
 
                 .suc_container {
-                    width: 35%;
+                    width: 50%;
                     margin: 0 auto;
                     display: flex;
                     flex-direction: column;
@@ -127,12 +127,16 @@
     <main>
     <section id="sec1">
                         <h2>아이디 찾기</h2>
-                        <h2>고객님 아이디 찾기가 완료 되었습니다.</h2>
+                         <h2>고객님 아이디 찾기가 완료 되었습니다.</h2>
+                        <c:choose>
+                        <c:when test="${not empty vo}">
+                      
                         <div class="suc_container">
                             <div class="suc_p">
-                                <p>저희 쇼핑몰를 이용해주셔서 감사합니다.</p><br>
+                                <p>저희 쇼핑몰를 이용해주셔서 감사합니다.</p>
                                 <p>다음정보로 가입된 아이디가 총 1개 있습니다.</p>
                             </div>
+                            
                             <div class="suc_info">
                                 <div class="info_img">
                                     이미지
@@ -140,7 +144,9 @@
                                 <div class="info_p">
                                     <div class="info_name">
                                         <p class="p1">이름</p>
+                                        
                                         <p class="p2">${vo.memName }</p>
+                                        
                                     </div>
                                     <div class="info_mail">
                                         <p class="p1">이메일</p>
@@ -151,14 +157,29 @@
                                         <input type="radio" name="" id="" checked><p><c:out value="${fn:substring(id, 0, fn:length(id) - 3)}" /> ***</p>
                                     </div>
                                     <p>고객님 즐</p>
+                                    <a href="">비밀번호 재설정</a>
+                                    
                                 </div>
+                                
                             </div>
+                          
                         </div>
-                        <script type="text/javascript">
-                       <c:if test="${vo == null}">
-                       alert("값 없다");
-                       </c:if>
-                       </script>
+                       </c:when>
+                       <c:when test="${empty vo}">
+                      
+                        <div class="suc_container">
+                            <div class="suc_p" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+                                <p>저희 쇼핑몰를 이용해주셔서 감사합니다.</p>
+                                <p>다음정보로 가입된 아이디가 없습니다.</p>
+                                 <a href="${pageContext.request.contextPath}/membership" style="font-size:13px">회원 가입</a>
+                            </div>
+                            
+                            
+                          
+                          
+                        </div>
+                       </c:when>
+                      </c:choose>
                     </section>
     </main>
     <footer>
