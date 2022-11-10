@@ -28,6 +28,7 @@ import com.goodee.service.BoardService;
 import com.goodee.service.ShopService;
 import com.goodee.service.SuperviserService;
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.HotelViserVO;
 import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ShopVO;
@@ -215,7 +216,8 @@ public class SuperviserController {
 	}
 	
 	@GetMapping("viser/hotelRes")
-	public String hotelRes() {
+	public String hotelRes(HotelViserVO hotelviservo, Model model) {
+		superservice.checkRes(hotelviservo, model);
 		return "superviser/viser-hotel-res";
 	}
 	

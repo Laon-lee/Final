@@ -156,12 +156,22 @@ input {
 				</ul>
 				<ul><h2>호텔</h2>
 					<li><a href="${pageContext.request.contextPath}/viser/hotelRes">예약 확인</a></li>
-					<li>이모 저모</li>
+					<li>호텔 추가</li>
 				</ul>
 			</div>
 			</div>
 			<div id="sec2">
-			
+				<form action="${pageContext.request.contextPath}/viser-hotel-resCheck" method="get">
+					<thead>
+						<tr>
+							<td>예약자 이름</td>
+							<td>예약자 번호</td>
+							<td>예약자 email</td>
+							<td>예약 날짜</td>
+							<td>예약 상태</td>
+						</tr>
+					</thead>
+				</form>
 			</div>
 		</main>
 		<footer>
@@ -172,26 +182,7 @@ input {
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script>
-		 $("#proc_image").change(function(){
-			   if(this.files && this.files[0]) {
-			    var reader1 = new FileReader;
-			    reader1.onload = function(data) {
-			     $(".select_img1 img").attr("src", data.target.result).width(150).height(150);        
-			    }
-			    reader1.readAsDataURL(this.files[0]);
-			   }
-			  });
-		 
-		 
-		 $("#proc_content").change(function(){
-			   if(this.files && this.files[0]) {
-			    var reader2 = new FileReader;
-			    reader2.onload = function(data) {
-			     $(".select_img2 img").attr("src", data.target.result).width(150).height(200);        
-			    }
-			    reader2.readAsDataURL(this.files[0]);
-			   }
-			  });
+
 		</script>
 		
 	

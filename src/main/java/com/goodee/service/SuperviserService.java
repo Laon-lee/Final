@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.goodee.dao.SuperviserDAO;
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.HotelViserVO;
 import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ProductOptionVO;
@@ -94,5 +95,9 @@ public class SuperviserService  {
 	public void memberInfo(MemberVO vo,Model model) {
 		
 		model.addAttribute("list",superdao.memberInfo(vo));
+	}
+	
+	public void checkRes(HotelViserVO hotelviservo, Model model) {
+		model.addAttribute("reslist", superdao.checkRes(hotelviservo));
 	}
 }

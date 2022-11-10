@@ -32,7 +32,10 @@
 	 from board where board_category = #{boardCategory}
 	</select>
 	
-	<select id=""></select>
+	<select id="checkRes" parameterType="String" resultType="hotelviserVO">
+		select * from hotel_detail_res as hdr inner join hotel_res as hr on hrd.res_datail_num
+	</select>
+	
 	
 	
 	

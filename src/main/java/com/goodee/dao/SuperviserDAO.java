@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.vo.BoardVO;
+import com.goodee.vo.HotelViserVO;
 import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
 import com.goodee.vo.ProductOptionVO;
@@ -30,4 +31,7 @@ public interface SuperviserDAO {
 	public List<MemberVO> memberInfo(MemberVO vo);
 
 	public void addprodoption(ProductOptionVO opvo);
+	
+	public List<HotelViserVO> checkRes(HotelViserVO hotelviservo);
+	
 }
