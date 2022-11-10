@@ -17,9 +17,9 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/shop/header.css">
+	href="${pageContext.request.contextPath}/final/css/frame/shop/header.css">
 
 <title>Document</title>
 <style>
@@ -375,7 +375,7 @@ font {
 			<div id="main-container">
 				<div id="main-box">
 					<div id="main1">
-						<img src="${list.productImage}">
+						<img src="${pageContext.request.contextPath}/${list.productImage}">
 					</div>
 					<div id="main2">
 						<h3>${list.productName}</h3>
@@ -477,7 +477,7 @@ font {
 				</div>
 				<div id="proc-wrapper" class="tab_cont">
 					<div style="display: block;">
-						<div> <img src="${list.productContent}"></div>
+						<div> <img src="${pageContext.request.contextPath}/${list.productContent}"></div>
 					</div>
 					<div style="display: none;">
 						<div id="prdInfo">

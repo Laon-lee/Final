@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/shop/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/shop/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
   <style>
   
    
@@ -198,23 +198,23 @@
     <main>
     	
         <div class="category-menu">
-            <li><a href="${pageContext.request.contextPath}/shop/list/home"><img src="${pageContext.request.contextPath}/image/shop/Home.png" alt=""><br>Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/walk"><img src="${pageContext.request.contextPath}/image/shop/Walk.png" alt=""><br>Walk</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/carrier"><img src="${pageContext.request.contextPath}/image/shop/Carrier.png" alt=""><br>Carrier</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/clothes"><img src="${pageContext.request.contextPath}/image/shop/Clothes.png" alt=""><br>Clothes</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/dining"><img src="${pageContext.request.contextPath}/image/shop/Dining.png" alt=""><br>Dining</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/grooming"><img src="${pageContext.request.contextPath}/image/shop/Grooming.png" alt=""><br>Grooming</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/toy"><img src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
-            <li><a href="${pageContext.request.contextPath}/shop/list/food"><img src="${pageContext.request.contextPath}/image/shop/Food.png" alt=""><br>Food</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/home"><img src="${pageContext.request.contextPath}/final/image/shop/Home.png" alt=""><br>Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/walk"><img src="${pageContext.request.contextPath}/final/image/shop/Walk.png" alt=""><br>Walk</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/carrier"><img src="${pageContext.request.contextPath}/final/image/shop/Carrier.png" alt=""><br>Carrier</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/clothes"><img src="${pageContext.request.contextPath}/final/image/shop/Clothes.png" alt=""><br>Clothes</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/dining"><img src="${pageContext.request.contextPath}/final/image/shop/Dining.png" alt=""><br>Dining</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/grooming"><img src="${pageContext.request.contextPath}/final/image/shop/Grooming.png" alt=""><br>Grooming</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/toy"><img src="${pageContext.request.contextPath}/final/image/shop/Toy.png" alt=""><br>Toy</a></li>
+            <li><a href="${pageContext.request.contextPath}/shop/list/food"><img src="${pageContext.request.contextPath}/final/image/shop/Food.png" alt=""><br>Food</a></li>
         </div>
     	
         <article class="sec1">
             <div class="img-header">
-                <a href="${pageContext.request.contextPath}/shop/list/carrier"><img class="slide1" id="${pageContext.request.contextPath}/imgSlide" src="image/shop/EventImg1.jpg" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/toy"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg2.jpg" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/clothes"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg3.jpg" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/food"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg4.png" alt=""></a>
-                <a href="${pageContext.request.contextPath}/shop/list/walk"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/image/shop/EventImg5.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/carrier"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/final/image/shop/EventImg1.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/toy"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/final/image/shop/EventImg2.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/clothes"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/final/image/shop/EventImg3.jpg" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/food"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/final/image/shop/EventImg4.png" alt=""></a>
+                <a href="${pageContext.request.contextPath}/shop/list/walk"><img class="slide1" id="imgSlide" src="${pageContext.request.contextPath}/final/image/shop/EventImg5.jpg" alt=""></a>
                 </div>
         </article>
     </main>

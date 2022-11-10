@@ -18,9 +18,9 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/shop/header.css">
+	href="${pageContext.request.contextPath}/final/css/frame/shop/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript"
@@ -192,7 +192,7 @@ section> div{
 					<c:forEach var="list" items="${list}" varStatus="status">
 					<div id="img-div">
 						<div>
-							<img src="${list.productImage}">
+							<img src="${pageContext.request.contextPath}/${list.productImage}">
 						</div>
 						<div id="pro-info">
 							<h3>${list.productName}</h3>

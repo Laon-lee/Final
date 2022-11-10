@@ -17,9 +17,9 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/shop/header.css">
+	href="${pageContext.request.contextPath}/final/css/frame/shop/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <style>
@@ -194,31 +194,31 @@ li {
 		<main>
 			<div class="category-menu">
 				<li><a href="${pageContext.request.contextPath}/shop/list/home"><img
-						src="${pageContext.request.contextPath}/image/shop/Home.png"
+						src="${pageContext.request.contextPath}/final/image/shop/Home.png"
 						alt=""><br>Home</a></li>
 				<li><a href="${pageContext.request.contextPath}/shop/list/Walk"><img
-						src="${pageContext.request.contextPath}/image/shop/Walk.png"
+						src="${pageContext.request.contextPath}/final/image/shop/Walk.png"
 						alt=""><br>Walk</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/shop/list/Carrier"><img
-						src="${pageContext.request.contextPath}/image/shop/Carrier.png"
+						src="${pageContext.request.contextPath}/final/image/shop/Carrier.png"
 						alt=""><br>Carrier</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/shop/list/Clothes"><img
-						src="${pageContext.request.contextPath}/image/shop/Clothes.png"
+						src="${pageContext.request.contextPath}/final/image/shop/Clothes.png"
 						alt=""><br>Clothes</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/shop/list/Dining"><img
-						src="${pageContext.request.contextPath}/image/shop/Dining.png"
+						src="${pageContext.request.contextPath}/final/image/shop/Dining.png"
 						alt=""><br>Dining</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/shop/list/Grooming"><img
-						src="${pageContext.request.contextPath}/image/shop/Grooming.png"
+						src="${pageContext.request.contextPath}/final/image/shop/Grooming.png"
 						alt=""><br>Grooming</a></li>
 				<li><a href="${pageContext.request.contextPath}/shop/list/toy"><img
-						src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
+						src="${pageContext.request.contextPath}/final/image/shop/Toy.png" alt=""><br>Toy</a></li>
 				<li><a href="${pageContext.request.contextPath}/shop/list/Food"><img
-						src="${pageContext.request.contextPath}/image/shop/Food.png"
+						src="${pageContext.request.contextPath}/final/image/shop/Food.png"
 						alt=""><br>Food</a></li>
 			</div>
 			<div id="productList" class="flex-container">
@@ -254,7 +254,7 @@ li {
 						console.log('${pageContext.request.contextPath}');
 						productListDiv.append('<div class="list">'
 								+'<a href="'+'${pageContext.request.contextPath}'+'/shop/main/buy/'+dict.product_id+'">'
-								+'<img src="'+dict.product_image+'" alt="">'
+								+'<img src="${pageContext.request.contextPath}/'+dict.product_image+'" alt="">'
 								+'<p>'+dict.product_name+'</p>'
 								+'<h3>'
 								+dict.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'
