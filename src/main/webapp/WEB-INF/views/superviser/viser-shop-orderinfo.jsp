@@ -11,6 +11,11 @@
 
 <title>Insert title here</title>
 <style>
+body{
+margin:0px;
+padding:0px;
+overflow-x:hidden;
+}
 #container {
 	margin: 0 auto;
 	padding: 0 auto;
@@ -29,6 +34,7 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color:#f1f1f1;
 }
 
 nav {
@@ -37,7 +43,15 @@ nav {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	background-color: gray;
+	background-color: black;
+	color:white;
+}
+nav h1{
+cursor:pointer;
+}
+nav h1:hover{
+opacity:0.9;
+color:white;
 }
 
 main{
@@ -63,7 +77,10 @@ main{
 
 footer {
 	grid-area: footer;
-	background-color: gray;
+	
+}
+footer li{
+line-height:100%;
 }
 
 li {
@@ -93,13 +110,14 @@ input{
 width:80px;
 border:none;
 text-align:center;
-background-color:black;
+background-color:gray;
 color:white;
 cursor:pointer;
 }
 button{
 cursor:pointer;
-background-color:black;
+background-color:gray;
+border:none;
 color:white;
 width:50px;
 height:50px;
@@ -121,10 +139,10 @@ border:1px solid black;
     white-space: nowrap;
 }
 th,td{
-border:1px solid black;
+border:1px solid darkblue;
 }
 .black{
-background-color:black;
+background-color:gray;
 color:white;
 }
 label{
@@ -139,7 +157,7 @@ padding-bottom:10px;
 border-radius:10px;
 }
 
-img{
+.img{
 width:75px;
 height:75px;
 
@@ -153,17 +171,26 @@ border:none;
 background-color:white;
 color:black;
 }
+.table{
+border-collapse:collapse;
+border:2px solid black;
+
+}
+.h1{
+margin-left:20px;
+margin-top:20px;
+text-align:left;
+}
 </style>
 
 </head>
 <body>
 	<div id="container">
 		<header>
-		<h1>임시 헤더</h1>
-<%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
+        <%@ include file="../frame/viser/top.jsp"%>
         </header>
 		<nav>
-			<h2>관리자 페이지</h2>
+				<%@ include file="../frame/viser/header.jsp"%>
 		</nav>
 		<main>
 			<div id="sec1">
@@ -188,10 +215,10 @@ color:black;
 			<div id="sec2">
 				<div class="grid-container">
 				<div class="CSInfo">
-				<h1>배송 상태</h1>
+				<h1 class="h1">배송 상태</h1>
 				<c:forEach var="list" items="${list}">
 				<form action="${pageContext.request.contextPath}/viser/CSOrderModify">
-				<table>
+				<table class="table">
 				<tr>
 				<th>고유 번호</th>
 				<th>고객명</th>
@@ -216,7 +243,7 @@ color:black;
 				<th>${list.receiverPhone}</th>
 				<th><input type="text" name="productId" id="pid" value="${list.productId}"/></th>
 				<th>${list.productName}</th>
-				<th><img src="${list.productImage}/final" alt="" /></th>
+				<th><img class="img" src="${list.productImage}/final" alt="" /></th>
 				<th>${list.productPrice}</th>
 				<th>${list.productCount}</th>
 				<th>${list.orderPrice}</th>
@@ -237,8 +264,8 @@ color:black;
 			</div>
 		</main>
 		<footer>
-		<h1>임시 푸터</h1>
-<%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
+		
+			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
 		</div>
 </body>
