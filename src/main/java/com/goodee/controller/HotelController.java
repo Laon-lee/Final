@@ -138,4 +138,11 @@ public class HotelController {
 			service.resCancel(resDetailNum);
 			return "redirect:/myhotelres";
 		}
+		
+		@GetMapping("viser/hotelRes")
+		public String hotelRes() {
+			return "superviser/viser-hotel-res";
+		}
+		
+		
 }

@@ -285,7 +285,7 @@ a {
                             console.log('${pageContext.request.contextPath}');
                             productListDiv.append('<div class="list">'
                                     +'<a href="'+'${pageContext.request.contextPath}'+'/shop/delete/main/'+dict.product_id+'">'
-                                    +'<img src="${pageContext.request.contextPath}/'+dict.product_image+'" alt="">'
+                                    +'<img src="'+dict.product_image+'" alt="">'
                                     +'<p>'+dict.product_name+'</p>'
                                     +'<h3>'
                                     +dict.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'

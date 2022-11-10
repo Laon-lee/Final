@@ -32,6 +32,12 @@
 	 from board where board_category = #{boardCategory}
 	</select>
 	
+	<select id=""></select>
+	
+	
+	
+	
+	
 	<insert id="createboard" parameterType="boardVO">
 	insert into board (board_title,board_content,board_category,is_delete)
 	values( #{boardTitle}, #{boardContent}, #{boardCategory}, #{isDelete} )

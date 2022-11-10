@@ -124,7 +124,7 @@ label {
 					<li><a href="${pageContext.request.contextPath}/viser/QNA/delete/자주묻는질문">자주묻는질문 등록/수정/삭제</a></li>
 				</ul>
 				<ul><h2>호텔</h2>
-					<li>예약 확인</li>
+					<li><a href="${pageContext.request.contextPath}/viser/hotelRes">예약 확인</a></li>
 					<li>이모 저모</li>
 				</ul>
 			</div>
