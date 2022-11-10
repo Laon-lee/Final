@@ -1,6 +1,6 @@
 
 	 header {
-      z-index: 100;
+      
       background-color: white !important;
       display: flex;
       flex-direction: row;
@@ -78,6 +78,7 @@
       background-color: white;
       }
     .hover-layout1{
+    	z-index:2;
         position:absolute;
         top:70px;
         left:0;

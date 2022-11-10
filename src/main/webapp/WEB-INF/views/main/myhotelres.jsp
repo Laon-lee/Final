@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/header.css?11">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <style>
        
 
@@ -141,7 +142,8 @@
             font-size: 20px;
         }
         #sec2-div1 li {
-            padding:10px
+            padding:10px;
+            cursor:pointer;
         }
         .selected{
             background-color: black;
@@ -229,11 +231,50 @@
             width: 100%;
             height: 100%;
 		}
+		.modalcont {
+            text-align: center;
+    		position: relative;
+    		background-color: #f5ebe0;
+    		border-radius: 10px;
+    		top: 0;
+    		padding: 10px 25px;
+    		width: 25%;
+    		height: 50%;
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+    		justify-content: center;
+    		margin: 8% auto;
+    		z-index: 200;
+        }
+        textarea{
+        	outline:none;
+        }
+        .hidden {
+            display: none;
+        }
 		.modalback {
             background-color: rgba(0, 0, 0, 0.4);
             width: 100%;
             height: 100%;
             position: absolute;
+        }
+        .modal-title{
+        	font-size:20px;
+        	font-weight:900;
+        	margin-bottom: 10px;
+        }
+        .close {
+    		background-color: #f5ebe0;
+    		cursor: pointer;
+    		font-weight: bold;
+    		float:right;
+    		font-size: 20px;
+        }
+        .review-btn{
+        	width: 150px;
+    		height: 30px;
+    		font-size: 16px;
         }
     </style>
 </head>
@@ -358,10 +399,12 @@
                                         	<div class="modal hidden">
                                         		<div class="modalback"></div>
 												<div class="modalcont">
-													<form action="">
-														<p class="modal-title">리뷰 작성 <span></span> </p>
-														<textarea cols="50" rows="20"></textarea>
-														<button>작성 완료</button>
+													<form action="#">
+														<p class="modal-title">리뷰 작성 <span class="close">X</span> </p>
+														<p>뎅누리에서 이용하신 호텔의 소중한 후기를 남겨주세요!</p>
+														<p>후기의 성격과 맞지않는 욕설,도배글은 삭제될 수 있습니다. </p><br>
+														<textarea cols="50" rows="20"></textarea><br>
+														<button class="review-btn">작성 완료</button>
 													</form>
 												</div>
                                         	</div>
@@ -373,7 +416,9 @@
                                     </c:forEach>
                                     <script>
                                     	let wr = document.getElementsByClassName("write-review");
-                                    	
+                                    	$(".write-review, .close, .modalback").click(function(){
+                                            $(".modal").toggle();
+                                        })
                                     </script>
                                 	</table>
                                 </div>
