@@ -33,7 +33,7 @@ public class HotelController {
 	}
 	
 	//hotelmain에서 hotellist로 넘어가는 컨트롤러
-		//메인에서 지역구와 일자를 선택했을 때 선택한 지역구에 해당하는 호텔의 목록이 넘어옴
+	//메인에서 지역구와 일자를 선택했을 때 선택한 지역구에 해당하는 호텔의 목록이 넘어옴
 		
 	@GetMapping("golist/{startDate}/{endDate}/{cate}")
 	public String golist(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("cate") String[] category,
@@ -50,28 +50,10 @@ public class HotelController {
 		model.addAttribute("category", stringcate);
 		
 		service.getHotelList(model, category, startdate, enddate);
-		//service.sampleHotelList(model, category, startdate, enddate);
-		
-		//지역구 값에 따른 호텔 리스트를 출력
-		//호텔 리스트의 호텔 id를 참고해서 roomlist를 뽑는데 room_type으로 묶음
-		
 		
 		return "hotel/hotellist";
 	}
-		
-		/*@GetMapping("roomlist/{room}")
-		public String roomlist() {
 			
-		}*/
-		
-		/*@PostMapping("Restlist")
-		@ResponseBody
-		public HotelRoomVO restlist(@RequestBody HotelRoomVO vo) {
-			service.nameRoomList(vo.getHotelName());
-			return vo;
-			
-		}*/
-		
 	@GetMapping("godetail/{hotelId}/{startDate}/{endDate}")
 	public String godetail(@PathVariable("hotelId") int hotelId, @PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, Model model) {
 		
@@ -93,13 +75,6 @@ public class HotelController {
 			return "hotel/hotelreserve";
 		}
 		
-		@GetMapping("maindetail/{random}")
-		public String maindetail(@PathVariable("random") int ran, Model model) {
-			
-			System.out.println("넘어왔느뇨"+ran);
-			service.ranHotelList(model, ran);
-			return "hotel/hoteldetail";
-		}
 		@PostMapping("gethotelreview")
 		@ResponseBody
 		public List<HotelReviewVO> getHotelReview(@RequestBody HotelReviewVO vo){

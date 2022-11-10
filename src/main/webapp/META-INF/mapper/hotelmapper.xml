@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goodee.dao.HotelDAO">
-<select id="selectRanHotel" resultType="hotelVO">
+	<select id="selectRanHotel" resultType="hotelVO">
 	select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_thum, hotel_img
 		from hotel_info
 		where hotel_id in 
@@ -30,27 +30,9 @@
 		<foreach item="hotelid" collection="hotelid" open="(" separator="," close = ")">
 			 #{hotelid} 
 		</foreach> 
-		
-		GROUP BY room_type,h.hotel_id;
-		
+		GROUP BY room_type,h.hotel_id;	
 	</select>
-	<!-- 호텔 이름에 따른 객실 정보를 불러움 -->
-	<select id="selectRoomList" resultType="hotelroomVO">
-		select room_name, room_id, hotel_id, hotel_name, room_type, room_price, room_content from hotel_room 
 
-		<!-- where hotel_id = 
-			(select hotel_id from hotel_reservation
-			where hotel_name in 
-			<foreach item="hotelname" index="id" collection="list" open="(" separator="," close = ")">
-			#{hotelname}
-			</foreach>
-			) -->
-	</select>
-	<select id="detailHotel" resultType="hoteljoinVO">
-		select * from hotel_room as hr
-		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
-		where hr.hotel_id = #{hotelId}
-	</select>
 	<select id="detailHotelRoom" resultType="hoteljoinVO">
 		select * from hotel_room as hr
 		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
@@ -62,35 +44,6 @@
 	
 	<select id="detailRoomId" resultType="int">
 		SELECT distinct room_id FROM hotel_detail_res WHERE (res_start &lt; #{enddate} AND res_end &gt; #{startdate});
-	</select>
-		
-	
-	<select id="ranHotel" resultType="hotelVO">
-		select hotel_id, hotel_name, hotel_addr, hotel_category, hotel_tel, hotel_thum, hotel_img
-		from hotel_info
-		where hotel_id = #{hotelid}; 
-	</select>
-	<select id="ranRoom" resultType="hotelroomVO">
-		select room_id, hotel_id, hotel_name, room_name, room_type, room_price, room_content
-		from hotel_room
-		where hotel_name = #{hotelname}
-	</select>
-	
-	<select id="dateCount" resultType="int">
-		SELECT COUNT(*)
-		FROM hotel_detail_res
-		WHERE room_id in 
-		<foreach item="roomid" index="id" collection="roomid" open="(" separator="," close = ")">
-			 #{roomid} 
-		</foreach> 
-		and (res_start &lt; #{enddate} AND res_end &gt; #{startdate});
-		</select>
-	<select id="countRoom" resultType="hotelroomVO">
-	select room_name, room_id, hotel_id, hotel_name, room_type, room_price, room_content from hotel_room
-	WHERE NOT room_id in 
-		<foreach item="roomid" index="id" collection="roomid" open="(" separator="," close = ")">
-			 #{roomid} 
-		</foreach> 
 	</select>
 	
 	<select id="getHotelReview" resultType="hotelreviewVO">

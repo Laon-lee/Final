@@ -33,6 +33,7 @@ public class HotelService {
 		this.mbdao = mbdao;
 	}
 	
+	//메인에서 호텔 메인으로 넘어갈 때 랜덤 호텔 출력 서비스
 	public void ranHotelList(Model model, Set<Integer> set) {
 		model.addAttribute("ranhotel", dao.selectRanHotel(set));
 
@@ -41,11 +42,8 @@ public class HotelService {
 	//main에서 list로 페이지 이동할때 지역구 값 받아서 호텔 리스트 불러오는 서비스
 	public void getHotelList(Model model, String[] cate, String startdate, String enddate) {
 
-		
-		
 		//지역구에 따른 호텔 리스트
 		//dao.selectHotelList(cate);
-		
 		
 		List<Integer> idlist = new ArrayList<Integer>();
 		
@@ -54,39 +52,26 @@ public class HotelService {
 			idlist.add(dao.selectHotelList(cate).get(i).getHotelId());
 		}
 		
-
-		
-		
 		model.addAttribute("hotel", dao.selectHotelList(cate));
-		
 		model.addAttribute("room", dao.selectroom(idlist));
 	}
 		
 	public void detailHotelList(Model model, int hotelId, String startdate, String enddate) {
+		
 		int[] roomId = dao.detailRoomId(startdate, enddate);
-		System.out.println("roomid"+Arrays.toString(dao.detailRoomId(startdate, enddate)));
-		model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomId));
-		System.out.println("hotel"+dao.detailHotelRoom(hotelId, roomId).get(0).getHotelId());
-		//model.addAttribute("hotel", dao.detailHotel(hotelId));
+		
 		HotelQnaVO vo1 = new HotelQnaVO();
 		HotelReviewVO vo2 = new HotelReviewVO();
+		
 		vo1.setHotelId(hotelId);
 		vo2.setHotelId(hotelId);
+		
+		model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomId));
 		model.addAttribute("hotelqnacount", dao.getHotelQnaCount(vo1));
 		model.addAttribute("hotelreviewcount", dao.getHotelReviewCount(vo2));
 		
 	}
-		
-		public void ranHotelList(Model model, int ran) {
-			model.addAttribute("hotel",dao.ranHotel(ran));
 			
-			String hotelname = dao.ranHotel(ran).getHotelName();
-			
-			model.addAttribute("room", dao.ranRoom(hotelname).get(0));
-		};
-		
-		
-		
 		public List<HotelReviewVO> getHotelReview(HotelReviewVO vo){
 			return dao.getHotelReview(vo);
 		}
