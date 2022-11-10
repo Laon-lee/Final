@@ -3,6 +3,9 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +16,11 @@
 
 <title>Insert title here</title>
 <style>
+body{
+margin:0px;
+padding:0px;
+overflow-x:hidden;
+}
 #container {
 	margin: 0 auto;
 	padding: 0 auto;
@@ -31,6 +39,7 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color:#f1f1f1;
 }
 
 nav {
@@ -39,9 +48,16 @@ nav {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	background-color: gray;
+	background-color: black;
+	color:white;
 }
-
+nav h1{
+cursor:pointer;
+}
+nav h1:hover{
+opacity:0.9;
+color:white;
+}
 main{
 	display: grid;
 	grid-area : main;
@@ -65,7 +81,10 @@ main{
 
 footer {
 	grid-area: footer;
-	background-color: gray;
+	
+}
+footer li{
+line-height:100%;
 }
 
 li {
@@ -109,6 +128,9 @@ label {
 	gap: 30px;
 	text-align: center;
 	margin-bottom: 30px;
+}
+.category-menu li{
+line-height:25px;
 }
 .category-menu img {
 	margin-top: 10px;
@@ -170,11 +192,10 @@ label {
 <body>
 	<div id="container">
 		<header>
-		<h1>임시 헤더</h1>
-<%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
+        <%@ include file="../frame/viser/top.jsp"%>
         </header>
 		<nav>
-			<h2><a href="${pageContext.request.contextPath}/viser/main"  style="color : black;" >관리자 페이지</a></h2>
+				<%@ include file="../frame/viser/header.jsp"%>
 		</nav>
 		<main>
 			<div id="sec1">
@@ -243,8 +264,8 @@ label {
 			</div>
 		</main>
 		<footer>
-		<h1>임시 푸터</h1>
-<%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
+		
+			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
 		</div>
 		<script>

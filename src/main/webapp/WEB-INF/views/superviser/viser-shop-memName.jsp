@@ -112,6 +112,10 @@ a:hover {
 
 button {
 	width : 10rem;
+	background-color:#ccc;
+	font-size:1rem;
+	
+	cursor:pointer;
 }
 
 label {
@@ -121,6 +125,17 @@ label {
 table, td,th{
 text-align:center;
 border:1px solid black;
+}
+.table{
+width:80%;
+margin:0 auto;
+border-collapse:collapse;
+border:2px solid black;
+
+}
+.h1{
+margin-left:20px;
+margin-top:20px;
 }
 </style>
 
@@ -154,8 +169,8 @@ border:1px solid black;
 			</div>
 			</div>
 			<div id="sec2">
-			<h1>고객 정보</h1>
-			<table>
+			<h1 class="h1">고객 정보</h1>
+			<table class="table">
 			<tr>
 			<th>고유 아이디</th>
 			<th>고객명</th>
@@ -184,7 +199,7 @@ border:1px solid black;
 			<option value="배송중">배송중</option>
 			<option value="배송완료">배송완료</option>
 			</select></th>
-			<td><button>go go move move</button></td>
+			<td><button>click!</button></td>
 		</tr>
 		</form>
 		</c:forEach>
