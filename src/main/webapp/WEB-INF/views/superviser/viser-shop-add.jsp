@@ -153,7 +153,6 @@ input {
 				<label for="proc_content"><p>상품 이미지</p><input type="file" name="contImage" id="proc_content" required=false/></label>
 				
 				<div class= "select_img2"><img src=""/></div>
-					<%=request.getRealPath("/") %>
 				<label for="proc_category"><p style="width: 9.6rem;">카테고리</p>
 					<select id="proc_category" name="productCategory">
 						<option value="choice">카테고리를 선택하세요</option>

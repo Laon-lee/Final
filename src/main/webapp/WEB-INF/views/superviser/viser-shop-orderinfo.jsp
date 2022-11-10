@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 
 
 <title>Insert title here</title>
@@ -216,7 +216,7 @@ color:black;
 				<th>${list.receiverPhone}</th>
 				<th><input type="text" name="productId" id="pid" value="${list.productId}"/></th>
 				<th>${list.productName}</th>
-				<th><img src="${list.productImage}" alt="" /></th>
+				<th><img src="${list.productImage}/final" alt="" /></th>
 				<th>${list.productPrice}</th>
 				<th>${list.productCount}</th>
 				<th>${list.orderPrice}</th>

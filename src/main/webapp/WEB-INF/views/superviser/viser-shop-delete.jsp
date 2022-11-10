@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 
 
 <title>Insert title here</title>
@@ -211,31 +211,31 @@ a {
 			<div id="sec2">
 				<div class="category-menu">
                     <li class="li"><a href="${pageContext.request.contextPath}/viser/delete/home"><img
-                            src="${pageContext.request.contextPath}/image/shop/Home.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Home.png"
                             alt=""><br>Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/delete/Walk"><img
-                            src="${pageContext.request.contextPath}/image/shop/Walk.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Walk.png"
                             alt=""><br>Walk</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/delete/Carrier"><img
-                            src="${pageContext.request.contextPath}/image/shop/Carrier.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Carrier.png"
                             alt=""><br>Carrier</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/delete/Clothes"><img
-                            src="${pageContext.request.contextPath}/image/shop/Clothes.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Clothes.png"
                             alt=""><br>Clothes</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/delete/Dining"><img
-                            src="${pageContext.request.contextPath}/image/shop/Dining.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Dining.png"
                             alt=""><br>Dining</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/delete/Grooming"><img
-                            src="${pageContext.request.contextPath}/image/shop/Grooming.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Grooming.png"
                             alt=""><br>Grooming</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/delete/toy"><img
-                            src="${pageContext.request.contextPath}/image/shop/Toy.png" alt=""><br>Toy</a></li>
+                            src="${pageContext.request.contextPath}/final/image/shop/Toy.png" alt=""><br>Toy</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/delete/Food"><img
-                            src="${pageContext.request.contextPath}/image/shop/Food.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Food.png"
                             alt=""><br>Food</a></li>
                 </div>
 
