@@ -296,13 +296,13 @@ color:darkgray;
 
                             <div class="second">
                                 <h2>상품 이미지</h2>
-                                <img src="${list.productImage}" alt="">
+                                <img src="/FinalProject/${list.productImage}" alt="">
                                
                             </div>
 
                             <div class="third">
                             	<h2>상품 설명(장문)</h2>
-                                <img src="${list.productContent}" alt="" />
+                                <img src="/FinalProject/${list.productContent}" alt="" />
                             </div>
                             
                         </div>

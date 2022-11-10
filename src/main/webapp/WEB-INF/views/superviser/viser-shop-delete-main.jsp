@@ -373,7 +373,7 @@ font {
 			<div id="main-container">
 				<div id="main-box">
 					<div id="main1">
-						<img src="${list.productImage}">
+						<img src="/FinalProject/${list.productImage}">
 					</div>
 					<div id="main2">
 						<h3>${list.productName}</h3>
