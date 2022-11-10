@@ -74,7 +74,10 @@
 	<select id="getMoreHotelQna" resultType="hotelqnaVO">
 		select * from hotelqna where hotel_id = #{hotelId} and is_delete = 0 order by hotelqna_date desc limit #{page}, 5;
 	</select>
-	
+	<insert id="insertHotelReview" parameterType="hotelreviewVO">
+      insert into hotelreview (hotel_id, hotelreview_content,hotelreview_roomname, mem_id)
+               values (#{hotelId}, #{hotelreviewContent},#{hotelreviewRoomname},#{memId})
+   </insert>
 	<insert id="insertHotelQna" parameterType="hotelqnaVO">
 		insert into hotelqna (hotel_id, hotelqna_title, hotelqna_content, hotelqna_date, mem_id)
 					values (#{hotelId}, #{hotelqnaTitle},#{hotelqnaContent},#{hotelqnaDate},#{memId})

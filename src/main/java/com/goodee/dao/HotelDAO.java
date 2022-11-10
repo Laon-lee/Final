@@ -36,7 +36,7 @@ public interface HotelDAO {
 	public List<HotelQnaVO> getHotelQna(HotelQnaVO vo);
 	public int getHotelQnaCount(HotelQnaVO vo);
 	public List<HotelQnaVO> getMoreHotelQna(@Param("hotelId") String id, @Param("page") int page);
-	
+	public void insertHotelReview(HotelReviewVO vo); 
 	public void insertHotelQna(HotelQnaVO vo);
 	public HotelRoomVO getRoomInfo(HotelRoomVO vo);
 	public void setDetailRes(HotelDetailResVO vo);

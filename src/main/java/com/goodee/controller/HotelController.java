@@ -90,7 +90,11 @@ public class HotelController {
 		public List<HotelQnaVO> getHotelQna(@RequestBody HotelQnaVO vo){
 	        return service.getHotelQna(vo);
 	    }
-		
+		@PostMapping("insertHotelReview")
+	    public String insertHotelReview(HotelReviewVO vo, HttpSession session) { 
+	        service.insertHotelReview(vo,session);
+	        return "redirect:/myhotelres";
+	    }
 		@PostMapping("inserthotelqna")
 		@ResponseBody
 		public void insertHotelQna(@RequestBody HotelQnaVO vo){
