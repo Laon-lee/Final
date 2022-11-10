@@ -25,8 +25,9 @@ public interface HotelDAO {
 	public List<HotelVO> selectHotelList(@Param("list") String[] cate);
 	public List<HotelRoomVO> selectroom(@Param("hotelid") List<Integer> idlist);
 	
-	public int[] detailRoomId(@Param("startdate")String Startdate, @Param("enddate") String enddate);
-	public List<HotelJoinVO> detailHotelRoom(@Param("hotelId") int hotelId, @Param("roomId")int[] roomId);
+	public List<HotelDetailResVO> detailRoomId(@Param("startdate")String Startdate, @Param("enddate") String enddate);
+	public List<HotelJoinVO> detailHotelRoom(@Param("hotelId") int hotelId, @Param("roomId")List<Integer> roomId);
+	public List<HotelJoinVO> detailHotelnotRoomid(@Param("hotelId") int hotelId);
 		
 	public List<HotelReviewVO> getHotelReview(HotelReviewVO vo);
 	public int getHotelReviewCount(HotelReviewVO vo);

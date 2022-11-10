@@ -58,7 +58,23 @@ public class HotelService {
 		
 	public void detailHotelList(Model model, int hotelId, String startdate, String enddate) {
 		
-		int[] roomId = dao.detailRoomId(startdate, enddate);
+		List<Integer> roomid = new ArrayList<Integer>();
+		
+		for (int i = 0; i < dao.detailRoomId(startdate, enddate).size(); i++) {
+			System.out.println(dao.detailRoomId(startdate, enddate).get(i).getRoomId());
+			roomid.add(dao.detailRoomId(startdate, enddate).get(i).getRoomId());
+		}
+		
+		if(roomid.isEmpty()) {
+			model.addAttribute("hotel", dao.detailHotelnotRoomid(hotelId));
+		} else {
+			model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomid));
+		}
+		
+		System.out.println("roomid"+roomid);
+		System.out.println("hotelid"+hotelId);
+		
+		
 		
 		HotelQnaVO vo1 = new HotelQnaVO();
 		HotelReviewVO vo2 = new HotelReviewVO();
@@ -66,7 +82,7 @@ public class HotelService {
 		vo1.setHotelId(hotelId);
 		vo2.setHotelId(hotelId);
 		
-		model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomId));
+		
 		model.addAttribute("hotelqnacount", dao.getHotelQnaCount(vo1));
 		model.addAttribute("hotelreviewcount", dao.getHotelReviewCount(vo2));
 		
@@ -93,9 +109,21 @@ public class HotelService {
 			MemberVO vo1 = (MemberVO)session.getAttribute("user");
 			model.addAttribute("user",mbdao.getmemberinfo(vo1));
 			model.addAttribute("separateVO",mbdao.separate(mbdao.getmemberinfo(vo1))); 
-			int[] roomId = dao.detailRoomId(startdate, enddate);
+			
+			List<Integer> roomid = new ArrayList<Integer>();
+			
+			for (int i = 0; i < dao.detailRoomId(startdate, enddate).size(); i++) {
+				System.out.println(dao.detailRoomId(startdate, enddate).get(i).getRoomId());
+				roomid.add(dao.detailRoomId(startdate, enddate).get(i).getRoomId());
+			}
+			
+			if(roomid.isEmpty()) {
+				model.addAttribute("hotel", dao.detailHotelnotRoomid(hotelId));
+			} else {
+				model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomid));
+			}
 		
-			model.addAttribute("hotel", dao.detailHotelRoom(hotelId, roomId));
+			
 		}
 		
 		public HotelRoomVO getRoomInfo(HotelRoomVO vo) {

@@ -57,6 +57,10 @@ public class HotelController {
 	@GetMapping("godetail/{hotelId}/{startDate}/{endDate}")
 	public String godetail(@PathVariable("hotelId") int hotelId, @PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, Model model) {
 		
+		System.out.println("컨트롤러호텔아이디"+hotelId);
+		System.out.println("스타트"+startdate);
+		System.out.println("엔드"+enddate);
+		
 		model.addAttribute("startdate", startdate);
 		model.addAttribute("enddate", enddate);
 		service.detailHotelList(model, hotelId, startdate, enddate);

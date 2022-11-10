@@ -32,19 +32,28 @@
 		</foreach> 
 		GROUP BY room_type,h.hotel_id;	
 	</select>
+	
+	<select id="detailRoomId" resultType="hoteldetailresVO">
+		SELECT distinct room_id FROM hotel_detail_res WHERE (res_start &lt; #{enddate} AND res_end &gt; #{startdate});
+	</select>
 
 	<select id="detailHotelRoom" resultType="hoteljoinVO">
-		select * from hotel_room as hr
-		INNER JOIN hotel_info as hi ON hr.hotel_id = hi.hotel_id
-		where hr.hotel_id = #{hotelId} and not hr.room_id in
-		<foreach item="roomId" collection="roomId" open="(" separator="," close = ")">
-			#{roomId}
+		select hi.hotel_id, hi.hotel_name, hi.hotel_addr, hi.hotel_category, hi.hotel_tel, hi.hotel_thum, hr.room_id, hr.room_name, hr.room_type, hr.room_price, hr.room_content from hotel_info as hi
+		INNER JOIN hotel_room as hr ON hr.hotel_id = hi.hotel_id
+			where hi.hotel_id = #{hotelId} and NOT hr.room_id in
+		<foreach item="items" collection="roomId" open="(" separator="," close = ")">
+			#{items}
 		</foreach> 
 	</select>
 	
-	<select id="detailRoomId" resultType="int">
-		SELECT distinct room_id FROM hotel_detail_res WHERE (res_start &lt; #{enddate} AND res_end &gt; #{startdate});
+	<select id="detailHotelnotRoomid" resultType="hoteljoinVO">
+		select hi.hotel_id, hi.hotel_name, hi.hotel_addr, hi.hotel_category, hi.hotel_tel, hi.hotel_thum, hr.room_id, hr.room_name, hr.room_type, hr.room_price, hr.room_content from hotel_info as hi
+		INNER JOIN hotel_room as hr ON hr.hotel_id = hi.hotel_id
+			where hi.hotel_id = #{hotelId}
 	</select>
+	
+	
+	
 	
 	<select id="getHotelReview" resultType="hotelreviewVO">
 		select * from hotelreview where hotel_id = #{hotelId} and is_delete = 0 order by hotelreview_date desc limit 0, 5
