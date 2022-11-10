@@ -77,37 +77,36 @@ public class SuperviserController {
 //	}
 	
 	
-	@PostMapping("viser/add-success")
-	public String success(ShopVO vo,@RequestParam("thumnail") MultipartFile thumnail,@RequestParam("contImage") MultipartFile contImage) throws IllegalStateException, IOException {
-		System.out.println("아무거나1");
+	   @PostMapping("viser/add-success")
+	   public String success(ShopVO vo,@RequestParam("thumnail") MultipartFile thumnail,@RequestParam("contImage") MultipartFile contImage) throws IllegalStateException, IOException {
+	      System.out.println("아무거나1");
 
-		if (!thumnail.getOriginalFilename().isEmpty()) {
-			Path path = Paths.get("c:/finalprojectimage"+"/shop/"+vo.getProductCategory()+"/"+thumnail.getOriginalFilename());
-			thumnail.transferTo(path);
-			System.out.println("여기서부터 문제1");
-			System.out.println(thumnail.getOriginalFilename() + "저장이 되었습니다.");
-			vo.setProductContent("c:/finalprojectimage"+"/shop/"+vo.getProductCategory()+vo.getProductContent());
-			System.out.println(vo.getProductContent());
-			
-			System.out.println("여기서부터 문제2");
-		} else {
-			System.out.println("에러가 발생헀습니다.");
-		}
-		
+	      if (!thumnail.getOriginalFilename().isEmpty()) {
+	         Path path = Paths.get("c:/finalprojectimage"+"/shop/"+vo.getProductCategory()+"/"+thumnail.getOriginalFilename());
+	         thumnail.transferTo(path);
+	         System.out.println("여기서부터 문제1");
+	         System.out.println(thumnail.getOriginalFilename() + "저장이 되었습니다.");
+	         vo.setProductContent("upload"+"/shop/"+vo.getProductCategory()+vo.getProductContent());
+	         System.out.println(vo.getProductContent());
+	         
+	         System.out.println("여기서부터 문제2");
+	      } else {
+	         System.out.println("에러가 발생헀습니다.");
+	      }
+	      
 
-		if (!contImage.getOriginalFilename().isEmpty()) {
-			Path path = Paths.get("c:/finalprojectimage"+"/shop/"+vo.getProductCategory()+"/"+contImage.getOriginalFilename());
-			System.out.println("섬네일 문제1");
-			
-			contImage.transferTo(path);
-			System.out.println("섬네일 문제2");
-			System.out.println(contImage.getOriginalFilename() + "저장이 되었습니다.");
-			vo.setProductImage("c:/finalprojectimage"+"/shop/"+vo.getProductCategory()+vo.getProductImage());
-			System.out.println("너는 왔냐");
-		} else {
-			System.out.println("에러가 발생헀습니다.");
-		}
-		
+	      if (!contImage.getOriginalFilename().isEmpty()) {
+	         Path path = Paths.get("c:/finalprojectimage"+"/shop/"+vo.getProductCategory()+"/"+contImage.getOriginalFilename());
+	         System.out.println("섬네일 문제1");
+	         
+	         contImage.transferTo(path);
+	         System.out.println("섬네일 문제2");
+	         System.out.println(contImage.getOriginalFilename() + "저장이 되었습니다.");
+	         vo.setProductImage("upload"+"/shop/"+vo.getProductCategory()+vo.getProductImage());
+	         System.out.println("너는 왔냐");
+	      } else {
+	         System.out.println("에러가 발생헀습니다.");
+	      }
 		
 		
 		

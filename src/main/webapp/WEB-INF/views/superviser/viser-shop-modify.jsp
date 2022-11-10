@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 
 
 <title>Insert title here</title>
@@ -198,32 +198,32 @@ label {
 			<div id="sec2">
 				<div class="category-menu">
                     <li class="li"><a href="${pageContext.request.contextPath}/viser/modify/home"><img
-                            src="${pageContext.request.contextPath}/image/shop/Home.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Home.png"
                             alt=""><br>Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/modify/Walk"><img
-                            src="${pageContext.request.contextPath}/image/shop/Walk.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Walk.png"
                             alt=""><br>Walk</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/modify/Carrier"><img
-                            src="${pageContext.request.contextPath}/image/shop/Carrier.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Carrier.png"
                             alt=""><br>Carrier</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/modify/Clothes"><img
-                            src="${pageContext.request.contextPath}/image/shop/Clothes.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Clothes.png"
                             alt=""><br>Clothes</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/modify/Dining"><img
-                            src="${pageContext.request.contextPath}/image/shop/Dining.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Dining.png"
                             alt=""><br>Dining</a></li>
                     <li><a
                         href="${pageContext.request.contextPath}/viser/modify/Grooming"><img
-                            src="${pageContext.request.contextPath}/image/shop/Grooming.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Grooming.png"
                             alt=""><br>Grooming</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/modify/toy"><img
-                            src="${pageContext.request.contextPath}/image/shop/Toy.png" 
+                            src="${pageContext.request.contextPath}/final/image/shop/Toy.png" 
                             alt=""><br>Toy</a></li>
                     <li><a href="${pageContext.request.contextPath}/viser/modify/Food"><img
-                            src="${pageContext.request.contextPath}/image/shop/Food.png"
+                            src="${pageContext.request.contextPath}/final/image/shop/Food.png"
                             alt=""><br>Food</a></li>
                 </div>
 
@@ -273,7 +273,7 @@ label {
                             console.log('${pageContext.request.contextPath}');
                             productListDiv.append('<div class="list">'
                                     +'<a href="'+'${pageContext.request.contextPath}'+'/viser/update/id/'+dict.product_id+'">'
-                                    +'<img src="'+dict.product_image+'" alt="">'
+                                    +'<img src="${pageContext.request.contextPath}/'+dict.product_image+'" alt="">'
                                     +'<p>'+dict.product_name+'</p>'
                                     +'<h3>'
                                     +dict.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'

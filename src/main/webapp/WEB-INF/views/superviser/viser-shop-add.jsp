@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 
 
 <title>Insert title here</title>
@@ -147,7 +147,13 @@ input {
 				<label for="proc_name"><p>상품 이름</p><input type="text" name="productName" id="proc_name"/></label>
 				<label for="proc_shop"><p>업체 이름</p><input type="text" name="productShop" id="proc_shop"/></label>
 				<label for="proc_image"><p>상품 썸네일</p><input type="file" name="thumnail" id="proc_image"  required=false/></label>
+				
+				<div class = "select_img1"><img src=""/></div>
+						
 				<label for="proc_content"><p>상품 이미지</p><input type="file" name="contImage" id="proc_content" required=false/></label>
+				
+				<div class= "select_img2"><img src=""/></div>
+					<%=request.getRealPath("/") %>
 				<label for="proc_category"><p style="width: 9.6rem;">카테고리</p>
 					<select id="proc_category" name="productCategory">
 						<option value="choice">카테고리를 선택하세요</option>
@@ -174,5 +180,33 @@ input {
 <%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
 		</footer>
 		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script>
+		 $("#proc_image").change(function(){
+			   if(this.files && this.files[0]) {
+			    var reader1 = new FileReader;
+			    reader1.onload = function(data) {
+			     $(".select_img1 img").attr("src", data.target.result).width(150).height(150);        
+			    }
+			    reader1.readAsDataURL(this.files[0]);
+			   }
+			  });
+		 
+		 
+		 $("#proc_content").change(function(){
+			   if(this.files && this.files[0]) {
+			    var reader2 = new FileReader;
+			    reader2.onload = function(data) {
+			     $(".select_img2 img").attr("src", data.target.result).width(150).height(200);        
+			    }
+			    reader2.readAsDataURL(this.files[0]);
+			   }
+			  });
+		</script>
+		
+		<%=request.getRealPath("/") %>
+		
+		
 </body>
 </html>
