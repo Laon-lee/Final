@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fyiyg55rlb"></script>
   <title>Document</title>
   <style type="text/css">		 
@@ -183,7 +183,7 @@
       <section id="sec2">
         <div id="sec2-div1">
           <h1>About Us</h1>
-          <a href="${pageContext.request.contextPath}/viser/main">관리자 페이지 테스트</a>
+          <a href="${pageContext.request.contextPath}/final/viser/main">관리자 페이지 테스트</a>
           <p>품격있는 애견 사이트</p>
           <p>최고의 서비스</p>
           <p>댕누리만이 사람과 반려견을 더 아름답게 하는</p>
@@ -226,7 +226,7 @@
       </section>
       <section id="sec4">
         <div id="sec4-div1">
-        <form action="${pageContext.request.contextPath}/gohotel">
+        <form action="${pageContext.request.contextPath}/final/gohotel">
           <h1>Hotel</h1>
           <p>품격있는 호텔</p>
           <p>품격있는 서비스로</p>
