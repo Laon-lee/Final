@@ -6,11 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
-
-
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <title>Insert title here</title>
 <style>
+body{
+margin:0px;
+padding:0px;
+overflow-x:hidden;
+}
 #container {
 	margin: 0 auto;
 	padding: 0 auto;
@@ -29,6 +32,7 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color:#f1f1f1;
 }
 
 nav {
@@ -37,7 +41,15 @@ nav {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	background-color: gray;
+	background-color: black;
+	color:white;
+}
+nav h1{
+cursor:pointer;
+}
+nav h1:hover{
+opacity:0.9;
+color:white;
 }
 
 main{
@@ -63,16 +75,20 @@ main{
 
 footer {
 	grid-area: footer;
-	background-color: gray;
+	
 }
-
+footer li{
+line-height:100%;
+}
 li {
 	list-style: none;
 	line-height: 3.5rem;
 	cursor: pointer;
 }
 .create-form{
-margin-left : 3rem;
+width:100%;
+margin:0 auto;
+text-align:center;
 }
 a {
 	text-decoration: none;
@@ -159,9 +175,11 @@ a:hover {
     width: 100%;
     margin-right: 30px;
   }
-  h1{
+  .h1{
   width:80%;
   margin:0 auto;
+  margin-top:20px;
+  margin-bottom:20px;
   }
   #boardContent{
   width:100%;
@@ -172,17 +190,12 @@ a:hover {
   .create{
  
   width:100%;
-  margin:0 auto;
+  
   
   }
-  .create h1,h1{
-  text-align:left;
-  font-size:2rem;
-  margin-top: 30px;
-  margin-bottom:15px;
-  }
+  
   .create label{
-  width: 200px;
+  width: 80px;
   display:inline-block;
   }
   .create input{
@@ -210,7 +223,7 @@ a:hover {
   .create button{
   margin-top:15px;
   margin-bottom:15px;
-  margin-left:200px;
+  
   width:15%;
   height:50px;
   border: none;
@@ -227,17 +240,27 @@ a:hover {
   background-color:#ccc;
   color:black;
   }
+  .h2{
+  text-align:center;
+  }
+  .btn-container{
+  width:100%;
+  text-align:center;
+  }
+  .div-container{
+  text-align:left;
+  margin-left:300px;
+  }
 </style>
 
 </head>
 <body>
 	<div id="container">
 		<header>
-		<h1>임시 헤더</h1>
-<%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
+        <%@ include file="../frame/viser/top.jsp"%>
         </header>
 		<nav>
-			<h2>관리자 페이지</h2>
+				<%@ include file="../frame/viser/header.jsp"%>
 		</nav>
 		<main>
 			<div id="sec1">
@@ -260,7 +283,7 @@ a:hover {
 			</div>
 			<div id="sec2">
 			    <article class="art3">
-        <h1>공지사항/수정/삭제</h1>
+        <h1 class="h1">공지사항/수정/삭제</h1>
         <c:forEach var="item" items="${list}">
         <form action="${pageContext.request.contextPath}/viser/delete/modify">
       <div class="art3-container">
@@ -269,7 +292,9 @@ a:hover {
         <label for="boardId">수정/삭제할 번호</label><input type="text" name="boardId" id="boardId" value="${item.boardId}" readonly/>
         <label for="boardContent">수정할 내용</label><textarea name="boardContent" id="boardContent">${item.boardContent}</textarea><br />
         <input type="hidden" name="isDelete" id="delete" class="delete" value=""/>
+        <div class="btn-container">
         <button class="btn1" id="btn1">수정</button><button class="btn2" id="btn2">삭제</button>
+        </div>
         </div>
         <div class="art3-third">
        
@@ -280,23 +305,25 @@ a:hover {
     </c:forEach>
     <div class="create">
     <form class="create-form"  action="${pageContext.request.contextPath}/viser/create/modify">
-							<h1>공지사항 새로 추가하기</h1>
+							<h1 class="h2">공지사항 새로 추가하기</h1>
 							
-							<label for="boardTitle"><h2>제목</h2></label> <input type="text" id="CTT" name="boardTitle" placeholder="제목을 입력하세요" value=""/><br />
-							<label for="boardContent"><h2>내용</h2></label> <input type="text" id="CCT" name="boardContent" placeholder="내용을 입력하세요" value=""/><br />
+							<label for="boardTitle"><h2 class="h2">제목</h2></label> <input type="text" id="CTT" name="boardTitle" placeholder="제목을 입력하세요" value=""/><br />
+							<label for="boardContent"><h2 class="h2">내용</h2></label> <input type="text" id="CCT" name="boardContent" placeholder="내용을 입력하세요" value=""/><br />
 							<button>생성하기</button> <button id="btn3">생성 내용 미리보기</button>
 							<input type="hidden" name="boardCategory" value="공지사항"/>
 							<input type="hidden" name="isDelete" value="0"/>
+							<div class="div-container">
 							<h2>생성 제목 : <span id="CT"></span> </h2>
 							<h3>생성 내용 : <span id="CC"></span> </h3>
+							</div>
 							</form>
 							</div>
     </article>
 			</div>
 		</main>
 		<footer>
-		<h1>임시 푸터</h1>
-<%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
+		
+			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
 		</div>
 	 <script>
