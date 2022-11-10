@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -163,13 +164,16 @@ input {
 			<form id="sec2-form" action="${pageContext.request.contextPath}/viser/add-success" enctype="multipart/form-data" method="post">
 				<label for="proc_name"><p>상품 이름</p><input type="text" name="productName" id="proc_name"/></label>
 				<label for="proc_shop"><p>업체 이름</p><input type="text" name="productShop" id="proc_shop"/></label>
-				<label for="proc_image"><p>상품 썸네일</p><input type="file" name="thumnail" id="proc_image"  required=false/></label>
 				
-				<div class = "select_img1"><img src=""/></div>
-						
-				<label for="proc_content"><p>상품 이미지</p><input type="file" name="contImage" id="proc_content" required=false/></label>
+				
+				<label for="proc_content"><p>상품 썸네일</p><input type="file" name="contImage" id="proc_content" required=false/></label>
 				
 				<div class= "select_img2"><img src=""/></div>
+				
+				<label for="proc_image"><p>상품 이미지</p><input type="file" name="thumnail" id="proc_image"  required=false/></label>
+				
+				<div class = "select_img1"><img src=""/></div>
+				
 				<label for="proc_category"><p style="width: 9.6rem;">카테고리</p>
 					<select id="proc_category" name="productCategory">
 						<option value="choice">카테고리를 선택하세요</option>
@@ -184,9 +188,23 @@ input {
 						<option value="food">Food</option>
 					</select>
 				</label>
+				<label><p>옵션</p><input name="options" type="text"></label><button type="button" id="plus-option">추가</button>
+				<script type="text/javascript">
+					document.getElementById("plus-option").addEventListener("click",function(){
+						let input = document.createElement("input");
+						input.setAttribute("name","options");
+						input.setAttribute("type","options");
+						this.before(input);
+					});
+				</script>
+				
 				<label for="proc_price"><p>상품 가격</p><input type="text" name="productPrice"></label>
 				
 					<button>상품 등록</button>
+				
+				
+				
+				
 				
 				</form>
 			</div>

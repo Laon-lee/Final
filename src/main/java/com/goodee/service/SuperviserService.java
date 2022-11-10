@@ -14,6 +14,7 @@ import com.goodee.dao.SuperviserDAO;
 import com.goodee.vo.BoardVO;
 import com.goodee.vo.MemberVO;
 import com.goodee.vo.OrderjoinVO;
+import com.goodee.vo.ProductOptionVO;
 import com.goodee.vo.ShopVO;
 
 @Service
@@ -48,27 +49,15 @@ public class SuperviserService  {
 ////         }
 //		
 //	}
-	public void viseradd(ShopVO vo){
-		System.out.println("서비스1");
+	public void viseradd(String[] opts, ShopVO vo){
 		superdao.addproc(vo);
-		
-//		thumnail.transferTo(Path.get("C:/JavaTPC/Goodee_Spring_workspace/Board5/"));
-		
-		
-//		try {
-//			
-//			
-//            thumnail.transferTo(path1);
-//            //vo.setPic1(Path + pic1File.getOriginalFilename());
-//            vo.setProductImage(path1 + thumnail.getOriginalFilename());
-//         } catch (IllegalStateException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//         } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//         }
-		
+		ProductOptionVO opvo = new ProductOptionVO();
+		opvo.setProductId(vo.getProductId());
+		for(int i = 0 ; i< opts.length; i++) {
+			opvo.setOption(opts[i]);
+			superdao.addprodoption(opvo);
+		}
+		 
 	}
 
 	

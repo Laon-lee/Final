@@ -8,9 +8,17 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
+
 
 <title>Insert title here</title>
 <style>
+body{
+margin:0px;
+padding:0px;
+overflow-x:hidden;
+}
 #container {
 	margin: 0 auto;
 	padding: 0 auto;
@@ -29,6 +37,7 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color:#f1f1f1;
 }
 
 nav {
@@ -37,7 +46,15 @@ nav {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	background-color: gray;
+	background-color: black;
+	color:white;
+}
+nav h1{
+cursor:pointer;
+}
+nav h1:hover{
+opacity:0.9;
+color:white;
 }
 
 main{
@@ -63,7 +80,10 @@ main{
 
 footer {
 	grid-area: footer;
-	background-color: gray;
+	
+}
+footer li{
+line-height:100%;
 }
 
 li {
@@ -108,11 +128,10 @@ border:1px solid black;
 <body>
 	<div id="container">
 		<header>
-		<h1>임시 헤더</h1>
-<%--            <%@ include file="../frame/mypage/header.jsp" %> --%>
+        <%@ include file="../frame/viser/top.jsp"%>
         </header>
 		<nav>
-			<h2>관리자 페이지</h2>
+				<%@ include file="../frame/viser/header.jsp"%>
 		</nav>
 		<main>
 			<div id="sec1">
@@ -176,9 +195,8 @@ border:1px solid black;
 			</div>
 		</main>
 		<footer>
-		<h1>임시 푸터</h1>
-<%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
+		
+			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
-		</div>
 </body>
 </html>
