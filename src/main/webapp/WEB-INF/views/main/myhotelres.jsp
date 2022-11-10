@@ -94,6 +94,10 @@
             justify-content: center;
             align-items: center;
         }
+        #main-container img{
+        	width:120px;
+        	height:120px;
+        }
         #artcontainer{
             display: flex;
             flex-direction: column;
@@ -211,6 +215,26 @@
 	margin-top:30px;
 	font-size:30px;
 }
+		.write-review{
+			cursor:pointer;
+			color:blue;
+		}
+		.modal{
+			display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+		}
+		.modalback {
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
     </style>
 </head>
 
@@ -278,7 +302,7 @@
 										
                                      		<td rowspan="2"><fmt:formatDate value="${resDate}" pattern="yyyy-MM-dd"/></td>
                                      		<td rowspan="2">${item.resStart}~ <br>${item.resEnd}</td>
-                                        	<td rowspan="2">호텔 사진!!</td>
+                                        	<td rowspan="2"><img src="${pageContext.request.contextPath}/${item.hotelThum}"></td>
                                         	<td class="hotel-info">호텔명: ${item.hotelName} <br>
                                         		객실정보: ${item.roomName}[${item.roomType}]
                                         	</td>
@@ -322,7 +346,7 @@
 										
                                      	<td rowspan="2"><fmt:formatDate value="${resDate}" pattern="yyyy-MM-dd"/></td>
                                      	<td rowspan="2">${item.resStart}~ <br>${item.resEnd}</td>
-                                        <td rowspan="2">호텔 사진!!</td>
+                                        <td rowspan="2"><img src="${pageContext.request.contextPath}/${item.hotelThum}"></td>
                                         <td class="hotel-info">호텔명: ${item.hotelName} <br>
                                         	객실정보: ${item.roomName}[${item.roomType}]
                                         </td>
@@ -330,13 +354,27 @@
                                         <td>${item.memEmail}</td>
                                         <td><fmt:formatNumber value="${Math.floor((item.roomPrice* (endDate - strDate))*1.1)}"	pattern="#,###" />원</td>
                                         <td>${item.resStatus}<br>
-                                        	
+                                        	<span class="write-review">[리뷰작성]</span>
+                                        	<div class="modal hidden">
+                                        		<div class="modalback"></div>
+												<div class="modalcont">
+													<form action="">
+														<p class="modal-title">리뷰 작성 <span></span> </p>
+														<textarea cols="50" rows="20"></textarea>
+														<button>작성 완료</button>
+													</form>
+												</div>
+                                        	</div>
                                         </td>
                                     </tr>
                                     <tr>
                                     	<td colspan="5"><p class="resMsg">전달 사항 : ${item.resMsg}</p></td>
                                     </tr>
                                     </c:forEach>
+                                    <script>
+                                    	let wr = document.getElementsByClassName("write-review");
+                                    	
+                                    </script>
                                 	</table>
                                 </div>
                                 <div style="display:none">
@@ -365,7 +403,7 @@
 										
                                      	<td rowspan="2"><fmt:formatDate value="${resDate}" pattern="yyyy-MM-dd"/></td>
                                      	<td rowspan="2">${item.resStart}~ <br>${item.resEnd}</td>
-                                        <td rowspan="2">호텔 사진!!</td>
+                                        <td rowspan="2"><img src="${pageContext.request.contextPath}/${item.hotelThum}"></td>
                                         <td class="hotel-info">호텔명: ${item.hotelName} <br>
                                         	객실정보: ${item.roomName}[${item.roomType}]
                                         </td>

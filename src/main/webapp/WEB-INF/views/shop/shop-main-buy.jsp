@@ -354,6 +354,9 @@ font {
 	font-size:18px;
 	background-color: white;
 	margin-top:10px;
+	
+}
+button{
 	cursor:pointer;
 }
 </style>
@@ -447,19 +450,22 @@ font {
 						let count = document.getElementById("total").value;
 						let memId = '${sessionScope.user.memId}';
 						let productId= ${list.productId}
-						
-						fetch("${pageContext.request.contextPath}/insertWish", 
-							{ method: "POST",
-							  headers: {
-							    "Content-Type": "application/json"
-							  },
-							  body: JSON.stringify({count,productId, memId, option})
-							}).then((response) => response.json())
-							.then((data) => {
-								if (confirm("장바구니에 추가 되었습니다. 장바구니로 이동하시겠습니까? ")) {
-									location.href="${pageContext.request.contextPath}/wish"
-								}
-						});						
+						if(memId==""|| memId==null){
+							alert('로그인 후 이용해주세요');
+						}else{
+							fetch("${pageContext.request.contextPath}/insertWish", 
+								{ method: "POST",
+							  	headers: {
+							    	"Content-Type": "application/json"
+							  	},
+							 	 body: JSON.stringify({count,productId, memId, option})
+								}).then((response) => response.json())
+								.then((data) => {
+									if (confirm("장바구니에 추가 되었습니다. 장바구니로 이동하시겠습니까? ")) {
+										location.href="${pageContext.request.contextPath}/wish"
+									}
+						});		
+						}
 					});
 					
 					

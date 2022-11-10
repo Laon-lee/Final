@@ -27,8 +27,8 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css?11">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/hotel/header.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
         <title>Document</title>
     <style>
         
@@ -350,6 +350,9 @@
               		}); */
               	</script>
               	 <script>
+              	 let email = $('#memEmail').val()+"@"+$('#memEmail2').val();
+              	 let name = $('#memName1').val();
+              	 
 var IMP = window.IMP; // 생략가능
 IMP.init('imp70736007'); // <-- 본인 가맹점 식별코드 삽입
 function requestPay() {
@@ -360,11 +363,9 @@ function requestPay() {
     merchant_uid : 'merchant_'+new Date().getTime(),
     name : '${hotel[0].hotelName}',
     amount : '100',
-    buyer_email : 'nu052308@naver.com',
-    buyer_name : 'good',
-    buyer_tel : '폰번',
-    buyer_addr : '주소',
-    buyer_postcode : '123-456'
+    buyer_email : email,
+    buyer_name : name
+    
   }, function (rsp) { // callback
       if (rsp.success) {
     	   let roomId = $("#room-info").val();
