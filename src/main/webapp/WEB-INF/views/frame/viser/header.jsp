@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="viser-header">
-<h1>관리자 페이지</h1>
+<a href="${pageContext.request.contextPath}/viser/main"><h1>관리자 페이지</h1></a>
 </div>

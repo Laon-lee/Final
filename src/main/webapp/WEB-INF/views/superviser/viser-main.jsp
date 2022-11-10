@@ -44,7 +44,13 @@ nav {
 	background-color: black;
 	color:white;
 }
-
+nav h1{
+cursor:pointer;
+}
+nav h1:hover{
+opacity:0.9;
+color:white;
+}
 main{
 	display: grid;
 	grid-area : main;
