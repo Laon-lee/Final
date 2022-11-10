@@ -15,8 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fyiyg55rlb"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>

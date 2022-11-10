@@ -23,8 +23,8 @@
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/hotel/header.css?11">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/hotel/header.css?11">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <title>Document</title>
     <style>
