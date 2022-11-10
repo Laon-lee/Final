@@ -5,11 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/frame/main/footer.css">
-
+	href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 
 <title>Insert title here</title>
 <style>
+body{
+margin:0px;
+padding:0px;
+overflow-x:hidden;
+}
 #container {
 	margin: 0 auto;
 	padding: 0 auto;
@@ -28,6 +32,7 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color:#f1f1f1;
 }
 
 nav {
@@ -63,9 +68,11 @@ main{
 
 footer {
 	grid-area: footer;
-	background-color: gray;
+	
 }
-
+footer li{
+line-height:100%;
+}
 li {
 	list-style: none;
 	line-height: 3.5rem;
@@ -96,14 +103,14 @@ button {
 
 label {
 	line-height : 3rem;
-/* 	width : 5rem; */
+width : 5rem; 
 }
 form{
 display:flex;
 flex-direction: column;
 justify-content:center;
 align-items:center;
-width:1000px;
+width:100%;
 height:500px;
 text-align:center;
 }
@@ -130,14 +137,17 @@ background-color:white;
 color:black;
 border:1px solid black;
 }
+.h1{
+margin-left:20px;
+margin-top:20px;
+}
 </style>
 
 </head>
 <body>
 	<div id="container">
 		<header>
-		
-        
+        <%@ include file="../frame/viser/top.jsp"%>
         </header>
 		<nav>
 				<%@ include file="../frame/viser/header.jsp"%>
@@ -165,7 +175,7 @@ border:1px solid black;
 			</div>
 				
 			<div id="sec2">
-			<h1>고객 검색</h1>
+			<h1 class="h1">고객 검색</h1>
 			<div class="sec2-container">
 			
 			<form action="${pageContext.request.contextPath}/viser/memInfo">
@@ -177,8 +187,8 @@ border:1px solid black;
 			</div>
 		</main>
 		<footer>
-		<h1>임시 푸터</h1>
-<%-- 			<%@ include file="../frame/main/footer.jsp"%> --%>
+		
+			<%@ include file="../frame/main/footer.jsp"%>
 		</footer>
 		</div>
 		<script>
