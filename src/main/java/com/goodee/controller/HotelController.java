@@ -139,10 +139,6 @@ public class HotelController {
 			return "redirect:/myhotelres";
 		}
 		
-		@GetMapping("viser/hotelRes")
-		public String hotelRes() {
-			return "superviser/viser-hotel-res";
-		}
 		
 		
 }

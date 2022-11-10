@@ -214,4 +214,10 @@ public class SuperviserController {
 		return "superviser/viser-shop-memName";
 	}
 	
+	@GetMapping("viser/hotelRes")
+	public String hotelRes() {
+		return "superviser/viser-hotel-res";
+	}
+	
+	
 }
