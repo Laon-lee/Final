@@ -92,7 +92,7 @@ button {
 }
 
 label {
-	line-height : 1.5rem;
+	line-height : 1.6rem;
 }
 
 #proc_category {
