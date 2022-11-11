@@ -54,6 +54,7 @@ public class HotelService {
 		
 		model.addAttribute("hotel", dao.selectHotelList(cate));
 		model.addAttribute("room", dao.selectroom(idlist));
+		model.addAttribute("roomimg", dao.selectRoomImg(idlist));
 	}
 		
 	public void detailHotelList(Model model, int hotelId, String startdate, String enddate) {

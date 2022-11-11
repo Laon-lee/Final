@@ -33,6 +33,15 @@
 		GROUP BY room_type,h.hotel_id;	
 	</select>
 	
+	<select id="selectRoomImg" resultType="hoteljoinVO">
+		SELECT hi.hotel_id, hi.hotel_name, hr.room_id, hr.room_type, hr.room_price, hri.img_id, hri.room_img FROM hotel_info AS hi INNER JOIN hotel_room AS hr ON hi.hotel_id = hr.hotel_id
+		INNER JOIN hotel_room_img AS hri ON hr.room_id = hri.room_id
+		WHERE hi.hotel_id in
+		<foreach item="hotelid" collection="hotelid" open="(" separator="," close = ")">
+			 #{hotelid} 
+		</foreach> 
+	</select>
+	
 	<select id="detailRoomId" resultType="hoteldetailresVO">
 		SELECT distinct room_id FROM hotel_detail_res WHERE (res_start &lt; #{enddate} AND res_end &gt; #{startdate}) AND res_status = '예약 완료';
 	</select>

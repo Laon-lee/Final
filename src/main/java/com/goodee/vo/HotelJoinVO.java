@@ -29,8 +29,24 @@ public class HotelJoinVO {
 	private String resStart;
 	private String resEnd;
 	private String resStatus;
+	private String roomImg;
+	private int imgId;
 	
-   public int getResId() {
+	
+	
+   public String getRoomImg() {
+		return roomImg;
+	}
+	public void setRoomImg(String roomImg) {
+		this.roomImg = roomImg;
+	}
+	public int getImgId() {
+		return imgId;
+	}
+	public void setImgId(int imgId) {
+		this.imgId = imgId;
+	}
+public int getResId() {
 		return resId;
 	}
 	public void setResId(int resId) {

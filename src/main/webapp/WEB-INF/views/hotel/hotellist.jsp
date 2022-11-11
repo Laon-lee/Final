@@ -817,18 +817,19 @@
             				</div>	
             				<div class="option_list" id="${item.hotelId}">
 								<table>
-                    				<c:forEach var="room" items="${room}">
-                        				<c:if test="${item.hotelId == room.hotelId}">
+                    				<c:forEach var="roomitem" items="${room}">
+                        				<c:if test="${item.hotelId == roomitem.hotelId}">
                             				<tr>
                                 				<td class="td1">
                                     				<div class="intr">
                                         				<div class="intr_room">
-                                            				<P>${room.roomType }견</P>
+                                            				<P>${roomitem.roomType }견</P>
                                         				</div>
                                         				<div class="intr_a">
-                                            				<button class="detail">객실상세보기</button>
+                                            				<button class="detail ${roomitem.roomType }">객실상세보기</button>
+                                            				
 															<p>
-                                                				<fmt:formatNumber type="currency" value="${room.roomPrice}" />
+                                                				<fmt:formatNumber type="currency" value="${roomitem.roomPrice}" />
                                             				</p>
                                         				</div>
                                         			</div>
@@ -843,30 +844,33 @@
         				</div>
 					</div>
 				</c:forEach>
-          					<div class="modal hidden">
+				
+						<c:forEach var="roomimgitem" items="${room}" varStatus="status">
+							<div class="modal hidden modal${status.index}" id = "${status.index}">
                     			<div class="modalback"></div>
 								<div class="modalcont">
-                        			<button class="close">
+                        			<button class="close ">
                         				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
   											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 										</svg>
                         			</button>
                         			<div class="album">
-                            			<button class="prev" style="z-index: 3;" >
+                            			<button class="prev prev${status.index}" style="z-index: 3;" >
                             				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
   												<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
 											</svg>
 										</button>
                             			<!-- 움직일 이미지들 -->
-                            			<div class=imgBox >
+                            			<div class="imgBox imgBox${status.index}" >
                                 		<!-- free url 사진 -->
-                                			<div class="simg on"><img src="${pageContext.request.contextPath}/image/hotel/img1.jpg" alt=""></div>
-                                			<div class="simg"><img src="${pageContext.request.contextPath}/image/hotel/img2.jpg" alt=""></div>
-                                			<div class="simg"><img src="${pageContext.request.contextPath}/image/hotel/img3.jpg" alt=""></div>
-                                			<div class="simg"><img src="${pageContext.request.contextPath}/image/hotel/img4.jpg" alt=""></div>
-                                			<div class="simg"><img src="${pageContext.request.contextPath}/image/hotel/img5.jpg" alt=""></div>
-                            			</div>
-                            			<button class="next" style="z-index: 3;" >
+                                				<c:forEach var="roomimg" items="${roomimg}" varStatus = "status1">
+                                					<c:if test="${roomimgitem.roomType == roomimg.roomType && roomimgitem.hotelId == roomimg.hotelId }">
+                                						<div class="simg simg${status.index} on${status.index} on"><img src="${pageContext.request.contextPath}/${roomimg.roomImg }" alt=""></div>
+                                					</c:if>
+                                				</c:forEach>
+                                				 
+                                			</div>
+                            			<button class="next next${status.index}" style="z-index: 3;" >
                             				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
   												<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
 											</svg>
@@ -874,6 +878,7 @@
                         			</div>
                     			</div>
                 			</div>
+						</c:forEach>
                 			<div class="mapmodal hidden">
                     			<div class="mapmodalback"></div>
 								<div class="mapmodalcont">
@@ -909,69 +914,95 @@
             	});
             };
         	
-            $(".detail, .close, .modalback").click(function(){
+            let detailbtn = document.getElementsByClassName("detail");
+            let closebtn = document.getElementsByClassName("close");
+           let mbackbtn =  document.getElementsByClassName("modalback");
+            
+            for(let i = 0 ; i < detailbtn.length ; i++){
+            	detailbtn[i].addEventListener("click",function(){
+            		$(".modal").eq(i).toggle();	
+            	});
+            	closebtn[i].addEventListener("click",function(){
+            		$(".modal").eq(i).toggle();
+            	});
+            	mbackbtn[i].addEventListener("click",function(){
+            		$(".modal").eq(i).toggle();	
+            	});
+            };
+            
+            /* $(".detail, .close, .modalback").click(function(){
                 $(".modal").toggle();
             })
+ */
+ 
+//모달창 내 버튼 이벤트
+let modalbtn=  document.getElementsByClassName("modal");
+let prevbtn = document.getElementsByClassName("prev");
+let nextbtn = document.getElementsByClassName("next");
+for(let i = 0 ; i < modalbtn.length ; i++){
+	prevbtn[i].addEventListener("click",function(e){
+ /* $(".prev").eq(i).click(function (e) { */
+     e.preventDefault();
+	console.log(i);
+     // 이미지 현재의 위치
+     var imgOn = $(".imgBox").eq(i).find(".on").index();
+     console.log("imgOn"+imgOn);
+     // 이미지 총 개수 
+     var imgLen = $(".imgBox").eq(i).children(".simg").length;
+     console.log("imgLen"+imgLen);
 
-            //모달창 내 버튼 이벤트
-            $(".prev").click(function (e) {
-                e.preventDefault();
+     // imgBox안의 img 중 imgOn 번째의 on 클래스 삭제 
+     $(".imgBox").eq(i).children(".simg").eq(imgOn).removeClass("on");
+     // imgBox안의 img 중 imgOn 번째 숨기기 
+     $(".imgBox").eq(i).children(".simg").eq(imgOn).css("opacity", 0);
 
-                // 이미지 현재의 위치
-                var imgOn = $(".imgBox").find(".on").index();
-                console.log("imgOn"+imgOn);
-                // 이미지 총 개수 
-                var imgLen = $(".imgBox .simg").length;
-                console.log(imgOn)
+     //  이전의 위치로 돌아가야함으로
+     imgOn = imgOn - 1;
 
-                // imgBox안의 img 중 imgOn 번째의 on 클래스 삭제 
-                $(".imgBox .simg").eq(imgOn).removeClass("on");
-                // imgBox안의 img 중 imgOn 번째 숨기기 
-                $(".imgBox .simg").eq(imgOn).css("opacity", 0);
+     if (imgOn < 0) {
+         // 돌아가 위치가 -1일 경우 
+         // 이미지의 마지막으로 돌아간다
+         $(".imgBox").eq(i).children(".simg").eq(imgLen - 1).css("opacity", 1);
+         $(".imgBox").eq(i).children(".simg").eq(imgLen - 1).addClass("on");
+     } else {
+         // 돌아갈 위치가 -1이 아닌 경우
+        $(".imgBox").eq(i).children(".simg").eq(imgOn).css("opacity", 1);
+        $(".imgBox").eq(i).children(".simg").eq(imgOn).addClass("on");
+     }
+		
+		
+ });
 
-                //  이전의 위치로 돌아가야함으로
-                imgOn = imgOn - 1;
+ nextbtn[i].addEventListener("click",function(e){
+ /* $(".next").eq(i).click(function (e) { */
+     e.preventDefault();
+     // 위에 동일 
+     var imgOn = $(".imgBox").eq(i).find(".on").index();
+     console.log("imgOn"+imgOn);
+     // 이미지 총 개수 
+     var imgLen = $(".imgBox").eq(i).children(".simg").length;
+     console.log("imgLen"+imgLen);
+     // 위에 동일
+      $(".imgBox").eq(i).children(".simg").eq(imgOn).removeClass("on");
+      $(".imgBox").eq(i).children(".simg").css("opacity", 0);
 
-                if (imgOn < 0) {
-                    // 돌아가 위치가 -1일 경우 
-                    // 이미지의 마지막으로 돌아간다
-                    $(".imgBox .simg").eq(imgLen - 1).css("opacity", 1);
-                    $(".imgBox .simg").eq(imgLen - 1).addClass("on");
-                } else {
-                    // 돌아갈 위치가 -1이 아닌 경우
-                    $(".imgBox .simg").eq(imgOn).css("opacity", 1);
-                    $(".imgBox .simg").eq(imgOn).addClass("on");
-                }
-				
-          		
-            });
+     // 다음의 위치로 알아야 되기 때문에 
+     imgOn = imgOn + 1;
 
-            $(".next").click(function (e) {
-                e.preventDefault();
-                // 위에 동일 
-                var imgOn = $(".imgBox").find(".on").index();
-                var imgLen = $(".imgBox .simg").length;
-
-                // 위에 동일
-                $(".imgBox .simg").eq(imgOn).removeClass("on");
-                $(".imgBox .simg").eq(imgOn).css("opacity", 0);
-
-                // 다음의 위치로 알아야 되기 때문에 
-                imgOn = imgOn + 1;
-
-                if (imgOn === imgLen) {
-                    // 다음의 위치가 총 개수보다 클 경우
-                    // 처음의 위치로 돌아간다
-                    $(".imgBox .simg").eq(0).css("opacity", 1);
-                    $(".imgBox .simg").eq(0).addClass("on");
-                } else {
-                    // 다음 위치가 있는 경우 
-                    $(".imgBox .simg").eq(imgOn).css("opacity", 1);
-                    $(".imgBox .simg").eq(imgOn).addClass("on");
-                }
-                
-              
-            });
+     if (imgOn === imgLen) {
+         // 다음의 위치가 총 개수보다 클 경우
+         // 처음의 위치로 돌아간다
+          $(".imgBox").eq(i).children(".simg").eq(0).css("opacity", 1);
+          $(".imgBox").eq(i).children(".simg").eq(0).addClass("on");
+     } else {
+         // 다음 위치가 있는 경우 
+          $(".imgBox").eq(i).children(".simg").eq(imgOn).css("opacity", 1);
+          $(".imgBox").eq(i).children(".simg").eq(imgOn).addClass("on");
+     }
+     
+   
+ });
+}
             
           //지도 모달
 	         	$(".mapbtn, .mapclose, .mapmodalback").click(function(){
