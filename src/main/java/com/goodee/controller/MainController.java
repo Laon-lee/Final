@@ -130,8 +130,15 @@ public class MainController {
 	}
 	
 	//id찾기
-	@GetMapping("findidpw")
-	public String findidpw() {
+	@GetMapping("findid")
+	public String findid() {
 		return "main/findid";
 	}
+	
+	//pw찾기
+	@GetMapping("findpw")
+	public String findpw() {
+		return "main/findpw";
+	}
+	
 }

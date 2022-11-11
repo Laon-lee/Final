@@ -153,7 +153,7 @@
     </header>
     <main>
     <section id="sec1">
-                        <h2>아이디 찾기</h2>
+                        <h2>비밀번호 찾기</h2>
                         <div class="find_container">
                             <div class="find_radio">
                                 <input type="radio" name="r_find" id="r_email" checked><label for="r_email">이메일</label>
@@ -190,80 +190,7 @@
                                 </form>
                             </div>
                         </div>
-                        <script>
-                            window.addEventListener('DOMContentLoaded', function(){
-                          
-                                $("input:radio[name=r_find]").change(function(){
-                                    if($("#r_phone").is(":checked")){
-                                        $(".find_phone").show();
-                                        $(".find_email").hide();
-                                    
-                                    } else {
-                                        $(".find_email").show();
-                                        $(".find_phone").hide();
-                                        
-                                    }
-                                })
-                                
-                                //이메일 정규표현식, 통과 시 true 리턴
-                                /* function email_check( email ) { */
-    	
-   								 var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    							/* 	return (email != '' && email != 'undefined' && regex.test(email)); */
-
-								/* } */
-								//공백 체크 정규식
-								var regExp = /\s/g; 
-
-                                $("input[name='memEmail']").blur(function(){
-                                	var email = $(this).val();
-                                	
-                                	//// 값을 입력안한경우는 아예 체크를 하지 않는다.
-        							
-                                	//이메일 공백 확인
-                                	
-       								 // 이메일 유효성 검사
-       								if(!regex.test(email)) {
-           								alert("이메일 확인");
-           								
-        							}
-       								 
-                                });
-								
-                                $("input[name='memName']").blur(function(){
-                                	var name =$(this).val();
-                                	/* if(!regExp.test(name)){
-                                		alert('이름 입력하라고');
-                                	} */
-                                });
-                                
-                                $("#mailbtn").click(function(){
-                                	if($("#memName").val() == "") {
-                                		alert("이름 입력안했다")
-                                		$("form").attr("action","#");
-                                	}
-                                	
-                                	if($("input[name='memEmail']").val() == ""){
-                                		alert("메일 입력안했다")
-                                		$("form").attr("action","#");
-                                	}
-                                	
-                                })
-                                
-                                $("#phonebtn").click(function(){
-                                	if($("#memName2").val() == "") {
-                                		alert("이름 입력안했다")
-                                		$("form").attr("action","#");
-                                	}
-                                	
-                             
-                                	if($("input[name='memPhone']").val() == ""){
-                                		alert("번호 입력안했다")
-                                		$("form").attr("action","#");
-                                	}
-                                })
-                            });
-                        </script>
+                       
                     </section>
     </main>
     <footer>

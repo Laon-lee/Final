@@ -30,7 +30,8 @@
 		<foreach item="hotelid" collection="hotelid" open="(" separator="," close = ")">
 			 #{hotelid} 
 		</foreach> 
-		GROUP BY room_type,h.hotel_id;	
+		GROUP BY room_type,h.hotel_id
+		ORDER BY room_id;
 	</select>
 	
 	<select id="selectRoomImg" resultType="hoteljoinVO">

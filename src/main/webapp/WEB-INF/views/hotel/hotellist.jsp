@@ -810,7 +810,7 @@
                     				<button class="realbtn" id="btn${status.index}">객실보기</button>
                     				<div class="innera">
                     					<a href="${pageContext.request.contextPath}/godetail/${item.hotelId}/${startdate}/${enddate}">예약하기</a>
-                    					<p>${item.hotelId }</p>
+                    					
                     					<!-- <a href="#" id="adetail">예약하기</a> -->
                     				</div>
                 				</div>
