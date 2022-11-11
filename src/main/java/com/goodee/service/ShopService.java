@@ -212,4 +212,10 @@ public class ShopService {
 		vo2.setPoint(updatepoint);
 		dao.updatePoint(vo2);
 	}
+	public void deleteOrder(int orderId) {
+		dao.deleteOrder(orderId);
+	}
+	public void returnOrder(int orderId) {
+		dao.returnOrder(orderId);
+	}
 }

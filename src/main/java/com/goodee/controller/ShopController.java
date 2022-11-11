@@ -201,4 +201,17 @@ public class ShopController {
 		spservice.deleteWishAll(checks);
 		return "redirect:/mypage";
 	}
+	
+	@GetMapping("deleteOrder/{orderId}")
+	public String deleteOrder(@PathVariable int orderId) {
+		System.out.println(orderId);
+		spservice.deleteOrder(orderId);
+		return "redirect:/mypage";
+	}
+	@GetMapping("returnOrder/{orderId}")
+	public String returnOrder(@PathVariable int orderId) {
+		spservice.returnOrder(orderId);
+		return "redirect:/mypage";
+	}
+	
 }

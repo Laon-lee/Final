@@ -75,6 +75,10 @@ public interface ShopDAO {
 	public void deleteWishAll(@Param("checks") String[] checks);
 	
 	public List<WishjoinVO> ordersInfo(@Param("checks") String[] checks);
+	
+	public void deleteOrder(@Param("orderId") int orderId);
+	
+	public void returnOrder(@Param("orderId") int orderId);
 
 	
 	

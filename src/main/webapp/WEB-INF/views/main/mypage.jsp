@@ -153,7 +153,7 @@
             
         }
         #sec2-div2{
-            
+            height:auto;
         
         }
         #sec2-div2 li {
@@ -162,7 +162,6 @@
         }
         #sec2-div2-sel{
             padding:10px;
-            height: 25px;
             border:5px solid white;
         }
         #sec2-div3{
@@ -242,22 +241,11 @@ text-align:center;
                             <div id="sec2-div2">
                                 <form action="">
                                     <div id="sec2-div2-sel">
-                                        <select name="orderstatus" id="orderstatus">
-                                            <option value="">전체 주문처리상태</option>
-                                            <option value="">입금전</option>
-                                            <option value="">배송준비중</option>
-                                            <option value="">배송중</option>
-                                            <option value="">배송완료</option>
-                                            <option value="">취소</option>
-                                            <option value="">교환</option>
-                                            <option value="">반품</option>
-
-                                        </select>
+                                        <ul>
+                                        	<li>- 기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.</li>
+                                        	<li>- 주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</li>
+                                    	</ul>
                                     </div>
-                                    <ul>
-                                        <li>- 기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.</li>
-                                        <li>- 주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</li>
-                                    </ul>
                                 </form>
 
                             </div>
@@ -271,7 +259,6 @@ text-align:center;
                                         <td><h3>수량</h3></td>
                                         <td><h3>상품구매금액</h3></td>
                                         <td><h3>주문처리상태</h3></td>
-                                        
                                     </tr>
                                     
                                     <tbody id="tbody"></tbody>
@@ -316,20 +303,41 @@ text-align:center;
 				 	for(dict of data.list){
 				 		const date = new Date(dict.order_date);
 				 		console.log(date.toLocaleString());
+				 		let td = document.createElement("td");
+		 				let br = document.createElement("br");
+		 				let btn = document.createElement("button");
+				 			if(dict.order_status == '배송준비중'){
+				 				btn.innerText = '주문 취소';
+				 				td.innerText= dict.order_status;
+				 				td.append(br);
+				 				td.append(btn);
+				 			}
 							productListDiv.append(
-									
 							 "<tr>"
                              +"<td>"+date.toLocaleString()+"<br>"+'['+dict.order_id+']'+"</td>"
                               + "<td><img src='"+dict.product_image+"'></td>"
                                 +"<td>"+dict.product_name+"</td>"
                                 +"<td>"+dict.product_count+"</td>"
                                 +"<td>"+(dict.product_price*dict.product_count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+'원'+"</td>"
-                                +"<td>"+dict.order_status+"</td>"
-                                
-                           +"</tr>" 
-					)
+                                +"<td>"+dict.order_status+"<br><button class='status-btn'>"+(dict.order_status=='배송준비중'?'주문 취소':(dict.order_status=='배송완료'?'반품/교환':''))+"</button></td>"
+                              +"</tr>"
+                            )
 					} 
-					
+				 	let stbtn = document.getElementsByClassName("status-btn");
+					for(let i = 0 ; i<stbtn.length; i++){
+						stbtn[i].addEventListener("click",function(){
+							console.log("no!");
+							if(stbtn[i].innerText=='주문 취소'){
+								if(confirm('해당 주문을 정말 취소하시겠습니까?')){
+									location.href="${pageContext.request.contextPath}/deleteOrder/"+data.list[i].order_id;
+								}
+							}else if(stbtn[i].innerText=='반품/교환'){
+								if(confirm('해당 주문을 정말 반품하시겠습니까?')){
+									location.href="${pageContext.request.contextPath}/returnOrder/"+data.list[i].order_id;
+								}
+							}
+						})
+					};
 					
 					var total=0;
 					var stNum;
@@ -402,6 +410,7 @@ text-align:center;
 					
  				});
 			}
+			
 		</script>
 </body>
 
