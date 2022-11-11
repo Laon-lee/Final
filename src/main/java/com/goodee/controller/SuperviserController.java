@@ -217,6 +217,7 @@ public class SuperviserController {
 	
 	@GetMapping("viser/hotelRes")
 	public String hotelRes(HotelViserVO hotelviservo, Model model) {
+		System.out.println("컨트롤러"+hotelviservo.getMemName());
 		superservice.checkRes(hotelviservo, model);
 		return "superviser/viser-hotel-res";
 	}

@@ -162,15 +162,33 @@ input {
 			</div>
 			<div id="sec2">
 				<form action="${pageContext.request.contextPath}/viser-hotel-resCheck" method="get">
+					<table>
 					<thead>
 						<tr>
-							<td>예약자 이름</td>
-							<td>예약자 번호</td>
-							<td>예약자 email</td>
-							<td>예약 날짜</td>
-							<td>예약 상태</td>
+							<th>호텔 이름</th>
+							<th>예약자 이름</th>
+							<th>예약자 번호</th>
+							<th>예약자 email</th>
+							<th>예약 날짜</th>
+							<th>예약 상태</th>
 						</tr>
 					</thead>
+					<tbody>
+						<c:forEach var="reslist" items="${reslist}">
+							<tr>
+								<td>${reslist.hotelName}</td>
+								<td>${reslist.memName}</td>
+								<td>${reslist.resNum}</td>
+								<td>${reslist.memEmail}</td>
+								<td>${reslist.resDate}</td>
+								<td>${reslist.resStatus}<br>
+									<a href="${pageContext.request.contextPath}/changStatus/"${reslist.resDetailNum}>예약확인</a>
+								</td>
+								
+							</tr>
+						</c:forEach>
+					</tbody>
+					</table>
 				</form>
 			</div>
 		</main>

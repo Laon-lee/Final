@@ -32,9 +32,12 @@
 	 from board where board_category = #{boardCategory}
 	</select>
 	
-	<select id="checkRes" parameterType="String" resultType="hotelviserVO">
-		SELECT * FROM hotel_info AS hi INNER JOIN hotel_room AS hr ON hi.hotel_id = hr.hotel_id 
-INNER JOIN hotel_detail_res AS hdr ON hr.room_id = hdr.room_id where  
+	<select id="checkRes" resultType="hotelviserVO">
+		select * from hotel_res hr 
+		INNER JOIN hotel_detail_res hdr ON hr.res_detail_num = hdr.res_detail_num
+		INNER JOIN hotel_room hrm ON hdr.room_id = hrm.room_id
+		INNER JOIN hotel_info hi ON hrm.hotel_id = hi.hotel_id
+		where hdr.res_status = '예약중' 
 	</select>
 	
 	

@@ -27,29 +27,6 @@ public class SuperviserService  {
 		this.superdao = superdao;
 	}
 	
-//	public void viseradd(ShopVO vo, @RequestParam("thumnail") MultipartFile thumnail,
-//						@RequestParam("contImage") MultipartFile contImage)  throws IOException{
-//		System.out.println("서비스1");
-//		superdao.addproc(vo);
-//		
-////		thumnail.transferTo(Path.get("C:/JavaTPC/Goodee_Spring_workspace/Board5/"));
-//	
-//		
-////		try {
-////			
-////			
-////            thumnail.transferTo(path1);
-////            //vo.setPic1(Path + pic1File.getOriginalFilename());
-////            vo.setProductImage(path1 + thumnail.getOriginalFilename());
-////         } catch (IllegalStateException e) {
-////            // TODO Auto-generated catch block
-////            e.printStackTrace();
-////         } catch (IOException e) {
-////            // TODO Auto-generated catch block
-////            e.printStackTrace();
-////         }
-//		
-//	}
 	public void viseradd(String[] opts, ShopVO vo){
 		superdao.addproc(vo);
 		ProductOptionVO opvo = new ProductOptionVO();
@@ -99,5 +76,8 @@ public class SuperviserService  {
 	
 	public void checkRes(HotelViserVO hotelviservo, Model model) {
 		model.addAttribute("reslist", superdao.checkRes(hotelviservo));
+		System.out.println("서비스"+hotelviservo.getMemName());
+		System.out.println("서비스"+hotelviservo.getId());
+		System.out.println("데이터는 오는가");
 	}
 }
