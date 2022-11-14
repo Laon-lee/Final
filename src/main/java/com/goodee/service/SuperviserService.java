@@ -4,12 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.goodee.dao.MemberDAO;
 import com.goodee.dao.SuperviserDAO;
 import com.goodee.vo.BoardVO;
 import com.goodee.vo.HotelViserVO;
@@ -21,12 +24,15 @@ import com.goodee.vo.ShopVO;
 @Service
 public class SuperviserService  {
 	private SuperviserDAO superdao;
-
-	public SuperviserService(SuperviserDAO superdao) {
+	private MemberDAO dao;
+	
+	
+	public SuperviserService(SuperviserDAO superdao, MemberDAO dao) {
 		super();
 		this.superdao = superdao;
+		this.dao = dao;
 	}
-	
+
 	public void viseradd(String[] opts, ShopVO vo){
 		superdao.addproc(vo);
 		ProductOptionVO opvo = new ProductOptionVO();
@@ -52,8 +58,10 @@ public class SuperviserService  {
 		superdao.deleteBoard(vo);
 	}
 	
-	public void getList(String boardCategory,Model model) {
-		
+	public void getList(String boardCategory,Model model,HttpSession session) {
+		MemberVO vo1 = (MemberVO)session.getAttribute("user");
+		MemberVO vo2 = dao.getmemberinfo(vo1);
+		model.addAttribute("mem",vo2);
 		model.addAttribute("list",superdao.getList(boardCategory));
 		
 	}

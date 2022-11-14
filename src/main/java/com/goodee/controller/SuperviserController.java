@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 
 import org.json.simple.JSONObject;
@@ -178,13 +179,14 @@ public class SuperviserController {
 		return "superviser/viser-main";
 	}
 	@GetMapping("viser/notice/delete/{boardCategory}")
-	public String noticeDelete(@PathVariable("boardCategory") String boardCategory,Model model) {
-		superservice.getList(boardCategory, model);
+	public String noticeDelete(@PathVariable("boardCategory") String boardCategory,Model model,HttpSession session) {
+		
+		superservice.getList(boardCategory, model, session);
 		return "superviser/viser-notice-delete";
 	}
 	@GetMapping("viser/QNA/delete/{boardCategory}")
-	public String QNADelete(@PathVariable("boardCategory") String boardCategory,Model model) {
-		superservice.getList(boardCategory, model);
+	public String QNADelete(@PathVariable("boardCategory") String boardCategory,Model model,HttpSession session) {
+		superservice.getList(boardCategory, model, session);
 		return "superviser/viser-qna-delete";
 	}
 	

@@ -328,6 +328,7 @@ text-align:center;
 							<button>생성하기</button> <button id="btn3">생성 내용 미리보기</button>
 							<input type="hidden" name="boardCategory" value="자주묻는질문"/>
 							<input type="hidden" name="isDelete" value="0"/>
+								<input type="hidden" value="${mem.id}" name="id" />
 							<div class="div-container">
 							<h2>생성 제목 : <span id="CT"></span> </h2>
 							<h3>생성 내용 : <span id="CC"></span> </h3>

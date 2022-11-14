@@ -46,8 +46,8 @@
 	
 	
 	<insert id="createboard" parameterType="boardVO">
-	insert into board (board_title,board_content,board_category,is_delete)
-	values( #{boardTitle}, #{boardContent}, #{boardCategory}, #{isDelete} )
+	insert into board (board_title,board_content,board_category,is_delete,id)
+	values( #{boardTitle}, #{boardContent}, #{boardCategory}, #{isDelete} ,#{id})
 	</insert>
 	
 	<select id="getCSOrder" resultType="orderjoinVO" parameterType="String">
