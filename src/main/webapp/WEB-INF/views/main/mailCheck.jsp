@@ -12,9 +12,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Zilla+Slab&display=swap"
-	rel="stylesheet">   
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/frame/main/footer.css">
+	rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/final/css/frame/main/footer.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <title>Document</title>
 <style>

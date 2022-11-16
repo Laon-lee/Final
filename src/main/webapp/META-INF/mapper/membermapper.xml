@@ -46,7 +46,15 @@
 			AND mem_phone = #{memPhone};
 		
 	</select>
+	
+	<select id="findpw" parameterType="map" resultType="memberVO">
+		SELECT * FROM member 
+		 where mem_id = #{id} and mem_name = #{name} and mem_email = #{mail};
+	</select>
 
+<update id="updatepw" parameterType="memberVO">
+	update member set mem_pw = #{memPw} where mem_id = #{memId} and mem_name = #{memName} and mem_email=#{memEmail};
+	</update>
 </mapper>
 
 

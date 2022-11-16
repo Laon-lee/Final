@@ -44,7 +44,7 @@
 
     body {
       position: relative;
-      height: 3000px
+     
     }
 
 	button{
@@ -90,24 +90,32 @@
                 }
 
                 .form_name,
-                .form_email,
-                .form_phone {
+                .form_id,
+                .find_pw {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
+                    margin-bottom:2vh;
+                    
+                }
+                .form_email2 {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                 
                     
                 }
 
-                .find_form {
+                .find_form, .form_repw {
                     width: 100%;
                     display: flex;
                     flex-direction: column;
-                    gap: 1vh;
+                    
                 }
                 .form_container>form {
                     display: flex;
     flex-direction: column;
-    gap: 1vh;
+ 
     justify-content: center;
     align-items: center;
                 }
@@ -127,20 +135,24 @@
                 html {
                     scroll-behavior: smooth;
                 }
-                .find_email{
-                    display: block;
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1vh;
-                }    
-                .find_phone {
-                   
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1vh;
-                   
+               
+                
+                .form_repw {
+                display:none;
+                }
+                
+                #repwbtn{
+                display:none;
+                } 
+                #popbtn {
+                    float: right;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid black;
+}
+                }
+                .find_pw {
+                margin-bottom : 2vh;
                 }
   	
   </style>
@@ -155,39 +167,57 @@
     <section id="sec1">
                         <h2>비밀번호 찾기</h2>
                         <div class="find_container">
-                            <div class="find_radio">
-                                <input type="radio" name="r_find" id="r_email" checked><label for="r_email">이메일</label>
-                                <input type="radio" name="r_find" id="r_phone"><label for="r_phone">휴대폰번호</label>
-                            </div>
+                            
                             <div class="form_container">
-                                <form action="${pageContext.request.contextPath}/findidmail" method="get" class="cform">
-                                    <div class="find_form find_email">
+                                <form action="${pageContext.request.contextPath}/repw" method="get" class="cform" id="usercheck">
+                                    <div class="find_form find_pw">
+                                    	<div class="form_id">
+                                            <label for="">아이디</label><input type="text" name="memId" id="memId">
+                                        </div>
                                         <div class="form_name">
                                             <label for="">이름</label><input type="text" name="memName" id="memName">
                                         </div>
                                         <div class="form_email">
-                                            <label for="">이메일로 찾기</label><input type="text" name="memEmail"
-                                                id="memEmail">
+                                        	<div class="form_email2">
+                                            <label for="">이메일</label><input type="text" name="memEmail" id="memEmail">
+                                            </div>
+                                            <div class="btnbox">
+                                        		<button type="button" id="popbtn">인증하기</button>
+                                            </div>
                                         </div>
-                                        <div class="find_btn">
-                                        <button id="mailbtn">확인</button>
+                                        
+                                        <input type="hidden" name="check" id="check" />
+                                    	
                                     </div>
+                                    <div class="form_repw">
+                                    	
+											<div class="eheck_font" id="pw_div">
+											<div class="find_pw" id="pw1">
+												<label for="pw" >비밀번호</label> <input type="password" id="mem_pw3" name="mem_pw3" placeholder=" PASSWORD">
+												</div>
+												<div class="eheck_font" id="pw_check" style="font-size:13px;"></div>
+											</div>
+										
+										
+											<dIv CLASS="EHECK_FONT" ID="pw2_div">
+											<div class="find_pw" id="pw2">
+												<label for="pw2" >비밀번호 확인</label> <input type="password" id="mem_pw2" name="mem_pw2" placeholder=" Confirm Password">
+												</div>
+												<div class="eheck_font" id="pw2_check" style="font-size:13px;"></div>
+												<input type="hidden" id="mem_pw" name="memPw">
+											</div>
+									
+                            		
                                     </div>
-                                    </form>
-                                    <form action="${pageContext.request.contextPath}/findidphone" method="get" class="cform">
-                                    <div class="find_form find_phone" style="display: none;">
-                                        <div class="form_name">
-                                            <label for="">이름</label><input type="text" name="memName" id="memName2">
-                                        </div>
-                                        <div class="form_phone">
-                                            <label for="">휴대폰번호</label><input type="text" name="memPhone" id="memPhone">
-                                        </div>
-                                        <div class="find_btn">
-                                        <button id="phonebtn">확인</button>
+                                    <div class="find_btn">
+                                        	<button type ="button" id="mailbtn">확인</button>
+                                        	<button type="submit" id ="repwbtn">비밀번호 재설정</button>
                                     </div>
-                                    </div>
-                                    
+                               
                                 </form>
+                                
+                                     
+                            	
                             </div>
                         </div>
                        
@@ -198,6 +228,147 @@
     </footer>
   </div>
  
+  <script type="text/javascript">
+  window.addEventListener('DOMContentLoaded', function(){
+	
+	  //팝업창 실행. 메일값도 같이 넘겨줌
+	  $("#popbtn").click(function(){
+		  var id = document.getElementById("memId").value;
+		  var name = document.getElementById("memName").value;
+		  var mail = document.getElementById("memEmail").value;
+		  
+		  var popupX = (document.body.offsetWidth / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (document.body.offsetHeight / 2) - (240 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+		  
+		  if(!id) {
+			  alert("아이디를 입력하세요");
+		  } 
+		  if(!name){
+			  alert("이름을 입력하세요");
+		  }
+		  if(!mail){
+			  alert("메일을 입력하세요");
+		  } 
+		if(mail && id && name) {	
+			
+			fetch("${pageContext.request.contextPath}/checkId", 
+					{ method: "POST",
+					  headers: {
+					    "Content-Type": "application/json"
+					  },
+					  body: JSON.stringify({id: id, name: name, mail:mail})
+					}).then((response) => response.json())
+					.then((data) => {
+						
+							if(data>0){
+								window.open("${pageContext.request.contextPath}/findmailcheck","이메일 인증하기","width = 500, height = 240");
+							}else{
+								alert("아이디와 이메일을 확인해주세요");
+								return false;
+							}
+						}
+					);
+			
+		  		  
+		}
+		
+	  })
+	  
+	  
+	  
+	  $("#mailbtn").click(function(){
+		  var check = document.getElementById("check").value;
+		 
+		  
+		  if(check != 1){
+			  alert("인증에 실패했다")
+			  $("#memId").val("");
+			  $("#memName").val("");
+			  $("#memEmail").val("");
+
+			  return false;
+		  } else { 
+			  $(".form_repw").show();
+			  $("#mailbtn").hide();
+			  $("#repwbtn").show(); 
+			  $("#memId").prop('readonly',true);
+			  $("#memName").prop('readonly',true);
+			  $("#memEmail").prop('readonly',true);
+			  $("#popbtn").attr("disabled", true);
+			  
+			  
+		  }
+	  });
+	  
+	  var pwJ = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+	  $('#mem_pw3').change(function() {
+	        if (pwJ.test($('#mem_pw3').val())) {
+	           $('#pw_check').text('');
+	        } else {
+	           $('#pw_check').text('8~25자의 숫자와 문자, 특수문자 조합으로 설정해주세요.');
+	           $('#pw_check').css('color', 'red');
+	           $('#pw_check').css('margin-bottom', '2vh');
+	           $('#pw1').css('margin-bottom', '0');
+	        }
+	  });
+	  
+	  $('#mem_pw2').change(function() {
+	      if ($('#mem_pw3').val() != $(this).val()) {
+	         $('#pw2_check').text('비밀번호가 일치하지 않습니다.');
+	         $('#pw2_check').css('color', 'red');
+	         $('#pw2_check').css('margin-bottom', '2vh');
+	         $('#pw2').css('margin-bottom', '0');
+	         
+	         
+	      } else {
+	         $('#pw2_check').text('');
+	      }
+	   });
+	  
+	// 비밀번호가 같은 경우 && 비밀번호 정규식
+	 $('#usercheck').on('submit',function(){
+      if (($('#mem_pw3').val() == ($('#mem_pw2').val()))
+                       && (pwJ.test($('#mem_pw3').val()))) {
+                	 
+           $('#mem_pw').val(sha256($('#mem_pw3').val()));
+           
+      } else {
+           
+           alert('비밀번호를 확인하세요.');
+           return false;
+      };
+	 });
+	  
+	 /*  $("#repwbtn").click(function(){
+		  
+		  
+	  }) */
+	  
+	  
+	  /* fetch("${pageContext.request.contextPath}/checkId", 
+		{ method: "POST",
+headers: {
+  "Content-Type": "application/json"
+},
+body: JSON.stringify({id: id, name: name, mail:mail})
+}).then((response) => response.json())
+.then((data) => {
+	
+		if(data>0){
+			window.open("${pageContext.request.contextPath}/findmailcheck","이메일 인증하기","width = 500, height = 500");
+		}else{
+			alert("아이디와 이메일을 확인해주세요");
+			return false;
+		}
+	}
+); */
+	  
+	  
+  })
+  </script>
 </body>
 
 </html>

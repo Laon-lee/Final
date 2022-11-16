@@ -110,4 +110,39 @@ public class MemberController {
 			
 			return "main/sucfindid";
 		}
+		
+		@GetMapping("/findmailcheck")
+		public String findmailcheck() {
+			
+			return "main/findpopup";
+		}
+		
+		@PostMapping("/checkId")
+		@ResponseBody
+		public int checkId(@RequestBody Map<String, String> map) {
+		
+			if(mbservice.findpw(map) != null) {
+				return 1;
+			} else {
+				return 0;
+			}
+		       
+		}
+		
+		@GetMapping("/repw")
+		public String repw(MemberVO vo) {
+			System.out.println("컨트롤러");
+			System.out.println("여기용"+vo.getMemId());
+			System.out.println("여기용"+vo.getMemEmail());
+			System.out.println("여기용"+vo.getMemName());
+			System.out.println("여기용"+vo.getMemPw());
+			
+			if(mbservice.updatepw(vo)) {
+				
+				return "main/main";
+			} else {
+				return "redirect:findpw";
+			}
+			
+		}
 }
